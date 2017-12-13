@@ -8,22 +8,9 @@ module ApplicationHelper
   # @return [String] The feedback text
   def calculator_feedback_for(calculation)
     if calculation.should_not_get_help
-      [
-          I18n.t('calculation.feedback.should_not_get_help'),
-          I18n.t('calculation.feedback.explanation_prefix', fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
-                 total_savings: number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')),
-          I18n.t('calculation.feedback.explanation.negative')
-      ].join(' ')
-
+      _should_not_get_help_text(calculation)
     elsif calculation.should_get_help
-      txt = [
-          I18n.t('calculation.feedback.should_get_help'),
-          I18n.t('calculation.feedback.explanation_prefix', fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
-                 total_savings: number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')),
-          I18n.t("calculation.feedback.subject.#{calculation.inputs['marital_status']}"),
-          I18n.t('calculation.feedback.explanation.positive')
-      ] + calculator_feedback_explanation(calculation)
-      txt.join(' ')
+      _should_get_help_text(calculation) + ' ' + calculator_feedback_explanation(calculation).join(' ')
     end
   end
 
@@ -35,13 +22,42 @@ module ApplicationHelper
   # @param [String] field The field that this value is from
   def calculator_auto_format_for(value, field:)
     case value
-      when Float then number_to_currency(value, precision: 0, unit: '£')
-      when Date then value.strftime('%d/%m/%Y')
-      else value
+    when Float then number_to_currency(value, precision: 0, unit: '£')
+    when Date then value.strftime('%d/%m/%Y')
+    else value
     end
   end
 
+  def calculation_fee(calculation)
+    number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£')
+  end
+
+  def calculation_total_savings(calculation)
+    number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')
+  end
+
   private
+
+  def _should_not_get_help_text(calculation)
+    [
+      I18n.t('calculation.feedback.should_not_get_help'),
+      I18n.t('calculation.feedback.explanation_prefix',
+        fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
+        total_savings: calculation_total_savings(calculation)),
+      I18n.t('calculation.feedback.explanation.negative')
+    ].join(' ')
+  end
+
+  def _should_get_help_text(calculation)
+    [
+      I18n.t('calculation.feedback.should_get_help'),
+      I18n.t('calculation.feedback.explanation_prefix',
+        fee: calculation_fee(calculation),
+        total_savings: number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')),
+      I18n.t("calculation.feedback.subject.#{calculation.inputs['marital_status']}"),
+      I18n.t('calculation.feedback.explanation.positive')
+    ].join(' ')
+  end
 
   def calculator_feedback_explanation(calculation)
     remaining_fields = calculation.required_fields_affecting_likelyhood
@@ -50,13 +66,17 @@ module ApplicationHelper
     remaining = remaining_fields.map do |field|
       I18n.t("calculation.feedback.explanation_suffix_fields.#{field}")
     end
+    add_explanation_suffix(a, remaining)
+  end
+
+  def add_explanation_suffix(phrases, remaining)
     if remaining.length == 1
-      a << remaining.first
+      phrases << remaining.first
     else
-      a << remaining[0..-2].join(', ')
-      a << I18n.t('calculation.feedback.explanation_suffix_joining_word')
-      a << remaining.last
+      phrases << remaining[0..-2].join(', ')
+      phrases << I18n.t('calculation.feedback.explanation_suffix_joining_word')
+      phrases << remaining.last
     end
-    a
+    phrases
   end
 end

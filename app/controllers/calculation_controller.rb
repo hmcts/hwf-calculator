@@ -1,20 +1,20 @@
 class CalculationController < ApplicationController
   FORM_CLASSES = {
-      nil => NilForm,
-      marital_status: MaritalStatusForm,
-      fee: FeeForm,
-      date_of_birth: DateOfBirthForm,
-      total_savings: TotalSavingsForm,
-      benefits_received: BenefitsReceivedForm
+    nil => NilForm,
+    marital_status: MaritalStatusForm,
+    fee: FeeForm,
+    date_of_birth: DateOfBirthForm,
+    total_savings: TotalSavingsForm,
+    benefits_received: BenefitsReceivedForm
 
   }.freeze
 
   def home
-    render locals: {form: form_class.new, current_calculation: current_calculation}
+    render locals: { form: form_class.new, current_calculation: current_calculation }
   end
 
   def edit
-    render locals: {form: form_class.new, current_calculation: current_calculation}
+    render locals: { form: form_class.new, current_calculation: current_calculation }
   end
 
   def update
@@ -30,7 +30,7 @@ class CalculationController < ApplicationController
   private
 
   def current_calculation
-    @current_calculation = Calculation.new(session.fetch(:calculation) {{}})
+    @current_calculation = Calculation.new(session.fetch(:calculation) { {} })
   end
 
   def expire_current_calculation

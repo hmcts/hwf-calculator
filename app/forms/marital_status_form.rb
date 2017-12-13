@@ -11,7 +11,7 @@ class MaritalStatusForm < BaseForm
 
   def export_params
     {
-        marital_status: marital_status
+      marital_status: marital_status
     }
   end
 end

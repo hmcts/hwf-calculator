@@ -36,6 +36,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'dotenv-rails', '~> 2.2'
   gem 'selenium-webdriver'
+  gem 'rubocop', '~> 0.49'
+  gem 'rubocop-rspec', '~> 1.10'
 end
 
 group :development do
@@ -50,9 +52,11 @@ end
 group :test do
   gem 'capybara-screenshot', '~> 1.0'
   gem 'cucumber-rails', '~> 1.5', :require => false
+  gem 'factory_bot_rails', '~> 4.8'
   gem 'rspec-rails', '~> 3.6'
   gem 'site_prism', '~> 2.9'
   gem 'poltergeist', '~> 1.15'
+  gem 'webmock', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
