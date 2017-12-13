@@ -52,6 +52,7 @@ group :test do
   gem 'cucumber-rails', '~> 1.5', :require => false
   gem 'rspec-rails', '~> 3.6'
   gem 'site_prism', '~> 2.9'
+  gem 'poltergeist', '~> 1.15'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

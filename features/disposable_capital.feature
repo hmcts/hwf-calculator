@@ -1,5 +1,6 @@
 @e2e
 @integration
+@javascript
 Feature: Disposable Capital
   HwF Calculator should be able to execute Disposable Capital Test to check eligibility.
   Eligibility criteria for Disposable Capital Test is specified and threshold defined for both fee exemption and fee remission in the legislation
