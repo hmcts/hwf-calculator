@@ -1,0 +1,31 @@
+div.calculator.marital_status
+  h1 How much help with fees will I receive?
+  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
+    .form-group class=('error' if form.errors.any?)
+      - if true
+        span.error-message#married = 'errors'
+      fieldset
+        legend = t('moj_hwf.calculator.calculation.field_labels.marital_status')
+
+        details
+          summary = 'Click to reveal more information'
+
+          .panel-indent
+            .text
+              h2.heading-small = 'heading small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+              h2.heading-small = 'heading 2 small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+        label.block-label
+          = f.radio_button :marital_status, 'single'
+          = 'Single'
+
+        label.block-label
+          = f.radio_button :marital_status, 'sharing_income'
+          = 'Married or living with someone'
+    .form-group
+      = f.submit 'Next step', class: 'button'

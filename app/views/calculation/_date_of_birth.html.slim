@@ -1,0 +1,33 @@
+div.calculator.marital_status
+  h1 How much help with fees will I receive?
+  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
+    .form-group class=('error' if form.errors.any?)
+      - if true
+        span.error-message = 'errors'
+      fieldset
+        legend = t('moj_hwf.calculator.calculation.field_labels.date_of_birth')
+
+        details
+          summary = 'Click to reveal more information'
+
+          .panel-indent
+            .text
+              h2.heading-small = 'heading small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+              h2.heading-small = 'heading 2 small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+        label.block-label
+          = f.text_field :'date_of_birth(3i)', value: f.object.date_of_birth.try(:day), class: 'form-control'
+          = 'Day'
+        label.block-label
+          = f.text_field :'date_of_birth(2i)', value: f.object.date_of_birth.try(:month), class: 'form-control'
+          = 'Month'
+        label.block-label
+          = f.text_field :'date_of_birth(1i)', value: f.object.date_of_birth.try(:year), class: 'form-control'
+          = 'Year'
+    .form-groupq
+      = f.submit 'Next step', class: 'button'

@@ -1,0 +1,3 @@
+= form_for form, as: :calculation, url: calculation_url, method: :patch do |f|
+  = f.submit t('.start'), class: 'button button-start'
+  = f.hidden_field :_hidden, value: ''

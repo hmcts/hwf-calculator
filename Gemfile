@@ -23,6 +23,8 @@ gem 'turbolinks', '~> 5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'active_model_attributes', '~> 1.2'
+
 gem 'slim-rails', '~> 3.1'
 gem 'unicorn', '~> 5.3'
 

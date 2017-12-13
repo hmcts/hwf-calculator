@@ -1,0 +1,37 @@
+div.calculator.marital_status
+  h1 How much help with fees will I receive?
+  .feedback data-behavior="calculator_feedback"
+    p data-behavior="calculator_feedback_message"
+      = calculator_feedback_for(current_calculation)
+  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
+    .form-group class=('error' if form.errors.any?)
+      - if true
+        span.error-message = 'errors'
+      fieldset
+        legend = 'Select all income benefits you are currently receiving'
+
+        details
+          summary = 'Click to reveal more information'
+
+          .panel-indent
+            .text
+              h2.heading-small = 'heading small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+              h2.heading-small = 'heading 2 small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+        label.block-label
+          = 'list of benefits to go here'
+
+    .form-groupq
+      = f.submit 'Next step', class: 'button'
+  .previous_questions data-behavior="calculator_previous_questions"
+    - current_calculation.inputs.each_pair do |k,v |
+      div data-behavior="calculator_previous_question"
+        span data-behavior="question"
+          = t("moj_hwf.calculator.calculation.field_labels.#{k}")
+        span data-behavior="answer"
+          = calculator_auto_format_for(v, field: k)
