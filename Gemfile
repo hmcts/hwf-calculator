@@ -27,12 +27,14 @@ gem 'active_model_attributes', '~> 1.2'
 
 gem 'slim-rails', '~> 3.1'
 gem 'unicorn', '~> 5.3'
+gem 'rest-client', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'dotenv-rails', '~> 2.2'
   gem 'selenium-webdriver'
 end
 
@@ -46,6 +48,7 @@ group :development do
 end
 
 group :test do
+  gem 'capybara-screenshot', '~> 1.0'
   gem 'cucumber-rails', '~> 1.5', :require => false
   gem 'rspec-rails', '~> 3.6'
   gem 'site_prism', '~> 2.9'

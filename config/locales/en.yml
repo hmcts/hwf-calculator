@@ -1,26 +1,24 @@
 en:
-  moj_hwf:
-    calculator:
-      calculation:
-        home:
-          start: "Start now"
-        feedback:
-          subject:
-            single: "you"
-            sharing_income: "you and your partner"
-          should_get_help: "You are likely to get help with fees"
-          explanation_prefix: "With a fee of %{fee} and savings of %{total_savings}"
-          explanation:
-            positive: "should be able to get help with your fees,"
-            negative: "it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-          explanation_suffix: "as long as you"
-          explanation_suffix_joining_word: "or"
-          explanation_suffix_fields:
-            benefits_received: "receive certain benefits"
-            total_income: "are on a low income"
-          should_not_get_help: "You are unlikely to get help with your fees"
-        field_labels:
-          total_savings: "How much do you have in savings and investment combined?"
-          marital_status: "Are you single, married or living with someone and sharing an income?"
-          date_of_birth: "What is your date of birth?"
-          fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
+  calculation:
+    home:
+      start: "Start now"
+    feedback:
+      subject:
+        single: "you"
+        sharing_income: "you and your partner"
+      should_get_help: "You are likely to get help with fees"
+      explanation_prefix: "With a fee of %{fee} and savings of %{total_savings}"
+      explanation:
+        positive: "should be able to get help with your fees,"
+        negative: "it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+      explanation_suffix: "as long as you"
+      explanation_suffix_joining_word: "or"
+      explanation_suffix_fields:
+        benefits_received: "receive certain benefits"
+        total_income: "are on a low income"
+      should_not_get_help: "You are unlikely to get help with your fees"
+    field_labels:
+      total_savings: "How much do you have in savings and investment combined?"
+      marital_status: "Are you single, married or living with someone and sharing an income?"
+      date_of_birth: "What is your date of birth?"
+      fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"

@@ -1,0 +1,10 @@
+production:
+  base_url: "<%= ENV.fetch('API_BASE_URL', 'configureme') %>"
+  token: "<%= ENV.fetch('API_TOKEN', 'configureme') %>"
+development:
+  base_url: "<%= ENV.fetch('API_BASE_URL', 'configureme') %>"
+  token: "<%= ENV.fetch('API_TOKEN', 'configureme') %>"
+test:
+  base_url: "<%= ENV.fetch('API_BASE_URL', 'localhost:3100/api/calculator') %>"
+  token: "<%= ENV.fetch('API_TOKEN', 'somefaketokenthatisreallyquitelong') %>"
+

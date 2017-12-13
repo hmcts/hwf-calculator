@@ -9,19 +9,19 @@ module ApplicationHelper
   def calculator_feedback_for(calculation)
     if calculation.should_not_get_help
       [
-          I18n.t('moj_hwf.calculator.calculation.feedback.should_not_get_help'),
-          I18n.t('moj_hwf.calculator.calculation.feedback.explanation_prefix', fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
+          I18n.t('calculation.feedback.should_not_get_help'),
+          I18n.t('calculation.feedback.explanation_prefix', fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
                  total_savings: number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')),
-          I18n.t('moj_hwf.calculator.calculation.feedback.explanation.negative')
+          I18n.t('calculation.feedback.explanation.negative')
       ].join(' ')
 
     elsif calculation.should_get_help
       txt = [
-          I18n.t('moj_hwf.calculator.calculation.feedback.should_get_help'),
-          I18n.t('moj_hwf.calculator.calculation.feedback.explanation_prefix', fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
+          I18n.t('calculation.feedback.should_get_help'),
+          I18n.t('calculation.feedback.explanation_prefix', fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
                  total_savings: number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')),
-          I18n.t("moj_hwf.calculator.calculation.feedback.subject.#{calculation.inputs['marital_status']}"),
-          I18n.t('moj_hwf.calculator.calculation.feedback.explanation.positive')
+          I18n.t("calculation.feedback.subject.#{calculation.inputs['marital_status']}"),
+          I18n.t('calculation.feedback.explanation.positive')
       ] + calculator_feedback_explanation(calculation)
       txt.join(' ')
     end
@@ -46,15 +46,15 @@ module ApplicationHelper
   def calculator_feedback_explanation(calculation)
     remaining_fields = calculation.required_fields_affecting_likelyhood
     return [] if remaining_fields.empty?
-    a = [I18n.t('moj_hwf.calculator.calculation.feedback.explanation_suffix')]
+    a = [I18n.t('calculation.feedback.explanation_suffix')]
     remaining = remaining_fields.map do |field|
-      I18n.t("moj_hwf.calculator.calculation.feedback.explanation_suffix_fields.#{field}")
+      I18n.t("calculation.feedback.explanation_suffix_fields.#{field}")
     end
     if remaining.length == 1
       a << remaining.first
     else
       a << remaining[0..-2].join(', ')
-      a << I18n.t('moj_hwf.calculator.calculation.feedback.explanation_suffix_joining_word')
+      a << I18n.t('calculation.feedback.explanation_suffix_joining_word')
       a << remaining.last
     end
     a

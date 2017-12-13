@@ -32,6 +32,6 @@ div.calculator.marital_status
     - current_calculation.inputs.each_pair do |k,v |
       div data-behavior="calculator_previous_question"
         span data-behavior="question"
-          = t("moj_hwf.calculator.calculation.field_labels.#{k}")
+          = t("calculation.field_labels.#{k}")
         span data-behavior="answer"
           = calculator_auto_format_for(v, field: k)

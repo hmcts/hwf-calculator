@@ -58,7 +58,7 @@ class CalculationController < ApplicationController
     params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :total_savings)
   end
 
-  def submit_service
-    @submit_service ||= SubmitCalculation.new(Config.instance.api_root, Config.instance.api_token)
+  def submit_service(config = Rails.configuration)
+    @submit_service ||= SubmitCalculationService.new(config.api['base_url'], config.api['token'])
   end
 end
