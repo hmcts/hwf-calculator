@@ -1,5 +1,6 @@
 require 'rails_helper'
 RSpec.describe CalculationController, type: :controller do
+  render_views
 
   describe 'GET #edit' do
     it 'returns http success' do
