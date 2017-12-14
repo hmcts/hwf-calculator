@@ -21,7 +21,6 @@ class CalculationController < ApplicationController
     @form = form_class.new(calculation_params.to_h)
     if @form.valid?
       calculate(@form.export)
-      handle_calculation_response
     else
       render :new
     end
@@ -30,7 +29,7 @@ class CalculationController < ApplicationController
   private
 
   def current_calculation
-    @current_calculation = Calculation.new(session.fetch(:calculation) { {} })
+    @current_calculation = Calculation.new(session.fetch(:calculation) { {} }.symbolize_keys)
   end
 
   def expire_current_calculation
@@ -39,13 +38,11 @@ class CalculationController < ApplicationController
 
   def calculate(input_data)
     data = current_calculation.inputs.merge(input_data)
-    submit_service.call(data)
+    submit_service = CalculationService.new(data)
+    submit_service.call
     expire_current_calculation
-    session[:calculation] = submit_service.response.as_json
-  end
-
-  def handle_calculation_response
-    redirect_to edit_calculation_url(form: submit_service.response.fields_required.first)
+    session[:calculation] = submit_service.to_h
+    redirect_to edit_calculation_url(form: submit_service.fields_required.first)
   end
 
   def form_class

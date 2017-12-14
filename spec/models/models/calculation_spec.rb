@@ -14,9 +14,9 @@ RSpec.describe Calculation do
   end
 
   context '#inputs' do
-    it 'stores a provided value of any type' do
-      subject = described_class.new inputs: { any: :value }
-      expect(subject.inputs).to eql(any: :value)
+    it 'converts the provided value' do
+      subject = described_class.new inputs: { marital_status: :value }
+      expect(subject.inputs).to eql(marital_status: 'value')
     end
   end
 

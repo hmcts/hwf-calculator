@@ -29,11 +29,11 @@ module ApplicationHelper
   end
 
   def calculation_fee(calculation)
-    number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£')
+    number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£')
   end
 
   def calculation_total_savings(calculation)
-    number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')
+    number_to_currency(calculation.inputs[:total_savings], precision: 0, unit: '£')
   end
 
   private
@@ -42,7 +42,7 @@ module ApplicationHelper
     [
       I18n.t('calculation.feedback.should_not_get_help'),
       I18n.t('calculation.feedback.explanation_prefix',
-        fee: number_to_currency(calculation.inputs['fee'], precision: 0, unit: '£'),
+        fee: number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£'),
         total_savings: calculation_total_savings(calculation)),
       I18n.t('calculation.feedback.explanation.negative')
     ].join(' ')
@@ -54,7 +54,7 @@ module ApplicationHelper
       I18n.t('calculation.feedback.explanation_prefix',
         fee: calculation_fee(calculation),
         total_savings: number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')),
-      I18n.t("calculation.feedback.subject.#{calculation.inputs['marital_status']}"),
+      I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"),
       I18n.t('calculation.feedback.explanation.positive')
     ].join(' ')
   end
