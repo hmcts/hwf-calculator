@@ -3,8 +3,8 @@
 #
 class CalculationService
   # @TODO This is now defined in the form object - can anything be shared here ?
-  FIELDS = [:marital_status, :fee, :date_of_birth, :total_savings, :benefits_received, :number_of_children, :total_income]
-  FIELDS_AFFECTING_LIKELYHOOD = [:date_of_birth, :total_savings, :benefits_received, :total_income]
+  FIELDS = %i[marital_status fee date_of_birth total_savings benefits_received number_of_children total_income].freeze
+  FIELDS_AFFECTING_LIKELYHOOD = %i[date_of_birth total_savings benefits_received total_income].freeze
   attr_reader :messages, :inputs
 
   def initialize(inputs, calculators: [TotalSavingsSubCalculationService])

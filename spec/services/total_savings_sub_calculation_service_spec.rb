@@ -30,7 +30,7 @@ RSpec.describe TotalSavingsSubCalculationService do
         end
       end
     end
-    [1,60].each do |age|
+    [1, 60].each do |age|
       context "age: #{age}" do
         include_examples 'savings limited to', age: age, fee: 1, limit: 3000
         include_examples 'savings limited to', age: age, fee: 500, limit: 3000
@@ -71,7 +71,9 @@ RSpec.describe TotalSavingsSubCalculationService do
         include_examples 'savings limited to', age: age, fee: 10000, limit: 16000
         include_examples 'savings limited to', age: age, fee: 1000000000000, limit: 16000
       end
-      [61, 62, 99].each do |age|
+    end
+    [61, 62, 99].each do |age|
+      context "age #{age}" do
         include_examples 'savings limited to', age: age, fee: 1, limit: 16000
         include_examples 'savings limited to', age: age, fee: 10, limit: 16000
         include_examples 'savings limited to', age: age, fee: 100, limit: 16000
@@ -88,7 +90,7 @@ RSpec.describe TotalSavingsSubCalculationService do
       result = catch(:invalid_inputs) do
         service.call(date_of_birth: nil, fee: 100, total_savings: 1000)
       end
-      expect(result).to be_a(described_class).and(an_object_having_attributes valid?: false)
+      expect(result).to be_a(described_class).and(an_object_having_attributes(valid?: false))
     end
   end
 

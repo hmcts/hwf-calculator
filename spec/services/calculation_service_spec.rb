@@ -26,7 +26,7 @@ RSpec.describe CalculationService do
     context 'with fake calculators' do
       let(:inputs) do
         {
-            total_savings: 1000
+          total_savings: 1000
         }
       end
       include_context 'fake calculators'
@@ -63,7 +63,7 @@ RSpec.describe CalculationService do
 
       context 'help not available' do
         it 'provides access to messages on failure' do
-          failure_reasons = [:reason1, :reason2]
+          failure_reasons = %i[reason1 reason2]
           allow(calculator_1).to receive(:help_not_available?).and_return true
           allow(calculator_1).to receive(:messages).and_return failure_reasons
           allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
@@ -73,7 +73,7 @@ RSpec.describe CalculationService do
         end
 
         it 'prevents calculator 2 being called if calculator 1 fails' do
-          failure_reasons = [:reason1, :reason2]
+          failure_reasons = %i[reason1 reason2]
           allow(calculator_1).to receive(:help_not_available?).and_return true
           allow(calculator_1).to receive(:messages).and_return failure_reasons
           allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
@@ -82,7 +82,7 @@ RSpec.describe CalculationService do
         end
 
         it 'prevents calculator 3 being called if calculator 1 fails' do
-          failure_reasons = [:reason1, :reason2]
+          failure_reasons = %i[reason1 reason2]
           allow(calculator_1).to receive(:help_not_available?).and_return true
           allow(calculator_1).to receive(:messages).and_return failure_reasons
           allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
@@ -135,7 +135,7 @@ RSpec.describe CalculationService do
     context 'with standard calculators' do
       let(:inputs) do
         {
-            total_savings: 1000
+          total_savings: 1000
         }
       end
 
@@ -152,7 +152,7 @@ RSpec.describe CalculationService do
   describe '#help_available?' do
     let(:inputs) do
       {
-          total_savings: 1000
+        total_savings: 1000
       }
     end
     include_context 'fake calculators'
@@ -166,7 +166,7 @@ RSpec.describe CalculationService do
     end
 
     it 'provides access to messages' do
-      reasons = [:reason1, :reason2]
+      reasons = %i[reason1 reason2]
       allow(calculator_1).to receive(:help_not_available?).and_return false
       allow(calculator_1).to receive(:help_available?).and_return true
       allow(calculator_1).to receive(:messages).and_return reasons
@@ -180,7 +180,7 @@ RSpec.describe CalculationService do
   describe '#help_not_available?' do
     let(:inputs) do
       {
-          total_savings: 1000
+        total_savings: 1000
       }
     end
 
@@ -189,7 +189,7 @@ RSpec.describe CalculationService do
   describe '#fields_required' do
     let(:inputs) do
       {
-          total_savings: 1000
+        total_savings: 1000
       }
     end
     include_context 'fake calculators'
@@ -197,14 +197,14 @@ RSpec.describe CalculationService do
       allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
       allow(calculator_2_class).to receive(:call).with(inputs).and_return(calculator_2)
       allow(calculator_3_class).to receive(:call).with(inputs).and_return(calculator_3)
-      expect(service.call(inputs, calculators: calculators)).to have_attributes fields_required: [:marital_status, :fee, :date_of_birth, :benefits_received, :number_of_children, :total_income]
+      expect(service.call(inputs, calculators: calculators)).to have_attributes fields_required: %i[marital_status fee date_of_birth benefits_received number_of_children total_income]
     end
   end
 
   describe '#required_fields_affecting_likelyhood' do
     let(:inputs) do
       {
-          total_savings: 1000
+        total_savings: 1000
       }
     end
     include_context 'fake calculators'
@@ -212,7 +212,7 @@ RSpec.describe CalculationService do
       allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
       allow(calculator_2_class).to receive(:call).with(inputs).and_return(calculator_2)
       allow(calculator_3_class).to receive(:call).with(inputs).and_return(calculator_3)
-      expect(service.call(inputs, calculators: calculators)).to have_attributes required_fields_affecting_likelyhood: [:date_of_birth, :benefits_received, :total_income]
+      expect(service.call(inputs, calculators: calculators)).to have_attributes required_fields_affecting_likelyhood: %i[date_of_birth benefits_received total_income]
     end
   end
 end

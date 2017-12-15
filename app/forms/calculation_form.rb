@@ -8,7 +8,7 @@ class CalculationForm
     date_of_birth: Date,
     fee: Float,
     total_savings: Float
-  }
+  }.freeze
 
   attribute :marital_status, :string
   attribute :date_of_birth, :date
@@ -23,6 +23,6 @@ class CalculationForm
   end
 
   def to_h
-    instance_values.reject {|k,v| v == UNDEFINED}.symbolize_keys
+    instance_values.reject { |_k, v| v == UNDEFINED }.symbolize_keys
   end
 end

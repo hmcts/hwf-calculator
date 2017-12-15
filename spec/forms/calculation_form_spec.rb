@@ -7,12 +7,12 @@ RSpec.describe CalculationForm do
     end
 
     it 'is only has one key when only 1 key is given in the output' do
-      form = described_class.new({ fee: 10 })
+      form = described_class.new(fee: 10)
       expect(form.to_h.keys).to contain_exactly(:fee)
     end
 
     it 'is only has two keys when only 2 keys are given in the output' do
-      form = described_class.new({ fee: 10, total_savings: 1000})
+      form = described_class.new(fee: 10, total_savings: 1000)
       expect(form.to_h.keys).to contain_exactly(:fee, :total_savings)
     end
 
@@ -28,7 +28,7 @@ RSpec.describe CalculationForm do
 
   describe '#date_of_birth via initialize' do
     it 'persists as a date' do
-      form = described_class.new({ date_of_birth: '1999-12-27'})
+      form = described_class.new(date_of_birth: '1999-12-27')
       expect(form.date_of_birth).to eql Date.parse('27 December 1999')
     end
   end
@@ -37,14 +37,14 @@ RSpec.describe CalculationForm do
     it 'persists as a float' do
       form = described_class.new({})
       form.fee = '10'
-      expect(form.fee).to eql 10.0
+      expect(form.fee).to be 10.0
     end
   end
 
   describe '#fee= via initialize' do
     it 'persists as a float' do
       form = described_class.new(fee: '10')
-      expect(form.fee).to eql 10.0
+      expect(form.fee).to be 10.0
     end
   end
 
@@ -52,14 +52,14 @@ RSpec.describe CalculationForm do
     it 'persists as a float' do
       form = described_class.new({})
       form.total_savings = '10000'
-      expect(form.total_savings).to eql 10000.0
+      expect(form.total_savings).to be 10000.0
     end
   end
 
   describe '#total_savings= via initialize' do
     it 'persists as a float' do
       form = described_class.new(total_savings: '10000')
-      expect(form.total_savings).to eql 10000.0
+      expect(form.total_savings).to be 10000.0
     end
   end
 
