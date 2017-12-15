@@ -53,7 +53,7 @@ module ApplicationHelper
       I18n.t('calculation.feedback.should_get_help'),
       I18n.t('calculation.feedback.explanation_prefix',
         fee: calculation_fee(calculation),
-        total_savings: number_to_currency(calculation.inputs['total_savings'], precision: 0, unit: '£')),
+        total_savings: number_to_currency(calculation.inputs[:total_savings], precision: 0, unit: '£')),
       I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"),
       I18n.t('calculation.feedback.explanation.positive')
     ].join(' ')
