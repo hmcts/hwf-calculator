@@ -10,13 +10,6 @@ class CalculationController < ApplicationController
   }.freeze
 
   helper_method :form, :current_calculation
-  def home
-
-  end
-
-  def edit
-
-  end
 
   def update
     @form = form_class.new(calculation_params.to_h)
