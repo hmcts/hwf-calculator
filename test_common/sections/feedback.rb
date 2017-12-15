@@ -1,4 +1,4 @@
-module CalculatorFrontEnd
+module Calculator
   module Test
     class FeedbackSection < ::SitePrism::Section
       def positive_message_saying(msg)

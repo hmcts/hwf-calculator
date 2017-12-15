@@ -1,4 +1,4 @@
-module CalculatorFrontEnd
+module Calculator
   module Test
     class QuestionDateSection < ::SitePrism::Section
       element :day, :field, 'Day'

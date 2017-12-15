@@ -1,8 +1,8 @@
-module CalculatorFrontEnd
+module Calculator
   module Test
     module En
       class DateOfBirthPage < BasePage
-        section :date_of_birth, ::CalculatorFrontEnd::Test::QuestionDateSection, :calculator_question, 'What is your date of birth?'
+        section :date_of_birth, ::Calculator::Test::QuestionDateSection, :calculator_question, 'What is your date of birth?'
         element :next_button, :button, 'Next step'
 
         def next

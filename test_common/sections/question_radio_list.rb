@@ -1,4 +1,4 @@
-module CalculatorFrontEnd
+module Calculator
   module Test
     class QuestionRadioListSection < ::SitePrism::Section
       def set(value)

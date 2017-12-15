@@ -1,4 +1,4 @@
-module CalculatorFrontEnd
+module Calculator
   module Test
     class QuestionNumericSection < ::SitePrism::Section
       element :field, 'input'

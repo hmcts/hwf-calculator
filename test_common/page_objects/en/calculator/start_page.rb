@@ -1,4 +1,4 @@
-module CalculatorFrontEnd
+module Calculator
   module Test
     module En
       class StartPage < BasePage
