@@ -9,12 +9,13 @@ class CalculationController < ApplicationController
 
   }.freeze
 
+  helper_method :form, :current_calculation
   def home
-    render locals: { form: form_class.new, current_calculation: current_calculation }
+
   end
 
   def edit
-    render locals: { form: form_class.new, current_calculation: current_calculation }
+
   end
 
   def update
@@ -26,11 +27,15 @@ class CalculationController < ApplicationController
     end
   end
 
-  private
-
   def current_calculation
-    @current_calculation = Calculation.new(session.fetch(:calculation) { {} }.symbolize_keys)
+    @current_calculation ||= Calculation.new(session.fetch(:calculation) { {} }.symbolize_keys)
   end
+
+  def form
+    @form ||= form_class.new
+  end
+
+  private
 
   def expire_current_calculation
     @current_calculation = nil
