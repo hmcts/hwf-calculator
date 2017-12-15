@@ -1,8 +1,6 @@
-# Help With Fees Calculator - Public Facing App
+# Help With Fees Calculator
 
-This application is the front end application for the help with fees calculator.
-
-To run it, you will also need an API server running.
+This application is the help with fees calculator.
 
 @TODO Add more to readme
 
