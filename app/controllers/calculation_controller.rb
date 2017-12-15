@@ -1,29 +1,26 @@
 class CalculationController < ApplicationController
-  FORM_CLASSES = {
-    nil => NilForm,
-    marital_status: MaritalStatusForm,
-    fee: FeeForm,
-    date_of_birth: DateOfBirthForm,
-    total_savings: TotalSavingsForm,
-    benefits_received: BenefitsReceivedForm
-
-  }.freeze
-
   helper_method :form, :current_calculation
 
+  # (PATCH | PUT) /calculation
   def update
-    @form = form_class.new(calculation_params.to_h)
-    if @form.valid?
-      calculate(@form.export)
+    form = form_class.new(calculation_params.to_h)
+    if form.valid?
+      calculate(form.export)
     else
       render :new
     end
   end
 
+  # The current calculation from the session converted into a @see Calculation instance
+  #
+  # @return [Calculation] The current calculation
   def current_calculation
     @current_calculation ||= Calculation.new(session.fetch(:calculation) { {} }.symbolize_keys)
   end
 
+  # The form to use to capture the input data
+  #
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,TotalSavingsForm,BenefitsReceivedForm] The form to use
   def form
     @form ||= form_class.new
   end
@@ -43,16 +40,10 @@ class CalculationController < ApplicationController
   end
 
   def form_class
-    klass = FORM_CLASSES[params[:form].try(:to_sym)]
-    raise "Unknown form class for '#{params[:form]}'" if klass.nil?
-    klass
+    CalculationFormService.for(params[:form].try(:to_sym))
   end
 
   def calculation_params
     params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :total_savings)
-  end
-
-  def submit_service(config = Rails.configuration)
-    @submit_service ||= SubmitCalculationService.new(config.api['base_url'], config.api['token'])
   end
 end
