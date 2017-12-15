@@ -28,15 +28,7 @@ class CalculationService
     catch(:abort) do
       calculators.each do |calculator|
         my_result = catch(:invalid_inputs) do
-          result = calculator.call(inputs)
-          if result.help_not_available?
-            add_failure(result.messages)
-            throw(:abort)
-          end
-          if result.help_available?
-            add_success(result.messages)
-          end
-          result
+          perform_calculation_using(calculator)
         end
         throw :abort, self unless my_result.valid?
       end
@@ -72,6 +64,18 @@ class CalculationService
   end
 
   private
+
+  def perform_calculation_using(calculator)
+    result = calculator.call(inputs)
+    if result.help_not_available?
+      add_failure(result.messages)
+      throw(:abort)
+    end
+    if result.help_available?
+      add_success(result.messages)
+    end
+    result
+  end
 
   def add_failure(reasons)
     self.failed = true

@@ -8,15 +8,15 @@ RSpec.describe CalculationService do
     let(:calculator_3_class) { class_spy(BaseSubCalculationService, 'Calculator 3 class') }
 
     let(:calculator_1) do
-      instance_double(BaseSubCalculationService, 'Calculator 1', help_not_available?: false, help_available?: false, valid?: true)
+      instance_spy(BaseSubCalculationService, 'Calculator 1', help_not_available?: false, help_available?: false, valid?: true, messages: [])
     end
 
     let(:calculator_2) do
-      instance_double(BaseSubCalculationService, 'Calculator 2', help_not_available?: false, help_available?: false, valid?: true)
+      instance_spy(BaseSubCalculationService, 'Calculator 2', help_not_available?: false, help_available?: false, valid?: true, messages: [])
     end
 
     let(:calculator_3) do
-      instance_double(BaseSubCalculationService, 'Calculator 3', help_not_available?: false, help_available?: false, valid?: true)
+      instance_spy(BaseSubCalculationService, 'Calculator 3', help_not_available?: false, help_available?: false, valid?: true, messages: [])
     end
 
     let(:calculators) { [calculator_1_class, calculator_2_class, calculator_3_class] }
@@ -182,6 +182,23 @@ RSpec.describe CalculationService do
       {
         total_savings: 1000
       }
+    end
+    include_context 'fake calculators'
+
+    it 'returns true if help_not_available? returns true from fake calculator' do
+      allow(calculator_1).to receive(:help_not_available?).and_return true
+      allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
+      expect(service.call(inputs, calculators: calculators)).to have_attributes help_not_available?: true
+    end
+
+    it 'returns false if help_not_available? returns false from all fake calculators' do
+      allow(calculator_1).to receive(:help_not_available?).and_return false
+      allow(calculator_1).to receive(:help_not_available?).and_return false
+      allow(calculator_1).to receive(:help_not_available?).and_return false
+      allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
+      allow(calculator_2_class).to receive(:call).with(inputs).and_return(calculator_2)
+      allow(calculator_3_class).to receive(:call).with(inputs).and_return(calculator_3)
+      expect(service.call(inputs, calculators: calculators)).to have_attributes help_not_available?: false
     end
 
   end
