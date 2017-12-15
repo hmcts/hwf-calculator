@@ -157,6 +157,8 @@ Style/PercentLiteralDelimiters:
 Style/WordArray:
   Exclude:
     - 'spec/**/*'
+Style/SymbolArray:
+  Enabled: false
 
 RSpec/NestedGroups:
   Max: 10

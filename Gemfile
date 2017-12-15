@@ -38,6 +38,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rubocop', '~> 0.49'
   gem 'rubocop-rspec', '~> 1.10'
+  gem 'simplecov', '~> 0.15'
 end
 
 group :development do

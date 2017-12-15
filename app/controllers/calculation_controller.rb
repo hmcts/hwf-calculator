@@ -38,8 +38,7 @@ class CalculationController < ApplicationController
 
   def calculate(input_data)
     data = current_calculation.inputs.merge(input_data)
-    submit_service = CalculationService.new(data)
-    submit_service.call
+    submit_service = CalculationService.call(data)
     expire_current_calculation
     session[:calculation] = submit_service.to_h
     redirect_to edit_calculation_url(form: submit_service.fields_required.first)
