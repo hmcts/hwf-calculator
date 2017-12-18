@@ -17,7 +17,7 @@
 #   service.help_available? # => false
 #   service.messages # => [{ key: :likely, source: :disposable_capital }]
 #   service.fields_required # => []
-#   service.required_fields_affecting_likelyhood  # => []
+#   service.required_fields_affecting_likelihood  # => []
 #
 # @example Example usage for a partial calculation with more fields to fill in
 #   inputs = {
@@ -30,12 +30,12 @@
 #   service.messages # => [{ key: :likely, source: :disposable_capital }]
 #   service.fields_required # => [:date_of_birth, :disposable_capital, :benefits_received,
 #                                 :number_of_children, :total_income]
-#   service.required_fields_affecting_likelyhood  # => [:date_of_birth, :disposable_capital,
+#   service.required_fields_affecting_likelihood  # => [:date_of_birth, :disposable_capital,
 #                                                       :benefits_received, :total_income]
 #
 # The second example shows that there is not a definitive answer yet,
 # and further fields are required as specified in the correct order in 'fields_required'
-# also 'required_fields_affecting_likelyhood' lists any fields remaining that will affect the Yes/No
+# also 'required_fields_affecting_likelihood' lists any fields remaining that will affect the Yes/No
 # result. This allows the front end to inform the user upon a partial success that it depends
 # on them providing the listed fields.
 #
@@ -45,7 +45,7 @@ class CalculationService
     :marital_status, :fee, :date_of_birth, :disposable_capital,
     :benefits_received, :number_of_children, :total_income
   ].freeze
-  FIELDS_AFFECTING_LIKELYHOOD = [:date_of_birth, :disposable_capital, :benefits_received, :total_income].freeze
+  FIELDS_AFFECTING_likelihood = [:date_of_birth, :disposable_capital, :benefits_received, :total_income].freeze
   attr_reader :messages, :inputs
 
   # Create an instance of CalculationService
@@ -100,7 +100,7 @@ class CalculationService
       should_get_help: help_available?,
       should_not_get_help: help_not_available?,
       fields_required: fields_required,
-      required_fields_affecting_likelyhood: required_fields_affecting_likelyhood,
+      required_fields_affecting_likelihood: required_fields_affecting_likelihood,
       messages: messages
     }
   end
@@ -113,7 +113,7 @@ class CalculationService
   end
 
   # Indicates (if true) that help with fees is available, but could be subject to more
-  # fields being filled in (@see #fields_required and #required_fields_affecting_likelyhood)
+  # fields being filled in (@see #fields_required and #required_fields_affecting_likelihood)
   #
   # @return [Boolean] If true, help is available given the provided inputs.  The
   # front end must take note of #fields_required to see if more info is required
@@ -138,8 +138,8 @@ class CalculationService
   #
   # @return [Array<Symbol>] An array of fields represented by symbols that need to be filled in
   # @see #fields_required for the list of symbols.
-  def required_fields_affecting_likelyhood
-    FIELDS_AFFECTING_LIKELYHOOD - inputs.keys
+  def required_fields_affecting_likelihood
+    FIELDS_AFFECTING_likelihood - inputs.keys
   end
 
   private

@@ -233,7 +233,7 @@ RSpec.describe CalculationService do
     end
   end
 
-  describe '#required_fields_affecting_likelyhood' do
+  describe '#required_fields_affecting_likelihood' do
     let(:inputs) do
       {
         disposable_capital: 1000
@@ -241,10 +241,10 @@ RSpec.describe CalculationService do
     end
     include_context 'fake calculators'
 
-    it 'returns any fields not provided that will affect the likelyhood and not those that just affect the amount' do
+    it 'returns any fields not provided that will affect the likelihood and not those that just affect the amount' do
 
       # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes required_fields_affecting_likelyhood: [:date_of_birth, :benefits_received, :total_income]
+      expect(service.call(inputs, calculators: calculators)).to have_attributes required_fields_affecting_likelihood: [:date_of_birth, :benefits_received, :total_income]
     end
   end
 
@@ -265,7 +265,7 @@ RSpec.describe CalculationService do
                                       should_get_help: false,
                                       should_not_get_help: false,
                                       fields_required: instance_of(Array),
-                                      required_fields_affecting_likelyhood: instance_of(Array),
+                                      required_fields_affecting_likelihood: instance_of(Array),
                                       messages: []
     end
   end

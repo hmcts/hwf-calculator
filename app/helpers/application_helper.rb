@@ -30,7 +30,7 @@ module ApplicationHelper
 
   # Presents the calculation fee in the correct format
   #
-  # @param [Calculation] The calculation to get the fee from
+  # @param [Calculation] calculation The calculation to get the fee from
   #
   # @return [String] The text to display
   def calculation_fee(calculation)
@@ -39,7 +39,7 @@ module ApplicationHelper
 
   # Presents the calculation disposable capital in the correct format
   #
-  # @param [Calculation] calculation The calculation to get the disposable capitial from
+  # @param [Calculation] calculation The calculation to get the disposable capital from
   #
   # @return [String] The text to display
   def calculation_disposable_capital(calculation)
@@ -70,7 +70,7 @@ module ApplicationHelper
   end
 
   def calculator_feedback_explanation(calculation)
-    remaining_fields = calculation.required_fields_affecting_likelyhood
+    remaining_fields = calculation.required_fields_affecting_likelihood
     return [] if remaining_fields.empty?
     a = [I18n.t('calculation.feedback.explanation_suffix')]
     remaining = remaining_fields.map do |field|

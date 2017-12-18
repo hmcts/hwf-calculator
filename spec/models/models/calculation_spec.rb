@@ -7,7 +7,7 @@ RSpec.describe Calculation do
                                          should_get_help: false,
                                          should_not_get_help: false,
                                          fields_required: [],
-                                         required_fields_affecting_likelyhood: [],
+                                         required_fields_affecting_likelihood: [],
                                          messages: [],
                                          fields: {}
     end
@@ -48,10 +48,10 @@ RSpec.describe Calculation do
     end
   end
 
-  context '#required_fields_affecting_likelyhood' do
+  context '#required_fields_affecting_likelihood' do
     it 'stores a provided value of any type' do
-      subject = described_class.new required_fields_affecting_likelyhood: [:any]
-      expect(subject.required_fields_affecting_likelyhood).to eql [:any]
+      subject = described_class.new required_fields_affecting_likelihood: [:any]
+      expect(subject.required_fields_affecting_likelihood).to eql [:any]
     end
   end
 
