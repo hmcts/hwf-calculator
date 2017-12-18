@@ -102,18 +102,6 @@ RSpec.describe TotalSavingsCalculatorService do
     end
   end
 
-  describe '#help_not_available?' do
-
-  end
-
-  describe '#help_available?' do
-
-  end
-
-  describe '#messages' do
-
-  end
-
   describe '#valid?' do
     it 'is true when all inputs required are present and correct type' do
       instance = service.new(date_of_birth: 20.years.ago.to_date, fee: 1000, total_savings: 100)
