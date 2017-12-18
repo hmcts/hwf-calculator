@@ -1,4 +1,4 @@
-class BaseSubCalculationService
+class BaseCalculatorService
   attr_reader :messages
   def self.call(inputs)
     new(inputs).call

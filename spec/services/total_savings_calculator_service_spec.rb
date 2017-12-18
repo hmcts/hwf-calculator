@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe TotalSavingsSubCalculationService do
+RSpec.describe TotalSavingsCalculatorService do
   subject(:service) { described_class }
   describe '#call' do
     shared_examples 'savings limited to' do |age:, fee:, limit:|

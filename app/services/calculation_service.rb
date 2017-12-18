@@ -50,10 +50,10 @@ class CalculationService
 
   # Create an instance of CalculationService
   # @param [Hash] inputs
-  # @param [Array<BaseSubCalculationService>] calculators A list of calculators to use.
+  # @param [Array<BaseCalculatorService>] calculators A list of calculators to use.
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
-  def initialize(inputs, calculators: [TotalSavingsSubCalculationService])
+  def initialize(inputs, calculators: [TotalSavingsCalculatorService])
     self.inputs = inputs.freeze
     self.failed = false
     self.help_available = false
@@ -64,7 +64,7 @@ class CalculationService
   # Performs the calculation with the given inputs and configured calculators
   #
   # @param [Hash] inputs
-  # @param [Array<BaseSubCalculationService>] calculators A list of calculators to use.
+  # @param [Array<BaseCalculatorService>] calculators A list of calculators to use.
   #  This is optional, normally for testing.
   # @return [CalculationService] A newly created instance of this class
   def self.call(*args)
