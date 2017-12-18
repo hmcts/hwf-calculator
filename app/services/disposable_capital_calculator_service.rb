@@ -2,7 +2,7 @@
 #
 # Uses an internal lookup table to decide based on the age (of the eldest), the court fee,
 # and the total_savings of the person or couple.
-class TotalSavingsCalculatorService < BaseCalculatorService
+class DisposableCapitalCalculatorService < BaseCalculatorService
   FEE_TABLE = [
     { age: 1..60, fee: 1..1000, total_savings: 3000 }.freeze,
     { age: 1..60, fee: 1001..1335, total_savings: 4000 }.freeze,

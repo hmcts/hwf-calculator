@@ -159,7 +159,7 @@ RSpec.describe CalculationService do
 
       it 'calls the disposable income calculator' do
         # Arrange
-        kls = class_double(TotalSavingsCalculatorService).as_stubbed_const
+        kls = class_double(DisposableCapitalCalculatorService).as_stubbed_const
         fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', help_not_available?: false, help_available?: false, valid?: true)
         allow(kls).to receive(:call).with(inputs).and_return fake_calculation
 
