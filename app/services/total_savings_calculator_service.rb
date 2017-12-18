@@ -36,7 +36,7 @@ class TotalSavingsCalculatorService < BaseCalculatorService
   private
 
   def process_inputs
-    fee_band = find_fee_band
+    fee_band = find_fee_band_for(age: age_service.call(date_of_birth: inputs[:date_of_birth]), fee: inputs[:fee])
     if inputs[:total_savings] < fee_band[:total_savings]
       mark_as_help_available
     else
@@ -45,10 +45,9 @@ class TotalSavingsCalculatorService < BaseCalculatorService
     self
   end
 
-  def find_fee_band
-    age = age_service.call(date_of_birth: inputs[:date_of_birth])
+  def find_fee_band_for(age:, fee:)
     fee_band = FEE_TABLE.find do |f|
-      f[:age].cover?(age) && f[:fee].cover?(inputs[:fee])
+      f[:age].cover?(age) && f[:fee].cover?(fee)
     end
     raise "Fee band not found for date_of_birth: #{inputs[:date_of_birth]} and fee: #{inputs[:fee]}" if fee_band.nil?
     fee_band

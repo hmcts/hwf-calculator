@@ -1,5 +1,4 @@
 @e2e
-@integration
 @javascript
 Feature: Disposable Capital
   HwF Calculator should be able to execute Disposable Capital Test to check eligibility.
