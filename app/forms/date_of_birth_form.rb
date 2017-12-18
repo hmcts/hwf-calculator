@@ -1,6 +1,13 @@
+# A form object for the date of birth question
+# Allows for date's being represented using rails '1i, 2i and 3i' notation.
 class DateOfBirthForm < BaseForm
+  # @!attribute [rw] date_of_birth
+  #   @return [Date] The date of birth of the individual or the eldest in a couple
   attribute :date_of_birth, :date
 
+  # The type of the form
+  #
+  # @return [Symbol] :date_of_birth
   def type
     :date_of_birth
   end
