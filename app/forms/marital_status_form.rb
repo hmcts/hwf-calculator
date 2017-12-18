@@ -4,7 +4,7 @@ class MaritalStatusForm < BaseForm
   #   @return [String] Either 'single' or 'sharing_income' (meaning married or equivalent)
   attribute :marital_status, :string
 
-  validates :marital_status, inclusion: { in: %w[single sharing_income] }, allow_blank: false
+  validates :marital_status, inclusion: { in: ['single', 'sharing_income'] }, allow_blank: false
 
   # The type of the form
   #

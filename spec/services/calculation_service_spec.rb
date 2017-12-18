@@ -74,7 +74,7 @@ RSpec.describe CalculationService do
       context 'with calculation failures' do
         it 'prevents calculator 2 being called if calculator 1 fails' do
           # Arrange
-          failure_reasons = %i[reason1 reason2]
+          failure_reasons = [:reason1, :reason2]
           allow(calculator_1).to receive(:help_not_available?).and_return true
           allow(calculator_1).to receive(:messages).and_return failure_reasons
 
@@ -87,7 +87,7 @@ RSpec.describe CalculationService do
 
         it 'prevents calculator 3 being called if calculator 1 fails' do
           # Act
-          failure_reasons = %i[reason1 reason2]
+          failure_reasons = [:reason1, :reason2]
           allow(calculator_1).to receive(:help_not_available?).and_return true
           allow(calculator_1).to receive(:messages).and_return failure_reasons
 
@@ -191,7 +191,7 @@ RSpec.describe CalculationService do
 
     it 'provides access to messages' do
       # Arrange
-      reasons = %i[reason1 reason2]
+      reasons = [:reason1, :reason2]
       allow(calculator_1).to receive(:help_not_available?).and_return false
       allow(calculator_1).to receive(:help_available?).and_return true
       allow(calculator_1).to receive(:messages).and_return reasons
@@ -239,7 +239,7 @@ RSpec.describe CalculationService do
     it 'returns any fields not provided in the input in the correct order' do
 
       # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes fields_required: %i[marital_status fee date_of_birth benefits_received number_of_children total_income]
+      expect(service.call(inputs, calculators: calculators)).to have_attributes fields_required: [:marital_status, :fee, :date_of_birth, :benefits_received, :number_of_children, :total_income]
     end
   end
 
@@ -254,7 +254,7 @@ RSpec.describe CalculationService do
     it 'returns any fields not provided that will affect the likelyhood and not those that just affect the amount' do
 
       # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes required_fields_affecting_likelyhood: %i[date_of_birth benefits_received total_income]
+      expect(service.call(inputs, calculators: calculators)).to have_attributes required_fields_affecting_likelyhood: [:date_of_birth, :benefits_received, :total_income]
     end
   end
 

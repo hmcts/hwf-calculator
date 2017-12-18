@@ -11,7 +11,7 @@ class CalculationController < ApplicationController
     if form.valid?
       calculate(form.export)
     else
-      render :new
+      render :edit
     end
   end
 

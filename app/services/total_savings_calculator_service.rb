@@ -17,6 +17,11 @@ class TotalSavingsCalculatorService < BaseCalculatorService
     { age: 61..200, fee: 1..Float::INFINITY, total_savings: 16000 }.freeze
   ].freeze
 
+  def initialize(age_service: AgeService, **args)
+    self.age_service = age_service
+    super args
+  end
+
   def call
     throw :invalid_inputs, self unless valid?
     process_inputs
@@ -31,22 +36,22 @@ class TotalSavingsCalculatorService < BaseCalculatorService
   private
 
   def process_inputs
-    dob = inputs[:date_of_birth]
-    this_years_birthday = dob.dup.tap { |d| d.change year: Time.zone.today.year }
-    age = Time.zone.today.year - dob.year
-    if Time.zone.today < this_years_birthday
-      age -= 1
-    end
-    fee_band = FEE_TABLE.find do |f|
-      f[:age].cover?(age) && f[:fee].cover?(inputs[:fee])
-    end
-    raise "Fee band not found for date_of_birth: #{dob} and fee: #{inputs[:fee]}" if fee_band.nil?
+    fee_band = find_fee_band
     if inputs[:total_savings] < fee_band[:total_savings]
       mark_as_help_available
     else
       mark_as_help_not_available
     end
     self
+  end
+
+  def find_fee_band
+    age = age_service.call(date_of_birth: inputs[:date_of_birth])
+    fee_band = FEE_TABLE.find do |f|
+      f[:age].cover?(age) && f[:fee].cover?(inputs[:fee])
+    end
+    raise "Fee band not found for date_of_birth: #{inputs[:date_of_birth]} and fee: #{inputs[:fee]}" if fee_band.nil?
+    fee_band
   end
 
   def mark_as_help_available
@@ -61,4 +66,5 @@ class TotalSavingsCalculatorService < BaseCalculatorService
     messages << { key: :unlikely, source: :total_savings }
   end
 
+  attr_accessor :age_service
 end

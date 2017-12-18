@@ -25,6 +25,6 @@ class CalculationForm < BaseForm
   private
 
   def export_params
-    instance_values.reject { |_k, v| v === UNDEFINED }.symbolize_keys
+    instance_values.reject { |_k, v| v == UNDEFINED }.symbolize_keys
   end
 end

@@ -155,10 +155,10 @@ Style/PercentLiteralDelimiters:
 
 # %w doesn't always make for clearer test data
 Style/WordArray:
-  Exclude:
-    - 'spec/**/*'
+  EnforcedStyle: brackets
+
 Style/SymbolArray:
-  Enabled: false
+  EnforcedStyle: brackets
 
 RSpec/NestedGroups:
   Max: 10

@@ -92,6 +92,14 @@ RSpec.describe TotalSavingsCalculatorService do
       end
       expect(result).to be_a(described_class).and(an_object_having_attributes(valid?: false))
     end
+
+    # The age service has it's own tests to verify things like feb 29th birthdays etc..
+    it 'uses the AgeService' do
+      age_service = class_spy('AgeService').as_stubbed_const
+      allow(age_service).to receive(:call).and_return(30) # Irrelevant response
+      service.call(date_of_birth: Date.parse('29 February 1996'), fee: 100, total_savings: 10000)
+      expect(age_service).to have_received(:call).with(date_of_birth: Date.parse('29 February 1996'))
+    end
   end
 
   describe '#help_not_available?' do
