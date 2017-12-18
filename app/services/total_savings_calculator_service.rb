@@ -18,14 +18,6 @@ class TotalSavingsCalculatorService < BaseCalculatorService
     process_inputs
   end
 
-  def help_available?
-    help_available
-  end
-
-  def help_not_available?
-    help_not_available
-  end
-
   def valid?
     inputs[:date_of_birth].is_a?(Date) &&
       inputs[:fee].is_a?(Numeric) &&
@@ -65,5 +57,4 @@ class TotalSavingsCalculatorService < BaseCalculatorService
     messages << { key: :unlikely, source: :total_savings }
   end
 
-  attr_accessor :help_available, :help_not_available
 end
