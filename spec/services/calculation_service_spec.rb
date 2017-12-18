@@ -100,9 +100,8 @@ RSpec.describe CalculationService do
       end
 
       context 'order of calculators called' do
-        it 'calls the calculators in order' do
-          # Arrange
-          calculators_called = []
+        let(:calculators_called) { [] }
+        before do
           allow(calculator_1_class).to receive(:call).with(inputs) do
             calculators_called << 1
             calculator_1
@@ -115,7 +114,8 @@ RSpec.describe CalculationService do
             calculators_called << 3
             calculator_3
           end
-
+        end
+        it 'calls the calculators in order' do
           # Act
           service.call(inputs, calculators: calculators)
 
@@ -125,19 +125,10 @@ RSpec.describe CalculationService do
 
         it 'does not call the second calculator if the first had invalid inputs' do
           # Arrange
-          calculators_called = []
           allow(calculator_1_class).to receive(:call).with(inputs) do
             calculators_called << 1
             allow(calculator_1).to receive(:valid?).and_return false
             throw :invalid_inputs, calculator_1
-          end
-          allow(calculator_2_class).to receive(:call).with(inputs) do
-            calculators_called << 2
-            calculator_2
-          end
-          allow(calculator_3_class).to receive(:call).with(inputs) do
-            calculators_called << 3
-            calculator_3
           end
 
           # Act
@@ -145,7 +136,6 @@ RSpec.describe CalculationService do
 
           # Assert
           expect(calculators_called).to eql [1]
-
         end
       end
     end
