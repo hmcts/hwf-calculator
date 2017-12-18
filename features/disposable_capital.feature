@@ -1,90 +1,69 @@
 @e2e
 @javascript
-Feature: Disposable Capital
-  HwF Calculator should be able to execute Disposable Capital Test to check eligibility.
-  Eligibility criteria for Disposable Capital Test is specified and threshold defined for both fee exemption and fee remission in the legislation
+Feature: Disposable Capital With Personas
+  HwF eligibility Calculator will execute disposable capital test to check citizen eligibility
+  Eligibility criteria for disposable capital test is specified in the legislation and threshold summary for fee exemption and fee remission outlined in the HwF Eligibility Calculator requirements page in confluence
   Rules:
-  Citizen must enter their civil partnership status, court fee, age and disposable capital amount
-  Disposable Capital must be for Citizen and their partners
-  Response header 1:
-  Negative decision: You are unlikely to get help with your fees
-  Positive decision: You are likely to get help with fees
-  Response header 2:
-  Negative decision: With a fee of £XXX and savings of £XXX, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
+
+  When citizen (or their partner) are 61 or over, they may have up to £16,000 in savings and investments
+  When citizen (and their partner) are under 61, the maximum amount of savings and investments allowed is specified in the (see Requirements Page)
+  If citizen is part of a couple and sharing an income, then their partner’s financial situation will be taken into consideration and citizen must give details of their savings and income
+  Citizen must confirm their partner status, enter their court or tribunal fee, age (and partner's age), savings and investment amount into the calculator to test for disposable capital
+
+
+  Personas (defined in test_common/fixtures/personas.yml)
+
+  JOHN is a single, 56 year old man with £2,990 worth of capital. He has a court fee of £600
+  ALLI is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
+  OLIVER is a married, 75 year old man with £15,000 worth of capital. He has a court fee of £20,000
+  LOLA is a married, 90 year old man with £19,000 worth of capital. He has a court fee of £100,000
+  BABA is a single, 40 year old man with £15,000 worth of capital. He has a court fee of £6,500
+
+
+  Messaging (defined in test_common/messaging/en.yml for english)
+
+  Positive
+
+  You are able to get help with fees
   Positive decision: With a fee of £XXX and savings of £XXX you (and your partner)should be able to get help with your fees, as long as you receive certain benefits or are on a low income
+  Negative
 
-  Background:
-    Given I am a calculator user
+  You are unlikely to get help with your fees
+  With a fee of £XXX and savings of £XXX, it is unlikely that you'll be able to get financial help,  unless you are likely to experience exceptional hardship
 
-  Scenario Outline: Under 61 year old test for disposable capital of less than £3,000 and fee band of up to £1,000
-    Given I am <Age> years of age
-    And my court or tribunal fee is <Court Fee>
-    And savings and investment amount of <Capital>
-    And civil partnership status is <Marital Status>
-    And I navigate to the calculator savings and investment page
-    And I fill in the calculator savings and investment page
-    When I click on the Next step button on the calculator savings and investment page
-    Then the calculator response should be "<Response header 1> <Response header 2>"
-    And savings and investment question, answer appended to the calculator Previous answers section
+  Scenario: Under 61 and single pass disposable capital test
+    Given I am "john"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am able to get help with fees
 
-    Examples:
-      | Marital Status | Age | Court Fee | Capital | Response header 1                           | Response header 2                                                                                                                                                         |
-      | Single         | 60  | 1000      | 3000    | You are unlikely to get help with your fees | With a fee of £1,000 and savings of £3,000 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship             |
-      | Married        | 39  | 600       | 2400    | You are likely to get help with fees        | With a fee of £600 and savings of £2,400 you and your partner should be able to get help with your fees, as long as you receive certain benefits or are on a low income   |
-      | Single         | 59  | 999       | 4000    | You are unlikely to get help with your fees | With a fee of £999 and savings of £4,000 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship               |
-      | Single         | 50  | 1000      | 5000    | You are unlikely to get help with your fees | With a fee of £1,000 and savings of £5,000 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship             |
-      | Married        | 40  | 1001      | 3000    | You are likely to get help with fees        | With a fee of £1,001 and savings of £3,000 you and your partner should be able to get help with your fees, as long as you receive certain benefits or are on a low income |
-      | Single         | 61  | 900       | 2900    | You are likely to get help with fees        | With a fee of £900 and savings of £2,900 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income                    |
-      | Single         | 62  | 600       | 2000    | You are likely to get help with fees        | With a fee of £600 and savings of £2,000 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income                    |
-      | Married        | 59  | 900       | 2999    | You are likely to get help with fees        | With a fee of £900 and savings of £2,999 you and your partner should be able to get help with your fees, as long as you receive certain benefits or are on a low income   |
+  Scenario: Under 61 and married pass disposable capital test
+    Given I am "alli"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am able to get help with fees
 
-  Scenario Outline:  Under 61 year old test for disposable capital of less than £7,000 and fee band of £2,001-£2,330
-    Given I am <Age> years of age
-    And my court or tribunal fee is <Court Fee>
-    And savings and investment amount of <Capital>
-    And civil partnership status is <Marital Status>
-    And I navigate to the calculator savings and investment page
-    And I fill in the calculator savings and investment page
-    When I click on the Next step button on the calculator savings and investment page
-    Then the calculator response should be "<Response header 1> <Response header 2>"
-    And savings and investment question, answer appended to the calculator Previous answers section
 
-    Examples:
-      | Marital Status | Age | Court Fee | Capital | Response header 1                           | Response header 2                                                                                                                                                         |
-      | Married        | 44  | 2001      | 6999    | You are likely to get help with fees        | With a fee of £2,001 and savings of £6,999 you and your partner should be able to get help with your fees, as long as you receive certain benefits or are on a low income |
-      | Married        | 35  | 2330      | 7001    | You are unlikely to get help with your fees | With a fee of £2,330 and savings of £7,001 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship             |
-      | Single         | 55  | 2000      | 5000    | You are likely to get help with fees        | With a fee of £2,000 and savings of £5,000 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income                  |
-      | Single         | 60  | 2329      | 6000    | You are likely to get help with fees        | With a fee of £2,329 and savings of £6,000 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income                  |
-      | Married        | 44  | 700       | 3000    | You are unlikely to get help with your fees | With a fee of £700 and savings of £3,000 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship               |
-      | Single         | 61  | 900       | 6500    | You are likely to get help with fees        | With a fee of £900 and savings of £6,500 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income                    |
-      | Single         | 70  | 2330      | 7000    | You are likely to get help with fees        | With a fee of £2,330 and savings of £7,000 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income                  |
 
-  Scenario Outline:  61 year old and over test for disposable capital of less than £16,000 and fee band of any amount
-    Given I am <Age> years of age
-    And my court or tribunal fee is <Court Fee>
-    And savings and investment amount of <Capital>
-    And civil partnership status is <Marital Status>
-    And I navigate to the calculator savings and investment page
-    And I fill in the calculator savings and investment page
-    When I click on the Next step button on the calculator savings and investment page
-    Then the calculator response should be "<Response header 1> <Response header 2>"
-    And savings and investment question, answer appended to the calculator Previous answers section
+  Scenario: Over 61 and married pass disposable capital test
+    Given I am "oliver"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am able to get help with fees
 
-    Examples:
-      | Marital Status | Age | Court Fee | Capital | Response header 1                           | Response header 2                                                                                                                                                |
-      | Married        | 65  | 50000     | 16000   | You are unlikely to get help with your fees | With a fee of £50,000 and savings of £16,000 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship  |
-      | Married        | 80  | 100000    | 16001   | You are unlikely to get help with your fees | With a fee of £100,000 and savings of £16,001 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship |
-      | Single         | 70  | 45000     | 15999   | You are likely to get help with fees        | With a fee of £45,000 and savings of £15,999 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income       |
-      | Single         | 80  | 100       | 15000   | You are likely to get help with fees        | With a fee of £100 and savings of £15,000 you should be able to get help with your fees, as long as you receive certain benefits or are on a low income          |
-      | Married        | 70  | 25000     | 25000   | You are unlikely to get help with your fees | With a fee of £25,000 and savings of £25,000 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship  |
+  Scenario: Over 61 and married fail disposable capital test
+    Given I am "lola"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am unlikely to get help with fees
 
-  Scenario: DEVELOPMENT
-    Given I am 60 years of age
-    And my court or tribunal fee is 1000
-    And savings and investment amount of 3000
-    And civil partnership status is Single
-    And I navigate to the calculator savings and investment page
-    And I fill in the calculator savings and investment page
-    When I click on the Next step button on the calculator savings and investment page
-    Then the calculator response should be "You are unlikely to get help with your fees With a fee of £1,000 and savings of £3,000 it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-    And savings and investment question, answer appended to the calculator Previous answers section
+  Scenario: Under 61 and single fail disposable capital test
+    Given I am "baba"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am unlikely to get help with fees

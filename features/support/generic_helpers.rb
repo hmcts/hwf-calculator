@@ -31,3 +31,13 @@ end
 def any_calculator_page
   @any_calculator_page ||= ::Calculator::Test::En::BasePage.new
 end
+
+def personas
+  @personas ||= ::Calculator::Test::PersonasRepository.new
+end
+
+def messaging
+  @messaging ||= begin
+    ::Calculator::Test::Messaging.new
+  end
+end

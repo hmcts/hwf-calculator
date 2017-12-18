@@ -6,8 +6,8 @@ en:
       subject:
         single: "you"
         sharing_income: "you and your partner"
-      should_get_help: "You are likely to get help with fees"
-      explanation_prefix: "With a fee of %{fee} and savings of %{disposable_capital}"
+      should_get_help: "You are able to get help with fees"
+      explanation_prefix: "With a fee of %{fee} and savings of %{disposable_capital},"
       explanation:
         positive: "should be able to get help with your fees,"
         negative: "it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"

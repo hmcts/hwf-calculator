@@ -1,0 +1,26 @@
+john:
+  marital_status: Single
+  age: 56
+  disposable_capital: 2990
+  fee: 600
+alli:
+  marital_status: Married
+  age: 60
+  disposable_capital: 3800
+  fee: 1334
+oliver:
+  marital_status: Married
+  age: 75
+  disposable_capital: 15000
+  fee: 20000
+lola:
+  marital_status: Married
+  age: 90
+  disposable_capital: 19000
+  fee: 100000
+baba:
+  marital_status: Single
+  age: 40
+  disposable_capital: 15000
+  fee: 6500
+
