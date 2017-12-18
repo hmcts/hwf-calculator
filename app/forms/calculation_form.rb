@@ -18,9 +18,9 @@ class CalculationForm < BaseForm
   # @!attribute [rw] fee
   #   @return [Float,Symbol] Either a float value defining the court fee, or :undefined
   attribute :fee, :float, default: UNDEFINED
-  # @!attribute [rw] total_savings
-  #   @return [Float,Symbol] Either a float value defining the total savings, or :undefined
-  attribute :total_savings, :float, default: UNDEFINED
+  # @!attribute [rw] disposable_capital
+  #   @return [Float,Symbol] Either a float value defining the disposable capital, or :undefined
+  attribute :disposable_capital, :float, default: UNDEFINED
 
   private
 

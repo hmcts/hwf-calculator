@@ -24,7 +24,7 @@ class CalculationController < ApplicationController
 
   # The form to use to capture the input data
   #
-  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,TotalSavingsForm,BenefitsReceivedForm] The form to use
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,DisposableCapitalForm,BenefitsReceivedForm] The form to use
   def form
     @form ||= form_class.new
   end
@@ -51,6 +51,6 @@ class CalculationController < ApplicationController
   end
 
   def calculation_params
-    params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :total_savings)
+    params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :disposable_capital)
   end
 end

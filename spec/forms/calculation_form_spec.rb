@@ -12,8 +12,8 @@ RSpec.describe CalculationForm do
     end
 
     it 'is only has two keys when only 2 keys are given in the output' do
-      form = described_class.new(fee: 10, total_savings: 1000)
-      expect(form.export.keys).to contain_exactly(:fee, :total_savings)
+      form = described_class.new(fee: 10, disposable_capital: 1000)
+      expect(form.export.keys).to contain_exactly(:fee, :disposable_capital)
     end
   end
 
@@ -47,18 +47,18 @@ RSpec.describe CalculationForm do
     end
   end
 
-  describe '#total_savings=' do
+  describe '#disposable_capital=' do
     it 'persists as a float' do
       form = described_class.new({})
-      form.total_savings = '10000'
-      expect(form.total_savings).to be 10000.0
+      form.disposable_capital = '10000'
+      expect(form.disposable_capital).to be 10000.0
     end
   end
 
-  describe '#total_savings= via initialize' do
+  describe '#disposable_capital= via initialize' do
     it 'persists as a float' do
-      form = described_class.new(total_savings: '10000')
-      expect(form.total_savings).to be 10000.0
+      form = described_class.new(disposable_capital: '10000')
+      expect(form.disposable_capital).to be 10000.0
     end
   end
 

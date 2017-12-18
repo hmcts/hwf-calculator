@@ -37,13 +37,13 @@ module ApplicationHelper
     number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£')
   end
 
-  # Presents the calculation total savings in the correct format
+  # Presents the calculation disposable capital in the correct format
   #
-  # @param [Calculation] calculation The calculation to get the total savings from
+  # @param [Calculation] calculation The calculation to get the disposable capitial from
   #
   # @return [String] The text to display
-  def calculation_total_savings(calculation)
-    number_to_currency(calculation.inputs[:total_savings], precision: 0, unit: '£')
+  def calculation_disposable_capital(calculation)
+    number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')
   end
 
   private
@@ -53,7 +53,7 @@ module ApplicationHelper
       I18n.t('calculation.feedback.should_not_get_help'),
       I18n.t('calculation.feedback.explanation_prefix',
         fee: number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£'),
-        total_savings: calculation_total_savings(calculation)),
+        disposable_capital: calculation_disposable_capital(calculation)),
       I18n.t('calculation.feedback.explanation.negative')
     ].join(' ')
   end
@@ -63,7 +63,7 @@ module ApplicationHelper
       I18n.t('calculation.feedback.should_get_help'),
       I18n.t('calculation.feedback.explanation_prefix',
         fee: calculation_fee(calculation),
-        total_savings: number_to_currency(calculation.inputs[:total_savings], precision: 0, unit: '£')),
+        disposable_capital: number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')),
       I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"),
       I18n.t('calculation.feedback.explanation.positive')
     ].join(' ')

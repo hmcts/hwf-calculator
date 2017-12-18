@@ -10,7 +10,7 @@ class CalculationFormService
     marital_status: MaritalStatusForm,
     fee: FeeForm,
     date_of_birth: DateOfBirthForm,
-    total_savings: TotalSavingsForm,
+    disposable_capital: DisposableCapitalForm,
     benefits_received: BenefitsReceivedForm
 
   }.freeze
@@ -19,7 +19,7 @@ class CalculationFormService
   #
   # @param [Symbol, Nil] form The form symbol or nil
   #
-  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,TotalSavingsForm,BenefitsReceivedForm] The form found
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,DisposableCapitalForm,BenefitsReceivedForm] The form found
   # @raise [ArgumentError] If the form specified was not found
   def self.for(form)
     klass = FORM_CLASSES[form]

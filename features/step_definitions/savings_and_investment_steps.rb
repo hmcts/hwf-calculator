@@ -1,7 +1,7 @@
 And(/^I fill in the calculator savings and investment page$/) do
-  calculator_total_savings_page.total_savings.set(user.total_savings)
+  calculator_disposable_capital_page.disposable_capital.set(user.disposable_capital)
 end
 
 When(/^I click on the Next step button on the calculator savings and investment page$/) do
-  calculator_total_savings_page.next
+  calculator_disposable_capital_page.next
 end

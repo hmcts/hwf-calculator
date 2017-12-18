@@ -7,7 +7,7 @@
 #     marital_status: 'single',
 #     fee: 1000.0,
 #     date_of_birth: Date.parse('1 December 2000'),
-#     total_savings: 10000.0,
+#     disposable_capital: 10000.0,
 #     benefits_received: [],
 #     number_of_children: 2,
 #     total_income: 10000.0
@@ -15,7 +15,7 @@
 #   service = CalculationService.call(inputs)
 #   service.help_not_available? # => true
 #   service.help_available? # => false
-#   service.messages # => [{ key: :likely, source: :total_savings }]
+#   service.messages # => [{ key: :likely, source: :disposable_capital }]
 #   service.fields_required # => []
 #   service.required_fields_affecting_likelyhood  # => []
 #
@@ -27,10 +27,10 @@
 #   service = CalculationService.call(inputs)
 #   service.help_not_available? # => false
 #   service.help_available? # => false
-#   service.messages # => [{ key: :likely, source: :total_savings }]
-#   service.fields_required # => [:date_of_birth, :total_savings, :benefits_received,
+#   service.messages # => [{ key: :likely, source: :disposable_capital }]
+#   service.fields_required # => [:date_of_birth, :disposable_capital, :benefits_received,
 #                                 :number_of_children, :total_income]
-#   service.required_fields_affecting_likelyhood  # => [:date_of_birth, :total_savings,
+#   service.required_fields_affecting_likelyhood  # => [:date_of_birth, :disposable_capital,
 #                                                       :benefits_received, :total_income]
 #
 # The second example shows that there is not a definitive answer yet,
@@ -42,10 +42,10 @@
 class CalculationService
   # @TODO This is now defined in the form object - can anything be shared here ?
   FIELDS = [
-    :marital_status, :fee, :date_of_birth, :total_savings,
+    :marital_status, :fee, :date_of_birth, :disposable_capital,
     :benefits_received, :number_of_children, :total_income
   ].freeze
-  FIELDS_AFFECTING_LIKELYHOOD = [:date_of_birth, :total_savings, :benefits_received, :total_income].freeze
+  FIELDS_AFFECTING_LIKELYHOOD = [:date_of_birth, :disposable_capital, :benefits_received, :total_income].freeze
   attr_reader :messages, :inputs
 
   # Create an instance of CalculationService
@@ -126,7 +126,7 @@ class CalculationService
   # questions should be asked.
   #
   # @return [Array<Symbol>] A list of fields represented by symbols that need to be filled in
-  # possible values are :marital_status, :fee, :date_of_birth, :total_savings,
+  # possible values are :marital_status, :fee, :date_of_birth, :disposable_capital,
   # :benefits_received, :number_of_children, :total_income
   def fields_required
     FIELDS - inputs.keys

@@ -38,7 +38,7 @@ RSpec.describe CalculationService do
     context 'with fake calculators' do
       let(:inputs) do
         {
-          total_savings: 1000
+          disposable_capital: 1000
         }
       end
       include_context 'fake calculators'
@@ -153,7 +153,7 @@ RSpec.describe CalculationService do
     context 'with pre configured calculators' do
       let(:inputs) do
         {
-          total_savings: 1000
+          disposable_capital: 1000
         }
       end
 
@@ -175,7 +175,7 @@ RSpec.describe CalculationService do
   describe '#help_available?' do
     let(:inputs) do
       {
-        total_savings: 1000
+        disposable_capital: 1000
       }
     end
     include_context 'fake calculators'
@@ -204,7 +204,7 @@ RSpec.describe CalculationService do
   describe '#help_not_available?' do
     let(:inputs) do
       {
-        total_savings: 1000
+        disposable_capital: 1000
       }
     end
     include_context 'fake calculators'
@@ -231,7 +231,7 @@ RSpec.describe CalculationService do
   describe '#fields_required' do
     let(:inputs) do
       {
-        total_savings: 1000
+        disposable_capital: 1000
       }
     end
     include_context 'fake calculators'
@@ -246,7 +246,7 @@ RSpec.describe CalculationService do
   describe '#required_fields_affecting_likelyhood' do
     let(:inputs) do
       {
-        total_savings: 1000
+        disposable_capital: 1000
       }
     end
     include_context 'fake calculators'
@@ -261,7 +261,7 @@ RSpec.describe CalculationService do
   describe '#to_h' do
     let(:inputs) do
       {
-        total_savings: 1000
+        disposable_capital: 1000
       }
     end
     include_context 'fake calculators'

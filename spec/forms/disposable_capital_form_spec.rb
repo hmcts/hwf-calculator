@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe TotalSavingsForm, type: :model do
+RSpec.describe DisposableCapitalForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
@@ -7,15 +7,15 @@ RSpec.describe TotalSavingsForm, type: :model do
   end
 
   describe 'type' do
-    it 'returns :total_savings' do
-      expect(form.type).to be :total_savings
+    it 'returns :disposable_capital' do
+      expect(form.type).to be :disposable_capital
     end
   end
 
   describe '#export' do
     it 'exports the fee' do
-      form.total_savings = '10000'
-      expect(form.export).to eql(total_savings: 10000.0)
+      form.disposable_capital = '10000'
+      expect(form.export).to eql(disposable_capital: 10000.0)
     end
   end
 end

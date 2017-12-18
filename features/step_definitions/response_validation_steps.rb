@@ -4,5 +4,5 @@ Then(/^the calculator response should be "([^"]*)"$/) do |msg|
 end
 
 And(/^savings and investment question, answer appended to the calculator Previous answers section$/) do
-  expect(any_calculator_page.previous_answers.total_savings.answer.text).to eql number_to_currency(user.total_savings, precision: 0, unit: '£')
+  expect(any_calculator_page.previous_answers.disposable_capital.answer.text).to eql number_to_currency(user.disposable_capital, precision: 0, unit: '£')
 end

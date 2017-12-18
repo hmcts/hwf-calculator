@@ -17,8 +17,8 @@ RSpec.describe CalculationFormService do
       expect(described_class.for(:date_of_birth)).to be DateOfBirthForm
     end
 
-    it 'returns TotalSavingsForm when :total_savings is passed' do
-      expect(described_class.for(:total_savings)).to be TotalSavingsForm
+    it 'returns DisposableCapitalForm when :disposable_capital is passed' do
+      expect(described_class.for(:disposable_capital)).to be DisposableCapitalForm
     end
 
     it 'returns BenefitsReceivedForm when :benefits_received is passed' do

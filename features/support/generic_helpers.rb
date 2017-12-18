@@ -24,8 +24,8 @@ def calculator_date_of_birth_page
   @calculator_date_of_birth_page ||= ::Calculator::Test::En::DateOfBirthPage.new
 end
 
-def calculator_total_savings_page
-  @calculator_total_savings_page ||= ::Calculator::Test::En::TotalSavingsPage.new
+def calculator_disposable_capital_page
+  @calculator_disposable_capital_page ||= ::Calculator::Test::En::DisposableCapitalPage.new
 end
 
 def any_calculator_page

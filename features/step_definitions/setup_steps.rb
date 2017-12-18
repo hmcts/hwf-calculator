@@ -11,7 +11,7 @@ And(/^my court or tribunal fee is (.*)$/) do |fee|
 end
 
 And(/^savings and investment amount of (.*)$/) do |capital|
-  user.total_savings = capital
+  user.disposable_capital = capital
 end
 
 And(/^civil partnership status is (.*)$/) do |status|
