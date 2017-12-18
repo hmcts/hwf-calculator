@@ -11,7 +11,7 @@ class Calculation
     self.required_fields_affecting_likelyhood = []
     self.messages = []
     self.fields = {}
-    local_attrs[:inputs] = CalculationForm.new(local_attrs.fetch(:inputs, {})).to_h
+    local_attrs[:inputs] = CalculationForm.new(local_attrs.fetch(:inputs, {})).export
     super local_attrs
   end
 end

@@ -1,3 +1,7 @@
+# A calculator service for the total savings of an individual or couple
+#
+# Uses an internal lookup table to decide based on the age (of the eldest), the court fee,
+# and the total_savings of the person or couple.
 class TotalSavingsCalculatorService < BaseCalculatorService
   FEE_TABLE = [
     { age: 1..60, fee: 1..1000, total_savings: 3000 }.freeze,

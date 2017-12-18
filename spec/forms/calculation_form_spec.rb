@@ -1,21 +1,20 @@
 require 'rails_helper'
 RSpec.describe CalculationForm do
-  describe '#to_h' do
+  describe '#export' do
     it 'is empty with empty inputs' do
       form = described_class.new({})
-      expect(form.to_h).to be_empty
+      expect(form.export).to be_empty
     end
 
     it 'is only has one key when only 1 key is given in the output' do
       form = described_class.new(fee: 10)
-      expect(form.to_h.keys).to contain_exactly(:fee)
+      expect(form.export.keys).to contain_exactly(:fee)
     end
 
     it 'is only has two keys when only 2 keys are given in the output' do
       form = described_class.new(fee: 10, total_savings: 1000)
-      expect(form.to_h.keys).to contain_exactly(:fee, :total_savings)
+      expect(form.export.keys).to contain_exactly(:fee, :total_savings)
     end
-
   end
 
   describe '#date_of_birth=' do
