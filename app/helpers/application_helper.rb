@@ -28,10 +28,20 @@ module ApplicationHelper
     end
   end
 
+  # Presents the calculation fee in the correct format
+  #
+  # @param [Calculation] The calculation to get the fee from
+  #
+  # @return [String] The text to display
   def calculation_fee(calculation)
     number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£')
   end
 
+  # Presents the calculation total savings in the correct format
+  #
+  # @param [Calculation] calculation The calculation to get the total savings from
+  #
+  # @return [String] The text to display
   def calculation_total_savings(calculation)
     number_to_currency(calculation.inputs[:total_savings], precision: 0, unit: '£')
   end

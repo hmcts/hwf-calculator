@@ -1,6 +1,12 @@
 require 'active_model'
 # An abstract form object for the application, defining any common interfaces
 # and providing the base functionality (attribute management and validation) for any sub forms
+#
+# Note that this uses an external gem called 'active_model_attributes' - this is because the rails
+# project has added an attributes API to active model, but only implemented it in active record for now.
+# It is assumed that the rails project will implement it in active model itself in the future, in the same
+# way it is implemented in active record.  This gem fills in the gap for now, but can hopefully be removed in a
+# future version of rails.
 class BaseForm
   include ActiveModel::Model
   include ActiveModelAttributes
