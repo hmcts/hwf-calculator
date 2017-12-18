@@ -37,7 +37,5 @@ def personas
 end
 
 def messaging
-  @messaging ||= begin
-    ::Calculator::Test::Messaging.new
-  end
+  @messaging ||= ::Calculator::Test::Messaging.new
 end
