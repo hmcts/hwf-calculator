@@ -24,7 +24,8 @@ class CalculationController < ApplicationController
 
   # The form to use to capture the input data
   #
-  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,DisposableCapitalForm,BenefitsReceivedForm] The form to use
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,
+  #   DisposableCapitalForm,BenefitsReceivedForm] The form to use
   def form
     @form ||= form_class.new
   end

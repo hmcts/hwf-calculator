@@ -19,7 +19,8 @@ class CalculationFormService
   #
   # @param [Symbol, Nil] form The form symbol or nil
   #
-  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,DisposableCapitalForm,BenefitsReceivedForm] The form found
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,
+  #   DisposableCapitalForm,BenefitsReceivedForm] The form found
   # @raise [ArgumentError] If the form specified was not found
   def self.for(form)
     klass = FORM_CLASSES[form]

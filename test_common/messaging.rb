@@ -3,7 +3,7 @@ module Calculator
   module Test
     class Backend < ::I18n::Backend::Simple
       def initialize(messaging_dir:)
-        super(*[])
+        super()
         load_translations Dir.glob(File.join(messaging_dir, '**', '*.yml'))
         @initialized = true
       end

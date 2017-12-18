@@ -45,8 +45,6 @@ Feature: Disposable Capital With Personas
     When I click on the Next step button on the savings and investment page
     Then I should see that I am able to get help with fees
 
-
-
   Scenario: Over 61 and married pass disposable capital test
     Given I am "oliver"
     And I am on the savings and investment page
