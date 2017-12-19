@@ -9,7 +9,9 @@ class CalculationController < ApplicationController
   def update
     form = form_class.new(calculation_params.to_h)
     if form.valid?
-      calculate(form.export)
+      submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
+      calculate submit_service
+      redirect_to_next_question submit_service
     else
       render :edit
     end
@@ -36,11 +38,9 @@ class CalculationController < ApplicationController
     @current_calculation = nil
   end
 
-  def calculate(input_data)
-    submit_service = CalculationService.call(current_calculation.inputs.merge(input_data))
+  def calculate(submit_service)
     expire_current_calculation
     session[:calculation] = submit_service.to_h
-    redirect_to_next_question(submit_service)
   end
 
   def redirect_to_next_question(submit_service)
