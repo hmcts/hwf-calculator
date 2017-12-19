@@ -12,8 +12,16 @@ module Calculator
           load
         end
 
-        def positive_feedback_message_saying(msg)
-          feedback.positive_message_saying(msg)
+        def feedback_message_saying(msg)
+          feedback.message_saying(msg)
+        end
+
+        def positive_message
+          feedback.positive_message
+        end
+
+        def negative_message
+          feedback.negative_message
         end
       end
     end
