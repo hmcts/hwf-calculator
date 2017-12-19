@@ -16,7 +16,7 @@ Feature: Disposable Capital With Personas
   JOHN is a single, 56 year old man with £2,990 worth of capital. He has a court fee of £600
   ALLI is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
   OLIVER is a married, 75 year old man with £15,000 worth of capital. He has a court fee of £20,000
-  LOLA is a married, 90 year old man with £19,000 worth of capital. He has a court fee of £100,000
+  LOLA is a married, 90 year old woman with £19,000 worth of capital. He has a court fee of £100,000
   BABA is a single, 40 year old man with £15,000 worth of capital. He has a court fee of £6,500
   TONY is a married, 59 year old man with £18,000 worth of capital. He has a court fee of £7,500
   DAVID is single, 62 year old man with £25,000 worth of capital. He has a court fee of £50,000
