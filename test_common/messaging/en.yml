@@ -15,3 +15,9 @@ en:
         negative:
           heading: You are unlikely to get help with your fees
           detail: With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
+  hwf_pages:
+    income_benefits:
+      labels:
+        benefits:
+          question_label: 'Select all income benefits you are currently receiving'
+          none: 'None of the above'

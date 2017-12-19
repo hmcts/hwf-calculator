@@ -21,6 +21,8 @@ module Calculator
         result.is_a?(I18n::MissingTranslation) ? raise(result) : result
       end
 
+      alias_method :t, :translate
+
       private
 
       attr_accessor :backend
