@@ -1,0 +1,12 @@
+@import '_typography';
+.feedback {
+  .positive {
+    color: blue;
+  }
+  .negative {
+    color: red
+  }
+  h2 {
+    @include heading-36;
+  }
+}

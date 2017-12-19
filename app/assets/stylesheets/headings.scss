@@ -1,0 +1,7 @@
+@import '_typography';
+.content-header {
+  margin: 50px 25px 0px 25px;
+  h1 {
+    @include heading-48;
+  }
+}

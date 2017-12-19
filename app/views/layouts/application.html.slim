@@ -1,0 +1,11 @@
+- content_for :head
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+- content_for :content
+  .phase-banner
+    p
+      strong.phase-tag Alpha
+      span This is a new service – your <a href="#">feedback</a> will help us to improve it.
+  .content-header
+    h1 How much help with fees will I receive?
+  = yield
+= render template: "layouts/govuk_template"
