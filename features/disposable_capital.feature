@@ -18,7 +18,9 @@ Feature: Disposable Capital With Personas
   OLIVER is a married, 75 year old man with £15,000 worth of capital. He has a court fee of £20,000
   LOLA is a married, 90 year old man with £19,000 worth of capital. He has a court fee of £100,000
   BABA is a single, 40 year old man with £15,000 worth of capital. He has a court fee of £6,500
-
+  TONY is a married, 59 year old man with £18,000 worth of capital. He has a court fee of £7,500
+  DAVID is single, 62 year old man with £25,000 worth of capital. He has a court fee of £50,000
+  TOM is single, 80 year old man with £15,999 worth of capital. He has a court fee of £100
 
   Messaging (defined in test_common/messaging/en.yml for english)
 
@@ -65,3 +67,24 @@ Feature: Disposable Capital With Personas
     And I fill in the savings and investment page
     When I click on the Next step button on the savings and investment page
     Then I should see that I am unlikely to get help with fees
+
+  Scenario: Under 61 and married fail disposable capital test
+    Given I am "tony"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am unlikely to get help with fees
+
+  Scenario: Over 61 and single fail disposable capital test
+    Given I am "david"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am unlikely to get help with fees
+
+  Scenario: Over 61 and single pass disposable capital test
+    Given I am "tom"
+    And I am on the savings and investment page
+    And I fill in the savings and investment page
+    When I click on the Next step button on the savings and investment page
+    Then I should see that I am able to get help with fees

@@ -23,4 +23,19 @@ baba:
   age: 40
   disposable_capital: 15000
   fee: 6500
+tony:
+  marital_status: Married
+  age: 59
+  disposable_capital: 18000
+  fee: 7500
+david:
+  marital_status: Single
+  age: 62
+  disposable_capital: 25000
+  fee: 50000
+tom:
+  marital_status: Single
+  age: 80
+  disposable_capital: 15999
+  fee: 100
 
