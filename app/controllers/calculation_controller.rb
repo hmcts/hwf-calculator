@@ -11,7 +11,7 @@ class CalculationController < ApplicationController
     if form.valid?
       submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
       calculate submit_service
-      redirect_to_next_question submit_service
+      redirect_to next_question_url(submit_service)
     else
       render :edit
     end
@@ -43,8 +43,8 @@ class CalculationController < ApplicationController
     session[:calculation] = submit_service.to_h
   end
 
-  def redirect_to_next_question(submit_service)
-    redirect_to edit_calculation_url(form: submit_service.fields_required.first)
+  def next_question_url(submit_service)
+    edit_calculation_url(form: submit_service.fields_required.first)
   end
 
   def form_class
