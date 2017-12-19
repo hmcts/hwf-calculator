@@ -1,12 +1,13 @@
-div.calculator.marital_status
-  h1 How much help with fees will I receive?
+.content-body
   .feedback data-behavior="calculator_feedback"
     - if current_calculation.should_not_get_help
-      p.negative data-behavior="calculator_feedback_message"
-        = calculator_feedback_for(current_calculation)
+      div.negative
+        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_not_get_help')
+        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
     - if current_calculation.should_get_help
-      p.positive data-behavior="calculator_feedback_message"
-        = calculator_feedback_for(current_calculation)
+      div.positive
+        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_get_help')
+        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
 
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('error' if form.errors.any?)

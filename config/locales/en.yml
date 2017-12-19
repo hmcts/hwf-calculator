@@ -2,6 +2,10 @@ en:
   calculation:
     home:
       start: "Start now"
+      guidance_html: |
+        This calculator will tell you if you are likely to get help with fees and how you will receive.
+        To use this calculator you'll need to know about your fees, savings, income benefits and household information.
+        Your household includes you, your partner and any children that you’re responsible for and who live with you.
     feedback:
       subject:
         single: "you"

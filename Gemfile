@@ -28,6 +28,8 @@ gem 'active_model_attributes', '~> 1.2'
 gem 'slim-rails', '~> 3.1'
 gem 'unicorn', '~> 5.3'
 gem 'rest-client', '~> 2.0'
+gem 'govuk_template', '~> 0.23'
+gem 'govuk_frontend_toolkit', '~> 4.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

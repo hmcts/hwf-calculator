@@ -1,0 +1,6 @@
+@import '_typography';
+.content-body {
+  p {
+    @include copy-19;
+  }
+}

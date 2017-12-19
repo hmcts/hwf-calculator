@@ -8,9 +8,9 @@ module ApplicationHelper
   # @return [String] The feedback text
   def calculator_feedback_for(calculation)
     if calculation.should_not_get_help
-      _should_not_get_help_text(calculation)
+      should_not_get_help_text(calculation)
     elsif calculation.should_get_help
-      _should_get_help_text(calculation) + ' ' + calculator_feedback_explanation(calculation).join(' ')
+      should_get_help_text(calculation) + ' ' + calculator_feedback_explanation(calculation).join(' ')
     end
   end
 
@@ -46,28 +46,27 @@ module ApplicationHelper
     number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')
   end
 
+  def should_not_get_help_text(calculation)
+    [
+        I18n.t('calculation.feedback.explanation_prefix',
+               fee: number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£'),
+               disposable_capital: calculation_disposable_capital(calculation)),
+        I18n.t('calculation.feedback.explanation.negative')
+    ].join(' ')
+  end
+
+  def should_get_help_text(calculation)
+    [
+        I18n.t('calculation.feedback.explanation_prefix',
+               fee: calculation_fee(calculation),
+               disposable_capital: number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')),
+        I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"),
+        I18n.t('calculation.feedback.explanation.positive')
+    ].join(' ')
+  end
+
   private
 
-  def _should_not_get_help_text(calculation)
-    [
-      I18n.t('calculation.feedback.should_not_get_help'),
-      I18n.t('calculation.feedback.explanation_prefix',
-        fee: number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£'),
-        disposable_capital: calculation_disposable_capital(calculation)),
-      I18n.t('calculation.feedback.explanation.negative')
-    ].join(' ')
-  end
-
-  def _should_get_help_text(calculation)
-    [
-      I18n.t('calculation.feedback.should_get_help'),
-      I18n.t('calculation.feedback.explanation_prefix',
-        fee: calculation_fee(calculation),
-        disposable_capital: number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')),
-      I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"),
-      I18n.t('calculation.feedback.explanation.positive')
-    ].join(' ')
-  end
 
   def calculator_feedback_explanation(calculation)
     remaining_fields = calculation.required_fields_affecting_likelihood
