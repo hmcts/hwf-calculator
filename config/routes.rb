@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root controller: :calculation, action: :home
+  resource :calculation, controller: :calculation, only: [:update]
+  get '/calculation/:form' => "calculation#edit", as: :edit_calculation
 end

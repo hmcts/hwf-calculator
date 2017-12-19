@@ -1,33 +1,24 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  calculation:
+    home:
+      start: "Start now"
+    feedback:
+      subject:
+        single: "you"
+        sharing_income: "you and your partner"
+      should_get_help: "You are able to get help with fees"
+      explanation_prefix: "With a fee of %{fee} and savings of %{disposable_capital},"
+      explanation:
+        positive: "should be able to get help with your fees,"
+        negative: "it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+      explanation_suffix: "as long as you"
+      explanation_suffix_joining_word: "or"
+      explanation_suffix_fields:
+        benefits_received: "receive certain benefits"
+        total_income: "are on a low income"
+      should_not_get_help: "You are unlikely to get help with your fees"
+    field_labels:
+      disposable_capital: "How much do you have in savings and investment combined?"
+      marital_status: "Are you single, married or living with someone and sharing an income?"
+      date_of_birth: "What is your date of birth?"
+      fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
