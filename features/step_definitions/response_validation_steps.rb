@@ -11,6 +11,7 @@ Then(/^I should see that I am able to get help with fees$/) do
     disposable_capital: number_to_currency(user.disposable_capital, precision: 0, unit: '£'))
   expect(any_calculator_page.feedback_message_with_header(messaging.translate("hwf_decision.disposable_capital.#{marital_status}.positive.heading"))).to be_present
   expect(any_calculator_page.feedback_message_with_detail(msg)).to be_present
+  expect(any_calculator_page.positive_message).to be_present
 end
 
 Then(/^I should see that I am unlikely to get help with fees$/) do
@@ -20,12 +21,5 @@ Then(/^I should see that I am unlikely to get help with fees$/) do
     disposable_capital: number_to_currency(user.disposable_capital, precision: 0, unit: '£'))
   expect(any_calculator_page.feedback_message_with_detail(msg)).to be_present
   expect(any_calculator_page.feedback_message_with_header(messaging.translate("hwf_decision.disposable_capital.#{marital_status}.negative.heading"))).to be_present
-end
-
-And(/^response highlighted in blue$/) do
-  expect(any_calculator_page.positive_message).to be_present
-end
-
-And(/^response highlighted in red$/) do
   expect(any_calculator_page.negative_message).to be_present
 end
