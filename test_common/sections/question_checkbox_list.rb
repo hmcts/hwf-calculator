@@ -3,8 +3,11 @@ module Calculator
     class QuestionCheckboxListSection < ::SitePrism::Section
       element :label, 'legend'
 
-      def set(value)
-        raise 'Not yet implemented'
+      # @param [Array<String>] values An array of checkboxes to select by value
+      def set(values)
+        values.each do |value|
+          check value
+        end
       end
     end
   end

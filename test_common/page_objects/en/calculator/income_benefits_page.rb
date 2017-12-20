@@ -13,6 +13,13 @@ module Calculator
           label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.none')
           raise 'Not yet implemented'
         end
+
+        def choose_dont_know
+          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')
+          benefits.set([label_text])
+        end
+
+
       end
     end
   end

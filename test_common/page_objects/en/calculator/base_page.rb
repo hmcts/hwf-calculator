@@ -8,6 +8,10 @@ module Calculator
           section :disposable_capital, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "How much do you have in savings and investment combined?"
         end
 
+        def messaging
+          @messaging ||= ::Calculator::Test::Messaging.new
+        end
+
         def load_page
           load
         end

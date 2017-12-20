@@ -26,3 +26,12 @@ en:
       marital_status: "Are you single, married or living with someone and sharing an income?"
       date_of_birth: "What is your date of birth?"
       fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
+    benefits:
+      dont_know: "Don't know"
+      none: 'None of the above'
+      jobseekers_allowance: "Income-based Jobseeker’s Allowance (JSA)"
+      employment_support_allowance: "Income-related Employment and Support Allowance (ESA)"
+      income_support: "Income Support"
+      universal_credit: "Universal Credit (and you’re earning less than £6,000 a year)"
+      pension_credit: "Pension Credit (guarantee credit)"
+      scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"

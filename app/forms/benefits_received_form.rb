@@ -9,6 +9,12 @@ class BenefitsReceivedForm < BaseForm
     :benefits_received
   end
 
+
+  # @return [Array<Symbol>] An array of symbols representing the different types of benefits
+  def benefits
+    [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid, :none, :dont_know]
+  end
+
   private
 
   def export_params

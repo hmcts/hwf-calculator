@@ -21,3 +21,4 @@ en:
         benefits:
           question_label: 'Select all income benefits you are currently receiving'
           none: 'None of the above'
+          dont_know: "Don't know"

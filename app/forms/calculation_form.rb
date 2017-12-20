@@ -21,6 +21,9 @@ class CalculationForm < BaseForm
   # @!attribute [rw] disposable_capital
   #   @return [Float,Symbol] Either a float value defining the disposable capital, or :undefined
   attribute :disposable_capital, :float, default: UNDEFINED
+  # @!attribute [rw] benefits_received
+  #   @return [Array<String>] Either an array of strings, or :undefined
+  attribute :benefits_received, :array, default: UNDEFINED
 
   private
 

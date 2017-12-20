@@ -77,6 +77,21 @@ RSpec.describe CalculationForm do
     end
   end
 
+  describe "#benefits_received=" do
+    it 'persists as an array' do
+      form = described_class.new({})
+      form.benefits_received = [:jobseekers_allowance]
+      expect(form.benefits_received).to eql [:jobseekers_allowance]
+    end
+  end
+
+  describe "benefits_received= via initialize" do
+    it 'persists as an array' do
+      form = described_class.new(benefits_received: [:jobseekers_allowance])
+      expect(form.benefits_received).to eql [:jobseekers_allowance]
+    end
+  end
+
   context 'validation' do
     it 'should have validation stuff - @TODO'
   end

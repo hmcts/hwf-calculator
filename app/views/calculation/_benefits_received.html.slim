@@ -1,4 +1,4 @@
-.content-body
+.content-body.benefits_received
   .feedback data-behavior="calculator_feedback"
     - if current_calculation.should_not_get_help
       div.negative
@@ -31,6 +31,11 @@
 
         label.block-label
           = 'list of benefits to go here'
+        .multiple-choice
+          = f.collection_check_boxes :benefits_received, form.benefits.map {|b| [b, t("calculation.benefits.#{b}")]}, :first, :last do |b|
+            .checkbox
+              = b.check_box
+              = b.label
 
     .form-groupq
       = f.submit 'Next step', class: 'button'

@@ -5,6 +5,10 @@
 class CalculationController < ApplicationController
   helper_method :form, :current_calculation
 
+  def home
+    session.delete(:calculation)
+  end
+
   # (PATCH | PUT) /calculation
   def update
     form = form_class.new(calculation_params.to_h)
