@@ -1,6 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-677
-RSpec.describe 'Income Benefit Page Content', type: :feature do
+RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   include Calculator::Test::Pages
   # The next page is always the number of children
   let(:next_page) { Calculator::Test::En::NumberOfChildrenPage.new }
@@ -78,7 +78,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature do
     income_benefits_page.next
 
     # Assert
-    expect(full_remission_page).to be_visible
+    expect(full_remission_page).to be_displayed
   end
 
   scenario 'Select income related benefit option - answer added to previous answers' do
@@ -156,6 +156,6 @@ RSpec.describe 'Income Benefit Page Content', type: :feature do
     income_benefits_page.next
 
     # Assert
-    expect(income_benefits_page.invalid_nothing_selected).to be_visible
+    expect(income_benefits_page.error_nothing_selected).to be_visible
   end
 end

@@ -40,3 +40,10 @@
           = t("calculation.field_labels.#{k}")
         span data-behavior="answer"
           = calculator_auto_format_for(v, field: k)
+- content_for(:body_end) do
+  javascript:
+    $(document).ready(function () {
+        var benefitsReceivedPage = new Calculator.BenefitsReceivedPage;
+        benefitsReceivedPage.init();
+    });
+  yield

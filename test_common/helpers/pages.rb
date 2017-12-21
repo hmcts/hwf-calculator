@@ -25,6 +25,12 @@ module Calculator
       def income_benefits_page
         @income_benefits_page ||= Calculator::Test::En::IncomeBenefitsPage.new
       end
+
+      # @return [Calculator::Test::En::FullRemissionPage] The full remission page object
+      def full_remission_page
+        @full_remission_page ||= Calculator::Test::En::FullRemissionPage.new
+      end
     end
+
   end
 end

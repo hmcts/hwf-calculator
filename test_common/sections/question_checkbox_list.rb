@@ -11,7 +11,8 @@ module Calculator
       end
 
       def option_labelled(text)
-        find :gds_multiple_choice_option, text: text
+        node = find :gds_multiple_choice_option, text: text
+        GdsMultipleChoiceOptionSection.new self, node
       end
     end
   end
