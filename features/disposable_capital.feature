@@ -1,90 +1,63 @@
 @e2e
 @javascript
-Feature: Disposable Capital With Personas
-  HwF eligibility Calculator will execute disposable capital test to check citizen eligibility
-  Eligibility criteria for disposable capital test is specified in the legislation and threshold summary for fee exemption and fee remission outlined in the HwF Eligibility Calculator requirements page in confluence
-  Rules:
-
-  When citizen (or their partner) are 61 or over, they may have up to £16,000 in savings and investments
-  When citizen (and their partner) are under 61, the maximum amount of savings and investments allowed is specified in the (see Requirements Page)
-  If citizen is part of a couple and sharing an income, then their partner’s financial situation will be taken into consideration and citizen must give details of their savings and income
-  Citizen must confirm their partner status, enter their court or tribunal fee, age (and partner's age), savings and investment amount into the calculator to test for disposable capital
-
-
-  Personas (defined in test_common/fixtures/personas.yml)
-
-  JOHN is a single, 56 year old man with £2,990 worth of capital. He has a court fee of £600
-  ALLI is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
-  OLIVER is a married, 75 year old man with £15,000 worth of capital. He has a court fee of £20,000
-  LOLA is a married, 90 year old woman with £19,000 worth of capital. He has a court fee of £100,000
-  BABA is a single, 40 year old man with £15,000 worth of capital. He has a court fee of £6,500
-  TONY is a married, 59 year old man with £18,000 worth of capital. He has a court fee of £7,500
-  DAVID is single, 62 year old man with £25,000 worth of capital. He has a court fee of £50,000
-  TOM is single, 80 year old man with £15,999 worth of capital. He has a court fee of £100
-
-  Messaging (defined in test_common/messaging/en.yml for english)
-
-  Positive
-
-  You are able to get help with fees
-  Positive decision: With a fee of £XXX and savings of £XXX you (and your partner)should be able to get help with your fees, as long as you receive certain benefits or are on a low income
-  Negative
-
-  You are unlikely to get help with your fees
-  With a fee of £XXX and savings of £XXX, it is unlikely that you'll be able to get financial help,  unless you are likely to experience exceptional hardship
-
-  Scenario: Under 61 and single pass disposable capital test
-    Given I am "john"
+Feature: Disposable capital
+ 
+# John is a single, 56 year old man with £2,990 worth of capital. He has a court fee of £600
+  Scenario: John passes disposable capital test
+    Given I am John
     And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
-    Then I should see that I am able to get help with fees
+    When I submit my savings and investments
+    Then I should see that I am likely to get help with fees
 
-  Scenario: Under 61 and married pass disposable capital test
-    Given I am "alli"
+# Tom is single, 80 year old man with £15,999 worth of capital. He has a court fee of £100
+  Scenario: Tom passes disposable capital test
+    Given I am Tom
     And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
-    Then I should see that I am able to get help with fees
+    When I submit my savings and investments
+    Then I should see that I am likely to get help with fees
 
-  Scenario: Over 61 and married pass disposable capital test
-    Given I am "oliver"
+# Alli is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
+  Scenario: Alli passes disposable capital test
+    Given I am Alli and partner
     And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
-    Then I should see that I am able to get help with fees
+    When I submit our savings and investments
+    Then I should see that we are likely to get help with fees
 
-  Scenario: Over 61 and married fail disposable capital test
-    Given I am "lola"
+# Oliver is a married, 75 year old man with £15,000 worth of capital. He has a court fee of £20,000
+  Scenario: Oliver passes disposable capital test
+    Given I am Oliver
     And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
+    When I submit our savings and investments
+    Then I should see that we are likely to get help with fees
+
+# Baba is a single, 40 year old man with £15,000 worth of capital. He has a court fee of £6,500
+  Scenario: Baba passes disposable capital test
+    Given I am Baba
+    And I am on the savings and investment page
+    When I submit my savings and investments
     Then I should see that I am unlikely to get help with fees
 
-  Scenario: Under 61 and single fail disposable capital test
-    Given I am "baba"
+# David is single, 62 year old man with £25,000 worth of capital. He has a court fee of £50,000 
+  Scenario: David fails disposable capital test
+    Given I am David
     And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
+    When I submit my savings and investments
     Then I should see that I am unlikely to get help with fees
 
-  Scenario: Under 61 and married fail disposable capital test
-    Given I am "tony"
+# Lola is a married, 90 year old woman with £19,000 worth of capital. He has a court fee of £100,000
+  Scenario: Lola and partner passes disposable capital test
+    Given I am Lola and partner
     And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
-    Then I should see that I am unlikely to get help with fees
+    When I submit our savings and investments
+    Then I should see that we are unlikely to get help with fees
 
-  Scenario: Over 61 and single fail disposable capital test
-    Given I am "david"
+# Tony is a married, 59 year old man with £18,000 worth of capital. He has a court fee of £7,500
+  Scenario: Tony fails disposable capital test
+    Given I am Tony and partner
     And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
-    Then I should see that I am unlikely to get help with fees
+    When I submit our savings and investments
+    Then I should see that we are unlikely to get help with fees
 
-  Scenario: Over 61 and single pass disposable capital test
-    Given I am "tom"
-    And I am on the savings and investment page
-    And I fill in the savings and investment page
-    When I click on the Next step button on the savings and investment page
-    Then I should see that I am able to get help with fees
+  
+
+  
