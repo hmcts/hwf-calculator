@@ -1,0 +1,40 @@
+.content-body.number_of_children
+  .feedback data-behavior="calculator_feedback"
+    - if current_calculation.should_not_get_help
+      div.negative
+        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_not_get_help')
+        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
+    - if current_calculation.should_get_help
+      div.positive
+        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_get_help')
+        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
+
+  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
+    .form-group class=('error' if form.errors.any?)
+      - if true
+        span.error-message = 'errors'
+      fieldset
+        legend = 'How many children live with you or are you responsible for supporting financially?'
+
+        details
+          summary = 'Click to reveal more information'
+
+          .panel-indent
+            .text
+              h2.heading-small = 'heading small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+              h2.heading-small = 'heading 2 small'
+              ul.list.list-bullet
+                li = 'item_1'
+
+    .form-groupq
+      = f.submit 'Next step', class: 'button'
+  .previous_questions data-behavior="calculator_previous_questions"
+    - current_calculation.inputs.each_pair do |k,v |
+      div data-behavior="calculator_previous_question"
+        span data-behavior="question"
+          = t("calculation.field_labels.#{k}")
+        span data-behavior="answer"
+          = calculator_auto_format_for(v, field: k)

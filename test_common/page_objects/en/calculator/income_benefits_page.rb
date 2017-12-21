@@ -14,7 +14,7 @@ module Calculator
         # Chooses the 'None of the above' option in the list
         def choose_none
           label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.none')
-          raise 'Not yet implemented'
+          benefits.set([label_text])
         end
 
         # Chooses the 'Dont know' option in the list
@@ -39,6 +39,10 @@ module Calculator
 
         def dont_know_guidance
           benefits.dont_know_guidance
+        end
+
+        def none_of_the_above_guidance
+          benefits.none_of_the_above_guidance
         end
       end
     end
