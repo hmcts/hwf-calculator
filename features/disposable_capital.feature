@@ -1,6 +1,6 @@
 @e2e
 @javascript
-Feature: Savings and investment page
+Feature: Disposable capital
  
 # John is a single, 56 year old man with £2,990 worth of capital. He has a court fee of £600
   Scenario: John passes disposable capital test
