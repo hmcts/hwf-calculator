@@ -1,6 +1,6 @@
 module Calculator
   module Test
-    class FeedbackSection < ::SitePrism::Section
+    class FeedbackSection < BaseSection
       def message_with_detail(msg)
         find '[data-behavior=calculator_feedback_message]', text: msg
       end

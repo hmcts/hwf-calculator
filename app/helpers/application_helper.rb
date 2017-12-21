@@ -65,6 +65,18 @@ module ApplicationHelper
     ].join(' ')
   end
 
+  def gds_multiple_choices_with_guidance(form:, method:, choices:)
+    form.collection_check_boxes method, choices, :first, :second do |b|
+      guidance = b.object.last
+      guidance_id = "prefix_#{b.object.first}"
+      result = content_tag('div', class: 'multiple-choice', data: {target: guidance.present? ? guidance_id : nil}) do |a|
+        b.check_box + b.label
+      end
+      result << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id) if guidance.present?
+      result
+    end
+  end
+
   private
 
   def calculator_feedback_explanation(calculation)

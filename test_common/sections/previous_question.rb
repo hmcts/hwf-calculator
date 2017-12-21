@@ -1,6 +1,6 @@
 module Calculator
   module Test
-    class PreviousQuestionSection < ::SitePrism::Section
+    class PreviousQuestionSection < BaseSection
       element :answer, '[data-behavior=answer]'
     end
 

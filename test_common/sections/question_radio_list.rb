@@ -1,6 +1,6 @@
 module Calculator
   module Test
-    class QuestionRadioListSection < ::SitePrism::Section
+    class QuestionRadioListSection < BaseSection
       def set(value)
         choose(value)
       end

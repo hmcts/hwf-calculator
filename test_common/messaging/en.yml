@@ -20,5 +20,11 @@ en:
       labels:
         benefits:
           question_label: 'Select all income benefits you are currently receiving'
-          none: 'None of the above'
           dont_know: "Don't know"
+          none: 'None of the above'
+          jobseekers_allowance: "Income-based Jobseeker’s Allowance (JSA)"
+          employment_support_allowance: "Income-related Employment and Support Allowance (ESA)"
+          income_support: "Income Support"
+          universal_credit: "Universal Credit (and you’re earning less than £6,000 a year)"
+          pension_credit: "Pension Credit (guarantee credit)"
+          scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"
