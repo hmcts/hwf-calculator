@@ -50,7 +50,22 @@ class CalculationController < ApplicationController
   end
 
   def next_question_url(submit_service)
-    edit_calculation_url(form: submit_service.fields_required.first)
+    if submit_service.fields_required.empty?
+      remission_url(submit_service)
+    else
+      edit_calculation_url(form: submit_service.fields_required.first)
+    end
+  end
+
+  def remission_url(submit_service)
+    if submit_service.help_available?
+      edit_calculation_url(form: :full_remission_available)
+    elsif submit_service.help_not_available?
+      edit_calculation_url(form: :no_remission_available)
+    else
+      # @TODO Before merging in to master, decide what to do with this
+      raise 'Could not make a decision - this should not happen, but no acceptance criteria exists for it yet'
+    end
   end
 
   def form_class

@@ -12,7 +12,8 @@ class CalculationFormService
     date_of_birth: DateOfBirthForm,
     disposable_capital: DisposableCapitalForm,
     benefits_received: BenefitsReceivedForm,
-    number_of_children: NumberOfChildrenForm
+    number_of_children: NumberOfChildrenForm,
+    full_remission_available: FullRemissionAvailableForm
 
   }.freeze
 

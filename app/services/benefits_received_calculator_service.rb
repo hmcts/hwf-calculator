@@ -1,6 +1,7 @@
 # A calculator service for the benefits received for an individual or couple
 #
 class BenefitsReceivedCalculatorService < BaseCalculatorService
+  MY_FIELDS = [:benefits_received].freeze
   def call
     throw :invalid_inputs, self unless valid?
     process_inputs
@@ -8,6 +9,10 @@ class BenefitsReceivedCalculatorService < BaseCalculatorService
 
   def valid?
     inputs[:benefits_received].is_a?(Array)
+  end
+
+  def self.fields_required(inputs, previous_calculations:)
+    MY_FIELDS - inputs.keys
   end
 
   private

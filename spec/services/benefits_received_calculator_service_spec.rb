@@ -29,6 +29,23 @@ RSpec.describe BenefitsReceivedCalculatorService do
     end
   end
 
+  describe '#fields_required' do
+    it 'returns its only field with no inputs provided' do
+      # Act
+      result = described_class.fields_required({}, previous_calculations: {})
+
+      # Assert
+      expect(result).to eql [:benefits_received]
+    end
+    it 'returns no fields if all inputs have been provided' do
+      # Act
+      result = described_class.fields_required({ benefits_received: ['benefit 1'] }, previous_calculations: {})
+
+      # Assert
+      expect(result).to eql []
+    end
+  end
+
   describe '#valid?' do
     it 'is true when all inputs required are present and correct type' do
       instance = service.new(benefits_received: [:none])

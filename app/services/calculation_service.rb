@@ -40,13 +40,9 @@
 # on them providing the listed fields.
 #
 class CalculationService
-  # @TODO This is now defined in the form object - can anything be shared here ?
-  FIELDS = [
-    :marital_status, :fee, :date_of_birth, :disposable_capital,
-    :benefits_received, :number_of_children, :total_income
-  ].freeze
+  MY_FIELDS = [:marital_status].freeze
   FIELDS_AFFECTING_likelihood = [:date_of_birth, :disposable_capital, :benefits_received, :total_income].freeze
-  attr_reader :messages, :inputs
+  attr_reader :messages, :inputs, :calculations
 
   # Create an instance of CalculationService
   # @param [Hash] inputs
@@ -59,6 +55,7 @@ class CalculationService
     self.help_available = false
     self.messages = []
     self.calculators = calculators
+    self.calculations = {}
   end
 
   # Performs the calculation with the given inputs and configured calculators
@@ -83,7 +80,7 @@ class CalculationService
     catch(:abort) do
       calculators.each do |calculator|
         my_result = catch(:invalid_inputs) do
-          perform_calculation_using(calculator)
+          calculations[calculator.identifier] = perform_calculation_using(calculator)
         end
         throw :abort, self unless my_result.valid?
       end
@@ -96,12 +93,12 @@ class CalculationService
   # @return [Hash] A hash (symbolized keys) representing the result
   def to_h
     {
-      inputs: inputs,
-      should_get_help: help_available?,
-      should_not_get_help: help_not_available?,
-      fields_required: fields_required,
-      required_fields_affecting_likelihood: required_fields_affecting_likelihood,
-      messages: messages
+        inputs: inputs,
+        should_get_help: help_available?,
+        should_not_get_help: help_not_available?,
+        fields_required: fields_required,
+        required_fields_affecting_likelihood: required_fields_affecting_likelihood,
+        messages: messages
     }
   end
 
@@ -129,7 +126,12 @@ class CalculationService
   # possible values are :marital_status, :fee, :date_of_birth, :disposable_capital,
   # :benefits_received, :number_of_children, :total_income
   def fields_required
-    FIELDS - inputs.keys
+    @fields_required ||= begin
+      required = calculators.map do |c|
+        c.fields_required(inputs, previous_calculations: calculations_summary)
+      end.flatten
+      my_fields_required + required
+    end
   end
 
   # Indicates the fields that are required to be filled in that can change the Yes/No result.
@@ -143,6 +145,16 @@ class CalculationService
   end
 
   private
+
+  def my_fields_required
+    MY_FIELDS - inputs.keys
+  end
+
+  def calculations_summary
+    calculations.map do |k, v|
+      [k, {help_available: v.help_available?, help_not_available: v.help_not_available?}]
+    end.to_h
+  end
 
   def perform_calculation_using(calculator)
     result = calculator.call(inputs)
@@ -167,5 +179,6 @@ class CalculationService
   end
 
   attr_accessor :failed, :calculators, :help_available
-  attr_writer :messages, :inputs
+  attr_writer :messages, :inputs, :calculations
 end
+
