@@ -55,6 +55,8 @@ class BaseCalculatorService
   def initialize(inputs)
     self.inputs = inputs
     self.messages = []
+    self.help_not_available = false
+    self.help_available = false
   end
 
   # @private

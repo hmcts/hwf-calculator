@@ -2,9 +2,7 @@ module Calculator
   module Test
     class GdsMultipleChoiceOptionSection < BaseSection
       element :checkbox, 'input[type=checkbox]'
-      def disabled?
-        checkbox.disabled?
-      end
+      delegate :disabled?, to: :checkbox
 
       def guidance_id
         @root_element['data-target']

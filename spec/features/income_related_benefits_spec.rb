@@ -13,8 +13,8 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario 'Disable none income benefit options' do
     # Arrange - Get john to the benefits page
     benefits_to_select = [
-        messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance'),
-        messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
+      messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance'),
+      messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
     ]
     given_i_am(:john)
     answer_questions_up_to_benefits
@@ -29,8 +29,8 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario 'Disable none income benefit options - dont know option' do
     # Arrange - Get john to the benefits page
     benefits_to_select = [
-        messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance'),
-        messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
+      messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance'),
+      messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
     ]
     given_i_am(:john)
     answer_questions_up_to_benefits

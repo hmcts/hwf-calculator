@@ -143,7 +143,8 @@ RSpec.describe CalculationService do
     context 'with pre configured calculators' do
       let(:inputs) do
         {
-          disposable_capital: 1000
+          disposable_capital: 1000,
+          benefits_received: ['benefit_1']
         }
       end
 
@@ -151,6 +152,20 @@ RSpec.describe CalculationService do
         # Arrange
         kls = class_double(DisposableCapitalCalculatorService).as_stubbed_const
         fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', help_not_available?: false, help_available?: false, valid?: true)
+        allow(kls).to receive(:call).with(inputs).and_return fake_calculation
+
+        # Act
+        service.call(inputs)
+
+        # Assert
+        expect(kls).to have_received(:call).with(inputs)
+      end
+
+      it 'calls the benefits received calculator' do
+        # Arrange
+        kls = class_double(BenefitsReceivedCalculatorService).as_stubbed_const
+        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', help_not_available?: false, help_available?: false, valid?: true)
+        class_double(DisposableCapitalCalculatorService, call: fake_calculation).as_stubbed_const
         allow(kls).to receive(:call).with(inputs).and_return fake_calculation
 
         # Act

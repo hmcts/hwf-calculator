@@ -69,7 +69,7 @@ module ApplicationHelper
     form.collection_check_boxes method, choices, :first, :second do |b|
       guidance = b.object.last
       guidance_id = "prefix_#{b.object.first}"
-      result = content_tag('div', class: 'multiple-choice', data: {target: guidance.present? ? guidance_id : nil}) do |a|
+      result = content_tag('div', class: 'multiple-choice', data: { target: guidance.present? ? guidance_id : nil }) do |_a|
         b.check_box + b.label
       end
       result << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id) if guidance.present?

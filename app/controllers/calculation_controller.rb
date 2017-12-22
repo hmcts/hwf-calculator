@@ -56,6 +56,6 @@ class CalculationController < ApplicationController
   end
 
   def calculation_params
-    params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :disposable_capital)
+    params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :disposable_capital, benefits_received: [])
   end
 end
