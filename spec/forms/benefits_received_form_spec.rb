@@ -14,6 +14,12 @@ RSpec.describe BenefitsReceivedForm, type: :model do
         expect(form.valid?).to be false
       end
 
+      it 'contains the correct error if empty array' do
+        form.benefits_received = []
+        form.valid?
+        expect(form.errors.added?(:benefits_received, :blank)).to be true
+      end
+
       it 'is invalid if a string' do
         form.benefits_received = 'wrong'
         expect(form.valid?).to be false
@@ -47,6 +53,12 @@ RSpec.describe BenefitsReceivedForm, type: :model do
       it 'is valid if 2 valid benefits are present' do
         form.benefits_received = ['jobseekers_allowance', 'income_support']
         expect(form.valid?).to be true
+      end
+
+      it 'contains no errors after validation when 2 valid benefits are present' do
+        form.benefits_received = ['jobseekers_allowance', 'income_support']
+        form.valid?
+        expect(form.errors.include?(:benefits_received)).to be false
       end
     end
   end

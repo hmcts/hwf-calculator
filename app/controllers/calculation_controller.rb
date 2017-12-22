@@ -11,7 +11,7 @@ class CalculationController < ApplicationController
 
   # (PATCH | PUT) /calculation
   def update
-    form = form_class.new(calculation_params.to_h)
+    self.form = form_class.new(calculation_params.to_h)
     if form.valid?
       submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
       calculate submit_service
@@ -37,6 +37,8 @@ class CalculationController < ApplicationController
   end
 
   private
+
+  attr_writer :form
 
   def expire_current_calculation
     @current_calculation = nil

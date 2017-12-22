@@ -10,7 +10,6 @@ class BenefitsReceivedForm < BaseForm
   validate :validate_benefits_received_type
   validate :validate_benefits_received_dont_know_with_extras
   validate :validate_benefits_received_none_with_extras
-  validate :validate_benefits_received_empty
   validate :validate_benefits_received_values
   # The type of the form
   #
@@ -53,12 +52,6 @@ class BenefitsReceivedForm < BaseForm
     if benefits_received.include?(:none) && benefits_received.length > 1
       errors.add :benefits_received, :none_with_extras
     end
-  end
-
-  def validate_benefits_received_empty
-    return unless benefits_received.is_a?(Array)
-    return if benefits_received.present?
-    errors.add(:benefits_received, :empty)
   end
 
   def validate_benefits_received_values

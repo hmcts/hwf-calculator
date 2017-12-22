@@ -1,6 +1,6 @@
 module Calculator
   module Test
-    class QuestionCheckboxListSection < BaseSection
+    class QuestionCheckboxListSection < QuestionSection
       element :label, 'legend'
       sections :options, GdsMultipleChoiceOptionSection, :gds_multiple_choice_option
       # @param [Array<String>] values An array of checkboxes to select by value

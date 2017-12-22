@@ -21,10 +21,11 @@ module ApplicationHelper
   # @param [Object] value The value to be formatted
   # @param [String] field The field that this value is from
   def calculator_auto_format_for(value, field:)
-    case value
-    when Float then number_to_currency(value, precision: 0, unit: '£')
-    when Date then value.strftime('%d/%m/%Y')
-    else value
+    case field
+      when :date_of_birth then value.strftime('%d/%m/%Y')
+      when :fee, :disposable_capital then number_to_currency(value, precision: 0, unit: '£')
+      when :benefits_received then value.map {|v| t("calculation.previous_questions.benefits_received.#{v}")}.join(',')
+      else value
     end
   end
 
@@ -75,6 +76,14 @@ module ApplicationHelper
       result << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id) if guidance.present?
       result
     end
+  end
+
+  def gds_error_messages(form:, method:)
+    errors = form.object.errors
+    return '' unless errors.include?(method)
+    errors.full_messages_for(method).map do |error|
+      content_tag('span', error, class: 'error-message')
+    end.join('').html_safe
   end
 
   private

@@ -14,7 +14,7 @@
       - if true
         span.error-message = 'errors'
       fieldset
-        legend = 'Select all income benefits you are currently receiving'
+        legend = I18n.t('calculation.field_labels.benefits_received')
 
         details
           summary = 'Click to reveal more information'
@@ -28,16 +28,16 @@
               h2.heading-small = 'heading 2 small'
               ul.list.list-bullet
                 li = 'item_1'
-        div
+        label
+          = gds_error_messages(form: f, method: :benefits_received)
           = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
-
     .form-groupq
       = f.submit 'Next step', class: 'button'
   .previous_questions data-behavior="calculator_previous_questions"
     - current_calculation.inputs.each_pair do |k,v |
       div data-behavior="calculator_previous_question"
         span data-behavior="question"
-          = t("calculation.field_labels.#{k}")
+          = t("calculation.previous_questions.#{k}.label")
         span data-behavior="answer"
           = calculator_auto_format_for(v, field: k)
 - content_for(:body_end) do

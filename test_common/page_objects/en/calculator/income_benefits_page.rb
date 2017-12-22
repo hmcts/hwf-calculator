@@ -44,6 +44,10 @@ module Calculator
         def none_of_the_above_guidance
           benefits.none_of_the_above_guidance
         end
+
+        def error_nothing_selected
+          benefits.error_with_text(messaging.t('hwf_pages.income_benefits.errors.nothing_selected'))
+        end
       end
     end
   end
