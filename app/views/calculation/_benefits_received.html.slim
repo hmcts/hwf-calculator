@@ -29,7 +29,7 @@
               ul.list.list-bullet
                 li = 'item_1'
         label
-          = gds_error_messages(form: f, method: :benefits_received)
+          = gds_error_messages(model: f.object, method: :benefits_received)
           = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
     .form-groupq
       = f.submit 'Next step', class: 'button'

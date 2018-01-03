@@ -18,10 +18,9 @@ en:
         single: "you"
         sharing_income: "you and your partner"
       should_get_help: "You are able to get help with fees"
-      explanation_prefix: "With a fee of %{fee} and savings of %{disposable_capital},"
-      explanation:
-        positive: "should be able to get help with your fees,"
-        negative: "it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+      message:
+        negative: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+        positive: "With a fee of %{fee} and savings of %{disposable_capital}, %{subject} should be able to get help with your fees,"
       explanation_suffix: "as long as you"
       explanation_suffix_joining_word: "or"
       explanation_suffix_fields:

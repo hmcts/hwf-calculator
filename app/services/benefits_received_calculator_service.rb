@@ -30,10 +30,4 @@ class BenefitsReceivedCalculatorService < BaseCalculatorService
     self.help_not_available = false
     messages << { key: :likely, source: :disposable_capital }
   end
-
-  def mark_as_help_not_available
-    self.help_not_available = true
-    self.help_available = false
-    messages << { key: :unlikely, source: :disposable_capital }
-  end
 end
