@@ -21,6 +21,11 @@ module Calculator
         @disposable_capital_page ||= Calculator::Test::En::DisposableCapitalPage.new
       end
 
+      # @return [Calculator::Test::En::NumberOfChildrenPage] The number of children page object
+      def number_of_children_page
+        @number_of_children_page ||= Calculator::Test::En::NumberOfChildrenPage.new
+      end
+
       # @return [Calculator::Test::En::IncomeBenefitsPage] The benefits page object
       def income_benefits_page
         @income_benefits_page ||= Calculator::Test::En::IncomeBenefitsPage.new
