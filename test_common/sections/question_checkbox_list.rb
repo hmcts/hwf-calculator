@@ -1,4 +1,5 @@
 require_relative './question_section'
+require_relative './gds_multiple_choice_option'
 module Calculator
   module Test
     class QuestionCheckboxListSection < QuestionSection
