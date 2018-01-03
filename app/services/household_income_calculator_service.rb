@@ -12,6 +12,7 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
     self
   end
 
+  # @TODO Review the method below - see details in RST-733, but allow for now
   def self.fields_required(inputs, previous_calculations:)
     if previous_calculations.dig(:benefits_received_calculator_service, :help_available)
       []
