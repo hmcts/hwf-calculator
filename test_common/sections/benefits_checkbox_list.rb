@@ -1,3 +1,4 @@
+require_relative './question_checkbox_list'
 module Calculator
   module Test
     class BenefitsCheckboxListSection < QuestionCheckboxListSection
