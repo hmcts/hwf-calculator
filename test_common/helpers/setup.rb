@@ -3,11 +3,15 @@ module Calculator
     module Setup
       attr_accessor :user
       def answer_questions_up_to_benefits
+        answer_questions_up_to_disposable_capital
+        answer_disposable_capital_question
+      end
+
+      def answer_questions_up_to_disposable_capital
         start_calculator_session
         answer_marital_status_question
         answer_court_fee_question
         answer_date_of_birth_question
-        answer_disposable_capital_question
       end
 
       def answer_disposable_capital_question
