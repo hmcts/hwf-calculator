@@ -34,7 +34,7 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
       inputs[:disposable_capital].is_a?(Numeric)
   end
 
-  def self.fields_required(inputs, previous_calculations:)
+  def self.fields_required(inputs, *)
     MY_FIELDS - inputs.keys
   end
 

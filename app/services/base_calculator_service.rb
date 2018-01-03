@@ -56,7 +56,7 @@ class BaseCalculatorService
     name.demodulize.underscore.to_sym
   end
 
-  def self.fields_required(inputs, previous_calculations:)
+  def self.fields_required(_inputs, *)
     raise 'Not Implemented'
   end
 

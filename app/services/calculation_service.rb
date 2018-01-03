@@ -41,7 +41,12 @@
 #
 class CalculationService
   MY_FIELDS = [:marital_status].freeze
-  FIELDS_AFFECTING_likelihood = [:date_of_birth, :disposable_capital, :benefits_received, :total_income].freeze
+  FIELDS_AFFECTING_LIKELIHOOD = [:date_of_birth, :disposable_capital, :benefits_received, :total_income].freeze
+  DEFAULT_CALCULATORS = [
+    'DisposableCapital',
+    'BenefitsReceived',
+    'HouseholdIncome'
+  ].freeze
   attr_reader :messages, :inputs, :calculations
 
   # Create an instance of CalculationService
@@ -49,7 +54,7 @@ class CalculationService
   # @param [Array<BaseCalculatorService>] calculators A list of calculators to use.
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
-  def initialize(inputs, calculators: [DisposableCapitalCalculatorService, BenefitsReceivedCalculatorService, HouseholdIncomeCalculatorService])
+  def initialize(inputs, calculators: default_calculators)
     self.inputs = inputs.freeze
     self.failed = false
     self.help_available = false
@@ -93,12 +98,12 @@ class CalculationService
   # @return [Hash] A hash (symbolized keys) representing the result
   def to_h
     {
-        inputs: inputs,
-        should_get_help: help_available?,
-        should_not_get_help: help_not_available?,
-        fields_required: fields_required,
-        required_fields_affecting_likelihood: required_fields_affecting_likelihood,
-        messages: messages
+      inputs: inputs,
+      should_get_help: help_available?,
+      should_not_get_help: help_not_available?,
+      fields_required: fields_required,
+      required_fields_affecting_likelihood: required_fields_affecting_likelihood,
+      messages: messages
     }
   end
 
@@ -141,10 +146,14 @@ class CalculationService
   # @return [Array<Symbol>] An array of fields represented by symbols that need to be filled in
   # @see #fields_required for the list of symbols.
   def required_fields_affecting_likelihood
-    FIELDS_AFFECTING_likelihood - inputs.keys
+    FIELDS_AFFECTING_LIKELIHOOD - inputs.keys
   end
 
   private
+
+  def default_calculators
+    DEFAULT_CALCULATORS.map { |c| "#{c}CalculatorService".constantize }
+  end
 
   def my_fields_required
     MY_FIELDS - inputs.keys
@@ -152,7 +161,7 @@ class CalculationService
 
   def calculations_summary
     calculations.map do |k, v|
-      [k, {help_available: v.help_available?, help_not_available: v.help_not_available?}]
+      [k, { help_available: v.help_available?, help_not_available: v.help_not_available? }]
     end.to_h
   end
 
@@ -181,4 +190,3 @@ class CalculationService
   attr_accessor :failed, :calculators, :help_available
   attr_writer :messages, :inputs, :calculations
 end
-

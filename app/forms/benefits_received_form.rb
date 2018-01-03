@@ -1,8 +1,14 @@
 # A form object for the benefits received question.
 class BenefitsReceivedForm < BaseForm
   VALID_BENEFITS = [
-    :dont_know, :none, :jobseekers_allowance, :employment_support_allowance,
-    :income_support, :universal_credit, :pension_credit, :scottish_legal_aid
+    :jobseekers_allowance,
+    :employment_support_allowance,
+    :income_support,
+    :universal_credit,
+    :pension_credit,
+    :scottish_legal_aid,
+    :none,
+    :dont_know
   ].freeze
 
   attribute :benefits_received, :array
@@ -20,7 +26,7 @@ class BenefitsReceivedForm < BaseForm
 
   # @return [Array<Symbol>] An array of symbols representing the different types of benefits
   def benefits
-    [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid, :none, :dont_know]
+    VALID_BENEFITS
   end
 
   def benefits_received=(v)

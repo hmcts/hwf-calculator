@@ -13,8 +13,7 @@ class CalculationController < ApplicationController
   def update
     self.form = form_class.new(calculation_params.to_h)
     if form.valid?
-      submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
-      calculate submit_service
+      submit_service = calculate
       redirect_to next_question_url(submit_service)
     else
       render :edit
@@ -44,9 +43,11 @@ class CalculationController < ApplicationController
     @current_calculation = nil
   end
 
-  def calculate(submit_service)
+  def calculate
+    submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
     expire_current_calculation
     session[:calculation] = submit_service.to_h
+    submit_service
   end
 
   def next_question_url(submit_service)
@@ -73,6 +74,10 @@ class CalculationController < ApplicationController
   end
 
   def calculation_params
-    params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :disposable_capital, benefits_received: [])
+    params.require(:calculation).permit :marital_status,
+      :fee,
+      :date_of_birth,
+      :disposable_capital,
+      benefits_received: []
   end
 end

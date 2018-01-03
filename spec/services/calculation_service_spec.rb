@@ -249,13 +249,13 @@ RSpec.describe CalculationService do
       # Here we just give some dummy data - it is not relevant as long as they all get added together in the correct order
       allow(calculator_1_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:fee])
       allow(calculator_2_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:date_of_birth, :benefits_received])
-      allow(calculator_3_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([ :number_of_children, :total_income])
+      allow(calculator_3_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:number_of_children, :total_income])
     end
     let(:expected_previous_calculations) do
       {
-          calculator1: { help_available: false, help_not_available: false },
-          calculator2: { help_available: false, help_not_available: false },
-          calculator3: { help_available: false, help_not_available: false }
+        calculator1: { help_available: false, help_not_available: false },
+        calculator2: { help_available: false, help_not_available: false },
+        calculator3: { help_available: false, help_not_available: false }
       }
     end
     it 'returns any fields not provided in the input in the correct order prefixed with marital_status' do
@@ -276,7 +276,7 @@ RSpec.describe CalculationService do
       expect(calculator_2_class).to have_received(:fields_required).with(inputs, previous_calculations: expected_previous_calculations)
     end
 
-    it 'calls fields_required on calculator 2 class with previous calculations' do
+    it 'calls fields_required on calculator 3 class with previous calculations' do
       # Act and Assert
       service.call(inputs, calculators: calculators).fields_required
       expect(calculator_3_class).to have_received(:fields_required).with(inputs, previous_calculations: expected_previous_calculations)

@@ -112,7 +112,7 @@ RSpec.describe DisposableCapitalCalculatorService do
     end
     it 'returns 2 fields with 1 input provided' do
       # Act
-      result = described_class.fields_required({ fee: 10.0}, previous_calculations: {})
+      result = described_class.fields_required({ fee: 10.0 }, previous_calculations: {})
 
       # Assert
       expect(result).to eql [:date_of_birth, :disposable_capital]

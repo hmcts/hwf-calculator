@@ -20,10 +20,10 @@ module ApplicationHelper
   # @param [String] field The field that this value is from
   def calculator_auto_format_for(value, field:)
     case field
-      when :date_of_birth then value.strftime('%d/%m/%Y')
-      when :fee, :disposable_capital then number_to_currency(value, precision: 0, unit: '£')
-      when :benefits_received then value.map {|v| t("calculation.previous_questions.benefits_received.#{v}")}.join(',')
-      else value
+    when :date_of_birth then value.strftime('%d/%m/%Y')
+    when :fee, :disposable_capital then number_to_currency(value, precision: 0, unit: '£')
+    when :benefits_received then value.map { |v| t("calculation.previous_questions.benefits_received.#{v}") }.join(',')
+    else value
     end
   end
 
@@ -70,7 +70,8 @@ module ApplicationHelper
   #
   # @param [ActionView::Helpers::FormBuilder] form
   # @param [Symbol] method The active model attribute to generate the multiple choices for
-  # @param [Array<Array>] choices An array of arrays where the inner array contains the 'key', the 'display text' and 'guidance id' (nil for none)
+  # @param [Array<Array>] choices An array of arrays where the inner array contains the 'key', the
+  #   'display text' and 'guidance id' (nil for none)
   #   guidance id will mean more to you if you are familiar with GDS multiple choices with guidance
   #
   # @return [String] The HTML to render
@@ -78,10 +79,11 @@ module ApplicationHelper
     form.collection_check_boxes method, choices, :first, :second do |b|
       guidance = b.object.last
       guidance_id = "prefix_#{b.object.first}"
-      result = content_tag('div', class: 'multiple-choice', data: { target: guidance.present? ? guidance_id : nil }) do |_a|
-        b.check_box + b.label
+      data_attrs = { target: guidance.present? ? guidance_id : nil }
+      result = content_tag('div', class: 'multiple-choice', data: data_attrs) { b.check_box + b.label }
+      if guidance.present?
+        result << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id)
       end
-      result << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id) if guidance.present?
       result
     end
   end
@@ -94,9 +96,9 @@ module ApplicationHelper
   def gds_error_messages(model:, method:)
     errors = model.errors
     return '' unless errors.include?(method)
-    errors.full_messages_for(method).map do |error|
-      content_tag('span', error, class: 'error-message')
-    end.join('').html_safe
+    errors.full_messages_for(method).each do |error|
+      concat content_tag('span', error, class: 'error-message')
+    end
   end
 
   private
