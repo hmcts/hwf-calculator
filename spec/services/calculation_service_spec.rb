@@ -148,31 +148,35 @@ RSpec.describe CalculationService do
         }
       end
 
-      it 'calls the disposable income calculator' do
-        # Arrange
-        kls = class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital).as_stubbed_const
+      before do
         fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', help_not_available?: false, help_available?: false, valid?: true)
-        allow(kls).to receive(:call).with(inputs).and_return fake_calculation
+        class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation).as_stubbed_const
+        class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation).as_stubbed_const
+        class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
+      end
 
+      it 'calls the disposable income calculator' do
         # Act
         service.call(inputs)
 
         # Assert
-        expect(kls).to have_received(:call).with(inputs)
+        expect(DisposableCapitalCalculatorService).to have_received(:call).with(inputs)
       end
 
       it 'calls the benefits received calculator' do
-        # Arrange
-        kls = class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received).as_stubbed_const
-        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', help_not_available?: false, help_available?: false, valid?: true)
-        class_double(DisposableCapitalCalculatorService,  identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
-        allow(kls).to receive(:call).with(inputs).and_return fake_calculation
-
         # Act
         service.call(inputs)
 
         # Assert
-        expect(kls).to have_received(:call).with(inputs)
+        expect(BenefitsReceivedCalculatorService).to have_received(:call).with(inputs)
+      end
+
+      it 'calls the household income calculator' do
+        # Act
+        service.call(inputs)
+
+        # Assert
+        expect(HouseholdIncomeCalculatorService).to have_received(:call).with(inputs)
       end
     end
   end

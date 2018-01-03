@@ -49,7 +49,7 @@ class CalculationService
   # @param [Array<BaseCalculatorService>] calculators A list of calculators to use.
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
-  def initialize(inputs, calculators: [DisposableCapitalCalculatorService, BenefitsReceivedCalculatorService])
+  def initialize(inputs, calculators: [DisposableCapitalCalculatorService, BenefitsReceivedCalculatorService, HouseholdIncomeCalculatorService])
     self.inputs = inputs.freeze
     self.failed = false
     self.help_available = false
