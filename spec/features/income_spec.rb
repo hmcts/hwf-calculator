@@ -29,7 +29,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   RILEY is a married, 60 year old man with 2 children. He is not on income benefit. He has £6,850 worth of capital and an income of £1,730. He has a court fee of £2,330
   #   JACOB is a single, 35 year old man with 2 children. He is not on income benefit. He has £7,999 worth of capital and an income of £1,574. He has a court fee of £4,000
   #   LANDON is a married, 50 year old man with 0 children. He is not on income benefit. He has £9,600 worth of capital and an income of £5,244. He has a court fee of £4,900
-  #   JOHN is a single, 60 year old man with 0 children. He is not on income benefit. He has £11,850 worth of capital and an income of £5,084. He has a court fee of £6,000
+  #   JOHN2 is a single, 60 year old man with 0 children. He is not on income benefit. He has £11,850 worth of capital and an income of £5,084. He has a court fee of £6,000
   #   JO is a married, 45 year old woman with 1 child. She is not on income benefit. He has £13,900 worth of capital and an income of £5,489. He has a court fee of £7,000
   #   SIMON is a single, 44 year old man with 1 child. He is not on income benefit. He has £13,999 worth of capital and an income of £5,330. He has a court fee of £6,999
   #   KEVIN is a single, 54 year old man with 2 children. He is not on income benefit. He has £15,800 worth of capital and an income of £5,575. He has a court fee of £10,000
@@ -115,7 +115,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
   #
-  scenario '' do
+  scenario 'Income test for single citizen with minimum income threshold (0 Remission)' do
     # Arrange
     given_i_am(:james)
     answer_questions_up_to_total_income
@@ -206,7 +206,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #
   scenario 'Income test for single citizen with maximum income threshold' do
     # Arrange
-    given_i_am(:john)
+    given_i_am(:john2)
     answer_questions_up_to_total_income
 
     # Act
