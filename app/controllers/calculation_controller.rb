@@ -5,12 +5,15 @@
 class CalculationController < ApplicationController
   helper_method :form, :current_calculation
 
+  def home
+    session.delete(:calculation)
+  end
+
   # (PATCH | PUT) /calculation
   def update
-    form = form_class.new(calculation_params.to_h)
+    self.form = form_class.new(calculation_params.to_h)
     if form.valid?
-      submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
-      calculate submit_service
+      submit_service = calculate
       redirect_to next_question_url(submit_service)
     else
       render :edit
@@ -34,17 +37,36 @@ class CalculationController < ApplicationController
 
   private
 
+  attr_writer :form
+
   def expire_current_calculation
     @current_calculation = nil
   end
 
-  def calculate(submit_service)
+  def calculate
+    submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
     expire_current_calculation
     session[:calculation] = submit_service.to_h
+    submit_service
   end
 
   def next_question_url(submit_service)
-    edit_calculation_url(form: submit_service.fields_required.first)
+    if submit_service.fields_required.empty?
+      remission_url(submit_service)
+    else
+      edit_calculation_url(form: submit_service.fields_required.first)
+    end
+  end
+
+  def remission_url(submit_service)
+    if submit_service.help_available?
+      edit_calculation_url(form: :full_remission_available)
+    elsif submit_service.help_not_available?
+      edit_calculation_url(form: :no_remission_available)
+    else
+      # @TODO Before merging in to master, decide what to do with this
+      raise 'Could not make a decision - this should not happen, but no acceptance criteria exists for it yet'
+    end
   end
 
   def form_class
@@ -52,6 +74,10 @@ class CalculationController < ApplicationController
   end
 
   def calculation_params
-    params.require(:calculation).permit(:marital_status, :fee, :date_of_birth, :disposable_capital)
+    params.require(:calculation).permit :marital_status,
+      :fee,
+      :date_of_birth,
+      :disposable_capital,
+      benefits_received: []
   end
 end

@@ -1,4 +1,4 @@
-.content-body.benefits_received
+.content-body.number_of_children
   .feedback data-behavior="calculator_feedback"
     - if current_calculation.should_not_get_help
       div.negative
@@ -14,7 +14,7 @@
       - if true
         span.error-message = 'errors'
       fieldset
-        legend = I18n.t('calculation.field_labels.benefits_received')
+        legend = 'How many children live with you or are you responsible for supporting financially?'
 
         details
           summary = 'Click to reveal more information'
@@ -28,10 +28,8 @@
               h2.heading-small = 'heading 2 small'
               ul.list.list-bullet
                 li = 'item_1'
-        label
-          = gds_error_messages(model: f.object, method: :benefits_received)
-          = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
-    .form-groupq
+
+    .form-group
       = f.submit 'Next step', class: 'button'
   .previous_questions data-behavior="calculator_previous_questions"
     - current_calculation.inputs.each_pair do |k,v |
@@ -40,10 +38,3 @@
           = t("calculation.previous_questions.#{k}.label")
         span data-behavior="answer"
           = calculator_auto_format_for(v, field: k)
-- content_for(:body_end) do
-  javascript:
-    $(document).ready(function () {
-        var benefitsReceivedPage = new Calculator.BenefitsReceivedPage;
-        benefitsReceivedPage.init();
-    });
-  yield

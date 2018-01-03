@@ -50,11 +50,23 @@ class BaseCalculatorService
     new(inputs).call
   end
 
+  # An identifier for use by the calculation service to store results against
+  # @return [Symbol] The identifier - usually derived from the class name
+  def self.identifier
+    name.demodulize.gsub(/CalculatorService$/, '').underscore.to_sym
+  end
+
+  def self.fields_required(_inputs, *)
+    raise 'Not Implemented'
+  end
+
   # @private
   # Not expected to be used directly - use the class .call method instead
   def initialize(inputs)
     self.inputs = inputs
     self.messages = []
+    self.help_not_available = false
+    self.help_available = false
   end
 
   # @private

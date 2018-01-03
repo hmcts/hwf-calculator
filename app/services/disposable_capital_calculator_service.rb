@@ -16,6 +16,7 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
     { age: 1..60, fee: 7001..Float::INFINITY, disposable_capital: 16000 }.freeze,
     { age: 61..200, fee: 1..Float::INFINITY, disposable_capital: 16000 }.freeze
   ].freeze
+  MY_FIELDS = [:fee, :date_of_birth, :disposable_capital].freeze
 
   def initialize(age_service: AgeService, **args)
     self.age_service = age_service
@@ -31,6 +32,10 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
     inputs[:date_of_birth].is_a?(Date) &&
       inputs[:fee].is_a?(Numeric) &&
       inputs[:disposable_capital].is_a?(Numeric)
+  end
+
+  def self.fields_required(inputs, *)
+    MY_FIELDS - inputs.keys
   end
 
   private

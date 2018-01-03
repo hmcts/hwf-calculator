@@ -1,6 +1,6 @@
 module Calculator
   module Test
-    class QuestionDateSection < ::SitePrism::Section
+    class QuestionDateSection < BaseSection
       element :day, :field, 'Day'
       element :month, :field, 'Month'
       element :year, :field, 'Year'

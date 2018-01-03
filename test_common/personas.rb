@@ -6,6 +6,9 @@ module Calculator
         self.registry = {}
       end
 
+      # Fetch a persona
+      # @param [String] name The name of the persona to fetch
+      # @return [OpenStruct] An open struct version of the hash stored in the persona
       def fetch(name)
         ensure_loaded
         OpenStruct.new registry.fetch(name)

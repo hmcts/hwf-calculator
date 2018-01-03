@@ -1,4 +1,11 @@
 en:
+  activemodel:
+    errors:
+      models:
+        benefits_received_form:
+          attributes:
+            benefits_received:
+              blank: 'Please select from the list'
   calculation:
     home:
       start: "Start now"
@@ -11,10 +18,9 @@ en:
         single: "you"
         sharing_income: "you and your partner"
       should_get_help: "You are able to get help with fees"
-      explanation_prefix: "With a fee of %{fee} and savings of %{disposable_capital},"
-      explanation:
-        positive: "should be able to get help with your fees,"
-        negative: "it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+      message:
+        negative: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+        positive: "With a fee of %{fee} and savings of %{disposable_capital}, %{subject} should be able to get help with your fees,"
       explanation_suffix: "as long as you"
       explanation_suffix_joining_word: "or"
       explanation_suffix_fields:
@@ -26,3 +32,48 @@ en:
       marital_status: "Are you single, married or living with someone and sharing an income?"
       date_of_birth: "What is your date of birth?"
       fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
+      benefits_received: "Select all income benefits you are currently receiving"
+    previous_questions:
+      disposable_capital:
+        label: "Combined savings and investment"
+      marital_status:
+        label: "What is your status"
+      date_of_birth:
+        label: "Date of birth"
+      fee:
+        label: "Court or tribunal fee to pay"
+      benefits_received:
+        label: "Income benefits you are currently receiving"
+        dont_know: "Don't know"
+        none: 'none'
+        jobseekers_allowance: 'JSA'
+        employment_support_allowance: 'ESA'
+        income_support: 'IS'
+        universal_credit: 'UC'
+        pension_credit: 'PC'
+        scottish_legal_aid: 'SLA'
+    benefits:
+      dont_know:
+        label: "Don't know"
+        guidance: "Don't know guidance"
+      none:
+        label: 'None of the above'
+        guidance: 'None of the above guidance'
+      jobseekers_allowance:
+        label: "Income-based Jobseeker’s Allowance (JSA)"
+        guidance: ''
+      employment_support_allowance:
+        label: "Income-related Employment and Support Allowance (ESA)"
+        guidance: ''
+      income_support:
+        label: "Income Support"
+        guidance: ''
+      universal_credit:
+        label: "Universal Credit (and you’re earning less than £6,000 a year)"
+        guidance: ''
+      pension_credit:
+        label: "Pension Credit (guarantee credit)"
+        guidance: ''
+      scottish_legal_aid:
+        label: "Scottish Legal Aid (Civil Claims)"
+        guidance: ''

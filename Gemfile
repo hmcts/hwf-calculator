@@ -29,7 +29,8 @@ gem 'slim-rails', '~> 3.1'
 gem 'unicorn', '~> 5.3'
 gem 'rest-client', '~> 2.0'
 gem 'govuk_template', '~> 0.23'
-gem 'govuk_frontend_toolkit', '~> 4.7'
+gem 'govuk_elements_rails', '~> 3.1'
+gem 'jquery-rails', '~> 4.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,7 +56,7 @@ group :test do
   gem 'capybara-screenshot', '~> 1.0'
   gem 'cucumber-rails', '~> 1.5', :require => false
   gem 'factory_bot_rails', '~> 4.8'
-  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-rails', '~> 3.7'
   gem 'site_prism', '~> 2.9'
   gem 'poltergeist', '~> 1.15'
   gem 'webmock', '~> 3.1'

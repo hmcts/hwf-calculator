@@ -1,5 +1,11 @@
 - content_for :head
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'application'
+- content_for :body_end
+  javascript:
+    var showHideContent = new GOVUK.ShowHideContent();
+    showHideContent.init();
+  yield
 - content_for :content
   .phase-banner
     p
