@@ -53,7 +53,7 @@ class BaseCalculatorService
   # An identifier for use by the calculation service to store results against
   # @return [Symbol] The identifier - usually derived from the class name
   def self.identifier
-    name.demodulize.underscore.to_sym
+    name.demodulize.gsub(/CalculatorService$/, '').underscore.to_sym
   end
 
   def self.fields_required(_inputs, *)
