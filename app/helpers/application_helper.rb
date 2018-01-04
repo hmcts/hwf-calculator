@@ -7,9 +7,9 @@ module ApplicationHelper
   # @param [Calculator::Calculation] calculation The calculation to display feedback for
   # @return [String] The feedback text
   def calculator_feedback_for(calculation)
-    if calculation.should_not_get_help
+    if calculation.available_help == :none
       should_not_get_help_text(calculation)
-    elsif calculation.should_get_help
+    elsif calculation.available_help == :full
       should_get_help_text(calculation) + ' ' + calculator_feedback_explanation(calculation).join(' ')
     end
   end

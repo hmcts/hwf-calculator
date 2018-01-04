@@ -11,15 +11,15 @@ RSpec.describe CalculationService do
     let(:calculator_3_class) { class_spy(BaseCalculatorService, 'Calculator 3 class', identifier: :calculator3) }
 
     let(:calculator_1) do
-      instance_spy(BaseCalculatorService, 'Calculator 1', help_not_available?: false, help_available?: false, partial_help_available?: false, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 1', available_help: :undecided, valid?: true, messages: [])
     end
 
     let(:calculator_2) do
-      instance_spy(BaseCalculatorService, 'Calculator 2', help_not_available?: false, help_available?: false, partial_help_available?: false, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 2', available_help: :undecided, valid?: true, messages: [])
     end
 
     let(:calculator_3) do
-      instance_spy(BaseCalculatorService, 'Calculator 3', help_not_available?: false, help_available?: false, partial_help_available?: false, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 3', available_help: :undecided, valid?: true, messages: [])
     end
 
     let(:calculators) { [calculator_1_class, calculator_2_class, calculator_3_class] }
@@ -75,7 +75,7 @@ RSpec.describe CalculationService do
         it 'prevents calculator 2 being called if calculator 1 fails' do
           # Arrange
           failure_reasons = [:reason1, :reason2]
-          allow(calculator_1).to receive(:help_not_available?).and_return true
+          allow(calculator_1).to receive(:available_help).and_return :none
           allow(calculator_1).to receive(:messages).and_return failure_reasons
 
           # Act
@@ -88,7 +88,7 @@ RSpec.describe CalculationService do
         it 'prevents calculator 3 being called if calculator 1 fails' do
           # Act
           failure_reasons = [:reason1, :reason2]
-          allow(calculator_1).to receive(:help_not_available?).and_return true
+          allow(calculator_1).to receive(:available_help).and_return :none
           allow(calculator_1).to receive(:messages).and_return failure_reasons
 
           # Arrange
@@ -149,7 +149,7 @@ RSpec.describe CalculationService do
       end
 
       before do
-        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', help_not_available?: false, help_available?: false, valid?: true)
+        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true)
         class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation).as_stubbed_const
         class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation).as_stubbed_const
         class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
@@ -181,7 +181,7 @@ RSpec.describe CalculationService do
     end
   end
 
-  describe '#help_available?' do
+  describe '#available_help' do
     let(:inputs) do
       {
         disposable_capital: 1000
@@ -191,77 +191,37 @@ RSpec.describe CalculationService do
 
     it 'has help available if calculator 1 says it is available' do
       # Arrange
-      allow(calculator_1).to receive(:help_available?).and_return true
+      allow(calculator_1).to receive(:available_help).and_return :full
       allow(calculator_1).to receive(:messages).and_return []
 
       # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes help_available?: true
+      expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :full
+    end
+
+    it 'has partial help available if calculator 1 says it is available' do
+      # Arrange
+      allow(calculator_1).to receive(:available_help).and_return :partial
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :partial
+    end
+
+    it 'returns true if help_not_available? returns true from fake calculator' do
+      # Arrange
+      allow(calculator_1).to receive(:available_help).and_return :none
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :none
     end
 
     it 'provides access to messages' do
       # Arrange
       reasons = [:reason1, :reason2]
-      allow(calculator_1).to receive(:help_not_available?).and_return false
-      allow(calculator_1).to receive(:help_available?).and_return true
+      allow(calculator_1).to receive(:available_help).and_return :full
       allow(calculator_1).to receive(:messages).and_return reasons
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes messages: reasons
-    end
-  end
-
-  describe '#partial_help_available?' do
-    let(:inputs) do
-      {
-          disposable_capital: 1000
-      }
-    end
-    include_context 'fake calculators'
-
-    it 'has partial help available if calculator 1 says it is available' do
-      # Arrange
-      allow(calculator_1).to receive(:help_available?).and_return true
-      allow(calculator_1).to receive(:partial_help_available?).and_return true
-
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes help_available?: true, partial_help_available?: true
-    end
-
-    it 'has full help available if calculator 1 says it is available' do
-      # Arrange
-      allow(calculator_1).to receive(:help_available?).and_return true
-      allow(calculator_1).to receive(:partial_help_available?).and_return false
-
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes help_available?: true, partial_help_available?: false
-    end
-
-  end
-
-  describe '#help_not_available?' do
-    let(:inputs) do
-      {
-        disposable_capital: 1000
-      }
-    end
-    include_context 'fake calculators'
-
-    it 'returns true if help_not_available? returns true from fake calculator' do
-      # Arrange
-      allow(calculator_1).to receive(:help_not_available?).and_return true
-
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes help_not_available?: true
-    end
-
-    it 'returns false if help_not_available? returns false from all fake calculators' do
-      # Arrange
-      allow(calculator_1).to receive(:help_not_available?).and_return false
-      allow(calculator_1).to receive(:help_not_available?).and_return false
-      allow(calculator_1).to receive(:help_not_available?).and_return false
-
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes help_not_available?: false
     end
   end
 
@@ -281,9 +241,9 @@ RSpec.describe CalculationService do
     end
     let(:expected_previous_calculations) do
       {
-        calculator1: { help_available: false, partial_help_available: false, help_not_available: false },
-        calculator2: { help_available: false, partial_help_available: false, help_not_available: false },
-        calculator3: { help_available: false, partial_help_available: false, help_not_available: false }
+        calculator1: { available_help: :undecided },
+        calculator2: { available_help: :undecided },
+        calculator3: { available_help: :undecided }
       }
     end
     it 'returns any fields not provided in the input in the correct order prefixed with marital_status' do
@@ -341,9 +301,7 @@ RSpec.describe CalculationService do
 
       # Act and Assert
       expect(subject.to_h).to include inputs: a_hash_including(inputs),
-                                      should_get_help: false,
-                                      should_get_partial_help: false,
-                                      should_not_get_help: false,
+                                      available_help: :undecided,
                                       fields_required: instance_of(Array),
                                       required_fields_affecting_likelihood: instance_of(Array),
                                       messages: []

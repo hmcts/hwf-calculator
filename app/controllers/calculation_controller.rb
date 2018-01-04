@@ -59,16 +59,14 @@ class CalculationController < ApplicationController
   end
 
   def remission_url(submit_service)
-    if submit_service.help_not_available?
-      edit_calculation_url(form: :no_remission_available)
-    elsif submit_service.help_available? && submit_service.partial_help_available?
-      edit_calculation_url(form: :partial_remission_available)
-    elsif submit_service.help_available?
-      edit_calculation_url(form: :full_remission_available)
-    else
-      # @TODO Before merging in to master, decide what to do with this
-      raise 'Could not make a decision - this should not happen, but no acceptance criteria exists for it yet'
+    # @TODO Before merging in to master, decide what to do with the 'else' block
+    form = case submit_service.available_help
+           when :none then :no_remission_available
+           when :partial then :partial_remission_available
+           when :full then :full_remission_available
+           else raise 'Could not make a decision - this should not happen, but no acceptance criteria exists for it yet'
     end
+    edit_calculation_url(form: form)
   end
 
   def form_class

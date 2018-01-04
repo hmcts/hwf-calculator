@@ -41,7 +41,10 @@
 #
 # @abstract
 class BaseCalculatorService
-  attr_reader :messages
+  attr_reader :messages, :available_help
+
+  # @!attribute [r] available_help
+  #   @return [Symbol] The type of help available :none, :partial, :full or :undecided
 
   # Perform the calculation
   # @param [Hash] inputs The inputs (with symbolized keys) for the calculator
@@ -65,33 +68,13 @@ class BaseCalculatorService
   def initialize(inputs)
     self.inputs = inputs
     self.messages = []
-    self.help_not_available = false
-    self.help_available = false
+    self.available_help = :undecided
   end
 
   # @private
   # Not expected to be used directly - use the class.call method instead. Performs the calculation
   def call
     raise 'Not Implemented'
-  end
-
-  # Indicates if help is not available
-  # @return [Boolean] Help is not available (if true) or 'depends on help_available?' (if false)
-  def help_not_available?
-    help_not_available
-  end
-
-  # Indicates if help is available
-  # @return [Boolean] Help is available (if true) or 'depends on help_not_available?' (if false)
-  def help_available?
-    help_available
-  end
-
-  # Along with @see help_available? Indicates that the help that is available is only partial
-  # Not valid if @see help_available? is false
-  # @return [Boolean] Partial help is available (if true) or full help is available (if false)
-  def partial_help_available?
-    partial_help_available
   end
 
   # Indicates if the inputs were all valid
@@ -104,6 +87,5 @@ class BaseCalculatorService
   private
 
   attr_accessor :inputs
-  attr_writer :messages
-  attr_accessor :help_available, :help_not_available, :partial_help_available
+  attr_writer :messages, :available_help
 end

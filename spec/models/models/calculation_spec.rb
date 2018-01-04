@@ -4,8 +4,7 @@ RSpec.describe Calculation do
     it 'provides default values' do
       subject = described_class.new
       expect(subject).to have_attributes inputs: {},
-                                         should_get_help: false,
-                                         should_not_get_help: false,
+                                         available_help: :undecided,
                                          fields_required: [],
                                          required_fields_affecting_likelihood: [],
                                          messages: [],
@@ -20,24 +19,10 @@ RSpec.describe Calculation do
     end
   end
 
-  context '#should_get_help' do
+  context '#available_help' do
     it 'stores a provided value of any type' do
-      subject = described_class.new should_get_help: true
-      expect(subject.should_get_help).to be true
-    end
-  end
-
-  context '#should_get_partial_help' do
-    it 'stores a provided value of any type' do
-      subject = described_class.new should_get_partial_help: true
-      expect(subject.should_get_partial_help).to be true
-    end
-  end
-
-  context '#should_not_get_help' do
-    it 'stores a provided value of any type' do
-      subject = described_class.new should_not_get_help: true
-      expect(subject.should_not_get_help).to be true
+      subject = described_class.new available_help: :full
+      expect(subject.available_help).to be :full
     end
   end
 

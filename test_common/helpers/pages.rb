@@ -36,7 +36,6 @@ module Calculator
         @total_income_page ||= Calculator::Test::En::TotalIncomePage.new
       end
 
-
       # @return [Calculator::Test::En::NotEligiblePage] The not eligible page object
       def not_eligible_page
         @not_eligible_page ||= Calculator::Test::En::NotEligiblePage.new

@@ -47,7 +47,7 @@ class CalculationService
     'BenefitsReceived',
     'HouseholdIncome'
   ].freeze
-  attr_reader :messages, :inputs, :calculations
+  attr_reader :messages, :inputs, :calculations, :available_help
 
   # Create an instance of CalculationService
   # @param [Hash] inputs
@@ -56,9 +56,7 @@ class CalculationService
   # @return [CalculationService] This instance
   def initialize(inputs, calculators: default_calculators)
     self.inputs = inputs.freeze
-    self.failed = false
-    self.help_available = false
-    self.partial_help_available = false
+    self.available_help = :undecided
     self.messages = []
     self.calculators = calculators
     self.calculations = {}
@@ -100,9 +98,7 @@ class CalculationService
   def to_h
     {
       inputs: inputs,
-      should_get_help: help_available?,
-      should_get_partial_help: partial_help_available?,
-      should_not_get_help: help_not_available?,
+      available_help: available_help,
       fields_required: fields_required,
       required_fields_affecting_likelihood: required_fields_affecting_likelihood,
       messages: messages
@@ -113,8 +109,9 @@ class CalculationService
   #
   # @return [Boolean] If true, help is not available.  If false, can mean undecided (if help_available? is also false)
   def help_not_available?
-    failed
+    available_help == :none
   end
+  deprecate :help_not_available?
 
   # Indicates (if true) that help with fees is available, but could be subject to more
   # fields being filled in (@see #fields_required and #required_fields_affecting_likelihood)
@@ -123,8 +120,9 @@ class CalculationService
   # front end must take note of #fields_required to see if more info is required
   # to firm up this decision.  If false, can mean undecided (if help_not_available? is also false)
   def help_available?
-    help_available
+    [:full, :partial].include? available_help
   end
+  deprecate :help_available?
 
   # Only valid if @see help_available? is true
   # Indicates (if true) that only partial help with fees is available
@@ -132,8 +130,9 @@ class CalculationService
   #
   # @return [Boolean] If true, partial help is available, otherwise full help.
   def partial_help_available?
-    partial_help_available
+    available_help == :partial
   end
+  deprecate :partial_help_available?
 
   # Indicates what fields are required to be filled in by the user - in the order the
   # questions should be asked.
@@ -172,33 +171,32 @@ class CalculationService
 
   def calculations_summary
     calculations.map do |k, v|
-      [k, { help_available: v.help_available?, partial_help_available: v.partial_help_available?, help_not_available: v.help_not_available? }]
+      [k, { available_help: v.available_help }]
     end.to_h
   end
 
   def perform_calculation_using(calculator)
     result = calculator.call(inputs)
-    if result.help_not_available?
+    if result.available_help == :none
       add_failure(result.messages)
       throw(:abort)
     end
-    if result.help_available?
-      add_success(result.messages, result.partial_help_available?)
+    if [:full, :partial].include? result.available_help
+      add_success(result)
     end
     result
   end
 
   def add_failure(reasons)
-    self.failed = true
+    self.available_help = :none
     messages.concat reasons
   end
 
-  def add_success(success_messages, partial_help)
-    self.help_available = true
-    self.partial_help_available = partial_help
-    messages.concat success_messages
+  def add_success(result)
+    self.available_help = result.available_help
+    messages.concat result.messages
   end
 
-  attr_accessor :failed, :calculators, :help_available, :partial_help_available
-  attr_writer :messages, :inputs, :calculations
+  attr_accessor :calculators
+  attr_writer :messages, :inputs, :calculations, :available_help
 end
