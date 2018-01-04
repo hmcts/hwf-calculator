@@ -62,7 +62,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   AND I am on the total income page
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
-  scenario 'Income test for single citizen with minimum income threshold (0 Remission)' do
+  scenario 'Income test for single citizen (john) with minimum income threshold (full Remission)' do
     # Arrange
     given_i_am(:john)
     answer_questions_up_to_total_income
@@ -80,7 +80,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
   #
-  scenario 'Income test for married citizen with minimum income threshold' do
+  scenario 'Income test for married citizen (alli) with minimum income threshold (full remission)' do
     # Arrange
     given_i_am(:alli)
     answer_questions_up_to_total_income
@@ -97,7 +97,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for married citizen with maximum income threshold' do
+  scenario 'Income test for married citizen (oliver) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:oliver)
     answer_questions_up_to_total_income
@@ -115,7 +115,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
   #
-  scenario 'Income test for single citizen with minimum income threshold (0 Remission)' do
+  scenario 'Income test for single citizen (james) with minimum income threshold (full Remission)' do
     # Arrange
     given_i_am(:james)
     answer_questions_up_to_total_income
@@ -132,7 +132,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   AND I am on the total income page
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
-  scenario 'Income test for married citizen with minimum income threshold (0 Remission)' do
+  scenario 'Income test for married citizen (thomas) with minimum income threshold (full Remission)' do
     # Arrange
     given_i_am(:thomas)
     answer_questions_up_to_total_income
@@ -150,7 +150,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
   #
-  scenario 'WIP Income test for married citizen with minimum income threshold' do
+  scenario 'Income test for married citizen (riley) with minimum income threshold (full remission)' do
     # Arrange
     given_i_am(:riley)
     answer_questions_up_to_total_income
@@ -168,7 +168,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
   #
-  scenario 'Income test for single citizen with minimum income threshold' do
+  scenario 'Income test for single citizen (jacob) with minimum income threshold (full remission)' do
     # Arrange
     given_i_am(:jacob)
     answer_questions_up_to_total_income
@@ -186,7 +186,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for married citizen with maximum income threshold' do
+  scenario 'Income test for married citizen (landon) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:landon)
     answer_questions_up_to_total_income
@@ -204,7 +204,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for single citizen with maximum income threshold' do
+  scenario 'Income test for single citizen (john2) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:john2)
     answer_questions_up_to_total_income
@@ -222,7 +222,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for married citizen with maximum income threshold' do
+  scenario 'Income test for married citizen (jo) with maximum income threshold (partial remission)' do
     # Arrange - Jo is Married, Age 45, 13900 Disposable capital, 5489 Monthly income, 1 child and no benefits
     given_i_am(:jo)
     answer_questions_up_to_total_income
@@ -240,7 +240,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for single citizen with maximum income threshold' do
+  scenario 'Income test for single citizen (simon) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:simon)
     answer_questions_up_to_total_income
@@ -258,7 +258,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for single citizen with maximum income threshold' do
+  scenario 'Income test for single citizen (kevin) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:kevin)
     answer_questions_up_to_total_income
@@ -276,7 +276,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am not eligible for fee remission
   #
-  scenario 'Income test for single citizen over maximum income threshold' do
+  scenario 'Income test for single citizen (joseph) over maximum income threshold (no remission)' do
     # Arrange
     given_i_am(:joseph)
     answer_questions_up_to_total_income
@@ -294,7 +294,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for married citizen with maximum income threshold and many children' do
+  scenario 'Income test for married citizen (tonia) with maximum income threshold and many children (partial remission)' do
     # Arrange
     given_i_am(:tonia)
     answer_questions_up_to_total_income
@@ -311,7 +311,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   AND I am on the total income page
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
-  scenario 'Income test for single citizen with minimum income threshold and many children' do
+  scenario 'Income test for single citizen (maryann) with minimum income threshold and many children (full remission)' do
     # Arrange
     given_i_am(:maryann)
     answer_questions_up_to_total_income

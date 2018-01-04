@@ -65,7 +65,7 @@ class CalculationController < ApplicationController
            when :partial then :partial_remission_available
            when :full then :full_remission_available
            else raise 'Could not make a decision - this should not happen, but no acceptance criteria exists for it yet'
-    end
+           end
     edit_calculation_url(form: form)
   end
 

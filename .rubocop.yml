@@ -39,10 +39,16 @@ Metrics/LineLength:
 Metrics/AbcSize:
   Exclude:
     - 'spec/**/*'
+    - 'test_common/**/*'
 
 # Allow expect {}.to blocks in specs
 # but not in the code
 Style/BlockDelimiters:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+Style/AsciiComments:
   Enabled: true
   Exclude:
     - 'spec/**/*'
