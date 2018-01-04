@@ -1,4 +1,4 @@
 And(/^I answer the court fee question$/) do
-  calculator_court_fee_page.fee.set(user.fee)
-  calculator_court_fee_page.next
+  court_fee_page.fee.set(user.fee)
+  court_fee_page.next
 end

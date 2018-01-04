@@ -4,7 +4,21 @@ module Calculator
       # A page object providing an interface to the 'Income Benefits Page'
       class IncomeBenefitsPage < BasePage
         section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, 'Select all income benefits you are currently receiving'
+        element :positive_eligibility_header, '.positive', text: 'You are able to get help with fees'
+        element :johns_eligibility_message, '.positive', text: 'With a fee of £600 and savings of £2,990, you should be able to get help with your fees, as long as you receive certain benefits or are on a low income'
+        element :jobseekers_allowance, '.multiple-choice', text: 'Income-based Jobseeker’s Allowance (JSA)'
+        element :employment_support_allowance, '.multiple-choice', text: 'Income-related Employment and Support Allowance (ESA)'
+        element :income_support, '.multiple-choice', text: 'Income Support'
+        element :universal_credit, '.multiple-choice', text: 'Universal Credit (and you’re earning less than £6,000 a year)'
+        element :pension_credit, '.multiple-choice', text: 'Pension Credit (guarantee credit)'
+        element :scottish_legal_aid, '.multiple-choice', text: 'Scottish Legal Aid (Civil Claims)'
+        element :none_of_the_above, '.multiple-choice', text: 'None of the above'
+        element :prefix_none, '#prefix_none', text: 'None of the above guidance'
+        element :dont_know, '.multiple-choice', text: 'Don\'t know'
+        element :prefix_dont_know, '#prefix_dont_know', text: 'Don\'t know guidance'
         element :next_button, :button, 'Next step'
+        element :error_message, '.error-message', text: 'Please select from the list'
+       
 
         # Clicks the next button
         def next
