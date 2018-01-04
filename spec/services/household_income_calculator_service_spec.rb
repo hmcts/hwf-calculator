@@ -2,8 +2,8 @@ require 'rails_helper'
 RSpec.describe HouseholdIncomeCalculatorService do
   subject(:service) { described_class }
   # First, some common parameters for all tests
-  let(:minimum_threshold_hash) { {single: 1085.0, sharing_income: 1245.0 } }
-  let(:maximum_threshold_hash) { { single: 5085.0, sharing_income: 5245.0} }
+  let(:minimum_threshold_hash) { { single: 1085.0, sharing_income: 1245.0 } }
+  let(:maximum_threshold_hash) { { single: 5085.0, sharing_income: 5245.0 } }
   let(:child_allowance) { 245 }
 
   describe '#valid?' do
@@ -70,7 +70,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
 
           # Assert
-          expect(result).to have_attributes help_not_available?: false, help_available?: true, partial_help_available?: false
+          expect(result).to have_attributes available_help: :full
         end
 
         it 'returns full remission if monthly income is equal to the threshold' do
@@ -81,7 +81,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
 
           # Assert
-          expect(result).to have_attributes help_not_available?: false, help_available?: true, partial_help_available?: false
+          expect(result).to have_attributes available_help: :full
         end
       end
 
@@ -132,7 +132,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
 
           # Assert
-          expect(result).to have_attributes help_not_available?: false, help_available?: true, partial_help_available?: true
+          expect(result).to have_attributes available_help: :partial
         end
 
         it 'returns part remission if monthly income is over the minimum threshold and just below the maximum' do
@@ -143,7 +143,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
 
           # Assert
-          expect(result).to have_attributes help_not_available?: false, help_available?: true, partial_help_available?: true
+          expect(result).to have_attributes available_help: :partial
         end
 
         it 'returns part remission if monthly income is over the minimum threshold and equal to the maximum' do
@@ -154,7 +154,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
 
           # Assert
-          expect(result).to have_attributes help_not_available?: false, help_available?: true, partial_help_available?: true
+          expect(result).to have_attributes available_help: :partial
         end
       end
 
@@ -205,7 +205,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
 
           # Assert
-          expect(result).to have_attributes help_not_available?: true, help_available?: false
+          expect(result).to have_attributes available_help: :none
         end
       end
 

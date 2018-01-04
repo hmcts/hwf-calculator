@@ -3,10 +3,10 @@
 # @TODO This is a placeholder for the code - needs implementation
 class HouseholdIncomeCalculatorService < BaseCalculatorService
   MY_FIELDS = [:number_of_children, :total_income].freeze
-  MINIMUM_THRESHOLD = { single: 1085.freeze, sharing_income: 1245.freeze }.freeze
-  MAXIMUM_THRESHOLD = { single: 5085.freeze, sharing_income: 5245.freeze }.freeze
+  MINIMUM_THRESHOLD = { single: 1085, sharing_income: 1245 }.freeze
+  MAXIMUM_THRESHOLD = { single: 5085, sharing_income: 5245 }.freeze
   CHILD_ALLOWANCE = 245
-  VALID_MARITAL_STATUS = ['single', 'sharing_income']
+  VALID_MARITAL_STATUS = ['single', 'sharing_income'].freeze
 
   def valid?
     all_inputs_present? && all_inputs_correct_type?
@@ -26,7 +26,7 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
 
   # @TODO Review the method below - see details in RST-733, but allow for now
   def self.fields_required(inputs, previous_calculations:)
-    if previous_calculations.dig(:benefits_received, :help_available)
+    if previous_calculations.dig(:benefits_received, :available_help) == :full
       []
     else
       MY_FIELDS - inputs.keys
@@ -41,9 +41,8 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
 
   def all_inputs_correct_type?
     VALID_MARITAL_STATUS.include?(inputs[:marital_status]) &&
-        inputs[:total_income].is_a?(Float) &&
-        inputs[:number_of_children].is_a?(Fixnum)
-
+      inputs[:total_income].is_a?(Float) &&
+      inputs[:number_of_children].is_a?(Integer)
   end
 
   def lte_minimum?
@@ -75,23 +74,17 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
   end
 
   def mark_as_help_available
-    self.help_available = true
-    self.partial_help_available = false
-    self.help_not_available = false
+    self.available_help = :full
     messages << { key: :likely, source: :household_income }
   end
 
   def mark_as_partial_help_available
-    self.help_available = true
-    self.partial_help_available = true
-    self.help_not_available = false
+    self.available_help = :partial
     messages << { key: :likely, source: :household_income }
   end
 
   def mark_as_help_not_available
-    self.help_available = false
-    self.partial_help_available = false
-    self.help_not_available = true
+    self.available_help = :none
     messages << { key: :unlikely, source: :household_income }
   end
 end
