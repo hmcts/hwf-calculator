@@ -58,6 +58,7 @@ class CalculationService
     self.inputs = inputs.freeze
     self.failed = false
     self.help_available = false
+    self.partial_help_available = false
     self.messages = []
     self.calculators = calculators
     self.calculations = {}
@@ -100,6 +101,7 @@ class CalculationService
     {
       inputs: inputs,
       should_get_help: help_available?,
+      should_get_partial_help: partial_help_available?,
       should_not_get_help: help_not_available?,
       fields_required: fields_required,
       required_fields_affecting_likelihood: required_fields_affecting_likelihood,
@@ -122,6 +124,15 @@ class CalculationService
   # to firm up this decision.  If false, can mean undecided (if help_not_available? is also false)
   def help_available?
     help_available
+  end
+
+  # Only valid if @see help_available? is true
+  # Indicates (if true) that only partial help with fees is available
+  # otherwise full help is available
+  #
+  # @return [Boolean] If true, partial help is available, otherwise full help.
+  def partial_help_available?
+    partial_help_available
   end
 
   # Indicates what fields are required to be filled in by the user - in the order the
@@ -161,7 +172,7 @@ class CalculationService
 
   def calculations_summary
     calculations.map do |k, v|
-      [k, { help_available: v.help_available?, help_not_available: v.help_not_available? }]
+      [k, { help_available: v.help_available?, partial_help_available: v.partial_help_available?, help_not_available: v.help_not_available? }]
     end.to_h
   end
 
@@ -172,7 +183,7 @@ class CalculationService
       throw(:abort)
     end
     if result.help_available?
-      add_success(result.messages)
+      add_success(result.messages, result.partial_help_available?)
     end
     result
   end
@@ -182,11 +193,12 @@ class CalculationService
     messages.concat reasons
   end
 
-  def add_success(success_messages)
+  def add_success(success_messages, partial_help)
     self.help_available = true
+    self.partial_help_available = partial_help
     messages.concat success_messages
   end
 
-  attr_accessor :failed, :calculators, :help_available
+  attr_accessor :failed, :calculators, :help_available, :partial_help_available
   attr_writer :messages, :inputs, :calculations
 end

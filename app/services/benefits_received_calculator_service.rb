@@ -2,6 +2,13 @@
 #
 class BenefitsReceivedCalculatorService < BaseCalculatorService
   MY_FIELDS = [:benefits_received].freeze
+
+  def initialize(attrs)
+    attrs = attrs.dup # Dont modify inputs
+    attrs[:benefits_received] = attrs[:benefits_received].map(&:to_sym) if attrs[:benefits_received].is_a?(Array)
+    super(attrs)
+  end
+
   def call
     throw :invalid_inputs, self unless valid?
     process_inputs
