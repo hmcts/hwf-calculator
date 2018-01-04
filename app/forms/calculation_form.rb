@@ -24,6 +24,9 @@ class CalculationForm < BaseForm
   # @!attribute [rw] benefits_received
   #   @return [Array<String>] Either an array of strings, or :undefined
   attribute :benefits_received, :array, default: UNDEFINED
+  # @!attribute [rw] number_of_children
+  #   @return [Fixnum,Symbol] Either an integer value defining the number of children, or :undefined
+  attribute :number_of_children, :integer, default: UNDEFINED
 
   private
 

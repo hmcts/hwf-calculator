@@ -223,7 +223,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   Then I should see that I am eligible for partial remission
   #
   scenario 'Income test for married citizen with maximum income threshold' do
-    # Arrange
+    # Arrange - Jo is Married, Age 45, 13900 Disposable capital, 5489 Monthly income, 1 child and no benefits
     given_i_am(:jo)
     answer_questions_up_to_total_income
 

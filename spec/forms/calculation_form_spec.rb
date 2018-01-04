@@ -92,6 +92,21 @@ RSpec.describe CalculationForm do
     end
   end
 
+  describe "number_of_children=" do
+    it 'persists as number' do
+      form = described_class.new({})
+      form.number_of_children = 10
+      expect(form.number_of_children).to be 10
+    end
+  end
+
+  describe 'number_of_children= via initialize' do
+    it 'persists as number' do
+      form = described_class.new(number_of_children: 5)
+      expect(form.number_of_children).to be 5
+    end
+  end
+
   context 'validation' do
     it 'should have validation stuff - @TODO'
   end

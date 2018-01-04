@@ -44,6 +44,11 @@ module Calculator
         number_of_children_page.next
       end
 
+      def answer_total_income_question
+        total_income_page.total_income.set(user.monthly_gross_income)
+        total_income_page.next
+      end
+
       def start_calculator_session
         start_page.load_page
         start_page.start_session

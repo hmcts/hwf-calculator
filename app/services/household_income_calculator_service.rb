@@ -2,7 +2,7 @@
 #
 # @TODO This is a placeholder for the code - needs implementation
 class HouseholdIncomeCalculatorService < BaseCalculatorService
-  MY_FIELDS = [:number_of_children].freeze
+  MY_FIELDS = [:number_of_children, :total_income].freeze
 
   def valid?
     true
