@@ -150,7 +150,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for full remission
   #
-  scenario 'Income test for married citizen with minimum income threshold' do
+  scenario 'WIP Income test for married citizen with minimum income threshold' do
     # Arrange
     given_i_am(:riley)
     answer_questions_up_to_total_income

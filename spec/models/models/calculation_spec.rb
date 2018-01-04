@@ -27,6 +27,13 @@ RSpec.describe Calculation do
     end
   end
 
+  context '#should_get_partial_help' do
+    it 'stores a provided value of any type' do
+      subject = described_class.new should_get_partial_help: true
+      expect(subject.should_get_partial_help).to be true
+    end
+  end
+
   context '#should_not_get_help' do
     it 'stores a provided value of any type' do
       subject = described_class.new should_not_get_help: true

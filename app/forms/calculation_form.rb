@@ -27,6 +27,9 @@ class CalculationForm < BaseForm
   # @!attribute [rw] number_of_children
   #   @return [Fixnum,Symbol] Either an integer value defining the number of children, or :undefined
   attribute :number_of_children, :integer, default: UNDEFINED
+  # @!attribute [rw] total_income
+  #   @return [Float,Symbol] Either a float value defining the total income, or :undefined
+  attribute :total_income, :float, default: UNDEFINED
 
   private
 

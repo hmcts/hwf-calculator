@@ -107,6 +107,21 @@ RSpec.describe CalculationForm do
     end
   end
 
+  describe '#total_income=' do
+    it 'persists as a float' do
+      form = described_class.new({})
+      form.total_income = '1000'
+      expect(form.total_income).to be 1000.0
+    end
+  end
+
+  describe '#total_income= via initialize' do
+    it 'persists as a float' do
+      form = described_class.new(total_income: '1000')
+      expect(form.total_income).to be 1000.0
+    end
+  end
+
   context 'validation' do
     it 'should have validation stuff - @TODO'
   end

@@ -87,6 +87,13 @@ class BaseCalculatorService
     help_available
   end
 
+  # Along with @see help_available? Indicates that the help that is available is only partial
+  # Not valid if @see help_available? is false
+  # @return [Boolean] Partial help is available (if true) or full help is available (if false)
+  def partial_help_available?
+    partial_help_available
+  end
+
   # Indicates if the inputs were all valid
   #
   # @return [Boolean] If true, all inputs were valid, else false
@@ -98,5 +105,5 @@ class BaseCalculatorService
 
   attr_accessor :inputs
   attr_writer :messages
-  attr_accessor :help_available, :help_not_available
+  attr_accessor :help_available, :help_not_available, :partial_help_available
 end

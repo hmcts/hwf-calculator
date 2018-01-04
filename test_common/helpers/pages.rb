@@ -37,9 +37,19 @@ module Calculator
       end
 
 
+      # @return [Calculator::Test::En::NotEligiblePage] The not eligible page object
+      def not_eligible_page
+        @not_eligible_page ||= Calculator::Test::En::NotEligiblePage.new
+      end
+
       # @return [Calculator::Test::En::FullRemissionPage] The full remission page object
       def full_remission_page
         @full_remission_page ||= Calculator::Test::En::FullRemissionPage.new
+      end
+
+      # @return [Calculator::Test::En::PartialRemissionPage] The partial remission page object
+      def partial_remission_page
+        @partial_remission_page ||= Calculator::Test::En::PartialRemissionPage.new
       end
     end
 

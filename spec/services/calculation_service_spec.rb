@@ -11,15 +11,15 @@ RSpec.describe CalculationService do
     let(:calculator_3_class) { class_spy(BaseCalculatorService, 'Calculator 3 class', identifier: :calculator3) }
 
     let(:calculator_1) do
-      instance_spy(BaseCalculatorService, 'Calculator 1', help_not_available?: false, help_available?: false, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 1', help_not_available?: false, help_available?: false, partial_help_available?: false, valid?: true, messages: [])
     end
 
     let(:calculator_2) do
-      instance_spy(BaseCalculatorService, 'Calculator 2', help_not_available?: false, help_available?: false, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 2', help_not_available?: false, help_available?: false, partial_help_available?: false, valid?: true, messages: [])
     end
 
     let(:calculator_3) do
-      instance_spy(BaseCalculatorService, 'Calculator 3', help_not_available?: false, help_available?: false, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 3', help_not_available?: false, help_available?: false, partial_help_available?: false, valid?: true, messages: [])
     end
 
     let(:calculators) { [calculator_1_class, calculator_2_class, calculator_3_class] }
@@ -210,6 +210,34 @@ RSpec.describe CalculationService do
     end
   end
 
+  describe '#partial_help_available?' do
+    let(:inputs) do
+      {
+          disposable_capital: 1000
+      }
+    end
+    include_context 'fake calculators'
+
+    it 'has partial help available if calculator 1 says it is available' do
+      # Arrange
+      allow(calculator_1).to receive(:help_available?).and_return true
+      allow(calculator_1).to receive(:partial_help_available?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes help_available?: true, partial_help_available?: true
+    end
+
+    it 'has full help available if calculator 1 says it is available' do
+      # Arrange
+      allow(calculator_1).to receive(:help_available?).and_return true
+      allow(calculator_1).to receive(:partial_help_available?).and_return false
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes help_available?: true, partial_help_available?: false
+    end
+
+  end
+
   describe '#help_not_available?' do
     let(:inputs) do
       {
@@ -253,9 +281,9 @@ RSpec.describe CalculationService do
     end
     let(:expected_previous_calculations) do
       {
-        calculator1: { help_available: false, help_not_available: false },
-        calculator2: { help_available: false, help_not_available: false },
-        calculator3: { help_available: false, help_not_available: false }
+        calculator1: { help_available: false, partial_help_available: false, help_not_available: false },
+        calculator2: { help_available: false, partial_help_available: false, help_not_available: false },
+        calculator3: { help_available: false, partial_help_available: false, help_not_available: false }
       }
     end
     it 'returns any fields not provided in the input in the correct order prefixed with marital_status' do
@@ -314,6 +342,7 @@ RSpec.describe CalculationService do
       # Act and Assert
       expect(subject.to_h).to include inputs: a_hash_including(inputs),
                                       should_get_help: false,
+                                      should_get_partial_help: false,
                                       should_not_get_help: false,
                                       fields_required: instance_of(Array),
                                       required_fields_affecting_likelihood: instance_of(Array),
