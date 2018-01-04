@@ -31,6 +31,12 @@ module Calculator
         @income_benefits_page ||= Calculator::Test::En::IncomeBenefitsPage.new
       end
 
+      # @return [Calculator::Test::En::TotalIncomePage] The total income page object
+      def total_income_page
+        @total_income_page ||= Calculator::Test::En::TotalIncomePage.new
+      end
+
+
       # @return [Calculator::Test::En::FullRemissionPage] The full remission page object
       def full_remission_page
         @full_remission_page ||= Calculator::Test::En::FullRemissionPage.new

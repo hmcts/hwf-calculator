@@ -28,7 +28,8 @@
               h2.heading-small = 'heading 2 small'
               ul.list.list-bullet
                 li = 'item_1'
-
+        label.block-label
+          = f.text_field :number_of_children, class: 'form-control'
     .form-group
       = f.submit 'Next step', class: 'button'
   .previous_questions data-behavior="calculator_previous_questions"

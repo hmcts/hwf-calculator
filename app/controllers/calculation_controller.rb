@@ -78,6 +78,8 @@ class CalculationController < ApplicationController
       :fee,
       :date_of_birth,
       :disposable_capital,
+      :number_of_children,
+      :total_income,
       benefits_received: []
   end
 end
