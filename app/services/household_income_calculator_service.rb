@@ -1,6 +1,5 @@
 # A calculator service for the household income for an individual or couple
 #
-# @TODO This is a placeholder for the code - needs implementation
 class HouseholdIncomeCalculatorService < BaseCalculatorService
   MY_FIELDS = [:number_of_children, :total_income].freeze
   MINIMUM_THRESHOLD = { single: 1085, sharing_income: 1245 }.freeze
