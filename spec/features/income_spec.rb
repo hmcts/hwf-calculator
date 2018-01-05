@@ -2,6 +2,7 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-670
 RSpec.describe 'Income Test', type: :feature, js: true do
   include Calculator::Test::Pages
+  include ActiveSupport::NumberHelper
   # Feature:  Income Test
   #
   # - It is based on household gross monthly income
@@ -36,13 +37,20 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   JOSEPH is a single, 35 year old man with 2 children. He is not on income benefit. He has £13,999 worth of capital and an income of £8,000. He has a court fee of £7,000
   #   TONIA is a married, 45 year old woman with 7 children. He is not on income benefit. He has £6,950 worth of capital and an income of £5,734. He has a court fee of £2,330
   #   MARYANN is a married, 50 year old woman with 10 children. He is not on income benefit. He has £9,800 worth of capital and an income of £1,734. He has a court fee of £5,000
-  #
+  #   BETHANY is a single, 50 year old woman with no children. He is not on any benefit. He has £3,500 worth of capital and an income of £1,085. He has a court fee of £1,200
+  #   BRITNEY is a married, 45 year old woman with no children. He is not on any benefit. He has £9,000 worth of capital and an income of £1,245. He has a court fee of £4,900
+  #   ANGELA is a married, 30 year old woman with no children. He is not on any benefit. He has £5,500 worth of capital and an income of £5,244. He has a court fee of £1,800
+  #   EDEN is a single, 40 year old woman with no children. He is not on any benefit. He has £4,900 worth of capital and an income of £5,085. He has a court fee of £1,665
+  #   HOLLY is a married, 55 year old woman with no children. He is not on any benefit. He has £11,999 worth of capital and an income of £5,245. He has a court fee of £6,000
+  #   THERESA is a single, 47 year old woman with no children. He is not on any benefit. He has £15,999 worth of capital and an income of £5,086. He has a court fee of £7,500
+  #   TIANA is a married, 60 year old woman with no children. He is not on any benefit. He has £7,980 worth of capital and an income of £5,246. He has a court fee of £4,000
+
   # Messaging
   #
   #   Positive (likely to get help with fees - Full Remission)
   #
   #   - You should be eligible for a full remission
-  #   - For single citizen: As you have stated you have an income of £XXX, you won't have to pay any of your stated £XXXX fee and will receive a full remission or refund if you have paid the fee within the last 3 months end
+  #   - For single citizen: As you have stated you have an income of £XXX, you won't have to pay any of your stated £XXXX fee and will receive a full remission or refund if you have paid the fee within the last 3 months
   #   - For Couple: As you and your partner have stated you have a combined monthly income of £XXX, you won't have to pay any of your stated £XXXX fee and will receive a full remission or refund if you have paid the fee within the last 3 months
   #
   #   Positive (likely to get help with fees - Part Remission)
@@ -71,7 +79,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
   end
   #
   # Scenario: Income test for married citizen with minimum income threshold
@@ -89,7 +97,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
   end
   # Scenario: Income test for married citizen with maximum income threshold
   #   Given I am OLIVER
@@ -124,7 +132,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
   end
 
   # Scenario: Income test for married citizen with minimum income threshold (0 Remission)
@@ -141,7 +149,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
   end
 
   # Scenario: Income test for married citizen with minimum income threshold
@@ -159,7 +167,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
   end
 
   # Scenario: Income test for single citizen with minimum income threshold
@@ -177,7 +185,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
   end
 
   # Scenario: Income test for married citizen with maximum income threshold
@@ -320,6 +328,128 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
+  end
+
+  # Scenario: Income test for single citizen with minimum income threshold and no children
+  #   Given I am BETHANY
+  #   AND I am on the total income page
+  #   When I click on the Next step button
+  #   Then I should see that I am eligible for full remission
+  #
+  scenario 'Income test for single citizen with minimum income threshold and no children' do
+    # Arrange
+    given_i_am(:bethany)
+    answer_questions_up_to_total_income
+
+    # Act
+    answer_total_income_question
+
+    # Assert
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
+  end
+  # Scenario: Income test for married citizen with minimum income threshold and no children
+  #   Given I am BRITNEY
+  #   AND I am on the total income page
+  #   When I click on the Next step button
+  #   Then I should see that I am eligible for full remission
+  #
+  scenario 'Income test for married citizen with minimum income threshold and no children' do
+    # Arrange
+    given_i_am(:britney)
+    answer_questions_up_to_total_income
+
+    # Act
+    answer_total_income_question
+
+    # Assert
+    expect(full_remission_page).to be_valid_for_final_positive_message(user)
+  end
+
+  # Scenario: Income test for married citizen with maximum income threshold and no children
+  #   Given I am ANGELA
+  #   AND I am on the total income page
+  #   When I click on the Next step button
+  #   Then I should see that I am eligible for partial remission
+  #
+  scenario 'Income test for married citizen with maximum income threshold and no children' do
+    # Arrange
+    given_i_am(:angela)
+    answer_questions_up_to_total_income
+
+    # Act
+    answer_total_income_question
+
+    # Assert
+    expect(partial_remission_page).to be_displayed
+  end
+
+  # Scenario: Income test for single citizen with maximum income threshold and no children
+  #   Given I am EDEN
+  #   AND I am on the total income page
+  #   When I click on the Next step button
+  #   Then I should see that I am eligible for partial remission
+  #
+  scenario 'Income test for single citizen with maximum income threshold and no children' do
+    # Arrange
+    given_i_am(:eden)
+    answer_questions_up_to_total_income
+
+    # Act
+    answer_total_income_question
+
+    # Assert
+    expect(partial_remission_page).to be_displayed
+  end
+  # Scenario: Income test for married citizen with maximum income threshold and no children
+  #   Given I am HOLLY (Married, 55, Capital 11999, Fee 6000, children 0, benefits none, income 5245 )
+  #   AND I am on the total income page
+  #   When I click on the Next step button
+  #   Then I should see that I am eligible for partial remission
+  #
+  scenario 'Income test for married citizen with maximum income threshold and no children' do
+    # Arrange
+    given_i_am(:holly)
+    answer_questions_up_to_total_income
+
+    # Act
+    answer_total_income_question
+
+    # Assert
+    expect(partial_remission_page).to be_displayed
+  end
+  # Scenario: Income test for single citizen with over maximum income threshold and no children
+  #   Given I am THERESA
+  #   AND I am on the total income page
+  #   When I click on the Next step button
+  #   Then I should see that I am not eligible for fee remission
+  #
+  scenario 'Income test for single citizen with over maximum income threshold and no children' do
+    # Arrange
+    given_i_am(:theresa)
+    answer_questions_up_to_total_income
+
+    # Act
+    answer_total_income_question
+
+    # Assert
+    expect(not_eligible_page).to be_displayed
+  end
+
+  # Scenario: Income test for married citizen with over maximum income threshold and no children
+  #   Given I am TIANA
+  #   AND I am on the total income page
+  #   When I click on the Next step button
+  #   Then I should see that I am not eligible for fee remission  
+  scenario 'Income test for married citizen with over maximum income threshold and no children' do
+    # Arrange
+    given_i_am(:tiana)
+    answer_questions_up_to_total_income
+
+    # Act
+    answer_total_income_question
+
+    # Assert
+    expect(not_eligible_page).to be_displayed
   end
 end

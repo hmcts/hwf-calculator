@@ -178,6 +178,70 @@ maryann:
   income_benefits:
     - none
   monthly_gross_income: 1734
+bethany:
+  marital_status: Single
+  age: 50
+  disposable_capital: 3500
+  fee: 1200
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 1085
+britney:
+  marital_status: Married
+  age: 45
+  disposable_capital: 9000
+  fee: 4900
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 1245
+angela:
+  marital_status: Married
+  age: 30
+  disposable_capital: 5500
+  fee: 1800
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5244
+eden:
+  marital_status: Single
+  age: 40
+  disposable_capital: 4900
+  fee: 1665
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5085
+holly:
+  marital_status: Married
+  age: 55
+  disposable_capital: 11999
+  fee: 6000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5245
+theresa:
+  marital_status: Single
+  age: 47
+  disposable_capital: 15999
+  fee: 7500
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5246
+tiana:
+  marital_status: Married
+  age: 60
+  disposable_capital: 7980
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5246
+
 
 
 

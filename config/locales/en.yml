@@ -18,6 +18,13 @@ en:
         single: "you"
         sharing_income: "you and your partner"
       should_get_help: "You are able to get help with fees"
+      full_remission:
+        single:
+          header: "You should be eligible for a full remission"
+          detail: "As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+        sharing_income:
+          header: "You should be eligible for a full remission"
+          detail: "As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
       message:
         negative: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
         positive: "With a fee of %{fee} and savings of %{disposable_capital}, %{subject} should be able to get help with your fees,"

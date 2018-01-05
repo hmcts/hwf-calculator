@@ -14,6 +14,16 @@ module ApplicationHelper
     end
   end
 
+  # Provides the final feedback text for a given calculation.
+  # @param [Calculator::Calculation] calculation The calculation to display feedback for
+  # @return [String] The feedback text
+  def final_calculator_feedback_for(calculation)
+    marital_status = calculation.inputs[:marital_status]
+    t "calculation.feedback.full_remission.#{marital_status}.detail",
+      total_income: calculation_total_income(calculation),
+      fee: calculation_fee(calculation)
+  end
+
   # Formats a calculator value.
   #
   # @param [Object] value The value to be formatted
@@ -34,6 +44,15 @@ module ApplicationHelper
   # @return [String] The text to display
   def calculation_fee(calculation)
     number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£')
+  end
+
+  # Presents the calculation total income in the correct format
+  #
+  # @param [Calculation] calculation The calculation to get the total income from
+  #
+  # @return [String] The text to display
+  def calculation_total_income(calculation)
+    number_to_currency(calculation.inputs[:total_income], precision: 0, unit: '£')
   end
 
   # Presents the calculation disposable capital in the correct format
