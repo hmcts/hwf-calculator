@@ -24,6 +24,17 @@ module ApplicationHelper
       fee: calculation_fee(calculation)
   end
 
+  # Provides the final partial feedback text for a given calculation.
+  # @param [Calculator::Calculation] calculation The calculation to display feedback for
+  # @return [String] The feedback text
+  def partial_calculator_feedback_for(calculation)
+    marital_status = calculation.inputs[:marital_status]
+    t "calculation.feedback.partial_remission.#{marital_status}.detail",
+      total_income: calculation_total_income(calculation),
+      fee: calculation_fee(calculation),
+      remission: calculation_remission(calculation)
+  end
+
   # Formats a calculator value.
   #
   # @param [Object] value The value to be formatted
@@ -44,6 +55,16 @@ module ApplicationHelper
   # @return [String] The text to display
   def calculation_fee(calculation)
     number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£')
+  end
+
+  # @TODO Do not allow this through to develop with zero in as hard coded value
+  # Presents the calculation remission in the correct format
+  #
+  # @param [Calculation] calculation The calculation to get the remission from
+  #
+  # @return [String] The text to display
+  def calculation_remission(calculation)
+    number_to_currency(0, precision: 0, unit: '£')
   end
 
   # Presents the calculation total income in the correct format
