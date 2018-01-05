@@ -13,36 +13,27 @@ Then("I should see that I should be able to get help with fees message") do
 end
 
 Then("I should see income benefits list") do
-  expect(income_benefits_page).to have_jobseekers_allowance
-  expect(income_benefits_page).to have_employment_support_allowance
-  expect(income_benefits_page).to have_income_support
-  expect(income_benefits_page).to have_universal_credit
-  expect(income_benefits_page).to have_pension_credit
-  expect(income_benefits_page).to have_scottish_legal_aid
-end
-
-Given("I select income-based jobseekers allowance") do
-  income_benefits_page.jobseekers_allowance.click
+  expect(income_benefits_page.benefit_options).to be_present
 end
 
 When("I select none of the above") do
-  income_benefits_page.none_of_the_above.click
+  income_benefits_page.choose_none
 end
 
 Then("I should see the none of the above guidance information") do
-  expect(income_benefits_page).to have_prefix_none
+  expect(income_benefits_page.dont_know_guidance).to be_present
 end
 
 When("I select dont know") do
-  income_benefits_page.dont_know.click
+  income_benefits_page.choose_dont_know
 end
 
 Then("I should see the dont know guidance information") do
-  expect(income_benefits_page).to have_prefix_dont_know
+  expect(income_benefits_page.none_of_the_above_guidance).to be_present
 end
 
 When("I submit the page with income related benefit checked") do
-  income_benefits_page.employment_support_allowance.click
+  income_benefits_page.choose_jobseekers_allowance
   income_benefits_page.next
 end
 
@@ -51,12 +42,13 @@ Then("I should see that I should be eligible for a full remission") do
   expect(full_remission_page).to have_positive
 end
 
-When("I submit the page with income support") do
-  income_benefits_page.income_support.click
+When("I submit the page with income support and universal credit") do
+  income_benefits_page.choose_income_support
+  income_benefits_page.choose_universal_credit
   income_benefits_page.next
 end
 
-Then("on the next page I should see my previous answer is income support") do
+Then("on the next page I should see my previous answer is income support and universal credit") do
   expect(full_remission_page).to have_previous_question
 end
 
@@ -65,5 +57,5 @@ When("I click next without submitting my income benefits") do
 end
 
 Then("I should see the income benefits error message") do
-  expect(income_benefits_page).to have_error_message
+  expect(income_benefits_page.error_nothing_selected).to be_present
 end
