@@ -47,10 +47,6 @@ When("I submit the page with income support and universal credit") do
   income_benefits_page.next
 end
 
-Then("on the next page I should see my previous answer is income support and universal credit") do
-  expect(full_remission_page).to have_previous_question
-end
-
 When("I click next without submitting my income benefits") do
   income_benefits_page.next
 end

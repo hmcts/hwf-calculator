@@ -24,10 +24,6 @@ Scenario: Select income related benefit option
   When I submit the page with income related benefit checked
   Then I should see that I should be eligible for a full remission
 
-Scenario: Previous answers
-  When I submit the page with income support and universal credit
-  Then on the next page I should see my previous answer is income support and universal credit
-
 Scenario: Displays savings and investment error message
   When I click next without submitting my income benefits
   Then I should see the income benefits error message
