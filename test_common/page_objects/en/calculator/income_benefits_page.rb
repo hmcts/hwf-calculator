@@ -7,12 +7,9 @@ module Calculator
         element :next_button, :button, 'Next step'
 
         def benefit_options
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.employment_support_allowance')
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.income_support')
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.universal_credit')
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.scottish_legal_aid')
+          %i(jobseekers_allowance employment_support_allowance income_support universal_credit pension_credit scottish_legal_aid).each do |benefit|
+            benefits.option_labelled messaging.t("hwf_pages.income_benefits.labels.benefits.#{benefit}")
+          end
         end
 
         def choose_jobseekers_allowance
