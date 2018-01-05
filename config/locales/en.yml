@@ -28,13 +28,19 @@ en:
       message:
         negative: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
         positive: "With a fee of %{fee} and savings of %{disposable_capital}, %{subject} should be able to get help with your fees,"
+      partial_remission:
+        header: "You should be eligible for a Partial Remission"
+        single:
+          detail: "As you have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{refund} if you have paid the full fee within the last 3 months"
+        sharing_income:
+          detail: "As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{remission} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
       explanation_suffix: "as long as you"
       explanation_suffix_joining_word: "or"
       explanation_suffix_fields:
         benefits_received: "receive certain benefits"
         total_income: "are on a low income"
       should_not_get_help: "You are unlikely to get help with your fees"
-      should_get_partial_help: "You should be able to get partial help withh your fees"
+      should_get_partial_help: "You should be able to get partial help with your fees"
     field_labels:
       disposable_capital: "How much do you have in savings and investment combined?"
       marital_status: "Are you single, married or living with someone and sharing an income?"

@@ -4,10 +4,6 @@ module Calculator
       class FullRemissionPage < BasePage
         include ActiveSupport::NumberHelper
         set_url '/calculation/full_remission_available'
-        section :decision_messaging, '[data-behavior=calculator_feedback]' do
-          element :header, '[data-behavior=calculator_feedback_header]'
-          element :message, '[data-behavior=calculator_feedback_message]'
-        end
 
         def valid_for_final_positive_message?(user)
           marital_status = user.marital_status.downcase
