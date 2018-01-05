@@ -7,7 +7,7 @@ module Calculator
         element :next_button, :button, 'Next step'
 
         def benefit_options
-          %i(jobseekers_allowance employment_support_allowance income_support universal_credit pension_credit scottish_legal_aid).each do |benefit|
+          [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid].each do |benefit|
             benefits.option_labelled messaging.t("hwf_pages.income_benefits.labels.benefits.#{benefit}")
           end
         end
