@@ -8,8 +8,7 @@ Given("I am on the income benefits page") do
 end
 
 Then("I should see that I should be able to get help with fees message") do
-  expect(income_benefits_page).to have_positive_eligibility_header
-  expect(income_benefits_page).to have_johns_eligibility_message
+  expect(any_calculator_page.positive_message).to be_present
 end
 
 Then("I should see income benefits list") do

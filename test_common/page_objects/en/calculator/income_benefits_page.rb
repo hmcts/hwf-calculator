@@ -4,8 +4,6 @@ module Calculator
       # A page object providing an interface to the 'Income Benefits Page'
       class IncomeBenefitsPage < BasePage
         section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, 'Select all income benefits you are currently receiving'
-        element :positive_eligibility_header, '.positive', text: 'You are able to get help with fees'
-        element :johns_eligibility_message, '.positive', text: 'With a fee of £600 and savings of £2,990, you should be able to get help with your fees, as long as you receive certain benefits or are on a low income'
         element :next_button, :button, 'Next step'
 
         def benefit_options
