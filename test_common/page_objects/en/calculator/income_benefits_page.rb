@@ -44,11 +44,6 @@ module Calculator
           benefits.set([label_text])
         end
 
-        def choose_jobseekers_allowance
-          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')
-          benefits.set([label_text])
-        end
-
         def dont_know_option
           benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')
         end
