@@ -1,8 +1,8 @@
 .content-body.full_remission_available
   .feedback data-behavior="calculator_feedback"
     div.positive
-      h2 data-behavior="calculator_feedback_header" = t("calculation.feedback.full_remission.#{current_calculation.inputs[:marital_status]}.header")
-      p data-behavior="calculator_feedback_message" = final_calculator_feedback_for(current_calculation)
+      h2 data-behavior="calculator_feedback_header" = t("calculation.feedback.partial_remission.header")
+      p data-behavior="calculator_feedback_message" = partial_calculator_feedback_for(current_calculation)
   .previous_questions data-behavior="calculator_previous_questions"
     - current_calculation.inputs.each_pair do |k,v |
       div data-behavior="calculator_previous_question"

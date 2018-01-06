@@ -7,11 +7,33 @@ module ApplicationHelper
   # @param [Calculator::Calculation] calculation The calculation to display feedback for
   # @return [String] The feedback text
   def calculator_feedback_for(calculation)
-    if calculation.should_not_get_help
+    if calculation.available_help == :none
       should_not_get_help_text(calculation)
-    elsif calculation.should_get_help
+    elsif calculation.available_help == :full
       should_get_help_text(calculation) + ' ' + calculator_feedback_explanation(calculation).join(' ')
     end
+  end
+
+  # Provides the final feedback text for a given calculation.
+  # @param [Calculator::Calculation] calculation The calculation to display feedback for
+  # @return [String] The feedback text
+  def final_calculator_feedback_for(calculation)
+    marital_status = calculation.inputs[:marital_status]
+    t "calculation.feedback.full_remission.#{marital_status}.detail",
+      total_income: calculation_total_income(calculation),
+      fee: calculation_fee(calculation)
+  end
+
+  # Provides the final partial feedback text for a given calculation.
+  # @param [Calculator::Calculation] calculation The calculation to display feedback for
+  # @return [String] The feedback text
+  def partial_calculator_feedback_for(calculation)
+    marital_status = calculation.inputs[:marital_status]
+    t "calculation.feedback.partial_remission.#{marital_status}.detail",
+      total_income: calculation_total_income(calculation),
+      fee: calculation_fee(calculation),
+      remission: calculation_remission(calculation),
+      contribution: calculation_contribution(calculation)
   end
 
   # Formats a calculator value.
@@ -34,6 +56,33 @@ module ApplicationHelper
   # @return [String] The text to display
   def calculation_fee(calculation)
     number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£')
+  end
+
+  # Presents the calculation remission in the correct format
+  #
+  # @param [Calculation] calculation The calculation to get the remission from
+  #
+  # @return [String] The text to display
+  def calculation_remission(calculation)
+    number_to_currency(calculation.remission, precision: 0, unit: '£')
+  end
+
+  # Presents the calculation citizen contribution in the correct format
+  #
+  # @param [Calculation] calculation The calculation to get the contribution from
+  #
+  # @return [String] The text to display
+  def calculation_contribution(calculation)
+    number_to_currency(calculation.inputs[:fee] -  calculation.remission, precision: 0, unit: '£')
+  end
+
+  # Presents the calculation total income in the correct format
+  #
+  # @param [Calculation] calculation The calculation to get the total income from
+  #
+  # @return [String] The text to display
+  def calculation_total_income(calculation)
+    number_to_currency(calculation.inputs[:total_income], precision: 0, unit: '£')
   end
 
   # Presents the calculation disposable capital in the correct format

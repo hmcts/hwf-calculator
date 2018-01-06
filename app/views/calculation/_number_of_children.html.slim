@@ -1,10 +1,10 @@
 .content-body.number_of_children
   .feedback data-behavior="calculator_feedback"
-    - if current_calculation.should_not_get_help
+    - if current_calculation.available_help == :none
       div.negative
         h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_not_get_help')
         p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
-    - if current_calculation.should_get_help
+    - if current_calculation.available_help == :full
       div.positive
         h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_get_help')
         p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
@@ -28,7 +28,8 @@
               h2.heading-small = 'heading 2 small'
               ul.list.list-bullet
                 li = 'item_1'
-
+        label.block-label
+          = f.text_field :number_of_children, class: 'form-control'
     .form-group
       = f.submit 'Next step', class: 'button'
   .previous_questions data-behavior="calculator_previous_questions"

@@ -11,7 +11,7 @@
         self.init = function() {
             initListenersForCheckboxes();
             updateCheckboxesState();
-        }
+        };
 
         function initListenersForCheckboxes() {
             $('.multiple-choice input[type=checkbox]').on('click change', updateCheckboxesState);
