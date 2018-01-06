@@ -293,7 +293,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page).to be_valid_for_final_message(user)
   end
 
   # Scenario: Income test for married citizen with maximum income threshold and many children
@@ -407,7 +407,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
   #
-  scenario 'Income test for married citizen with maximum income threshold and no children' do
+  scenario 'Income test for married citizen with maximum income threshold and no children 2' do
     # Arrange
     given_i_am(:holly)
     answer_questions_up_to_total_income
@@ -433,14 +433,14 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page).to be_valid_for_final_message(user)
   end
 
   # Scenario: Income test for married citizen with over maximum income threshold and no children
   #   Given I am TIANA
   #   AND I am on the total income page
   #   When I click on the Next step button
-  #   Then I should see that I am not eligible for fee remission  
+  #   Then I should see that I am not eligible for fee remission
   scenario 'Income test for married citizen with over maximum income threshold and no children' do
     # Arrange
     given_i_am(:tiana)
@@ -450,6 +450,6 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page).to be_valid_for_final_message(user)
   end
 end

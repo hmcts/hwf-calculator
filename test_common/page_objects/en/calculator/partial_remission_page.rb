@@ -19,9 +19,9 @@ module Calculator
             total_income: number_to_currency(user.monthly_gross_income, precision: 0, unit: '£'),
             remission: number_to_currency(remission, precision: 0, unit: '£'),
             contribution: number_to_currency(user.fee - remission, precision: 0, unit: '£')
-
-          !!(feedback_message_with_header(expected_header) &&
-              feedback_message_with_detail(expected_detail))
+          feedback_message_with_header(expected_header)
+          feedback_message_with_detail(expected_detail)
+          true
         end
       end
     end

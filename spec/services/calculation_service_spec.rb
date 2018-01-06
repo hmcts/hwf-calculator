@@ -228,7 +228,7 @@ RSpec.describe CalculationService do
   describe '#remission' do
     let(:inputs) do
       {
-          disposable_capital: 1000
+        disposable_capital: 1000
       }
     end
     include_context 'fake calculators'
