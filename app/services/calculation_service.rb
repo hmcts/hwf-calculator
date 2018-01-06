@@ -47,7 +47,7 @@ class CalculationService
     'BenefitsReceived',
     'HouseholdIncome'
   ].freeze
-  attr_reader :messages, :inputs, :calculations, :available_help
+  attr_reader :messages, :inputs, :calculations, :available_help, :remission
 
   # Create an instance of CalculationService
   # @param [Hash] inputs
@@ -57,6 +57,7 @@ class CalculationService
   def initialize(inputs, calculators: default_calculators)
     self.inputs = inputs.freeze
     self.available_help = :undecided
+    self.remission = 0.0
     self.messages = []
     self.calculators = calculators
     self.calculations = {}
@@ -99,6 +100,7 @@ class CalculationService
     {
       inputs: inputs,
       available_help: available_help,
+      remission: remission,
       fields_required: fields_required,
       required_fields_affecting_likelihood: required_fields_affecting_likelihood,
       messages: messages
@@ -194,9 +196,12 @@ class CalculationService
 
   def add_success(result)
     self.available_help = result.available_help
+    # The remission is always from the last value given,
+    # so its ok to overwrite this
+    self.remission = result.remission
     messages.concat result.messages
   end
 
   attr_accessor :calculators
-  attr_writer :messages, :inputs, :calculations, :available_help
+  attr_writer :messages, :inputs, :calculations, :available_help, :remission
 end

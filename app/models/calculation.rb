@@ -1,6 +1,6 @@
 class Calculation
   include ActiveModel::Model
-  attr_accessor :inputs, :available_help, :fields_required
+  attr_accessor :inputs, :available_help, :remission, :fields_required
   attr_accessor :required_fields_affecting_likelihood, :messages, :fields
 
   def initialize(attrs = {})
