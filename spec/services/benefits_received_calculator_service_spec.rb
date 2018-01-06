@@ -13,19 +13,24 @@ RSpec.describe BenefitsReceivedCalculatorService do
       expect(result).to be_a(described_class).and(an_object_having_attributes(valid?: false))
     end
 
-    it 'states help is neither available or ot availalble if the special "none" value is provided' do
+    it 'states help is neither available or not availalble if the special "none" value is provided as a symbol' do
       result = service.call(benefits_received: [:none])
-      expect(result).to have_attributes help_not_available?: false, help_available?: false
+      expect(result).to have_attributes available_help: :undecided
+    end
+
+    it 'states help is neither available or not available if the special "none" value is provided as a string' do
+      result = service.call(benefits_received: ['none'])
+      expect(result).to have_attributes available_help: :undecided
     end
 
     it 'states help is neither available or not available if the special "dont_know" value is provided' do
       result = service.call(benefits_received: [:dont_know])
-      expect(result).to have_attributes help_not_available?: false, help_available?: false
+      expect(result).to have_attributes available_help: :undecided
     end
 
     it 'states that help is definitely available if any benefits are provided' do
       result = service.call(benefits_received: [:any_benefit])
-      expect(result).to have_attributes help_not_available?: false, help_available?: true
+      expect(result).to have_attributes available_help: :full
     end
   end
 
