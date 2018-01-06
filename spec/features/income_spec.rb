@@ -103,7 +103,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   Given I am OLIVER
   #   AND I am on the total income page
   #   When I click on the Next step button
-  #   Then I should see that I am eligible for partial remission (1750)
+  #   Then I should see that I am eligible for partial remission (18240)
   #
   scenario 'Income test for married citizen (oliver) with maximum income threshold (partial remission)' do
     # Arrange
@@ -114,7 +114,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 1750)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 18240)
   end
 
   # Scenario: Income test for single citizen with minimum income threshold (0 Remission)
@@ -196,16 +196,14 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #
   scenario 'Income test for married citizen (landon) with maximum income threshold (partial remission)' do
     # Arrange
-    #   LANDON is a married, 50 year old man with 0 children. He is not on income benefit. He has £9,600 worth of capital and an income of £5,244. He has a court fee of £4,900
-    # his min limit is 1245, his earnings are 3999 over this, so the remission is 1990
-  given_i_am(:landon)
+    given_i_am(:landon)
     answer_questions_up_to_total_income
 
     # Act
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 1990)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 2900)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold
@@ -216,9 +214,6 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #
   scenario 'Income test for single citizen (john2) with maximum income threshold (partial remission)' do
     # Arrange
-    #   JOHN2 is a single, 60 year old man with 0 children. He is not on income benefit. He has £11,850 worth of capital and an income of £5,084. He has a court fee of £6,000
-    # his limit is 1085 so his income is 3999 over
-    # Therefore the remission is 1990
     given_i_am(:john2)
     answer_questions_up_to_total_income
 
@@ -226,17 +221,17 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 1990)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 4000)
   end
 
   # Scenario: Income test for married citizen with maximum income threshold
   #   Given I am JO
   #   AND I am on the total income page
   #   When I click on the Next step button
-  #   Then I should see that I am eligible for partial remission
+  #   Then I should see that I am eligible for partial remission (5000)
   #
   scenario 'Income test for married citizen (jo) with maximum income threshold (partial remission)' do
-    # Arrange - Jo is Married, Age 45, 13900 Disposable capital, 5489 Monthly income, 1 child and no benefits
+    # Arrange
     given_i_am(:jo)
     answer_questions_up_to_total_income
 
@@ -244,7 +239,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_displayed
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 5000)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold
@@ -262,14 +257,14 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_displayed
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 4990)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold
   #   Given I am KEVIN
   #   AND I am on the total income page
   #   When I click on the Next step button
-  #   Then I should see that I am eligible for partial remission
+  #   Then I should see that I am eligible for partial remission (8000)
   #
   scenario 'Income test for single citizen (kevin) with maximum income threshold (partial remission)' do
     # Arrange
@@ -280,7 +275,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_displayed
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 8000)
   end
 
   # Scenario: Income test for single citizen over maximum income threshold
@@ -316,7 +311,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_displayed
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 940)
   end
 
   # Scenario: Income test for single citizen with minimum income threshold and many children
@@ -386,7 +381,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_displayed
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 0)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold and no children
@@ -404,7 +399,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_displayed
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 0)
   end
   # Scenario: Income test for married citizen with maximum income threshold and no children
   #   Given I am HOLLY (Married, 55, Capital 11999, Fee 6000, children 0, benefits none, income 5245 )
@@ -421,7 +416,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_displayed
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 4000)
   end
   # Scenario: Income test for single citizen with over maximum income threshold and no children
   #   Given I am THERESA

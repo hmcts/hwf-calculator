@@ -5,10 +5,11 @@ RSpec.describe HouseholdIncomeCalculatorService do
   let(:minimum_threshold_hash) { { single: 1085.0, sharing_income: 1245.0 } }
   let(:maximum_threshold_hash) { { single: 5085.0, sharing_income: 5245.0 } }
   let(:child_allowance) { 245 }
+  let(:fee) { 4000.0 }
 
   describe '#valid?' do
     it 'is true if all inputs are present and the correct type' do
-      instance = service.new(total_income: 1000.0, marital_status: 'single', number_of_children: 0)
+      instance = service.new(total_income: 1000.0, marital_status: 'single', number_of_children: 0, fee: 0.0)
       expect(instance.valid?).to be true
     end
 
@@ -67,7 +68,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           income = minimum_threshold - 1.0
 
           # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
 
           # Assert
           expect(result).to have_attributes available_help: :full
@@ -78,7 +79,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           income = minimum_threshold
 
           # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
 
           # Assert
           expect(result).to have_attributes available_help: :full
@@ -129,10 +130,55 @@ RSpec.describe HouseholdIncomeCalculatorService do
           income = minimum_threshold + 1.0
 
           # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
 
           # Assert
           expect(result).to have_attributes available_help: :partial
+        end
+
+        it 'returns part remission of the fee value if monthly income is just over the threshold' do
+          # Arrange
+          income = minimum_threshold + 1.0
+
+          # Act
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
+
+          # Assert
+          expect(result).to have_attributes remission: fee
+        end
+
+        it 'returns part remission of the full fee if monthly income is over the minimum by 10 pounds' do
+          # Arrange
+          income = minimum_threshold + 10.0
+
+          # Act
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
+
+          # Assert
+          expect(result).to have_attributes remission: fee - 10.0
+        end
+
+        it 'returns part remission of the full fee minus 30 pounds if monthly income is over the minimum by 50 pounds' do
+          # Arrange
+          income = minimum_threshold + 50.0
+
+          # Act
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
+
+          # Assert
+          expect(result).to have_attributes remission: fee - 30
+        end
+
+        it 'returns zero if the remission would have gone negative' do
+          # Arrange - So that the user would have to pay more than the fee  according to the rules
+          fee = 1000.0
+          income = minimum_threshold + 2100.0
+
+          # Act
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
+
+          # Assert
+          expect(result).to have_attributes remission: 0
         end
 
         it 'returns part remission if monthly income is over the minimum threshold and just below the maximum' do
@@ -140,7 +186,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           income = maximum_threshold - 1.0
 
           # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
 
           # Assert
           expect(result).to have_attributes available_help: :partial
@@ -151,7 +197,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           income = maximum_threshold
 
           # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
 
           # Assert
           expect(result).to have_attributes available_help: :partial
@@ -202,7 +248,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
           income = maximum_threshold + 1.0
 
           # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children)
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
 
           # Assert
           expect(result).to have_attributes available_help: :none

@@ -11,15 +11,15 @@ RSpec.describe CalculationService do
     let(:calculator_3_class) { class_spy(BaseCalculatorService, 'Calculator 3 class', identifier: :calculator3) }
 
     let(:calculator_1) do
-      instance_spy(BaseCalculatorService, 'Calculator 1', available_help: :undecided, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 1', available_help: :undecided, valid?: true, messages: [], remission: 0.0)
     end
 
     let(:calculator_2) do
-      instance_spy(BaseCalculatorService, 'Calculator 2', available_help: :undecided, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 2', available_help: :undecided, valid?: true, messages: [], remission: 0.0)
     end
 
     let(:calculator_3) do
-      instance_spy(BaseCalculatorService, 'Calculator 3', available_help: :undecided, valid?: true, messages: [])
+      instance_spy(BaseCalculatorService, 'Calculator 3', available_help: :undecided, valid?: true, messages: [], remission: 0.0)
     end
 
     let(:calculators) { [calculator_1_class, calculator_2_class, calculator_3_class] }
@@ -149,7 +149,7 @@ RSpec.describe CalculationService do
       end
 
       before do
-        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true)
+        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0)
         class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation).as_stubbed_const
         class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation).as_stubbed_const
         class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
@@ -222,6 +222,24 @@ RSpec.describe CalculationService do
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes messages: reasons
+    end
+  end
+
+  describe '#remission' do
+    let(:inputs) do
+      {
+          disposable_capital: 1000
+      }
+    end
+    include_context 'fake calculators'
+
+    it 'returns the value from calculator 1' do
+      # Arrange
+      allow(calculator_1).to receive(:available_help).and_return :partial
+      allow(calculator_1).to receive(:remission).and_return 100.0
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes remission: 100.0
     end
   end
 
@@ -302,6 +320,7 @@ RSpec.describe CalculationService do
       # Act and Assert
       expect(subject.to_h).to include inputs: a_hash_including(inputs),
                                       available_help: :undecided,
+                                      remission: 0.0,
                                       fields_required: instance_of(Array),
                                       required_fields_affecting_likelihood: instance_of(Array),
                                       messages: []

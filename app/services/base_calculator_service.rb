@@ -41,10 +41,12 @@
 #
 # @abstract
 class BaseCalculatorService
-  attr_reader :messages, :available_help
+  attr_reader :messages, :available_help, :remission
 
   # @!attribute [r] available_help
   #   @return [Symbol] The type of help available :none, :partial, :full or :undecided
+  # @!attribute [r] remission
+  #   @return [Float] The amount of remission, only valid if available_help is :partial
 
   # Perform the calculation
   # @param [Hash] inputs The inputs (with symbolized keys) for the calculator
@@ -87,5 +89,5 @@ class BaseCalculatorService
   private
 
   attr_accessor :inputs
-  attr_writer :messages, :available_help
+  attr_writer :messages, :available_help, :remission
 end

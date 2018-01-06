@@ -1,7 +1,7 @@
 # A calculator service for the household income for an individual or couple
 #
 class HouseholdIncomeCalculatorService < BaseCalculatorService
-  MY_FIELDS = [:number_of_children, :total_income].freeze
+  MY_FIELDS = [:marital_status, :fee, :number_of_children, :total_income].freeze
   MINIMUM_THRESHOLD = { single: 1085, sharing_income: 1245 }.freeze
   MAXIMUM_THRESHOLD = { single: 5085, sharing_income: 5245 }.freeze
   CHILD_ALLOWANCE = 245
@@ -35,12 +35,13 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
   private
 
   def all_inputs_present?
-    ([:marital_status, :total_income, :number_of_children] - inputs.keys).empty?
+    ([:fee, :marital_status, :total_income, :number_of_children] - inputs.keys).empty?
   end
 
   def all_inputs_correct_type?
     VALID_MARITAL_STATUS.include?(inputs[:marital_status]) &&
       inputs[:total_income].is_a?(Float) &&
+      inputs[:fee].is_a?(Float) &&
       inputs[:number_of_children].is_a?(Integer)
   end
 
@@ -79,11 +80,19 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
 
   def mark_as_partial_help_available
     self.available_help = :partial
+    self.remission = calculate_remission
     messages << { key: :likely, source: :household_income }
   end
 
   def mark_as_help_not_available
     self.available_help = :none
     messages << { key: :unlikely, source: :household_income }
+  end
+
+  def calculate_remission
+    over = (inputs[:total_income] - minimum_threshold).to_i
+    citizen_pays = (over / 10) * 5
+    remission = [0, inputs[:fee].to_i - citizen_pays].max
+    (remission / 10) * 10.0
   end
 end

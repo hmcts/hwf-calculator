@@ -32,7 +32,8 @@ module ApplicationHelper
     t "calculation.feedback.partial_remission.#{marital_status}.detail",
       total_income: calculation_total_income(calculation),
       fee: calculation_fee(calculation),
-      remission: calculation_remission(calculation)
+      remission: calculation_remission(calculation),
+      contribution: calculation_contribution(calculation)
   end
 
   # Formats a calculator value.
@@ -57,14 +58,22 @@ module ApplicationHelper
     number_to_currency(calculation.inputs[:fee], precision: 0, unit: '£')
   end
 
-  # @TODO Do not allow this through to develop with zero in as hard coded value
   # Presents the calculation remission in the correct format
   #
   # @param [Calculation] calculation The calculation to get the remission from
   #
   # @return [String] The text to display
   def calculation_remission(calculation)
-    number_to_currency(0, precision: 0, unit: '£')
+    number_to_currency(calculation.remission, precision: 0, unit: '£')
+  end
+
+  # Presents the calculation citizen contribution in the correct format
+  #
+  # @param [Calculation] calculation The calculation to get the contribution from
+  #
+  # @return [String] The text to display
+  def calculation_contribution(calculation)
+    number_to_currency(calculation.inputs[:fee] -  calculation.remission, precision: 0, unit: '£')
   end
 
   # Presents the calculation total income in the correct format

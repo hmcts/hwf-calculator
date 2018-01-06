@@ -26,6 +26,13 @@ RSpec.describe Calculation do
     end
   end
 
+  context '#remission' do
+    it 'stores a provided float' do
+      subject = described_class.new remission: 0.0
+      expect(subject.remission).to be 0.0
+    end
+  end
+
   context '#messages' do
     it 'stores a provided value of any type' do
       subject = described_class.new messages: [:any]
