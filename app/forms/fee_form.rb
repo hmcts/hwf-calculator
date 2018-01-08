@@ -2,7 +2,9 @@
 class FeeForm < BaseForm
   # @!attribute [rw] fee
   #   @return [Float] The court fee
-  attribute :fee, :float
+  attribute :fee, :strict_integer
+
+  validates :fee, numericality: { only_integer: true }
 
   # The type of the form
   #
@@ -15,7 +17,7 @@ class FeeForm < BaseForm
 
   def export_params
     {
-      fee: fee
+      fee: fee.to_f
     }
   end
 end
