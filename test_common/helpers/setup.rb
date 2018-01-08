@@ -8,10 +8,14 @@ module Calculator
       end
 
       def answer_questions_up_to_disposable_capital
-        start_calculator_session
+        answer_up_to_marital_status_question
         answer_marital_status_question
         answer_court_fee_question
         answer_date_of_birth_question
+      end
+
+      def answer_up_to_marital_status_question
+        start_calculator_session
       end
 
       def answer_questions_up_to_total_income
