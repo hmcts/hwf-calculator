@@ -3,8 +3,12 @@ RSpec.describe StrictIntegerType do
   describe '#cast' do
     subject(:type) { described_class.new }
 
-    it 'casts integer strings to an integer' do
+    it 'casts positive integer strings to an integer' do
       expect(type.cast('10')).to be 10
+    end
+
+    it 'casts negative integer strings to an integer' do
+      expect(type.cast('-10')).to be -10
     end
 
     it 'does not cast floats' do

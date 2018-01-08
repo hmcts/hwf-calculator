@@ -69,6 +69,17 @@ RSpec.describe FeeForm, type: :model do
         # Assert
         expect(form.errors).to include :fee
       end
+
+      it 'disallows -1' do
+        # Arrange
+        form.fee = '-1'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
     end
   end
 

@@ -7,7 +7,7 @@ class FeeForm < BaseForm
   #   @return [Integer] The court fee
   attribute :fee, :strict_integer
 
-  validates :fee, numericality: { only_integer: true }
+  validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   # The type of the form
   #
