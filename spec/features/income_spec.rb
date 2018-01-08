@@ -1,6 +1,6 @@
-  require 'rails_helper'
-  # This feature represents the acceptance criteria defined in RST-670
-  RSpec.describe 'Income Test', type: :feature, js: true do
+require 'rails_helper'
+# This feature represents the acceptance criteria defined in RST-670
+RSpec.describe 'Income Test', type: :feature, js: true do
   include Calculator::Test::Pages
   include ActiveSupport::NumberHelper
   # Feature:  Income Test

@@ -33,6 +33,7 @@ RSpec.describe 'Enter court fee test', type: :feature, js: true do
     # Assert
     expect(next_page).to be_displayed
   end
+
   #   Scenario: Married citizen enter court and tribunal fee amount
   #                 Given I am ALLI
   #                 And I am on the court and tribunal fee page
