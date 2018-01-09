@@ -16,7 +16,7 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
     { age: 1..60, fee: 7001..Float::INFINITY, disposable_capital: 16000 }.freeze,
     { age: 61..200, fee: 1..Float::INFINITY, disposable_capital: 16000 }.freeze
   ].freeze
-  MY_FIELDS = [:fee, :date_of_birth, :disposable_capital].freeze
+  MY_FIELDS = [:fee, :date_of_birth, :partner_date_of_birth, :disposable_capital].freeze
 
   def initialize(age_service: AgeService, **args)
     self.age_service = age_service
@@ -29,9 +29,10 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
   end
 
   def valid?
-    inputs[:date_of_birth].is_a?(Date) &&
-      inputs[:fee].is_a?(Numeric) &&
-      inputs[:disposable_capital].is_a?(Numeric)
+    date_of_birth_valid? &&
+      partner_date_of_birth_valid? &&
+      fee_valid? &&
+      disposable_capital_valid?
   end
 
   def self.fields_required(inputs, *)
@@ -40,8 +41,28 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
 
   private
 
+  def disposable_capital_valid?
+    inputs[:disposable_capital].is_a?(Numeric)
+  end
+
+  def fee_valid?
+    inputs[:fee].is_a?(Numeric)
+  end
+
+  def date_of_birth_valid?
+    inputs[:date_of_birth].is_a?(Date)
+  end
+
+  def partner_date_of_birth_valid?
+    (inputs[:partner_date_of_birth].nil? || inputs[:partner_date_of_birth].is_a?(Date))
+  end
+
+  def earliest_date_of_birth
+    [inputs[:date_of_birth], inputs[:partner_date_of_birth]].compact.min
+  end
+
   def process_inputs
-    fee_band = find_fee_band_for(age: age_service.call(date_of_birth: inputs[:date_of_birth]), fee: inputs[:fee])
+    fee_band = find_fee_band_for(age: age_service.call(date_of_birth: earliest_date_of_birth), fee: inputs[:fee])
     if inputs[:disposable_capital] < fee_band[:disposable_capital]
       mark_as_help_available
     else

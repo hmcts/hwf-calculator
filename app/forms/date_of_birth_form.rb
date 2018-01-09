@@ -32,13 +32,12 @@ class DateOfBirthForm < BaseForm
 
   def convert_date_of_birth(inputs)
     return unless inputs.key?('date_of_birth(1i)') &&
-      inputs.key?('date_of_birth(2i)') &&
-      inputs.key?('date_of_birth(3i)')
+                  inputs.key?('date_of_birth(2i)') &&
+                  inputs.key?('date_of_birth(3i)')
     date = Date.new inputs.delete('date_of_birth(1i)').to_i,
       inputs.delete('date_of_birth(2i)').to_i,
       inputs.delete('date_of_birth(3i)').to_i
     inputs.merge!(date_of_birth: date)
-
   end
 
   def convert_partner_date_of_birth(inputs)
@@ -50,13 +49,10 @@ class DateOfBirthForm < BaseForm
     inputs.merge!(partner_date_of_birth: date)
   end
 
-  def earliest_date_of_birth
-    [date_of_birth, partner_date_of_birth].compact.min
-  end
-
   def export_params
     {
-      date_of_birth: earliest_date_of_birth
+      date_of_birth: date_of_birth,
+      partner_date_of_birth: partner_date_of_birth
     }
   end
 end
