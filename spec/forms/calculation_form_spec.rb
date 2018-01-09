@@ -32,6 +32,21 @@ RSpec.describe CalculationForm do
     end
   end
 
+  describe '#partner_date_of_birth=' do
+    it 'persists as a date' do
+      form = described_class.new({})
+      form.partner_date_of_birth = '1999-12-27'
+      expect(form.partner_date_of_birth).to eql Date.parse('27 December 1999')
+    end
+  end
+
+  describe '#partner_date_of_birth via initialize' do
+    it 'persists as a date' do
+      form = described_class.new(partner_date_of_birth: '1999-12-27')
+      expect(form.partner_date_of_birth).to eql Date.parse('27 December 1999')
+    end
+  end
+
   describe '#fee=' do
     it 'persists as a float' do
       form = described_class.new({})

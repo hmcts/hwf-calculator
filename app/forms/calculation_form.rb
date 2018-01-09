@@ -15,6 +15,9 @@ class CalculationForm < BaseForm
   # @!attribute [rw] date_of_birth
   #   @return [Date,Symbol] Either a date specifying the date of birth, or :undefined
   attribute :date_of_birth, :date, default: UNDEFINED
+  # @!attribute [rw] partner_date_of_birth
+  #   @return [Date,Symbol,nil] Either a date specifying the partner's date of birth, nil (if no partner), or :undefined
+  attribute :partner_date_of_birth, :date, default: UNDEFINED
   # @!attribute [rw] fee
   #   @return [Float,Symbol] Either a float value defining the court fee, or :undefined
   attribute :fee, :float, default: UNDEFINED
