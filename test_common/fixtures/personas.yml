@@ -10,6 +10,7 @@ john:
 alli:
   marital_status: Married
   age: 60
+  partner_age: 60
   disposable_capital: 3800
   fee: 1334
   number_of_children: 1
@@ -19,6 +20,7 @@ alli:
 oliver:
   marital_status: Married
   age: 75
+  partner_age: 75
   disposable_capital: 15000
   fee: 20000
   number_of_children: 4
@@ -28,6 +30,7 @@ oliver:
 lola:
   marital_status: Married
   age: 90
+  partner_age: 90
   disposable_capital: 19000
   fee: 100000
   number_of_children: 0
@@ -46,6 +49,7 @@ baba:
 tony:
   marital_status: Married
   age: 59
+  partner_age: 59
   disposable_capital: 18000
   fee: 7500
   number_of_children: 0
@@ -82,6 +86,7 @@ james:
 thomas:
   marital_status: Married
   age: 50
+  partner_age: 50
   disposable_capital: 5850
   fee: 2000
   number_of_children: 0
@@ -91,6 +96,7 @@ thomas:
 riley:
   marital_status: Married
   age: 60
+  partner_age: 60
   disposable_capital: 6850
   fee: 2330
   number_of_children: 2
@@ -109,6 +115,7 @@ jacob:
 landon:
   marital_status: Married
   age: 50
+  partner_age: 50
   disposable_capital: 9600
   fee: 4900
   number_of_children: 0
@@ -127,6 +134,7 @@ john2:
 jo:
   marital_status: Married
   age: 45
+  partner_age: 45
   disposable_capital: 13900
   fee: 7000
   number_of_children: 1
@@ -163,6 +171,7 @@ joseph:
 tonia:
   marital_status: Married
   age: 45
+  partner_age: 45
   disposable_capital: 6950
   fee: 2330
   number_of_children: 7
@@ -172,6 +181,7 @@ tonia:
 maryann:
   marital_status: Married
   age: 50
+  partner_age: 50
   disposable_capital: 9800
   fee: 5000
   number_of_children: 10
@@ -190,6 +200,7 @@ bethany:
 britney:
   marital_status: Married
   age: 45
+  partner_age: 45
   disposable_capital: 9000
   fee: 4900
   number_of_children: 0
@@ -199,6 +210,7 @@ britney:
 angela:
   marital_status: Married
   age: 30
+  partner_age: 30
   disposable_capital: 5500
   fee: 1800
   number_of_children: 0
@@ -217,6 +229,7 @@ eden:
 holly:
   marital_status: Married
   age: 55
+  partner_age: 55
   disposable_capital: 11999
   fee: 6000
   number_of_children: 0
@@ -235,6 +248,7 @@ theresa:
 tiana:
   marital_status: Married
   age: 60
+  partner_age: 60
   disposable_capital: 7980
   fee: 4000
   number_of_children: 0
