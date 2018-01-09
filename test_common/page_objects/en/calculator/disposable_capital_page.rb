@@ -8,6 +8,10 @@ module Calculator
         def next
           next_button.click
         end
+
+        def error_with_text(text)
+          disposable_capital.error_with_text(text)
+        end
       end
     end
   end

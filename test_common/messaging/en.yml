@@ -42,6 +42,10 @@ en:
     fee:
       errors:
         non_numeric: Please enter numeric value with no decimal places
+    disposable_capital:
+      errors:
+        non_numeric: "Please enter a valid value. The two nearest valid values are: XX and XX."
+        blank: "Enter how much you have in savings and investments"
     income_benefits:
       errors:
         nothing_selected: 'Please select from the list'
