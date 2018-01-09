@@ -39,6 +39,9 @@ en:
         marital_status:
           single: Single
           sharing_income: Married or living with someone
+    fee:
+      errors:
+        non_numeric: Please enter numeric value with no decimal places
     income_benefits:
       errors:
         nothing_selected: 'Please select from the list'

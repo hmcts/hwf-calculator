@@ -6,6 +6,12 @@ en:
           attributes:
             benefits_received:
               blank: 'Please select from the list'
+        fee_form:
+          attributes:
+            fee:
+              not_a_number: Please enter numeric value with no decimal places
+              not_an_integer: Please enter numeric value with no decimal places
+
   calculation:
     home:
       start: "Start now"

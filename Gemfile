@@ -42,6 +42,8 @@ group :development, :test do
   gem 'rubocop-rspec', '~> 1.10'
   gem 'simplecov', '~> 0.15'
   gem 'pry', '~> 0.11.3'
+  gem 'ruby-debug-ide'
+  gem 'debase'
 end
 
 group :development do

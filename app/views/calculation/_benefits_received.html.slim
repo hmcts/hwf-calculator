@@ -11,8 +11,6 @@
 
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('error' if form.errors.any?)
-      - if true
-        span.error-message = 'errors'
       fieldset
         legend = I18n.t('calculation.field_labels.benefits_received')
 
@@ -28,6 +26,8 @@
               h2.heading-small = 'heading 2 small'
               ul.list.list-bullet
                 li = 'item_1'
+        - if form.errors.include?(:benefits_received)
+          span.error-message = form.errors[:benefits_received].join(', ')
         label
           = gds_error_messages(model: f.object, method: :benefits_received)
           = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
