@@ -25,25 +25,25 @@ RSpec.describe DateOfBirthForm, type: :model do
 
     it 'allows partner date of birth fields to be blank' do
       subject = described_class.new 'date_of_birth(1i)' => '2000',
-        'date_of_birth(2i)' => '12',
-        'date_of_birth(3i)' => '27',
-        'partner_date_of_birth(1i)' => '',
-        'partner_date_of_birth(2i)' => '',
-        'partner_date_of_birth(3i)' => ''
+                                    'date_of_birth(2i)' => '12',
+                                    'date_of_birth(3i)' => '27',
+                                    'partner_date_of_birth(1i)' => '',
+                                    'partner_date_of_birth(2i)' => '',
+                                    'partner_date_of_birth(3i)' => ''
       expect(subject.partner_date_of_birth).to be_nil
     end
   end
 
   describe '#export' do
-    it 'exports the date_of_birth with only 1 date' do
+    it 'exports both date_of_birth with only 1 date provided' do
       form.date_of_birth = Date.new(2000, 1, 1)
-      expect(form.export).to eql date_of_birth: Date.new(2000, 1, 1)
+      expect(form.export).to eql date_of_birth: Date.new(2000, 1, 1), partner_date_of_birth: nil
     end
 
-    it 'exports the earliest date_of_birth with 2 dates' do
+    it 'exports both dates' do
       form.date_of_birth = Date.new(2000, 1, 1)
       form.partner_date_of_birth = Date.new(1999, 1, 1)
-      expect(form.export).to eql date_of_birth: Date.new(1999, 1, 1)
+      expect(form.export).to eql date_of_birth: Date.new(2000, 1, 1), partner_date_of_birth: Date.new(1999, 1, 1)
     end
   end
 end
