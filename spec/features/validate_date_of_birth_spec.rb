@@ -1,6 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-728
 RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
+  let(:next_page) { Calculator::Test::En::DisposableCapitalPage.new }
   # Feature: Date of Birth field validation
   # HwF eligibility Calculator should validate input in the date of birth field
   #
@@ -31,6 +32,17 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   #               When I click on the Next step button
   #               Then I should see an error message
   #  #Error Message: Please enter a valid date of birth
+  scenario 'Citizen leave DoB field blank' do
+    # Arrange
+    given_i_am(:john)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
   #
   # Scenario: Single citizen who is under 16 years old enter their date of birth
   #               Given I am ALAN
@@ -39,13 +51,35 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   #               When I click on the Next step button
   #               Then I should see an error message
   #  #Error Message: You must be over 16 years old to apply for help with fees
-  #
+  scenario 'Single citizen who is under 16 years old enter their date of birth' do
+    # Arrange
+    given_i_am(:alan)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(date_of_birth_page.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.single.under_age'))).to be_present
+  end
   # Scenario: Under 61 single citizen enter date of birth
   #               Given I am JOHN
   #               And I am on the date of birth page
   #               And I fill in my date of birth
   #               When I click on the Next step button
   #               Then I should see the next page
+  #
+  scenario 'Under 61 single citizen enter date of birth' do
+    # Arrange
+    given_i_am(:john)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(next_page).to be_present
+  end
   #
   # Scenario: Over 61 single citizen enter date of birth
   #               Given I am Calvin
@@ -54,6 +88,17 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   #               When I click on the Next step button
   #               Then I should see the next page
   #
+  scenario 'Over 61 single citizen enter date of birth' do
+    # Arrange
+    given_i_am(:calvin)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(next_page).to be_present
+  end
   # Scenario: Under 61 citizen and partner enter date of birth
   #               Given I am ALLI
   #               And I am on the date of birth page
@@ -63,6 +108,18 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   #               Then I should see the next page
   #               And disposable capital test should classify applicant as under 61
   #
+  scenario 'Under 61 citizen and partner enter date of birth' do
+    # Arrange
+    given_i_am(:alli)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(next_page).to be_present
+  end
+
   # Scenario: Over 61 citizen and partner enter date of birth
   #               Given I am OLIVER
   #               And I am on the date of birth page
@@ -72,6 +129,17 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   #               Then I should see the next page
   #               And disposable capital test should classify applicant as over 61
   #
+  scenario 'Over 61 citizen and partner enter date of birth' do
+    # Arrange
+    given_i_am(:oliver)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(next_page).to be_present
+  end
   # Scenario: Citizen is under 61 and partner is over 61
   #               Given I am CLAUDE
   #               And I am on the date of birth page
@@ -81,6 +149,17 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   #               Then I should see the next page
   #               And disposable capital test should classify applicant as under 61
   #
+  scenario 'Citizen is under 61 and partner is over 61' do
+    # Arrange
+    given_i_am(:claude)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(next_page).to be_present
+  end
   # Scenario: Citizen is under 16 and partner is under 61
   #               Given I am VERONICA
   #               And I am on the date of birth page
@@ -90,4 +169,15 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   #               Then I should see an error message
   #
   #     #Error Message: You and your partner must be over 16 years old to apply for help with fees
+  scenario 'Citizen is under 16 and partner is under 61' do
+    # Arrange
+    given_i_am(:veronica)
+    answer_questions_up_to_date_of_birth
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(date_of_birth_page.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.married.under_age'))).to be_present
+  end
 end
