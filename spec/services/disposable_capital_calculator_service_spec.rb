@@ -100,26 +100,35 @@ RSpec.describe DisposableCapitalCalculatorService do
       service.call(date_of_birth: Date.parse('29 February 1996'), fee: 100, disposable_capital: 10000)
       expect(age_service).to have_received(:call).with(date_of_birth: Date.parse('29 February 1996'))
     end
+
+    it 'uses the AgeService with the eldest of the 2 date of births' do
+      age_service = class_spy('AgeService').as_stubbed_const
+      allow(age_service).to receive(:call).and_return(30) # Irrelevant response
+      service.call date_of_birth: Date.parse('29 February 1996'),
+                   partner_date_of_birth: Date.parse('28 February 1996'),
+                   fee: 100, disposable_capital: 10000
+      expect(age_service).to have_received(:call).with(date_of_birth: Date.parse('28 February 1996'))
+    end
   end
 
   describe '#fields_required' do
-    it 'returns all 3 fields with no inputs provided' do
+    it 'returns all 4 fields with no inputs provided' do
       # Act
       result = described_class.fields_required({}, previous_calculations: {})
 
       # Assert
-      expect(result).to eql [:fee, :date_of_birth, :disposable_capital]
+      expect(result).to eql [:fee, :date_of_birth, :partner_date_of_birth, :disposable_capital]
     end
-    it 'returns 2 fields with 1 input provided' do
+    it 'returns 3 fields with 1 input provided' do
       # Act
       result = described_class.fields_required({ fee: 10.0 }, previous_calculations: {})
 
       # Assert
-      expect(result).to eql [:date_of_birth, :disposable_capital]
+      expect(result).to eql [:date_of_birth, :partner_date_of_birth, :disposable_capital]
     end
     it 'returns no fields if all inputs have been provided' do
       # Act
-      result = described_class.fields_required({ fee: 10.0, date_of_birth: 20.years.ago, disposable_capital: 10000.0 }, previous_calculations: {})
+      result = described_class.fields_required({ fee: 10.0, date_of_birth: 20.years.ago, partner_date_of_birth: nil, disposable_capital: 10000.0 }, previous_calculations: {})
 
       # Assert
       expect(result).to eql []
@@ -127,23 +136,28 @@ RSpec.describe DisposableCapitalCalculatorService do
   end
 
   describe '#valid?' do
-    it 'is true when all inputs required are present and correct type' do
-      instance = service.new(date_of_birth: 20.years.ago.to_date, fee: 1000, disposable_capital: 100)
+    it 'is true when all inputs required are present and correct type with partner dob as nil' do
+      instance = service.new(date_of_birth: 20.years.ago.to_date, partner_date_of_birth: nil, fee: 1000, disposable_capital: 100)
+      expect(instance.valid?).to be true
+    end
+
+    it 'is true when all inputs required are present and correct type with partner dob as date' do
+      instance = service.new(date_of_birth: 20.years.ago.to_date, partner_date_of_birth: 18.years.ago.to_date, fee: 1000, disposable_capital: 100)
       expect(instance.valid?).to be true
     end
 
     it 'is false when all inputs required are present but one is of incorrect type' do
-      instance = service.new(date_of_birth: "31 December 2017", fee: 1000, disposable_capital: 100)
+      instance = service.new(date_of_birth: "31 December 2017", partner_date_of_birth: nil, fee: 1000, disposable_capital: 100)
       expect(instance.valid?).to be false
     end
 
     it 'is false when all inputs required are present but one is nil' do
-      instance = service.new(date_of_birth: nil, fee: 1000, disposable_capital: 100)
+      instance = service.new(date_of_birth: nil, partner_date_of_birth: nil, fee: 1000, disposable_capital: 100)
       expect(instance.valid?).to be false
     end
 
     it 'is false when one input is missing' do
-      instance = service.new(fee: 1000, disposable_capital: 100)
+      instance = service.new(fee: 1000, disposable_capital: 100, partner_date_of_birth: nil)
       expect(instance.valid?).to be false
     end
 
