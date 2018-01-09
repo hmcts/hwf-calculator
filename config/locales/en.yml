@@ -69,6 +69,7 @@ en:
       fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
       benefits_received: "Select all income benefits you are currently receiving"
       total_income: "How much total income do you receive each month?"
+      partner_date_of_birth: "What is your partners date of birth?"
     previous_questions:
       disposable_capital:
         label: "Combined savings and investment"

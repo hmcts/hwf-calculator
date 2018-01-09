@@ -8,9 +8,13 @@ module Calculator
       end
 
       def answer_questions_up_to_disposable_capital
+        answer_questions_up_to_date_of_birth
+        answer_date_of_birth_question
+      end
+
+      def answer_questions_up_to_date_of_birth
         answer_questions_up_to_court_fee
         answer_court_fee_question
-        answer_date_of_birth_question
       end
 
       def answer_up_to_marital_status_question
