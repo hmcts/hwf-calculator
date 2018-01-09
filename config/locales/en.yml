@@ -6,6 +6,13 @@ en:
           attributes:
             benefits_received:
               blank: 'Please select from the list'
+        disposable_capital_form:
+          attributes:
+            disposable_capital:
+              not_a_number: "Please enter a valid value. The two nearest valid values are: XX and XX."
+              not_an_integer: "Please enter a valid value. The two nearest valid values are: XX and XX."
+              blank: Enter how much you have in savings and investments
+              greater_than_or_equal_to: "must be at least %{count}"
         fee_form:
           attributes:
             fee:
