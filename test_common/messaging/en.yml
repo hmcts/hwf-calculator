@@ -34,6 +34,9 @@ en:
           heading: You should be eligible for a Partial Remission
           detail: As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
   hwf_pages:
+    total_income:
+      errors:
+        non_numeric: Please enter numeric value with no decimal places
     marital_status:
       labels:
         marital_status:

@@ -19,6 +19,14 @@ en:
               not_a_number: Please enter numeric value with no decimal places
               not_an_integer: Please enter numeric value with no decimal places
 
+        total_income_form:
+          attributes:
+            total_income:
+              not_a_number: "Please enter numeric value with no decimal places"
+              not_an_integer: "Please enter numeric value with no decimal places"
+              blank: "Please enter numeric value with no decimal places"
+              greater_than_or_equal_to: "must be at least %{count}"
+
   calculation:
     home:
       start: "Start now"
