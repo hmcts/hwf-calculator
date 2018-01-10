@@ -36,7 +36,7 @@ class BenefitsReceivedForm < BaseForm
     benefits_converted.map! do |benefit|
       stringify_benefits.include?(benefit) ? benefit.to_sym : benefit
     end
-    super benefits_converted
+    write_attribute(:benefits_received, benefits_converted)
   end
 
   private

@@ -7,9 +7,7 @@ require 'active_model'
 # It is assumed that the rails project will implement it in active model itself in the future, in the same
 # way it is implemented in active record.  This gem fills in the gap for now, but can hopefully be removed in a
 # future version of rails.
-class BaseForm
-  include ActiveModel::Model
-  include ActiveModelAttributes
+class BaseForm < ActiveRecord::Base
 
   # @!method valid?
   #   Indicates if the model passes all validations

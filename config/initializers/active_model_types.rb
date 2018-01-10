@@ -1,2 +1,2 @@
-ActiveModel::Type.register(:array, ArrayType)
-ActiveModel::Type.register(:strict_integer, StrictIntegerType)
+ActiveRecord::Type.register(:array, ArrayType)
+ActiveRecord::Type.register(:strict_integer, StrictIntegerType)

@@ -15,6 +15,12 @@ RSpec.describe CalculationForm do
       form = described_class.new(fee: 10, disposable_capital: 1000)
       expect(form.export.keys).to contain_exactly(:fee, :disposable_capital)
     end
+
+    it 'is only has two keys when 1 key is given as part of initialize and the other via setter' do
+      form = described_class.new(fee: 10)
+      form.disposable_capital = 1000
+      expect(form.export.keys).to contain_exactly(:fee, :disposable_capital)
+    end
   end
 
   describe '#date_of_birth=' do
