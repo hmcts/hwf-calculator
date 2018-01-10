@@ -1,0 +1,9 @@
+development:
+  adapter: nulldb
+  schema: lib/nulldb_schema.rb
+test:
+  adapter: nulldb
+  schema: lib/nulldb_schema.rb
+production:
+  adapter: nulldb
+  schema: lib/nulldb_schema.rb

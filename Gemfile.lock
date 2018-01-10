@@ -36,6 +36,8 @@ GEM
       activemodel (= 5.1.4)
       activesupport (= 5.1.4)
       arel (~> 8.0)
+    activerecord-nulldb-adapter (0.3.7)
+      activerecord (>= 2.0.0)
     activesupport (5.1.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -311,6 +313,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_attributes (~> 1.2)
+  activerecord-nulldb-adapter (~> 0.0)
   byebug
   capybara (~> 2.13)
   capybara-screenshot (~> 1.0)
@@ -344,4 +347,4 @@ DEPENDENCIES
   webmock (~> 3.1)
 
 BUNDLED WITH
-   1.14.6
+   1.16.0
