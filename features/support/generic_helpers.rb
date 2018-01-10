@@ -8,23 +8,23 @@ def user
 end
 # rubocop:enable Style/TrivialAccessors
 
-def calculator_start_page
-  @calculator_start_page ||= ::Calculator::Test::En::StartPage.new
+def start_page
+  @start_page ||= ::Calculator::Test::En::StartPage.new
 end
 
-def calculator_marital_status_page
-  @calculator_marital_status_page ||= ::Calculator::Test::En::MaritalStatusPage.new
+def marital_status_page
+  @marital_status_page ||= ::Calculator::Test::En::MaritalStatusPage.new
 end
 
-def calculator_court_fee_page
+def court_fee_page
   @calculator_court_fee_page ||= ::Calculator::Test::En::CourtFeePage.new
 end
 
-def calculator_date_of_birth_page
-  @calculator_date_of_birth_page ||= ::Calculator::Test::En::DateOfBirthPage.new
+def date_of_birth_page
+  @date_of_birth_page ||= ::Calculator::Test::En::DateOfBirthPage.new
 end
 
-def calculator_disposable_capital_page
+def disposable_capital_page
   @calculator_disposable_capital_page ||= ::Calculator::Test::En::DisposableCapitalPage.new
 end
 

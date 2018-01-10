@@ -8,7 +8,7 @@ RSpec.describe StrictIntegerType do
     end
 
     it 'casts negative integer strings to an integer' do
-      expect(type.cast('-10')).to be -10
+      expect(type.cast('-10')).to be(-10)
     end
 
     it 'does not cast floats' do

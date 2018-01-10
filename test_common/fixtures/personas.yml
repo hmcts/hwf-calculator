@@ -20,7 +20,7 @@ alli:
 oliver:
   marital_status: Married
   age: 75
-  partner_age: 75
+  partner_age: 70
   disposable_capital: 15000
   fee: 20000
   number_of_children: 4
@@ -255,6 +255,46 @@ tiana:
   income_benefits:
     - none
   monthly_gross_income: 5246
+alan:
+  marital_status: Single
+  age: 15
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+calvin:
+  marital_status: Single
+  age: 70
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+claude:
+  marital_status: Married
+  age: 60
+  partner_age: 75
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+veronica:
+  marital_status: Married
+  age: 15
+  partner_age: 25
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+
+
 
 
 

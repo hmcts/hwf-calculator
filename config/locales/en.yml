@@ -26,7 +26,14 @@ en:
               not_an_integer: "Please enter numeric value with no decimal places"
               blank: "Please enter numeric value with no decimal places"
               greater_than_or_equal_to: "must be at least %{count}"
-
+        date_of_birth_form:
+          attributes:
+            date_of_birth:
+              blank: Please enter a valid date of birth
+              age_less_than: You must be over %{count} years old to apply for help with fees
+            partner_date_of_birth:
+              blank: Please enter a valid date of birth
+              age_less_than: You and your partner must be over %{count} years old to apply for help with fees
   calculation:
     home:
       start: "Start now"
