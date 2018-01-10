@@ -60,7 +60,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.single.under_age'))).to be_present
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.single'))).to be_present
   end
   # Scenario: Under 61 single citizen enter date of birth
   #               Given I am JOHN
@@ -178,6 +178,6 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.married.under_age'))).to be_present
+    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.married'))).to be_present
   end
 end
