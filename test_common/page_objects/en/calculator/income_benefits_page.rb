@@ -44,7 +44,7 @@ module Calculator
           benefits.set([label_text])
         end
 
-         # The don't know checkbox
+        # The don't know checkbox
         #
         # @return [Capybara::Node::Element]
         def dont_know_option
