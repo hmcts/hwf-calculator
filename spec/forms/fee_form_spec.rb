@@ -3,7 +3,84 @@ RSpec.describe FeeForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
-    it 'should have some but dont know what they are yet @TODO'
+    context 'fee' do
+      it 'allows numeric values' do
+        # Arrange
+        form.fee = '10000'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).not_to include :fee
+      end
+
+      it 'disallows floating point numbers' do
+        # Arrange
+        form.fee = '1000.00'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
+
+      it 'disallows non numeric values' do
+        # Arrange
+        form.fee = 'dddd'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
+
+      it 'disallows NaN for security measures' do
+        # Arrange
+        form.fee = 'NaN'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
+
+      it 'disallows Infinity for security measures' do
+        # Arrange
+        form.fee = 'Infinity'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
+
+      it 'disallows -Infinity for security measures' do
+        # Arrange
+        form.fee = '-Infinity'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
+
+      it 'disallows -1' do
+        # Arrange
+        form.fee = '-1'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
+    end
   end
 
   describe 'type' do

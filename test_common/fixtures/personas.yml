@@ -3,39 +3,299 @@ john:
   age: 56
   disposable_capital: 2990
   fee: 600
+  number_of_children: 1
+  income_benefits:
+    - none
+  monthly_gross_income: 1330
 alli:
   marital_status: Married
   age: 60
+  partner_age: 50
   disposable_capital: 3800
   fee: 1334
+  number_of_children: 1
+  income_benefits:
+    - none
+  monthly_gross_income: 1489
 oliver:
   marital_status: Married
   age: 75
+  partner_age: 70
   disposable_capital: 15000
   fee: 20000
+  number_of_children: 4
+  income_benefits:
+    - none
+  monthly_gross_income: 5735
 lola:
   marital_status: Married
   age: 90
+  partner_age: 90
   disposable_capital: 19000
   fee: 100000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
 baba:
   marital_status: Single
   age: 40
   disposable_capital: 15000
   fee: 6500
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
 tony:
   marital_status: Married
   age: 59
+  partner_age: 59
   disposable_capital: 18000
   fee: 7500
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
 david:
   marital_status: Single
   age: 62
   disposable_capital: 25000
   fee: 50000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
 tom:
   marital_status: Single
   age: 80
   disposable_capital: 15999
   fee: 100
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+james:
+  marital_status: Single
+  age: 45
+  disposable_capital: 4999
+  fee: 1664
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 1084
+thomas:
+  marital_status: Married
+  age: 50
+  partner_age: 50
+  disposable_capital: 5850
+  fee: 2000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 1245
+riley:
+  marital_status: Married
+  age: 60
+  partner_age: 60
+  disposable_capital: 6850
+  fee: 2330
+  number_of_children: 2
+  income_benefits:
+    - none
+  monthly_gross_income: 1730
+jacob:
+  marital_status: Single
+  age: 35
+  disposable_capital: 7999
+  fee: 4000
+  number_of_children: 2
+  income_benefits:
+    - none
+  monthly_gross_income: 1574
+landon:
+  marital_status: Married
+  age: 50
+  partner_age: 50
+  disposable_capital: 9600
+  fee: 4900
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5244
+john2:
+  marital_status: Single
+  age: 60
+  disposable_capital: 11850
+  fee: 6000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5084
+jo:
+  marital_status: Married
+  age: 45
+  partner_age: 45
+  disposable_capital: 13900
+  fee: 7000
+  number_of_children: 1
+  income_benefits:
+    - none
+  monthly_gross_income: 5489
+simon:
+  marital_status: Single
+  age: 44
+  disposable_capital: 13999
+  fee: 6999
+  number_of_children: 1
+  income_benefits:
+    - none
+  monthly_gross_income: 5330
+kevin:
+  marital_status: Single
+  age: 54
+  disposable_capital: 15800
+  fee: 10000
+  number_of_children: 2
+  income_benefits:
+    - none
+  monthly_gross_income: 5575
+joseph:
+  marital_status: Single
+  age: 35
+  disposable_capital: 13999
+  fee: 7000
+  number_of_children: 2
+  income_benefits:
+    - none
+  monthly_gross_income: 8000
+tonia:
+  marital_status: Married
+  age: 45
+  partner_age: 45
+  disposable_capital: 6950
+  fee: 2330
+  number_of_children: 7
+  income_benefits:
+    - none
+  monthly_gross_income: 5734
+maryann:
+  marital_status: Married
+  age: 50
+  partner_age: 50
+  disposable_capital: 9800
+  fee: 5000
+  number_of_children: 10
+  income_benefits:
+    - none
+  monthly_gross_income: 1734
+bethany:
+  marital_status: Single
+  age: 50
+  disposable_capital: 3500
+  fee: 1200
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 1085
+britney:
+  marital_status: Married
+  age: 45
+  partner_age: 45
+  disposable_capital: 9000
+  fee: 4900
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 1245
+angela:
+  marital_status: Married
+  age: 30
+  partner_age: 30
+  disposable_capital: 5500
+  fee: 1800
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5244
+eden:
+  marital_status: Single
+  age: 40
+  disposable_capital: 4900
+  fee: 1665
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5085
+holly:
+  marital_status: Married
+  age: 55
+  partner_age: 55
+  disposable_capital: 11999
+  fee: 6000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5245
+theresa:
+  marital_status: Single
+  age: 47
+  disposable_capital: 15999
+  fee: 7500
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5246
+tiana:
+  marital_status: Married
+  age: 60
+  partner_age: 60
+  disposable_capital: 7980
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 5246
+alan:
+  marital_status: Single
+  age: 15
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+calvin:
+  marital_status: Single
+  age: 70
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+claude:
+  marital_status: Married
+  age: 60
+  partner_age: 75
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+veronica:
+  marital_status: Married
+  age: 15
+  partner_age: 25
+  disposable_capital: 0
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+
+
+
+
+
 

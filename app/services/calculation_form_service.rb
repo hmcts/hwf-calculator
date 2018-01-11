@@ -13,7 +13,10 @@ class CalculationFormService
     disposable_capital: DisposableCapitalForm,
     benefits_received: BenefitsReceivedForm,
     number_of_children: NumberOfChildrenForm,
-    full_remission_available: FullRemissionAvailableForm
+    full_remission_available: FullRemissionAvailableForm,
+    partial_remission_available: PartialRemissionAvailableForm,
+    no_remission_available: NoRemissionAvailableForm,
+    total_income: TotalIncomeForm
 
   }.freeze
 
