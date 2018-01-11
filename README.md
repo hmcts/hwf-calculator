@@ -1,5 +1,9 @@
 # Help With Fees Calculator
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/77c694c93b7434aec737/maintainability)](https://codeclimate.com/github/ministryofjustice/hwf-calculator/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/77c694c93b7434aec737/test_coverage)](https://codeclimate.com/github/ministryofjustice/hwf-calculator/test_coverage)
+
 This application is the help with fees calculator.
 
 At the time of writing this, it is being developed using BDD, so you may well
