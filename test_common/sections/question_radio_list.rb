@@ -1,6 +1,6 @@
 module Calculator
   module Test
-    class QuestionRadioListSection < BaseSection
+    class QuestionRadioListSection < QuestionSection
       def set(value)
         choose(value)
       end

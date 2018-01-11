@@ -127,3 +127,5 @@ en:
       scottish_legal_aid:
         label: "Scottish Legal Aid (Civil Claims)"
         guidance: ''
+    common:
+      page_header: "Find out if you can get help with fees"

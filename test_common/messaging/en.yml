@@ -57,6 +57,22 @@ en:
         marital_status:
           single: Single
           sharing_income: Married or living with someone
+      guidance:
+        marital_status:
+          text: |
+            Single means you rely on your own income, single also means:
+            you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)
+            you are changing your legal gender
+            you are experiencing domestic violence
+            you are experiencing forced marriage
+            Married or living with someone and sharing an income means:
+            married
+            civil partners
+            living together as if you are married or in a civil partnership
+            living at the same address with a joint income
+            part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
+
+
     fee:
       errors:
         non_numeric: Please enter numeric value with no decimal places

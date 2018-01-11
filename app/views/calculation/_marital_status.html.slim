@@ -7,19 +7,24 @@ div.calculator.marital_status
       fieldset
         legend = t('calculation.field_labels.marital_status')
 
-        details
-          summary = 'Click to reveal more information'
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= 'Help with Status'
 
-          .panel-indent
+          .panel-indent data-behavior="question_help_text"
             .text
-              h2.heading-small = 'heading small'
+              h2.heading-small = 'Single means you rely on your own income, single also means:'
               ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
+                li = 'you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)'
+                li = 'you are changing your legal gender'
+                li = 'you are experiencing domestic violence'
+                li = 'you are experiencing forced marriage'
+              h2.heading-small = 'Married or living with someone and sharing an income means:'
               ul.list.list-bullet
-                li = 'item_1'
-
+                li = 'married'
+                li = 'civil partners'
+                li = 'living together as if you are married or in a civil partnership'
+                li = 'living at the same address with a joint income'
+                li = 'part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care'
         label.block-label
           = f.radio_button :marital_status, 'single'
           = 'Single'
