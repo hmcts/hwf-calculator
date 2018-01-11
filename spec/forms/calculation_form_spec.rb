@@ -32,6 +32,21 @@ RSpec.describe CalculationForm do
     end
   end
 
+  describe '#partner_date_of_birth=' do
+    it 'persists as a date' do
+      form = described_class.new({})
+      form.partner_date_of_birth = '1999-12-27'
+      expect(form.partner_date_of_birth).to eql Date.parse('27 December 1999')
+    end
+  end
+
+  describe '#partner_date_of_birth via initialize' do
+    it 'persists as a date' do
+      form = described_class.new(partner_date_of_birth: '1999-12-27')
+      expect(form.partner_date_of_birth).to eql Date.parse('27 December 1999')
+    end
+  end
+
   describe '#fee=' do
     it 'persists as a float' do
       form = described_class.new({})
@@ -89,6 +104,36 @@ RSpec.describe CalculationForm do
     it 'persists as an array' do
       form = described_class.new(benefits_received: [:jobseekers_allowance])
       expect(form.benefits_received).to eql [:jobseekers_allowance]
+    end
+  end
+
+  describe "number_of_children=" do
+    it 'persists as number' do
+      form = described_class.new({})
+      form.number_of_children = 10
+      expect(form.number_of_children).to be 10
+    end
+  end
+
+  describe 'number_of_children= via initialize' do
+    it 'persists as number' do
+      form = described_class.new(number_of_children: 5)
+      expect(form.number_of_children).to be 5
+    end
+  end
+
+  describe '#total_income=' do
+    it 'persists as a float' do
+      form = described_class.new({})
+      form.total_income = '1000'
+      expect(form.total_income).to be 1000.0
+    end
+  end
+
+  describe '#total_income= via initialize' do
+    it 'persists as a float' do
+      form = described_class.new(total_income: '1000')
+      expect(form.total_income).to be 1000.0
     end
   end
 

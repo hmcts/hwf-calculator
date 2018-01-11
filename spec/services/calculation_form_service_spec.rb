@@ -29,8 +29,20 @@ RSpec.describe CalculationFormService do
       expect(described_class.for(:number_of_children)).to be NumberOfChildrenForm
     end
 
+    it 'returns TotalIncomeForm when :total_income is passed' do
+      expect(described_class.for(:total_income)).to be TotalIncomeForm
+    end
+
     it 'returns FullRemissionAvailable when :full_remission_available is passed' do
       expect(described_class.for(:full_remission_available)).to be FullRemissionAvailableForm
+    end
+
+    it 'returns PartialRemissionAvailable when :partial_remission_available is passed' do
+      expect(described_class.for(:partial_remission_available)).to be PartialRemissionAvailableForm
+    end
+
+    it 'returns NoRemissionAvailable when :no_remission_available is passed' do
+      expect(described_class.for(:no_remission_available)).to be NoRemissionAvailableForm
     end
 
     it 'raises an exception if a form is not registered' do

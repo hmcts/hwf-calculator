@@ -19,6 +19,5 @@ And(/^civil partnership status is (.*)$/) do |status|
 end
 
 Given(/^I am ([A-Z][a-z]+).*$/) do |name|
-  self.user = personas.fetch(name.downcase.to_sym)
-  user.date_of_birth = (user.age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')
+  given_i_am(name.downcase.to_sym)
 end
