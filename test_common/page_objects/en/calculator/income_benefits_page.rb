@@ -53,7 +53,7 @@ module Calculator
 
         # The none of the above checkbox
         #		
- -      # @return [Capybara::Node::Element]
+        # @return [Capybara::Node::Element]
         def none_of_the_above_option
           benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.none')
         end
