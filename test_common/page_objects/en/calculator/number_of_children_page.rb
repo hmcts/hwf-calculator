@@ -10,6 +10,16 @@ module Calculator
         def next
           next_button.click
         end
+
+        # Find an error matching the given text in the number_of_children field
+        #
+        # @param [String] text The error message to match
+        #
+        # @return [Capybara::Node::Element] The node found
+        # @raise [Capybara::ElementNotFound] If an error message could not be found
+        def error_with_text(text)
+          number_of_children.error_with_text(text)
+        end
       end
     end
   end
