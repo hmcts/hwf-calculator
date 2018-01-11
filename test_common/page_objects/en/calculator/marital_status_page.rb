@@ -28,12 +28,10 @@ module Calculator
           marital_status.has_no_help_text?
         end
 
+        # Waits for the guidance to be visible
+        # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
         def wait_for_guidance
           marital_status.wait_for_help_text
-        end
-
-        def wait_until_guidance_invisible
-          marital_status.wait_until_help_text_invisible
         end
       end
     end

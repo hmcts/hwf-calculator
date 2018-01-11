@@ -1,6 +1,33 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-675
 RSpec.describe 'Partner status content', type: :feature, js: true do
+  #
+  # Guidance Information Content:
+  #
+  # Single means you rely on your own income, single also means:
+  #
+  # you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)
+  # you are changing your legal gender
+  # you are experiencing domestic violence
+  # you are experiencing forced marriage
+  # Married or living with someone and sharing an income means:
+  #
+  # married
+  # civil partners
+  # living together as if you are married or in a civil partnership
+  # living at the same address with a joint income
+  # part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
+  #
+  #
+  # Partner Status Page Heading:
+  #
+  # Find out if you can get help with fees
+  #
+  #
+  # Page Question:
+  #
+  # Are you single, or any of: married or living with someone and sharing an income
+
   # Feature:
   #
   # Partner Status Content
@@ -62,7 +89,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   #
   #               Then Guidance Information is hidden
   #
-  scenario 'View Guidance Information' do
+  scenario 'Hide Guidance Information' do
     # Arrange
     given_i_am(:john)
     answer_up_to_marital_status_question
@@ -71,36 +98,8 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
 
     # Act
     marital_status_page.toggle_guidance
-    marital_status_page.wait_until_guidance_invisible
 
     # Assert
     expect(marital_status_page).to have_no_guidance
   end
-
-  #
-  # Guidance Information Content:
-  #
-  # Single means you rely on your own income, single also means:
-  #
-  # you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)
-  # you are changing your legal gender
-  # you are experiencing domestic violence
-  # you are experiencing forced marriage
-  # Married or living with someone and sharing an income means:
-  #
-  # married
-  # civil partners
-  # living together as if you are married or in a civil partnership
-  # living at the same address with a joint income
-  # part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
-  #
-  #
-  # Partner Status Page Heading:
-  #
-  # Find out if you can get help with fees
-  #
-  #
-  # Page Question:
-  #
-  # Are you single, or any of: married or living with someone and sharing an income
 end
