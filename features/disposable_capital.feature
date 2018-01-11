@@ -57,3 +57,4 @@ Feature: Disposable capital
     And I am on the savings and investment page
     When I submit our savings and investments
     Then I should see that we are unlikely to get help with fees
+    

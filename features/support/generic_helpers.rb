@@ -17,7 +17,7 @@ def marital_status_page
 end
 
 def court_fee_page
-  @calculator_court_fee_page ||= ::Calculator::Test::En::CourtFeePage.new
+  @court_fee_page ||= ::Calculator::Test::En::CourtFeePage.new
 end
 
 def date_of_birth_page
@@ -25,7 +25,15 @@ def date_of_birth_page
 end
 
 def disposable_capital_page
-  @calculator_disposable_capital_page ||= ::Calculator::Test::En::DisposableCapitalPage.new
+  @disposable_capital_page ||= ::Calculator::Test::En::DisposableCapitalPage.new
+end
+
+def income_benefits_page
+  @income_benefits_page ||= ::Calculator::Test::En::IncomeBenefitsPage.new
+end
+
+def full_remission_page
+  @full_remission_page ||= ::Calculator::Test::En::FullRemissionPage.new
 end
 
 def any_calculator_page

@@ -6,6 +6,27 @@ module Calculator
         section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, 'Select all income benefits you are currently receiving'
         element :next_button, :button, 'Next step'
 
+        def benefit_options
+          [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid].each do |benefit|
+            benefits.option_labelled messaging.t("hwf_pages.income_benefits.labels.benefits.#{benefit}")
+          end
+        end
+
+        def choose_jobseekers_allowance
+          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')
+          benefits.set([label_text])
+        end
+
+        def choose_income_support
+          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.income_support')
+          benefits.set([label_text])
+        end
+
+        def choose_universal_credit
+          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.universal_credit')
+          benefits.set([label_text])
+        end
+
         # Clicks the next button
         def next
           next_button.click
@@ -31,7 +52,7 @@ module Calculator
         end
 
         # The none of the above checkbox
-        #
+        #		
         # @return [Capybara::Node::Element]
         def none_of_the_above_option
           benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.none')
