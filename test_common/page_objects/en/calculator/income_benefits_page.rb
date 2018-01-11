@@ -27,20 +27,26 @@ module Calculator
           benefits.set([label_text])
         end
 
+        # Clicks the next button
         def next
           next_button.click
         end
 
+        # Chooses the 'None of the above' option in the list
         def choose_none
           label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.none')
           benefits.set([label_text])
         end
 
+        # Chooses the 'Dont know' option in the list
         def choose_dont_know
           label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')
           benefits.set([label_text])
         end
 
+         # The don't know checkbox
+        #
+        # @return [Capybara::Node::Element]
         def dont_know_option
           benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')
         end
