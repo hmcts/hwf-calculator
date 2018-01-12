@@ -157,7 +157,7 @@ en:
             age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
             children who don’t live with you, but you (or your partner) pay regular maintenance for them
       total_income:
-        summary: "Click to reveal more information"
+        summary: "What to include as income"
         detail:
           summary: "Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:"
           text: |
@@ -172,5 +172,7 @@ en:
             If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+      total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+
             
 

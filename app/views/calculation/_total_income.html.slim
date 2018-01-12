@@ -16,6 +16,7 @@ div.calculator.marital_status
                   li = line
         - if form.errors.include?(:total_income)
           span.error-message = form.errors[:total_income].join(', ')
+        span.form-hint = t('calculation.hints.total_income')
         label.block-label
           = f.text_field :total_income, class: 'form-control'
 
