@@ -188,9 +188,37 @@ en:
       fee:
         summary: "If you have already paid your court or tribunal fee"
         detail_text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
+      disposable_capital:
+        summary: "Help with savings and investments"
+        detail:
+          include:
+            summary: "You should include any of the following:"
+            text: |
+              money in ISAs and any other savings account
+              joint savings accounts that you share with your partner
+              fixed rate or investment bonds
+              any lump sum (eg a redundancy payout)
+              stocks and shares
+              trust funds (or any other kind of fund)
+              capital value of additional property
+              money or property outside the UK
+
+          exclude:
+            summary: "You should exclude:"
+            text: |
+              wages or benefits
+              joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+              personal pensions
+              capital value of self-employed businesses
+              student loans
+              unfair dismissal awards
+              money from the criminal injury compensation scheme
+              medical negligence or personal injury awards
+              any compensation under a statutory scheme in respect of Mesothelioma
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+
 
 
 

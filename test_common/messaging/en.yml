@@ -107,6 +107,28 @@ en:
       errors:
         non_numeric: "Please enter a valid value. The two nearest valid values are: XX and XX."
         blank: "Enter how much you have in savings and investments"
+      guidance:
+        disposable_capital:
+          text: |
+            You should include any of the following:
+            money in ISAs and any other savings account
+            joint savings accounts that you share with your partner
+            fixed rate or investment bonds
+            any lump sum (eg a redundancy payout)
+            stocks and shares
+            trust funds (or any other kind of fund)
+            capital value of additional property
+            money or property outside the UK
+            You should exclude:
+            wages or benefits
+            joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+            personal pensions
+            capital value of self-employed businesses
+            student loans
+            unfair dismissal awards
+            money from the criminal injury compensation scheme
+            medical negligence or personal injury awards
+            any compensation under a statutory scheme in respect of Mesothelioma
     income_benefits:
       guidance:
         benefits:
