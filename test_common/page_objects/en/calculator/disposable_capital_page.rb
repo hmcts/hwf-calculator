@@ -3,7 +3,7 @@ module Calculator
     module En
       class DisposableCapitalPage < BasePage
         set_url '/calculation/disposable_capital'
-        element :heading, :exact_heading_text, 'Find out if you can get help with fees'
+        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
         section :disposable_capital, ::Calculator::Test::DisposableCapitalQuestionSection, :calculator_question, 'How much do you have in savings and investment combined?'
         element :next_button, :button, 'Next step'
 
