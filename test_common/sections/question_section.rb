@@ -1,7 +1,7 @@
 module Calculator
   module Test
     class QuestionSection < BaseSection
-
+      element :hint, '.form-hint'
       # Finds an error node with the matching text which is GDS compatible
       # @param [String] text The error text to search for
       # @return [Capybara::Node::Element] The node containing the error message
@@ -11,6 +11,10 @@ module Calculator
         # partial text, not exact
         xpath = XPath.generate { |x| x.descendant(:span)[x.string.n.is(text)] }
         find(:xpath, xpath, class: 'error-message', exact: true)
+      end
+
+      def hint_with_text(text)
+        hint(text: text)
       end
     end
   end
