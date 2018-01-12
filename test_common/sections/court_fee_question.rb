@@ -1,9 +1,13 @@
-require_relative 'question_radio_list'
+require_relative 'question_numeric'
 require_relative 'question_help'
 module Calculator
   module Test
-    class MaritalStatusQuestionSection < QuestionRadioListSection
-      section :help_section, QuestionHelpSection, :help_section_labelled, 'Help with Status'
+    # A section representing the court fee question
+    class CourtFeeQuestionSection < QuestionNumericSection
+      section :help_section,
+        QuestionHelpSection,
+        :help_section_labelled,
+        'If you have already paid your court or tribunal fee'
 
       # Validates that the guidance text is as expected
       # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
@@ -31,7 +35,6 @@ module Calculator
       # rubocop:enable Style/PredicateName
 
       delegate :wait_for_help_text, to: :help_section
-
       delegate :wait_for_no_help_text, to: :help_section
     end
   end

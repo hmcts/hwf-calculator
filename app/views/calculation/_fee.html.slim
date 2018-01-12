@@ -1,20 +1,14 @@
-div.calculator.marital_status
+div.calculator.fee
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('error' if form.errors.any?)
       fieldset
         legend = t('calculation.field_labels.fee')
-        details
-          summary = 'Click to reveal more information'
+        details data-behavior="question_help"
+          summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
 
-          .panel-indent
+          .panel-indent data-behavior="question_help_text"
             .text
-              h2.heading-small = 'heading small'
-              ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
-              ul.list.list-bullet
-                li = 'item_1'
+              h2.heading-small = t('calculation.guidance.fee.detail_text')
         - if form.errors.include?(:fee)
           span.error-message = form.errors[:fee].join(', ')
         label.block-label
