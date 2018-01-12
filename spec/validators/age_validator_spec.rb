@@ -23,6 +23,7 @@ RSpec.describe AgeValidator do
 
     context 'with the age service returning 15' do
       let(:age) { 15 }
+
       it 'disallows the 15 year old' do
         # Arrange
         model = model_class.new(date: Time.zone.today)
@@ -37,6 +38,7 @@ RSpec.describe AgeValidator do
 
     context 'with the age service returning 16' do
       let(:age) { 16 }
+
       it 'allows the 16 year old' do
         # Arrange
         model = model_class.new(date: Time.zone.today)
@@ -51,6 +53,7 @@ RSpec.describe AgeValidator do
 
     context 'with the age service returning 17' do
       let(:age) { 17 }
+
       it 'allows the 16 year old' do
         # Arrange
         model = model_class.new(date: Time.zone.today)

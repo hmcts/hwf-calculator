@@ -4,6 +4,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   include Calculator::Test::Pages
   # The next page is always the number of children
   let(:next_page) { Calculator::Test::En::NumberOfChildrenPage.new }
+
   # Scenario: Disable non-income benefit options
   #   Given I am JOHN
   #   And I am on the income benefits page
