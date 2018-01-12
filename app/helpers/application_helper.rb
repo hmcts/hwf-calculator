@@ -10,14 +10,7 @@ module ApplicationHelper
   # @return [String] The HTML to render
   def gds_multiple_choices_with_guidance(form:, method:, choices:)
     form.collection_check_boxes method, choices, :first, :second do |b|
-      guidance = b.object.last
-      guidance_id = "prefix_#{b.object.first}"
-      data_attrs = { target: guidance.present? ? guidance_id : nil }
-      result = content_tag('div', class: 'multiple-choice', data: data_attrs) { b.check_box + b.label }
-      if guidance.present?
-        result << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id)
-      end
-      result
+      gds_checkbox_with_guidance(b)
     end
   end
 
@@ -55,5 +48,17 @@ module ApplicationHelper
       phrases << remaining.last
     end
     phrases
+  end
+
+  def gds_checkbox_with_guidance(builder)
+    guidance = builder.object.last
+    guidance_id = "prefix_#{builder.object.first}"
+    data_attrs = { target: guidance.present? ? guidance_id : nil }
+    content = builder.check_box + builder.label
+    if guidance.present?
+      content << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id,
+                                              data: { behavior: 'multiple_choice_guidance' })
+    end
+    content_tag('div', class: 'multiple-choice', data: data_attrs) { content }
   end
 end

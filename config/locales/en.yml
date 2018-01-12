@@ -105,10 +105,10 @@ en:
     benefits:
       dont_know:
         label: "Don't know"
-        guidance: "Don't know guidance"
+        guidance: "If you don't know if you're receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee"
       none:
         label: 'None of the above'
-        guidance: 'None of the above guidance'
+        guidance: 'If you are not receiving one of the stated benefits, or are not sure, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee'
       jobseekers_allowance:
         label: "Income-based Jobseeker’s Allowance (JSA)"
         guidance: ''
