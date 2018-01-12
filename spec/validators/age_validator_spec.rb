@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe AgeValidator do
-  context 'greater_than_or_equal_to 16' do
+  context 'when age greater than or equal to 16' do
     # As the validator interface is not ours, it belongs to active model,
     # then use the validator as it is supposed to be used in a test class
     # and test the functionality from there.
@@ -23,6 +23,7 @@ RSpec.describe AgeValidator do
 
     context 'with the age service returning 15' do
       let(:age) { 15 }
+
       it 'disallows the 15 year old' do
         # Arrange
         model = model_class.new(date: Time.zone.today)
@@ -37,6 +38,7 @@ RSpec.describe AgeValidator do
 
     context 'with the age service returning 16' do
       let(:age) { 16 }
+
       it 'allows the 16 year old' do
         # Arrange
         model = model_class.new(date: Time.zone.today)
@@ -51,6 +53,7 @@ RSpec.describe AgeValidator do
 
     context 'with the age service returning 17' do
       let(:age) { 17 }
+
       it 'allows the 16 year old' do
         # Arrange
         model = model_class.new(date: Time.zone.today)

@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe DisposableCapitalCalculatorService do
   subject(:service) { described_class }
+
   describe '#call' do
     shared_examples 'disposable_capital_limited_to' do |age:, fee:, limit:|
       next_to_limit = limit - 1

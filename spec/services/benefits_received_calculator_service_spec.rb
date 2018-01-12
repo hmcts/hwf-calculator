@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe BenefitsReceivedCalculatorService do
   subject(:service) { described_class }
+
   describe '#call' do
     it 'throws :invalid_inputs if nil given' do
       expect { service.call(benefits_received: nil) }.to throw_symbol(:invalid_inputs)

@@ -3,7 +3,7 @@ RSpec.describe DisposableCapitalForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
-    context 'disposable_capital' do
+    describe 'disposable_capital' do
       it 'allows numeric values' do
         # Arrange
         form.disposable_capital = '10000'

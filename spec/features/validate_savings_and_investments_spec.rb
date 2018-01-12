@@ -2,6 +2,7 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-675
 RSpec.describe 'Validate savings and investment test', type: :feature, js: true do
   let(:next_page) { Calculator::Test::En::NumberOfChildrenPage.new }
+
   # Feature: Validate Savings & Investments field
   # Validate the Savings and Investments field at the form level
   #
