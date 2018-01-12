@@ -74,6 +74,9 @@ en:
 
 
     fee:
+      guidance:
+        fee:
+          text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
       errors:
         non_numeric: Please enter numeric value with no decimal places
     disposable_capital:
