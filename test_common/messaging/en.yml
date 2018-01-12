@@ -105,6 +105,12 @@ en:
         non_numeric: "Please enter a valid value. The two nearest valid values are: XX and XX."
         blank: "Enter how much you have in savings and investments"
     income_benefits:
+      guidance:
+        benefits:
+          text: |
+            You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits.
+            When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence.
+
       errors:
         nothing_selected: 'Please select from the list'
       labels:
