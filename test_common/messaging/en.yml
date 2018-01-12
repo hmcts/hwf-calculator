@@ -48,6 +48,7 @@ en:
         non_numeric: You must enter the number of financially dependent children
         blank: You must enter the number of financially dependent children
     date_of_birth:
+      hint: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       errors:
         non_numeric: Please enter a valid date of birth
         under_age:
