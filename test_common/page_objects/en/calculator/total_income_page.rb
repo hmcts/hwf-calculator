@@ -3,12 +3,36 @@ module Calculator
     module En
       class TotalIncomePage < BasePage
         set_url '/calculation/total_income'
-        section :total_income, ::Calculator::Test::QuestionNumericSection, :calculator_question, 'How much total income do you receive each month?'
+        element :heading, :exact_heading_text, 'Find out if you can get help with fees'
+        section :total_income, ::Calculator::Test::TotalIncomeQuestionSection, :calculator_question, 'How much total income do you receive each month?'
         element :next_button, :button, 'Next step'
 
         def next
           next_button.click
         end
+
+        # Toggles the guidance text for this question
+        def toggle_guidance
+          total_income.toggle_help
+        end
+
+        # Validates that the guidance text is correct for the english language
+        # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
+        def validate_guidance
+          total_income.validate_guidance(messaging.t('hwf_pages.total_income.guidance.total_income.text'))
+        end
+
+        # Indicates if the marital status field has no guidance text visible
+        def has_no_guidance?
+          total_income.has_no_help_text?
+        end
+
+        # Waits for the guidance to be visible
+        # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
+        def wait_for_guidance
+          total_income.wait_for_help_text
+        end
+
         # Find an error matching the given text in the total_income field
         #
         # @param [String] text The error message to match

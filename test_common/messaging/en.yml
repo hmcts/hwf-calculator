@@ -59,8 +59,22 @@ en:
           single: You must be over 16 years old to apply for help with fees
           married: You and your partner must be over 16 years old to apply for help with fees
     total_income:
+      hint:
       errors:
         non_numeric: Please enter numeric value with no decimal places
+      guidance:
+        total_income:
+          text: |
+            Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:
+            wages
+            some benefits (see the list in the guide for benefits you shouldn’t include)
+            pensions (state, work or private without guarantee credit)
+            rent from anyone living with you and other properties that you own
+            payments from relatives
+            maintenance payments, eg from an ex-spouse
+            income from selling goods publicly or privately, including over the internet
+            student maintenance loans, grants or bursaries (except for tuition fee loans)
+            If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
     marital_status:
       labels:
         marital_status:
