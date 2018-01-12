@@ -4,7 +4,10 @@ module Calculator
   module Test
     # A section representing the court fee question
     class CourtFeeQuestionSection < QuestionNumericSection
-      section :help_section, QuestionHelpSection, :help_section_labelled, 'If you have already paid your court or tribunal fee'
+      section :help_section,
+        QuestionHelpSection,
+        :help_section_labelled,
+        'If you have already paid your court or tribunal fee'
 
       # Validates that the guidance text is as expected
       # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
