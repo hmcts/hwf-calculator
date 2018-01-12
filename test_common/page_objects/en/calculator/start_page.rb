@@ -7,7 +7,7 @@ module Calculator
       # 2. The requirements from the users perspective
       class StartPage < BasePage
         set_url '/'
-        element :heading, :exact_heading_text, 'Find out if you can get help with fees'
+        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
         element :introduction, '[data-behavior=introduction]'
         element :requirements, '[data-behavior=requirements]'
         element :start_button, :link_or_button, 'Start now'

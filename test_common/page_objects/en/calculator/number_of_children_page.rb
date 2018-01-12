@@ -3,7 +3,7 @@ module Calculator
     module En
       class NumberOfChildrenPage < BasePage
         set_url '/calculation/number_of_children'
-        element :heading, :exact_heading_text, 'Find out if you can get help with fees'
+        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
         section :number_of_children, ::Calculator::Test::NumberOfChildrenQuestionSection, :calculator_question, 'How many children live with you or are you responsible for supporting financially?'
         element :next_button, :button, 'Next step'
 
