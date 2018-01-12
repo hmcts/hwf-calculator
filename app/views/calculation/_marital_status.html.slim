@@ -1,5 +1,4 @@
 div.calculator.marital_status
-  h1 How much help with fees will I receive?
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('error' if form.errors.any?)
       - if true
@@ -7,19 +6,19 @@ div.calculator.marital_status
       fieldset
         legend = t('calculation.field_labels.marital_status')
 
-        details
-          summary = 'Click to reveal more information'
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= t('calculation.guidance.marital_status.summary')
 
-          .panel-indent
+          .panel-indent data-behavior="question_help_text"
             .text
-              h2.heading-small = 'heading small'
+              h2.heading-small = t('calculation.guidance.marital_status.detail.single.summary')
               ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
+                - t('calculation.guidance.marital_status.detail.single.text').lines.each do |line|
+                  li = line
+              h2.heading-small = t('calculation.guidance.marital_status.detail.sharing_income.summary')
               ul.list.list-bullet
-                li = 'item_1'
-
+                - t('calculation.guidance.marital_status.detail.sharing_income.text').lines.each do |line|
+                  li = line
         label.block-label
           = f.radio_button :marital_status, 'single'
           = 'Single'

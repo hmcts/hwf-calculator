@@ -127,3 +127,26 @@ en:
       scottish_legal_aid:
         label: "Scottish Legal Aid (Civil Claims)"
         guidance: ''
+    common:
+      page_header: "Find out if you can get help with fees"
+    guidance:
+      marital_status:
+        summary: "Help with Status"
+        detail:
+          single:
+            summary: "Single means you rely on your own income, single also means:"
+            text: |
+              you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)
+              you are changing your legal gender
+              you are experiencing domestic violence
+              you are experiencing forced marriage
+          sharing_income:
+            summary: "Married or living with someone and sharing an income means:"
+            text: |
+              married
+              civil partners
+              living together as if you are married or in a civil partnership
+              living at the same address with a joint income
+              part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
+            
+
