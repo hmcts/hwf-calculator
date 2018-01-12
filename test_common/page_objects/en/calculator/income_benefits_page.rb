@@ -3,7 +3,7 @@ module Calculator
     module En
       # A page object providing an interface to the 'Income Benefits Page'
       class IncomeBenefitsPage < BasePage
-        element :heading, :exact_heading_text, 'Find out if you can get help with fees'
+        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
         section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, 'Select all income benefits you are currently receiving'
         element :next_button, :button, 'Next step'
 

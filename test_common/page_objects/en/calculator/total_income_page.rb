@@ -3,7 +3,7 @@ module Calculator
     module En
       class TotalIncomePage < BasePage
         set_url '/calculation/total_income'
-        element :heading, :exact_heading_text, 'Find out if you can get help with fees'
+        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
         section :total_income, ::Calculator::Test::TotalIncomeQuestionSection, :calculator_question, 'How much total income do you receive each month?'
         element :next_button, :button, 'Next step'
 
