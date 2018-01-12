@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe CalculationFormService do
-  context '#for' do
+  describe '#for' do
     it 'returns NilForm when nil is passed' do
       expect(described_class.for(nil)).to be NilForm
     end
