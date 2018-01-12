@@ -202,6 +202,11 @@ en:
             income from selling goods publicly or privately, including over the internet
             student maintenance loans, grants or bursaries (except for tuition fee loans)
             If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
+      income_benefits:
+        summary: "How benefit affects your claim"
+        detail:
+          summary: "You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits."
+          text: "When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence."
       fee:
         summary: "If you have already paid your court or tribunal fee"
         detail_text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
