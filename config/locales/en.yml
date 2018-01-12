@@ -148,6 +148,15 @@ en:
               living together as if you are married or in a civil partnership
               living at the same address with a joint income
               part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
+      number_of_children:
+        summary: "Children who might affect your claim"
+        detail:
+          summary: "Enter the number of children who you describe as:"
+          text: |
+            under 16 and living at home with you
+            age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
+            children who don’t live with you, but you (or your partner) pay regular maintenance for them
+            
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
             
