@@ -29,27 +29,6 @@ module ApplicationHelper
 
   private
 
-  def calculator_feedback_explanation(calculation)
-    remaining_fields = calculation.required_fields_affecting_likelihood
-    return [] if remaining_fields.empty?
-    a = [I18n.t('calculation.feedback.explanation_suffix')]
-    remaining = remaining_fields.map do |field|
-      I18n.t("calculation.feedback.explanation_suffix_fields.#{field}")
-    end
-    add_explanation_suffix(a, remaining)
-  end
-
-  def add_explanation_suffix(phrases, remaining)
-    if remaining.length == 1
-      phrases << remaining.first
-    else
-      phrases << remaining[0..-2].join(', ')
-      phrases << I18n.t('calculation.feedback.explanation_suffix_joining_word')
-      phrases << remaining.last
-    end
-    phrases
-  end
-
   def gds_checkbox_with_guidance(builder)
     guidance = builder.object.last
     guidance_id = "prefix_#{builder.object.first}"
