@@ -5,18 +5,19 @@ div.calculator.marital_status
       fieldset
         legend = t('calculation.field_labels.disposable_capital')
 
-        details
-          summary = 'Click to reveal more information'
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= t('calculation.guidance.disposable_capital.summary')
 
-          .panel-indent
+          .panel-indent data-behavior="question_help_text"
             .text
-              h2.heading-small = 'heading small'
+              h2.heading-small = t('calculation.guidance.disposable_capital.detail.include.summary')
               ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
+                - t('calculation.guidance.disposable_capital.detail.include.text').lines.each do |line|
+                  li = line
+              h2.heading-small = t('calculation.guidance.disposable_capital.detail.exclude.summary')
               ul.list.list-bullet
-                li = 'item_1'
+                - t('calculation.guidance.disposable_capital.detail.exclude.text').lines.each do |line|
+                  li = line
         - if form.errors.include?(:disposable_capital)
           span.error-message = form.errors[:disposable_capital].join(', ')
         label.block-label

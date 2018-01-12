@@ -153,6 +153,33 @@ en:
               living together as if you are married or in a civil partnership
               living at the same address with a joint income
               part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
+      disposable_capital:
+        summary: "Help with savings and investments"
+        detail:
+          include:
+            summary: "You should include any of the following:"
+            text: |
+              money in ISAs and any other savings account
+              joint savings accounts that you share with your partner
+              fixed rate or investment bonds
+              any lump sum (eg a redundancy payout)
+              stocks and shares
+              trust funds (or any other kind of fund)
+              capital value of additional property
+              money or property outside the UK
+
+          exclude:
+            summary: "You should exclude:"
+            text: |
+              wages or benefits
+              joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+              personal pensions
+              capital value of self-employed businesses
+              student loans
+              unfair dismissal awards
+              money from the criminal injury compensation scheme
+              medical negligence or personal injury awards
+              any compensation under a statutory scheme in respect of Mesothelioma
       number_of_children:
         summary: "Children who might affect your claim"
         detail:
@@ -177,5 +204,6 @@ en:
             If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-            
+
+
 
