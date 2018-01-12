@@ -47,6 +47,13 @@ en:
       errors:
         non_numeric: You must enter the number of financially dependent children
         blank: You must enter the number of financially dependent children
+      guidance:
+        number_of_children:
+          text: |
+            Enter the number of children who you describe as:
+            under 16 and living at home with you
+            age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
+            children who don’t live with you, but you (or your partner) pay regular maintenance for them
     date_of_birth:
       hint: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       errors:
