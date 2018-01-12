@@ -62,7 +62,8 @@ en:
           single: You must be over 16 years old to apply for help with fees
           married: You and your partner must be over 16 years old to apply for help with fees
     total_income:
-      hint:
+      hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
+      
       errors:
         non_numeric: Please enter numeric value with no decimal places
       guidance:

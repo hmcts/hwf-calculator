@@ -189,7 +189,7 @@ en:
             age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
             children who don’t live with you, but you (or your partner) pay regular maintenance for them
       total_income:
-        summary: "Click to reveal more information"
+        summary: "What to include as income"
         detail:
           summary: "Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:"
           text: |
@@ -207,6 +207,9 @@ en:
         detail_text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+      total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+
+
 
 
 

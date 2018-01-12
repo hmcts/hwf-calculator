@@ -2,7 +2,7 @@ require_relative 'question_numeric'
 module Calculator
   module Test
     class TotalIncomeQuestionSection < QuestionNumericSection
-      section :help_section, QuestionHelpSection, :help_section_labelled, 'Click to reveal more information'
+      section :help_section, QuestionHelpSection, :help_section_labelled, 'What to include as income'
 
       # Validates that the guidance text is as expected
       # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
