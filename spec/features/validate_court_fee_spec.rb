@@ -2,6 +2,7 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-725
 RSpec.describe 'Validate court fee test', type: :feature, js: true do
   let(:next_page) { Calculator::Test::En::DateOfBirthPage.new }
+
   #
   # Feature: Court and tribunal fee field
   # Validate the Court and tribunal fee field at the form level

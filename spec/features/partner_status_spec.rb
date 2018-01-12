@@ -19,6 +19,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
   # When I click Next Step
   # Then I should see the next page
   let(:next_page) { Calculator::Test::En::CourtFeePage.new }
+
   scenario 'John confirms he is single' do
     # Arrange
     given_i_am(:john)

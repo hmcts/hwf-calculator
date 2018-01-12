@@ -2,6 +2,7 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-726
 RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
   let(:next_page) { Calculator::Test::En::DisposableCapitalPage.new }
+
   # Feature: Date of Birth
   # HwF eligibility Calculator should capture date of birth of citizen and partner to check citizen eligibility for help with fees
   #
