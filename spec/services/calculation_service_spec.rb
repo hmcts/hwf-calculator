@@ -41,6 +41,7 @@ RSpec.describe CalculationService do
           disposable_capital: 1000
         }
       end
+
       include_context 'fake calculators'
       it 'calls calculator 1' do
         # Act
@@ -101,6 +102,7 @@ RSpec.describe CalculationService do
 
       context 'order of calculators called' do
         let(:calculators_called) { [] }
+
         before do
           allow(calculator_1_class).to receive(:call).with(inputs) do
             calculators_called << 1
@@ -187,6 +189,7 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
+
     include_context 'fake calculators'
 
     it 'has help available if calculator 1 says it is available' do
@@ -231,6 +234,7 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
+
     include_context 'fake calculators'
 
     it 'returns the value from calculator 1' do
@@ -264,6 +268,7 @@ RSpec.describe CalculationService do
         calculator3: { available_help: :undecided }
       }
     end
+
     it 'returns any fields not provided in the input in the correct order prefixed with marital_status' do
 
       # Act and Assert
@@ -296,6 +301,7 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
+
     include_context 'fake calculators'
 
     it 'returns any fields not provided that will affect the likelihood and not those that just affect the amount' do
@@ -311,6 +317,7 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
+
     include_context 'fake calculators'
 
     it 'returns the correct hash' do
