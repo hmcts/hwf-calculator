@@ -138,7 +138,7 @@ en:
         label: "Scottish Legal Aid (Civil Claims)"
         guidance: ''
     common:
-      page_header: "Find out if you can get help with fees"
+      page_header: "Find out if you could get help with fees"
     guidance:
       marital_status:
         summary: "Help with Status"
@@ -185,9 +185,13 @@ en:
         detail:
           summary: "You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits."
           text: "When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence."
+      fee:
+        summary: "If you have already paid your court or tribunal fee"
+        detail_text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
 
-            
+
+
 

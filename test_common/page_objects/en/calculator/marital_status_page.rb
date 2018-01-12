@@ -3,7 +3,7 @@ module Calculator
     module En
       class MaritalStatusPage < BasePage
         set_url '/calculation/marital_status'
-        element :heading, :exact_heading_text, 'Find out if you can get help with fees'
+        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
         section :marital_status, ::Calculator::Test::MaritalStatusQuestionSection, :calculator_question, 'Are you single, married or living with someone and sharing an income?'
         element :next_button, :button, 'Next step'
 
