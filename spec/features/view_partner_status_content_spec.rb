@@ -1,5 +1,5 @@
 require 'rails_helper'
-# This feature represents the acceptance criteria defined in RST-675
+# This feature represents the acceptance criteria defined in RST-722
 RSpec.describe 'Partner status content', type: :feature, js: true do
   #
   # Guidance Information Content:
