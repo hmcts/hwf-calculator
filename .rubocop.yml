@@ -139,6 +139,12 @@ Style/SignalException:
 Style/TrivialAccessors:
   AllowPredicates: true
 
+Style/MixinUsage:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'features/**/*'
+
 # Prefer sensible naming to comments everywhere.
 Documentation:
   Description: Document classes and non-namespace modules.
