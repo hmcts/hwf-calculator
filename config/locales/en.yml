@@ -50,6 +50,8 @@ en:
         total savings amount, and
         either: list of benefits (or proof of certain benefits at the time you paid your fee)
         or: total monthly income
+      disclaimer_html: |
+       This isn't the application and is designed to give an indicative response only. You'll need................
 
     feedback:
       subject:
@@ -218,6 +220,10 @@ en:
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+  welsh_link:
+    full_html: "This guide is also available %{link_html} (Cymraeg)"
+    link_text: "in Welsh"
+
 
 
 
