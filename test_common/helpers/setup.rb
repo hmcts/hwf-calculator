@@ -64,6 +64,11 @@ module Calculator
         total_income_page.next
       end
 
+      def answer_all_questions
+        answer_questions_up_to_total_income
+        answer_total_income_question
+      end
+
       def start_calculator_session
         start_page.load_page
         start_page.start_session

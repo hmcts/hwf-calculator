@@ -101,6 +101,7 @@ en:
       total_income: "How much total income do you receive each month?"
       partner_date_of_birth: "What is your partners date of birth?"
     previous_questions:
+
       disposable_capital:
         label: "Combined savings and investment"
       marital_status:
@@ -119,6 +120,7 @@ en:
         universal_credit: 'UC'
         pension_credit: 'PC'
         scottish_legal_aid: 'SLA'
+      change: "Change"
     benefits:
       dont_know:
         label: "Don't know"

@@ -17,8 +17,6 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   # living together as if you are married or in a civil partnership
   # living at the same address with a joint income
   # part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
-  #
-  #
   # Partner Status Page Heading:
   #
   # Find out if you can get help with fees
