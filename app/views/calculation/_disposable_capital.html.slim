@@ -1,10 +1,14 @@
 div.calculator.marital_status
-  h1 How much help with fees will I receive?
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = t('calculation.field_labels.disposable_capital')
+        legend
+          h2.heading-medium = t('calculation.field_labels.disposable_capital')
 
+        - if form.errors.include?(:disposable_capital)
+          span.error-message = form.errors[:disposable_capital].join(', ')
+        label.block-label
+          = f.text_field :disposable_capital, class: 'form-control'
         details data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.disposable_capital.summary')
 
@@ -18,11 +22,5 @@ div.calculator.marital_status
               ul.list.list-bullet
                 - t('calculation.guidance.disposable_capital.detail.exclude.text').lines.each do |line|
                   li = line
-        - if form.errors.include?(:disposable_capital)
-          span.error-message = form.errors[:disposable_capital].join(', ')
-        label.block-label
-          = f.text_field :disposable_capital, class: 'form-control'
-
     .form-group
-      = f.submit 'Next step', class: 'button'
-  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?
+      = f.submit 'Next step', class: 'button'  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?
