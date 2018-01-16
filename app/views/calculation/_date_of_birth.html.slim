@@ -1,5 +1,5 @@
 div.calculator.marital_status
-  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
+  = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend = t('calculation.field_labels.date_of_birth')
@@ -44,5 +44,5 @@ div.calculator.marital_status
               label.block-label
                 = f.text_field :'partner_date_of_birth(1i)', value: f.object.partner_date_of_birth.try(:year), class: 'form-control'
                 = 'Year'
-    .form-groupq
+    .form-group
       = f.submit 'Next step', class: 'button'
