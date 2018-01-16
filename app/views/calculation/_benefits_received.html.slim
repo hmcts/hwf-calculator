@@ -10,7 +10,7 @@
         p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
 
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend = I18n.t('calculation.field_labels.benefits_received')
 
@@ -28,7 +28,7 @@
         label
           = gds_error_messages(model: f.object, method: :benefits_received)
           = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
-    .form-groupq
+    .form-group
       = f.submit 'Next step', class: 'button'
   .previous_questions data-behavior="calculator_previous_questions"
     - current_calculation.inputs.each_pair do |k,v |
