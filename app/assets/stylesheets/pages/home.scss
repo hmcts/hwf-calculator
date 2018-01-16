@@ -19,7 +19,8 @@
     p {
       @include copy-19;
     }
-
+    @extend .panel;
+    @extend .panel-border-wide;
   }
 
 }
