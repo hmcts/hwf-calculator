@@ -12,7 +12,8 @@
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = I18n.t('calculation.field_labels.benefits_received')
+        legend
+          h2.heading-medium = I18n.t('calculation.field_labels.benefits_received')
         - if form.errors.include?(:benefits_received)
           span.error-message = form.errors[:benefits_received].join(', ')
         label
