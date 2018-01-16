@@ -1,7 +1,7 @@
 div.calculator.marital_status
   h1 How much help with fees will I receive?
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend = t('calculation.field_labels.disposable_capital')
 

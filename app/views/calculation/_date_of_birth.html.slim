@@ -1,6 +1,6 @@
 div.calculator.marital_status
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend = t('calculation.field_labels.date_of_birth')
 
@@ -17,7 +17,7 @@ div.calculator.marital_status
           = f.text_field :'date_of_birth(1i)', value: f.object.date_of_birth.try(:year), class: 'form-control'
           = 'Year'
       - if current_calculation.inputs[:marital_status] == 'sharing_income'
-        .form-group class=('error' if form.errors.any?)
+        .form-group class=('form-group-error' if form.errors.any?)
             fieldset
               legend = t('calculation.field_labels.partner_date_of_birth')
 

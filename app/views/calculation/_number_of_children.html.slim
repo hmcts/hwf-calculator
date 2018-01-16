@@ -10,7 +10,7 @@
         p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
 
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend = 'How many children live with you or are you responsible for supporting financially?'
 
