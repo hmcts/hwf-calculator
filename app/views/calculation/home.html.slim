@@ -17,6 +17,6 @@
       p.bold-small = line
   .welsh-link data-behavior="welsh_link"
     = t('welsh_link.full_html', link_html: link_to(t('welsh_link.link_text'), root_path))
-  = form_for form, as: :calculation, url: calculation_url, method: :patch do |f|
+  = form_for form, as: :calculation, url: start_calculation_url, method: :patch do |f|
     = f.submit t('.start'), class: 'button button-start'
     = f.hidden_field :_hidden, value: ''
