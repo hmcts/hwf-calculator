@@ -12,7 +12,8 @@
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = 'How many children live with you or are you responsible for supporting financially?'
+        legend
+          h2.heading-medium = 'How many children live with you or are you responsible for supporting financially?'
 
         details data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.number_of_children.summary')
