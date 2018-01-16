@@ -1,14 +1,21 @@
-.content-body
-  div data-behavior="introduction"
-    - t('.introduction_html').lines.each do |line|
-      p = line
-  div data-behavior="requirements"
-    - t('.requirements_html').lines.each do |line|
-      p = line
-  div data-behavior="disclaimer"
+.content-body.home
+  .introduction data-behavior="introduction"
+    h2.heading-medium = t('.introduction_header')
+    p = t('.introduction_html').lines.first
+    ul.list.list-bullet
+      - t('.introduction_html').lines[1..-1].each do |line|
+        li = line
+  .requirements data-behavior="requirements"
+    h2.heading-medium = t('.requirements_header')
+    p = t('.requirements_html').lines.first
+    ul.list.list-bullet
+      - t('.requirements_html').lines[1..-1].each do |line|
+        li = line
+  .notice data-behavior="disclaimer"
+
     - t('.disclaimer_html').lines.each do |line|
-      p = line
-  div data-behavior="welsh_link"
+      p.bold-small = line
+  .welsh-link data-behavior="welsh_link"
     = t('welsh_link.full_html', link_html: link_to(t('welsh_link.link_text'), root_path))
   = form_for form, as: :calculation, url: calculation_url, method: :patch do |f|
     = f.submit t('.start'), class: 'button button-start'
