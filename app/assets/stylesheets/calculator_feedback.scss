@@ -1,10 +1,18 @@
-@import '_typography';
+@import 'elements';
+$positive_result_colour: $govuk-blue;
+$negative_result_colour: $red;
 .feedback {
   .positive {
-    color: blue;
+    @extend .panel;
+    @extend .panel-border-wide;
+    border-color: $positive_result_colour;
+    color: $positive_result_colour;
   }
   .negative {
-    color: red
+    @extend .panel;
+    @extend .panel-border-wide;
+    border-color: $negative_result_colour;
+    color: $negative_result_colour;
   }
   h2 {
     @include heading-36;
