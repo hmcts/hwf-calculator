@@ -3,6 +3,5 @@ module Calculator
     class PreviousQuestionSection < BaseSection
       element :answer, '[data-behavior=answer]'
     end
-
   end
 end
