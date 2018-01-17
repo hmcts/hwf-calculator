@@ -3,7 +3,7 @@ RSpec.describe FeeForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
-    context 'fee' do
+    describe 'fee' do
       it 'allows numeric values' do
         # Arrange
         form.fee = '10000'

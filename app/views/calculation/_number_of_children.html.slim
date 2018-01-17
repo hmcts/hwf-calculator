@@ -14,22 +14,19 @@
       fieldset
         legend = 'How many children live with you or are you responsible for supporting financially?'
 
-        details
-          summary = 'Click to reveal more information'
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= t('calculation.guidance.number_of_children.summary')
 
           .panel-indent
             .text
-              h2.heading-small = 'heading small'
+              h2.heading-small = t('calculation.guidance.number_of_children.detail.summary')
               ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
-              ul.list.list-bullet
-                li = 'item_1'
-        - if form.errors.include?(:number_of_children)
-          span.error-message = form.errors[:number_of_children].join(', ')
+                - t('calculation.guidance.number_of_children.detail.text').lines.each do |line|
+                  li = line
         label.block-label
           = f.text_field :number_of_children, class: 'form-control'
+        - if form.errors.include?(:number_of_children)
+          span.error-message = form.errors[:number_of_children].join(', ')
     .form-group
       = f.submit 'Next step', class: 'button'
   .previous_questions data-behavior="calculator_previous_questions"

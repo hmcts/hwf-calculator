@@ -85,7 +85,7 @@ RSpec.describe AgeService do
       expect(result).to be 3
     end
 
-    context 'born on leap day' do
+    context 'when born on leap day' do
       it 'returns the difference in years if we are on their birthday in another leap year' do
         # Arrange
         date1 = Date.parse('29 February 1996')

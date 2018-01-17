@@ -1,9 +1,13 @@
-require_relative './question_checkbox_list'
+require_relative 'question_numeric'
 require_relative 'question_help'
 module Calculator
   module Test
-    class BenefitsCheckboxListSection < QuestionCheckboxListSection
-      section :help_section, QuestionHelpSection, :help_section_labelled, 'How benefit affects your claim'
+    # A section representing the court fee question
+    class CourtFeeQuestionSection < QuestionNumericSection
+      section :help_section,
+        QuestionHelpSection,
+        :help_section_labelled,
+        'If you have already paid your court or tribunal fee'
 
       # Validates that the guidance text is as expected
       # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
@@ -15,6 +19,7 @@ module Calculator
         help_section.assert_text(strings.join("\n"))
       end
 
+      # Toggles the help on/off
       def toggle_help
         help_section.toggle
       end
@@ -30,18 +35,7 @@ module Calculator
       # rubocop:enable Style/PredicateName
 
       delegate :wait_for_help_text, to: :help_section
-
       delegate :wait_for_no_help_text, to: :help_section
-
-      def dont_know_guidance
-        option = option_labelled(messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know'))
-        option.guidance_with_text(messaging.t('hwf_pages.income_benefits.guidance.dont_know_option'))
-      end
-
-      def none_of_the_above_guidance
-        option = option_labelled(messaging.t('hwf_pages.income_benefits.labels.benefits.none'))
-        option.guidance_with_text(messaging.t('hwf_pages.income_benefits.guidance.none_option'))
-      end
     end
   end
 end

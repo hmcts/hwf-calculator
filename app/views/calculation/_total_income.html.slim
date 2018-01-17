@@ -5,20 +5,18 @@ div.calculator.marital_status
       fieldset
         legend = t('calculation.field_labels.total_income')
 
-        details
-          summary = 'Click to reveal more information'
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= t('calculation.guidance.total_income.summary')
 
           .panel-indent
             .text
-              h2.heading-small = 'heading small'
+              h2.heading-small = t('calculation.guidance.total_income.detail.summary')
               ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
-              ul.list.list-bullet
-                li = 'item_1'
+                - t('calculation.guidance.total_income.detail.text').lines.each do |line|
+                  li = line
         - if form.errors.include?(:total_income)
           span.error-message = form.errors[:total_income].join(', ')
+        span.form-hint = t('calculation.hints.total_income')
         label.block-label
           = f.text_field :total_income, class: 'form-control'
 

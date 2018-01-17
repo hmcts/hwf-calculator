@@ -42,10 +42,22 @@ en:
   calculation:
     home:
       start: "Start now"
-      guidance_html: |
-        This calculator will tell you if you are likely to get help with fees and how you will receive.
-        To use this calculator you'll need to know about your fees, savings, income benefits and household information.
-        Your household includes you, your partner and any children that you’re responsible for and who live with you.
+      introduction_html: |
+        This calculator will tell you if you’re likely to get help with fees and how much you could get.
+        You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:
+        You don't have much in savings, and
+        You're receiving certain benefits, or
+        You're on a low income
+        If you have a partner, your partner's situation will also apply
+      requirements_html: |
+        What you’ll need
+        You'll need information about your (and your partner's, if applicable):
+        total savings amount, and
+        either: list of benefits (or proof of certain benefits at the time you paid your fee)
+        or: total monthly income
+      disclaimer_html: |
+       This isn't the application and is designed to give an indicative response only. You'll need................
+
     feedback:
       subject:
         single: "you"
@@ -110,10 +122,10 @@ en:
     benefits:
       dont_know:
         label: "Don't know"
-        guidance: "Don't know guidance"
+        guidance: "If you don't know if you're receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee"
       none:
         label: 'None of the above'
-        guidance: 'None of the above guidance'
+        guidance: 'If you are not receiving one of the stated benefits, or are not sure, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee'
       jobseekers_allowance:
         label: "Income-based Jobseeker’s Allowance (JSA)"
         guidance: ''
@@ -133,7 +145,7 @@ en:
         label: "Scottish Legal Aid (Civil Claims)"
         guidance: ''
     common:
-      page_header: "Find out if you can get help with fees"
+      page_header: "Find out if you could get help with fees"
     guidance:
       marital_status:
         summary: "Help with Status"
@@ -153,5 +165,73 @@ en:
               living together as if you are married or in a civil partnership
               living at the same address with a joint income
               part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
-            
+      disposable_capital:
+        summary: "Help with savings and investments"
+        detail:
+          include:
+            summary: "You should include any of the following:"
+            text: |
+              money in ISAs and any other savings account
+              joint savings accounts that you share with your partner
+              fixed rate or investment bonds
+              any lump sum (eg a redundancy payout)
+              stocks and shares
+              trust funds (or any other kind of fund)
+              capital value of additional property
+              money or property outside the UK
+
+          exclude:
+            summary: "You should exclude:"
+            text: |
+              wages or benefits
+              joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+              personal pensions
+              capital value of self-employed businesses
+              student loans
+              unfair dismissal awards
+              money from the criminal injury compensation scheme
+              medical negligence or personal injury awards
+              any compensation under a statutory scheme in respect of Mesothelioma
+      number_of_children:
+        summary: "Children who might affect your claim"
+        detail:
+          summary: "Enter the number of children who you describe as:"
+          text: |
+            under 16 and living at home with you
+            age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
+            children who don’t live with you, but you (or your partner) pay regular maintenance for them
+      total_income:
+        summary: "What to include as income"
+        detail:
+          summary: "Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:"
+          text: |
+            wages
+            some benefits (see the list in the guide for benefits you shouldn’t include)
+            pensions (state, work or private without guarantee credit)
+            rent from anyone living with you and other properties that you own
+            payments from relatives
+            maintenance payments, eg from an ex-spouse
+            income from selling goods publicly or privately, including over the internet
+            student maintenance loans, grants or bursaries (except for tuition fee loans)
+            If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
+      income_benefits:
+        summary: "How benefit affects your claim"
+        detail:
+          summary: "You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits."
+          text: "When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence."
+      fee:
+        summary: "If you have already paid your court or tribunal fee"
+        detail_text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
+    hints:
+      date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+      total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+  welsh_link:
+    full_html: "This guide is also available %{link_html} (Cymraeg)"
+    link_text: "in Welsh"
+
+
+
+
+
+
 

@@ -52,7 +52,8 @@ Style/AsciiComments:
   Enabled: true
   Exclude:
     - 'spec/**/*'
-
+Style/TrailingBlankLines:
+  Enabled: true
 # Don't worry about long methods in specs.
 Metrics/MethodLength:
   Exclude:
@@ -138,6 +139,12 @@ Style/SignalException:
 Style/TrivialAccessors:
   AllowPredicates: true
 
+Style/MixinUsage:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'features/**/*'
+
 # Prefer sensible naming to comments everywhere.
 Documentation:
   Description: Document classes and non-namespace modules.
@@ -204,5 +211,8 @@ Style/NumericPredicate:
 Rails/OutputSafety:
   Exclude:
     - 'app/helpers/yaml_helper.rb'
+Capybara/FeatureMethods:
+  Exclude:
+    - 'spec/features/**/*'
 
 require: rubocop-rspec

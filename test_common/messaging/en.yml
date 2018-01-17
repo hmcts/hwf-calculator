@@ -47,15 +47,38 @@ en:
       errors:
         non_numeric: You must enter the number of financially dependent children
         blank: You must enter the number of financially dependent children
+      guidance:
+        number_of_children:
+          text: |
+            Enter the number of children who you describe as:
+            under 16 and living at home with you
+            age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
+            children who don’t live with you, but you (or your partner) pay regular maintenance for them
     date_of_birth:
+      hint: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       errors:
         non_numeric: Please enter a valid date of birth
         under_age:
           single: You must be over 16 years old to apply for help with fees
           married: You and your partner must be over 16 years old to apply for help with fees
     total_income:
+      hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
+      
       errors:
         non_numeric: Please enter numeric value with no decimal places
+      guidance:
+        total_income:
+          text: |
+            Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:
+            wages
+            some benefits (see the list in the guide for benefits you shouldn’t include)
+            pensions (state, work or private without guarantee credit)
+            rent from anyone living with you and other properties that you own
+            payments from relatives
+            maintenance payments, eg from an ex-spouse
+            income from selling goods publicly or privately, including over the internet
+            student maintenance loans, grants or bursaries (except for tuition fee loans)
+            If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
     marital_status:
       labels:
         marital_status:
@@ -78,13 +101,45 @@ en:
 
 
     fee:
+      guidance:
+        fee:
+          text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
       errors:
         non_numeric: Please enter numeric value with no decimal places
     disposable_capital:
       errors:
         non_numeric: "Please enter a valid value. The two nearest valid values are: XX and XX."
         blank: "Enter how much you have in savings and investments"
+      guidance:
+        disposable_capital:
+          text: |
+            You should include any of the following:
+            money in ISAs and any other savings account
+            joint savings accounts that you share with your partner
+            fixed rate or investment bonds
+            any lump sum (eg a redundancy payout)
+            stocks and shares
+            trust funds (or any other kind of fund)
+            capital value of additional property
+            money or property outside the UK
+            You should exclude:
+            wages or benefits
+            joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+            personal pensions
+            capital value of self-employed businesses
+            student loans
+            unfair dismissal awards
+            money from the criminal injury compensation scheme
+            medical negligence or personal injury awards
+            any compensation under a statutory scheme in respect of Mesothelioma
     income_benefits:
+      guidance:
+        benefits:
+          text: |
+            You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits.
+            When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence.
+        dont_know_option: If you don't know if you're receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee
+        none_option: If you are not receiving one of the stated benefits, or are not sure, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee
       errors:
         nothing_selected: 'Please select from the list'
       labels:
@@ -117,3 +172,23 @@ en:
           universal_credit: 'UC'
           pension_credit: 'PC'
           scottish_legal_aid: 'SLA'
+    home:
+      introduction_text: |
+        This calculator will tell you if you’re likely to get help with fees and how much you could get.
+        You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:
+        You don't have much in savings, and
+        You're receiving certain benefits, or
+        You're on a low income
+        If you have a partner, your partner's situation will also apply
+      requirements_text: |
+        What you’ll need
+        You'll need information about your (and your partner's, if applicable):
+        total savings amount, and
+        either: list of benefits (or proof of certain benefits at the time you paid your fee)
+        or: total monthly income
+      disclaimer_text: |
+        This isn't the application and is designed to give an indicative response only. You'll need................
+      welsh_link:
+        full_text: This guide is also available in Welsh (Cymraeg)
+        link_text: in Welsh
+

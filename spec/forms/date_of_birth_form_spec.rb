@@ -3,7 +3,7 @@ RSpec.describe DateOfBirthForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
-    context 'date_of_birth' do
+    describe 'date_of_birth' do
       it 'disallows nil' do
         # Act
         form.valid?
@@ -60,7 +60,7 @@ RSpec.describe DateOfBirthForm, type: :model do
       end
     end
 
-    context 'partner_date_of_birth' do
+    describe 'partner_date_of_birth' do
       it 'allows nil' do
         # Act
         form.valid?

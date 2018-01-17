@@ -1,9 +1,8 @@
-require_relative './question_checkbox_list'
-require_relative 'question_help'
+require_relative 'question_numeric'
 module Calculator
   module Test
-    class BenefitsCheckboxListSection < QuestionCheckboxListSection
-      section :help_section, QuestionHelpSection, :help_section_labelled, 'How benefit affects your claim'
+    class TotalIncomeQuestionSection < QuestionNumericSection
+      section :help_section, QuestionHelpSection, :help_section_labelled, 'What to include as income'
 
       # Validates that the guidance text is as expected
       # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
@@ -32,16 +31,6 @@ module Calculator
       delegate :wait_for_help_text, to: :help_section
 
       delegate :wait_for_no_help_text, to: :help_section
-
-      def dont_know_guidance
-        option = option_labelled(messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know'))
-        option.guidance_with_text(messaging.t('hwf_pages.income_benefits.guidance.dont_know_option'))
-      end
-
-      def none_of_the_above_guidance
-        option = option_labelled(messaging.t('hwf_pages.income_benefits.labels.benefits.none'))
-        option.guidance_with_text(messaging.t('hwf_pages.income_benefits.guidance.none_option'))
-      end
     end
   end
 end

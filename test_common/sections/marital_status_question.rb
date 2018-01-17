@@ -15,6 +15,7 @@ module Calculator
         help_section.assert_text(strings.join("\n"))
       end
 
+      # Toggles the help on/off
       def toggle_help
         help_section.toggle
       end

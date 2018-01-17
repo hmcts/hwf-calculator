@@ -3,6 +3,7 @@ module Calculator
     module En
       # A page object providing an interface to the 'Income Benefits Page'
       class IncomeBenefitsPage < BasePage
+        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
         section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, 'Select all income benefits you are currently receiving'
         element :next_button, :button, 'Next step'
 
@@ -68,6 +69,28 @@ module Calculator
 
         def error_nothing_selected
           benefits.error_with_text(messaging.t('hwf_pages.income_benefits.errors.nothing_selected'))
+        end
+
+        # Toggles the guidance text for this question
+        def toggle_guidance
+          benefits.toggle_help
+        end
+
+        # Validates that the guidance text is correct for the english language
+        # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
+        def validate_guidance
+          benefits.validate_guidance(messaging.t('hwf_pages.income_benefits.guidance.benefits.text'))
+        end
+
+        # Indicates if the marital status field has no guidance text visible
+        def has_no_guidance?
+          benefits.has_no_help_text?
+        end
+
+        # Waits for the guidance to be visible
+        # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
+        def wait_for_guidance
+          benefits.wait_for_help_text
         end
       end
     end

@@ -4,6 +4,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   include ActiveSupport::NumberHelper
   include Calculator::Test::Pages
   let(:any_calculator_page) { Calculator::Test::En::BasePage.new }
+
   # Scenario: Under 61 years old view highlighted positive response
   #
   # Given I am JOHN

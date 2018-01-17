@@ -3,7 +3,7 @@ RSpec.describe BenefitsReceivedForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
-    context '#benefits_received' do
+    describe '#benefits_received' do
       it 'is invalid if nil' do
         form.benefits_received = nil
         expect(form.valid?).to be false

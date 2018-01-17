@@ -5,7 +5,7 @@ RSpec.describe CalculationService do
   # The fake calculators that are used by most examples.
   # As standard, we setup 3 calculators but this is just an arbitrary number.
   # The service can handle any number of calculators
-  shared_context 'fake calculators' do
+  shared_context 'with fake calculators' do
     let(:calculator_1_class) { class_spy(BaseCalculatorService, 'Calculator 1 class', identifier: :calculator1) }
     let(:calculator_2_class) { class_spy(BaseCalculatorService, 'Calculator 2 class', identifier: :calculator2) }
     let(:calculator_3_class) { class_spy(BaseCalculatorService, 'Calculator 3 class', identifier: :calculator3) }
@@ -41,7 +41,8 @@ RSpec.describe CalculationService do
           disposable_capital: 1000
         }
       end
-      include_context 'fake calculators'
+
+      include_context 'with fake calculators'
       it 'calls calculator 1' do
         # Act
         service.call(inputs, calculators: calculators)
@@ -99,8 +100,9 @@ RSpec.describe CalculationService do
         end
       end
 
-      context 'order of calculators called' do
+      context 'with order of calculators called validation' do
         let(:calculators_called) { [] }
+
         before do
           allow(calculator_1_class).to receive(:call).with(inputs) do
             calculators_called << 1
@@ -187,7 +189,8 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
-    include_context 'fake calculators'
+
+    include_context 'with fake calculators'
 
     it 'has help available if calculator 1 says it is available' do
       # Arrange
@@ -231,7 +234,8 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
-    include_context 'fake calculators'
+
+    include_context 'with fake calculators'
 
     it 'returns the value from calculator 1' do
       # Arrange
@@ -249,14 +253,6 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
-    include_context 'fake calculators'
-    before do
-      # Arrange - Each calculator class can tell us which fields are required based on inputs and previous calculations
-      # Here we just give some dummy data - it is not relevant as long as they all get added together in the correct order
-      allow(calculator_1_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:fee])
-      allow(calculator_2_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:date_of_birth, :benefits_received])
-      allow(calculator_3_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:number_of_children, :total_income])
-    end
     let(:expected_previous_calculations) do
       {
         calculator1: { available_help: :undecided },
@@ -264,6 +260,16 @@ RSpec.describe CalculationService do
         calculator3: { available_help: :undecided }
       }
     end
+
+    include_context 'with fake calculators'
+    before do
+      # Arrange - Each calculator class can tell us which fields are required based on inputs and previous calculations
+      # Here we just give some dummy data - it is not relevant as long as they all get added together in the correct order
+      allow(calculator_1_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:fee])
+      allow(calculator_2_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:date_of_birth, :benefits_received])
+      allow(calculator_3_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:number_of_children, :total_income])
+    end
+
     it 'returns any fields not provided in the input in the correct order prefixed with marital_status' do
 
       # Act and Assert
@@ -296,7 +302,8 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
-    include_context 'fake calculators'
+
+    include_context 'with fake calculators'
 
     it 'returns any fields not provided that will affect the likelihood and not those that just affect the amount' do
 
@@ -311,7 +318,8 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
-    include_context 'fake calculators'
+
+    include_context 'with fake calculators'
 
     it 'returns the correct hash' do
       # Arrange

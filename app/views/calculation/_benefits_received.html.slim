@@ -14,18 +14,15 @@
       fieldset
         legend = I18n.t('calculation.field_labels.benefits_received')
 
-        details
-          summary = 'Click to reveal more information'
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= t('calculation.guidance.income_benefits.summary')
 
           .panel-indent
             .text
-              h2.heading-small = 'heading small'
+              h2.heading-small = t('calculation.guidance.income_benefits.detail.summary')
               ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
-              ul.list.list-bullet
-                li = 'item_1'
+                - t('calculation.guidance.income_benefits.detail.text').lines.each do |line|
+                  li = line
         - if form.errors.include?(:benefits_received)
           span.error-message = form.errors[:benefits_received].join(', ')
         label

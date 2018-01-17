@@ -1,3 +1,4 @@
+require_relative 'question_section'
 module Calculator
   module Test
     class QuestionDateSection < QuestionSection
