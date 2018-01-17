@@ -62,7 +62,11 @@ Feature: Disposable capital
     Given I am David
     And I am on the savings and investment page
     When I submit my savings and investments
+<<<<<<< HEAD
     Then on the next page I should see my previous answer with my savings and investments
+=======
+    Then on the next page I should see my previous answer for savings and investments
+>>>>>>> RST-730 added tests to desposable capital
 
   Scenario: Help with savings and investment
     Given I am David
