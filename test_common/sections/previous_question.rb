@@ -12,6 +12,5 @@ module Calculator
         has_no_link?
       end
     end
-
   end
 end
