@@ -11,8 +11,6 @@
 
   = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('error' if form.errors.any?)
-      - if true
-        span.error-message = 'errors'
       fieldset
         legend = 'How many children live with you or are you responsible for supporting financially?'
 
@@ -28,6 +26,8 @@
               h2.heading-small = 'heading 2 small'
               ul.list.list-bullet
                 li = 'item_1'
+        - if form.errors.include?(:number_of_children)
+          span.error-message = form.errors[:number_of_children].join(', ')
         label.block-label
           = f.text_field :number_of_children, class: 'form-control'
     .form-group
