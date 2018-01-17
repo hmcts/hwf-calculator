@@ -29,9 +29,5 @@ When("I click next without submitting my date of birth") do
 end
 
 Then("I should see the date of birth error message") do
-<<<<<<< HEAD
   expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
-=======
-  # TODO: add when functionality is complete
->>>>>>> RST-730 wip tests
 end
