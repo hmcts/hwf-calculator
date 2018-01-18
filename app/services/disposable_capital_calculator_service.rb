@@ -57,12 +57,12 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
     (inputs[:partner_date_of_birth].nil? || inputs[:partner_date_of_birth].is_a?(Date))
   end
 
-  def earliest_date_of_birth
-    [inputs[:date_of_birth], inputs[:partner_date_of_birth]].compact.min
+  def latest_date_of_birth
+    [inputs[:date_of_birth], inputs[:partner_date_of_birth]].compact.max
   end
 
   def process_inputs
-    fee_band = find_fee_band_for(age: age_service.call(date_of_birth: earliest_date_of_birth), fee: inputs[:fee])
+    fee_band = find_fee_band_for(age: age_service.call(date_of_birth: latest_date_of_birth), fee: inputs[:fee])
     if inputs[:disposable_capital] < fee_band[:disposable_capital]
       mark_as_help_available
     else
