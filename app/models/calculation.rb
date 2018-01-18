@@ -2,6 +2,7 @@ class Calculation
   include ActiveModel::Model
   attr_accessor :inputs, :available_help, :remission, :fields_required
   attr_accessor :required_fields_affecting_likelihood, :messages, :fields
+  attr_accessor :final_decision_by
 
   def initialize(attrs = {})
     local_attrs = attrs.dup
