@@ -32,6 +32,10 @@ def income_benefits_page
   @income_benefits_page ||= ::Calculator::Test::En::IncomeBenefitsPage.new
 end
 
+def number_of_children_page
+  @number_of_children_page ||= ::Calculator::Test::En::NumberOfChildrenPage.new
+end
+
 def full_remission_page
   @full_remission_page ||= ::Calculator::Test::En::FullRemissionPage.new
 end
