@@ -26,7 +26,7 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
   scenario 'Enter valid value in Savings & Investments field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
 
     # Act
     disposable_capital_page.disposable_capital.set('1000')
@@ -46,7 +46,7 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
   scenario 'Enter invalid value in Savings & Investments field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
 
     # Act
     disposable_capital_page.disposable_capital.set('£')
@@ -65,7 +65,7 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
   scenario 'Savings & Investments field is empty/blank - no entry' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
 
     # Act
     disposable_capital_page.next

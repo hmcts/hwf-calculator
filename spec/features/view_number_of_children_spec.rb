@@ -15,7 +15,7 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
 
     # Assert
     aggregate_failures 'validating content of header and question' do
@@ -34,7 +34,7 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
     number_of_children_page.toggle_guidance
 
     # Assert
@@ -50,7 +50,7 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
   scenario 'Hide Guidance Information' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
     number_of_children_page.toggle_guidance
     number_of_children_page.wait_for_guidance
 

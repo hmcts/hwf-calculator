@@ -21,7 +21,7 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Assert
     aggregate_failures 'validating content of header and question' do
@@ -45,7 +45,7 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
     court_fee_page.toggle_guidance
 
     # Assert
@@ -69,7 +69,7 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
   scenario 'Hide Guidance Information' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
     court_fee_page.toggle_guidance
     court_fee_page.wait_for_guidance
 

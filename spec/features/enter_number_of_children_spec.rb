@@ -30,7 +30,7 @@ RSpec.describe 'Enter number of children test', type: :feature, js: true do
   scenario 'Citizen enter number of children they are responsible for' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
 
     # Act
     answer_number_of_children_question

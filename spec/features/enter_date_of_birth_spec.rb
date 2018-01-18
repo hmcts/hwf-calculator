@@ -24,7 +24,7 @@ RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
   scenario 'Single citizen enter date of birth' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -43,7 +43,7 @@ RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
   scenario 'Married citizen enter date of birth' do
     # Arrange
     given_i_am(:alli)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question

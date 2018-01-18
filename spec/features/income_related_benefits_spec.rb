@@ -18,7 +18,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
       messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
     ]
     given_i_am(:john)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.benefits.set(benefits_to_select)
@@ -34,7 +34,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
       messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
     ]
     given_i_am(:john)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.benefits.set(benefits_to_select)
@@ -52,7 +52,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario 'Select None of the Above option' do
     # Arrange - Take alli to the benefits page
     given_i_am(:alli)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.choose_none
@@ -72,7 +72,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario 'Select income related benefit option' do
     # Arrange - Take oliver to the benefits page
     given_i_am(:oliver)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.benefits.set([messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')])
@@ -85,7 +85,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario 'Select income related benefit option - answer added to previous answers' do
     # Arrange - Take oliver to the benefits page
     given_i_am(:oliver)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.benefits.set([messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')])
@@ -104,7 +104,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario 'Display None of the above guidance information' do
     # Arrange - Take tom to the benefits page
     given_i_am(:tom)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.choose_none
@@ -124,7 +124,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario "Display Don't know guidance Information" do
     # Arrange - Take tom to the benefits page
     given_i_am(:tom)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.choose_dont_know
@@ -151,7 +151,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   scenario 'No option selected' do
     # Arrange - Take tom to the benefits page
     given_i_am(:tom)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     income_benefits_page.next

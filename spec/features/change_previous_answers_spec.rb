@@ -9,13 +9,13 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   #
   # Rules:
   #
-  # User should be able to update previous answers at any point in the calculator session
+  # User should be able to update previous answers at any point in the calculator session however, the feature should be excluded from the calculator landing page and the Partner Status page
   # When an answer to a question is updated, calculation should be revalidated and corresponding response displayed
-  # When previous answer is updated, answers to subsequent questions should be purged from the Previous answer section and related question fields reset
+  # After user goes back to a question and make changes to their answer, direct users back to the question they were at before they went back. If we cannot because the new answer has changed the calculation and the question is no longer valid then we surface the next answer in the chain for the user to review
   # Design Assumptions:
   #
-  # User unable to make updates to previous answers when they fail disposable capital test (PO to confirm)
-  # User unable to make updates to previous answers in the income test response page (PO to confirm)
+  # User unable to make updates to previous answers when they fail disposable capital test (Validated)
+  # User unable to make updates to previous answers in the income test response page (Validated)
   # Personas:
   #
   # JOHN is a single, 56 year old man with £2,990 worth of capital. He has a court fee of £600
@@ -31,7 +31,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   scenario 'Citizen update Partner status from court or tribunal fee page' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     court_fee_page.go_back_to_question(:marital_status)
@@ -45,18 +45,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   #               And I am on the Number of Children page
   #               When I click on the Change link for the Status question
   #               Then I should see the Status question prepopulated with previous answer
-  #               And the Previous answers section should disappear
+  #               And relevant Previous answers information should be retained
   #
   scenario 'Citizen update Partner status from Number of Children page' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
 
     # Act
     number_of_children_page.go_back_to_question(:marital_status)
 
     # Assert
-    expect(marital_status_page).to be_displayed
+    expect(marital_status_page).to be_displayed.and(have_previous_answers)
   end
 
   # Scenario: Citizen update Savings and investment amount from Number of Children page
@@ -64,18 +64,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   #               And I am on the Number of Children page
   #               When I click on the Change link for the Savings and investment question
   #               Then I should see the Savings and investment question prepopulated with previous answer
-  #               And answers to subsequent questions should be purged from the Previous answer section
+  #               And relevant Previous answers information should be retained
   #
   scenario 'Citizen update Savings and investment amount from Number of Children page' do
     # Arrange
     given_i_am(:alli)
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
 
     # Act
     number_of_children_page.go_back_to_question(:disposable_capital)
 
     # Assert
-    expect(disposable_capital_page).to be_displayed
+    expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
   end
 
   # Scenario: Citizen update Savings and investment amount from the Benefit response page
@@ -83,18 +83,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   #               And I am on the Benefit response page
   #               When I click on the Change link for the Savings and investment question
   #               Then I should see the Savings and investment question prepopulated with previous answer
-  #               And answers to subsequent questions should be purged from the Previous answer section
+  #               And relevant Previous answers information should be retained
   #
   scenario 'Citizen update Savings and investment amount from the Benefit response page' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Act
     court_fee_page.go_back_to_question(:disposable_capital)
 
     # Assert
-    expect(disposable_capital_page).to be_displayed
+    expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
   end
 
   # Scenario: Citizen update Court or tribunal fee from the Total Income page
@@ -102,18 +102,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   #               And I am on the Total Income page
   #               When I click on the Change link for the Court or tribunal fee question
   #               Then I should see the Court or tribunal fee question prepopulated with previous answer
-  #               And answers to subsequent questions should be purged from the Previous answer section
+  #               And relevant Previous answers information should be retained
   #
   scenario 'Citizen update Court or tribunal fee from the Total Income page' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     total_income_page.go_back_to_question(:court_fee)
 
     # Assert
-    expect(court_fee_page).to be_displayed
+    expect(court_fee_page).to be_displayed.and(have_previous_answers)
   end
 
   # Scenario: Citizen update income benefit from the Total Income page
@@ -121,18 +121,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   #               And I am on the Total Income page
   #               When I click on the Change link for the income benefit question
   #               Then I should see the income benefit question prepopulated with previous answer
-  #               And answers to subsequent questions should be purged from the Previous answer section
+  #               And relevant Previous answers information should be retained
   #
   scenario 'Citizen update income benefit from the Total Income page' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     total_income_page.go_back_to_question(:income_benefits)
 
     # Assert
-    expect(income_benefits_page).to be_displayed
+    expect(income_benefits_page).to be_displayed.and(have_previous_answers)
   end
 
   # Scenario: Citizen unable to make updates from the Total income response page

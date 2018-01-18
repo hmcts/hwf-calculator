@@ -24,7 +24,7 @@ RSpec.describe 'Validate gross monthly income test', type: :feature, js: true do
   scenario 'Specify numeric value in Total Income field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     total_income_page.total_income.set('1000')
@@ -45,7 +45,7 @@ RSpec.describe 'Validate gross monthly income test', type: :feature, js: true do
   scenario 'Specify non-numeric value in Total Income field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     total_income_page.total_income.set('£')
@@ -65,7 +65,7 @@ RSpec.describe 'Validate gross monthly income test', type: :feature, js: true do
   scenario 'Validate empty Total Income field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     total_income_page.next
