@@ -63,10 +63,14 @@ Feature: Disposable capital
     And I am on the savings and investment page
     When I submit my savings and investments
 <<<<<<< HEAD
+<<<<<<< HEAD
     Then on the next page I should see my previous answer with my savings and investments
 =======
     Then on the next page I should see my previous answer for savings and investments
 >>>>>>> RST-730 added tests to desposable capital
+=======
+    Then on the next page I should see my previous answer with my savings and investments
+>>>>>>> RST-730 tests in progress for num of children
 
   Scenario: Help with savings and investment
     Given I am David

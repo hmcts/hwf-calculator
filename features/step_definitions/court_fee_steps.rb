@@ -17,11 +17,7 @@ When("I successfully submit my court and tribunal fee") do
   answer_court_fee_question
 end
 
-<<<<<<< HEAD
 Then("on the next page I should see my answer for court and tribunal fee") do
-=======
-Then("on the next page I should see my previous answer is the same") do
->>>>>>> RST-730 wip tests
   # TODO: add when functionality is complete
 end
 
