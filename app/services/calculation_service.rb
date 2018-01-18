@@ -47,7 +47,7 @@ class CalculationService
     'BenefitsReceived',
     'HouseholdIncome'
   ].freeze
-  attr_reader :messages, :inputs, :calculations, :available_help, :remission
+  attr_reader :messages, :inputs, :calculations, :available_help, :remission, :final_decision_by
 
   # Create an instance of CalculationService
   # @param [Hash] inputs
@@ -57,6 +57,7 @@ class CalculationService
   def initialize(inputs, calculators: default_calculators)
     self.inputs = inputs.freeze
     self.available_help = :undecided
+    self.final_decision_by = :none
     self.remission = 0.0
     self.messages = []
     self.calculators = calculators
@@ -101,6 +102,7 @@ class CalculationService
     {
       inputs: inputs,
       available_help: available_help,
+      final_decision_by: final_decision_by,
       remission: remission,
       fields_required: fields_required,
       required_fields_affecting_likelihood: required_fields_affecting_likelihood,
@@ -137,12 +139,6 @@ class CalculationService
   end
   deprecate :partial_help_available?
 
-  # Indicates if no decision has been made yet and we should continue
-  # @return [Boolean] If true, no decision has been made yet
-  def undecided?
-    available_help == :undecided
-  end
-
   # Indicates what fields are required to be filled in by the user - in the order the
   # questions should be asked.
   #
@@ -168,13 +164,6 @@ class CalculationService
     FIELDS_AFFECTING_LIKELIHOOD - inputs.keys
   end
 
-  def final_decision_by
-    calculations.each_pair do |service, result|
-      return service if result.final_decision?
-    end
-    :none
-  end
-
   private
 
   def default_calculators
@@ -194,22 +183,24 @@ class CalculationService
   def perform_calculation_using(calculator)
     result = calculator.call(inputs)
     if result.available_help == :none
-      add_failure(result.messages)
+      add_failure(result, identifier: calculator.identifier)
       throw(:abort)
     end
     if [:full, :partial].include? result.available_help
-      add_success(result)
+      add_success(result, identifier: calculator.identifier)
     end
     result
   end
 
-  def add_failure(reasons)
+  def add_failure(result, identifier:)
     self.available_help = :none
-    messages.concat reasons
+    self.final_decision_by = identifier if result.final_decision?
+    messages.concat result.messages
   end
 
-  def add_success(result)
+  def add_success(result, identifier:)
     self.available_help = result.available_help
+    self.final_decision_by = identifier if result.final_decision?
     # The remission is always from the last value given,
     # so its ok to overwrite this
     self.remission = result.remission
@@ -217,5 +208,5 @@ class CalculationService
   end
 
   attr_accessor :calculators
-  attr_writer :messages, :inputs, :calculations, :available_help, :remission
+  attr_writer :messages, :inputs, :calculations, :available_help, :remission, :final_decision_by
 end

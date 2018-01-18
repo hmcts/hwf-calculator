@@ -183,39 +183,6 @@ RSpec.describe CalculationService do
     end
   end
 
-  describe '#undecided?' do
-    let(:inputs) do
-      {
-        disposable_capital: 1000
-      }
-    end
-
-    include_context 'with fake calculators'
-
-    it 'is true if no calculators made a decision' do
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes undecided?: true
-    end
-
-    it 'is false if calculator 1 said help is available' do
-      # Arrange
-      allow(calculator_1).to receive(:available_help).and_return :full
-      allow(calculator_1).to receive(:messages).and_return []
-
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes undecided?: false
-    end
-
-    it 'is false if calculator 1 said help is not available' do
-      # Arrange
-      allow(calculator_1).to receive(:available_help).and_return :none
-      allow(calculator_1).to receive(:messages).and_return []
-
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes undecided?: false
-    end
-  end
-
   describe '#available_help' do
     let(:inputs) do
       {
@@ -353,24 +320,57 @@ RSpec.describe CalculationService do
     end
 
     include_context 'with fake calculators'
-    it 'is :calculator1 if calculator 1 makes a final decision' do
+
+    it 'is :calculator1 if calculator 1 makes a final positive decision' do
       # Arrange
+
+      allow(calculator_1).to receive(:available_help).and_return :full
       allow(calculator_1).to receive(:final_decision?).and_return true
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator1
     end
 
-    it 'is :calculator2 if calculator 2 makes a final decision' do
+    it 'is :calculator2 if calculator 2 makes a final positive decision' do
       # Arrange
+      allow(calculator_2).to receive(:available_help).and_return :full
       allow(calculator_2).to receive(:final_decision?).and_return true
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator2
     end
 
-    it 'is :calculator3 if calculator 3 makes a final decision' do
+    it 'is :calculator3 if calculator 3 makes a final positive decision' do
       # Arrange
+      allow(calculator_3).to receive(:available_help).and_return :full
+      allow(calculator_3).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator3
+    end
+
+    it 'is :calculator1 if calculator 1 makes a negative decision' do
+      # Arrange
+
+      allow(calculator_1).to receive(:available_help).and_return :none
+      allow(calculator_1).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator1
+    end
+
+    it 'is :calculator2 if calculator 2 makes a final negative decision' do
+      # Arrange
+      allow(calculator_2).to receive(:available_help).and_return :none
+      allow(calculator_2).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator2
+    end
+
+    it 'is :calculator3 if calculator 3 makes a final negative decision' do
+      # Arrange
+      allow(calculator_3).to receive(:available_help).and_return :none
       allow(calculator_3).to receive(:final_decision?).and_return true
 
       # Act and Assert
@@ -399,6 +399,7 @@ RSpec.describe CalculationService do
       # Act and Assert
       expect(subject.to_h).to include inputs: a_hash_including(inputs),
                                       available_help: :undecided,
+                                      final_decision_by: :none,
                                       remission: 0.0,
                                       fields_required: instance_of(Array),
                                       required_fields_affecting_likelihood: instance_of(Array),
