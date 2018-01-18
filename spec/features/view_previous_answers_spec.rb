@@ -1,6 +1,5 @@
 require 'rails_helper'
-# This feature represents the acceptance criteria defined in RST-745
-# @TODO This feature is not 100% as per AC at the moment as I am questioning the resetting of previous questions - just the last step in every scenario
+# This feature represents adds to the acceptance criteria defined in RST-745
 RSpec.describe 'Change previous answers test', type: :feature, js: true do
   scenario 'Citizen on marital status page should not see any previous questions' do
     # Arrange
