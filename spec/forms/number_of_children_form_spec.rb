@@ -81,6 +81,13 @@ RSpec.describe NumberOfChildrenForm, type: :model do
     end
   end
 
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(number_of_children: '2', some_other_field: 12)
+      expect(subject.number_of_children).to be 2
+    end
+  end
+
   describe 'type' do
     it 'returns :number_of_children' do
       expect(form.type).to be :number_of_children

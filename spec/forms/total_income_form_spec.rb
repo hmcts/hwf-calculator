@@ -94,6 +94,13 @@ RSpec.describe TotalIncomeForm, type: :model do
     end
   end
 
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(total_income: '1000', some_other_field: 12)
+      expect(subject.total_income).to be 1000
+    end
+  end
+
   describe 'type' do
     it 'returns :total_income' do
       expect(form.type).to be :total_income

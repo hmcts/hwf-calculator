@@ -82,4 +82,11 @@ RSpec.describe BenefitsReceivedForm, type: :model do
       expect(form.benefits_received).to eql ['benefit 1']
     end
   end
+
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(benefits_received: ['benefit 1'], some_other_field: 12)
+      expect(subject.benefits_received).to eql(['benefit 1'])
+    end
+  end
 end

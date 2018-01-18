@@ -130,9 +130,19 @@ RSpec.describe DateOfBirthForm, type: :model do
       expect(subject.date_of_birth).to eql(Date.new(2000, 12, 27))
     end
 
+    it 'stores date of birth as is given a date' do
+      subject = described_class.new(date_of_birth: Date.new(2000, 12, 27))
+      expect(subject.date_of_birth).to eql(Date.new(2000, 12, 27))
+    end
+
     it 'converts partner date of birth from rails 1i, 2i, 3i format from date helpers' do
       subject = described_class.new('partner_date_of_birth(1i)' => '2000', 'partner_date_of_birth(2i)' => '12', 'partner_date_of_birth(3i)' => '28')
       expect(subject.partner_date_of_birth).to eql(Date.new(2000, 12, 28))
+    end
+
+    it 'stores partners date of birth as is given a date' do
+      subject = described_class.new(partner_date_of_birth: Date.new(2000, 12, 27))
+      expect(subject.partner_date_of_birth).to eql(Date.new(2000, 12, 27))
     end
 
     it 'allows partner date of birth fields to be nil' do
@@ -150,6 +160,13 @@ RSpec.describe DateOfBirthForm, type: :model do
                                     'date_of_birth(2i)' => '12',
                                     'date_of_birth(3i)' => '27'
       expect(subject.partner_date_of_birth).to be_nil
+    end
+  end
+
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(partner_date_of_birth: Date.new(2000, 12, 27), some_other_field: 12)
+      expect(subject.partner_date_of_birth).to eql(Date.new(2000, 12, 27))
     end
   end
 

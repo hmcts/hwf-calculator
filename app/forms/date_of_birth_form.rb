@@ -44,10 +44,12 @@ class DateOfBirthForm < BaseForm
   end
 
   def convert_date_of_birth(inputs)
+    return if inputs[:date_of_birth].is_a?(Date)
     inputs[:date_of_birth] = convert_rails_date(inputs: inputs, attribute: :date_of_birth)
   end
 
   def convert_partner_date_of_birth(inputs)
+    return if inputs[:partner_date_of_birth].is_a?(Date)
     inputs[:partner_date_of_birth] = convert_rails_date(inputs: inputs, attribute: :partner_date_of_birth)
   end
 

@@ -94,6 +94,13 @@ RSpec.describe DisposableCapitalForm, type: :model do
     end
   end
 
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(disposable_capital: '10000', some_other_field: 12)
+      expect(subject.disposable_capital).to be 10000
+    end
+  end
+
   describe 'type' do
     it 'returns :disposable_capital' do
       expect(form.type).to be :disposable_capital

@@ -29,6 +29,11 @@ class BaseForm
     export_params
   end
 
+  def self.new_ignoring_extras(attrs = {})
+    new_attrs = attrs.slice(*attributes_registry.keys)
+    new(new_attrs)
+  end
+
   private
 
   # @abstract - Must have your own implementation in here, and it must return
