@@ -2,7 +2,8 @@ div.calculator.fee
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = t('calculation.field_labels.fee')
+        legend
+          h2.heading-medium = t('calculation.field_labels.fee')
         details data-behavior="question_help"
           summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
 

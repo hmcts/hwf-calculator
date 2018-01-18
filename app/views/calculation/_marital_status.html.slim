@@ -5,6 +5,8 @@ div.content-body.marital_status
       fieldset
         legend
           h2.heading-medium = t('calculation.field_labels.marital_status')
+        - if form.errors.include?(:marital_status)
+          span.error-message = form.errors[:marital_status].join(', ')
         .multiple-choice
           = f.radio_button :marital_status, 'single'
           = f.label :marital_status_single, 'Single', allow_method_names_outside_object: true
