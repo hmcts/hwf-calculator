@@ -164,6 +164,16 @@ class CalculationService
     FIELDS_AFFECTING_LIKELIHOOD - inputs.keys
   end
 
+  # Indicates if a calculator has made a final decision, preventing any further
+  # calculations from being done.
+  # This can be done by any calculator, but currently it is used by the
+  # disposable capital calculator as it has the right to say - no more questions
+  # this person has too much in savings.
+  # @return [Boolean] Indicates if a final decision has been
+  def final_decision_made?
+    final_decision_by != :none
+  end
+
   private
 
   def default_calculators
