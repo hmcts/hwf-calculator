@@ -383,6 +383,32 @@ RSpec.describe CalculationService do
     end
   end
 
+  describe 'final_decision_made?' do
+    let(:inputs) do
+      {
+        disposable_capital: 1000
+      }
+    end
+
+    include_context 'with fake calculators'
+
+    it 'is true if calculator 1 makes a final positive decision' do
+      # Arrange
+
+      allow(calculator_1).to receive(:available_help).and_return :full
+      allow(calculator_1).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_made?: true
+    end
+
+    it 'is false if no calculators have made a final decision' do
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_made?: false
+    end
+
+  end
+
   describe '#to_h' do
     let(:inputs) do
       {
