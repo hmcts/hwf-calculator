@@ -17,7 +17,7 @@ When("I successfully submit my court and tribunal fee") do
   answer_court_fee_question
 end
 
-Then("on the next page I should see my previous answer is the same") do
+Then("on the next page I should see my answer for court and tribunal fee") do
   # TODO: add when functionality is complete
 end
 
