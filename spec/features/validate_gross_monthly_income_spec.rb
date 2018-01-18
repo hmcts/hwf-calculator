@@ -31,7 +31,7 @@ RSpec.describe 'Validate gross monthly income test', type: :feature, js: true do
     total_income_page.next
 
     # Assert
-    expect(total_income_page).not_to be_displayed
+    expect(full_remission_page).to be_displayed
   end
 
   # Scenario: Specify non-numeric value in Total Income field
