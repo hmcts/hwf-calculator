@@ -20,6 +20,10 @@ class CalculationController < ApplicationController
     end
   end
 
+  def edit
+    self.form = form_class.new_ignoring_extras(current_calculation.inputs)
+  end
+
   # The current calculation from the session converted into a @see Calculation instance
   #
   # @return [Calculation] The current calculation
