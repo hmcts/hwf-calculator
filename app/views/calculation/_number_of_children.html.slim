@@ -29,4 +29,4 @@
           span.error-message = form.errors[:number_of_children].join(', ')
     .form-group
       = f.submit 'Next step', class: 'button'
-  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false }
+  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?
