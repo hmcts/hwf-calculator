@@ -87,6 +87,7 @@ class CalculationService
         my_result = catch(:invalid_inputs) do
           calculations[calculator.identifier] = perform_calculation_using(calculator)
         end
+        throw :abort, self if my_result.final_decision?
         throw :abort, self unless my_result.valid?
       end
     end
@@ -136,6 +137,12 @@ class CalculationService
   end
   deprecate :partial_help_available?
 
+  # Indicates if no decision has been made yet and we should continue
+  # @return [Boolean] If true, no decision has been made yet
+  def undecided?
+    available_help == :undecided
+  end
+
   # Indicates what fields are required to be filled in by the user - in the order the
   # questions should be asked.
   #
@@ -159,6 +166,13 @@ class CalculationService
   # @see #fields_required for the list of symbols.
   def required_fields_affecting_likelihood
     FIELDS_AFFECTING_LIKELIHOOD - inputs.keys
+  end
+
+  def final_decision_by
+    calculations.each_pair do |service, result|
+      return service if result.final_decision?
+    end
+    :none
   end
 
   private

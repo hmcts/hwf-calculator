@@ -7,27 +7,27 @@ RSpec.describe DisposableCapitalCalculatorService do
       next_to_limit = limit - 1
       context "age: #{age}, fee: #{fee}" do
         it "states help is available when disposable_capital: 0" do
-          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: 0)).to have_attributes available_help: :full, messages: a_collection_including(a_hash_including(key: :likely, source: :disposable_capital))
+          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: 0)).to have_attributes available_help: :full, messages: a_collection_including(a_hash_including(key: :likely, source: :disposable_capital)), final_decision?: false
         end
 
         it "states help is available when disposable_capital: 1" do
-          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: 1)).to have_attributes available_help: :full, messages: a_collection_including(a_hash_including(key: :likely, source: :disposable_capital))
+          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: 1)).to have_attributes available_help: :full, messages: a_collection_including(a_hash_including(key: :likely, source: :disposable_capital)), final_decision?: false
         end
 
         it "states help is available when disposable_capital: #{next_to_limit}" do
-          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: next_to_limit)).to have_attributes available_help: :full, messages: a_collection_including(a_hash_including(key: :likely, source: :disposable_capital))
+          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: next_to_limit)).to have_attributes available_help: :full, messages: a_collection_including(a_hash_including(key: :likely, source: :disposable_capital)), final_decision?: false
         end
 
         it "states help is not available when disposable_capital: #{limit}" do
-          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: limit)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital))
+          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: limit)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital)), final_decision?: true
         end
 
         it "states help is not available when disposable_capital: #{limit + 1}" do
-          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: limit + 1)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital))
+          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: limit + 1)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital)), final_decision?: true
         end
 
         it "states help is not available when disposable_capital: #{limit + 100000}" do
-          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: limit + 100000)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital))
+          expect(service.call(date_of_birth: (age.years.ago - 1.day).to_date, fee: fee, disposable_capital: limit + 100000)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital)), final_decision?: true
         end
       end
     end

@@ -86,6 +86,7 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
 
   def mark_as_help_not_available
     self.available_help = :none
+    self.final_decision = true
     messages << { key: :unlikely, source: :disposable_capital }
   end
 
