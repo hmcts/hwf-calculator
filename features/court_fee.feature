@@ -10,10 +10,14 @@ Scenario: Successfully submits court and tribunal fee
   When I see the court and tribunal question
   And I successfully submit my court and tribunal fee
 <<<<<<< HEAD
+<<<<<<< HEAD
   Then on the next page I should see my answer for court and tribunal fee
 =======
   Then on the next page I should see my previous answer is the same
 >>>>>>> RST-730 wip tests
+=======
+  Then on the next page I should see my answer for court and tribunal fee
+>>>>>>> RST-730 tests in progress for num of children
 
 Scenario: If you have already paid your court or tribunal fee
   When I click on if you have already paid your court or tribunal fee
