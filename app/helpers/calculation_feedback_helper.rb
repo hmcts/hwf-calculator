@@ -36,16 +36,6 @@ module CalculationFeedbackHelper
       contribution: calculation_contribution(calculation)
   end
 
-  # Provides the final no remission feedback text for a given calculation.
-  # @param [Calculator::Calculation] calculation The calculation to display feedback for
-  # @return [String] The feedback text
-  def no_remission_calculator_feedback_for(calculation)
-    marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.no_remission.#{marital_status}.detail",
-      total_income: calculation_total_income(calculation),
-      fee: calculation_fee(calculation)
-  end
-
   # Presents the should not get help text in the current language
   # @param [Calculation] calculation The calculation
   #

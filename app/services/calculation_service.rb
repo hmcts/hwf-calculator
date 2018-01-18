@@ -110,35 +110,6 @@ class CalculationService
     }
   end
 
-  # Indicates (if true) that help with fees is not available
-  #
-  # @return [Boolean] If true, help is not available.  If false, can mean undecided (if help_available? is also false)
-  def help_not_available?
-    available_help == :none
-  end
-  deprecate :help_not_available?
-
-  # Indicates (if true) that help with fees is available, but could be subject to more
-  # fields being filled in (@see #fields_required and #required_fields_affecting_likelihood)
-  #
-  # @return [Boolean] If true, help is available given the provided inputs.  The
-  # front end must take note of #fields_required to see if more info is required
-  # to firm up this decision.  If false, can mean undecided (if help_not_available? is also false)
-  def help_available?
-    [:full, :partial].include? available_help
-  end
-  deprecate :help_available?
-
-  # Only valid if @see help_available? is true
-  # Indicates (if true) that only partial help with fees is available
-  # otherwise full help is available
-  #
-  # @return [Boolean] If true, partial help is available, otherwise full help.
-  def partial_help_available?
-    available_help == :partial
-  end
-  deprecate :partial_help_available?
-
   # Indicates what fields are required to be filled in by the user - in the order the
   # questions should be asked.
   #
