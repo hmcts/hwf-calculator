@@ -51,7 +51,7 @@ class CalculationController < ApplicationController
   end
 
   def next_question_url(submit_service)
-    if submit_service.fields_required.empty?
+    if submit_service.final_decision_made? || submit_service.fields_required.empty?
       remission_url(submit_service)
     else
       edit_calculation_url(form: submit_service.fields_required.first)
