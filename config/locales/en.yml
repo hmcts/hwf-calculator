@@ -120,6 +120,10 @@ en:
         universal_credit: 'UC'
         pension_credit: 'PC'
         scottish_legal_aid: 'SLA'
+      number_of_children:
+        label: "Supported children"
+      total_income:
+        label: "Total income"
       change: "Change"
     benefits:
       dont_know:
