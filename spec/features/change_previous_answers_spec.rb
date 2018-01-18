@@ -192,8 +192,46 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     expect(not_eligible_page.previous_answers.court_fee.answer(text: "£1,000")).to be_present
   end
 
-  scenario 'Citizen changes their DOB to push them over the disposable capital limit'
-  scenario 'Citizen changes partners DOB to push them over the disposable capital limit'
+  scenario 'Citizen changes their DOB to push them over the disposable capital limit' do
+    # Arrange - Tom is 80, with a fee of 100 and disposable income of 15999.
+    # So, by default he will fly through the disposable capital test, but when he
+    # corrects his age to 60 - it will mean he fails it.
+    #
+    given_i_am(:tom)
+    dob = (Time.zone.today - 60.years).strftime('%d/%m/%Y')
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.date_of_birth.navigate_to
+
+    # Act
+    date_of_birth_page.date_of_birth.set(dob)
+    date_of_birth_page.next
+
+    # Assert
+    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+  end
+
+  scenario 'Citizen who is married changes own DOB to push them over the disposable capital limit' do
+    # Arrange - sue has been setup for this test - both her and her partner are over 61
+    # which means that the 11,000 disposable income is lower than the 16000 threshold for
+    # over 61's so the disposable capital test will pass -
+    # but when she remembers that she is really 60, then this means they are classed as 'under 61' so the
+    # limit is 10,000 which she will be over and should fail
+    given_i_am(:sue)
+    dob = (Time.zone.today - 60.years).strftime('%d/%m/%Y')
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.date_of_birth.navigate_to
+
+    # Act
+    date_of_birth_page.date_of_birth.set(dob)
+    date_of_birth_page.next
+
+    # Assert
+    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+  end
+
+  scenario 'Citizen who is married changes partners DOB to push them over the disposable capital limit'
   scenario 'Citizen changes disposable income to push them over the disposable capital limit'
   scenario 'Citizen not on benefits gets to last question and states they are on benefits'
   scenario 'Citizen who normally gets partial remission gets a different amount if they change the number of children from the last page'
