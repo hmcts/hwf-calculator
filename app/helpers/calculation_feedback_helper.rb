@@ -19,7 +19,7 @@ module CalculationFeedbackHelper
   # @return [String] The feedback text
   def final_calculator_feedback_for(calculation)
     marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.full_remission.#{marital_status}.detail",
+    t "calculation.feedback.full_remission.decided_by.#{calculation.final_decision_by}.#{marital_status}.detail",
       total_income: calculation_total_income(calculation),
       fee: calculation_fee(calculation)
   end

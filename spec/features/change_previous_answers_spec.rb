@@ -161,10 +161,41 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     given_i_am(:lola)
 
     # Act
-    answer_all_questions
+    answer_up_to(:benefits)
 
     # Assert
-    expect(not_eligible_page.previous_answers).to be_disabled
+    aggregate_failures 'Validating previous answers up to benefits' do
+      not_eligible_page.previous_answers.tap do |a|
+        expect(a.marital_status).to be_disabled
+        expect(a.court_fee).to be_disabled
+        expect(a.date_of_birth).to be_disabled
+        expect(a.disposable_capital).to be_disabled
+        expect(a).to have_no_income_benefits.
+            and(have_no_number_of_children).
+            and(have_no_total_income)
+      end
+    end
   end
+
+  scenario 'Citizen changes their fee to push them over the disposable capital limit' do
+    # Arrange - Thomas has a fee of 2000 with a disposable capital of 5850 which will pass disposable capital
+    given_i_am(:thomas)
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.court_fee.navigate_to
+
+    # Act
+    court_fee_page.fee.set(1000)
+    court_fee_page.next
+
+    # Assert
+    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page.previous_answers.court_fee.answer(text: "£1,000")).to be_present
+  end
+
+  scenario 'Citizen changes their DOB to push them over the disposable capital limit'
+  scenario 'Citizen changes partners DOB to push them over the disposable capital limit'
+  scenario 'Citizen changes disposable income to push them over the disposable capital limit'
+  scenario 'Citizen not on benefits gets to last question and states they are on benefits'
+  scenario 'Citizen who normally gets partial remission gets a different amount if they change the number of children from the last page'
 
 end
