@@ -1,7 +1,5 @@
 # The main controller for performing calculations in a question by question
-# manner.  Note that at the time of writing this comment, the validation feedback
-# has not been added, hence the form_class being instantiated with no data
-# @TODO Review this comment once validation has been added
+# manner.
 class CalculationController < ApplicationController
   helper_method :form, :current_calculation
 
@@ -14,7 +12,7 @@ class CalculationController < ApplicationController
     self.form = form_class.new(calculation_params.to_h)
     if form.valid?
       submit_service = calculate
-      redirect_to next_question_url(submit_service)
+      redirect_to next_url(submit_service)
     else
       render :edit
     end
@@ -54,23 +52,12 @@ class CalculationController < ApplicationController
     submit_service
   end
 
-  def next_question_url(submit_service)
+  def next_url(submit_service)
     if submit_service.final_decision_made? || submit_service.fields_required.empty?
-      remission_url(submit_service)
+      send("calculation_result_#{submit_service.available_help}_url".to_sym)
     else
       edit_calculation_url(form: submit_service.fields_required.first)
     end
-  end
-
-  def remission_url(submit_service)
-    # @TODO Before merging in to master, decide what to do with the 'else' block
-    form = case submit_service.available_help
-           when :none then :no_remission_available
-           when :partial then :partial_remission_available
-           when :full then :full_remission_available
-           else raise 'Could not make a decision - this should not happen, but no acceptance criteria exists for it yet'
-           end
-    edit_calculation_url(form: form)
   end
 
   def form_class
