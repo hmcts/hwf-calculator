@@ -22,6 +22,11 @@ class BaseForm
     raise NotImplementedError
   end
 
+  # See @self.class.type
+  def type
+    self.class.type
+  end
+
   # Exports the contents of the form as a hash with symbolized top level keys
   #
   # @return [Hash] The exported data with symbolized keys
