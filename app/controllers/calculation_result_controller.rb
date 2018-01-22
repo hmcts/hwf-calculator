@@ -8,5 +8,4 @@ class CalculationResultController < ApplicationController
   def current_calculation
     @current_calculation ||= Calculation.new(session.fetch(:calculation) { {} }.symbolize_keys)
   end
-
 end

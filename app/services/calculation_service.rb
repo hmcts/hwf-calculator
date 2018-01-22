@@ -88,8 +88,7 @@ class CalculationService
         my_result = catch(:invalid_inputs) do
           calculations[calculator.identifier] = perform_calculation_using(calculator)
         end
-        throw :abort, self if my_result.final_decision?
-        throw :abort, self unless my_result.valid?
+        throw :abort, self if my_result.final_decision? || !my_result.valid?
       end
     end
     self
