@@ -34,11 +34,10 @@ class BaseForm
     new(new_attrs)
   end
 
-
   # Indicates if the form has an attribute defined
   # @param [Symbol] attr The attribute to search for
   # @return [Boolean] True if found else false
-  def self.has_attribute?(attr)
+  def self.attribute?(attr)
     attributes_registry.keys.include?(attr)
   end
 

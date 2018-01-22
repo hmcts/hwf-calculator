@@ -114,13 +114,13 @@ RSpec.describe DisposableCapitalForm, type: :model do
     end
   end
 
-  describe 'has_attribute?' do
+  describe 'attribute?' do
     it 'returns true for :disposable_capital' do
-      expect(described_class.has_attribute?(:disposable_capital)).to be true
+      expect(described_class.attribute?(:disposable_capital)).to be true
     end
 
     it 'returns false for :a_wrong_field' do
-      expect(described_class.has_attribute?(:a_wrong_field)).to be false
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

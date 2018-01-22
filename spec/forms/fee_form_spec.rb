@@ -103,13 +103,13 @@ RSpec.describe FeeForm, type: :model do
     end
   end
 
-  describe 'has_attribute?' do
+  describe 'attribute?' do
     it 'returns true for :fee' do
-      expect(described_class.has_attribute?(:fee)).to be true
+      expect(described_class.attribute?(:fee)).to be true
     end
 
     it 'returns false for :a_wrong_field' do
-      expect(described_class.has_attribute?(:a_wrong_field)).to be false
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

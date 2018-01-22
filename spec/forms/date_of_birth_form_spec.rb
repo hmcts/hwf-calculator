@@ -183,17 +183,17 @@ RSpec.describe DateOfBirthForm, type: :model do
     end
   end
 
-  describe 'has_attribute?' do
+  describe 'attribute?' do
     it 'returns true for :date_of_birth' do
-      expect(described_class.has_attribute?(:date_of_birth)).to be true
+      expect(described_class.attribute?(:date_of_birth)).to be true
     end
 
     it 'returns true for :partner_date_of_birth' do
-      expect(described_class.has_attribute?(:partner_date_of_birth)).to be true
+      expect(described_class.attribute?(:partner_date_of_birth)).to be true
     end
 
     it 'returns false for :a_wrong_field' do
-      expect(described_class.has_attribute?(:a_wrong_field)).to be false
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

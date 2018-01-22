@@ -38,10 +38,10 @@ class CalculationFormService
   #   DisposableCapitalForm,BenefitsReceivedForm,NumberOfChildrenForm] The form found
   # @raise [ArgumentError] If the field specified was not found in any forms
   def self.for_field(field)
-    form = FORM_CLASSES.values.find do |form|
-      form.has_attribute?(field)
+    result = FORM_CLASSES.values.find do |form_class|
+      form_class.attribute?(field)
     end
-    raise ArgumentError, "Field #{field} was not managed by any of the registered forms" if form.nil?
-    form
+    raise ArgumentError, "Field #{field} was not managed by any of the registered forms" if result.nil?
+    result
   end
 end

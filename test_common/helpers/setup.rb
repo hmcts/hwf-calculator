@@ -10,9 +10,11 @@ module Calculator
       attr_accessor :user
 
       def answer_up_to(question)
-        raise "Unknown question :#{question} - Must be one of #{QUESTIONS.join(', ')}" unless QUESTIONS.include?(question)
+        unless QUESTIONS.include?(question)
+          raise "Unknown question :#{question} - Must be one of #{QUESTIONS.join(', ')}"
+        end
         start_calculator_session
-        QUESTIONS[1..QUESTIONS.index(question) -1].each do |q|
+        QUESTIONS[1..QUESTIONS.index(question) - 1].each do |q|
           answer_question(q)
         end
       end

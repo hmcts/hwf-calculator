@@ -44,13 +44,13 @@ RSpec.describe MaritalStatusForm, type: :model do
     end
   end
 
-  describe 'has_attribute?' do
+  describe 'attribute?' do
     it 'returns true for :benefits_received' do
-      expect(described_class.has_attribute?(:marital_status)).to be true
+      expect(described_class.attribute?(:marital_status)).to be true
     end
 
     it 'returns false for :a_wrong_field' do
-      expect(described_class.has_attribute?(:a_wrong_field)).to be false
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

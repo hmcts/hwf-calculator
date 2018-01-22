@@ -97,5 +97,5 @@ class BaseCalculatorService
   private
 
   attr_accessor :inputs, :final_decision
-  attr_writer :messages, :available_help, :remission, :final_decision
+  attr_writer :messages, :available_help, :remission
 end
