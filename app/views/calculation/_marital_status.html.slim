@@ -1,4 +1,4 @@
-div.content-body.marital_status
+.content-body.marital_status
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     = f.hidden_field :ensure_not_blank, allow_method_names_outside_object: true, value: '1'
     .form-group class=('form-group-error' if form.errors.any?)

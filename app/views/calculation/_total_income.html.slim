@@ -1,4 +1,4 @@
-div.calculator.marital_status
+.content-body.total_income
   h1 How much help with fees will I receive?
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)

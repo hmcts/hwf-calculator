@@ -1,4 +1,4 @@
-div.content-body.date_of_birth
+.content-body.date_of_birth
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset.inline
