@@ -57,23 +57,6 @@ module CalculationFeedbackHelper
       subject: I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"))
   end
 
-  # Formats a calculator value.
-  #
-  # @param [Object] value The value to be formatted
-  # @param [String] field The field that this value is from
-  def calculator_auto_format_for(value, field:)
-    case field
-    when :date_of_birth, :partner_date_of_birth then
-      value.strftime('%d/%m/%Y')
-    when :fee, :disposable_capital then
-      number_to_currency(value, precision: 0, unit: '£')
-    when :benefits_received then
-      value.map { |v| t("calculation.previous_questions.benefits_received.#{v}") }.join(',')
-    else
-      value
-    end
-  end
-
   # Presents the calculation fee in the correct format
   #
   # @param [Calculation] calculation The calculation to get the fee from
