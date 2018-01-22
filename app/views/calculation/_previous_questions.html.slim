@@ -1,4 +1,9 @@
-.previous_questions data-behavior="calculator_previous_questions"
-  - current_calculation.inputs.each_pair do |k,v |
-    = render partial: "calculation/answers/#{k}", locals: { disabled: disabled, question: k, answer: v, current_calculation: current_calculation}
+table.previous_questions data-behavior="calculator_previous_questions"
+  thead
+    tr
+      th
+        = 'Previous answers'
+  tbody
+    - current_calculation.inputs.each_pair do |k,v |
+      = render partial: "calculation/answers/#{k}", locals: { disabled: disabled, question: k, answer: v, current_calculation: current_calculation}
 

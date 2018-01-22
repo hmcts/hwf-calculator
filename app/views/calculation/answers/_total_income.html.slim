@@ -1,8 +1,8 @@
-div data-behavior="calculator_previous_question"
-  span data-behavior="question"
+tr data-behavior="calculator_previous_question"
+  th scope="row" data-behavior="question"
     = t("calculation.previous_questions.total_income.label")
-  span data-behavior="answer"
+  td.numeric data-behavior="answer"
     = number_to_currency(answer, precision: 0, unit: '£')
-  span data-behavior="action"
+  td data-behavior="action"
     a href=(edit_calculation_url(form: calculator_form_for(question).type) unless disabled)
       = t('calculation.previous_questions.change')

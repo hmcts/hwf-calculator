@@ -1,9 +1,9 @@
 - unless answer.nil?
-  div data-behavior="calculator_previous_question"
-    span data-behavior="question"
+  tr data-behavior="calculator_previous_question"
+    th scope="row" data-behavior="question"
       = t("calculation.previous_questions.partner_date_of_birth.label")
-    span data-behavior="answer"
+    td data-behavior="answer"
       = answer.strftime('%d/%m/%Y')
-    span data-behavior="action"
+    td data-behavior="action"
       a href=(edit_calculation_url(form: calculator_form_for(question).type) unless disabled)
         = t('calculation.previous_questions.change')
