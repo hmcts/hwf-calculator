@@ -6,6 +6,6 @@
       span data-behavior="answer"
         = calculator_auto_format_for(v, field: k)
       span data-behavior="action"
-        a href=(edit_calculation_url(form: k) unless disabled)
+        a href=(edit_calculation_url(form: calculator_form_for(k).type) unless disabled)
           = t('calculation.previous_questions.change')
 

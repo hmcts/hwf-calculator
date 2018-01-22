@@ -10,6 +10,7 @@ module Calculator
           section :marital_status, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "What is your status"
           section :court_fee, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Court or tribunal fee to pay"
           section :date_of_birth, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Date of birth"
+          section :partner_date_of_birth, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Partner date of birth"
           section :disposable_capital, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Combined savings and investment"
           section :income_benefits, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Income benefits you are currently receiving"
           section :number_of_children, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Supported children"

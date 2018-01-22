@@ -63,7 +63,7 @@ module CalculationFeedbackHelper
   # @param [String] field The field that this value is from
   def calculator_auto_format_for(value, field:)
     case field
-    when :date_of_birth then
+    when :date_of_birth, :partner_date_of_birth then
       value.strftime('%d/%m/%Y')
     when :fee, :disposable_capital then
       number_to_currency(value, precision: 0, unit: '£')
@@ -117,6 +117,15 @@ module CalculationFeedbackHelper
   # @return [String] The text to display
   def calculation_disposable_capital(calculation)
     number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')
+  end
+
+  # Finds the first form that handles the field given
+  #
+  # @param [String] field The field to find the form for
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,
+  #   DisposableCapitalForm,BenefitsReceivedForm,NumberOfChildrenForm] The form
+  def calculator_form_for(field)
+    CalculationFormService.for_field(field)
   end
 
   private

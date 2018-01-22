@@ -117,6 +117,8 @@ en:
         label: "What is your status"
       date_of_birth:
         label: "Date of birth"
+      partner_date_of_birth:
+        label: "Partner date of birth"
       fee:
         label: "Court or tribunal fee to pay"
       benefits_received:
