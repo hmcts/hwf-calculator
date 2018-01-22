@@ -1,11 +1,4 @@
 .previous_questions data-behavior="calculator_previous_questions"
   - current_calculation.inputs.each_pair do |k,v |
-    div data-behavior="calculator_previous_question"
-      span data-behavior="question"
-        = t("calculation.previous_questions.#{k}.label")
-      span data-behavior="answer"
-        = calculator_auto_format_for(v, field: k)
-      span data-behavior="action"
-        a href=(edit_calculation_url(form: calculator_form_for(k).type) unless disabled)
-          = t('calculation.previous_questions.change')
+    = render partial: "calculation/answers/#{k}", locals: { disabled: disabled, question: k, answer: v, current_calculation: current_calculation}
 
