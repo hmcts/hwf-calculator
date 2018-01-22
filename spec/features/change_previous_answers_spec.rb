@@ -272,6 +272,19 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     expect(not_eligible_page.previous_answers.disposable_capital.answer(text: '3,001')).to be_present
   end
 
-  scenario 'Citizen who normally gets partial remission gets a different amount if they change the number of children from the last page'
+  scenario 'Citizen who normally gets partial remission gets a different amount if they change the number of children from the last page' do
+    # Arrange - We will use oliver for this who would normally pass the disposable capital test and get partial remittance
+    given_i_am(:oliver)
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.number_of_children.navigate_to
 
+    # Act
+    number_of_children_page.number_of_children.set('1')
+    number_of_children_page.next
+    answer_total_income_question
+
+    # Assert
+    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page.previous_answers.number_of_children.answer(text: '1')).to be_present
+  end
 end
