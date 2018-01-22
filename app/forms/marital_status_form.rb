@@ -9,7 +9,7 @@ class MaritalStatusForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :marital_status
-  def type
+  def self.type
     :marital_status
   end
 

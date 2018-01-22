@@ -1,5 +1,5 @@
 div.calculator.marital_status
-  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
+  = form_for form, as: :calculation, url: calculation_url(form: form.class.type), method: :patch do |f|
     .form-group class=('error' if form.errors.any?)
       - if true
         span.error-message#married = 'errors'

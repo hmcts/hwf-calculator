@@ -103,7 +103,7 @@ RSpec.describe TotalIncomeForm, type: :model do
 
   describe 'type' do
     it 'returns :total_income' do
-      expect(form.type).to be :total_income
+      expect(described_class.type).to be :total_income
     end
   end
 
@@ -111,6 +111,16 @@ RSpec.describe TotalIncomeForm, type: :model do
     it 'exports the total income' do
       form.total_income = '10000'
       expect(form.export).to eql(total_income: 10000.0)
+    end
+  end
+
+  describe 'has_attribute?' do
+    it 'returns true for :total_income' do
+      expect(described_class.has_attribute?(:total_income)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.has_attribute?(:a_wrong_field)).to be false
     end
   end
 end

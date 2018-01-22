@@ -18,7 +18,7 @@ class BaseForm
   # The unique type code for the form
   #
   # @return [Symbol] The type of the form, underscored as a symbol. Used by the UI to select a presentation format
-  def type
+  def self.type
     raise NotImplementedError
   end
 
@@ -32,6 +32,14 @@ class BaseForm
   def self.new_ignoring_extras(attrs = {})
     new_attrs = attrs.slice(*attributes_registry.keys)
     new(new_attrs)
+  end
+
+
+  # Indicates if the form has an attribute defined
+  # @param [Symbol] attr The attribute to search for
+  # @return [Boolean] True if found else false
+  def self.has_attribute?(attr)
+    attributes_registry.keys.include?(attr)
   end
 
   private

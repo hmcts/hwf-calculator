@@ -11,7 +11,7 @@ class TotalIncomeForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :total_income
-  def type
+  def self.type
     :total_income
   end
 

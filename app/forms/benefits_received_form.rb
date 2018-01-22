@@ -20,7 +20,7 @@ class BenefitsReceivedForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] - :benefits_received
-  def type
+  def self.type
     :benefits_received
   end
 

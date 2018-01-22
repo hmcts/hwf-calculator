@@ -23,7 +23,7 @@ class DateOfBirthForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :date_of_birth
-  def type
+  def self.type
     :date_of_birth
   end
 

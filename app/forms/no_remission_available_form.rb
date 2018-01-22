@@ -7,7 +7,7 @@ class NoRemissionAvailableForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :no_remission_available
-  def type
+  def self.type
     :no_remission_available
   end
 

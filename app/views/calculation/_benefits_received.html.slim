@@ -9,7 +9,7 @@
         h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_get_help')
         p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
 
-  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
+  = form_for form, as: :calculation, url: calculation_url(form: form.class.type), method: :patch do |f|
     .form-group class=('error' if form.errors.any?)
       fieldset
         legend = I18n.t('calculation.field_labels.benefits_received')

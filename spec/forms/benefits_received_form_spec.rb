@@ -65,7 +65,7 @@ RSpec.describe BenefitsReceivedForm, type: :model do
 
   describe 'type' do
     it 'returns :benefits_received' do
-      expect(form.type).to be :benefits_received
+      expect(described_class.type).to be :benefits_received
     end
   end
 
@@ -87,6 +87,16 @@ RSpec.describe BenefitsReceivedForm, type: :model do
     it 'creates a new instance without erroring if extra attributes given' do
       subject = described_class.new_ignoring_extras(benefits_received: ['benefit 1'], some_other_field: 12)
       expect(subject.benefits_received).to eql(['benefit 1'])
+    end
+  end
+
+  describe 'has_attribute?' do
+    it 'returns true for :benefits_received' do
+      expect(described_class.has_attribute?(:benefits_received)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.has_attribute?(:a_wrong_field)).to be false
     end
   end
 end

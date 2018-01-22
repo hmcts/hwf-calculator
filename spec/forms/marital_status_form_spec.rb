@@ -33,7 +33,7 @@ RSpec.describe MaritalStatusForm, type: :model do
 
   describe 'type' do
     it 'returns :marital_status' do
-      expect(form_marital_status.type).to be :marital_status
+      expect(described_class.type).to be :marital_status
     end
   end
 
@@ -41,6 +41,16 @@ RSpec.describe MaritalStatusForm, type: :model do
     it 'exports the marital_status' do
       form_marital_status.marital_status = 'sharing_income'
       expect(form_marital_status.export).to eql(marital_status: 'sharing_income')
+    end
+  end
+
+  describe 'has_attribute?' do
+    it 'returns true for :benefits_received' do
+      expect(described_class.has_attribute?(:marital_status)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.has_attribute?(:a_wrong_field)).to be false
     end
   end
 end

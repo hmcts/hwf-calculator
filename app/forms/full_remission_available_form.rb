@@ -7,7 +7,7 @@ class FullRemissionAvailableForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :full_remission_available
-  def type
+  def self.type
     :full_remission_available
   end
 

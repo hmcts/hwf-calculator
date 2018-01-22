@@ -4,7 +4,7 @@ RSpec.describe FullRemissionAvailableForm, type: :model do
 
   describe 'type' do
     it 'returns "full_remission_available"' do
-      expect(form.type).to be :full_remission_available
+      expect(described_class.type).to be :full_remission_available
     end
   end
 

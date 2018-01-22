@@ -92,7 +92,7 @@ RSpec.describe FeeForm, type: :model do
 
   describe 'type' do
     it 'returns :fee' do
-      expect(form.type).to be :fee
+      expect(described_class.type).to be :fee
     end
   end
 
@@ -100,6 +100,16 @@ RSpec.describe FeeForm, type: :model do
     it 'exports the fee' do
       form.fee = '10000'
       expect(form.export).to eql(fee: 10000.0)
+    end
+  end
+
+  describe 'has_attribute?' do
+    it 'returns true for :fee' do
+      expect(described_class.has_attribute?(:fee)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.has_attribute?(:a_wrong_field)).to be false
     end
   end
 end

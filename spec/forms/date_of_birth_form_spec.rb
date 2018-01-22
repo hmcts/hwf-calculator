@@ -120,7 +120,7 @@ RSpec.describe DateOfBirthForm, type: :model do
 
   describe 'type' do
     it 'returns :date_of_birth' do
-      expect(form.type).to be :date_of_birth
+      expect(described_class.type).to be :date_of_birth
     end
   end
 
@@ -180,6 +180,20 @@ RSpec.describe DateOfBirthForm, type: :model do
       form.date_of_birth = Date.new(2000, 1, 1)
       form.partner_date_of_birth = Date.new(1999, 1, 1)
       expect(form.export).to eql date_of_birth: Date.new(2000, 1, 1), partner_date_of_birth: Date.new(1999, 1, 1)
+    end
+  end
+
+  describe 'has_attribute?' do
+    it 'returns true for :date_of_birth' do
+      expect(described_class.has_attribute?(:date_of_birth)).to be true
+    end
+
+    it 'returns true for :partner_date_of_birth' do
+      expect(described_class.has_attribute?(:partner_date_of_birth)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.has_attribute?(:a_wrong_field)).to be false
     end
   end
 end
