@@ -251,8 +251,27 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     expect(not_eligible_page.previous_answers.partner_date_of_birth.answer(text: dob)).to be_present
   end
 
-  scenario 'Citizen changes disposable income to push them over the disposable capital limit'
-  scenario 'Citizen not on benefits gets to last question and states they are on benefits'
+  scenario 'Citizen changes disposable income to push them over the disposable capital limit' do
+
+  end
+
+  scenario 'Citizen not on benefits gets to last question and states they are on benefits' do
+    # Arrange - We will use john for this who would normally pass the disposable capital test
+    # as he has a fee of 600 and disposable capital of 2990.  The limit is 3000 so we will
+    # modify that to push him over the limit.
+    given_i_am(:john)
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.disposable_capital.navigate_to
+
+    # Act
+    disposable_capital_page.disposable_capital.set('3001')
+    disposable_capital_page.next
+
+    # Assert
+    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page.previous_answers.disposable_capital.answer(text: '3,001')).to be_present
+  end
+
   scenario 'Citizen who normally gets partial remission gets a different amount if they change the number of children from the last page'
 
 end
