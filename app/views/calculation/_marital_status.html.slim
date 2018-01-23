@@ -28,3 +28,4 @@ div.calculator.marital_status
           = 'Married or living with someone'
     .form-group
       = f.submit 'Next step', class: 'button'
+  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?

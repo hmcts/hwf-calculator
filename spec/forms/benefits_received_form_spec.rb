@@ -65,7 +65,7 @@ RSpec.describe BenefitsReceivedForm, type: :model do
 
   describe 'type' do
     it 'returns :benefits_received' do
-      expect(form.type).to be :benefits_received
+      expect(described_class.type).to be :benefits_received
     end
   end
 
@@ -80,6 +80,23 @@ RSpec.describe BenefitsReceivedForm, type: :model do
     it 'filters blanks' do
       form.benefits_received = ['', 'benefit 1']
       expect(form.benefits_received).to eql ['benefit 1']
+    end
+  end
+
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(benefits_received: ['benefit 1'], some_other_field: 12)
+      expect(subject.benefits_received).to eql(['benefit 1'])
+    end
+  end
+
+  describe 'attribute?' do
+    it 'returns true for :benefits_received' do
+      expect(described_class.attribute?(:benefits_received)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

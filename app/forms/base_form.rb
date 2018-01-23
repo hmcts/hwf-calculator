@@ -18,8 +18,13 @@ class BaseForm
   # The unique type code for the form
   #
   # @return [Symbol] The type of the form, underscored as a symbol. Used by the UI to select a presentation format
-  def type
+  def self.type
     raise NotImplementedError
+  end
+
+  # See @self.class.type
+  def type
+    self.class.type
   end
 
   # Exports the contents of the form as a hash with symbolized top level keys
@@ -27,6 +32,18 @@ class BaseForm
   # @return [Hash] The exported data with symbolized keys
   def export
     export_params
+  end
+
+  def self.new_ignoring_extras(attrs = {})
+    new_attrs = attrs.slice(*attributes_registry.keys)
+    new(new_attrs)
+  end
+
+  # Indicates if the form has an attribute defined
+  # @param [Symbol] attr The attribute to search for
+  # @return [Boolean] True if found else false
+  def self.attribute?(attr)
+    attributes_registry.keys.include?(attr)
   end
 
   private

@@ -293,6 +293,16 @@ veronica:
   income_benefits:
     - none
   monthly_gross_income: 0
+sue:
+  marital_status: Married
+  age: 75
+  partner_age: 73
+  disposable_capital: 11000
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
 
 
 

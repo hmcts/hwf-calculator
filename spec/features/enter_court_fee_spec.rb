@@ -26,7 +26,7 @@ RSpec.describe 'Enter court fee test', type: :feature, js: true do
   scenario 'Single citizen enter court and tribunal fee amount' do
     # Setup
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     answer_court_fee_question
@@ -45,7 +45,7 @@ RSpec.describe 'Enter court fee test', type: :feature, js: true do
   scenario 'Married citizen enter court and tribunal fee amount' do
     # Setup
     given_i_am(:alli)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     answer_court_fee_question

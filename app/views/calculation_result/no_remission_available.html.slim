@@ -1,0 +1,6 @@
+.content-body.full_remission_available
+  .feedback data-behavior="calculator_feedback"
+    div.negative
+      h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_not_get_help')
+      p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
+  = render partial: 'calculation/previous_questions', locals: { current_calculation: current_calculation, disabled: true } unless current_calculation.inputs.empty?

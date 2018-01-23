@@ -4,7 +4,7 @@ RSpec.describe NilForm, type: :model do
 
   describe 'type' do
     it 'returns "nil"' do
-      expect(form.type).to be :nil
+      expect(described_class.type).to be :nil
     end
   end
 

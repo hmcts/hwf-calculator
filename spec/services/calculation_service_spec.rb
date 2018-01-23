@@ -11,15 +11,15 @@ RSpec.describe CalculationService do
     let(:calculator_3_class) { class_spy(BaseCalculatorService, 'Calculator 3 class', identifier: :calculator3) }
 
     let(:calculator_1) do
-      instance_spy(BaseCalculatorService, 'Calculator 1', available_help: :undecided, valid?: true, messages: [], remission: 0.0)
+      instance_spy(BaseCalculatorService, 'Calculator 1', available_help: :undecided, valid?: true, messages: [], remission: 0.0, final_decision?: false)
     end
 
     let(:calculator_2) do
-      instance_spy(BaseCalculatorService, 'Calculator 2', available_help: :undecided, valid?: true, messages: [], remission: 0.0)
+      instance_spy(BaseCalculatorService, 'Calculator 2', available_help: :undecided, valid?: true, messages: [], remission: 0.0, final_decision?: false)
     end
 
     let(:calculator_3) do
-      instance_spy(BaseCalculatorService, 'Calculator 3', available_help: :undecided, valid?: true, messages: [], remission: 0.0)
+      instance_spy(BaseCalculatorService, 'Calculator 3', available_help: :undecided, valid?: true, messages: [], remission: 0.0, final_decision?: false)
     end
 
     let(:calculators) { [calculator_1_class, calculator_2_class, calculator_3_class] }
@@ -151,7 +151,7 @@ RSpec.describe CalculationService do
       end
 
       before do
-        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0)
+        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0, final_decision?: false)
         class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation).as_stubbed_const
         class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation).as_stubbed_const
         class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
@@ -312,6 +312,103 @@ RSpec.describe CalculationService do
     end
   end
 
+  describe 'final_decision_by' do
+    let(:inputs) do
+      {
+        disposable_capital: 1000
+      }
+    end
+
+    include_context 'with fake calculators'
+
+    it 'is :calculator1 if calculator 1 makes a final positive decision' do
+      # Arrange
+
+      allow(calculator_1).to receive(:available_help).and_return :full
+      allow(calculator_1).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator1
+    end
+
+    it 'is :calculator2 if calculator 2 makes a final positive decision' do
+      # Arrange
+      allow(calculator_2).to receive(:available_help).and_return :full
+      allow(calculator_2).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator2
+    end
+
+    it 'is :calculator3 if calculator 3 makes a final positive decision' do
+      # Arrange
+      allow(calculator_3).to receive(:available_help).and_return :full
+      allow(calculator_3).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator3
+    end
+
+    it 'is :calculator1 if calculator 1 makes a negative decision' do
+      # Arrange
+
+      allow(calculator_1).to receive(:available_help).and_return :none
+      allow(calculator_1).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator1
+    end
+
+    it 'is :calculator2 if calculator 2 makes a final negative decision' do
+      # Arrange
+      allow(calculator_2).to receive(:available_help).and_return :none
+      allow(calculator_2).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator2
+    end
+
+    it 'is :calculator3 if calculator 3 makes a final negative decision' do
+      # Arrange
+      allow(calculator_3).to receive(:available_help).and_return :none
+      allow(calculator_3).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :calculator3
+    end
+
+    it 'is :none if no calculators have made a final decision' do
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_by: :none
+    end
+  end
+
+  describe 'final_decision_made?' do
+    let(:inputs) do
+      {
+        disposable_capital: 1000
+      }
+    end
+
+    include_context 'with fake calculators'
+
+    it 'is true if calculator 1 makes a final positive decision' do
+      # Arrange
+
+      allow(calculator_1).to receive(:available_help).and_return :full
+      allow(calculator_1).to receive(:final_decision?).and_return true
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_made?: true
+    end
+
+    it 'is false if no calculators have made a final decision' do
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes final_decision_made?: false
+    end
+
+  end
+
   describe '#to_h' do
     let(:inputs) do
       {
@@ -328,6 +425,7 @@ RSpec.describe CalculationService do
       # Act and Assert
       expect(subject.to_h).to include inputs: a_hash_including(inputs),
                                       available_help: :undecided,
+                                      final_decision_by: :none,
                                       remission: 0.0,
                                       fields_required: instance_of(Array),
                                       required_fields_affecting_likelihood: instance_of(Array),

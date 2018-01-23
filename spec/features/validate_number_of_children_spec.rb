@@ -18,7 +18,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Enter valid value in the Number of children field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
 
     # Act
     answer_number_of_children_question
@@ -40,7 +40,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Enter invalid value in the Number of children field' do
     # Arrange
     given_i_am(:alli)
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
 
     # Act
     number_of_children_page.number_of_children.set('£')
@@ -61,7 +61,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Number of children field empty - Blank Field (no entry)' do
     # Arrange
     given_i_am(:alli)
-    answer_questions_up_to_number_of_children
+    answer_up_to(:number_of_children)
 
     # Act
     number_of_children_page.next

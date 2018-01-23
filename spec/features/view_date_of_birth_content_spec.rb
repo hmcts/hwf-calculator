@@ -16,7 +16,7 @@ RSpec.describe 'View date of birth content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Assert
     aggregate_failures 'Validating content' do

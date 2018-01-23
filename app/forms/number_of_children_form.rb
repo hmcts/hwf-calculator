@@ -9,7 +9,7 @@ class NumberOfChildrenForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :number_of_children
-  def type
+  def self.type
     :number_of_children
   end
 

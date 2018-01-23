@@ -35,7 +35,10 @@ Metrics/LineLength:
     - 'features/**/*'
     - 'spec/**/*'
     - 'Gemfile'
-
+Metrics/ModuleLength:
+  Max: 120
+  Exclude:
+    - 'test_common/helpers/**/*'
 Metrics/AbcSize:
   Exclude:
     - 'spec/**/*'

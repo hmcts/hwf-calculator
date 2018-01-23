@@ -36,7 +36,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Citizen leave DoB field blank' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     date_of_birth_page.next
@@ -55,7 +55,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Single citizen who is under 16 years old enter their date of birth' do
     # Arrange
     given_i_am(:alan)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -73,7 +73,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Under 61 single citizen enter date of birth' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -92,7 +92,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Over 61 single citizen enter date of birth' do
     # Arrange
     given_i_am(:calvin)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -112,7 +112,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Under 61 citizen and partner enter date of birth' do
     # Arrange
     given_i_am(:alli)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -133,7 +133,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Over 61 citizen and partner enter date of birth' do
     # Arrange
     given_i_am(:oliver)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -153,7 +153,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Citizen is under 61 and partner is over 61' do
     # Arrange
     given_i_am(:claude)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -173,7 +173,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   scenario 'Citizen is under 16 and partner is under 61' do
     # Arrange
     given_i_am(:veronica)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question

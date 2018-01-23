@@ -50,7 +50,11 @@ module Calculator
       def partial_remission_page
         @partial_remission_page ||= Calculator::Test::En::PartialRemissionPage.new
       end
-    end
 
+      # @return [Calculator::Test::En::BasePage] The base page object which applies to any page
+      def any_calculator_page
+        @any_calculator_page ||= ::Calculator::Test::En::BasePage.new
+      end
+    end
   end
 end

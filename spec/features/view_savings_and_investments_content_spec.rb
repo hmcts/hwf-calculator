@@ -18,7 +18,7 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
 
     # Assert
     aggregate_failures 'validating content of header and question' do
@@ -38,7 +38,7 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
     disposable_capital_page.toggle_guidance
 
     # Assert
@@ -81,7 +81,7 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
   scenario 'Hide Guidance Information' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
     disposable_capital_page.toggle_guidance
     disposable_capital_page.wait_for_guidance
 

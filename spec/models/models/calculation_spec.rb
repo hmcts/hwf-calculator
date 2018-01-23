@@ -60,4 +60,11 @@ RSpec.describe Calculation do
       expect(subject.fields).to eql(name: :any)
     end
   end
+
+  describe '#final_decision_by' do
+    it 'stores a provided value of any type' do
+      subject = described_class.new final_decision_by: 'none'
+      expect(subject.final_decision_by).to eql('none')
+    end
+  end
 end

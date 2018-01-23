@@ -13,7 +13,7 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Assert
     aggregate_failures 'validating content of header and question' do
@@ -34,7 +34,7 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
     total_income_page.toggle_guidance
 
     # Assert
@@ -50,7 +50,7 @@ RSpec.describe 'View total income content', type: :feature, js: true do
   scenario 'Hide Guidance Information' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
     total_income_page.toggle_guidance
     total_income_page.wait_for_guidance
 

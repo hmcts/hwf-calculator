@@ -19,7 +19,7 @@ module CalculationFeedbackHelper
   # @return [String] The feedback text
   def final_calculator_feedback_for(calculation)
     marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.full_remission.#{marital_status}.detail",
+    t "calculation.feedback.full_remission.decided_by.#{calculation.final_decision_by}.#{marital_status}.detail",
       total_income: calculation_total_income(calculation),
       fee: calculation_fee(calculation)
   end
@@ -34,16 +34,6 @@ module CalculationFeedbackHelper
       fee: calculation_fee(calculation),
       remission: calculation_remission(calculation),
       contribution: calculation_contribution(calculation)
-  end
-
-  # Provides the final no remission feedback text for a given calculation.
-  # @param [Calculator::Calculation] calculation The calculation to display feedback for
-  # @return [String] The feedback text
-  def no_remission_calculator_feedback_for(calculation)
-    marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.no_remission.#{marital_status}.detail",
-      total_income: calculation_total_income(calculation),
-      fee: calculation_fee(calculation)
   end
 
   # Presents the should not get help text in the current language
@@ -65,23 +55,6 @@ module CalculationFeedbackHelper
       fee: calculation_fee(calculation),
       disposable_capital: calculation_disposable_capital(calculation),
       subject: I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"))
-  end
-
-  # Formats a calculator value.
-  #
-  # @param [Object] value The value to be formatted
-  # @param [String] field The field that this value is from
-  def calculator_auto_format_for(value, field:)
-    case field
-    when :date_of_birth then
-      value.strftime('%d/%m/%Y')
-    when :fee, :disposable_capital then
-      number_to_currency(value, precision: 0, unit: '£')
-    when :benefits_received then
-      value.map { |v| t("calculation.previous_questions.benefits_received.#{v}") }.join(',')
-    else
-      value
-    end
   end
 
   # Presents the calculation fee in the correct format
@@ -127,6 +100,15 @@ module CalculationFeedbackHelper
   # @return [String] The text to display
   def calculation_disposable_capital(calculation)
     number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')
+  end
+
+  # Finds the first form that handles the field given
+  #
+  # @param [String] field The field to find the form for
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,
+  #   DisposableCapitalForm,BenefitsReceivedForm,NumberOfChildrenForm] The form
+  def calculator_form_for(field)
+    CalculationFormService.for_field(field)
   end
 
   private

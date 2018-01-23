@@ -23,7 +23,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
   scenario 'John confirms he is single' do
     # Arrange
     given_i_am(:john)
-    answer_up_to_marital_status_question
+    answer_up_to(:marital_status)
 
     # Act
     marital_status_page.marital_status.set(messaging.t('hwf_pages.marital_status.labels.marital_status.single'))
@@ -44,7 +44,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
   scenario 'Alli confirms he is married' do
     # Arrange
     given_i_am(:alli)
-    answer_up_to_marital_status_question
+    answer_up_to(:marital_status)
 
     # Act
     marital_status_page.marital_status.set(messaging.t('hwf_pages.marital_status.labels.marital_status.sharing_income'))

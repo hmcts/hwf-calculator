@@ -1,0 +1,8 @@
+tr data-behavior="calculator_previous_question"
+  th scope="row" data-behavior="question"
+    = t("calculation.previous_questions.number_of_children.label")
+  td data-behavior="answer"
+    = answer
+  td data-behavior="action"
+    a href=(edit_calculation_url(form: calculator_form_for(question).type) unless disabled)
+      = t('calculation.previous_questions.change')

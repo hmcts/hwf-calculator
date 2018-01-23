@@ -71,6 +71,7 @@ class BaseCalculatorService
     self.inputs = inputs
     self.messages = []
     self.available_help = :undecided
+    self.final_decision = false
   end
 
   # @private
@@ -86,8 +87,15 @@ class BaseCalculatorService
     raise 'Not Implemented'
   end
 
+  # Indicates a final decision has been made
+  # The calculator engine need not bother with any more sub engines as they are not required
+  # @return [Boolean] If true, this calculator has said final decision made
+  def final_decision?
+    final_decision
+  end
+
   private
 
-  attr_accessor :inputs
+  attr_accessor :inputs, :final_decision
   attr_writer :messages, :available_help, :remission
 end

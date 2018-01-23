@@ -27,7 +27,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Enter numeric value in Court and tribunal fee field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     court_fee_page.fee.set("25")
@@ -48,7 +48,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Enter non-numeric value in Court and tribunal fee field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     court_fee_page.fee.set("£")
@@ -68,7 +68,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Court and tribunal fee field empty' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     court_fee_page.next

@@ -29,7 +29,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
 
     # Assert
     aggregate_failures 'validating content of header and question' do
@@ -50,7 +50,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
     income_benefits_page.toggle_guidance
 
     # Assert
@@ -69,7 +69,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   scenario 'Hide Guidance Information' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_benefits
+    answer_up_to(:benefits)
     income_benefits_page.toggle_guidance
     income_benefits_page.wait_for_guidance
 

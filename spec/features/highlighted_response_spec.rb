@@ -20,7 +20,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   scenario 'Under 61 years old view highlighted positive response - validating message header' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
     marital_status = user.marital_status.downcase
 
     # Act
@@ -33,7 +33,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   scenario 'Under 61 years old view highlighted positive response - validating message details' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
     marital_status = user.marital_status.downcase
 
     # Act
@@ -49,7 +49,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   scenario 'Under 61 years old view highlighted positive response - validating message is positive' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
 
     # Act
     answer_disposable_capital_question
@@ -74,7 +74,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   scenario 'Under 61 years old view highlighted negative response - validating message header' do
     # Arrange
     given_i_am(:lola)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
     marital_status = user.marital_status.downcase
 
     # Act
@@ -87,7 +87,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   scenario 'Under 61 years old view highlighted negative response - validating message details' do
     # Arrange
     given_i_am(:lola)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
     marital_status = user.marital_status.downcase
 
     # Act
@@ -103,7 +103,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   scenario 'Under 61 years old view highlighted negative response - validating message is positive' do
     # Arrange
     given_i_am(:lola)
-    answer_questions_up_to_disposable_capital
+    answer_up_to(:disposable_capital)
 
     # Act
     answer_disposable_capital_question

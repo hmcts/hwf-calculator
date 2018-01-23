@@ -17,8 +17,6 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   # living together as if you are married or in a civil partnership
   # living at the same address with a joint income
   # part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
-  #
-  #
   # Partner Status Page Heading:
   #
   # Find out if you can get help with fees
@@ -47,7 +45,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_up_to_marital_status_question
+    answer_up_to(:marital_status)
 
     # Assert
     aggregate_failures 'validating content of header and question' do
@@ -72,7 +70,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     given_i_am(:john)
 
     # Act
-    answer_up_to_marital_status_question
+    answer_up_to(:marital_status)
     marital_status_page.toggle_guidance
 
     # Assert
@@ -92,7 +90,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   scenario 'Hide Guidance Information' do
     # Arrange
     given_i_am(:john)
-    answer_up_to_marital_status_question
+    answer_up_to(:marital_status)
     marital_status_page.toggle_guidance
     marital_status_page.wait_for_guidance
 

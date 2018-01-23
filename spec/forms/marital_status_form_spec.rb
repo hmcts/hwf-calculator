@@ -24,9 +24,16 @@ RSpec.describe MaritalStatusForm, type: :model do
     end
   end
 
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(marital_status: 'sharing_income', some_other_field: 12)
+      expect(subject.marital_status).to eql('sharing_income')
+    end
+  end
+
   describe 'type' do
     it 'returns :marital_status' do
-      expect(form_marital_status.type).to be :marital_status
+      expect(described_class.type).to be :marital_status
     end
   end
 
@@ -34,6 +41,16 @@ RSpec.describe MaritalStatusForm, type: :model do
     it 'exports the marital_status' do
       form_marital_status.marital_status = 'sharing_income'
       expect(form_marital_status.export).to eql(marital_status: 'sharing_income')
+    end
+  end
+
+  describe 'attribute?' do
+    it 'returns true for :benefits_received' do
+      expect(described_class.attribute?(:marital_status)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

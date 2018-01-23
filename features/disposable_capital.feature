@@ -31,7 +31,7 @@ Feature: Disposable capital
     Then I should see that we are likely to get help with fees
 
 # Baba is a single, 40 year old man with £15,000 worth of capital. He has a court fee of £6,500
-  Scenario: Baba passes disposable capital test
+  Scenario: Baba fails disposable capital test
     Given I am Baba
     And I am on the savings and investment page
     When I submit my savings and investments
