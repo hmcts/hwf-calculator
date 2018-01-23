@@ -19,8 +19,12 @@ When("I select none of the above") do
   income_benefits_page.choose_none
 end
 
+When("I answer the income benefits question") do
+  answer_benefits_question
+end
+
 Then("I should see the none of the above guidance information") do
-  expect(income_benefits_page.dont_know_guidance).to be_present
+  expect(income_benefits_page.none_of_the_above_guidance).to be_present
 end
 
 When("I select dont know") do
@@ -28,7 +32,7 @@ When("I select dont know") do
 end
 
 Then("I should see the dont know guidance information") do
-  expect(income_benefits_page.none_of_the_above_guidance).to be_present
+  expect(income_benefits_page.dont_know_guidance).to be_present
 end
 
 When("I submit the page with income related benefit checked") do

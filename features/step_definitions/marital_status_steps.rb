@@ -24,11 +24,11 @@ Then("on the next page I should see my previous answer married") do
 end
 
 When("I click on help with status") do
-  # TODO: add when functionality is complete
+  marital_status_page.toggle_guidance
 end
 
 Then("I should see the copy for help with status") do
-  # TODO: add when functionality is complete
+  marital_status_page.validate_guidance
 end
 
 When("I click next without submitting my marital status") do
@@ -36,6 +36,6 @@ When("I click next without submitting my marital status") do
 end
 
 Then("I should see the marital status error message") do
-  # expect(court_fee_page.error_with_text(messaging.t('hwf_pages.{marital-status-error}.errors.non_numeric'))).to be_present
+  # TODO: add when functionality is complete
 end
 
