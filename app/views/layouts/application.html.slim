@@ -7,7 +7,7 @@
     showHideContent.init();
   yield
 - content_for :content
-  .direction-ltr#wrapper
+  .direction-ltr#content
     main role="main"
       .grid-row
         .column-full
@@ -16,7 +16,7 @@
               strong.phase-tag Beta
               span This is a new service – your <a href="#">feedback</a> will help us to improve it.
           .content-header
-            h1.heading-xlarge data-behavior="heading" = t('calculation.common.page_header')
+            h1.heading-large data-behavior="heading" = t('calculation.common.page_header')
 
           = yield
 = render template: "layouts/govuk_template"
