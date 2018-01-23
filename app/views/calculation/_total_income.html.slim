@@ -21,4 +21,5 @@
                 - t('calculation.guidance.total_income.detail.text').lines.each do |line|
                   li = line
     .form-group
-      = f.submit 'Next step', class: 'button'  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?
+      = f.submit 'Next step', class: 'button'
+  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?
