@@ -73,7 +73,9 @@ class DateOfBirthForm < BaseForm
   end
 
   def create_date(year, month, day)
-    Date.new year.to_i, month.to_i, day.to_i
+    # This might look odd - its a way to convert string to integer, raising an error if it cannot be converted
+    # as to_i returns 0 if it fails to convert to Integer('09') fails because it things its octal
+    Date.new Float(year).to_i, Float(month).to_i, Float(day).to_i
   rescue ArgumentError
     InvalidDate.new year, month, day
   end

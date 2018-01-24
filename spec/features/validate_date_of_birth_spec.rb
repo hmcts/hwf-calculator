@@ -185,7 +185,20 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   # The following scenarios had no acceptance criteria from the business - but are important still
   scenario 'Citizen is single and puts non numerics in the day field' do
     # Arrange
-    given_i_am(:veronica)
+    given_i_am(:john)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('day/07/1970')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+
+  scenario 'Citizen is single and puts non numerics in the month field' do
+    # Arrange
+    given_i_am(:john)
     answer_up_to(:date_of_birth)
 
     # Act
@@ -193,14 +206,97 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+
+  scenario 'Citizen is single and puts non numerics in the year field' do
+    # Arrange
+    given_i_am(:john)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('01/07/someyear')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+
+  scenario 'Citizen is married and puts non numerics in their own day field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('aa/07/1970')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+
+  scenario 'Citizen is married and puts non numerics in their own month field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('09/July/1970')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+
+  scenario 'Citizen is married and puts non numerics in their own year field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('09/08/someyear')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+
+  scenario 'Citizen is married and puts non numerics in their partners day field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.partner_date_of_birth.set('aa/07/1970')
+    date_of_birth_page.next
+
+    # Assert
     expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
   end
-  scenario 'Citizen is single and puts non numerics in the month field'
-  scenario 'Citizen is single and puts non numerics in the year field'
-  scenario 'Citizen is married and puts non numerics in their own day field'
-  scenario 'Citizen is married and puts non numerics in their own month field'
-  scenario 'Citizen is married and puts non numerics in their own year field'
-  scenario 'Citizen is married and puts non numerics in their partners day field'
-  scenario 'Citizen is married and puts non numerics in their partners month field'
-  scenario 'Citizen is married and puts non numerics in their partners year field'
+
+  scenario 'Citizen is married and puts non numerics in their partners month field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.partner_date_of_birth.set('09/July/1970')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+
+  scenario 'Citizen is married and puts non numerics in their partners year field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.partner_date_of_birth.set('09/08/someyear')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
 end

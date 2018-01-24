@@ -148,6 +148,7 @@ RSpec.describe DateOfBirthForm, type: :model do
         # Assert
         expect(form.errors.details[:partner_date_of_birth]).to be_empty
       end
+
       it 'disallows a non numeric month field' do
         # Arrange
         form = described_class.new('partner_date_of_birth(1i)' => '1970', 'partner_date_of_birth(2i)' => 'July', 'partner_date_of_birth(3i)' => '01')
@@ -172,7 +173,7 @@ RSpec.describe DateOfBirthForm, type: :model do
 
       it 'disallows a non numeric year field' do
         # Arrange
-        form = described_class.new('partner_date_of_birth(1i)' => 'Millenium', 'partner_date_of_birth(2i)' => 'July', 'partner_date_of_birth(3i)' => '01')
+        form = described_class.new('partner_date_of_birth(1i)' => 'Millenium', 'partner_date_of_birth(2i)' => '01', 'partner_date_of_birth(3i)' => '01')
 
         # Act
         form.valid?
