@@ -38,6 +38,7 @@ en:
             partner_date_of_birth:
               blank: Please enter a valid date of birth
               age_less_than: You and your partner must be over %{count} years old to apply for help with fees
+              invalid_date: Please enter a valid date of birth
         number_of_children_form:
           attributes:
             number_of_children:

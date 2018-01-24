@@ -12,10 +12,9 @@ require 'invalid_date'
 #
 #   validates :date_of_birth, date: { invalid_date_class: CustomInvalidDate }
 #
-# Note that at present, the invalid dates are not given out by anything but the individual form objects themselves
-# however, these will be moved into custom date types so all form objects can have this stuff.
+# The custom active model type 'strict_date' is responsible for returning these special types
 # @TODO Review the comment above
-class DateValidator < ActiveModel::EachValidator
+class StrictDateValidator < ActiveModel::EachValidator
   def initialize(invalid_date_class: InvalidDate, **args)
     self.invalid_date_class = invalid_date_class
     super(args)

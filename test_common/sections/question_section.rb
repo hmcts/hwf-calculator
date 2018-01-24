@@ -10,7 +10,9 @@ module Calculator
         # Important, do not be tempted to change this to a css selector with text: text - as it matches
         # partial text, not exact
         xpath = XPath.generate { |x| x.descendant(:span)[x.string.n.is(text)] }
-        find(:xpath, xpath, class: 'error-message', exact: true)
+        within @root_element do
+          find(:xpath, xpath, class: 'error-message', exact: true)
+        end
       end
 
       def hint_with_text(text)

@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe DateValidator do
+RSpec.describe StrictDateValidator do
   context 'when age greater than or equal to 16' do
     # The validator uses the special 'InvalidDate' which we will mock our own and inject it into the validator
     class MyInvalidDate < Date
@@ -18,7 +18,7 @@ RSpec.describe DateValidator do
           'MyModel'
         end
 
-        validates :date, date: { invalid_date_class: MyInvalidDate }
+        validates :date, strict_date: { invalid_date_class: MyInvalidDate }
       end
     end
 
