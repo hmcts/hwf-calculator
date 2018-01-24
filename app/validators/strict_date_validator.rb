@@ -13,7 +13,6 @@ require 'invalid_date'
 #   validates :date_of_birth, date: { invalid_date_class: CustomInvalidDate }
 #
 # The custom active model type 'strict_date' is responsible for returning these special types
-# @TODO Review the comment above
 class StrictDateValidator < ActiveModel::EachValidator
   def initialize(invalid_date_class: InvalidDate, **args)
     self.invalid_date_class = invalid_date_class

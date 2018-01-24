@@ -17,32 +17,37 @@ class StrictDateType < ActiveModel::Type::Value
   # @param [Object] value The value to cast to a date or nil
   # @return [Date,Nil,InvalidDate,BlankDate] The cast date or nil if nil was given
   def cast(value)
-    if value.nil? || value.is_a?(Date)
-      value
-    else
-      raise "The strict date type must be presented with a hash containing day, month and year" unless value.is_a?(Hash)
-      cast_value(value.symbolize_keys)
-    end
+    return value if value.nil? || value.is_a?(Date)
+    raise "The strict date type must be presented with a hash containing day, month and year" unless value.is_a?(Hash)
+    cast_value(value.symbolize_keys)
   end
 
   private
 
   def cast_value(value)
-    if [value[:year], value[:month], value[:day]].all?(&:nil?)
+    if self.class.value_nil?(value)
       nil
-    elsif value.slice(:day, :month, :year).values.any?(&:blank?)
+    elsif self.class.value_blank?(value)
       blank_date_class.new
     else
-      create_date value[:year], value[:month], value[:day]
+      create_date value
     end
   end
 
-  def create_date(year, month, day)
+  def create_date(value)
     # This might look odd - its a way to convert string to integer, raising an error if it cannot be converted
     # as to_i returns 0 if it fails to convert to Integer('09') fails because it things its octal
-    Date.new Float(year).to_i, Float(month).to_i, Float(day).to_i
+    Date.new Float(value[:year]).to_i, Float(value[:month]).to_i, Float(value[:day]).to_i
   rescue ArgumentError
     invalid_date_class.new year, month, day
+  end
+
+  def self.value_nil?(value)
+    [value[:year], value[:month], value[:day]].all?(&:nil?)
+  end
+
+  def self.value_blank?(value)
+    value.slice(:day, :month, :year).values.any?(&:blank?)
   end
 
   attr_accessor :invalid_date_class, :blank_date_class
