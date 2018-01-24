@@ -6,10 +6,11 @@ Given("I am on the of children page") do
   step 'I answer the date of birth question'
   step 'I submit my savings and investments'
   step 'I answer the income benefits question'
+  expect(number_of_children_page.heading).to be_present
+  expect(number_of_children_page.number_of_children).to be_present
 end
 
 When("I successfully submit my number of children") do
-  binding.pry
   number_of_children_page.number_of_children.set(user.number_of_children)
   number_of_children_page.next
 end
@@ -19,12 +20,11 @@ Then("on the next page I should see my previous answer with our number of childr
 end
 
 When("I click on children who might affect your claim") do
-  binding.pry
-  # TODO: add when functionality is complete
+  number_of_children_page.toggle_guidance
 end
 
 Then("I should see the copy for children who might affect your claim") do
-  # TODO: add when functionality is complete
+  number_of_children_page.validate_guidance
 end
 
 When("I click next without submitting my number of children") do
