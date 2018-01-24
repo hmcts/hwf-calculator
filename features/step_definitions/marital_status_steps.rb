@@ -3,39 +3,40 @@ And(/^I answer the marital status question$/) do
   marital_status_page.next
 end
 
-Given("I am on the martial status page") do
+Given(/^I am on the martial status page$/) do
   step 'I start a new calculator session'
+  expect(marital_status_page.heading).to be_present
+  expect(marital_status_page.marital_status).to be_present
 end
 
-When("I successfully submit my marital status as single") do
+When(/^I successfully submit my marital status as single$/) do
   answer_marital_status_question
 end
 
-Then("on the next page I should see my previous answer single") do
+Then(/^on the next page I should see my previous answer single$/) do
   # TODO: add when functionality is complete
 end
 
-When("I successfully submit my marital status as married") do
+When(/^I successfully submit my marital status as married$/) do
   answer_marital_status_question
 end
 
-Then("on the next page I should see my previous answer married") do
+Then(/^on the next page I should see my previous answer married$/) do
   # TODO: add when functionality is complete
 end
 
-When("I click on help with status") do
+When(/^I click on help with status$/) do
   marital_status_page.toggle_guidance
 end
 
-Then("I should see the copy for help with status") do
+Then(/^I should see the copy for help with status$/) do
   marital_status_page.validate_guidance
 end
 
-When("I click next without submitting my marital status") do
+When(/^I click next without submitting my marital status$/) do
   marital_status_page.next
 end
 
-Then("I should see the marital status error message") do
+Then(/^I should see the marital status error message$/) do
   # TODO: add when functionality is complete
 end
-

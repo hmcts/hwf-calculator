@@ -19,10 +19,9 @@ Then(/^I should see that (?:I am|we are) unlikely to get help with fees$/) do
 end
 
 Given(/^I am on the savings and investment page$/) do
-  step 'I start a new calculator session'
-  step 'I answer the marital status question'
-  step 'I answer the court fee question'
-  step 'I answer the date of birth question'
+  answer_questions_up_to_disposable_capital
+  expect(disposable_capital_page.heading).to be_present
+  expect(disposable_capital_page.disposable_capital).to be_present
 end
 
 And(/^I submit (?:my|our) savings and investments$/) do
@@ -33,19 +32,18 @@ And(/^on the next page I should see my previous answer with (?:my|our) savings a
   expect(any_calculator_page.previous_answers.disposable_capital.answer.text).to eql number_to_currency(user.disposable_capital, precision: 0, unit: '£')
 end
 
-When("I click on help with savings and investment") do
-  # TODO: add when functionality is complete
+When(/^I click on help with savings and investment$/) do
+  disposable_capital_page.toggle_guidance
 end
 
-Then("I should see the copy for help with savings and investment") do
-  # TODO: add when functionality is complete
+Then(/^I should see the copy for help with savings and investment$/) do
+  disposable_capital_page.validate_guidance
 end
 
-When("I click next without submitting my savings and investment") do
+When(/^I click next without submitting my savings and investment$/) do
   disposable_capital_page.next
 end
 
-Then("I should see the savings and investment error message") do
+Then(/^I should see the savings and investment error message$/) do
   expect(disposable_capital_page.error_with_text(messaging.t('hwf_pages.disposable_capital.errors.blank'))).to be_present
 end
-
