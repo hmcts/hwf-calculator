@@ -253,21 +253,14 @@ RSpec.describe CalculationService do
         disposable_capital: 1000
       }
     end
-    let(:expected_previous_calculations) do
-      {
-        calculator1: { available_help: :undecided },
-        calculator2: { available_help: :undecided },
-        calculator3: { available_help: :undecided }
-      }
-    end
 
     include_context 'with fake calculators'
     before do
-      # Arrange - Each calculator class can tell us which fields are required based on inputs and previous calculations
+      # Arrange - Each calculator class can tell us which fields are required based on inputs
       # Here we just give some dummy data - it is not relevant as long as they all get added together in the correct order
-      allow(calculator_1_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:fee])
-      allow(calculator_2_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:date_of_birth, :benefits_received])
-      allow(calculator_3_class).to receive(:fields_required).with(inputs, previous_calculations: an_instance_of(Hash)).and_return([:number_of_children, :total_income])
+      allow(calculator_1_class).to receive(:fields_required).with(inputs).and_return([:fee])
+      allow(calculator_2_class).to receive(:fields_required).with(inputs).and_return([:date_of_birth, :benefits_received])
+      allow(calculator_3_class).to receive(:fields_required).with(inputs).and_return([:number_of_children, :total_income])
     end
 
     it 'returns any fields not provided in the input in the correct order prefixed with marital_status' do
@@ -276,22 +269,22 @@ RSpec.describe CalculationService do
       expect(service.call(inputs, calculators: calculators)).to have_attributes fields_required: [:marital_status, :fee, :date_of_birth, :benefits_received, :number_of_children, :total_income]
     end
 
-    it 'calls fields_required on calculator 1 class with previous calculations' do
+    it 'calls fields_required on calculator 1 class' do
       # Act and Assert
       service.call(inputs, calculators: calculators).fields_required
-      expect(calculator_1_class).to have_received(:fields_required).with(inputs, previous_calculations: expected_previous_calculations)
+      expect(calculator_1_class).to have_received(:fields_required).with(inputs)
     end
 
-    it 'calls fields_required on calculator 2 class with previous calculations' do
+    it 'calls fields_required on calculator 2 class' do
       # Act and Assert
       service.call(inputs, calculators: calculators).fields_required
-      expect(calculator_2_class).to have_received(:fields_required).with(inputs, previous_calculations: expected_previous_calculations)
+      expect(calculator_2_class).to have_received(:fields_required).with(inputs)
     end
 
-    it 'calls fields_required on calculator 3 class with previous calculations' do
+    it 'calls fields_required on calculator 3 class' do
       # Act and Assert
       service.call(inputs, calculators: calculators).fields_required
-      expect(calculator_3_class).to have_received(:fields_required).with(inputs, previous_calculations: expected_previous_calculations)
+      expect(calculator_3_class).to have_received(:fields_required).with(inputs)
     end
 
   end
