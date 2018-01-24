@@ -1,14 +1,5 @@
 .content-body.benefits_received
-  .feedback data-behavior="calculator_feedback"
-    - if current_calculation.available_help == :none
-      div.negative
-        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_not_get_help')
-        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
-    - if current_calculation.available_help == :full
-      div.positive
-        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_get_help')
-        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
-
+  = render partial: 'feedback', locals: { current_calculation: current_calculation }
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset

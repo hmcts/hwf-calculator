@@ -1,5 +1,5 @@
 .content-body.total_income
-  h1 How much help with fees will I receive?
+  = render partial: 'feedback', locals: { current_calculation: current_calculation }
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
