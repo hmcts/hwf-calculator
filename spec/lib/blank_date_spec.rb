@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'blank_date'
 RSpec.describe BlankDate do
   subject(:blank_date) { described_class.new }
 

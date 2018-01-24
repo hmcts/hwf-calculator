@@ -181,4 +181,26 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     # Assert
     expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.married'))).to be_present
   end
+
+  # The following scenarios had no acceptance criteria from the business - but are important still
+  scenario 'Citizen is single and puts non numerics in the day field' do
+    # Arrange
+    given_i_am(:veronica)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('01/July/1970')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  end
+  scenario 'Citizen is single and puts non numerics in the month field'
+  scenario 'Citizen is single and puts non numerics in the year field'
+  scenario 'Citizen is married and puts non numerics in their own day field'
+  scenario 'Citizen is married and puts non numerics in their own month field'
+  scenario 'Citizen is married and puts non numerics in their own year field'
+  scenario 'Citizen is married and puts non numerics in their partners day field'
+  scenario 'Citizen is married and puts non numerics in their partners month field'
+  scenario 'Citizen is married and puts non numerics in their partners year field'
 end

@@ -58,6 +58,39 @@ RSpec.describe DateOfBirthForm, type: :model do
         # Assert
         expect(form.errors.details[:date_of_birth]).to be_empty
       end
+
+      it 'disallows a non numeric month field' do
+        # Arrange
+        form = described_class.new('date_of_birth(1i)' => '1970', 'date_of_birth(2i)' => 'July', 'date_of_birth(3i)' => '01')
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:date_of_birth]).to contain_exactly a_hash_including(error: :invalid_date)
+      end
+
+      it 'disallows a non numeric day field' do
+        # Arrange
+        form = described_class.new('date_of_birth(1i)' => '1970', 'date_of_birth(2i)' => '07', 'date_of_birth(3i)' => 'First')
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:date_of_birth]).to contain_exactly a_hash_including(error: :invalid_date)
+      end
+
+      it 'disallows a non numeric year field' do
+        # Arrange
+        form = described_class.new('date_of_birth(1i)' => 'Millenium', 'date_of_birth(2i)' => 'July', 'date_of_birth(3i)' => '01')
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:date_of_birth]).to contain_exactly a_hash_including(error: :invalid_date)
+      end
     end
 
     describe 'partner_date_of_birth' do
@@ -114,6 +147,38 @@ RSpec.describe DateOfBirthForm, type: :model do
 
         # Assert
         expect(form.errors.details[:partner_date_of_birth]).to be_empty
+      end
+      it 'disallows a non numeric month field' do
+        # Arrange
+        form = described_class.new('partner_date_of_birth(1i)' => '1970', 'partner_date_of_birth(2i)' => 'July', 'partner_date_of_birth(3i)' => '01')
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:partner_date_of_birth]).to contain_exactly a_hash_including(error: :invalid_date)
+      end
+
+      it 'disallows a non numeric day field' do
+        # Arrange
+        form = described_class.new('partner_date_of_birth(1i)' => '1970', 'partner_date_of_birth(2i)' => '07', 'partner_date_of_birth(3i)' => 'First')
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:partner_date_of_birth]).to contain_exactly a_hash_including(error: :invalid_date)
+      end
+
+      it 'disallows a non numeric year field' do
+        # Arrange
+        form = described_class.new('partner_date_of_birth(1i)' => 'Millenium', 'partner_date_of_birth(2i)' => 'July', 'partner_date_of_birth(3i)' => '01')
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:partner_date_of_birth]).to contain_exactly a_hash_including(error: :invalid_date)
       end
     end
   end

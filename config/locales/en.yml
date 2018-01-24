@@ -2,6 +2,10 @@ en:
   activemodel:
     errors:
       models:
+        marital_status_form:
+          attributes:
+            marital_status:
+              inclusion: "Select whether you're single, married or living with someone and sharing an income"
         benefits_received_form:
           attributes:
             benefits_received:
