@@ -1,8 +1,9 @@
-div.calculator.fee
-  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
+.content-body.fee
+  = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = t('calculation.field_labels.fee')
+        legend
+          h2.heading-medium = t('calculation.field_labels.fee')
         details data-behavior="question_help"
           summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
 
@@ -14,6 +15,6 @@ div.calculator.fee
         label.block-label
           = f.text_field :fee, class: 'form-control'
 
-    .form-groupq
+    .form-group
       = f.submit 'Next step', class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?

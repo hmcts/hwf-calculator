@@ -1,6 +1,24 @@
-@import '_typography';
-.content-body {
-  p {
-    @include copy-19;
+.content-body.home {
+  .introduction {
+    h2 {
+      font-weight: inherit;
+    }
+    p {
+      @include copy-19;
+    }
   }
+  .requirements {
+    p {
+      @include copy-19;
+    }
+  }
+  .welsh-link {
+    margin: 1em 0;
+    p {
+      @include copy-19;
+    }
+    @extend .panel;
+    @extend .panel-border-wide;
+  }
+
 }

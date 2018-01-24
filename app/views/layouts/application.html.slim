@@ -7,11 +7,16 @@
     showHideContent.init();
   yield
 - content_for :content
-  .phase-banner
-    p
-      strong.phase-tag Alpha
-      span This is a new service – your <a href="#">feedback</a> will help us to improve it.
-  .content-header
-    h1 data-behavior="heading" = t('calculation.common.page_header')
-  = yield
+  .direction-ltr#content
+    main role="main"
+      .grid-row
+        .column-full
+          .phase-banner
+            p
+              strong.phase-tag Beta
+              span This is a new service – your <a href="#">feedback</a> will help us to improve it.
+          .content-header
+            h1.heading-large data-behavior="heading" = t('calculation.common.page_header')
+
+          = yield
 = render template: "layouts/govuk_template"

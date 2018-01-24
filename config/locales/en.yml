@@ -42,15 +42,15 @@ en:
   calculation:
     home:
       start: "Start now"
+      introduction_header: This calculator will tell you if you’re likely to get help with fees and how much you could get.
       introduction_html: |
-        This calculator will tell you if you’re likely to get help with fees and how much you could get.
         You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:
         You don't have much in savings, and
         You're receiving certain benefits, or
         You're on a low income
         If you have a partner, your partner's situation will also apply
+      requirements_header: What you’ll need
       requirements_html: |
-        What you’ll need
         You'll need information about your (and your partner's, if applicable):
         total savings amount, and
         either: list of benefits (or proof of certain benefits at the time you paid your fee)
