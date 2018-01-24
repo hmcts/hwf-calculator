@@ -1,5 +1,5 @@
 Given(/^I am on the total income page$/) do
-  answer_questions_up_to_total_income
+  answer_up_to(:total_income)
   expect(total_income_page.heading).to be_present
   expect(total_income_page.total_income.hint_with_text(messaging.t('hwf_pages.total_income.hint'))).to be_present
 end

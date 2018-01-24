@@ -5,7 +5,7 @@ end
 
 Given(/^I am on the court and tribunal fee page$/) do
   step 'I am John'
-  answer_questions_up_to_court_fee
+  answer_up_to(:court_fee)
   expect(court_fee_page.heading).to be_present
   expect(court_fee_page.fee).to be_present
 end

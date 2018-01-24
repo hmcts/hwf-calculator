@@ -3,7 +3,7 @@ And(/^I answer the date of birth question$/) do
 end
 
 Given(/^I am on the date of birth page$/) do
-  answer_questions_up_to_date_of_birth
+  answer_up_to(:date_of_birth)
   expect(date_of_birth_page.heading).to be_present
   expect(date_of_birth_page.date_of_birth).to be_present
 end

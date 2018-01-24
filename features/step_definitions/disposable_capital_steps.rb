@@ -20,7 +20,7 @@ Then(/^I should see that (?:I am|we are) unlikely to get help with fees$/) do
 end
 
 Given(/^I am on the savings and investment page$/) do
-  answer_questions_up_to_disposable_capital
+  answer_up_to(:disposable_capital)
   expect(disposable_capital_page.heading).to be_present
   expect(disposable_capital_page.disposable_capital).to be_present
 end

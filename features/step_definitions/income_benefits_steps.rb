@@ -1,6 +1,6 @@
 Given(/^I am on the income benefits page$/) do
   step 'I am John'
-  answer_questions_up_to_benefits
+  answer_up_to(:benefits)
   expect(income_benefits_page.heading).to be_present
   expect(income_benefits_page.benefits).to be_present
 end
@@ -39,7 +39,7 @@ When(/^I submit the page with income related benefit checked$/) do
 end
 
 Then(/^I should see that I should be eligible for a full remission$/) do
-  expect(current_path).to end_with '/full_remission_available'
+  expect(current_path).to end_with '/full_remission'
   expect(full_remission_page).to be_displayed
 end
 

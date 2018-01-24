@@ -1,6 +1,6 @@
 Given(/^I am on the number of children page$/) do
   step 'I am Claude and partner'
-  answer_questions_up_to_number_of_children
+  answer_up_to(:number_of_children)
   expect(number_of_children_page.heading).to be_present
   expect(number_of_children_page.number_of_children).to be_present
 end
