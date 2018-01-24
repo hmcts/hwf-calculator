@@ -35,22 +35,29 @@ class StrictDateType < ActiveModel::Type::Value
   end
 
   def create_date(value)
-    # This might look odd - its a way to convert string to integer, raising an error if it cannot be converted
-    # as to_i returns 0 if it fails to convert to Integer('09') fails because it things its octal
-    Date.new Float(value[:year]).to_i, Float(value[:month]).to_i, Float(value[:day]).to_i
+    self.class.date_from_hash(value)
   rescue ArgumentError
     invalid_date_class.new value[:year], value[:month], value[:day]
   end
 
-  def self.value_nil?(value)
-    [value[:year], value[:month], value[:day]].all?(&:nil?)
-  end
+  class << self
+    private
 
-  def self.value_blank?(value)
-    value.slice(:day, :month, :year).values.any?(&:blank?)
-  end
+    def date_from_hash(value)
+      # This might look odd - its a way to convert string to integer, raising an error if it cannot be converted
+      # as to_i returns 0 if it fails to convert to Integer('09') fails because it things its octal
+      Date.new Float(value[:year]).to_i, Float(value[:month]).to_i, Float(value[:day]).to_i
+    end
 
-  private_class_method :value_nil?, :value_blank?
+    def value_nil?(value)
+      [value[:year], value[:month], value[:day]].all?(&:nil?)
+    end
+
+    def value_blank?(value)
+      value.slice(:day, :month, :year).values.any?(&:blank?)
+    end
+
+  end
 
   attr_accessor :invalid_date_class, :blank_date_class
 end
