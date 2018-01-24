@@ -39,7 +39,7 @@ class StrictDateType < ActiveModel::Type::Value
     # as to_i returns 0 if it fails to convert to Integer('09') fails because it things its octal
     Date.new Float(value[:year]).to_i, Float(value[:month]).to_i, Float(value[:day]).to_i
   rescue ArgumentError
-    invalid_date_class.new year, month, day
+    invalid_date_class.new value[:year], value[:month], value[:day]
   end
 
   def self.value_nil?(value)
@@ -49,6 +49,8 @@ class StrictDateType < ActiveModel::Type::Value
   def self.value_blank?(value)
     value.slice(:day, :month, :year).values.any?(&:blank?)
   end
+
+  private_class_method :value_nil?, :value_blank?
 
   attr_accessor :invalid_date_class, :blank_date_class
 end
