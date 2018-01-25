@@ -14,7 +14,8 @@
         - if form.errors.include?(:fee)
           span.error-message = form.errors[:fee].join(', ')
         label.block-label
-          = f.text_field :fee, class: 'form-control'
+          .form-control-money.gbp
+            = f.text_field :fee, class: 'form-control money gbp'
     .form-group
       = f.submit 'Next step', class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?

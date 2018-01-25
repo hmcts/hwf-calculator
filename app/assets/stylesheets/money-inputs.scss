@@ -1,0 +1,16 @@
+.form-group {
+  .form-control-money {
+    position: relative;
+    input.form-control[type=text] {
+      padding-left: 1.2em;
+    }
+  }
+  .form-control-money.gbp::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "£";
+    margin: 7px 10px;
+
+  }
+}
