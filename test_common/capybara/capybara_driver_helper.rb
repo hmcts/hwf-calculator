@@ -10,7 +10,9 @@ end
 
 Capybara.register_driver :firefox do |app|
   profile = Selenium::WebDriver::Firefox::Profile.new
-  Capybara::Selenium::Driver.new(app, desired_capabilities: { browserName: :firefox }, browser: :firefox, url: ENV.fetch('SELENIUM_URL', 'http://localhost:4444/wd/hub'))
+  profile['browser.cache.disk.enable'] = false
+  profile['browser.cache.memory.enable'] = false
+  Capybara::Selenium::Driver.new(app, browser: :firefox, profile: profile)
 end
 
 Capybara.register_driver :chrome do |app|
