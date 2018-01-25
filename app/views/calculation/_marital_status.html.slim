@@ -1,18 +1,11 @@
 .content-body.marital_status
+  = render partial: 'feedback', locals: { current_calculation: current_calculation }
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     = f.hidden_field :ensure_not_blank, allow_method_names_outside_object: true, value: '1'
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend
           h2.heading-medium = t('calculation.field_labels.marital_status')
-        - if form.errors.include?(:marital_status)
-          span.error-message = form.errors[:marital_status].join(', ')
-        .multiple-choice
-          = f.radio_button :marital_status, 'single'
-          = f.label :marital_status_single, 'Single', allow_method_names_outside_object: true
-        .multiple-choice
-          = f.radio_button :marital_status, 'sharing_income'
-          = f.label :marital_status_sharing_income, 'Married or living with someone', allow_method_names_outside_object: true
         details data-behavior="question_help"
           summary data-behavior="toggle" = t('calculation.guidance.marital_status.summary')
 
@@ -26,6 +19,14 @@
               ul.list.list-bullet
                 - t('calculation.guidance.marital_status.detail.sharing_income.text').lines.each do |line|
                   li = line
+        - if form.errors.include?(:marital_status)
+          span.error-message = form.errors[:marital_status].join(', ')
+        .multiple-choice
+          = f.radio_button :marital_status, 'single'
+          = f.label :marital_status_single, 'Single', allow_method_names_outside_object: true
+        .multiple-choice
+          = f.radio_button :marital_status, 'sharing_income'
+          = f.label :marital_status_sharing_income, 'Married or living with someone', allow_method_names_outside_object: true
     .form-group
       = f.submit 'Next step', class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?

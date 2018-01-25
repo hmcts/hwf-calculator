@@ -47,7 +47,7 @@ class CalculationService
     'BenefitsReceived',
     'HouseholdIncome'
   ].freeze
-  attr_reader :messages, :inputs, :calculations, :available_help, :remission, :final_decision_by
+  attr_reader :messages, :inputs, :available_help, :remission, :final_decision_by
 
   # Create an instance of CalculationService
   # @param [Hash] inputs
@@ -61,7 +61,6 @@ class CalculationService
     self.remission = 0.0
     self.messages = []
     self.calculators = calculators
-    self.calculations = {}
   end
 
   # Performs the calculation with the given inputs and configured calculators
@@ -86,7 +85,7 @@ class CalculationService
     catch(:abort) do
       calculators.each do |calculator|
         my_result = catch(:invalid_inputs) do
-          calculations[calculator.identifier] = perform_calculation_using(calculator)
+          perform_calculation_using(calculator)
         end
         throw :abort, self if my_result.final_decision? || !my_result.valid?
       end
@@ -118,7 +117,7 @@ class CalculationService
   def fields_required
     @fields_required ||= begin
       required = calculators.map do |c|
-        c.fields_required(inputs, previous_calculations: calculations_summary)
+        c.fields_required(inputs)
       end.flatten
       my_fields_required + required
     end
@@ -154,12 +153,6 @@ class CalculationService
     MY_FIELDS - inputs.keys
   end
 
-  def calculations_summary
-    calculations.map do |k, v|
-      [k, { available_help: v.available_help }]
-    end.to_h
-  end
-
   def perform_calculation_using(calculator)
     result = calculator.call(inputs)
     if result.available_help == :none
@@ -188,5 +181,5 @@ class CalculationService
   end
 
   attr_accessor :calculators
-  attr_writer :messages, :inputs, :calculations, :available_help, :remission, :final_decision_by
+  attr_writer :messages, :inputs, :available_help, :remission, :final_decision_by
 end

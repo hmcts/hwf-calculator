@@ -2,6 +2,10 @@ en:
   activemodel:
     errors:
       models:
+        marital_status_form:
+          attributes:
+            marital_status:
+              inclusion: "Select whether you're single, married or living with someone and sharing an income"
         benefits_received_form:
           attributes:
             benefits_received:
@@ -30,9 +34,11 @@ en:
             date_of_birth:
               blank: Please enter a valid date of birth
               age_less_than: You must be over %{count} years old to apply for help with fees
+              invalid_date: Please enter a valid date of birth
             partner_date_of_birth:
               blank: Please enter a valid date of birth
               age_less_than: You and your partner must be over %{count} years old to apply for help with fees
+              invalid_date: Please enter a valid date of birth
         number_of_children_form:
           attributes:
             number_of_children:

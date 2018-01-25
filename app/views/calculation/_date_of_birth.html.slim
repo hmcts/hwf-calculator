@@ -1,4 +1,5 @@
 .content-body.date_of_birth
+  = render partial: 'feedback', locals: { current_calculation: current_calculation }
   = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset.inline
@@ -11,16 +12,16 @@
         .form-date
           .form-group
             label.block-label
-              = f.label :'date_of_birth(3i)', 'Day'
-              = f.text_field :'date_of_birth(3i)', value: f.object.date_of_birth.try(:day), class: 'form-control'
+              = f.label :'date_of_birth[day]', 'Day'
+              = f.text_field :'date_of_birth[day]', value: f.object.date_of_birth.try(:day), class: 'form-control'
           .form-group
             label.block-label
-              = f.label :'date_of_birth(2i)', 'Month'
-              = f.text_field :'date_of_birth(2i)', value: f.object.date_of_birth.try(:month), class: 'form-control'
+              = f.label :'date_of_birth[month]', 'Month'
+              = f.text_field :'date_of_birth[month]', value: f.object.date_of_birth.try(:month), class: 'form-control'
           .form-group
             label.block-label
-              = f.label :'date_of_birth(1i)', 'Year'
-              = f.text_field :'date_of_birth(1i)', value: f.object.date_of_birth.try(:year), class: 'form-control'
+              = f.label :'date_of_birth[year]', 'Year'
+              = f.text_field :'date_of_birth[year]', value: f.object.date_of_birth.try(:year), class: 'form-control'
     - if current_calculation.inputs[:marital_status] == 'sharing_income'
       .form-group class=('form-group-error' if form.errors.any?)
         fieldset.inline
@@ -32,16 +33,16 @@
           .form-date
             .form-group
               label.block-label
-                = f.label :'partner_date_of_birth(3i)', 'Day'
-                = f.text_field :'partner_date_of_birth(3i)', value: f.object.partner_date_of_birth.try(:day), class: 'form-control'
+                = f.label :'partner_date_of_birth[day]', 'Day'
+                = f.text_field :'partner_date_of_birth[day]', value: f.object.partner_date_of_birth.try(:day), class: 'form-control'
             .form-group
               label.block-label
-                = f.label :'partner_date_of_birth(2i)', 'Month'
-                = f.text_field :'partner_date_of_birth(2i)', value: f.object.partner_date_of_birth.try(:month), class: 'form-control'
+                = f.label :'partner_date_of_birth[month]', 'Month'
+                = f.text_field :'partner_date_of_birth[month]', value: f.object.partner_date_of_birth.try(:month), class: 'form-control'
             .form-group
               label.block-label
-                = f.label :'partner_date_of_birth(1i)', 'Year'
-                = f.text_field :'partner_date_of_birth(1i)', value: f.object.partner_date_of_birth.try(:year), class: 'form-control'
+                = f.label :'partner_date_of_birth[year]', 'Year'
+                = f.text_field :'partner_date_of_birth[year]', value: f.object.partner_date_of_birth.try(:year), class: 'form-control'
     .form-group
       = f.submit 'Next step', class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?

@@ -3,7 +3,9 @@ module Calculator
   module Test
     class QuestionRadioListSection < QuestionSection
       def set(value)
-        choose(value)
+        within @root_element do
+          choose(value)
+        end
       end
     end
   end
