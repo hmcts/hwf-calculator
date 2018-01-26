@@ -62,7 +62,7 @@ Feature: Disposable capital
     Given I am David
     And I am on the savings and investment page
     When I submit my savings and investments
-    Then on the next page I should see my previous answer with my savings and investments
+    Then on the next page my savings and investments have been added to previous answers
 
   Scenario: Help with savings and investment
     Given I am David

@@ -8,8 +8,14 @@ When(/^I successfully submit my total income$/) do
   answer_total_income_question
 end
 
-Then(/^on the next page I should see my previous answer for total income$/) do
-  # TODO: add when functionality is complete
+Then(/^on the next page my total income has been added to previous answers$/) do
+  expect(full_remission_page.previous_answers).to have_marital_status
+  expect(full_remission_page.previous_answers).to have_court_fee
+  expect(full_remission_page.previous_answers).to have_date_of_birth
+  expect(full_remission_page.previous_answers).to have_partner_date_of_birth
+  expect(full_remission_page.previous_answers).to have_income_benefits
+  expect(full_remission_page.previous_answers).to have_number_of_children
+  expect(full_remission_page.previous_answers).to have_total_income
 end
 
 Then(/^I should see that I should be eligible for full remission$/) do

@@ -7,7 +7,7 @@ Scenario: Successfully submits my total income
   Given I am Claude and partner
   And I am on the total income page
   When I successfully submit my total income
-  Then on the next page I should see my previous answer for total income
+  Then on the next page my total income has been added to previous answers
 
 Scenario: Eligible for full remission
   Given I am John

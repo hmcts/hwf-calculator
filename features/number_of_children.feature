@@ -8,7 +8,7 @@ Background: Number of children page
 
 Scenario: Successfully submits my number of children
   When I successfully submit my number of children
-  Then on the next page our number of children has been added to my previous answers
+  Then on the next page our number of children has been added to previous answers
 
 Scenario: Children who might affect your claim
   When I click on children who might affect your claim

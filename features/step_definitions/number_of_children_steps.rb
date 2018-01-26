@@ -10,7 +10,7 @@ When(/^I successfully submit my number of children$/) do
   number_of_children_page.next
 end
 
-Then(/^on the next page our number of children has been added to my previous answers$/) do
+Then(/^on the next page our number of children has been added to previous answers$/) do
   expect(total_income_page.previous_answers).to have_marital_status
   expect(total_income_page.previous_answers).to have_court_fee
   expect(total_income_page.previous_answers).to have_date_of_birth
