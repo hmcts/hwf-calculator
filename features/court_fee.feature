@@ -8,7 +8,7 @@ Background: Court and tribunal fee page
 
 Scenario: Successfully submits court and tribunal fee
   When I successfully submit my court and tribunal fee
-  Then on the next page I should see my answer for court and tribunal fee
+  Then on the next page my court and tribunal fee has been added to previous answers
 
 Scenario: If you have already paid your court or tribunal fee
   When I click on if you have already paid your court or tribunal fee

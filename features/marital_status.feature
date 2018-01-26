@@ -7,13 +7,13 @@ Scenario: Successfully submits single
   Given I am John
   And I am on the martial status page
   When I successfully submit my marital status as single
-  Then on the next page I should see my previous answer single
+  Then on the next page my marital status has been added to previous answers
 
 Scenario: Successfully submits married
   Given I am Alli and partner
   And I am on the martial status page
   When I successfully submit my marital status as married
-  Then on the next page I should see my previous answer married
+  Then on the next page my marital status has been added to previous answers
 
 Scenario: Help with status
   Given I am John

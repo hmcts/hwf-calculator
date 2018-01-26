@@ -14,8 +14,9 @@ When(/^I successfully submit my court and tribunal fee$/) do
   answer_court_fee_question
 end
 
-Then(/^on the next page I should see my answer for court and tribunal fee$/) do
-  # TODO: add when functionality is complete
+Then(/^on the next page my court and tribunal fee has been added to previous answers$/) do
+  expect(date_of_birth_page.previous_answers).to have_marital_status
+  expect(date_of_birth_page.previous_answers).to have_court_fee
 end
 
 When(/^I click on if you have already paid your court or tribunal fee$/) do

@@ -62,8 +62,12 @@ When(/^I submit the page with income support$/) do
   income_benefits_page.next
 end
 
-Then(/^on the next page I should see my previous answer is income support$/) do
-  # TODO: add when functionality is complete
+Then(/^on the next page my income benefit has been added to previous answers$/) do
+  expect(full_remission_page.previous_answers).to have_marital_status
+  expect(full_remission_page.previous_answers).to have_court_fee
+  expect(full_remission_page.previous_answers).to have_date_of_birth
+  expect(full_remission_page.previous_answers).to have_disposable_capital
+  expect(full_remission_page.previous_answers).to have_income_benefits
 end
 
 When(/^I click on how benefits affect your claim$/) do

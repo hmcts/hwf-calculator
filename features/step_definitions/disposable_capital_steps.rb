@@ -30,6 +30,7 @@ And(/^I submit (?:my|our) savings and investments$/) do
 end
 
 And(/^on the next page I should see my previous answer with (?:my|our) savings and investments$/) do
+  # TODO: add when functionality is complete
   expect(any_calculator_page.previous_answers.disposable_capital.answer.text).to eql number_to_currency(user.disposable_capital, precision: 0, unit: '£')
 end
 

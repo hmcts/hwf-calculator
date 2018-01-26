@@ -13,16 +13,12 @@ When(/^I successfully submit my marital status as single$/) do
   answer_marital_status_question
 end
 
-Then(/^on the next page I should see my previous answer single$/) do
-  # TODO: add when functionality is complete
+Then(/^on the next page my marital status has been added to previous answers$/) do
+  expect(court_fee_page.previous_answers).to have_marital_status
 end
 
 When(/^I successfully submit my marital status as married$/) do
   answer_marital_status_question
-end
-
-Then(/^on the next page I should see my previous answer married$/) do
-  # TODO: add when functionality is complete
 end
 
 When(/^I click on help with status$/) do

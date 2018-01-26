@@ -30,7 +30,7 @@ Scenario: Select income related benefit option
 
 Scenario: Previous answers
   When I submit the page with income support
-  Then on the next page I should see my previous answer is income support
+  Then on the next page my income benefit has been added to previous answers
 
 Scenario: How benefits affect your claim
   When I click on how benefits affect your claim

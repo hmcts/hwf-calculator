@@ -10,8 +10,13 @@ When(/^I successfully submit my number of children$/) do
   number_of_children_page.next
 end
 
-Then(/^on the next page I should see my previous answer with our number of children$/) do
-  # TODO: add when functionality is complete
+Then(/^on the next page our number of children has been added to my previous answers$/) do
+  expect(total_income_page.previous_answers).to have_marital_status
+  expect(total_income_page.previous_answers).to have_court_fee
+  expect(total_income_page.previous_answers).to have_date_of_birth
+  expect(total_income_page.previous_answers).to have_partner_date_of_birth
+  expect(total_income_page.previous_answers).to have_income_benefits
+  expect(total_income_page.previous_answers).to have_number_of_children
 end
 
 When(/^I click on children who might affect your claim$/) do
