@@ -22,6 +22,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   # ALLI is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
   # LOLA is a married, 90 year old woman with £19,000 worth of capital. She has a court fee of £100,000
   # THERESA is a single, 47 year old woman with no children. She has £15,999 worth of capital and an income of £5,086. He has a court fee of £7,500
+  # SUE is a married, 75 year old woman with 0 children. She has £9,999 worth of capital and an income of £0. She has a court fee of £4,000
   # Scenario: Citizen update Partner status from court or tribunal fee page
   #               Given I am JOHN
   #               And I am on the court or tribunal fee page
@@ -37,7 +38,10 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     court_fee_page.go_back_to_question(:marital_status)
 
     # Assert
-    expect(marital_status_page).to be_displayed
+    aggregate_failures 'Verify all' do
+      expect(marital_status_page).to be_displayed
+      expect(marital_status_page.marital_status).to have_value(user.marital_status)
+    end
   end
   #
   # Scenario: Citizen update Partner status from Number of Children page
@@ -56,7 +60,10 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     number_of_children_page.go_back_to_question(:marital_status)
 
     # Assert
-    expect(marital_status_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(marital_status_page).to be_displayed.and(have_previous_answers)
+      expect(marital_status_page.marital_status).to have_value(user.marital_status)
+    end
   end
 
   # Scenario: Citizen update Savings and investment amount from Number of Children page
@@ -75,7 +82,10 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     number_of_children_page.go_back_to_question(:disposable_capital)
 
     # Assert
-    expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
+      expect(disposable_capital_page.disposable_capital).to have_value(user.disposable_capital)
+    end
   end
 
   # Scenario: Citizen update Savings and investment amount from the Benefit response page
@@ -94,7 +104,10 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     court_fee_page.go_back_to_question(:disposable_capital)
 
     # Assert
-    expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
+      expect(disposable_capital_page.disposable_capital).to have_value(user.disposable_capital)
+    end
   end
 
   # Scenario: Citizen update Court or tribunal fee from the Total Income page
@@ -113,7 +126,10 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     total_income_page.go_back_to_question(:court_fee)
 
     # Assert
-    expect(court_fee_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(court_fee_page).to be_displayed.and(have_previous_answers)
+      expect(court_fee_page.fee).to have_value(user.fee)
+    end
   end
 
   # Scenario: Citizen update income benefit from the Total Income page
@@ -132,7 +148,10 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     total_income_page.go_back_to_question(:income_benefits)
 
     # Assert
-    expect(income_benefits_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(income_benefits_page).to be_displayed.and(have_previous_answers)
+      expect(income_benefits_page.benefits).to have_value(user.income_benefits)
+    end
   end
 
   # Scenario: Citizen unable to make updates from the Total income response page

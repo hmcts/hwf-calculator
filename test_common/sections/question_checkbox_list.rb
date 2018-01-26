@@ -20,6 +20,21 @@ module Calculator
           GdsMultipleChoiceOptionSection.new self, node
         end
       end
+
+      # Validates that the values provided are selected in the checkbox list
+      # and that other values are not.
+      # note that this uses has_selector which means it will wait for the value
+      # to arrive, subject to timeout of course.
+      # @param [Array<String>] values The values to validate are selected
+      # @return [Boolean] true if they are selected, else false
+      def has_value?(values)
+        SitePrism::Waiter.wait_until_true do
+          checked_options = options.select(&:checked?).map do |n|
+            n.text
+          end
+          values.sort == checked_options.sort
+        end
+      end
     end
   end
 end
