@@ -20,7 +20,7 @@ module Calculator
       # @return [Boolean] true if it is selected, else false
       def has_value?(value)
         within @root_element do
-          has_selector?(:radio_button, value, :checked)
+          has_selector?(:radio_button, value, checked: true)
         end
       end
       # rubocop:enable Style/PredicateName
