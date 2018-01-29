@@ -80,6 +80,8 @@ en:
             student maintenance loans, grants or bursaries (except for tuition fee loans)
             If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
     marital_status:
+      errors:
+        blank: "Select whether you're single, married or living with someone and sharing an income"
       labels:
         marital_status:
           single: Single

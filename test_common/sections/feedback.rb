@@ -2,19 +2,27 @@ module Calculator
   module Test
     class FeedbackSection < BaseSection
       def message_with_detail(msg)
-        find '[data-behavior=calculator_feedback_message]', text: msg
+        within @root_element do
+          find '[data-behavior=calculator_feedback_message]', text: msg
+        end
       end
 
       def message_with_header(header)
-        find '[data-behavior=calculator_feedback_header]', text: header
+        within @root_element do
+          find '[data-behavior=calculator_feedback_header]', text: header
+        end
       end
 
       def positive_message
-        find '.positive'
+        within @root_element do
+          find '.positive'
+        end
       end
 
       def negative_message
-        find '.negative'
+        within @root_element do
+          find '.negative'
+        end
       end
     end
   end

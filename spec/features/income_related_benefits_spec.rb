@@ -69,7 +69,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   # When I click on the Next step button
   # Then I should see that I am eligible for a full remission
   #  And income benefit question, selected answer appended to the Previous answers section
-  scenario 'Select income related benefit option' do
+  scenario 'Select income related benefit option - ensuring full remission' do
     # Arrange - Take oliver to the benefits page
     given_i_am(:oliver)
     answer_up_to(:benefits)

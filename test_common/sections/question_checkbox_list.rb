@@ -7,14 +7,18 @@ module Calculator
       sections :options, GdsMultipleChoiceOptionSection, :gds_multiple_choice_option
       # @param [Array<String>] values An array of checkboxes to select by value
       def set(values)
-        values.each do |value|
-          check value
+        within @root_element do
+          values.each do |value|
+            check value
+          end
         end
       end
 
       def option_labelled(text)
-        node = find :gds_multiple_choice_option, text: text
-        GdsMultipleChoiceOptionSection.new self, node
+        within @root_element do
+          node = find :gds_multiple_choice_option, text: text
+          GdsMultipleChoiceOptionSection.new self, node
+        end
       end
     end
   end

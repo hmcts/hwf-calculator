@@ -33,6 +33,16 @@ module Calculator
         def wait_for_guidance
           marital_status.wait_for_help_text
         end
+
+        # Find an error matching the given text in the marital_status field
+        #
+        # @param [String] text The error message to match
+        #
+        # @return [Capybara::Node::Element] The node found
+        # @raise [Capybara::ElementNotFound] If an error message could not be found
+        def error_with_text(text)
+          marital_status.error_with_text(text)
+        end
       end
     end
   end
