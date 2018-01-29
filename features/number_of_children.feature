@@ -1,7 +1,7 @@
 @e2e
 @javascript
 
-Feature: Number of children
+Feature: Number of children page
 
 Background: Number of children page
   Given I am on the number of children page

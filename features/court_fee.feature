@@ -1,7 +1,7 @@
 @e2e
 @javascript
 
-Feature: Court and tribunal fee
+Feature: Court and tribunal fee page
 
 Background: Court and tribunal fee page
   Given I am on the court and tribunal fee page

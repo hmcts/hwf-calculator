@@ -1,7 +1,7 @@
 @e2e
 @javascript
 
-Feature: Date of birth
+Feature: Date of birth page
 
 Scenario: Successfully submit my date of birth
   Given I am David

@@ -45,3 +45,17 @@ end
 Then(/^I should see the total income error message$/) do
   expect(total_income_page.error_with_text(messaging.t('hwf_pages.total_income.errors.non_numeric'))).to be_present
 end
+
+When(/^I change my answer for my court and tribunal fee to £1000$/) do
+  total_income_page.previous_answers.court_fee.navigate_to
+  court_fee_page.fee.set(1000)
+  court_fee_page.next
+end
+
+Then(/^I should see that I am now unlikely to get help with fees$/) do
+  expect(not_eligible_page).to be_displayed
+end
+
+Then(/^I should see my answer for court and tribunal fee has been changed$/) do
+  expect(not_eligible_page.previous_answers.court_fee.answer(text: '£1,000')).to be_present
+end
