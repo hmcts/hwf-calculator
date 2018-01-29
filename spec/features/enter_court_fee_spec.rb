@@ -14,37 +14,18 @@ RSpec.describe 'Enter court fee test', type: :feature, js: true do
   # Personas
   #   JOHN is a single, 56 year old man with £2,990 worth of capital. He has a court fee of £600
   #   ALLI is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
+  #   SUE is a married, 75 year old woman with £9,999 worth of capital. She has a court fee of £4,000
   #
-  #   Scenario: Single citizen enter court and tribunal fee amount
+  #   Scenario: Citizen enter court and tribunal fee
   #                 Given I am JOHN
   #                 And I am on the court and tribunal fee page
   #                 And I fill in the court and tribunal page
   #                 When I click on the Next step button
-  #                 Then I should see the DoB page
-  #                 And DoB page should display one set of DoB fields
+  #                 Then I should see the next page
   #
   scenario 'Single citizen enter court and tribunal fee amount' do
     # Setup
     given_i_am(:john)
-    answer_up_to(:court_fee)
-
-    # Act
-    answer_court_fee_question
-
-    # Assert
-    expect(next_page).to be_displayed
-  end
-
-  #   Scenario: Married citizen enter court and tribunal fee amount
-  #                 Given I am ALLI
-  #                 And I am on the court and tribunal fee page
-  #                 And I fill in the court and tribunal page
-  #                 When I click on the Next step button
-  #                 Then I should see the DoB page
-  #                 And DoB page should display two sets of DoB fields
-  scenario 'Married citizen enter court and tribunal fee amount' do
-    # Setup
-    given_i_am(:alli)
     answer_up_to(:court_fee)
 
     # Act
