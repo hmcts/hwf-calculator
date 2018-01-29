@@ -10,7 +10,7 @@ en:
           detail: With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
       married:
         positive:
-          heading: You are able to get help with fees
+          heading: You may get help with fees
           detail: With a fee of %{fee} and savings of %{disposable_capital}, you and your partner should be able to get help with your fees, as long as you receive certain benefits or are on a low income
         negative:
           heading: You are unlikely to get help with your fees
