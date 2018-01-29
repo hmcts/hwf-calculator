@@ -125,14 +125,14 @@ RSpec.describe DisposableCapitalCalculatorService do
     end
     it 'returns 3 fields with 1 input provided' do
       # Act
-      result = described_class.fields_required({ fee: 10.0 })
+      result = described_class.fields_required(fee: 10.0)
 
       # Assert
       expect(result).to eql [:date_of_birth, :partner_date_of_birth, :disposable_capital]
     end
     it 'returns no fields if all inputs have been provided' do
       # Act
-      result = described_class.fields_required({ fee: 10.0, date_of_birth: 20.years.ago, partner_date_of_birth: nil, disposable_capital: 10000.0 })
+      result = described_class.fields_required(fee: 10.0, date_of_birth: 20.years.ago, partner_date_of_birth: nil, disposable_capital: 10000.0)
 
       # Assert
       expect(result).to eql []

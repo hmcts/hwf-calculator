@@ -50,7 +50,7 @@ RSpec.describe BenefitsReceivedCalculatorService do
     end
     it 'returns no fields if all inputs have been provided' do
       # Act
-      result = described_class.fields_required({ benefits_received: ['benefit 1'] })
+      result = described_class.fields_required(benefits_received: ['benefit 1'])
 
       # Assert
       expect(result).to eql []

@@ -25,7 +25,7 @@ RSpec.describe StrictDateValidator do
     context 'with an invalid date' do
       it 'disallows the invalid date' do
         # Arrange
-        date = MyInvalidDate.new(1970,1,1)
+        date = MyInvalidDate.new(1970, 1, 1)
         model = model_class.new(date: date)
 
         # Act

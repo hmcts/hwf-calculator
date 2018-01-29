@@ -44,7 +44,7 @@ RSpec.describe StrictDateType do
     end
 
     it 'casts a date if a date is given' do
-      expect(type.cast(Date.new(1980,1,1))).to eql Date.new(1980,1,1)
+      expect(type.cast(Date.new(1980, 1, 1))).to eql Date.new(1980, 1, 1)
     end
   end
 end

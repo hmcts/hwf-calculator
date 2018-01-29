@@ -212,19 +212,19 @@ RSpec.describe DateOfBirthForm, type: :model do
     end
 
     it 'allows partner date of birth fields to be nil' do
-      subject = described_class.new 'date_of_birth' => { 'year' => '2000', 'month' => '12', 'day' => '27'},
-        'partner_date_of_birth' => nil
+      subject = described_class.new 'date_of_birth' => { 'year' => '2000', 'month' => '12', 'day' => '27' },
+                                    'partner_date_of_birth' => nil
       expect(subject.partner_date_of_birth).to be_nil
     end
 
     it 'allows partner date of birth field values to be nil' do
-      subject = described_class.new 'date_of_birth' => { 'year' => '2000', 'month' => '12', 'day' => '27'},
-        'partner_date_of_birth' => { 'year' => nil, 'month' => nil, 'day' => nil}
+      subject = described_class.new 'date_of_birth' => { 'year' => '2000', 'month' => '12', 'day' => '27' },
+                                    'partner_date_of_birth' => { 'year' => nil, 'month' => nil, 'day' => nil }
       expect(subject.partner_date_of_birth).to be_nil
     end
 
     it 'allows partner date of birth fields to be undefined' do
-      subject = described_class.new 'date_of_birth' => { 'year' => '2000', 'month' => '12', 'day' => '27'}
+      subject = described_class.new 'date_of_birth' => { 'year' => '2000', 'month' => '12', 'day' => '27' }
       expect(subject.partner_date_of_birth).to be_nil
     end
   end
