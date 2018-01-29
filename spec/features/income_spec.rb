@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Income Test', type: :feature, js: true do
   include Calculator::Test::Pages
   include ActiveSupport::NumberHelper
+  #
+
   # Feature:  Income Test
   #
   # - It is based on household gross monthly income
@@ -56,12 +58,13 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   Positive (likely to get help with fees - Part Remission)
   #
   #   - You should be eligible for a Partial Remission
-  #   - For single citizen: As you have stated you have a combined monthly income  £XXX, you would need to contribute £XXX of your stated £XXX fee or would receive a partial refund of £XXX if you have paid the full fee within the last 3 months
+  #   - For single citizen: As you have stated you have an income of £XXX, you would need to contribute £XXX of your stated £XXX fee or would receive a partial refund of £XXX if you have paid the full fee within the last 3 months
   #   - For Couple: As you and your partner have stated you have a combined monthly income  £XXX, you would need to contribute £XXX of your stated £XXX fee or would receive a partial refund of £XXX if you have paid the full fee within the last 3 months
   #
   #   Negative (unlikely to get help with fees - Not Eligible)
-  #   - You're unlikely to get help with your fee
-  #   - With a fee of £XXX and combined monthly income of £XXX, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship (see guide)
+  #
+  #   - You are unlikely to get help with your fees
+  #   - With a fee of £XXX and combined monthly income of £XXX, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
   #
   # Scenarios
   #
