@@ -40,6 +40,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures 'Verify all' do
       expect(marital_status_page).to be_displayed
+      marital_status_page.wait_until_previous_answers_invisible
       expect(marital_status_page).to have_no_previous_answers
       expect(marital_status_page.marital_status).to have_value(user.marital_status)
     end
