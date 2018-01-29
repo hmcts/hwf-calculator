@@ -68,7 +68,7 @@ en:
       subject:
         single: "you"
         sharing_income: "you and your partner"
-      should_get_help: "You are able to get help with fees"
+      should_get_help: "You may get help with fees"
       full_remission:
         decided_by:
           disposable_capital:

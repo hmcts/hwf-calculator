@@ -3,7 +3,7 @@ en:
     disposable_capital:
       single:
         positive:
-          heading: You are able to get help with fees
+          heading: You may get help with fees
           detail: With a fee of %{fee} and savings of %{disposable_capital}, you should be able to get help with your fees, as long as you receive certain benefits or are on a low income
         negative:
           heading: You are unlikely to get help with your fees
