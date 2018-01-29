@@ -11,6 +11,14 @@ module Calculator
         guidance(text: text)
       end
 
+      def unselected?
+        SitePrism::Waiter.wait_until_true do
+          !checked?
+        end
+      rescue SitePrism::TimeoutException
+        false
+      end
+
       delegate :checked?, to: :checkbox
       delegate :text, to: :label
     end

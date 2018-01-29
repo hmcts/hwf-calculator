@@ -20,6 +20,7 @@ module Calculator
           GdsMultipleChoiceOptionSection.new self, node
         end
       end
+      # rubocop:disable Style/PredicateName
 
       # Validates that the values provided are selected in the checkbox list
       # and that other values are not.
@@ -29,12 +30,14 @@ module Calculator
       # @return [Boolean] true if they are selected, else false
       def has_value?(values)
         SitePrism::Waiter.wait_until_true do
-          checked_options = options.select(&:checked?).map do |n|
-            n.text
-          end
+          checked_options = options.select(&:checked?).map(&:text)
           values.sort == checked_options.sort
         end
+      rescue SitePrism::TimeoutException
+        false
       end
+
+      # rubocop:enable Style/PredicateName
     end
   end
 end

@@ -9,7 +9,7 @@ en:
         benefits_received_form:
           attributes:
             benefits_received:
-              blank: 'Please select from the list'
+              blank: "Select whether you're receiving one of the benefits listed"
         disposable_capital_form:
           attributes:
             disposable_capital:
@@ -145,10 +145,10 @@ en:
     benefits:
       dont_know:
         label: "Don't know"
-        guidance: "If you don't know if you're receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee"
+        guidance: "If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
       none:
         label: 'None of the above'
-        guidance: 'If you are not receiving one of the stated benefits, or are not sure, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee'
+        guidance: 'If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)'
       jobseekers_allowance:
         label: "Income-based Jobseeker’s Allowance (JSA)"
         guidance: ''

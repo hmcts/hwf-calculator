@@ -25,4 +25,4 @@
             = f.text_field :disposable_capital, class: 'form-control'
     .form-group
       = f.submit 'Next step', class: 'button'
-  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false } unless current_calculation.inputs.empty?
+  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?
