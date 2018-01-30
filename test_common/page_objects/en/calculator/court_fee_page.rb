@@ -4,7 +4,7 @@ module Calculator
       class CourtFeePage < BasePage
         set_url '/calculation/fee'
         element :heading, :exact_heading_text, 'Find out if you could get help with fees'
-        section :fee, ::Calculator::Test::CourtFeeQuestionSection, :calculator_question, 'How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?'
+        section :fee, ::Calculator::Test::CourtFeeQuestionSection, :calculator_question, 'How much is the court or tribunal fee?'
         element :next_button, :button, 'Next step'
 
         # Progress to the next page

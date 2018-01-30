@@ -111,7 +111,7 @@ en:
       disposable_capital: "How much do you have in savings and investment combined?"
       marital_status: "Are you single, married or living with someone and sharing an income?"
       date_of_birth: "What is your date of birth?"
-      fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
+      fee: "How much is the court or tribunal fee?"
       benefits_received: "Select all income benefits you are currently receiving"
       total_income: "How much total income do you receive each month?"
       partner_date_of_birth: "What is your partners date of birth?"
@@ -248,6 +248,7 @@ en:
     hints:
       date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+      fee: "Enter valid value with no decimal places"
   welsh_link:
     full_html: "This guide is also available %{link_html} (Cymraeg)"
     link_text: "in Welsh"
