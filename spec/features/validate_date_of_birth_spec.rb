@@ -207,8 +207,6 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     expect(next_page).to be_displayed
   end
 
-
-
   # Scenario:* Citizen is over 61 and partner is 73
   #                Given I am SUE
   #                And I am on the date of birth page

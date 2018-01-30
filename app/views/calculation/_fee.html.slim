@@ -11,9 +11,9 @@
           .panel-indent data-behavior="question_help_text"
             .text
               h2.heading-small = t('calculation.guidance.fee.detail_text')
+        span.form-hint = t('calculation.hints.fee')
         - if form.errors.include?(:fee)
           span.error-message = form.errors[:fee].join(', ')
-        span.form-hint = t('calculation.hints.fee')
         label.block-label
           .form-control-money.gbp
             = f.text_field :fee, class: 'form-control money gbp'

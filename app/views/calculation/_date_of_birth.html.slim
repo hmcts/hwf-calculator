@@ -6,9 +6,9 @@
         legend
           h2.heading-medium = t('calculation.field_labels.date_of_birth')
 
+        span.form-hint = t("calculation.hints.date_of_birth.#{current_calculation.inputs[:marital_status]}")
         - if form.errors.include?(:date_of_birth)
           span.error-message = form.errors[:date_of_birth].join(', ')
-        span.form-hint = t("calculation.hints.date_of_birth.#{current_calculation.inputs[:marital_status]}")
         .form-date
           .form-group
             label.block-label

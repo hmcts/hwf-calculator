@@ -5,12 +5,12 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
   #
   #
   #
-  # Scenario: View Savings and investments Heading and Question
+  # Scenario: View Savings and investments Heading, Question and Hint text
   #              Given I am on the Savings and investments page
-  #              When I view the Heading, background notes,savings and investments question
-  #              Then Heading reads "Find out if you can get help with fees"
+  #              When I view the Heading, Question and Hint text
+  #              Then Heading reads "Find out if you could get help with fees"
   #              And question reads "How much do you have in savings and investments combined"
-  #              And background note reads "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+  #              And Hint text reads "If you have more than £16,000 in savings and investments, then you are unlikely to get help with your fee"
   #
   #
   scenario 'View Savings and investments Heading and Question' do
@@ -21,9 +21,10 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     answer_up_to(:disposable_capital)
 
     # Assert
-    aggregate_failures 'validating content of header and question' do
+    aggregate_failures 'validating content of header, question and hint text' do
       expect(disposable_capital_page.heading).to be_present
       expect(disposable_capital_page.disposable_capital).to be_present
+      expect(disposable_capital_page.disposable_capital.hint_with_text(messaging.t('hwf_pages.disposable_capital.hint'))).to be_present
     end
   end
 
@@ -92,11 +93,11 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     expect(disposable_capital_page).to have_no_guidance
   end
   # Savings and investments Page Heading:
-  #   - Find out if you can get help with fees
+  #  Find out if you could get help with fees
   #
   # Page Question:
-  #   - How much do you have in savings and investments combined?
+  # How much do you have in savings and investments combined?
   #
-  # Page background notes:
-  #   - If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee?
+  # Hint text:
+  # If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee
 end

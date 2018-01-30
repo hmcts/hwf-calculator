@@ -14,9 +14,9 @@
               ul.list.list-bullet
                 - t('calculation.guidance.total_income.detail.text').lines.each do |line|
                   li = line
+        span.form-hint = t('calculation.hints.total_income')
         - if form.errors.include?(:total_income)
           span.error-message = form.errors[:total_income].join(', ')
-        span.form-hint = t('calculation.hints.total_income')
         label.block-label
           .form-control-money.gbp
             = f.text_field :total_income, class: 'form-control'

@@ -120,6 +120,7 @@ en:
       errors:
         non_numeric: Please enter numeric value with no decimal places
     disposable_capital:
+      hint: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
       errors:
         non_numeric: "Enter a valid value"
         blank: "Enter how much you have in savings and investments"
