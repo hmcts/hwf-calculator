@@ -119,7 +119,7 @@ en:
         non_numeric: Please enter numeric value with no decimal places
     disposable_capital:
       errors:
-        non_numeric: "Please enter a valid value. The two nearest valid values are: XX and XX."
+        non_numeric: "Enter a valid value"
         blank: "Enter how much you have in savings and investments"
       guidance:
         disposable_capital:
