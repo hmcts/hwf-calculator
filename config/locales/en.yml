@@ -109,7 +109,7 @@ en:
       should_get_partial_help: "You should be able to get partial help with your fees"
     field_labels:
       disposable_capital: "How much do you have in savings and investment combined?"
-      marital_status: "Are you single, married or living with someone and sharing an income?"
+      marital_status: "Are you single, married or living with someone and sharing income?"
       date_of_birth: "What is your date of birth?"
       fee: "How much is the court or tribunal fee?"
       benefits_received: "Select all income benefits you are currently receiving"
@@ -174,12 +174,13 @@ en:
         summary: "Help with Status"
         detail:
           single:
-            summary: "Single means you rely on your own income, single also means:"
+            summary: "Single means you rely on your own income or your case involves your partner, for example:"
             text: |
-              you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)
-              you are changing your legal gender
-              you are experiencing domestic violence
-              you are experiencing forced marriage
+              divorce, dissolution or annulment (unless you have married again or live with a new partner)
+              gender recognition
+              domestic violence
+              forced marriage
+              You should also choose single if you and your partner are both part of a multiple fee group
           sharing_income:
             summary: "Married or living with someone and sharing an income means:"
             text: |
@@ -187,7 +188,7 @@ en:
               civil partners
               living together as if you are married or in a civil partnership
               living at the same address with a joint income
-              part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
+              part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
       disposable_capital:
         summary: "Help with savings and investments"
         detail:
