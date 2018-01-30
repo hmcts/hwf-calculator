@@ -285,7 +285,7 @@ claude:
   monthly_gross_income: 0
 veronica:
   marital_status: Married
-  age: 14
+  age: 15
   partner_age: 25
   disposable_capital: 0
   fee: 4000
@@ -298,6 +298,16 @@ sue:
   age: 75
   partner_age: 73
   disposable_capital: 11000
+  fee: 4000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
+ola:
+  marital_status: Married
+  age: 14
+  partner_age: 40
+  disposable_capital: 0
   fee: 4000
   number_of_children: 0
   income_benefits:

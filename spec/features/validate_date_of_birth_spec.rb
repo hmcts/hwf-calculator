@@ -27,6 +27,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   # CLAUDE is a married, 60 year old man with partner who is 75 year old
   # VERONICA is a married, 15 year old girl with partner who is 25 year old
   # SUE is a married, 75 year old woman with partner who is 73 years old
+  # OLA is a married, 14 year old woman with partner who is 40 years old
   #
   # Error Message (under age): You and your partner must be over 15 to apply for help with fees (Revised)
   #
@@ -67,7 +68,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.single'))).to be_present
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.applicant'))).to be_present
   end
   # Scenario: Under 61 single citizen enter date of birth
   #               Given I am JOHN
@@ -106,6 +107,29 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     # Assert
     expect(next_page).to be_displayed
   end
+
+  # Scenario:* Over 61 single citizen enter invalid input
+  # Given I am CALVIN
+  # And I am on the date of birth page
+  # And I fill in my date of birth field with invalid input
+  # When I click on the Next step button
+  # Then I should see an error message
+  #
+  # *Error Message:* Enter the date in this format DD/MM/YYYY
+  scenario 'Over 61 single citizen enter invalid input' do
+    # Arrange
+    given_i_am(:calvin)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('01/July/1970')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+
+  end
+
   # Scenario: Under 61 citizen and partner enter date of birth
   #               Given I am ALLI
   #               And I am on the date of birth page
@@ -164,14 +188,14 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     # Assert
     expect(next_page).to be_displayed
   end
-  # Scenario: Citizen is under 16 and partner is under 61
-  #             Given I am VERONICA
-  #             And I am on the date of birth page
-  #             And I fill in my date of birth
-  #             And I fill in my partner date of birth
-  #             When I click on the Next step button
-  #             Then I should see an error message
-  scenario 'Citizen is under 15 and partner is under 61' do
+  # *Scenario:* Citizen is over 15 and partner is 25
+  #                Given I am VERONICA
+  #                And I am on the date of birth page
+  #                And I fill in my date of birth
+  #                And I fill in my partner date of birth
+  #                When I click on the Next step button
+  #                Then I should see  the next page
+  scenario 'Citizen is over 15 and partner is 25' do
     # Arrange
     given_i_am(:veronica)
     answer_up_to(:date_of_birth)
@@ -180,7 +204,50 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.married'))).to be_present
+    expect(next_page).to be_displayed
+  end
+
+
+
+  # Scenario:* Citizen is over 61 and partner is 73
+  #                Given I am SUE
+  #                And I am on the date of birth page
+  #                And I fill in my date of birth
+  #                And I fill in my partner date of birth
+  #                When I click on the Next step button
+  #                Then I should see  the next page
+  #
+  scenario 'Citizen is over 61 and partner is 73' do
+    # Arrange
+    given_i_am(:sue)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(next_page).to be_displayed
+  end
+
+  # *Scenario:* Citizen is 14 and partner is 40
+  #                Given I am OLA
+  #                And I am on the date of birth page
+  #                And I fill in my date of birth
+  #                And I fill in my partner date of birth
+  #                When I click on the Next step button
+  #                Then I should see  an error message
+  #
+  #        *Error Message:* Your partner must be over 15 to apply for help with fees
+  scenario 'Citizen is 14 and partner is 40' do
+    # Arrange
+    given_i_am(:ola)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    answer_date_of_birth_question
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.applicant'))).to be_present
   end
 
   # The following scenarios had no acceptance criteria from the business - but are important still
