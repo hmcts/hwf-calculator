@@ -10,7 +10,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
   #
   #   JOHN is a single, 56 year old man with 1 child. He is not on any benefit. He has £2,990 worth of capital and an income of £1,330. He has a court fee of £600
   #   ALLI is a married, 60 year old man with 1 child. He is not on any benefit. He has £3,800 worth of capital and an income of £1,489. He has a court fee of £1,334
-  #
+  #   SUE is a married, 75 year old woman with 0 children and partner is 73 years old. She is not on any benefit. She has £9,999 worth of capital and an income of £0. She has a court fee of £4,000
   #
   # Scenario: JOHN confirms he is single
   # Given I am John
