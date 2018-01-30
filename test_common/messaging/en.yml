@@ -74,7 +74,7 @@ en:
       hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
       
       errors:
-        non_numeric: Please enter numeric value with no decimal places
+        non_numeric: Please enter a valid value
       guidance:
         total_income:
           text: |
