@@ -4,7 +4,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   let(:next_page) { Calculator::Test::En::DateOfBirthPage.new }
 
   #
-  # Feature: Court and tribunal fee field
+  # Feature: Court and tribunal fee field tool tip/Hint text
   # Validate the Court and tribunal fee field at the form level
   #
   # @TODO Implement the scenario below as part of RST-744 then remove this comment
