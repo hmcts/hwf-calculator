@@ -11,7 +11,7 @@ RSpec.describe 'View date of birth content', type: :feature, js: true do
   #               Then Heading reads "Find out if you could get help with fees"
   #               And question reads "What is your date of birth?"
   #               And Hint text reads "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-  scenario 'View date of birth Heading, Question and Hint text' do
+  scenario 'View date of birth Heading, Question and Hint text for single person' do
     # Arrange
     given_i_am(:john)
 
@@ -22,7 +22,22 @@ RSpec.describe 'View date of birth content', type: :feature, js: true do
     aggregate_failures 'Validating content' do
       expect(date_of_birth_page.heading).to be_present
       expect(date_of_birth_page.date_of_birth).to be_present
-      expect(date_of_birth_page.date_of_birth.hint_with_text(messaging.t('hwf_pages.date_of_birth.hint'))).to be_present
+      expect(date_of_birth_page.date_of_birth.hint_with_text(messaging.t('hwf_pages.date_of_birth.hint.single'))).to be_present
+    end
+  end
+
+  scenario 'View date of birth Heading, Question and Hint text for married couple' do
+    # Arrange
+    given_i_am(:alli)
+
+    # Act
+    answer_up_to(:date_of_birth)
+
+    # Assert
+    aggregate_failures 'Validating content' do
+      expect(date_of_birth_page.heading).to be_present
+      expect(date_of_birth_page.date_of_birth).to be_present
+      expect(date_of_birth_page.date_of_birth.hint_with_text(messaging.t('hwf_pages.date_of_birth.hint.married'))).to be_present
     end
   end
   #
@@ -33,7 +48,7 @@ RSpec.describe 'View date of birth content', type: :feature, js: true do
   #
   #
   # Page Question:
-  # What is your date of birth
+  # What is your date of birth?
   #
   #
   #

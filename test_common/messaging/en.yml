@@ -64,7 +64,9 @@ en:
             age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
             children who don’t live with you, but you (or your partner) pay regular maintenance for them
     date_of_birth:
-      hint: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+      hint:
+        single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+        married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       errors:
         non_numeric: Enter the date in this format DD/MM/YYYY
         under_age:
@@ -109,8 +111,6 @@ en:
             living together as if you are married or in a civil partnership
             living at the same address with a joint income
             part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
-
-
     fee:
       hint: Enter valid value with no decimal places
       guidance:
