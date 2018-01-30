@@ -23,21 +23,21 @@ RSpec.describe DateOfBirthForm, type: :model do
         expect(form.errors.details[:date_of_birth]).to contain_exactly a_hash_including(error: :blank)
       end
 
-      it 'disallows someone who is just under 16' do
+      it 'disallows someone who is just under 15' do
         # Arrange
-        d = (Time.zone.tomorrow - 16.years)
+        d = (Time.zone.tomorrow - 15.years)
         form = described_class.new('date_of_birth' => { 'year' => d.year.to_s, 'month' => d.month.to_s, 'day' => d.day.to_s })
 
         # Act
         form.valid?
 
         # Assert
-        expect(form.errors.details[:date_of_birth]).to contain_exactly a_hash_including(error: :age_less_than, count: 16)
+        expect(form.errors.details[:date_of_birth]).to contain_exactly a_hash_including(error: :age_less_than, count: 15)
       end
 
-      it 'allows someone who has just turned 16' do
+      it 'allows someone who has just turned 15' do
         # Arrange
-        d = Time.zone.today - 16.years
+        d = Time.zone.today - 15.years
         form = described_class.new('date_of_birth' => { 'year' => d.year.to_s, 'month' => d.month.to_s, 'day' => d.day.to_s })
 
         # Act
@@ -47,9 +47,9 @@ RSpec.describe DateOfBirthForm, type: :model do
         expect(form.errors.details[:date_of_birth]).to be_empty
       end
 
-      it 'allows someone who is 17' do
+      it 'allows someone who is 16' do
         # Arrange
-        d = Time.zone.today - 17.years
+        d = Time.zone.today - 16.years
         form = described_class.new('date_of_birth' => { 'year' => d.year.to_s, 'month' => d.month.to_s, 'day' => d.day.to_s })
 
         # Act
@@ -113,21 +113,21 @@ RSpec.describe DateOfBirthForm, type: :model do
         expect(form.errors.details[:partner_date_of_birth]).to contain_exactly a_hash_including(error: :blank)
       end
 
-      it 'disallows someone who is just under 16' do
+      it 'disallows someone who is just under 15' do
         # Arrange
-        d = (Time.zone.tomorrow - 16.years)
+        d = (Time.zone.tomorrow - 15.years)
         form = described_class.new('partner_date_of_birth' => { 'year' => d.year.to_s, 'month' => d.month.to_s, 'day' => d.day.to_s })
 
         # Act
         form.valid?
 
         # Assert
-        expect(form.errors.details[:partner_date_of_birth]).to contain_exactly a_hash_including(error: :age_less_than, count: 16)
+        expect(form.errors.details[:partner_date_of_birth]).to contain_exactly a_hash_including(error: :age_less_than, count: 15)
       end
 
-      it 'allows someone who has just turned 16' do
+      it 'allows someone who has just turned 15' do
         # Arrange
-        d = Time.zone.today - 16.years
+        d = Time.zone.today - 15.years
         form = described_class.new('partner_date_of_birth' => { 'year' => d.year.to_s, 'month' => d.month.to_s, 'day' => d.day.to_s })
 
         # Act
@@ -137,9 +137,9 @@ RSpec.describe DateOfBirthForm, type: :model do
         expect(form.errors.details[:partner_date_of_birth]).to be_empty
       end
 
-      it 'allows someone who is 17' do
+      it 'allows someone who is 16' do
         # Arrange
-        d = Time.zone.today - 17.years
+        d = Time.zone.today - 16.years
         form = described_class.new('partner_date_of_birth' => { 'year' => d.year.to_s, 'month' => d.month.to_s, 'day' => d.day.to_s })
 
         # Act

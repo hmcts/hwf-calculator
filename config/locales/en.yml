@@ -32,13 +32,13 @@ en:
         date_of_birth_form:
           attributes:
             date_of_birth:
-              blank: Please enter a valid date of birth
-              age_less_than: You must be over %{count} years old to apply for help with fees
-              invalid_date: Please enter a valid date of birth
+              blank: Enter the date in this format DD/MM/YYYY
+              age_less_than: You must be over %{count} to apply for help with fees
+              invalid_date: Enter the date in this format DD/MM/YYYY
             partner_date_of_birth:
-              blank: Please enter a valid date of birth
-              age_less_than: You and your partner must be over %{count} years old to apply for help with fees
-              invalid_date: Please enter a valid date of birth
+              blank: Enter the date in this format DD/MM/YYYY
+              age_less_than: You and your partner must be over %{count} to apply for help with fees
+              invalid_date: Enter the date in this format DD/MM/YYYY
         number_of_children_form:
           attributes:
             number_of_children:

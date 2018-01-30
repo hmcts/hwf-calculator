@@ -13,12 +13,12 @@ class DateOfBirthForm < BaseForm
   validates :date_of_birth,
     presence: true,
     strict_date: true,
-    age: { greater_than_or_equal_to: 16, allow_nil: true, allow_blank: true, if: :date_of_birth_valid? }
+    age: { greater_than_or_equal_to: 15, allow_nil: true, allow_blank: true, if: :date_of_birth_valid? }
   validates :partner_date_of_birth,
     presence: true,
     strict_date: true,
     age: {
-      greater_than_or_equal_to: 16,
+      greater_than_or_equal_to: 15,
       allow_nil: true,
       allow_blank: true,
       if: :partner_date_of_birth_valid?
