@@ -13,7 +13,7 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
   #
   # When I click on the Next step button
   #
-  # Then I should see that I am able to get help with fees
+  # Then I should see that I may get help with fees
   #
   # And response highlighted in blue
 

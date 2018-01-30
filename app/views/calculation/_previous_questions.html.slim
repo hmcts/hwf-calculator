@@ -1,9 +1,11 @@
-table.previous_questions data-behavior="calculator_previous_questions"
-  thead
-    tr
-      th colspan='3'
-        = 'Previous answers'
-  tbody
-    - current_calculation.inputs.each_pair do |k,v |
-      = render partial: "calculation/answers/#{k}", locals: { disabled: disabled, question: k, answer: v, current_calculation: current_calculation}
+- unless((current_calculation.inputs.keys - exclude).empty?)
+  table.previous_questions data-behavior="calculator_previous_questions"
+    thead
+      tr
+        th colspan='3'
+          = 'Previous answers'
+    tbody
+      - current_calculation.inputs.each_pair do |k,v |
+        - next if exclude.include?(k)
+        = render partial: "calculation/answers/#{k}", locals: { disabled: disabled, question: k, answer: v, current_calculation: current_calculation}
 

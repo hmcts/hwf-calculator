@@ -14,6 +14,7 @@ RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
   # Personas
   # JOHN is a single, 56 year old man
   # ALLI is a married, 60 year old man with partner who is 50 year old
+  # SUE is a married, 75 year old woman with partner who is 73 year old
   #
   # Scenario: Single citizen enter date of birth
   #               Given I am JOHN

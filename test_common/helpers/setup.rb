@@ -72,7 +72,7 @@ module Calculator
       def answer_date_of_birth_question
         date_of_birth_page.date_of_birth.set(user.date_of_birth)
         if user.partner_date_of_birth.present?
-          date_of_birth_page.partner_date_of_birth.set(user.date_of_birth)
+          date_of_birth_page.partner_date_of_birth.set(user.partner_date_of_birth)
         end
         date_of_birth_page.next
       end

@@ -1,5 +1,5 @@
 Capybara.add_selector(:gds_multiple_choice_option) do
-  css do |_locator, _options|
-    '.multiple-choice'
+  xpath do |_locator, _options|
+    XPath.generate { |x| x.css('.multiple-choice') }
   end
 end

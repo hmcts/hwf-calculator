@@ -10,46 +10,81 @@
 
         self.init = function() {
             initListenersForCheckboxes();
-            updateCheckboxesState();
+            setInitialState();
         };
 
         function initListenersForCheckboxes() {
-            $('.multiple-choice input[type=checkbox]').on('click change', updateCheckboxesState);
+            benefitsCheckboxesEl().on('click change', onBenefitsChange);
+            noneCheckboxEl().on('click change', onNoneChange);
+            dontKnowCheckboxEl().on('click change', onDontKnowChange);
         }
 
-        function updateCheckboxesState() {
-            var checked = $('.multiple-choice input[type=checkbox]:checked').toArray().map(function(n){ return n.value; });
-            if(checked.length == 0) {
-                enableAllCheckboxes();
-            } else {
-                if(checked.indexOf('none') ==-1 && checked.indexOf('dont_know') == -1) {
-                    disableSpecialCheckboxes();
-                    enableBenefitsCheckboxes();
-                } else {
-                    enableSpecialCheckboxes();
-                    disableBenefitsCheckboxes();
-                }
+        function setInitialState() {
+            if(checkedBenefits().length > 0) {
+                deSelectNoneCheckbox();
+                deSelectDontKnowCheckbox();
+            }
+            if(checkedSpecialValues().length > 0) {
+                deSelectBenefitsCheckboxes();
             }
         }
 
-        function disableSpecialCheckboxes() {
-            $('input[type=checkbox][value=none],input[type=checkbox][value=dont_know]').prop('disabled', true);
+        function checkedBenefits() {
+            return checkedValues().filter(function(t) { return t != 'none' && t != 'dont_know' });
         }
 
-        function enableSpecialCheckboxes() {
-            $('input[type=checkbox][value=none],input[type=checkbox][value=dont_know]').prop('disabled', false);
+        function checkedSpecialValues() {
+            return checkedValues().filter(function(t) { return t == 'none' || t == 'dont_know' });
         }
 
-        function enableAllCheckboxes() {
-            $('input[type=checkbox]').prop('disabled', false);
+        function checkedValues() {
+            return $('.multiple-choice input[type=checkbox]:checked').toArray().map(function(n){ return n.value; });
+
         }
 
-        function enableBenefitsCheckboxes() {
-            $('input[type=checkbox][value!=none][value!=dont_know]').prop('disabled', false);
+        function deSelectBenefitsCheckboxes() {
+            benefitsCheckboxesEl().prop('checked', false);
         }
 
-        function disableBenefitsCheckboxes() {
-            $('input[type=checkbox][value!=none][value!=dont_know]').prop('disabled', true);
+        function deSelectNoneCheckbox() {
+            noneCheckboxEl().prop('checked', false);
+        }
+
+        function deSelectDontKnowCheckbox() {
+            dontKnowCheckboxEl().prop('checked', false);
+        }
+
+        function benefitsCheckboxesEl() {
+            return $('input[type=checkbox][value!=none][value!=dont_know]');
+        }
+
+        function noneCheckboxEl() {
+            return $('input[type=checkbox][value=none]');
+        }
+
+        function dontKnowCheckboxEl() {
+            return $('input[type=checkbox][value=dont_know]');
+        }
+
+        function onBenefitsChange(event) {
+            if($(event.target).prop('checked')) {
+                deSelectDontKnowCheckbox();
+                deSelectNoneCheckbox();
+            }
+        }
+
+        function onNoneChange(event) {
+            if($(event.target).prop('checked')) {
+                deSelectBenefitsCheckboxes();
+                deSelectDontKnowCheckbox();
+            }
+        }
+
+        function onDontKnowChange(event) {
+            if($(event.target).prop('checked')) {
+                deSelectBenefitsCheckboxes();
+                deSelectNoneCheckbox();
+            }
         }
     }
 
