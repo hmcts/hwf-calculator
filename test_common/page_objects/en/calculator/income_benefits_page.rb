@@ -36,14 +36,23 @@ module Calculator
 
         # Chooses the 'None of the above' option in the list
         def choose_none
-          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.none')
-          benefits.set([label_text])
+          benefits.set(:none)
         end
 
         # Chooses the 'Dont know' option in the list
         def choose_dont_know
           label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')
           benefits.set([label_text])
+        end
+
+        # Chooses a single or multiple items by label.  The labels are specified by I18n key so the
+        # test suite can be multi lingual
+        # @param [Symbol] keys Single or multiple keys into "hwf_pages.income_benefits.labels.benefits"
+        #   in the messaging/en.yml file.  Can be one of :dont_know, :none, :jobseekers_allowance,
+        #   :employment_support_allowance, :income_support, :universal_credit, :pension_credit,
+        #   :scottish_legal_aid
+        def choose(*keys)
+          benefits.set(*keys)
         end
 
         # The don't know checkbox
@@ -111,8 +120,11 @@ module Calculator
         # Indicates if the page has only the values specified options selected - waits for them if not then returns
         # false if it never arrives
         # @return [Boolean] Indicates if the page has only the specified options selected
-        def has_selected?(values)
-          benefits.has_value?(values)
+        # @param [Array[String|Symbol]] values An array of strings or symbols.  If symbols, then the values are
+        #   translated using hwf_pages.income_benefits.labels.benefits.#{key} in the messaging/en.yml file.
+        #   Can also be multiple values not in an array.
+        def has_selected?(*values)
+          benefits.has_value?(*values)
         end
       end
     end

@@ -159,14 +159,6 @@ en:
       labels:
         benefits:
           question_label: 'Select all income benefits you are currently receiving'
-          dont_know: "Don't know"
-          none: 'None of the above'
-          jobseekers_allowance: "Income-based Jobseeker’s Allowance (JSA)"
-          employment_support_allowance: "Income-related Employment and Support Allowance (ESA)"
-          income_support: "Income Support"
-          universal_credit: "Universal Credit (and you’re earning less than £6,000 a year)"
-          pension_credit: "Pension Credit (guarantee credit)"
-          scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"
       previous_questions:
         disposable_capital:
           label: "How much do you have in savings and investment combined?"
@@ -205,4 +197,16 @@ en:
       welsh_link:
         full_text: This guide is also available in Welsh (Cymraeg)
         link_text: in Welsh
+  hwf_components:
+    benefits:
+      options:
+        dont_know: "Don't know"
+        none: 'None of the above'
+        jobseekers_allowance: "Income-based Jobseeker’s Allowance (JSA)"
+        employment_support_allowance: "Income-related Employment and Support Allowance (ESA)"
+        income_support: "Income Support"
+        universal_credit: "Universal Credit (and you’re earning less than £6,000 a year)"
+        pension_credit: "Pension Credit (guarantee credit)"
+        scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"
+
 

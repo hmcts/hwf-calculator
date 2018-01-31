@@ -78,7 +78,7 @@ module Calculator
         end
         return if user.income_benefits.nil?
         user.income_benefits.map! do |b|
-          messaging.t("hwf_pages.income_benefits.labels.benefits.#{b}")
+          messaging.t("hwf_components.benefits.options.#{b}")
         end
       end
     end

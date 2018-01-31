@@ -390,7 +390,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     total_income_page.previous_answers.income_benefits.navigate_to
 
     # Act
-    income_benefits_page.benefits.set([messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')])
+    income_benefits_page.choose(:jobseekers_allowance)
     income_benefits_page.next
 
     # Assert
