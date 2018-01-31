@@ -21,8 +21,6 @@ end
 
 Given(/^I am on the savings and investment page$/) do
   answer_up_to(:disposable_capital)
-  expect(disposable_capital_page.heading).to be_present
-  expect(disposable_capital_page.disposable_capital).to be_present
 end
 
 And(/^I submit (?:my|our) savings and investments$/) do

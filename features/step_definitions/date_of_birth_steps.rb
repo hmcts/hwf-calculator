@@ -4,8 +4,6 @@ end
 
 Given(/^I am on the date of birth page$/) do
   answer_up_to(:date_of_birth)
-  expect(date_of_birth_page.heading).to be_present
-  expect(date_of_birth_page.date_of_birth).to be_present
 end
 
 When(/^I successfully submit my date of birth$/) do
