@@ -27,7 +27,7 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
     aggregate_failures 'validating content of header and question' do
       expect(court_fee_page.heading).to be_present
       expect(court_fee_page.fee).to be_present
-      expect(court_fee_page.fee.hint_with_text(messaging.t('hwf_pages.fee.hint'))).to be_present
+      expect(court_fee_page.fee).to have_hint
     end
   end
   #

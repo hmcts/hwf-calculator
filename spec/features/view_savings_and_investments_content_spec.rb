@@ -24,7 +24,7 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     aggregate_failures 'validating content of header, question and hint text' do
       expect(disposable_capital_page.heading).to be_present
       expect(disposable_capital_page.disposable_capital).to be_present
-      expect(disposable_capital_page.disposable_capital.hint_with_text(messaging.t('hwf_pages.disposable_capital.hint'))).to be_present
+      expect(disposable_capital_page.disposable_capital).to have_hint
     end
   end
 

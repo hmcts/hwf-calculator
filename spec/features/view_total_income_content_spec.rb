@@ -19,7 +19,7 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     aggregate_failures 'validating content of header and question' do
       expect(total_income_page.heading).to be_present
       expect(total_income_page.total_income).to be_present
-      expect(total_income_page.total_income.hint_with_text(messaging.t('hwf_pages.total_income.hint'))).to be_present
+      expect(total_income_page.total_income).to have_hint
     end
   end
 

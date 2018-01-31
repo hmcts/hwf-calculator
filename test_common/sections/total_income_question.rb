@@ -36,6 +36,13 @@ module Calculator
       rescue Capybara::ElementNotFound
         false
       end
+
+      def has_hint?
+        hint_with_text(messaging.t("hwf_components.total_income.hint"))
+        true
+      rescue Capybara::ElementNotFound
+        false
+      end
       # rubocop:enable Style/PredicateName
 
       delegate :wait_for_help_text, to: :help_section

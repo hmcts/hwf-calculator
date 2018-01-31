@@ -60,12 +60,7 @@ en:
             under 16 and living at home with you
             age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
             children who don’t live with you, but you (or your partner) pay regular maintenance for them
-    date_of_birth:
-      hint:
-        single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-        married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
     total_income:
-      hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
       guidance:
         total_income:
           text: |
@@ -96,12 +91,10 @@ en:
             living at the same address with a joint income
             part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
     fee:
-      hint: Enter valid value with no decimal places
       guidance:
         fee:
           text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
     disposable_capital:
-      hint: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
       guidance:
         disposable_capital:
           text: |
@@ -190,12 +183,17 @@ en:
         under_age:
           applicant: You must be over 15 to apply for help with fees
           partner: Your partner must be over 15 to apply for help with fees
+      hint:
+        single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+        married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
     court_fee:
       errors:
         non_numeric: Please enter numeric value with no decimal places
+      hint: Enter valid value with no decimal places
     total_income:
       errors:
         non_numeric: Please enter a valid value
+      hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
     number_of_children:
       errors:
         non_numeric: You must enter the number of financially dependent children
@@ -204,6 +202,7 @@ en:
       errors:
         non_numeric: "Enter a valid value"
         blank: "Enter how much you have in savings and investments"
+      hint: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
 
 
 
