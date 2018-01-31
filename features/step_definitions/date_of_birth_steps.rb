@@ -8,7 +8,7 @@ Given(/^I am on the date of birth page$/) do
   expect(date_of_birth_page.date_of_birth).to be_present
 end
 
-When(/^I sucessfully submit my date of birth$/) do
+When(/^I successfully submit my date of birth$/) do
   answer_date_of_birth_question
 end
 
@@ -19,7 +19,7 @@ Then(/^on the next page our date of births have been added to previous answers$/
   expect(disposable_capital_page.previous_answers).to have_partner_date_of_birth
 end
 
-When(/^I sucessfully submit our date of births$/) do
+When(/^I successfully submit our date of births$/) do
   expect(date_of_birth_page.partner_date_of_birth).to be_present
   answer_date_of_birth_question
 end

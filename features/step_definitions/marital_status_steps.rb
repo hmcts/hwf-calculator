@@ -3,7 +3,7 @@ And(/^I answer the marital status question$/) do
   marital_status_page.next
 end
 
-Given(/^I am on the martial status page$/) do
+Given(/^I am on the marital status page$/) do
   step 'I start a new calculator session'
   expect(marital_status_page.heading).to be_present
   expect(marital_status_page.marital_status).to be_present

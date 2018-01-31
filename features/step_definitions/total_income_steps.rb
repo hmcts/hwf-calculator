@@ -4,11 +4,11 @@ Given(/^I am on the total income page$/) do
   expect(total_income_page.total_income.hint_with_text(messaging.t('hwf_pages.total_income.hint'))).to be_present
 end
 
-When(/^I successfully submit my total income$/) do
+When(/^I successfully submit (?:my|our) total income$/) do
   answer_total_income_question
 end
 
-Then(/^on the next page my total income has been added to previous answers$/) do
+Then(/^on the next page (?:my|our) total income has been added to previous answers$/) do
   expect(full_remission_page.previous_answers).to have_marital_status
   expect(full_remission_page.previous_answers).to have_court_fee
   expect(full_remission_page.previous_answers).to have_date_of_birth
