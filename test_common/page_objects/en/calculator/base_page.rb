@@ -1,29 +1,17 @@
 require_relative '../../../sections'
+require_relative '../../../messaging'
 module Calculator
   module Test
     module En
       class BasePage < ::SitePrism::Page
         include ActiveSupport::NumberHelper
-        ALL_QUESTIONS = [:marital_status, :court_fee, :disposable_capital, :income_benefits].freeze
+        include ::Calculator::Test::I18n
 
         section :feedback, ::Calculator::Test::FeedbackSection, '[data-behavior=calculator_feedback]'
-        section :previous_answers, '[data-behavior=calculator_previous_questions]' do |_s|
-          section :marital_status, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "What is your status"
-          section :court_fee, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Court or tribunal fee to pay"
-          section :date_of_birth, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Date of birth"
-          section :partner_date_of_birth, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Partner date of birth"
-          section :disposable_capital, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Combined savings and investment"
-          section :income_benefits, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Income benefits you are currently receiving"
-          section :number_of_children, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Supported children"
-          section :total_income, ::Calculator::Test::PreviousQuestionSection, :calculator_previous_question, "Total income"
-
-          def disabled?
-            ALL_QUESTIONS.all? {|q| send(q).disabled?}
-          end
-        end
+        section :previous_answers, ::Calculator::Test::PreviousQuestionsSection, '[data-behavior=calculator_previous_questions]'
 
         def messaging
-          @messaging ||= ::Calculator::Test::Messaging.new
+          @messaging ||= ::Calculator::Test::Messaging.instance
         end
 
         def load_page

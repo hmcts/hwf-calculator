@@ -161,7 +161,18 @@ en:
         pension_credit: "Pension Credit (guarantee credit)"
         scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"
     previous_questions:
+      marital_status:
+        label: "What is your status"
+      court_fee:
+        label: "Court or tribunal fee to pay"
+      date_of_birth:
+        label: "Date of birth"
+      partner_date_of_birth:
+        label: "Partner date of birth"
+      disposable_capital:
+        label: "Combined savings and investment"
       income_benefits:
+        label: "Income benefits you are currently receiving"
         options:
           dont_know: "Don't know"
           none: 'none'
@@ -171,6 +182,10 @@ en:
           universal_credit: 'UC'
           pension_credit: 'PC'
           scottish_legal_aid: 'SLA'
+      number_of_children:
+        label: "Supported children"
+      total_income:
+        label: "Total income"
     marital_status:
       options:
         single: Single

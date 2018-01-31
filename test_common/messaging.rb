@@ -14,11 +14,15 @@ module Calculator
         self.backend = Backend.new(messaging_dir: messaging_dir)
       end
 
+      def self.instance
+        Thread.current[:calculator_test_messaging_instance] ||= new
+      end
+
       def translate(key, locale: :en, **options)
         result = catch(:exception) do
           backend.translate(locale, key, options)
         end
-        result.is_a?(I18n::MissingTranslation) ? raise(result) : result
+        result.is_a?(::I18n::MissingTranslation) ? raise(result) : result
       end
 
       alias t translate
@@ -26,6 +30,20 @@ module Calculator
       private
 
       attr_accessor :backend
+    end
+
+    module I18n
+      extend ActiveSupport::Concern
+
+      def t(*args)
+        ::Calculator::Test::Messaging.instance.t(*args)
+      end
+
+      class_methods do
+        def t(*args)
+          ::Calculator::Test::Messaging.instance.t(*args)
+        end
+      end
     end
   end
 end
