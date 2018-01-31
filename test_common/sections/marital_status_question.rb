@@ -15,6 +15,14 @@ module Calculator
         help_section.assert_text(strings.join("\n"))
       end
 
+      def set(value)
+        v = case value
+            when String then value
+            when Symbol then messaging.t("hwf_components.marital_status.options.#{value}")
+            end
+        super(v)
+      end
+
       # Toggles the help on/off
       def toggle_help
         help_section.toggle

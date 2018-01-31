@@ -93,10 +93,6 @@ en:
     marital_status:
       errors:
         blank: "Select whether you're single, married or living with someone and sharing an income"
-      labels:
-        marital_status:
-          single: Single
-          sharing_income: Married or living with someone
       guidance:
         marital_status:
           text: |
@@ -200,3 +196,8 @@ en:
           universal_credit: 'UC'
           pension_credit: 'PC'
           scottish_legal_aid: 'SLA'
+    marital_status:
+      options:
+        single: Single
+        sharing_income: Married or living with someone
+
