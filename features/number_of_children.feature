@@ -4,7 +4,8 @@
 Feature: Number of children page
 
 Background: Number of children page
-  Given I am on the number of children page
+  Given I am Claude and partner
+  And I am on the number of children page
 
 Scenario: Successfully submits my number of children
   When I successfully submit my number of children

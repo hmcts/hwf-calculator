@@ -1,5 +1,4 @@
 Given(/^I am on the number of children page$/) do
-  step 'I am Claude and partner'
   answer_up_to(:number_of_children)
 end
 

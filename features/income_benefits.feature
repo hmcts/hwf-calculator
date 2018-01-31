@@ -4,7 +4,8 @@
 Feature: Income benefits page
 
 Background: Income benefits page
-  Given I am on the income benefits page
+  Given I am John
+  And I am on the income benefits page
 
 Scenario: Displays message
   Then I should see that I should be able to get help with fees message

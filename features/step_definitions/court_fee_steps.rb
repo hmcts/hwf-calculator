@@ -4,7 +4,6 @@ And(/^I answer the court fee question$/) do
 end
 
 Given(/^I am on the court and tribunal fee page$/) do
-  step 'I am John'
   answer_up_to(:court_fee)
 end
 

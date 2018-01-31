@@ -1,8 +1,5 @@
 Given(/^I am on the income benefits page$/) do
-  step 'I am John'
   answer_up_to(:benefits)
-  expect(income_benefits_page.heading).to be_present
-  expect(income_benefits_page.benefits).to be_present
 end
 
 Then(/^I should see that I should be able to get help with fees message$/) do

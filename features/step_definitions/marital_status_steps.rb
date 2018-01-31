@@ -5,8 +5,6 @@ end
 
 Given(/^I am on the marital status page$/) do
   step 'I start a new calculator session'
-  expect(marital_status_page.heading).to be_present
-  expect(marital_status_page.marital_status).to be_present
 end
 
 When(/^I successfully submit my marital status as single$/) do
@@ -34,5 +32,5 @@ When(/^I click next without submitting my marital status$/) do
 end
 
 Then(/^I should see the marital status error message$/) do
-  # TODO: add when functionality is complete
+  expect(marital_status_page.error_with_text(messaging.t('hwf_pages.marital_status.errors.blank'))).to be_present
 end
