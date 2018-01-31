@@ -35,4 +35,5 @@ end
 
 Then(/^I should see the date of birth error messages$/) do
   expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+  expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
 end
