@@ -11,6 +11,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   # ALLI is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
   # OLIVER is a married, 75 year old man with £15,000 worth of capital. He has a court fee of £20,000
   # TOM is single, 80 year old man with £15,999 worth of capital. He has a court fee of £100
+  # SUE is a married, 75 year old woman with £9,999 worth of capital. He has a court fee of £4,000
   #
   #
   # Scenario: View Income Benefit Heading and Question

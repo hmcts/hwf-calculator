@@ -22,6 +22,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
   # ALLI is a married, 60 year old man with £3,800 worth of capital. He has a court fee of £1,334
   # LOLA is a married, 90 year old woman with £19,000 worth of capital. She has a court fee of £100,000
   # THERESA is a single, 47 year old woman with no children. She has £15,999 worth of capital and an income of £5,086. He has a court fee of £7,500
+  # SUE is a married, 75 year old woman with 0 children. She has £9,999 worth of capital and an income of £0. She has a court fee of £4,000
   # Scenario: Citizen update Partner status from court or tribunal fee page
   #               Given I am JOHN
   #               And I am on the court or tribunal fee page
@@ -37,7 +38,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     court_fee_page.go_back_to_question(:marital_status)
 
     # Assert
-    expect(marital_status_page).to be_displayed
+    aggregate_failures 'Verify all' do
+      expect(marital_status_page).to be_displayed
+      marital_status_page.wait_until_previous_answers_invisible
+      expect(marital_status_page).to have_no_previous_answers
+      expect(marital_status_page.marital_status).to have_value(user.marital_status)
+    end
   end
   #
   # Scenario: Citizen update Partner status from Number of Children page
@@ -56,7 +62,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     number_of_children_page.go_back_to_question(:marital_status)
 
     # Assert
-    expect(marital_status_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(marital_status_page).to be_displayed
+      expect(marital_status_page.marital_status).to have_value(user.marital_status)
+      expect(marital_status_page.previous_answers).to have_no_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   # Scenario: Citizen update Savings and investment amount from Number of Children page
@@ -75,7 +92,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     number_of_children_page.go_back_to_question(:disposable_capital)
 
     # Assert
-    expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(disposable_capital_page).to be_displayed
+      expect(disposable_capital_page.disposable_capital).to have_value(user.disposable_capital)
+      expect(disposable_capital_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_partner_date_of_birth).
+        and(have_no_disposable_capital).
+        and(have_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   # Scenario: Citizen update Savings and investment amount from the Benefit response page
@@ -94,7 +122,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     court_fee_page.go_back_to_question(:disposable_capital)
 
     # Assert
-    expect(disposable_capital_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(disposable_capital_page).to be_displayed
+      expect(disposable_capital_page.disposable_capital).to have_value(user.disposable_capital)
+      expect(disposable_capital_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_no_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   # Scenario: Citizen update Court or tribunal fee from the Total Income page
@@ -113,7 +152,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     total_income_page.go_back_to_question(:court_fee)
 
     # Assert
-    expect(court_fee_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(court_fee_page).to be_displayed
+      expect(court_fee_page.fee).to have_value(user.fee)
+      expect(court_fee_page.previous_answers).to have_marital_status.
+        and(have_no_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_income_benefits).
+        and(have_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   # Scenario: Citizen update income benefit from the Total Income page
@@ -132,7 +182,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     total_income_page.go_back_to_question(:income_benefits)
 
     # Assert
-    expect(income_benefits_page).to be_displayed.and(have_previous_answers)
+    aggregate_failures 'Verify all' do
+      expect(income_benefits_page).to be_displayed
+      expect(income_benefits_page.benefits).to have_value(user.income_benefits)
+      expect(income_benefits_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   # Scenario: Citizen unable to make updates from the Total income response page
@@ -171,8 +232,8 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
         expect(a.date_of_birth).to be_disabled
         expect(a.disposable_capital).to be_disabled
         expect(a).to have_no_income_benefits.
-            and(have_no_number_of_children).
-            and(have_no_total_income)
+          and(have_no_number_of_children).
+          and(have_no_total_income)
       end
     end
   end
@@ -188,8 +249,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     court_fee_page.next
 
     # Assert
-    expect(not_eligible_page).to be_displayed
-    expect(not_eligible_page.previous_answers.court_fee.answer(text: "£1,000")).to be_present
+    aggregate_failures 'Validate all' do
+      expect(not_eligible_page).to be_displayed
+      expect(not_eligible_page.previous_answers.court_fee.answer(text: "£1,000")).to be_present
+      expect(not_eligible_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   scenario 'Citizen changes their DOB to push them over the disposable capital limit' do
@@ -207,8 +278,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(not_eligible_page).to be_displayed
-    expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+    aggregate_failures 'Validate all' do
+      expect(not_eligible_page).to be_displayed
+      expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+      expect(not_eligible_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   scenario 'Citizen who is married changes own DOB to push them over the disposable capital limit' do
@@ -227,8 +308,18 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(not_eligible_page).to be_displayed
-    expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+    aggregate_failures do
+      expect(not_eligible_page).to be_displayed
+      expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+      expect(not_eligible_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   scenario 'Citizen who is married changes partners DOB to push them over the disposable capital limit' do
@@ -247,15 +338,21 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(not_eligible_page).to be_displayed
-    expect(not_eligible_page.previous_answers.partner_date_of_birth.answer(text: dob)).to be_present
+    aggregate_failures 'Validate all' do
+      expect(not_eligible_page).to be_displayed
+      expect(not_eligible_page.previous_answers.partner_date_of_birth.answer(text: dob)).to be_present
+      expect(not_eligible_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   scenario 'Citizen changes disposable income to push them over the disposable capital limit' do
-
-  end
-
-  scenario 'Citizen not on benefits gets to last question and states they are on benefits' do
     # Arrange - We will use john for this who would normally pass the disposable capital test
     # as he has a fee of 600 and disposable capital of 2990.  The limit is 3000 so we will
     # modify that to push him over the limit.
@@ -268,8 +365,47 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     disposable_capital_page.next
 
     # Assert
-    expect(not_eligible_page).to be_displayed
-    expect(not_eligible_page.previous_answers.disposable_capital.answer(text: '3,001')).to be_present
+    aggregate_failures 'Validate all' do
+      expect(not_eligible_page).to be_displayed
+      expect(not_eligible_page.previous_answers.disposable_capital.answer(text: '3,001')).to be_present
+      expect(not_eligible_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
+  end
+
+  scenario 'Citizen not on benefits gets to last question and states they are on benefits' do
+    # Arrange - We will use john for this who would normally have to provide info about number of children
+    # as he is not on benefits.  But when he gets to the total income page, he will go back and remember
+    # that he is on a benefit after all
+    # This should mean the system will make a positive final decision and the number of children nor total income
+    # fields will be shown in the final page.
+    given_i_am(:john)
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.income_benefits.navigate_to
+
+    # Act
+    income_benefits_page.benefits.set([messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')])
+    income_benefits_page.next
+
+    # Assert
+    aggregate_failures 'Validate all' do
+      expect(full_remission_page).to be_displayed
+      expect(full_remission_page.previous_answers.income_benefits.answer(text: messaging.t('hwf_pages.income_benefits.previous_questions.benefits_received.jobseekers_allowance'))).to be_present
+      expect(full_remission_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   scenario 'Citizen who normally gets partial remission gets a different amount if they change the number of children from the last page' do
@@ -284,7 +420,17 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(not_eligible_page).to be_displayed
-    expect(not_eligible_page.previous_answers.number_of_children.answer(text: '1')).to be_present
+    aggregate_failures 'Validate all' do
+      expect(not_eligible_page).to be_displayed
+      expect(not_eligible_page.previous_answers.number_of_children.answer(text: '1')).to be_present
+      expect(not_eligible_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_income_benefits).
+        and(have_number_of_children).
+        and(have_total_income)
+    end
   end
 end

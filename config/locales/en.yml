@@ -9,12 +9,12 @@ en:
         benefits_received_form:
           attributes:
             benefits_received:
-              blank: 'Please select from the list'
+              blank: "Select whether you're receiving one of the benefits listed"
         disposable_capital_form:
           attributes:
             disposable_capital:
-              not_a_number: "Please enter a valid value. The two nearest valid values are: XX and XX."
-              not_an_integer: "Please enter a valid value. The two nearest valid values are: XX and XX."
+              not_a_number: "Enter a valid value"
+              not_an_integer: "Enter a valid value"
               blank: Enter how much you have in savings and investments
               greater_than_or_equal_to: "must be at least %{count}"
         fee_form:
@@ -25,20 +25,20 @@ en:
         total_income_form:
           attributes:
             total_income:
-              not_a_number: "Please enter numeric value with no decimal places"
-              not_an_integer: "Please enter numeric value with no decimal places"
-              blank: "Please enter numeric value with no decimal places"
+              not_a_number: "Please enter a valid value"
+              not_an_integer: "Please enter a valid value"
+              blank: "Please enter a valid value"
               greater_than_or_equal_to: "must be at least %{count}"
         date_of_birth_form:
           attributes:
             date_of_birth:
-              blank: Please enter a valid date of birth
-              age_less_than: You must be over %{count} years old to apply for help with fees
-              invalid_date: Please enter a valid date of birth
+              blank: Enter the date in this format DD/MM/YYYY
+              age_less_than: You must be over %{count} to apply for help with fees
+              invalid_date: Enter the date in this format DD/MM/YYYY
             partner_date_of_birth:
-              blank: Please enter a valid date of birth
-              age_less_than: You and your partner must be over %{count} years old to apply for help with fees
-              invalid_date: Please enter a valid date of birth
+              blank: Enter the date in this format DD/MM/YYYY
+              age_less_than: Your partner must be over %{count} to apply for help with fees
+              invalid_date: Enter the date in this format DD/MM/YYYY
         number_of_children_form:
           attributes:
             number_of_children:
@@ -62,13 +62,13 @@ en:
         either: list of benefits (or proof of certain benefits at the time you paid your fee)
         or: total monthly income
       disclaimer_html: |
-       This isn't the application and is designed to give an indicative response only. You'll need................
+       This calculator is for guidance purposes only and is not the Help with Fees application
 
     feedback:
       subject:
         single: "you"
         sharing_income: "you and your partner"
-      should_get_help: "You are able to get help with fees"
+      should_get_help: "You may get help with fees"
       full_remission:
         decided_by:
           disposable_capital:
@@ -91,15 +91,15 @@ en:
       partial_remission:
         header: "You should be eligible for a Partial Remission"
         single:
-          detail: "As you have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
+          detail: "As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
         sharing_income:
           detail: "As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
       no_remission:
         header: "You're unlikely to get help with your fee"
         single:
-          detail: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship (see guide)"
+          detail: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
         sharing_income:
-          detail: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship (see guide)"
+          detail: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
       explanation_suffix: "as long as you"
       explanation_suffix_joining_word: "or"
       explanation_suffix_fields:
@@ -109,9 +109,9 @@ en:
       should_get_partial_help: "You should be able to get partial help with your fees"
     field_labels:
       disposable_capital: "How much do you have in savings and investment combined?"
-      marital_status: "Are you single, married or living with someone and sharing an income?"
+      marital_status: "Are you single, married or living with someone and sharing income?"
       date_of_birth: "What is your date of birth?"
-      fee: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
+      fee: "How much is the court or tribunal fee?"
       benefits_received: "Select all income benefits you are currently receiving"
       total_income: "How much total income do you receive each month?"
       partner_date_of_birth: "What is your partners date of birth?"
@@ -145,10 +145,10 @@ en:
     benefits:
       dont_know:
         label: "Don't know"
-        guidance: "If you don't know if you're receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee"
+        guidance: "If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
       none:
         label: 'None of the above'
-        guidance: 'If you are not receiving one of the stated benefits, or are not sure, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee'
+        guidance: 'If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)'
       jobseekers_allowance:
         label: "Income-based Jobseeker’s Allowance (JSA)"
         guidance: ''
@@ -174,12 +174,13 @@ en:
         summary: "Help with Status"
         detail:
           single:
-            summary: "Single means you rely on your own income, single also means:"
+            summary: "Single means you rely on your own income or your case involves your partner, for example:"
             text: |
-              you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)
-              you are changing your legal gender
-              you are experiencing domestic violence
-              you are experiencing forced marriage
+              divorce, dissolution or annulment (unless you have married again or live with a new partner)
+              gender recognition
+              domestic violence
+              forced marriage
+              You should also choose single if you and your partner are both part of a multiple fee group
           sharing_income:
             summary: "Married or living with someone and sharing an income means:"
             text: |
@@ -187,7 +188,7 @@ en:
               civil partners
               living together as if you are married or in a civil partnership
               living at the same address with a joint income
-              part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
+              part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
       disposable_capital:
         summary: "Help with savings and investments"
         detail:
@@ -229,14 +230,14 @@ en:
           summary: "Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:"
           text: |
             wages
-            some benefits (see the list in the guide for benefits you shouldn’t include)
+            some benefits
             pensions (state, work or private without guarantee credit)
             rent from anyone living with you and other properties that you own
             payments from relatives
             maintenance payments, eg from an ex-spouse
             income from selling goods publicly or privately, including over the internet
             student maintenance loans, grants or bursaries (except for tuition fee loans)
-            If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See the guide for further details of what to include and exclude.
+            If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       income_benefits:
         summary: "How benefit affects your claim"
         detail:
@@ -246,8 +247,12 @@ en:
         summary: "If you have already paid your court or tribunal fee"
         detail_text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
     hints:
-      date_of_birth: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+      date_of_birth:
+        single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+        sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+      fee: "Enter valid value with no decimal places"
+      disposable_capital: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
   welsh_link:
     full_html: "This guide is also available %{link_html} (Cymraeg)"
     link_text: "in Welsh"

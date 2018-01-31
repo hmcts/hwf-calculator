@@ -2,6 +2,7 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-794
 RSpec.describe 'Validate partner status test', type: :feature, js: true do
   let(:next_page) { Calculator::Test::En::CourtFeePage.new }
+
   # Personas
   #
   # JOHN is a single, 56 year old man with 1 child
@@ -68,9 +69,5 @@ RSpec.describe 'Validate partner status test', type: :feature, js: true do
     # Assert
     expect(marital_status_page.error_with_text(messaging.t('hwf_pages.marital_status.errors.blank'))).to be_present
   end
-
-
-
-
 
 end

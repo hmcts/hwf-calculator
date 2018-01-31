@@ -2,6 +2,7 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-752
 RSpec.describe 'Validate court fee test', type: :feature, js: true do
   let(:next_page) { Calculator::Test::En::TotalIncomePage.new }
+
   # Personas
   #
   # JOHN is a single, 56 year old man with 1 child

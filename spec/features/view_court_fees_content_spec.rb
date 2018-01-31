@@ -11,7 +11,7 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
   #
   #               When I view the Heading, Court or Tribunal fee question and Hint text on the page
   #
-  #               Then Heading should read "Find out if you could get help with fees?"
+  #               Then Heading should read "Find out if you could get help with fees"
   #
   #               And Court or Tribunal fee question reads "How much is the court or tribunal fee?"
   #
@@ -27,6 +27,7 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
     aggregate_failures 'validating content of header and question' do
       expect(court_fee_page.heading).to be_present
       expect(court_fee_page.fee).to be_present
+      expect(court_fee_page.fee.hint_with_text(messaging.t('hwf_pages.fee.hint'))).to be_present
     end
   end
   #

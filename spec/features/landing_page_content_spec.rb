@@ -2,7 +2,6 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-701
 RSpec.describe 'Partner status content', type: :feature, js: true do
 
-=begin
   # Feature: HwF Eligibility Calculator Landing page Content
   #
   #
@@ -43,9 +42,9 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   #  or: total monthly income"
   #
   #
-  # Disclaimer  (New)
+  # Disclaimer  (Revised)
   #
-  # This isn't the application and is designed to give an indicative response only. You'll need................
+  # This calculator is for guidance purposes only and is not the Help with Fees application
   #
   #
   #
@@ -58,16 +57,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   # NOTE to DEV (New)**
   #
   # "in Welsh" should be a link that enables the welsh translation of the calculator
-=end
 
-
-
-
-
-  # Feature: HwF Eligibility Calculator Landing page Content
-  #
-  #
-  #
   # Scenario: View Heading, Body, Disclaimer and Welsh translation link on the Calculator Landing Page (Revised)
   #              Given I am on the HwF Calculator landing page
   #              When I view the Heading, Body, Disclaimer and Welsh translation link (Revised)
@@ -118,10 +108,9 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   #  or: total monthly income"
   #
   #
-
-  # Disclaimer  (New)
+  # Disclaimer  (Revised)
   #
-  # This isn't the application and is designed to give an indicative response only. You'll need................
+  # This calculator is for guidance purposes only and is not the Help with Fees application
   #
   #
   #

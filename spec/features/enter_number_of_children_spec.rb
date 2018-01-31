@@ -2,6 +2,7 @@ require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-747
 RSpec.describe 'Enter number of children test', type: :feature, js: true do
   let(:next_page) { Calculator::Test::En::TotalIncomePage.new }
+
   # Feature: Number of Children responsible for supporting financially
   #
   # HwF eligibility Calculator should capture number of children citizen is responsible for supporting financially
@@ -17,7 +18,7 @@ RSpec.describe 'Enter number of children test', type: :feature, js: true do
   # Personas
   #
   # JOHN is a single, 56 year old man with 1 child. He is not on any benefit. He has £2,990 worth of capital and an income of £1,330. He has a court fee of £600
-  #
+  # SUE is a married, 75 year old woman with 0 children. She is not on any benefit. She has £9,999 worth of capital and an income of £0. She has a court fee of £4,000
   #
   #
   #

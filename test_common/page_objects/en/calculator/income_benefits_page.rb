@@ -93,6 +93,27 @@ module Calculator
         def wait_for_guidance
           benefits.wait_for_help_text
         end
+
+        # Indicates if the page has only the 'None of the above' option selected - waits for it if not then returns
+        # false if it never arrives
+        # @return [Boolean] Indicates if the page has only the 'None of the above' option selected
+        def has_only_none_selected?
+          benefits.has_value?([messaging.t('hwf_pages.income_benefits.labels.benefits.none')])
+        end
+
+        # Indicates if the page has only the 'Dont know' option selected - waits for it if not then returns
+        # false if it never arrives
+        # @return [Boolean] Indicates if the page has only the 'Dont know' option selected
+        def has_only_dont_know_selected?
+          benefits.has_value?([messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')])
+        end
+
+        # Indicates if the page has only the values specified options selected - waits for them if not then returns
+        # false if it never arrives
+        # @return [Boolean] Indicates if the page has only the specified options selected
+        def has_selected?(values)
+          benefits.has_value?(values)
+        end
       end
     end
   end
