@@ -42,6 +42,8 @@ module Calculator
         def error_with_text(text)
           total_income.error_with_text(text)
         end
+
+        delegate :has_error_with_text?, to: :total_income
       end
     end
   end

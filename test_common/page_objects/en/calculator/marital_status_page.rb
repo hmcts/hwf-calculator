@@ -43,6 +43,8 @@ module Calculator
         def error_with_text(text)
           marital_status.error_with_text(text)
         end
+
+        delegate :has_error_with_text?, to: :marital_status
       end
     end
   end

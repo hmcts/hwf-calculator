@@ -55,7 +55,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     court_fee_page.next
 
     # Assert
-    expect(court_fee_page.error_with_text(messaging.t('hwf_pages.fee.errors.non_numeric'))).to be_present
+    expect(court_fee_page).to have_error_with_text(:non_numeric)
   end
   #
   # Scenario: Court and tribunal fee field empty
@@ -74,6 +74,6 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     court_fee_page.next
 
     # Assert
-    expect(court_fee_page.error_with_text(messaging.t('hwf_pages.fee.errors.non_numeric'))).to be_present
+    expect(court_fee_page).to have_error_with_text(:non_numeric)
   end
 end

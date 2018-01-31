@@ -67,7 +67,7 @@ RSpec.describe 'Validate partner status test', type: :feature, js: true do
     marital_status_page.next
 
     # Assert
-    expect(marital_status_page.error_with_text(messaging.t('hwf_pages.marital_status.errors.blank'))).to be_present
+    expect(marital_status_page).to have_error_with_text(:blank)
   end
 
 end

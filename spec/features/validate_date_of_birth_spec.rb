@@ -48,7 +48,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
   end
   #
   # Scenario: Single citizen who is under 15 years old enter their date of birth (Revised)
@@ -68,7 +68,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.applicant'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:'under_age.applicant')
   end
   # Scenario: Under 61 single citizen enter date of birth
   #               Given I am JOHN
@@ -126,7 +126,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
 
   end
 
@@ -245,7 +245,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.under_age.applicant'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:'under_age.applicant')
   end
 
   # The following scenarios had no acceptance criteria from the business - but are important still
@@ -259,7 +259,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is single and puts non numerics in the month field' do
@@ -272,7 +272,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is single and puts non numerics in the year field' do
@@ -285,7 +285,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is married and puts non numerics in their own day field' do
@@ -298,7 +298,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is married and puts non numerics in their own month field' do
@@ -311,7 +311,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is married and puts non numerics in their own year field' do
@@ -324,7 +324,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is married and puts non numerics in their partners day field' do
@@ -337,7 +337,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.partner_date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is married and puts non numerics in their partners month field' do
@@ -350,7 +350,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.partner_date_of_birth).to have_error_with_text(:non_numeric)
   end
 
   scenario 'Citizen is married and puts non numerics in their partners year field' do
@@ -363,6 +363,6 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     date_of_birth_page.next
 
     # Assert
-    expect(date_of_birth_page.partner_date_of_birth.error_with_text(messaging.t('hwf_pages.date_of_birth.errors.non_numeric'))).to be_present
+    expect(date_of_birth_page.partner_date_of_birth).to have_error_with_text(:non_numeric)
   end
 end

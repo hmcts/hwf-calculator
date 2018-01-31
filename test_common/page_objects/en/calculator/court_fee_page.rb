@@ -34,15 +34,7 @@ module Calculator
           fee.wait_for_help_text
         end
 
-        # Find an error matching the given text in the fee field
-        #
-        # @param [String] text The error message to match
-        #
-        # @return [Capybara::Node::Element] The node found
-        # @raise [Capybara::ElementNotFound] If an error message could not be found
-        def error_with_text(text)
-          fee.error_with_text(text)
-        end
+        delegate :has_error_with_text?, to: :fee
       end
     end
   end

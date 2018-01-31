@@ -42,6 +42,8 @@ module Calculator
         def error_with_text(text)
           disposable_capital.error_with_text(text)
         end
+
+        delegate :has_error_with_text?, to: :disposable_capital
       end
     end
   end

@@ -27,6 +27,16 @@ module Calculator
       def has_help_text?
         help_section.help_text_expanded?
       end
+
+      def has_error_with_text?(text)
+        translated = case text
+                     when Symbol then messaging.t("hwf_components.number_of_children.errors.#{text}")
+                     else text
+                     end
+        error_with_text(translated)
+      rescue Capybara::ElementNotFound
+        false
+      end
       # rubocop:enable Style/PredicateName
 
       delegate :wait_for_help_text, to: :help_section

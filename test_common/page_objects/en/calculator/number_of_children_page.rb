@@ -43,6 +43,8 @@ module Calculator
         def error_with_text(text)
           number_of_children.error_with_text(text)
         end
+
+        delegate :has_error_with_text?, to: :number_of_children
       end
     end
   end

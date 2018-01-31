@@ -53,9 +53,6 @@ en:
           detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
   hwf_pages:
     number_of_children:
-      errors:
-        non_numeric: You must enter the number of financially dependent children
-        blank: You must enter the number of financially dependent children
       guidance:
         number_of_children:
           text: |
@@ -67,16 +64,8 @@ en:
       hint:
         single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
         married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-      errors:
-        non_numeric: Enter the date in this format DD/MM/YYYY
-        under_age:
-          applicant: You must be over 15 to apply for help with fees
-          partner: Your partner must be over 15 to apply for help with fees
     total_income:
       hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
-      
-      errors:
-        non_numeric: Please enter a valid value
       guidance:
         total_income:
           text: |
@@ -91,8 +80,6 @@ en:
             student maintenance loans, grants or bursaries (except for tuition fee loans)
             If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
     marital_status:
-      errors:
-        blank: "Select whether you're single, married or living with someone and sharing an income"
       guidance:
         marital_status:
           text: |
@@ -113,13 +100,8 @@ en:
       guidance:
         fee:
           text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
-      errors:
-        non_numeric: Please enter numeric value with no decimal places
     disposable_capital:
       hint: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
-      errors:
-        non_numeric: "Enter a valid value"
-        blank: "Enter how much you have in savings and investments"
       guidance:
         disposable_capital:
           text: |
@@ -200,4 +182,28 @@ en:
       options:
         single: Single
         sharing_income: Married or living with someone
+      errors:
+        blank: "Select whether you're single, married or living with someone and sharing an income"
+    date_of_birth:
+      errors:
+        non_numeric: Enter the date in this format DD/MM/YYYY
+        under_age:
+          applicant: You must be over 15 to apply for help with fees
+          partner: Your partner must be over 15 to apply for help with fees
+    court_fee:
+      errors:
+        non_numeric: Please enter numeric value with no decimal places
+    total_income:
+      errors:
+        non_numeric: Please enter a valid value
+    number_of_children:
+      errors:
+        non_numeric: You must enter the number of financially dependent children
+        blank: You must enter the number of financially dependent children
+    disposable_capital:
+      errors:
+        non_numeric: "Enter a valid value"
+        blank: "Enter how much you have in savings and investments"
+
+
 
