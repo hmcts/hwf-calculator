@@ -3,6 +3,7 @@ module Calculator
   module Test
     module En
       class BasePage < ::SitePrism::Page
+        include ActiveSupport::NumberHelper
         ALL_QUESTIONS = [:marital_status, :court_fee, :disposable_capital, :income_benefits].freeze
 
         section :feedback, ::Calculator::Test::FeedbackSection, '[data-behavior=calculator_feedback]'
@@ -49,7 +50,7 @@ module Calculator
           previous_answers.send(q.to_sym).navigate_to
         end
 
-        # Finds a previous question with a given answer in the 'Previous answers' section of any page
+        # Finds a previous question with a given answer in the 'Previous answers' section of any pa
         # @param [Symbol] question The question to find
         # @param [Symbol,String,Array] answer Can be a string (the expected answer), a symbol (will get translated)
         #   or an array of either of the above
@@ -58,6 +59,20 @@ module Calculator
           previous_answers.send(question).has_answer?(text: translated_answer(question: question, answer: answer))
         end
 
+        def has_feedback_message_with_header?(key)
+          messaging.translate("hwf_decision.#{key}.heading")
+        end
+
+        def has_feedback_message_with_detail?(key, fee: nil, disposable_capital: nil)
+          options = {}
+          options[:fee] = number_to_currency(fee, precision: 0, unit: '£') unless fee.nil?
+          options[:disposable_capital] = number_to_currency(disposable_capital, precision: 0, unit: '£') unless disposable_capital.nil?
+          msg = messaging.t("hwf_decision.#{key}.detail", options)
+          feedback_message_with_detail(msg)
+          true
+        rescue Capybara::ElementNotFound
+          false
+        end
         private
 
         def translated_answer(question:, answer:)

@@ -17,7 +17,7 @@ module Calculator
         false
       end
 
-      def has_hint(key)
+      def has_hint?(key)
         hint_with_text(messaging.t("hwf_components.date_of_birth.hint.#{key}"))
         true
       rescue Capybara::ElementNotFound
