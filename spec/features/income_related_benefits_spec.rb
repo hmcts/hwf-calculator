@@ -198,7 +198,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     income_benefits_page.next
 
     # Assert
-    expect(full_remission_page.previous_answers.income_benefits.answer.text).to eql messaging.t('hwf_pages.income_benefits.previous_questions.benefits_received.jobseekers_allowance')
+    expect(full_remission_page).to have_previous_question(:income_benefits, answer: :jobseekers_allowance)
   end
 
   #  Scenario: Display None of the above guidance information

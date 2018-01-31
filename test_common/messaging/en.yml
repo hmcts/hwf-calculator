@@ -159,25 +159,6 @@ en:
       labels:
         benefits:
           question_label: 'Select all income benefits you are currently receiving'
-      previous_questions:
-        disposable_capital:
-          label: "How much do you have in savings and investment combined?"
-        marital_status:
-          label: "Are you single, married or living with someone and sharing an income?"
-        date_of_birth:
-          label: "What is your date of birth?"
-        fee:
-          label: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
-        benefits_received:
-          label: "Income benefits you are currently receiving"
-          dont_know: "Don't know"
-          none: 'none'
-          jobseekers_allowance: 'JSA'
-          employment_support_allowance: 'ESA'
-          income_support: 'IS'
-          universal_credit: 'UC'
-          pension_credit: 'PC'
-          scottish_legal_aid: 'SLA'
     home:
       introduction_text: |
         This calculator will tell you if you’re likely to get help with fees and how much you could get.
@@ -208,5 +189,14 @@ en:
         universal_credit: "Universal Credit (and you’re earning less than £6,000 a year)"
         pension_credit: "Pension Credit (guarantee credit)"
         scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"
-
-
+    previous_questions:
+      income_benefits:
+        options:
+          dont_know: "Don't know"
+          none: 'none'
+          jobseekers_allowance: 'JSA'
+          employment_support_allowance: 'ESA'
+          income_support: 'IS'
+          universal_credit: 'UC'
+          pension_credit: 'PC'
+          scottish_legal_aid: 'SLA'

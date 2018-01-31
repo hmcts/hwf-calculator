@@ -48,6 +48,25 @@ module Calculator
         def go_back_to_question(q)
           previous_answers.send(q.to_sym).navigate_to
         end
+
+        # Finds a previous question with a given answer in the 'Previous answers' section of any page
+        # @param [Symbol] question The question to find
+        # @param [Symbol,String,Array] answer Can be a string (the expected answer), a symbol (will get translated)
+        #   or an array of either of the above
+        # @return [Boolean] True if found, else false
+        def has_previous_question?(question, answer:)
+          previous_answers.send(question).has_answer?(text: translated_answer(question: question, answer: answer))
+        end
+
+        private
+
+        def translated_answer(question:, answer:)
+          case answer
+          when Array then answer.map { |a| translated_answer(question: question, answer: a) }.join(', ')
+          when Symbol then messaging.t("hwf_components.previous_questions.#{question}.options.#{answer}")
+          else answer
+          end
+        end
       end
     end
   end

@@ -10,23 +10,20 @@ module Calculator
 
         def benefit_options
           [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid].each do |benefit|
-            benefits.option_labelled messaging.t("hwf_pages.income_benefits.labels.benefits.#{benefit}")
+            benefits.option_labelled messaging.t("hwf_components.benefits.options.#{benefit}")
           end
         end
 
         def choose_jobseekers_allowance
-          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')
-          benefits.set([label_text])
+          choose :jobseekers_allowance
         end
 
         def choose_income_support
-          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.income_support')
-          benefits.set([label_text])
+          choose :income_support
         end
 
         def choose_universal_credit
-          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.universal_credit')
-          benefits.set([label_text])
+          choose :universal_credit
         end
 
         # Clicks the next button
@@ -41,8 +38,7 @@ module Calculator
 
         # Chooses the 'Dont know' option in the list
         def choose_dont_know
-          label_text = messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')
-          benefits.set([label_text])
+          choose :dont_know
         end
 
         # Chooses a single or multiple items by label.  The labels are specified by I18n key so the
@@ -53,20 +49,6 @@ module Calculator
         #   :scottish_legal_aid
         def choose(*keys)
           benefits.set(*keys)
-        end
-
-        # The don't know checkbox
-        #
-        # @return [Capybara::Node::Element]
-        def dont_know_option
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')
-        end
-
-        # The none of the above checkbox
-        #		
-        # @return [Capybara::Node::Element]
-        def none_of_the_above_option
-          benefits.option_labelled messaging.t('hwf_pages.income_benefits.labels.benefits.none')
         end
 
         def dont_know_guidance
