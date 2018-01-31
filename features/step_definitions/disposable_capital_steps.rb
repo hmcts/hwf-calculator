@@ -28,8 +28,10 @@ And(/^I submit (?:my|our) savings and investments$/) do
 end
 
 And(/^on the next page (?:my|our) savings and investments have been added to previous answers$/) do
-  # TODO: add when functionality is complete
-  expect(any_calculator_page.previous_answers.disposable_capital.answer.text).to eql number_to_currency(user.disposable_capital, precision: 0, unit: '£')
+  expect(full_remission_page.previous_answers).to have_marital_status
+  expect(full_remission_page.previous_answers).to have_court_fee
+  expect(full_remission_page.previous_answers).to have_date_of_birth
+  expect(full_remission_page.previous_answers).to have_disposable_capital
 end
 
 When(/^I click on help with savings and investment$/) do

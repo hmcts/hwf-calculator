@@ -44,4 +44,4 @@ Scenario: Changing answer updates eligibility
   And I am on the total income page
   When I change my answer for my court and tribunal fee to £1000
   Then I should see that I am now unlikely to get help with fees
-  And I should see my answer for court and tribunal fee has been changed
+  And I should see my answer for court and tribunal fee has been changed to £1000
