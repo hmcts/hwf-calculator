@@ -11,6 +11,7 @@ module Calculator
           include ::Calculator::Test::FeedbackSection
         end
         section :previous_answers, '[data-behavior=calculator_previous_questions]' do
+          @i18n_scope = 'hwf_components.previous_questions'
           include ::Calculator::Test::PreviousQuestionsSection
         end
 

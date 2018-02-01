@@ -68,7 +68,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:'under_age.applicant')
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:under_age)
   end
   # Scenario: Under 61 single citizen enter date of birth
   #               Given I am JOHN
@@ -245,7 +245,7 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     answer_date_of_birth_question
 
     # Assert
-    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:'under_age.applicant')
+    expect(date_of_birth_page.date_of_birth).to have_error_with_text(:under_age)
   end
 
   # The following scenarios had no acceptance criteria from the business - but are important still

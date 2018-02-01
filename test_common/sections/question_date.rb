@@ -5,9 +5,9 @@ module Calculator
       extend ActiveSupport::Concern
       include QuestionSection
       included do
-        element :day, :field, 'Day'
-        element :month, :field, 'Month'
-        element :year, :field, 'Year'
+        element :day, :field, t("#{i18n_scope}.components.day.label")
+        element :month, :field, t("#{i18n_scope}.components.month.label")
+        element :year, :field, t("#{i18n_scope}.components.year.label")
       end
 
       # Fills in the date fields

@@ -42,7 +42,7 @@ module Calculator
 
       def has_error_with_text?(text)
         translated = case text
-                     when Symbol then messaging.t("hwf_components.court_fee.errors.#{text}")
+                     when Symbol then messaging.t("#{i18n_scope}.errors.#{text}")
                      else text
                      end
         error_with_text(translated)
@@ -51,7 +51,7 @@ module Calculator
       end
 
       def has_hint?
-        hint_with_text(messaging.t("hwf_components.court_fee.hint"))
+        hint_with_text(messaging.t("#{i18n_scope}.hint"))
         true
       rescue Capybara::ElementNotFound
         false

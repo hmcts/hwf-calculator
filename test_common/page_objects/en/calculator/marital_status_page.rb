@@ -5,6 +5,7 @@ module Calculator
         set_url '/calculation/marital_status'
         element :heading, :exact_heading_text, t('hwf_pages.marital_status.heading')
         section :marital_status, :calculator_question, t('hwf_pages.marital_status.questions.marital_status.label') do
+          @i18n_scope = 'hwf_pages.marital_status.questions.marital_status'
           include ::Calculator::Test::MaritalStatusQuestionSection
         end
         element :next_button, :button, t('hwf_pages.marital_status.buttons.next')
@@ -22,7 +23,7 @@ module Calculator
         # Validates that the guidance text is correct for the english language
         # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
         def validate_guidance
-          marital_status.validate_guidance(messaging.t('hwf_pages.marital_status.guidance.marital_status.text'))
+          marital_status.validate_guidance(messaging.t('hwf_pages.marital_status.questions.marital_status.guidance.text'))
         end
 
         # Indicates if the marital status field has no guidance text visible

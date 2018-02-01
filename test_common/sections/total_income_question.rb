@@ -6,7 +6,7 @@ module Calculator
       include QuestionNumericSection
 
       included do
-        section :help_section, :help_section_labelled, 'What to include as income' do
+        section :help_section, :help_section_labelled, t("#{i18n_scope}.guidance.label") do
           include QuestionHelpSection
         end
 
@@ -39,7 +39,7 @@ module Calculator
 
       def has_error_with_text?(text)
         translated = case text
-                     when Symbol then messaging.t("hwf_components.total_income.errors.#{text}")
+                     when Symbol then messaging.t("#{i18n_scope}.errors.#{text}")
                      else text
                      end
         error_with_text(translated)
@@ -48,7 +48,7 @@ module Calculator
       end
 
       def has_hint?
-        hint_with_text(messaging.t("hwf_components.total_income.hint"))
+        hint_with_text(messaging.t("#{i18n_scope}.hint"))
         true
       rescue Capybara::ElementNotFound
         false

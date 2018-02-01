@@ -5,6 +5,7 @@ module Calculator
         set_url '/calculation/disposable_capital'
         element :heading, :exact_heading_text, t('hwf_pages.disposable_capital.heading')
         section :disposable_capital, :calculator_question, t('hwf_pages.disposable_capital.questions.disposable_capital.label') do
+          @i18n_scope = 'hwf_pages.disposable_capital.questions.disposable_capital'
           include ::Calculator::Test::DisposableCapitalQuestionSection
         end
         element :next_button, :button, t('hwf_pages.disposable_capital.buttons.next')
@@ -21,7 +22,7 @@ module Calculator
         # Validates that the guidance text is correct for the english language
         # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
         def validate_guidance
-          disposable_capital.validate_guidance(messaging.t('hwf_pages.disposable_capital.guidance.disposable_capital.text'))
+          disposable_capital.validate_guidance(messaging.t('hwf_pages.disposable_capital.questions.disposable_capital.guidance.text'))
         end
 
         # Indicates if the marital status field has no guidance text visible

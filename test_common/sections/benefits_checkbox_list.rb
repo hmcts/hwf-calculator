@@ -41,13 +41,13 @@ module Calculator
 
 
       def dont_know_guidance
-        option = option_labelled(messaging.t('hwf_components.benefits.options.dont_know'))
-        option.guidance_with_text(messaging.t('hwf_pages.income_benefits.guidance.dont_know_option'))
+        option = option_labelled(messaging.t("#{i18n_scope}.options.dont_know.label"))
+        option.guidance_with_text(messaging.t("#{i18n_scope}.options.dont_know.guidance"))
       end
 
       def none_of_the_above_guidance
-        option = option_labelled(messaging.t('hwf_components.benefits.options.none'))
-        option.guidance_with_text(messaging.t('hwf_pages.income_benefits.guidance.none_option'))
+        option = option_labelled(messaging.t("#{i18n_scope}.options.none.label"))
+        option.guidance_with_text(messaging.t("#{i18n_scope}.options.none.guidance"))
       end
 
       # Selects single or multiple items by label.  The labels are specified by I18n key so the
@@ -59,14 +59,13 @@ module Calculator
       def set(*keys)
         labels = keys.flatten.map do |key|
           if key.is_a?(Symbol)
-            messaging.t("hwf_components.benefits.options.#{key}")
+            messaging.t("#{i18n_scope}.options.#{key}.label")
           else
             key
           end
         end
         super(labels)
       end
-
 
       # Indicates if the page has only the values specified options selected - waits for them if not then returns
       # false if it never arrives
@@ -77,7 +76,7 @@ module Calculator
       def has_value?(*values)
         v = values.flatten.map do |value|
           if value.is_a?(Symbol)
-            messaging.t("hwf_components.benefits.options.#{value}")
+            messaging.t("#{i18n_scope}.options.#{value}.label")
           else
             value
           end

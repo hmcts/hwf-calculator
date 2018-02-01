@@ -77,9 +77,7 @@ module Calculator
           user.partner_date_of_birth = (user.partner_age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')
         end
         return if user.income_benefits.nil?
-        user.income_benefits.map! do |b|
-          messaging.t("hwf_components.benefits.options.#{b}")
-        end
+        user.income_benefits.map!(&:to_sym)
       end
     end
   end

@@ -6,7 +6,7 @@ module Calculator
       extend ActiveSupport::Concern
       include QuestionNumericSection
       included do
-        section :help_section, :help_section_labelled, 'Children who might affect your claim' do
+        section :help_section, :help_section_labelled, t("#{i18n_scope}.guidance.label") do
           include QuestionHelpSection
         end
         delegate :wait_for_help_text, to: :help_section
@@ -39,7 +39,7 @@ module Calculator
 
       def has_error_with_text?(text)
         translated = case text
-                     when Symbol then messaging.t("hwf_components.number_of_children.errors.#{text}")
+                     when Symbol then messaging.t("#{i18n_scope}.errors.#{text}")
                      else text
                      end
         error_with_text(translated)

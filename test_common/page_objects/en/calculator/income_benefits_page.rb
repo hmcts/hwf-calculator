@@ -6,6 +6,7 @@ module Calculator
         set_url '/calculation/benefits_received'
         element :heading, :exact_heading_text, t('hwf_pages.income_benefits.heading')
         section :benefits, :calculator_question, t('hwf_pages.income_benefits.questions.benefits.label') do
+          @i18n_scope = 'hwf_pages.income_benefits.questions.benefits'
           include ::Calculator::Test::BenefitsCheckboxListSection
         end
         element :next_button, :button, t('hwf_pages.income_benefits.buttons.next')
@@ -62,7 +63,7 @@ module Calculator
         end
 
         def error_nothing_selected
-          benefits.error_with_text(messaging.t('hwf_pages.income_benefits.errors.nothing_selected'))
+          benefits.error_with_text(messaging.t('hwf_pages.income_benefits.questions.benefits.errors.nothing_selected'))
         end
 
         # Toggles the guidance text for this question
@@ -73,7 +74,7 @@ module Calculator
         # Validates that the guidance text is correct for the english language
         # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
         def validate_guidance
-          benefits.validate_guidance(messaging.t('hwf_pages.income_benefits.guidance.benefits.text'))
+          benefits.validate_guidance(messaging.t('hwf_pages.income_benefits.questions.benefits.guidance.text'))
         end
 
         # Indicates if the marital status field has no guidance text visible
@@ -85,20 +86,6 @@ module Calculator
         # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
         def wait_for_guidance
           benefits.wait_for_help_text
-        end
-
-        # Indicates if the page has only the 'None of the above' option selected - waits for it if not then returns
-        # false if it never arrives
-        # @return [Boolean] Indicates if the page has only the 'None of the above' option selected
-        def has_only_none_selected?
-          benefits.has_value?([messaging.t('hwf_pages.income_benefits.labels.benefits.none')])
-        end
-
-        # Indicates if the page has only the 'Dont know' option selected - waits for it if not then returns
-        # false if it never arrives
-        # @return [Boolean] Indicates if the page has only the 'Dont know' option selected
-        def has_only_dont_know_selected?
-          benefits.has_value?([messaging.t('hwf_pages.income_benefits.labels.benefits.dont_know')])
         end
 
         # Indicates if the page has only the values specified options selected - waits for them if not then returns

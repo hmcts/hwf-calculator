@@ -7,7 +7,7 @@ module Calculator
       include QuestionRadioListSection
 
       included do
-        section :help_section, :help_section_labelled, 'Help with Status' do
+        section :help_section, :help_section_labelled, t("#{i18n_scope}.guidance.label") do
           include QuestionHelpSection
         end
 
@@ -28,7 +28,7 @@ module Calculator
       def set(value)
         v = case value
             when String then value
-            when Symbol then messaging.t("hwf_components.marital_status.options.#{value}")
+            when Symbol then messaging.t("#{i18n_scope}.options.#{value}")
             end
         super(v)
       end
@@ -49,7 +49,7 @@ module Calculator
 
       def has_error_with_text?(text)
         translated = case text
-                     when Symbol then messaging.t("hwf_components.marital_status.errors.#{text}")
+                     when Symbol then messaging.t("#{i18n_scope}.errors.#{text}")
                      else text
                      end
         error_with_text(translated)

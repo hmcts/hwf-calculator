@@ -6,7 +6,7 @@ module Calculator
 
       included do
         element :answer, '[data-behavior=answer]'
-        element :link, '[data-behavior=action] a[href]', text: "Change"
+        element :link, '[data-behavior=action] a[href]', text: t("#{i18n_scope}.change")
       end
 
       def navigate_to

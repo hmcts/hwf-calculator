@@ -5,6 +5,7 @@ module Calculator
         set_url '/calculation/number_of_children'
         element :heading, :exact_heading_text, t('hwf_pages.number_of_children.heading')
         section :number_of_children, :calculator_question, t('hwf_pages.number_of_children.questions.number_of_children.label') do
+          @i18n_scope = 'hwf_pages.number_of_children.questions.number_of_children'
           include ::Calculator::Test::NumberOfChildrenQuestionSection
         end
         element :next_button, :button, t('hwf_pages.number_of_children.buttons.next')
@@ -22,7 +23,7 @@ module Calculator
         # Validates that the guidance text is correct for the english language
         # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
         def validate_guidance
-          number_of_children.validate_guidance(messaging.t('hwf_pages.number_of_children.guidance.number_of_children.text'))
+          number_of_children.validate_guidance(messaging.t('hwf_pages.number_of_children.questions.number_of_children.guidance.text'))
         end
 
         # Indicates if the marital status field has no guidance text visible

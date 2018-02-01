@@ -7,7 +7,7 @@ module Calculator
       include QuestionNumericSection
 
       included do
-        section :help_section, :help_section_labelled, 'Help with savings and investments' do
+        section :help_section, :help_section_labelled, t("#{i18n_scope}.guidance.label") do
           include QuestionHelpSection
         end
 
@@ -40,7 +40,7 @@ module Calculator
 
       def has_error_with_text?(text)
         translated = case text
-                     when Symbol then messaging.t("hwf_components.disposable_capital.errors.#{text}")
+                     when Symbol then messaging.t("#{i18n_scope}.errors.#{text}")
                      else text
                      end
         error_with_text(translated)
@@ -49,7 +49,7 @@ module Calculator
       end
 
       def has_hint?
-        hint_with_text(messaging.t("hwf_components.disposable_capital.hint"))
+        hint_with_text(messaging.t("#{i18n_scope}.hint"))
         true
       rescue Capybara::ElementNotFound
         false

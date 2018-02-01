@@ -57,13 +57,16 @@ en:
       questions:
         number_of_children:
           label: 'How many children live with you or are you responsible for supporting financially?'
-      guidance:
-        number_of_children:
-          text: |
-            Enter the number of children who you describe as:
-            under 16 and living at home with you
-            age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
-            children who don’t live with you, but you (or your partner) pay regular maintenance for them
+          errors:
+            non_numeric: You must enter the number of financially dependent children
+            blank: You must enter the number of financially dependent children
+          guidance:
+            label: 'Children who might affect your claim'
+            text: |
+              Enter the number of children who you describe as:
+              under 16 and living at home with you
+              age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
+              children who don’t live with you, but you (or your partner) pay regular maintenance for them
       buttons:
         next: 'Next step'
     date_of_birth:
@@ -71,8 +74,34 @@ en:
       questions:
         date_of_birth:
           label: 'What is your date of birth?'
+          errors:
+            non_numeric: Enter the date in this format DD/MM/YYYY
+            under_age: You must be over 15 to apply for help with fees
+          hint:
+            single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+          components:
+            day:
+              label: 'Day'
+            month:
+              label: 'Month'
+            year:
+              label: 'Year'
         partner_date_of_birth:
           label: 'What is your partners date of birth?'
+          errors:
+            non_numeric: Enter the date in this format DD/MM/YYYY
+            under_age: Your partner must be over 15 to apply for help with fees
+          hint:
+            single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+          components:
+            day:
+              label: 'Day'
+            month:
+              label: 'Month'
+            year:
+              label: 'Year'
       buttons:
         next: 'Next step'
     total_income:
@@ -80,19 +109,22 @@ en:
       questions:
         total_income:
           label: 'How much total income do you receive each month?'
-      guidance:
-        total_income:
-          text: |
-            Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:
-            wages
-            some benefits
-            pensions (state, work or private without guarantee credit)
-            rent from anyone living with you and other properties that you own
-            payments from relatives
-            maintenance payments, eg from an ex-spouse
-            income from selling goods publicly or privately, including over the internet
-            student maintenance loans, grants or bursaries (except for tuition fee loans)
-            If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
+          errors:
+            non_numeric: Please enter a valid value
+          hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
+          guidance:
+            label: 'What to include as income'
+            text: |
+              Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:
+              wages
+              some benefits
+              pensions (state, work or private without guarantee credit)
+              rent from anyone living with you and other properties that you own
+              payments from relatives
+              maintenance payments, eg from an ex-spouse
+              income from selling goods publicly or privately, including over the internet
+              student maintenance loans, grants or bursaries (except for tuition fee loans)
+              If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       buttons:
         next: 'Next step'
     marital_status:
@@ -100,21 +132,27 @@ en:
       questions:
         marital_status:
           label: 'Are you single, married or living with someone and sharing income?'
-      guidance:
-        marital_status:
-          text: |
-            Single means you rely on your own income or your case involves your partner, for example:
-            divorce, dissolution or annulment (unless you have married again or live with a new partner)
-            gender recognition
-            domestic violence
-            forced marriage
-            You should also choose single if you and your partner are both part of a multiple fee group
-            Married or living with someone and sharing an income means:
-            married
-            civil partners
-            living together as if you are married or in a civil partnership
-            living at the same address with a joint income
-            part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+          options:
+            single: Single
+            sharing_income: Married or living with someone
+          errors:
+            blank: "Select whether you're single, married or living with someone and sharing an income"
+          guidance:
+            label: 'Help with Status'
+            text: |
+              Single means you rely on your own income or your case involves your partner, for example:
+              divorce, dissolution or annulment (unless you have married again or live with a new partner)
+              gender recognition
+              domestic violence
+              forced marriage
+              You should also choose single if you and your partner are both part of a multiple fee group
+              Married or living with someone and sharing an income means:
+              married
+              civil partners
+              living together as if you are married or in a civil partnership
+              living at the same address with a joint income
+              part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+
       buttons:
         next: 'Next step'
     fee:
@@ -122,6 +160,9 @@ en:
       questions:
         fee:
           label: 'How much is the court or tribunal fee?'
+          errors:
+            non_numeric: Please enter numeric value with no decimal places
+          hint: Enter valid value with no decimal places
       buttons:
         next: 'Next step'
       guidance:
@@ -132,44 +173,65 @@ en:
       questions:
         disposable_capital:
           label: 'How much do you have in savings and investment combined?'
-      guidance:
-        disposable_capital:
-          text: |
-            You should include any of the following:
-            money in ISAs and any other savings account
-            joint savings accounts that you share with your partner
-            fixed rate or investment bonds
-            any lump sum (eg a redundancy payout)
-            stocks and shares
-            trust funds (or any other kind of fund)
-            capital value of additional property
-            money or property outside the UK
-            You should exclude:
-            wages or benefits
-            joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
-            personal pensions
-            capital value of self-employed businesses
-            student loans
-            unfair dismissal awards
-            money from the criminal injury compensation scheme
-            medical negligence or personal injury awards
-            any compensation under a statutory scheme in respect of Mesothelioma
+          errors:
+            non_numeric: "Enter a valid value"
+            blank: "Enter how much you have in savings and investments"
+          hint: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+          guidance:
+            label: 'Help with savings and investments'
+            text: |
+              You should include any of the following:
+              money in ISAs and any other savings account
+              joint savings accounts that you share with your partner
+              fixed rate or investment bonds
+              any lump sum (eg a redundancy payout)
+              stocks and shares
+              trust funds (or any other kind of fund)
+              capital value of additional property
+              money or property outside the UK
+              You should exclude:
+              wages or benefits
+              joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+              personal pensions
+              capital value of self-employed businesses
+              student loans
+              unfair dismissal awards
+              money from the criminal injury compensation scheme
+              medical negligence or personal injury awards
+              any compensation under a statutory scheme in respect of Mesothelioma
       buttons:
         next: 'Next step'
     income_benefits:
       heading: 'Find out if you could get help with fees'
-      guidance:
-        benefits:
-          text: |
-            You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits.
-            When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence.
-        dont_know_option: If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)
-        none_option: If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)
-      errors:
-        nothing_selected: "Select whether you're receiving one of the benefits listed"
       questions:
         benefits:
           label: 'Select all income benefits you are currently receiving'
+          options:
+            dont_know:
+              label: "Don't know"
+              guidance: If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)
+            none:
+              label: 'None of the above'
+              guidance: If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)
+            jobseekers_allowance:
+              label: "Income-based Jobseeker’s Allowance (JSA)"
+            employment_support_allowance:
+              label: "Income-related Employment and Support Allowance (ESA)"
+            income_support:
+              label: "Income Support"
+            universal_credit:
+              label: "Universal Credit (and you’re earning less than £6,000 a year)"
+            pension_credit:
+              label: "Pension Credit (guarantee credit)"
+            scottish_legal_aid:
+              label: "Scottish Legal Aid (Civil Claims)"
+          guidance:
+            text: |
+              You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits.
+              When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence.
+          errors:
+            nothing_selected: "Select whether you're receiving one of the benefits listed"
+
       buttons:
         next: 'Next step'
     home:
@@ -193,29 +255,25 @@ en:
         full_text: This guide is also available in Welsh (Cymraeg)
         link_text: in Welsh
   hwf_components:
-    benefits:
-      options:
-        dont_know: "Don't know"
-        none: 'None of the above'
-        jobseekers_allowance: "Income-based Jobseeker’s Allowance (JSA)"
-        employment_support_allowance: "Income-related Employment and Support Allowance (ESA)"
-        income_support: "Income Support"
-        universal_credit: "Universal Credit (and you’re earning less than £6,000 a year)"
-        pension_credit: "Pension Credit (guarantee credit)"
-        scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"
     previous_questions:
       marital_status:
         label: "What is your status"
+        change: 'Change'
       court_fee:
         label: "Court or tribunal fee to pay"
+        change: 'Change'
       date_of_birth:
         label: "Date of birth"
+        change: 'Change'
       partner_date_of_birth:
         label: "Partner date of birth"
+        change: 'Change'
       disposable_capital:
         label: "Combined savings and investment"
+        change: 'Change'
       income_benefits:
         label: "Income benefits you are currently receiving"
+        change: 'Change'
         options:
           dont_know: "Don't know"
           none: 'none'
@@ -227,40 +285,10 @@ en:
           scottish_legal_aid: 'SLA'
       number_of_children:
         label: "Supported children"
+        change: 'Change'
       total_income:
         label: "Total income"
-    marital_status:
-      options:
-        single: Single
-        sharing_income: Married or living with someone
-      errors:
-        blank: "Select whether you're single, married or living with someone and sharing an income"
-    date_of_birth:
-      errors:
-        non_numeric: Enter the date in this format DD/MM/YYYY
-        under_age:
-          applicant: You must be over 15 to apply for help with fees
-          partner: Your partner must be over 15 to apply for help with fees
-      hint:
-        single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-        married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-    court_fee:
-      errors:
-        non_numeric: Please enter numeric value with no decimal places
-      hint: Enter valid value with no decimal places
-    total_income:
-      errors:
-        non_numeric: Please enter a valid value
-      hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
-    number_of_children:
-      errors:
-        non_numeric: You must enter the number of financially dependent children
-        blank: You must enter the number of financially dependent children
-    disposable_capital:
-      errors:
-        non_numeric: "Enter a valid value"
-        blank: "Enter how much you have in savings and investments"
-      hint: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+        change: 'Change'
 
 
 
