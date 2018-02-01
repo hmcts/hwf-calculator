@@ -1,7 +1,9 @@
 require_relative 'question_date'
 module Calculator
   module Test
-    class DateOfBirthQuestionSection < QuestionDateSection
+    module DateOfBirthQuestionSection
+      extend ActiveSupport::Concern
+      include QuestionDateSection
 
       # Indicates iof the question is marked with the specified error message (or translation key)
       # @param [String,Symbol] text The error text to find or a translation key for it

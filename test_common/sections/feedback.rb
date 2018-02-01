@@ -1,6 +1,9 @@
 module Calculator
   module Test
-    class FeedbackSection < BaseSection
+    module FeedbackSection
+      extend ActiveSupport::Concern
+      include BaseSection
+
       def message_with_detail(msg)
         within @root_element do
           find '[data-behavior=calculator_feedback_message]', text: msg

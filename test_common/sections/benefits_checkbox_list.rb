@@ -2,8 +2,18 @@ require_relative './question_checkbox_list'
 require_relative 'question_help'
 module Calculator
   module Test
-    class BenefitsCheckboxListSection < QuestionCheckboxListSection
-      section :help_section, QuestionHelpSection, :help_section_labelled, 'How benefit affects your claim'
+    module BenefitsCheckboxListSection
+      extend ActiveSupport::Concern
+
+      include QuestionCheckboxListSection
+
+      included do
+        section :help_section, :help_section_labelled, 'How benefit affects your claim' do
+          include QuestionHelpSection
+        end
+        delegate :wait_for_help_text, to: :help_section
+        delegate :wait_for_no_help_text, to: :help_section
+      end
 
       # Validates that the guidance text is as expected
       # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
@@ -29,9 +39,6 @@ module Calculator
       end
       # rubocop:enable Style/PredicateName
 
-      delegate :wait_for_help_text, to: :help_section
-
-      delegate :wait_for_no_help_text, to: :help_section
 
       def dont_know_guidance
         option = option_labelled(messaging.t('hwf_components.benefits.options.dont_know'))
@@ -77,7 +84,6 @@ module Calculator
         end
         super(v)
       end
-
     end
   end
 end

@@ -7,8 +7,12 @@ module Calculator
         include ActiveSupport::NumberHelper
         include ::Calculator::Test::I18n
 
-        section :feedback, ::Calculator::Test::FeedbackSection, '[data-behavior=calculator_feedback]'
-        section :previous_answers, ::Calculator::Test::PreviousQuestionsSection, '[data-behavior=calculator_previous_questions]'
+        section :feedback, '[data-behavior=calculator_feedback]' do
+          include ::Calculator::Test::FeedbackSection
+        end
+        section :previous_answers, '[data-behavior=calculator_previous_questions]' do
+          include ::Calculator::Test::PreviousQuestionsSection
+        end
 
         def messaging
           @messaging ||= ::Calculator::Test::Messaging.instance

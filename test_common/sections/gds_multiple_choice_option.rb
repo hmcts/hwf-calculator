@@ -1,11 +1,18 @@
 module Calculator
   module Test
     # Represents a correctly wrapped checkbox for GDS multiple choice answers
-    class GdsMultipleChoiceOptionSection < BaseSection
-      element :checkbox, 'input[type=checkbox]'
-      element :label, 'label'
-      element :guidance, '[data-behavior=multiple_choice_guidance]'
-      delegate :disabled?, to: :checkbox
+    module GdsMultipleChoiceOptionSection
+      extend ActiveSupport::Concern
+      include BaseSection
+
+      included do
+        element :checkbox, 'input[type=checkbox]'
+        element :label, 'label'
+        element :guidance, '[data-behavior=multiple_choice_guidance]'
+        delegate :disabled?, to: :checkbox
+        delegate :checked?, to: :checkbox
+        delegate :text, to: :label
+      end
 
       def guidance_with_text(text)
         guidance(text: text)
@@ -18,9 +25,6 @@ module Calculator
       rescue SitePrism::TimeoutException
         false
       end
-
-      delegate :checked?, to: :checkbox
-      delegate :text, to: :label
     end
   end
 end

@@ -1,7 +1,11 @@
 module Calculator
   module Test
-    class QuestionSection < BaseSection
-      element :hint, '.form-hint'
+    module QuestionSection
+      extend ActiveSupport::Concern
+      include BaseSection
+      included do
+        element :hint, '.form-hint'
+      end
       # Finds an error node with the matching text which is GDS compatible
       # @param [String] text The error text to search for
       # @return [Capybara::Node::Element] The node containing the error message

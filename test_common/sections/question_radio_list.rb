@@ -1,7 +1,9 @@
 require_relative 'question_section'
 module Calculator
   module Test
-    class QuestionRadioListSection < QuestionSection
+    module QuestionRadioListSection
+      extend ActiveSupport::Concern
+      include QuestionSection
 
       # Selects the radio button labelled with the value given
       # @param [String] value The option to select

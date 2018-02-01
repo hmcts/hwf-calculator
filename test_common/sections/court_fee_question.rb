@@ -3,11 +3,18 @@ require_relative 'question_help'
 module Calculator
   module Test
     # A section representing the court fee question
-    class CourtFeeQuestionSection < QuestionNumericSection
-      section :help_section,
-        QuestionHelpSection,
-        :help_section_labelled,
-        'If you have already paid your court or tribunal fee'
+    module CourtFeeQuestionSection
+      extend ActiveSupport::Concern
+      include QuestionNumericSection
+
+      included do
+        section :help_section, :help_section_labelled, 'If you have already paid your court or tribunal fee' do
+          include QuestionHelpSection
+        end
+
+        delegate :wait_for_help_text, to: :help_section
+        delegate :wait_for_no_help_text, to: :help_section
+      end
 
       # Validates that the guidance text is as expected
       # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
@@ -50,9 +57,6 @@ module Calculator
         false
       end
       # rubocop:enable Style/PredicateName
-
-      delegate :wait_for_help_text, to: :help_section
-      delegate :wait_for_no_help_text, to: :help_section
     end
   end
 end

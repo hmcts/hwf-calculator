@@ -1,10 +1,15 @@
 module Calculator
   module Test
-    class QuestionHelpSection < BaseSection
-      element :toggle_node, '[data-behavior=toggle]'
-      element :help_text, '[data-behavior=question_help_text]'
-      element :expanded_root, :xpath, (XPath.generate { |x| x.self[x.attr(:open)] })
-      element :collapsed_root, :xpath, './self::*[not(@open)]'
+    module QuestionHelpSection
+      extend ActiveSupport::Concern
+      include BaseSection
+
+      included do
+        element :toggle_node, '[data-behavior=toggle]'
+        element :help_text, '[data-behavior=question_help_text]'
+        element :expanded_root, :xpath, (XPath.generate { |x| x.self[x.attr(:open)] })
+        element :collapsed_root, :xpath, './self::*[not(@open)]'
+      end
 
       # Toggles help text
       def toggle
