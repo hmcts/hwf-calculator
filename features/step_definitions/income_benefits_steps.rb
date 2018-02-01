@@ -50,7 +50,7 @@ When(/^I click next without submitting my income benefits$/) do
 end
 
 Then(/^I should see the income benefits error message$/) do
-  expect(income_benefits_page.error_nothing_selected).to be_visible
+  expect(income_benefits_page.benefits).to have_error_nothing_selected
 end
 
 When(/^I submit the page with income support$/) do

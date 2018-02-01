@@ -36,8 +36,6 @@ module Calculator
         def wait_for_guidance
           fee.wait_for_help_text
         end
-
-        delegate :has_error_with_text?, to: :fee
       end
     end
   end

@@ -42,7 +42,7 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
     disposable_capital_page.next
 
     # Assert
-    expect(disposable_capital_page).to have_error_with_text(:non_numeric)
+    expect(disposable_capital_page.disposable_capital).to have_error_non_numeric
   end
   # Scenario: Savings & Investments field is empty/blank - no entry (Revised)
   #             Given  I am on the savings and investments question
@@ -61,6 +61,6 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
     disposable_capital_page.next
 
     # Assert
-    expect(disposable_capital_page).to have_error_with_text(:blank)
+    expect(disposable_capital_page.disposable_capital).to have_error_blank
   end
 end

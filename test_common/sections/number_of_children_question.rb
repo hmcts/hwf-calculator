@@ -9,6 +9,10 @@ module Calculator
         section :help_section, :help_section_labelled, t("#{i18n_scope}.guidance.label") do
           include QuestionHelpSection
         end
+
+        element :error_non_numeric, :exact_error_text, t("#{i18n_scope}.errors.non_numeric")
+        element :error_blank, :exact_error_text, t("#{i18n_scope}.errors.blank")
+
         delegate :wait_for_help_text, to: :help_section
 
         delegate :wait_for_no_help_text, to: :help_section

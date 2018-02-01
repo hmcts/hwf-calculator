@@ -35,18 +35,6 @@ module Calculator
         def wait_for_guidance
           disposable_capital.wait_for_help_text
         end
-
-        # Find an error matching the given text in the disposable_capital field
-        #
-        # @param [String] text The error message to match
-        #
-        # @return [Capybara::Node::Element] The node found
-        # @raise [Capybara::ElementNotFound] If an error message could not be found
-        def error_with_text(text)
-          disposable_capital.error_with_text(text)
-        end
-
-        delegate :has_error_with_text?, to: :disposable_capital
       end
     end
   end

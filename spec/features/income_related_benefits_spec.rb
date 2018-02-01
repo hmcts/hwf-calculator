@@ -263,6 +263,6 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     income_benefits_page.next
 
     # Assert
-    expect(income_benefits_page.error_nothing_selected).to be_visible
+    expect(income_benefits_page.benefits).to have_error_nothing_selected
   end
 end

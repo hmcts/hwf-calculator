@@ -11,6 +11,9 @@ module Calculator
           include QuestionHelpSection
         end
 
+        element :error_blank, :exact_error_text, t("#{i18n_scope}.errors.blank")
+
+
         delegate :wait_for_help_text, to: :help_section
         delegate :wait_for_no_help_text, to: :help_section
       end

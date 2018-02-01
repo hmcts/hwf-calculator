@@ -48,7 +48,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     number_of_children_page.next
 
     # Assert
-    expect(number_of_children_page).to have_error_with_text(:non_numeric)
+    expect(number_of_children_page.number_of_children).to have_error_non_numeric
   end
   #
   # Scenario: Number of children field empty - Blank Field (no entry)
@@ -68,6 +68,6 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     number_of_children_page.next
 
     # Assert
-    expect(number_of_children_page).to have_error_with_text(:blank)
+    expect(number_of_children_page.number_of_children).to have_error_blank
   end
 end

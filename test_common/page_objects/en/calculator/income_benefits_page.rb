@@ -62,10 +62,6 @@ module Calculator
           benefits.none_of_the_above_guidance
         end
 
-        def error_nothing_selected
-          benefits.error_with_text(messaging.t('hwf_pages.income_benefits.questions.benefits.errors.nothing_selected'))
-        end
-
         # Toggles the guidance text for this question
         def toggle_guidance
           benefits.toggle_help

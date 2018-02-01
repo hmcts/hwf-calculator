@@ -11,6 +11,9 @@ module Calculator
         section :help_section, :help_section_labelled, 'How benefit affects your claim' do
           include QuestionHelpSection
         end
+
+        element :error_nothing_selected, :exact_error_text, t("#{i18n_scope}.errors.nothing_selected")
+
         delegate :wait_for_help_text, to: :help_section
         delegate :wait_for_no_help_text, to: :help_section
       end
@@ -52,7 +55,7 @@ module Calculator
 
       # Selects single or multiple items by label.  The labels are specified by I18n key so the
       # test suite can be multi lingual
-      # @param [Symbol] keys Single or multiple keys into "hwf_components.benefits.options"
+      # @param [Symbol] keys Single or multiple keys into "<i18n_scope>.options"
       #   in the messaging/en.yml file.  Can be one of :dont_know, :none, :jobseekers_allowance,
       #   :employment_support_allowance, :income_support, :universal_credit, :pension_credit,
       #   :scottish_legal_aid
@@ -71,7 +74,7 @@ module Calculator
       # false if it never arrives
       # @return [Boolean] Indicates if the page has only the specified options selected
       # @param [Array[String|Symbol]] values An array of strings or symbols.  If symbols, then the values are
-      #   translated using hwf_pages.income_benefits.labels.benefits.#{key} in the messaging/en.yml file.
+      #   translated using <i18n_scope>.options.#{key}.label in the messaging/en.yml file.
       #   Can also be multiple values not in an array.
       def has_value?(*values)
         v = values.flatten.map do |value|
