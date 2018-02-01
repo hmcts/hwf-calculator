@@ -13,10 +13,15 @@ module Calculator
         element :disclaimer, '[data-behavior=disclaimer]'
         element :available_in_welsh, '[data-behavior=welsh_link]'
         element :welsh_link, '[data-behavior=welsh_link] a'
-        element :start_button, :link_or_button, 'Start now'
+        element :start_button, :link_or_button, t('hwf_pages.home.buttons.start')
 
         # Begin a calculator session
-        def start_session
+        def start_session(in_language: :en)
+          case in_language
+          when :cy then welsh_link.click
+          when :en then nil
+          else raise "We only support languages en and cy - #{in_language} is not supported"
+          end
           start_button.click
         end
 

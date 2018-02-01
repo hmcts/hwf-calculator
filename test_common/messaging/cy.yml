@@ -1,4 +1,4 @@
-en:
+cy:
   hwf_decision:
     disposable_capital:
       single:
@@ -256,7 +256,7 @@ en:
         full_text: This guide is also available in Welsh (Cymraeg)
         link_text: in Welsh
       buttons:
-        start: Start now
+        start: '*Welsh Start now'
   hwf_components:
     previous_questions:
       marital_status:

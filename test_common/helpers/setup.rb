@@ -57,7 +57,7 @@ module Calculator
 
       def start_calculator_session
         start_page.load_page
-        start_page.start_session
+        start_page.start_session in_language: ::Calculator::Test::Messaging.instance.current_locale
       end
 
       def answer_marital_status_question

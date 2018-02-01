@@ -18,11 +18,15 @@ module Calculator
         Thread.current[:calculator_test_messaging_instance] ||= new
       end
 
-      def translate(key, locale: :en, **options)
+      def translate(key, locale: current_locale, **options)
         result = catch(:exception) do
           backend.translate(locale, key, options)
         end
         result.is_a?(::I18n::MissingTranslation) ? raise(result) : result
+      end
+
+      def current_locale
+        Thread.current[:calculator_test_current_locale] ||= ENV.fetch('TEST_LOCALE', 'en').to_sym
       end
 
       alias t translate
