@@ -29,5 +29,5 @@ When(/^I click next without submitting my number of children$/) do
 end
 
 Then(/^I should see the number of children error message$/) do
-  expect(number_of_children_page.error_with_text(messaging.t('hwf_pages.number_of_children.errors.blank'))).to be_present
+  expect(number_of_children_page.number_of_children).to have_error_blank
 end

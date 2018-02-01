@@ -40,5 +40,5 @@ When(/^I click next without submitting my savings and investment$/) do
 end
 
 Then(/^I should see the savings and investment error message$/) do
-  expect(disposable_capital_page.error_with_text(messaging.t('hwf_pages.disposable_capital.errors.blank'))).to be_present
+  expect(disposable_capital_page.disposable_capital).to have_error_blank
 end
