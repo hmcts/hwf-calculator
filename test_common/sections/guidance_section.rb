@@ -26,10 +26,6 @@ module Calculator
       def has_no_guidance_text?
         guidance_section.guidance_text_collapsed?
       end
-
-      def has_guidance_text?
-        guidance_section.guidance_text_expanded?
-      end
       # rubocop:enable Style/PredicateName
     end
   end
