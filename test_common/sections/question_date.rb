@@ -8,6 +8,9 @@ module Calculator
         element :day, :field, t("#{i18n_scope}.components.day.label")
         element :month, :field, t("#{i18n_scope}.components.month.label")
         element :year, :field, t("#{i18n_scope}.components.year.label")
+        element :hint_for_single, '.form-hint', text: t("#{i18n_scope}.hint.single")
+        element :hint_for_married, '.form-hint', text: t("#{i18n_scope}.hint.married")
+
       end
 
       # Fills in the date fields

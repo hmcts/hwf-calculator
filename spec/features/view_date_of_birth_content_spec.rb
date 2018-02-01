@@ -22,7 +22,7 @@ RSpec.describe 'View date of birth content', type: :feature, js: true do
     aggregate_failures 'Validating content' do
       expect(date_of_birth_page.heading).to be_present
       expect(date_of_birth_page.date_of_birth).to be_present
-      expect(date_of_birth_page.date_of_birth).to have_hint_with_text(:single)
+      expect(date_of_birth_page.date_of_birth).to have_hint_for_single
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe 'View date of birth content', type: :feature, js: true do
     aggregate_failures 'Validating content' do
       expect(date_of_birth_page.heading).to be_present
       expect(date_of_birth_page.date_of_birth).to be_present
-      expect(date_of_birth_page.date_of_birth).to have_hint_with_text(:married)
+      expect(date_of_birth_page.date_of_birth).to have_hint_for_married
     end
   end
   #

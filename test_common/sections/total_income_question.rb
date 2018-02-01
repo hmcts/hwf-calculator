@@ -9,6 +9,7 @@ module Calculator
         section :help_section, :help_section_labelled, t("#{i18n_scope}.guidance.label") do
           include QuestionHelpSection
         end
+        element :hint, '.form-hint', text: t("#{i18n_scope}.hint")
 
         delegate :wait_for_help_text, to: :help_section
         delegate :wait_for_no_help_text, to: :help_section
@@ -46,15 +47,7 @@ module Calculator
       rescue Capybara::ElementNotFound
         false
       end
-
-      def has_hint?
-        hint_with_text(messaging.t("#{i18n_scope}.hint"))
-        true
-      rescue Capybara::ElementNotFound
-        false
-      end
       # rubocop:enable Style/PredicateName
-
     end
   end
 end

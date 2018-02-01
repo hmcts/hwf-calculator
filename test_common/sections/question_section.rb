@@ -3,9 +3,6 @@ module Calculator
     module QuestionSection
       extend ActiveSupport::Concern
       include BaseSection
-      included do
-        element :hint, '.form-hint'
-      end
       # Finds an error node with the matching text which is GDS compatible
       # @param [String] text The error text to search for
       # @return [Capybara::Node::Element] The node containing the error message
@@ -17,10 +14,6 @@ module Calculator
         within @root_element do
           find(:xpath, xpath, class: 'error-message', exact: true)
         end
-      end
-
-      def hint_with_text(text)
-        hint(text: text)
       end
     end
   end
