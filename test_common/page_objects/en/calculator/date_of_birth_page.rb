@@ -3,10 +3,10 @@ module Calculator
     module En
       class DateOfBirthPage < BasePage
         set_url '/calculation/date_of_birth'
-        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
-        section :date_of_birth, ::Calculator::Test::DateOfBirthQuestionSection, :calculator_question, 'What is your date of birth?'
-        section :partner_date_of_birth, ::Calculator::Test::DateOfBirthQuestionSection, :calculator_question, 'What is your partners date of birth?'
-        element :next_button, :button, 'Next step'
+        element :heading, :exact_heading_text, t('hwf_pages.date_of_birth.heading')
+        section :date_of_birth, ::Calculator::Test::DateOfBirthQuestionSection, :calculator_question, t('hwf_pages.date_of_birth.questions.date_of_birth')
+        section :partner_date_of_birth, ::Calculator::Test::DateOfBirthQuestionSection, :calculator_question, t('hwf_pages.date_of_birth.questions.partner_date_of_birth')
+        element :next_button, :button, t('hwf_pages.date_of_birth.buttons.next')
 
         def next
           next_button.click

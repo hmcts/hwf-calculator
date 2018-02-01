@@ -3,9 +3,9 @@ module Calculator
     module En
       class MaritalStatusPage < BasePage
         set_url '/calculation/marital_status'
-        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
-        section :marital_status, ::Calculator::Test::MaritalStatusQuestionSection, :calculator_question, 'Are you single, married or living with someone and sharing income?'
-        element :next_button, :button, 'Next step'
+        element :heading, :exact_heading_text, t('hwf_pages.marital_status.heading')
+        section :marital_status, ::Calculator::Test::MaritalStatusQuestionSection, :calculator_question, t('hwf_pages.marital_status.questions.marital_status')
+        element :next_button, :button, t('hwf_pages.marital_status.buttons.next')
 
         # Progress to the next page
         def next

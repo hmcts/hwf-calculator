@@ -53,6 +53,9 @@ en:
           detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
   hwf_pages:
     number_of_children:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        number_of_children: 'How many children live with you or are you responsible for supporting financially?'
       guidance:
         number_of_children:
           text: |
@@ -60,7 +63,19 @@ en:
             under 16 and living at home with you
             age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
             children who don’t live with you, but you (or your partner) pay regular maintenance for them
+      buttons:
+        next: 'Next step'
+    date_of_birth:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        date_of_birth: 'What is your date of birth?'
+        partner_date_of_birth: 'What is your partners date of birth?'
+      buttons:
+        next: 'Next step'
     total_income:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        total_income: 'How much total income do you receive each month?'
       guidance:
         total_income:
           text: |
@@ -74,7 +89,12 @@ en:
             income from selling goods publicly or privately, including over the internet
             student maintenance loans, grants or bursaries (except for tuition fee loans)
             If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
+      buttons:
+        next: 'Next step'
     marital_status:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        marital_status: 'Are you single, married or living with someone and sharing income?'
       guidance:
         marital_status:
           text: |
@@ -90,11 +110,21 @@ en:
             living together as if you are married or in a civil partnership
             living at the same address with a joint income
             part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+      buttons:
+        next: 'Next step'
     fee:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        fee: 'How much is the court or tribunal fee?'
+      buttons:
+        next: 'Next step'
       guidance:
         fee:
           text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
     disposable_capital:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        disposable_capital: 'How much do you have in savings and investment combined?'
       guidance:
         disposable_capital:
           text: |
@@ -117,7 +147,10 @@ en:
             money from the criminal injury compensation scheme
             medical negligence or personal injury awards
             any compensation under a statutory scheme in respect of Mesothelioma
+      buttons:
+        next: 'Next step'
     income_benefits:
+      heading: 'Find out if you could get help with fees'
       guidance:
         benefits:
           text: |
@@ -127,10 +160,12 @@ en:
         none_option: If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)
       errors:
         nothing_selected: "Select whether you're receiving one of the benefits listed"
-      labels:
-        benefits:
-          question_label: 'Select all income benefits you are currently receiving'
+      questions:
+        benefits: 'Select all income benefits you are currently receiving'
+      buttons:
+        next: 'Next step'
     home:
+      heading: 'Find out if you could get help with fees'
       introduction_text: |
         This calculator will tell you if you’re likely to get help with fees and how much you could get.
         You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:

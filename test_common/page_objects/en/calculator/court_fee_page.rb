@@ -3,9 +3,9 @@ module Calculator
     module En
       class CourtFeePage < BasePage
         set_url '/calculation/fee'
-        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
-        section :fee, ::Calculator::Test::CourtFeeQuestionSection, :calculator_question, 'How much is the court or tribunal fee?'
-        element :next_button, :button, 'Next step'
+        element :heading, :exact_heading_text, t('hwf_pages.fee.heading')
+        section :fee, ::Calculator::Test::CourtFeeQuestionSection, :calculator_question, t('hwf_pages.fee.questions.fee')
+        element :next_button, :button, t('hwf_pages.fee.buttons.next')
 
         # Progress to the next page
         def next

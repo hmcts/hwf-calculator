@@ -3,9 +3,9 @@ module Calculator
     module En
       class TotalIncomePage < BasePage
         set_url '/calculation/total_income'
-        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
-        section :total_income, ::Calculator::Test::TotalIncomeQuestionSection, :calculator_question, 'How much total income do you receive each month?'
-        element :next_button, :button, 'Next step'
+        element :heading, :exact_heading_text, t('hwf_pages.total_income.heading')
+        section :total_income, ::Calculator::Test::TotalIncomeQuestionSection, :calculator_question, t('hwf_pages.total_income.questions.total_income')
+        element :next_button, :button, t('hwf_pages.total_income.buttons.next')
 
         def next
           next_button.click

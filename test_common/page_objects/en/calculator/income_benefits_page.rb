@@ -4,9 +4,9 @@ module Calculator
       # A page object providing an interface to the 'Income Benefits Page'
       class IncomeBenefitsPage < BasePage
         set_url '/calculation/benefits_received'
-        element :heading, :exact_heading_text, 'Find out if you could get help with fees'
-        section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, 'Select all income benefits you are currently receiving'
-        element :next_button, :button, 'Next step'
+        element :heading, :exact_heading_text, t('hwf_pages.income_benefits.heading')
+        section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, t('hwf_pages.income_benefits.questions.benefits')
+        element :next_button, :button, t('hwf_pages.income_benefits.buttons.next')
 
         def benefit_options
           [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid].each do |benefit|
