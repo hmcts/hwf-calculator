@@ -5,7 +5,7 @@ module Calculator
       class IncomeBenefitsPage < BasePage
         set_url '/calculation/benefits_received'
         element :heading, :exact_heading_text, t('hwf_pages.income_benefits.heading')
-        section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, t('hwf_pages.income_benefits.questions.benefits')
+        section :benefits, ::Calculator::Test::BenefitsCheckboxListSection, :calculator_question, t('hwf_pages.income_benefits.questions.benefits.label')
         element :next_button, :button, t('hwf_pages.income_benefits.buttons.next')
 
         def benefit_options

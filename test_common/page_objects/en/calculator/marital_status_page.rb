@@ -4,7 +4,7 @@ module Calculator
       class MaritalStatusPage < BasePage
         set_url '/calculation/marital_status'
         element :heading, :exact_heading_text, t('hwf_pages.marital_status.heading')
-        section :marital_status, ::Calculator::Test::MaritalStatusQuestionSection, :calculator_question, t('hwf_pages.marital_status.questions.marital_status')
+        section :marital_status, ::Calculator::Test::MaritalStatusQuestionSection, :calculator_question, t('hwf_pages.marital_status.questions.marital_status.label')
         element :next_button, :button, t('hwf_pages.marital_status.buttons.next')
 
         # Progress to the next page

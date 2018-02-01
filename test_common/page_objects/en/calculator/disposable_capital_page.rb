@@ -4,7 +4,7 @@ module Calculator
       class DisposableCapitalPage < BasePage
         set_url '/calculation/disposable_capital'
         element :heading, :exact_heading_text, t('hwf_pages.disposable_capital.heading')
-        section :disposable_capital, ::Calculator::Test::DisposableCapitalQuestionSection, :calculator_question, t('hwf_pages.disposable_capital.questions.disposable_capital')
+        section :disposable_capital, ::Calculator::Test::DisposableCapitalQuestionSection, :calculator_question, t('hwf_pages.disposable_capital.questions.disposable_capital.label')
         element :next_button, :button, t('hwf_pages.disposable_capital.buttons.next')
 
         def next

@@ -55,7 +55,8 @@ en:
     number_of_children:
       heading: 'Find out if you could get help with fees'
       questions:
-        number_of_children: 'How many children live with you or are you responsible for supporting financially?'
+        number_of_children:
+          label: 'How many children live with you or are you responsible for supporting financially?'
       guidance:
         number_of_children:
           text: |
@@ -68,14 +69,17 @@ en:
     date_of_birth:
       heading: 'Find out if you could get help with fees'
       questions:
-        date_of_birth: 'What is your date of birth?'
-        partner_date_of_birth: 'What is your partners date of birth?'
+        date_of_birth:
+          label: 'What is your date of birth?'
+        partner_date_of_birth:
+          label: 'What is your partners date of birth?'
       buttons:
         next: 'Next step'
     total_income:
       heading: 'Find out if you could get help with fees'
       questions:
-        total_income: 'How much total income do you receive each month?'
+        total_income:
+          label: 'How much total income do you receive each month?'
       guidance:
         total_income:
           text: |
@@ -94,7 +98,8 @@ en:
     marital_status:
       heading: 'Find out if you could get help with fees'
       questions:
-        marital_status: 'Are you single, married or living with someone and sharing income?'
+        marital_status:
+          label: 'Are you single, married or living with someone and sharing income?'
       guidance:
         marital_status:
           text: |
@@ -115,7 +120,8 @@ en:
     fee:
       heading: 'Find out if you could get help with fees'
       questions:
-        fee: 'How much is the court or tribunal fee?'
+        fee:
+          label: 'How much is the court or tribunal fee?'
       buttons:
         next: 'Next step'
       guidance:
@@ -124,7 +130,8 @@ en:
     disposable_capital:
       heading: 'Find out if you could get help with fees'
       questions:
-        disposable_capital: 'How much do you have in savings and investment combined?'
+        disposable_capital:
+          label: 'How much do you have in savings and investment combined?'
       guidance:
         disposable_capital:
           text: |
@@ -161,7 +168,8 @@ en:
       errors:
         nothing_selected: "Select whether you're receiving one of the benefits listed"
       questions:
-        benefits: 'Select all income benefits you are currently receiving'
+        benefits:
+          label: 'Select all income benefits you are currently receiving'
       buttons:
         next: 'Next step'
     home:
