@@ -8,7 +8,6 @@ module Calculator
       ALL_QUESTIONS = [:marital_status, :court_fee, :disposable_capital, :income_benefits].freeze
       include ::Calculator::Test::I18n
 
-
       included do
         scope = @i18n_scope
         section :marital_status, :calculator_previous_question, t("hwf_components.previous_questions.marital_status.label") do
@@ -46,9 +45,8 @@ module Calculator
       end
 
       def disabled?
-        ALL_QUESTIONS.all? {|q| send(q).disabled?}
+        ALL_QUESTIONS.all? { |q| send(q).disabled? }
       end
     end
   end
 end
-

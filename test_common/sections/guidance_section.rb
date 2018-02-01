@@ -22,11 +22,9 @@ module Calculator
         guidance_section.toggle
       end
 
-      # rubocop:disable Style/PredicateName
       def has_no_guidance_text?
         guidance_section.guidance_text_collapsed?
       end
-      # rubocop:enable Style/PredicateName
     end
   end
 end

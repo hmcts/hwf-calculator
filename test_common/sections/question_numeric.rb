@@ -10,8 +10,6 @@ module Calculator
         delegate :set, to: :field
       end
 
-      # rubocop:disable Style/PredicateName
-
       # Validates that the value provided is present in the input control
       # note that this uses has_selector which means it will wait for the value
       # to arrive, subject to timeout of course.
@@ -20,7 +18,6 @@ module Calculator
       def has_value?(value)
         field(with: value)
       end
-      # rubocop:enable Style/PredicateName
     end
   end
 end

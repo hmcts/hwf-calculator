@@ -29,7 +29,6 @@ module Calculator
                      end
         options(text: translated).first
       end
-      # rubocop:disable Style/PredicateName
 
       # Validates that the values provided are selected in the checkbox list
       # and that other values are not.
@@ -45,8 +44,6 @@ module Calculator
       rescue SitePrism::TimeoutException
         false
       end
-
-      # rubocop:enable Style/PredicateName
     end
   end
 end

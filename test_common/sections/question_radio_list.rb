@@ -13,8 +13,6 @@ module Calculator
         end
       end
 
-      # rubocop:disable Style/PredicateName
-
       # Validates that the value provided is selected in the radio button list
       # note that this uses has_selector which means it will wait for the value
       # to arrive, subject to timeout of course.
@@ -25,7 +23,6 @@ module Calculator
           has_selector?(:radio_button, value, checked: true)
         end
       end
-      # rubocop:enable Style/PredicateName
     end
   end
 end
