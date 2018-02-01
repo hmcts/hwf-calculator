@@ -70,7 +70,7 @@ module Calculator
         # Validates that the guidance text is correct for the english language
         # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
         def validate_guidance
-          benefits.validate_guidance(messaging.t('hwf_pages.income_benefits.questions.benefits.guidance.text'))
+          benefits.validate_guidance
         end
 
         # Indicates if the marital status field has no guidance text visible

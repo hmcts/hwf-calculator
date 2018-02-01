@@ -20,12 +20,9 @@ module Calculator
       end
 
       # Validates that the guidance text is as expected
-      # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
-      #  array of strings which will be joined by a CR.  Note that whitespace should not be important,
-      # nor html structure etc..
       # @raise [Capybara::ExpectationNotMet] if the assertion hasn't succeeded during wait time
-      def validate_guidance(text_or_array)
-        strings = Array(text_or_array)
+      def validate_guidance
+        strings = Array(messaging.t("#{i18n_scope}.guidance.text"))
         help_section.assert_text(strings.join("\n"))
       end
 

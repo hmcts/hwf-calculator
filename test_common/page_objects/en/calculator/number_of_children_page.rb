@@ -23,7 +23,7 @@ module Calculator
         # Validates that the guidance text is correct for the english language
         # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
         def validate_guidance
-          number_of_children.validate_guidance(messaging.t('hwf_pages.number_of_children.questions.number_of_children.guidance.text'))
+          number_of_children.validate_guidance
         end
 
         # Indicates if the marital status field has no guidance text visible
@@ -36,18 +36,6 @@ module Calculator
         def wait_for_guidance
           number_of_children.wait_for_help_text
         end
-
-        # Find an error matching the given text in the number_of_children field
-        #
-        # @param [String] text The error message to match
-        #
-        # @return [Capybara::Node::Element] The node found
-        # @raise [Capybara::ElementNotFound] If an error message could not be found
-        def error_with_text(text)
-          number_of_children.error_with_text(text)
-        end
-
-        delegate :has_error_with_text?, to: :number_of_children
       end
     end
   end

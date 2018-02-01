@@ -22,7 +22,7 @@ module Calculator
         # Validates that the guidance text is correct for the english language
         # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
         def validate_guidance
-          total_income.validate_guidance(messaging.t('hwf_pages.total_income.questions.total_income.guidance.text'))
+          total_income.validate_guidance
         end
 
         # Indicates if the marital status field has no guidance text visible
