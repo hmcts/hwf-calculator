@@ -64,7 +64,7 @@ module Calculator
 
         # Toggles the guidance text for this question
         def toggle_guidance
-          benefits.toggle_help
+          benefits.toggle_guidance
         end
 
         # Validates that the guidance text is correct for the english language
@@ -73,15 +73,15 @@ module Calculator
           benefits.validate_guidance
         end
 
-        # Indicates if the marital status field has no guidance text visible
+        # Indicates if the benefits field has no guidance text visible
         def has_no_guidance?
-          benefits.has_no_help_text?
+          benefits.has_no_guidance_text?
         end
 
         # Waits for the guidance to be visible
         # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
         def wait_for_guidance
-          benefits.wait_for_help_text
+          benefits.wait_for_guidance_text
         end
 
         # Indicates if the page has only the values specified options selected - waits for them if not then returns

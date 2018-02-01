@@ -17,7 +17,7 @@ module Calculator
 
         # Toggles the guidance text for this question
         def toggle_guidance
-          number_of_children.toggle_help
+          number_of_children.toggle_guidance
         end
 
         # Validates that the guidance text is correct for the english language
@@ -26,15 +26,15 @@ module Calculator
           number_of_children.validate_guidance
         end
 
-        # Indicates if the marital status field has no guidance text visible
+        # Indicates if the number of children field has no guidance text visible
         def has_no_guidance?
-          number_of_children.has_no_help_text?
+          number_of_children.has_no_guidance_text?
         end
 
         # Waits for the guidance to be visible
         # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
         def wait_for_guidance
-          number_of_children.wait_for_help_text
+          number_of_children.wait_for_guidance_text
         end
       end
     end

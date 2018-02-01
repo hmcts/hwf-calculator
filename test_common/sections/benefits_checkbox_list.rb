@@ -1,44 +1,17 @@
 require_relative './question_checkbox_list'
-require_relative 'question_help'
+require_relative 'question_guidance'
+require_relative 'guidance_section'
 module Calculator
   module Test
     module BenefitsCheckboxListSection
       extend ActiveSupport::Concern
 
       include QuestionCheckboxListSection
+      include GuidanceSection
 
       included do
-        section :help_section, :help_section_labelled, t("#{i18n_scope}.guidance.label") do
-          include QuestionHelpSection
-        end
-
         element :error_nothing_selected, :exact_error_text, t("#{i18n_scope}.errors.nothing_selected")
-
-        delegate :wait_for_help_text, to: :help_section
-        delegate :wait_for_no_help_text, to: :help_section
       end
-
-      # Validates that the guidance text is as expected
-      # @raise [Capybara::ExpectationNotMet] if the assertion hasn't succeeded during wait time
-      def validate_guidance
-        strings = Array(messaging.t("#{i18n_scope}.guidance.text"))
-        help_section.assert_text(strings.join("\n"))
-      end
-
-      def toggle_help
-        help_section.toggle
-      end
-
-      # rubocop:disable Style/PredicateName
-      def has_no_help_text?
-        help_section.help_text_collapsed?
-      end
-
-      def has_help_text?
-        help_section.help_text_expanded?
-      end
-      # rubocop:enable Style/PredicateName
-
 
       def dont_know_guidance
         option = option_labelled(messaging.t("#{i18n_scope}.options.dont_know.label"))

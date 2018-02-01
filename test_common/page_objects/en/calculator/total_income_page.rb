@@ -16,7 +16,7 @@ module Calculator
 
         # Toggles the guidance text for this question
         def toggle_guidance
-          total_income.toggle_help
+          total_income.toggle_guidance
         end
 
         # Validates that the guidance text is correct for the english language
@@ -27,13 +27,13 @@ module Calculator
 
         # Indicates if the marital status field has no guidance text visible
         def has_no_guidance?
-          total_income.has_no_help_text?
+          total_income.has_no_guidance_text?
         end
 
         # Waits for the guidance to be visible
         # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
         def wait_for_guidance
-          total_income.wait_for_help_text
+          total_income.wait_for_guidance_text
         end
 
         # Find an error matching the given text in the total_income field

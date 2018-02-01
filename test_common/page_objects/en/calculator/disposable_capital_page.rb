@@ -16,7 +16,7 @@ module Calculator
 
         # Toggles the guidance text for this question
         def toggle_guidance
-          disposable_capital.toggle_help
+          disposable_capital.toggle_guidance
         end
 
         # Validates that the guidance text is correct for the english language
@@ -25,15 +25,15 @@ module Calculator
           disposable_capital.validate_guidance
         end
 
-        # Indicates if the marital status field has no guidance text visible
+        # Indicates if the disposable capital field has no guidance text visible
         def has_no_guidance?
-          disposable_capital.has_no_help_text?
+          disposable_capital.has_no_guidance_text?
         end
 
         # Waits for the guidance to be visible
         # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
         def wait_for_guidance
-          disposable_capital.wait_for_help_text
+          disposable_capital.wait_for_guidance_text
         end
       end
     end
