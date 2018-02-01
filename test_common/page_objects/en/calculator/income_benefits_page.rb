@@ -13,7 +13,7 @@ module Calculator
 
         def benefit_options
           [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid].each do |benefit|
-            benefits.option_labelled messaging.t("hwf_components.benefits.options.#{benefit}")
+            benefits.option_labelled benefit
           end
         end
 

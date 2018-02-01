@@ -23,7 +23,11 @@ module Calculator
       end
 
       def option_labelled(text)
-        options(text: text).first
+        translated = case text
+                     when Symbol then t("#{i18n_scope}.options.#{text}")
+                     else text
+                     end
+        options(text: translated).first
       end
       # rubocop:disable Style/PredicateName
 
