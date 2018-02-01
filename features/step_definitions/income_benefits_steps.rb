@@ -1,56 +1,75 @@
-Given("I am on the income benefits page") do
-  step 'I am John'
-  step 'I start a new calculator session'
-  step 'I answer the marital status question'
-  step 'I answer the court fee question'
-  step 'I answer the date of birth question'
-  step 'I submit my savings and investments'
+Given(/^I am on the income benefits page$/) do
+  answer_up_to(:benefits)
 end
 
-Then("I should see that I should be able to get help with fees message") do
+Then(/^I should see that I should be able to get help with fees message$/) do
   expect(any_calculator_page.positive_message).to be_present
 end
 
-Then("I should see income benefits list") do
+Then(/^I should see income benefits list$/) do
   expect(income_benefits_page.benefit_options).to be_present
 end
 
-When("I select none of the above") do
+When(/^I select none of the above$/) do
   income_benefits_page.choose_none
 end
 
-Then("I should see the none of the above guidance information") do
-  expect(income_benefits_page.dont_know_guidance).to be_present
+When(/^I answer the income benefits question$/) do
+  answer_benefits_question
 end
 
-When("I select dont know") do
-  income_benefits_page.choose_dont_know
-end
-
-Then("I should see the dont know guidance information") do
+Then(/^I should see the none of the above guidance information$/) do
   expect(income_benefits_page.none_of_the_above_guidance).to be_present
 end
 
-When("I submit the page with income related benefit checked") do
+When(/^I select dont know$/) do
+  income_benefits_page.choose_dont_know
+end
+
+Then(/^I should see the dont know guidance information$/) do
+  expect(income_benefits_page.dont_know_guidance).to be_present
+end
+
+When(/^I submit the page with income related benefit checked$/) do
   income_benefits_page.choose_jobseekers_allowance
   income_benefits_page.next
 end
 
-Then("I should see that I should be eligible for a full remission") do
-  expect(current_path).to end_with '/full_remission_available'
-  expect(full_remission_page).to have_positive
+Then(/^I should see that I should be eligible for a full remission$/) do
+  expect(full_remission_page).to be_displayed
 end
 
-When("I submit the page with income support and universal credit") do
+When(/^I submit the page with income support and universal credit$/) do
   income_benefits_page.choose_income_support
   income_benefits_page.choose_universal_credit
   income_benefits_page.next
 end
 
-When("I click next without submitting my income benefits") do
+When(/^I click next without submitting my income benefits$/) do
   income_benefits_page.next
 end
 
-Then("I should see the income benefits error message") do
-  expect(income_benefits_page.error_nothing_selected).to be_present
+Then(/^I should see the income benefits error message$/) do
+  expect(income_benefits_page.error_nothing_selected).to be_visible
+end
+
+When(/^I submit the page with income support$/) do
+  income_benefits_page.choose_income_support
+  income_benefits_page.next
+end
+
+Then(/^on the next page my income benefit has been added to previous answers$/) do
+  expect(full_remission_page.previous_answers).to have_marital_status
+  expect(full_remission_page.previous_answers).to have_court_fee
+  expect(full_remission_page.previous_answers).to have_date_of_birth
+  expect(full_remission_page.previous_answers).to have_disposable_capital
+  expect(full_remission_page.previous_answers).to have_income_benefits
+end
+
+When(/^I click on how benefits affect your claim$/) do
+  income_benefits_page.toggle_guidance
+end
+
+Then(/^I should see the copy for how benefits affect your claim$/) do
+  expect(income_benefits_page.validate_guidance).to be true
 end
