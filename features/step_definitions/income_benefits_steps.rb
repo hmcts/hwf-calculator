@@ -11,7 +11,7 @@ Then(/^I should see income benefits list$/) do
 end
 
 When(/^I select none of the above$/) do
-  income_benefits_page.choose_none
+  income_benefits_page.choose :none
 end
 
 When(/^I answer the income benefits question$/) do
@@ -23,7 +23,7 @@ Then(/^I should see the none of the above guidance information$/) do
 end
 
 When(/^I select dont know$/) do
-  income_benefits_page.choose_dont_know
+  income_benefits_page.choose :dont_know
 end
 
 Then(/^I should see the dont know guidance information$/) do
@@ -31,7 +31,7 @@ Then(/^I should see the dont know guidance information$/) do
 end
 
 When(/^I submit the page with income related benefit checked$/) do
-  income_benefits_page.choose_jobseekers_allowance
+  income_benefits_page.choose :jobseekers_allowance
   income_benefits_page.next
 end
 
@@ -40,8 +40,8 @@ Then(/^I should see that I should be eligible for a full remission$/) do
 end
 
 When(/^I submit the page with income support and universal credit$/) do
-  income_benefits_page.choose_income_support
-  income_benefits_page.choose_universal_credit
+  income_benefits_page.choose :income_support
+  income_benefits_page.choose :universal_credit
   income_benefits_page.next
 end
 
@@ -54,7 +54,7 @@ Then(/^I should see the income benefits error message$/) do
 end
 
 When(/^I submit the page with income support$/) do
-  income_benefits_page.choose_income_support
+  income_benefits_page.choose :income_support
   income_benefits_page.next
 end
 

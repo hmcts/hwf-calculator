@@ -50,7 +50,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     # Arrange - Get john to the benefits page
     given_i_am(:john)
     answer_up_to(:benefits)
-    income_benefits_page.choose_none
+    income_benefits_page.choose :none
 
     # Act
     income_benefits_page.choose(:jobseekers_allowance, :pension_credit)
@@ -63,7 +63,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     # Arrange - Get john to the benefits page
     given_i_am(:john)
     answer_up_to(:benefits)
-    income_benefits_page.choose_none
+    income_benefits_page.choose :none
 
     # Act
     income_benefits_page.choose(:dont_know)

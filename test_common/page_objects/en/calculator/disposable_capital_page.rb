@@ -4,11 +4,12 @@ module Calculator
       class DisposableCapitalPage < BasePage
         set_url '/calculation/disposable_capital'
         element :heading, :exact_heading_text, t('hwf_pages.disposable_capital.heading')
+        element :next_button, :button, t('hwf_pages.disposable_capital.buttons.next')
+
         section :disposable_capital, :calculator_question, t('hwf_pages.disposable_capital.questions.disposable_capital.label') do
           @i18n_scope = 'hwf_pages.disposable_capital.questions.disposable_capital'
           include ::Calculator::Test::DisposableCapitalQuestionSection
         end
-        element :next_button, :button, t('hwf_pages.disposable_capital.buttons.next')
 
         def next
           next_button.click
