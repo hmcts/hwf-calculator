@@ -52,13 +52,13 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     given_i_am(:john)
     answer_up_to(:total_income)
     total_income_page.toggle_guidance
-    total_income_page.wait_for_guidance
+    total_income_page.wait_for_guidance_text
 
     # Act
     total_income_page.toggle_guidance
 
     # Assert
-    expect(total_income_page).to have_no_guidance
+    expect(total_income_page).to have_no_guidance_text
   end
   #
   # Guidance Information Content:

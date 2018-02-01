@@ -14,39 +14,11 @@ module Calculator
           next_button.click
         end
 
-        # Toggles the guidance text for this question
-        def toggle_guidance
-          total_income.toggle_guidance
-        end
-
-        # Validates that the guidance text is correct for the english language
-        # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
-        def validate_guidance
-          total_income.validate_guidance
-        end
-
-        # Indicates if the marital status field has no guidance text visible
-        def has_no_guidance?
-          total_income.has_no_guidance_text?
-        end
-
-        # Waits for the guidance to be visible
-        # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
-        def wait_for_guidance
-          total_income.wait_for_guidance_text
-        end
-
-        # Find an error matching the given text in the total_income field
-        #
-        # @param [String] text The error message to match
-        #
-        # @return [Capybara::Node::Element] The node found
-        # @raise [Capybara::ElementNotFound] If an error message could not be found
-        def error_with_text(text)
-          total_income.error_with_text(text)
-        end
-
-        delegate :has_error_with_text?, to: :total_income
+        delegate :has_no_guidance_text?,
+          :toggle_guidance,
+          :validate_guidance,
+          :wait_for_guidance_text,
+          to: :total_income
       end
     end
   end

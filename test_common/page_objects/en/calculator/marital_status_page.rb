@@ -15,27 +15,11 @@ module Calculator
           next_button.click
         end
 
-        # Toggles the guidance text for this question
-        def toggle_guidance
-          marital_status.toggle_guidance
-        end
-
-        # Validates that the guidance text is correct for the english language
-        # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
-        def validate_guidance
-          marital_status.validate_guidance
-        end
-
-        # Indicates if the marital status field has no guidance text visible
-        def has_no_guidance?
-          marital_status.has_no_guidance_text?
-        end
-
-        # Waits for the guidance to be visible
-        # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
-        def wait_for_guidance
-          marital_status.wait_for_guidance_text
-        end
+        delegate :has_no_guidance_text?,
+          :toggle_guidance,
+          :validate_guidance,
+          :wait_for_guidance_text,
+          to: :marital_status
       end
     end
   end

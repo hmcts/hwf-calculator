@@ -62,28 +62,6 @@ module Calculator
           benefits.none_of_the_above_guidance
         end
 
-        # Toggles the guidance text for this question
-        def toggle_guidance
-          benefits.toggle_guidance
-        end
-
-        # Validates that the guidance text is correct for the english language
-        # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
-        def validate_guidance
-          benefits.validate_guidance
-        end
-
-        # Indicates if the benefits field has no guidance text visible
-        def has_no_guidance?
-          benefits.has_no_guidance_text?
-        end
-
-        # Waits for the guidance to be visible
-        # @raise [Capybara::ExpectationNotMet] if the guidance never became visible in the allowed timeout
-        def wait_for_guidance
-          benefits.wait_for_guidance_text
-        end
-
         # Indicates if the page has only the values specified options selected - waits for them if not then returns
         # false if it never arrives
         # @return [Boolean] Indicates if the page has only the specified options selected
@@ -93,6 +71,12 @@ module Calculator
         def has_selected?(*values)
           benefits.has_value?(*values)
         end
+
+        delegate :has_no_guidance_text?,
+          :toggle_guidance,
+          :validate_guidance,
+          :wait_for_guidance_text,
+          to: :benefits
       end
     end
   end
