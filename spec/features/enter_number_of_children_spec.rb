@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-747
 RSpec.describe 'Enter number of children test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::TotalIncomePage.new }
+  let(:next_page) { Calculator::Test::TotalIncomePage.new }
 
   # Feature: Number of Children responsible for supporting financially
   #

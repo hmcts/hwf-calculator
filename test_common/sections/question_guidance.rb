@@ -1,5 +1,9 @@
 module Calculator
   module Test
+    # A section for guidance text
+    #
+    # @! wait_for_guidance_text
+    #   Waits for the guidance text to be visible - raises if not within timeout
     module QuestionGuidanceSection
       extend ActiveSupport::Concern
       include BaseSection

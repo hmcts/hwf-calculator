@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-728
 RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::DisposableCapitalPage.new }
+  let(:next_page) { Calculator::Test::DisposableCapitalPage.new }
 
   # Feature: Date of Birth field validation
   # HwF eligibility Calculator should validate input in the date of birth field

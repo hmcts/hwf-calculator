@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-723
 RSpec.describe 'Enter court fee test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::DateOfBirthPage.new }
+  let(:next_page) { Calculator::Test::DateOfBirthPage.new }
 
   # Feature: Court or Tribunal Fee
   #   HwF eligibility Calculator should capture court or tribunal fees to check citizen eligibility for help with fees

@@ -18,7 +18,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
   # And I select Single option
   # When I click Next Step
   # Then I should see the next page
-  let(:next_page) { Calculator::Test::En::CourtFeePage.new }
+  let(:next_page) { Calculator::Test::CourtFeePage.new }
 
   scenario 'John confirms he is single' do
     # Arrange

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   include Calculator::Test::Pages
   # The next page is always the number of children
-  let(:next_page) { Calculator::Test::En::NumberOfChildrenPage.new }
+  let(:next_page) { Calculator::Test::NumberOfChildrenPage.new }
 
   #
   #   # Feature : Income Related Benefits

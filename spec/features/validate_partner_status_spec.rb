@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-794
 RSpec.describe 'Validate partner status test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::CourtFeePage.new }
+  let(:next_page) { Calculator::Test::CourtFeePage.new }
 
   # Personas
   #

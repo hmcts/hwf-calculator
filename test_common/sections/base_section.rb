@@ -1,6 +1,7 @@
 require_relative '../messaging'
 module Calculator
   module Test
+    # @private
     module BaseSection
       extend ActiveSupport::Concern
 
