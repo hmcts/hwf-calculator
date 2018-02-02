@@ -40,7 +40,7 @@ module Calculator
     #   @return [SitePrism::Section<QuestionGuidanceSection>] The section containing the guidance.  A normal site prism section which includes ::Calculator::Test::QuestionGuidanceSection
     #   @raise [Capybara::ElementNotFound] if the correct error text was not present within this section
     #
-  module GuidanceSection
+    module GuidanceSection
       extend ActiveSupport::Concern
       included do
         section :guidance_section, :guidance_section_labelled, t("#{i18n_scope}.guidance.label") do

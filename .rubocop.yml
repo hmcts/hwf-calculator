@@ -101,6 +101,9 @@ Style/CollectionMethods:
 Style/DotPosition:
   EnforcedStyle: trailing
 
+Style/FinalNewline:
+  Enabled: true
+
 # No, we don't prefer each_with_object
 Style/EachWithObject:
   Enabled: false
