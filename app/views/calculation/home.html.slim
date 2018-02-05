@@ -13,7 +13,7 @@
         li = line
   .notice.disclaimer data-behavior="disclaimer"
     i.icon.icon-information
-      span.visually-hidden = 'Warning'
+      span.visually-hidden = 'Information'
     - t('.disclaimer_html').lines.each do |line|
       strong.bold-small = line
   = form_for form, as: :calculation, url: start_calculation_url, method: :patch do |f|
