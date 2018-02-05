@@ -1,7 +1,5 @@
 Given(/^I am on the total income page$/) do
   answer_up_to(:total_income)
-  expect(total_income_page.heading).to be_present
-  expect(total_income_page.total_income).to have_hint
 end
 
 When(/^I successfully submit (?:my|our) total income$/) do

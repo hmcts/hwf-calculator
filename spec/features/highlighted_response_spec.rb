@@ -27,32 +27,11 @@ RSpec.describe 'Highlighted Response', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
-  end
-
-  scenario 'Under 61 years old view highlighted positive response - validating message details' do
-    # Arrange
-    given_i_am(:john)
-    answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
-
-    # Act
-    answer_disposable_capital_question
-
-    # Assert
-    expect(any_calculator_page).to have_feedback_message_with_detail(:"disposable_capital.#{marital_status}.positive", fee: user.fee, disposable_capital: user.disposable_capital)
-  end
-
-  scenario 'Under 61 years old view highlighted positive response - validating message is positive' do
-    # Arrange
-    given_i_am(:john)
-    answer_up_to(:disposable_capital)
-
-    # Act
-    answer_disposable_capital_question
-
-    # Assert
-    expect(any_calculator_page.positive_message).to be_present
+    aggregate_failures 'Validating message geader and details' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail(:"disposable_capital.#{marital_status}.positive", fee: user.fee, disposable_capital: user.disposable_capital)
+      expect(any_calculator_page.positive_message).to be_present
+    end
   end
   #
   #
