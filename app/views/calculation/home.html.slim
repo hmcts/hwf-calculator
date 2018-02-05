@@ -11,10 +11,11 @@
     ul.list.list-bullet
       - t('.requirements_html').lines[1..-1].each do |line|
         li = line
-  .notice data-behavior="disclaimer"
-
+  .notice.disclaimer data-behavior="disclaimer"
+    i.icon.icon-information
+      span.visually-hidden = 'Warning'
     - t('.disclaimer_html').lines.each do |line|
-      p.bold-small = line
+      strong.bold-small = line
   = form_for form, as: :calculation, url: start_calculation_url, method: :patch do |f|
     = f.submit t('.start'), class: 'button button-start'
     = f.hidden_field :_hidden, value: ''
