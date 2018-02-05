@@ -331,7 +331,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     given_i_am(:sue)
     dob = (Time.zone.today - 60.years).strftime('%d/%m/%Y')
     answer_up_to(:total_income)
-    total_income_page.previous_answers.partner_date_of_birth.navigate_to
+    total_income_page.previous_answers.date_of_birth.navigate_to
 
     # Act
     date_of_birth_page.partner_date_of_birth.set(dob)
