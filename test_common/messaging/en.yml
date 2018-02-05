@@ -8,7 +8,7 @@ en:
         negative:
           heading: You are unlikely to get help with your fees
           detail: With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
-      married:
+      sharing_income:
         positive:
           heading: You may get help with fees
           detail: With a fee of %{fee} and savings of %{disposable_capital}, you and your partner should be able to get help with your fees, as long as you receive certain benefits or are on a low income
@@ -20,7 +20,7 @@ en:
         positive:
           heading: You may be eligible for a full remission
           detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months.
-      married:
+      sharing_income:
         positive:
           heading: You may be eligible for a full remission
           detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months.
@@ -29,7 +29,7 @@ en:
         positive:
           heading: You should be eligible for a full remission
           detail: As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
-      married:
+      sharing_income:
         positive:
           heading: You should be eligible for a full remission
           detail: As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
@@ -38,7 +38,7 @@ en:
         positive:
           heading: You should be eligible for a Partial Remission
           detail: As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
-      married:
+      sharing_income:
         positive:
           heading: You should be eligible for a Partial Remission
           detail: As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
@@ -47,7 +47,7 @@ en:
         heading: You are unlikely to get help with your fees
         negative:
           detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
-      married:
+      sharing_income:
         heading: You are unlikely to get help with your fees
         negative:
           detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
@@ -79,7 +79,7 @@ en:
             under_age: You must be over 15 to apply for help with fees
           hint:
             single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-            married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
           components:
             day:
               label: 'Day'
@@ -94,7 +94,7 @@ en:
             under_age: Your partner must be over 15 to apply for help with fees
           hint:
             single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-            married: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
           components:
             day:
               label: 'Day'
@@ -262,6 +262,9 @@ en:
       marital_status:
         label: "What is your status"
         change: 'Change'
+        options:
+          sharing_income: 'Married or living with...'
+          single: 'Single'
       court_fee:
         label: "Court or tribunal fee to pay"
         change: 'Change'

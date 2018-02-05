@@ -121,6 +121,8 @@ en:
         label: "Combined savings and investment"
       marital_status:
         label: "What is your status"
+        single: "Single"
+        sharing_income: "Married or living with..."
       date_of_birth:
         label: "Date of birth"
       partner_date_of_birth:

@@ -43,7 +43,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :john
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
@@ -64,7 +64,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :alli
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
@@ -83,7 +83,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :oliver
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
@@ -102,7 +102,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :lola
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
@@ -121,7 +121,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :baba
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
@@ -140,7 +140,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :tony
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
@@ -159,7 +159,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :david
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
@@ -177,7 +177,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Arrange
     given_i_am :tom
     answer_up_to(:disposable_capital)
-    marital_status = user.marital_status.downcase
+    marital_status = user.marital_status
 
     # Act
     answer_disposable_capital_question
