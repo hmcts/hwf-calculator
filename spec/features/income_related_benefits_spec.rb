@@ -183,9 +183,14 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     # Act
     income_benefits_page.choose(:jobseekers_allowance)
     income_benefits_page.next
+    marital_status = user.marital_status
 
     # Assert
-    expect(full_remission_page).to be_displayed
+    aggregate_failures 'Validate full remission page' do
+      expect(full_remission_page).to be_displayed
+      expect(full_remission_page).to have_feedback_message_with_header(:"income_benefits.#{marital_status}.positive")
+      expect(full_remission_page).to have_feedback_message_with_detail(:"income_benefits.#{marital_status}.positive", fee: user.fee, disposable_capital: user.disposable_capital)
+    end
   end
 
   scenario 'Select income related benefit option - answer added to previous answers' do

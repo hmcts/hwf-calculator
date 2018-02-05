@@ -71,6 +71,13 @@ en:
       should_get_help: "You may get help with fees"
       full_remission:
         decided_by:
+          benefits_received:
+            single:
+              header: "You may be eligible for a full remission"
+              detail: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+            sharing_income:
+              header: "You may be eligible for a full remission"
+              detail: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
           disposable_capital:
             single:
               header: "You should be eligible for a full remission"
