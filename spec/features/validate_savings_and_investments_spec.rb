@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-675
 RSpec.describe 'Validate savings and investment test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::IncomeBenefitsPage.new }
+  let(:next_page) { Calculator::Test::IncomeBenefitsPage.new }
 
   # Feature: Validate Savings & Investments field
   # Validate the Savings and Investments field at the form level
@@ -42,7 +42,7 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
     disposable_capital_page.next
 
     # Assert
-    expect(disposable_capital_page.error_with_text(messaging.t('hwf_pages.disposable_capital.errors.non_numeric'))).to be_present
+    expect(disposable_capital_page.disposable_capital).to have_error_non_numeric
   end
   # Scenario: Savings & Investments field is empty/blank - no entry (Revised)
   #             Given  I am on the savings and investments question
@@ -61,6 +61,6 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
     disposable_capital_page.next
 
     # Assert
-    expect(disposable_capital_page.error_with_text(messaging.t('hwf_pages.disposable_capital.errors.blank'))).to be_present
+    expect(disposable_capital_page.disposable_capital).to have_error_blank
   end
 end

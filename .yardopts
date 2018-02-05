@@ -1,0 +1,1 @@
+--no-private app/**/*.rb test_common/**/*.rb

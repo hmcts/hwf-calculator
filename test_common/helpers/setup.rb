@@ -57,7 +57,7 @@ module Calculator
 
       def start_calculator_session
         start_page.load_page
-        start_page.start_session
+        start_page.start_session in_language: ::Calculator::Test::Messaging.instance.current_locale
       end
 
       def answer_marital_status_question
@@ -77,9 +77,7 @@ module Calculator
           user.partner_date_of_birth = (user.partner_age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')
         end
         return if user.income_benefits.nil?
-        user.income_benefits.map! do |b|
-          messaging.t("hwf_pages.income_benefits.labels.benefits.#{b}")
-        end
+        user.income_benefits.map!(&:to_sym)
       end
     end
   end

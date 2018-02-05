@@ -24,7 +24,7 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     aggregate_failures 'validating content of header, question and hint text' do
       expect(disposable_capital_page.heading).to be_present
       expect(disposable_capital_page.disposable_capital).to be_present
-      expect(disposable_capital_page.disposable_capital.hint_with_text(messaging.t('hwf_pages.disposable_capital.hint'))).to be_present
+      expect(disposable_capital_page.disposable_capital).to have_hint
     end
   end
 
@@ -84,13 +84,13 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     given_i_am(:john)
     answer_up_to(:disposable_capital)
     disposable_capital_page.toggle_guidance
-    disposable_capital_page.wait_for_guidance
+    disposable_capital_page.wait_for_guidance_text
 
     # Act
     disposable_capital_page.toggle_guidance
 
     # Assert
-    expect(disposable_capital_page).to have_no_guidance
+    expect(disposable_capital_page).to have_no_guidance_text
   end
   # Savings and investments Page Heading:
   #  Find out if you could get help with fees

@@ -97,12 +97,12 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     given_i_am(:john)
     answer_up_to(:marital_status)
     marital_status_page.toggle_guidance
-    marital_status_page.wait_for_guidance
+    marital_status_page.wait_for_guidance_text
 
     # Act
     marital_status_page.toggle_guidance
 
     # Assert
-    expect(marital_status_page).to have_no_guidance
+    expect(marital_status_page).to have_no_guidance_text
   end
 end

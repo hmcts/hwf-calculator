@@ -1,41 +1,51 @@
 require_relative 'question_numeric'
-require_relative 'question_help'
+require_relative 'question_guidance'
+require_relative 'guidance_section'
+require_relative 'hint_section'
 module Calculator
   module Test
     # A section representing the court fee question
-    class CourtFeeQuestionSection < QuestionNumericSection
-      section :help_section,
-        QuestionHelpSection,
-        :help_section_labelled,
-        'If you have already paid your court or tribunal fee'
+    # This section interfaces to the court fee question using its #set
+    # and #has_value? methods (and more).  Allowing the test suite to set
+    # the value and to validate if the value is as expected.
+    #
+    # Translation is done inside this section, but it expects the @i18n_scope class variable
+    # to be defined.  The @i18n_scope has to be defined in a standard SitePrism section defined
+    # as a block and then this module included.
+    #
+    # @example Using this section in a site prism page
+    #   class MyPage < SitePrism::Page
+    #     section :court_fee, '.some-selector' do
+    #       @i18n_scope = 'my_page.court_fee'
+    #       include ::Calculator::Test::CourtFeeQuestionSection
+    #     end
+    #   end
+    #
+    # Using the 'Using this section in a site prism page' example means that all of the messaging required starts from the
+    # i18n scope of 'my_page.court_fee'.
+    # @example The translation file should have this under the 'i18n scope' defined
+    #   errors:
+    #     non_numeric: 'Expected non numeric error message'
+    #   hint: 'Expected Hint text for the question'
+    #   guidance:
+    #     label: 'The expected guidance label that is clicked to show the text'
+    #     text: 'The expected guidance text - can be multi line etc.. white space is ignored as are tags'
+    #
+    # @!method error_non_numeric
+    #   Returns the 'not numeric' error message and raises if its not present.
+    #   As with all site prism elements, you can use things like has_error_non_numeric?
+    #   to test if this is present or not.
+    #   @return [Capybara::Node::Element] The node containing the correct error text
+    #   @raise [Capybara::ElementNotFound] if the correct error text was not present within this section
+    module CourtFeeQuestionSection
+      extend ActiveSupport::Concern
+      include QuestionNumericSection
+      include GuidanceSection
+      include HintSection
 
-      # Validates that the guidance text is as expected
-      # @param [String, Array[String]] text_or_array Either a single string to (partially) match or an
-      #  array of strings which will be joined by a CR.  Note that whitespace should not be important,
-      # nor html structure etc..
-      # @raise [Capybara::ExpectationNotMet] if the assertion hasn't succeeded during wait time
-      def validate_guidance(text_or_array)
-        strings = Array(text_or_array)
-        help_section.assert_text(strings.join("\n"))
+      included do
+        element :error_non_numeric, :exact_error_text, t("#{i18n_scope}.errors.non_numeric")
       end
-
-      # Toggles the help on/off
-      def toggle_help
-        help_section.toggle
-      end
-
-      # rubocop:disable Style/PredicateName
-      def has_no_help_text?
-        help_section.help_text_collapsed?
-      end
-
-      def has_help_text?
-        help_section.help_text_expanded?
-      end
-      # rubocop:enable Style/PredicateName
-
-      delegate :wait_for_help_text, to: :help_section
-      delegate :wait_for_no_help_text, to: :help_section
     end
   end
 end

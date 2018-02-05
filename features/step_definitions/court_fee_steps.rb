@@ -29,5 +29,5 @@ When(/^I click next without submitting my court and tribunal fee$/) do
 end
 
 Then(/^I should see the court and tribunal fee error message$/) do
-  expect(court_fee_page.error_with_text(messaging.t('hwf_pages.fee.errors.non_numeric'))).to be_present
+  expect(court_fee_page.fee).to have_error_non_numeric
 end

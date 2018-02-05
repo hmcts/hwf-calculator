@@ -34,6 +34,7 @@ Metrics/LineLength:
   Exclude:
     - 'features/**/*'
     - 'spec/**/*'
+    - 'test_common/**/*'
     - 'Gemfile'
 Metrics/ModuleLength:
   Max: 120
@@ -99,6 +100,9 @@ Style/CollectionMethods:
 # Chain methods with trailing dots.
 Style/DotPosition:
   EnforcedStyle: trailing
+
+Style/FinalNewline:
+  Enabled: true
 
 # No, we don't prefer each_with_object
 Style/EachWithObject:
@@ -186,6 +190,7 @@ RSpec/ExpectActual:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'test_common/**/*'
     - 'config/**/*'
     - 'lib/tasks/**/*'
 
@@ -217,5 +222,9 @@ Rails/OutputSafety:
 Capybara/FeatureMethods:
   Exclude:
     - 'spec/features/**/*'
+
+Naming/PredicateName:
+  Exclude:
+    - 'test_common/**/*'
 
 require: rubocop-rspec

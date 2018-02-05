@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-725
 RSpec.describe 'Validate court fee test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::DateOfBirthPage.new }
+  let(:next_page) { Calculator::Test::DateOfBirthPage.new }
 
   #
   # Feature: Court and tribunal fee field tool tip/Hint text
@@ -55,7 +55,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     court_fee_page.next
 
     # Assert
-    expect(court_fee_page.error_with_text(messaging.t('hwf_pages.fee.errors.non_numeric'))).to be_present
+    expect(court_fee_page.fee).to have_error_non_numeric
   end
   #
   # Scenario: Court and tribunal fee field empty
@@ -74,6 +74,6 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     court_fee_page.next
 
     # Assert
-    expect(court_fee_page.error_with_text(messaging.t('hwf_pages.fee.errors.non_numeric'))).to be_present
+    expect(court_fee_page.fee).to have_error_non_numeric
   end
 end

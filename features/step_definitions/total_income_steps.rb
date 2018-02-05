@@ -1,7 +1,5 @@
 Given(/^I am on the total income page$/) do
   answer_up_to(:total_income)
-  expect(total_income_page.heading).to be_present
-  expect(total_income_page.total_income.hint_with_text(messaging.t('hwf_pages.total_income.hint'))).to be_present
 end
 
 When(/^I successfully submit (?:my|our) total income$/) do
@@ -43,7 +41,7 @@ When(/^I click next without submitting my total income$/) do
 end
 
 Then(/^I should see the total income error message$/) do
-  expect(total_income_page.error_with_text(messaging.t('hwf_pages.total_income.errors.non_numeric'))).to be_present
+  expect(total_income_page.total_income).to have_error_non_numeric
 end
 
 When(/^I change my answer for my court and tribunal fee to £1000$/) do

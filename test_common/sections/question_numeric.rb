@@ -2,11 +2,13 @@ require_relative 'question_section'
 
 module Calculator
   module Test
-    class QuestionNumericSection < QuestionSection
-      element :field, :field
-      delegate :set, to: :field
-
-      # rubocop:disable Style/PredicateName
+    module QuestionNumericSection
+      extend ActiveSupport::Concern
+      include QuestionSection
+      included do
+        element :field, :field
+        delegate :set, to: :field
+      end
 
       # Validates that the value provided is present in the input control
       # note that this uses has_selector which means it will wait for the value
@@ -16,7 +18,6 @@ module Calculator
       def has_value?(value)
         field(with: value)
       end
-      # rubocop:enable Style/PredicateName
     end
   end
 end

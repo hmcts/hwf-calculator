@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-752
 RSpec.describe 'Validate court fee test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::TotalIncomePage.new }
+  let(:next_page) { Calculator::Test::TotalIncomePage.new }
 
   # Personas
   #
@@ -48,7 +48,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     number_of_children_page.next
 
     # Assert
-    expect(number_of_children_page.error_with_text(messaging.t('hwf_pages.number_of_children.errors.non_numeric'))).to be_present
+    expect(number_of_children_page.number_of_children).to have_error_non_numeric
   end
   #
   # Scenario: Number of children field empty - Blank Field (no entry)
@@ -68,6 +68,6 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     number_of_children_page.next
 
     # Assert
-    expect(number_of_children_page.error_with_text(messaging.t('hwf_pages.number_of_children.errors.blank'))).to be_present
+    expect(number_of_children_page.number_of_children).to have_error_blank
   end
 end

@@ -2,9 +2,17 @@ require_relative './question_section'
 require_relative './gds_multiple_choice_option'
 module Calculator
   module Test
-    class QuestionCheckboxListSection < QuestionSection
-      element :label, 'legend'
-      sections :options, GdsMultipleChoiceOptionSection, :gds_multiple_choice_option
+    module QuestionCheckboxListSection
+      extend ActiveSupport::Concern
+      include QuestionSection
+
+      included do
+        element :label, 'legend'
+        sections :options, :gds_multiple_choice_option do
+          include GdsMultipleChoiceOptionSection
+        end
+      end
+
       # @param [Array<String>] values An array of checkboxes to select by value
       def set(values)
         within @root_element do
@@ -15,12 +23,12 @@ module Calculator
       end
 
       def option_labelled(text)
-        within @root_element do
-          node = find :gds_multiple_choice_option, text: text
-          GdsMultipleChoiceOptionSection.new self, node
-        end
+        translated = case text
+                     when Symbol then t("#{i18n_scope}.options.#{text}")
+                     else text
+                     end
+        options(text: translated).first
       end
-      # rubocop:disable Style/PredicateName
 
       # Validates that the values provided are selected in the checkbox list
       # and that other values are not.
@@ -36,8 +44,6 @@ module Calculator
       rescue SitePrism::TimeoutException
         false
       end
-
-      # rubocop:enable Style/PredicateName
     end
   end
 end

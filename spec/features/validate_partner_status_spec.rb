@@ -1,7 +1,7 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-794
 RSpec.describe 'Validate partner status test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::CourtFeePage.new }
+  let(:next_page) { Calculator::Test::CourtFeePage.new }
 
   # Personas
   #
@@ -22,7 +22,7 @@ RSpec.describe 'Validate partner status test', type: :feature, js: true do
     answer_up_to(:marital_status)
 
     # Act
-    marital_status_page.marital_status.set(messaging.t('hwf_pages.marital_status.labels.marital_status.single'))
+    marital_status_page.marital_status.set(:single)
     marital_status_page.next
 
     # Assert
@@ -43,7 +43,7 @@ RSpec.describe 'Validate partner status test', type: :feature, js: true do
     answer_up_to(:marital_status)
 
     # Act
-    marital_status_page.marital_status.set(messaging.t('hwf_pages.marital_status.labels.marital_status.sharing_income'))
+    marital_status_page.marital_status.set(:sharing_income)
     marital_status_page.next
 
     # Assert
@@ -67,7 +67,7 @@ RSpec.describe 'Validate partner status test', type: :feature, js: true do
     marital_status_page.next
 
     # Assert
-    expect(marital_status_page.error_with_text(messaging.t('hwf_pages.marital_status.errors.blank'))).to be_present
+    expect(marital_status_page.marital_status).to have_error_blank
   end
 
 end

@@ -32,5 +32,5 @@ When(/^I click next without submitting my marital status$/) do
 end
 
 Then(/^I should see the marital status error message$/) do
-  expect(marital_status_page.error_with_text(messaging.t('hwf_pages.marital_status.errors.blank'))).to be_present
+  expect(marital_status_page.marital_status).to have_error_blank
 end

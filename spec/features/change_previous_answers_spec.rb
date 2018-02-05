@@ -390,13 +390,13 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     total_income_page.previous_answers.income_benefits.navigate_to
 
     # Act
-    income_benefits_page.benefits.set([messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')])
+    income_benefits_page.choose(:jobseekers_allowance)
     income_benefits_page.next
 
     # Assert
     aggregate_failures 'Validate all' do
       expect(full_remission_page).to be_displayed
-      expect(full_remission_page.previous_answers.income_benefits.answer(text: messaging.t('hwf_pages.income_benefits.previous_questions.benefits_received.jobseekers_allowance'))).to be_present
+      expect(full_remission_page).to have_previous_question(:income_benefits, answer: :jobseekers_allowance)
       expect(full_remission_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).

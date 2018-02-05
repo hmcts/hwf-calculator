@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   include Calculator::Test::Pages
   # The next page is always the number of children
-  let(:next_page) { Calculator::Test::En::NumberOfChildrenPage.new }
+  let(:next_page) { Calculator::Test::NumberOfChildrenPage.new }
 
   #
   #   # Feature : Income Related Benefits
@@ -48,32 +48,28 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   #                And income related benefit options are selected
   scenario 'Unselect None of the above option when benefits chosen' do
     # Arrange - Get john to the benefits page
-    benefits_to_select = [
-      messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance'),
-      messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
-    ]
     given_i_am(:john)
     answer_up_to(:benefits)
-    income_benefits_page.choose_none
+    income_benefits_page.choose :none
 
     # Act
-    income_benefits_page.benefits.set(benefits_to_select)
+    income_benefits_page.choose(:jobseekers_allowance, :pension_credit)
 
     # Assert
-    expect(income_benefits_page).to have_selected(benefits_to_select)
+    expect(income_benefits_page).to have_selected(:jobseekers_allowance, :pension_credit)
   end
 
   scenario 'Unselect None of the above option when dont know chosen' do
     # Arrange - Get john to the benefits page
     given_i_am(:john)
     answer_up_to(:benefits)
-    income_benefits_page.choose_none
+    income_benefits_page.choose :none
 
     # Act
-    income_benefits_page.choose_dont_know
+    income_benefits_page.choose(:dont_know)
 
     # Assert
-    expect(income_benefits_page).to have_only_dont_know_selected
+    expect(income_benefits_page).to have_selected(:dont_know)
   end
 
   # Scenario: Unselect Don't know option (New)
@@ -85,32 +81,28 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   #                And income related benefit options are selected
   scenario 'Unselect dont know option when benefits chosen' do
     # Arrange - Get john to the benefits page
-    benefits_to_select = [
-      messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance'),
-      messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
-    ]
     given_i_am(:john)
     answer_up_to(:benefits)
-    income_benefits_page.choose_dont_know
+    income_benefits_page.choose(:dont_know)
 
     # Act
-    income_benefits_page.benefits.set(benefits_to_select)
+    income_benefits_page.choose(:jobseekers_allowance, :pension_credit)
 
     # Assert
-    expect(income_benefits_page).to have_selected(benefits_to_select)
+    expect(income_benefits_page).to have_selected(:jobseekers_allowance, :pension_credit)
   end
 
   scenario 'Unselect dont know option when none chosen' do
     # Arrange - Get john to the benefits page
     given_i_am(:john)
     answer_up_to(:benefits)
-    income_benefits_page.choose_dont_know
+    income_benefits_page.choose(:dont_know)
 
     # Act
-    income_benefits_page.choose_none
+    income_benefits_page.choose(:none)
 
     # Assert
-    expect(income_benefits_page).to have_only_none_selected
+    expect(income_benefits_page).to have_selected(:none)
   end
 
   # Scenario: Unselect Income benefit options (New)
@@ -124,19 +116,15 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
   #
   scenario 'Unselect income benefit option option' do
     # Arrange - Get john to the benefits page
-    benefits_to_select = [
-      messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance'),
-      messaging.t('hwf_pages.income_benefits.labels.benefits.pension_credit')
-    ]
     given_i_am(:john)
     answer_up_to(:benefits)
-    income_benefits_page.benefits.set(benefits_to_select)
+    income_benefits_page.choose(:jobseekers_allowance, :pension_credit)
 
     # Act
-    income_benefits_page.choose_none
+    income_benefits_page.choose(:none)
 
     # Assert
-    expect(income_benefits_page).to have_only_none_selected
+    expect(income_benefits_page).to have_selected(:none)
   end
 
   #
@@ -152,7 +140,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     answer_up_to(:benefits)
 
     # Act
-    income_benefits_page.choose_none
+    income_benefits_page.choose(:none)
     income_benefits_page.next
 
     # Assert
@@ -173,7 +161,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     answer_up_to(:benefits)
 
     # Act
-    income_benefits_page.choose_dont_know
+    income_benefits_page.choose(:dont_know)
     income_benefits_page.next
 
     # Assert
@@ -193,7 +181,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     answer_up_to(:benefits)
 
     # Act
-    income_benefits_page.benefits.set([messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')])
+    income_benefits_page.choose(:jobseekers_allowance)
     income_benefits_page.next
 
     # Assert
@@ -206,11 +194,11 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     answer_up_to(:benefits)
 
     # Act
-    income_benefits_page.benefits.set([messaging.t('hwf_pages.income_benefits.labels.benefits.jobseekers_allowance')])
+    income_benefits_page.choose(:jobseekers_allowance)
     income_benefits_page.next
 
     # Assert
-    expect(full_remission_page.previous_answers.income_benefits.answer.text).to eql messaging.t('hwf_pages.income_benefits.previous_questions.benefits_received.jobseekers_allowance')
+    expect(full_remission_page).to have_previous_question(:income_benefits, answer: :jobseekers_allowance)
   end
 
   #  Scenario: Display None of the above guidance information
@@ -225,7 +213,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     answer_up_to(:benefits)
 
     # Act
-    income_benefits_page.choose_none
+    income_benefits_page.choose(:none)
 
     # Assert
     # Note that we will not check the option is highlighted as we have just checked it, so it will be
@@ -245,7 +233,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     answer_up_to(:benefits)
 
     # Act
-    income_benefits_page.choose_dont_know
+    income_benefits_page.choose(:dont_know)
 
     # Assert
     # Note that we will not check the option is highlighted as we have just checked it, so it will be
@@ -275,6 +263,6 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     income_benefits_page.next
 
     # Assert
-    expect(income_benefits_page.error_nothing_selected).to be_visible
+    expect(income_benefits_page.benefits).to have_error_nothing_selected
   end
 end

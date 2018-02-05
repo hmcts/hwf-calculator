@@ -18,7 +18,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
   # And I select Single option
   # When I click Next Step
   # Then I should see the next page
-  let(:next_page) { Calculator::Test::En::CourtFeePage.new }
+  let(:next_page) { Calculator::Test::CourtFeePage.new }
 
   scenario 'John confirms he is single' do
     # Arrange
@@ -26,7 +26,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
     answer_up_to(:marital_status)
 
     # Act
-    marital_status_page.marital_status.set(messaging.t('hwf_pages.marital_status.labels.marital_status.single'))
+    marital_status_page.marital_status.set(:single)
     marital_status_page.next
 
     # Assert
@@ -47,7 +47,7 @@ RSpec.describe 'Partner Status Test', type: :feature, js: true do
     answer_up_to(:marital_status)
 
     # Act
-    marital_status_page.marital_status.set(messaging.t('hwf_pages.marital_status.labels.marital_status.sharing_income'))
+    marital_status_page.marital_status.set(:sharing_income)
     marital_status_page.next
 
     # Assert

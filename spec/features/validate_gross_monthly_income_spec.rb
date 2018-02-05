@@ -51,7 +51,7 @@ RSpec.describe 'Validate gross monthly income test', type: :feature, js: true do
     total_income_page.next
 
     # Assert
-    expect(total_income_page.error_with_text(messaging.t('hwf_pages.total_income.errors.non_numeric'))).to be_present
+    expect(total_income_page.total_income).to have_error_non_numeric
   end
 
   # Scenario: Validate empty Total Income field (Revised)
@@ -71,6 +71,6 @@ RSpec.describe 'Validate gross monthly income test', type: :feature, js: true do
     total_income_page.next
 
     # Assert
-    expect(total_income_page.error_with_text(messaging.t('hwf_pages.total_income.errors.non_numeric'))).to be_present
+    expect(total_income_page.total_income).to have_error_non_numeric
   end
 end

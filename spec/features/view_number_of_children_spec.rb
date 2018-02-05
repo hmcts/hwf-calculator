@@ -52,13 +52,13 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
     given_i_am(:john)
     answer_up_to(:number_of_children)
     number_of_children_page.toggle_guidance
-    number_of_children_page.wait_for_guidance
+    number_of_children_page.wait_for_guidance_text
 
     # Act
     number_of_children_page.toggle_guidance
 
     # Assert
-    expect(number_of_children_page).to have_no_guidance
+    expect(number_of_children_page).to have_no_guidance_text
   end
 
   # Number of Children Heading:

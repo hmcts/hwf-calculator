@@ -72,13 +72,13 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     given_i_am(:john)
     answer_up_to(:benefits)
     income_benefits_page.toggle_guidance
-    income_benefits_page.wait_for_guidance
+    income_benefits_page.wait_for_guidance_text
 
     # Act
     income_benefits_page.toggle_guidance
 
     # Assert
-    expect(income_benefits_page).to have_no_guidance
+    expect(income_benefits_page).to have_no_guidance_text
   end
   #
   # #Guidance Information Content:
