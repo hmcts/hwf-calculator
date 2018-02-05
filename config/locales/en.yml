@@ -122,7 +122,7 @@ en:
       marital_status:
         label: "What is your status"
         single: "Single"
-        sharing_income: "Married or living with..."
+        sharing_income: "Married or living with someone"
       date_of_birth:
         label: "Date of birth"
       partner_date_of_birth:

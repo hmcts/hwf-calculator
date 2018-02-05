@@ -263,7 +263,7 @@ en:
         label: "What is your status"
         change: 'Change'
         options:
-          sharing_income: 'Married or living with...'
+          sharing_income: 'Married or living with someone'
           single: 'Single'
       court_fee:
         label: "Court or tribunal fee to pay"
