@@ -72,11 +72,6 @@ class CalculationService
   #
   # @return [CalculationService] This instance - with the results available using other instance methods
   def call
-    # @TODO Decide what to do here and remove this comment
-    # There are 2 catch blocks here which at present has little value
-    # but, I am planning ahead a little in that invalid inputs might
-    # want to add something to this instance in terms of messages etc..
-    # but unsure right now.
     catch(:abort) do
       calculators.each do |calculator|
         my_result = catch(:invalid_inputs) do
@@ -139,17 +134,29 @@ class CalculationService
 
   def perform_calculation_using(calculator)
     result = calculator.call(inputs)
+    post_process_failure result, calculator
+    post_process_undecided result, calculator
+    post_process_success result, calculator
+    result
+  end
+
+  def post_process_failure(result, calculator)
     if result.available_help == :none
       add_failure(result, identifier: calculator.identifier)
       throw(:abort)
     end
+  end
+
+  def post_process_undecided(result, _calculator)
     if result.available_help == :undecided
       add_undecided(result)
     end
+  end
+
+  def post_process_success(result, calculator)
     if [:full, :partial].include? result.available_help
       add_success(result, identifier: calculator.identifier)
     end
-    result
   end
 
   def add_undecided(result)

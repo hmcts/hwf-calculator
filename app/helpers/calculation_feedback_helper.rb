@@ -5,7 +5,8 @@ module CalculationFeedbackHelper
   def calculator_feedback_for(calculation)
     message = calculation.messages.last
     return '' if message.nil?
-    t "calculation.feedback.messages.decided_by.#{message['source']}.help_level.#{message['key']}.detail.#{calculation.inputs[:marital_status]}",
+    marital_status = calculation.inputs[:marital_status]
+    t "calculation.feedback.messages.decided_by.#{message['source']}.#{message['key']}.detail.#{marital_status}",
       raise: true,
       total_income: calculation_total_income(calculation),
       fee: calculation_fee(calculation),
@@ -20,7 +21,7 @@ module CalculationFeedbackHelper
   def calculator_feedback_header_for(calculation)
     message = calculation.messages.last
     return '' if message.nil?
-    t "calculation.feedback.messages.decided_by.#{message['source']}.help_level.#{message['key']}.header",
+    t "calculation.feedback.messages.decided_by.#{message['source']}.#{message['key']}.header",
       raise: true
   end
 

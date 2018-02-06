@@ -198,7 +198,6 @@ RSpec.describe CalculationService do
       allow(calculator_1).to receive(:messages).and_return []
       allow(calculator_1).to receive(:final_decision?).and_return true
 
-
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :full
     end
@@ -231,7 +230,7 @@ RSpec.describe CalculationService do
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :undecided
     end
 
-    it 'returns true if help_not_available? returns true from fake calculator' do
+    it 'returns true if available_help returns :none from fake calculator' do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :none
       allow(calculator_1).to receive(:final_decision?).and_return true
