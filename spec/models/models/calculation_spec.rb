@@ -6,7 +6,6 @@ RSpec.describe Calculation do
       expect(subject).to have_attributes inputs: {},
                                          available_help: :undecided,
                                          fields_required: [],
-                                         required_fields_affecting_likelihood: [],
                                          messages: [],
                                          fields: {}
     end
@@ -44,13 +43,6 @@ RSpec.describe Calculation do
     it 'stores a provided value of any type' do
       subject = described_class.new fields_required: [:any]
       expect(subject.fields_required).to eql [:any]
-    end
-  end
-
-  describe '#required_fields_affecting_likelihood' do
-    it 'stores a provided value of any type' do
-      subject = described_class.new required_fields_affecting_likelihood: [:any]
-      expect(subject.required_fields_affecting_likelihood).to eql [:any]
     end
   end
 
