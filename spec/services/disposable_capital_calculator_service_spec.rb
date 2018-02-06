@@ -22,15 +22,15 @@ RSpec.describe DisposableCapitalCalculatorService do
         end
 
         it "states help is not available when disposable_capital: #{limit}" do
-          expect(service.call(date_of_birth: date_of_birth, partner_date_of_birth: partner_date_of_birth, fee: fee, disposable_capital: limit)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital)), final_decision?: true
+          expect(service.call(date_of_birth: date_of_birth, partner_date_of_birth: partner_date_of_birth, fee: fee, disposable_capital: limit)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :final_negative, source: :disposable_capital)), final_decision?: true
         end
 
         it "states help is not available when disposable_capital: #{limit + 1}" do
-          expect(service.call(date_of_birth: date_of_birth, partner_date_of_birth: partner_date_of_birth, fee: fee, disposable_capital: limit + 1)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital)), final_decision?: true
+          expect(service.call(date_of_birth: date_of_birth, partner_date_of_birth: partner_date_of_birth, fee: fee, disposable_capital: limit + 1)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :final_negative, source: :disposable_capital)), final_decision?: true
         end
 
         it "states help is not available when disposable_capital: #{limit + 100000}" do
-          expect(service.call(date_of_birth: date_of_birth, partner_date_of_birth: partner_date_of_birth, fee: fee, disposable_capital: limit + 100000)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :unlikely, source: :disposable_capital)), final_decision?: true
+          expect(service.call(date_of_birth: date_of_birth, partner_date_of_birth: partner_date_of_birth, fee: fee, disposable_capital: limit + 100000)).to have_attributes available_help: :none, messages: a_collection_including(a_hash_including(key: :final_negative, source: :disposable_capital)), final_decision?: true
         end
       end
     end

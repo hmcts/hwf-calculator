@@ -159,10 +159,18 @@ class CalculationService
       add_failure(result, identifier: calculator.identifier)
       throw(:abort)
     end
+    if result.available_help == :undecided
+      add_undecided(result)
+    end
     if [:full, :partial].include? result.available_help
       add_success(result, identifier: calculator.identifier)
     end
     result
+  end
+
+  def add_undecided(result)
+    self.available_help = :undecided
+    messages.concat result.messages
   end
 
   def add_failure(result, identifier:)

@@ -151,7 +151,7 @@ RSpec.describe CalculationService do
       end
 
       before do
-        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0, final_decision?: false)
+        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0, final_decision?: false, messages: [])
         class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation).as_stubbed_const
         class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation).as_stubbed_const
         class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
@@ -196,6 +196,8 @@ RSpec.describe CalculationService do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :full
       allow(calculator_1).to receive(:messages).and_return []
+      allow(calculator_1).to receive(:final_decision?).and_return true
+
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :full
@@ -204,6 +206,7 @@ RSpec.describe CalculationService do
     it 'has partial help available if calculator 1 says it is available' do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :partial
+      allow(calculator_1).to receive(:final_decision?).and_return true
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :partial
@@ -212,6 +215,7 @@ RSpec.describe CalculationService do
     it 'returns true if help_not_available? returns true from fake calculator' do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :none
+      allow(calculator_1).to receive(:final_decision?).and_return true
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :none

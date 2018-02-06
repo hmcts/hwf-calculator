@@ -70,18 +70,21 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
 
   def mark_as_help_available
     self.available_help = :full
-    messages << { key: :likely, source: :household_income }
+    self.final_decision = true
+    messages << { key: :final_positive, source: :household_income, classification: :positive }
   end
 
   def mark_as_partial_help_available
     self.available_help = :partial
     self.remission = calculate_remission
-    messages << { key: :likely, source: :household_income }
+    self.final_decision = true
+    messages << { key: :final_partial, source: :household_income, classification: :positive }
   end
 
   def mark_as_help_not_available
     self.available_help = :none
-    messages << { key: :unlikely, source: :household_income }
+    self.final_decision = true
+    messages << { key: :final_negative, source: :household_income, classification: :negative }
   end
 
   def calculate_remission

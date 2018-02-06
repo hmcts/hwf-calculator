@@ -26,7 +26,13 @@ class BenefitsReceivedCalculatorService < BaseCalculatorService
 
   def process_inputs
     benefits = inputs[:benefits_received]
-    unless benefits.empty? || benefits.include?(:none) || benefits.include?(:dont_know)
+    if benefits.include?(:none)
+      self.available_help = :undecided
+      messages << { key: :undecided_none, source: :benefits_received, classification: :neutral }
+    elsif benefits.include?(:dont_know)
+      self.available_help = :undecided
+      messages << { key: :undecided_dont_know, source: :benefits_received, classification: :neutral }
+    elsif benefits.present?
       mark_as_help_available
     end
     self
@@ -35,6 +41,6 @@ class BenefitsReceivedCalculatorService < BaseCalculatorService
   def mark_as_help_available
     self.available_help = :full
     self.final_decision = true
-    messages << { key: :likely, source: :disposable_capital }
+    messages << { key: :final_positive, source: :benefits_received, classification: :positive }
   end
 end

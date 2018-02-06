@@ -1,60 +1,27 @@
 module CalculationFeedbackHelper
   # Provides the feedback text for a given calculation.
-  # At present, this does use I18n to generate the text, using approximately 10 different keys to form the
-  # complete feedback message.
-  # It is currently unknown if this will be suitable for different languages (i.e. welsh)
-  # @TODO Review the above comment
   # @param [Calculator::Calculation] calculation The calculation to display feedback for
   # @return [String] The feedback text
   def calculator_feedback_for(calculation)
-    if calculation.available_help == :none
-      should_not_get_help_text(calculation)
-    elsif calculation.available_help == :full
-      should_get_help_text(calculation) + ' ' + calculator_feedback_explanation(calculation).join(' ')
-    end
-  end
-
-  # Provides the final feedback text for a given calculation.
-  # @param [Calculator::Calculation] calculation The calculation to display feedback for
-  # @return [String] The feedback text
-  def final_calculator_feedback_for(calculation)
-    marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.full_remission.decided_by.#{calculation.final_decision_by}.#{marital_status}.detail",
-      total_income: calculation_total_income(calculation),
-      fee: calculation_fee(calculation)
-  end
-
-  # Provides the final partial feedback text for a given calculation.
-  # @param [Calculator::Calculation] calculation The calculation to display feedback for
-  # @return [String] The feedback text
-  def partial_calculator_feedback_for(calculation)
-    marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.partial_remission.#{marital_status}.detail",
+    message = calculation.messages.last
+    return '' if message.nil?
+    t "calculation.feedback.messages.decided_by.#{message['source']}.help_level.#{message['key']}.detail.#{calculation.inputs[:marital_status]}",
+      raise: true,
       total_income: calculation_total_income(calculation),
       fee: calculation_fee(calculation),
+      disposable_capital: calculation_disposable_capital(calculation),
       remission: calculation_remission(calculation),
       contribution: calculation_contribution(calculation)
   end
 
-  # Presents the should not get help text in the current language
-  # @param [Calculation] calculation The calculation
-  #
-  # @return [String] The text to present
-  def should_not_get_help_text(calculation)
-    I18n.t('calculation.feedback.message.negative',
-      fee: calculation_fee(calculation),
-      disposable_capital: calculation_disposable_capital(calculation))
-  end
-
-  # Presents the should get help text in the current language
-  # @param [Calculation] calculation The calculation
-  #
-  # @return [String] The text to present
-  def should_get_help_text(calculation)
-    I18n.t('calculation.feedback.message.positive',
-      fee: calculation_fee(calculation),
-      disposable_capital: calculation_disposable_capital(calculation),
-      subject: I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"))
+  # Provides the feedback header text for a given calculation.
+  # @param [Calculator::Calculation] calculation The calculation to display feedback header for
+  # @return [String] The feedback header text
+  def calculator_feedback_header_for(calculation)
+    message = calculation.messages.last
+    return '' if message.nil?
+    t "calculation.feedback.messages.decided_by.#{message['source']}.help_level.#{message['key']}.header",
+      raise: true
   end
 
   # Presents the calculation fee in the correct format
@@ -72,6 +39,7 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_remission(calculation)
+    return '' if calculation.remission.nil?
     number_to_currency(calculation.remission, precision: 0, unit: '£')
   end
 
@@ -81,6 +49,7 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_contribution(calculation)
+    return '' if calculation.inputs[:fee].nil? || calculation.remission.nil?
     number_to_currency(calculation.inputs[:fee] - calculation.remission, precision: 0, unit: '£')
   end
 
@@ -90,6 +59,7 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_total_income(calculation)
+    return '' if calculation.inputs[:total_income].nil?
     number_to_currency(calculation.inputs[:total_income], precision: 0, unit: '£')
   end
 
@@ -99,6 +69,7 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_disposable_capital(calculation)
+    return '' if calculation.inputs[:disposable_capital].nil?
     number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')
   end
 
@@ -109,28 +80,5 @@ module CalculationFeedbackHelper
   #   DisposableCapitalForm,BenefitsReceivedForm,NumberOfChildrenForm] The form
   def calculator_form_for(field)
     CalculationFormService.for_field(field)
-  end
-
-  private
-
-  def calculator_feedback_explanation(calculation)
-    remaining_fields = calculation.required_fields_affecting_likelihood
-    return [] if remaining_fields.empty?
-    a = [I18n.t('calculation.feedback.explanation_suffix')]
-    remaining = remaining_fields.map do |field|
-      I18n.t("calculation.feedback.explanation_suffix_fields.#{field}")
-    end
-    add_explanation_suffix(a, remaining)
-  end
-
-  def add_explanation_suffix(phrases, remaining)
-    if remaining.length == 1
-      phrases << remaining.first
-    else
-      phrases << remaining[0..-2].join(', ')
-      phrases << I18n.t('calculation.feedback.explanation_suffix_joining_word')
-      phrases << remaining.last
-    end
-    phrases
   end
 end

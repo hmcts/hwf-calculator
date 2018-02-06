@@ -1,6 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-659
-RSpec.describe 'Change previous answers test', type: :feature, js: true do
+RSpec.describe 'Disposable capital test', type: :feature, js: true do
   # Feature: Disposable Capital Test
   # HwF eligibility Calculator will execute disposable capital test to check citizen eligibility
   # Eligibility criteria for disposable capital test is specified in the legislation and threshold summary for fee exemption and fee remission outlined in the HwF Eligibility Calculator requirements page in confluence
@@ -49,7 +49,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.positive",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
 
   #
@@ -70,7 +75,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.positive",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
   # Scenario: Over 61 and married pass disposable capital test
   #         Given I am OLIVER
@@ -89,7 +99,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.positive",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
   # Scenario: Over 61 and married fail disposable capital test
   #         Given I am LOLA
@@ -108,7 +123,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.negative",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
   # Scenario: Under 61 and single fail disposable capital test
   #         Given I am BABA
@@ -127,7 +147,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.negative",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
   # Scenario: Under 61 and married fail disposable capital test
   #         Given I am TONY
@@ -146,7 +171,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.negative",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
   # Scenario: Over 61 and single fail disposable capital test
   #         Given I am DAVID
@@ -165,7 +195,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.negative")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.negative",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
   # Scenario: Over 61 and single pass disposable capital test
   #         Given I am TOM
@@ -183,6 +218,11 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     answer_disposable_capital_question
 
     # Assert
-    expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.positive",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
   end
 end
