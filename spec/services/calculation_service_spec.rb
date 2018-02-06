@@ -212,6 +212,25 @@ RSpec.describe CalculationService do
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :partial
     end
 
+    it 'has undecided help available if calculator 1 says its available' do
+      # Arrange
+      allow(calculator_1).to receive(:available_help).and_return :undecided
+      allow(calculator_1).to receive(:final_decision?).and_return false
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :undecided
+
+    end
+
+    it 'has undecided help available if calculator 2 says it is available overriding calculator 1' do
+      # Arrange
+      allow(calculator_1).to receive(:available_help).and_return :full
+      allow(calculator_2).to receive(:available_help).and_return :undecided
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :undecided
+    end
+
     it 'returns true if help_not_available? returns true from fake calculator' do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :none
