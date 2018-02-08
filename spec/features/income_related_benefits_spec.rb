@@ -147,8 +147,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validating next page' do
       expect(next_page).to be_displayed
-      expect(next_page).to have_feedback_message_with_header(:"income_benefits.#{marital_status}.negative")
-      expect(next_page).to have_feedback_message_with_detail(:"income_benefits.#{marital_status}.negative", fee: user.fee, disposable_capital: user.disposable_capital)
+      expect(next_page).to have_no_feedback_messages
     end
   end
   #
@@ -173,8 +172,7 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validating next page' do
       expect(next_page).to be_displayed
-      expect(next_page).to have_feedback_message_with_header(:"income_benefits.#{marital_status}.dont_know")
-      expect(next_page).to have_feedback_message_with_detail(:"income_benefits.#{marital_status}.dont_know", fee: user.fee, disposable_capital: user.disposable_capital)
+      expect(next_page).to have_no_feedback_messages
     end
   end
 

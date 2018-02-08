@@ -1,5 +1,5 @@
 .feedback data-behavior="calculator_feedback"
-  - if current_calculation.messages.present?
+  - if current_calculation.available_help != :undecided && current_calculation.messages.present?
     div (class=current_calculation.messages.last['classification'])
       h2 data-behavior="calculator_feedback_header" = calculator_feedback_header_for(current_calculation)
       p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)

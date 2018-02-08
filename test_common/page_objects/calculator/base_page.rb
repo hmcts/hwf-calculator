@@ -68,6 +68,10 @@ module Calculator
       rescue Capybara::ElementNotFound
         false
       end
+
+      def has_no_feedback_messages?
+        feedback.has_no_messages?
+      end
       private
 
       def translated_answer(question:, answer:)
