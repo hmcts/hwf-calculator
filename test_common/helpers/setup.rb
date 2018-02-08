@@ -68,7 +68,6 @@ module Calculator
         when :en then nil
         else raise "We only support languages en and cy - #{in_language} is not supported"
         end
-
       end
 
       def answer_marital_status_question

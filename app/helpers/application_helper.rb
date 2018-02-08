@@ -41,10 +41,7 @@ module ApplicationHelper
   end
 
   def locale_param_for(t)
-    if t == 'en'
-      return nil
-    end
-    return t
+    t == 'en' ? nil : t
   end
 
   private
