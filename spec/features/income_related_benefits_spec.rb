@@ -138,7 +138,6 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     # Arrange - Take alli to the benefits page
     given_i_am(:alli)
     answer_up_to(:benefits)
-    marital_status = user.marital_status
 
     # Act
     income_benefits_page.choose(:none)
@@ -163,7 +162,6 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     # Arrange - Take alli to the benefits page
     given_i_am(:alli)
     answer_up_to(:benefits)
-    marital_status = user.marital_status
 
     # Act
     income_benefits_page.choose(:dont_know)

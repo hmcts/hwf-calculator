@@ -8,17 +8,17 @@ module Calculator
       element :heading, :exact_heading_text, t('hwf_pages.number_of_children.heading')
       element :next_button, :button, t('hwf_pages.number_of_children.buttons.next')
 
-      section :number_of_children, :calculator_question, [CHILDREN_SINGLE_LABEL, CHILDREN_MARRIED_LABEL] do
+      section :number_of_children, :calculator_question, [CHILDREN_SINGLE_LABEL, CHILDREN_MARRIED_LABEL], exact: true do
         @i18n_scope = 'hwf_pages.number_of_children.questions.number_of_children'
         include ::Calculator::Test::NumberOfChildrenQuestionSection
       end
 
-      section :number_of_children_single, :calculator_question, CHILDREN_SINGLE_LABEL do
+      section :number_of_children_single, :calculator_question, CHILDREN_SINGLE_LABEL, exact: true do
         @i18n_scope = 'hwf_pages.number_of_children.questions.number_of_children'
         include ::Calculator::Test::NumberOfChildrenQuestionSection
       end
 
-      section :number_of_children_married, :calculator_question, CHILDREN_MARRIED_LABEL do
+      section :number_of_children_married, :calculator_question, CHILDREN_MARRIED_LABEL, exact: true do
         @i18n_scope = 'hwf_pages.number_of_children.questions.number_of_children'
         include ::Calculator::Test::NumberOfChildrenQuestionSection
       end

@@ -10,7 +10,7 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
   #               When I view the Heading and Number of Children question
   #               Then Heading reads "Find out if you can get help with fees"
   #               And question reads "How many children live with you or are you responsible for supporting financially?"
-  scenario 'View Number of Children Heading and Question' do
+  scenario 'View Number of Children Heading and Question (single)' do
     # Arrange
     given_i_am(:john)
 
@@ -20,7 +20,7 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
     # Assert
     aggregate_failures 'validating content of header and question' do
       expect(number_of_children_page.heading).to be_present
-      expect(number_of_children_page.number_of_children_single).to be_present
+      expect(number_of_children_page).to have_number_of_children_single
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
   #               When I view the Heading and Number of Children question
   #               Then Heading reads "Find out if you can get help with fees"
   #               And question reads "How many children live with you and your partner or are you and your partner responsible for supporting financially? "
-  scenario 'View Number of Children Heading and Question' do
+  scenario 'View Number of Children Heading and Question (married)' do
     # Arrange
     given_i_am(:alli)
 
@@ -39,7 +39,7 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
     # Assert
     aggregate_failures 'validating content of header and question' do
       expect(number_of_children_page.heading).to be_present
-      expect(number_of_children_page.number_of_children_married).to be_present
+      expect(number_of_children_page).to have_number_of_children_married
     end
   end
   #

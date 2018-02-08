@@ -5,11 +5,9 @@ Capybara.add_selector(:calculator_question) do
     XPath.generate do |x|
       locators = Array(locator).dup
       legends = x.string.n.is(locators.shift)
-      until locators.empty? do
-        legends = legends.or x.string.n.is(locators.shift)
-      end
+      legends = legends.or x.string.n.is(locators.shift) until locators.empty?
       x.descendant(:div)[x.attr(:class).contains('form-group') &
-        x.child(:fieldset)[x.descendant(:legend)[legends]]]
+                         x.child(:fieldset)[x.descendant(:legend)[legends]]]
     end
   end
 end
