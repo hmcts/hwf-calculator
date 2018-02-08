@@ -24,7 +24,7 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-- export bundle exec rspec
+- bundle exec rspec
 - export TEST_LOCALE=cy; bundle exec rspec
 - bundle exec cucumber features/*.feature
 - export TEST_LOCALE=cy; bundle exec cucumber features/*.feature
