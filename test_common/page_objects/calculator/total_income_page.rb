@@ -1,7 +1,7 @@
 module Calculator
   module Test
     class TotalIncomePage < BasePage
-      set_url '/calculation/total_income'
+      set_url t('hwf_urls.total_income')
       element :heading, :exact_heading_text, t('hwf_pages.total_income.heading')
       element :next_button, :button, t('hwf_pages.total_income.buttons.next')
 

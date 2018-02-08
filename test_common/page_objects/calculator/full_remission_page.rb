@@ -2,7 +2,7 @@ module Calculator
   module Test
     class FullRemissionPage < BasePage
       include ActiveSupport::NumberHelper
-      set_url '/calculation_result/full_remission'
+      set_url t('hwf_urls.full_remission')
 
       def valid_for_final_positive_message?(user)
         marital_status = user.marital_status.downcase

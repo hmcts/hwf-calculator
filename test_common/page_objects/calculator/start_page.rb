@@ -5,7 +5,7 @@ module Calculator
     # 1. The introduction
     # 2. The requirements from the users perspective
     class StartPage < BasePage
-      set_url '/'
+      set_url t('hwf_urls.start_page')
       element :heading, :exact_heading_text, t('hwf_pages.home.heading')
       element :introduction, '[data-behavior=introduction]'
       element :requirements, '[data-behavior=requirements]'

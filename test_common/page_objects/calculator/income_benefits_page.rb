@@ -2,7 +2,7 @@ module Calculator
   module Test
     # A page object providing an interface to the 'Income Benefits Page'
     class IncomeBenefitsPage < BasePage
-      set_url '/calculation/benefits_received'
+      set_url t('hwf_urls.income_benefits')
       element :heading, :exact_heading_text, t('hwf_pages.income_benefits.heading')
       element :next_button, :button, t('hwf_pages.income_benefits.buttons.next')
 

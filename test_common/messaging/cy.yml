@@ -1,4 +1,17 @@
 cy:
+  hwf_urls:
+    fee: '/cy/calculation/fee'
+    date_of_birth: '/cy/calculation/date_of_birth'
+    disposable_capital: '/cy/calculation/disposable_capital'
+    full_remission: '/cy/calculation_result/full_remission'
+    income_benefits: '/cy/calculation/benefits_received'
+    marital_status: '/cy/calculation/marital_status'
+    not_eligible: '/cy/calculation_result/not_eligible'
+    number_of_children: '/cy/calculation/number_of_children'
+    partial_remission: '/cy/calculation_result/partial_remission'
+    start_page: '/'
+    total_income: '/cy/calculation/total_income'
+
   hwf_decision:
     disposable_capital:
       single:
@@ -65,7 +78,9 @@ cy:
       heading: 'Find out if you could get help with fees'
       questions:
         number_of_children:
-          label: 'How many children live with you or are you responsible for supporting financially?'
+          label:
+            single: 'How many children live with you or are you responsible for supporting financially?'
+            sharing_income: 'How many children live with you and your partner or are you and your partner responsible for supporting financially?'
           errors:
             non_numeric: You must enter the number of financially dependent children
             blank: You must enter the number of financially dependent children
