@@ -11,12 +11,11 @@
     ul.list.list-bullet
       - t('.requirements_html').lines[1..-1].each do |line|
         li = line
-  .notice data-behavior="disclaimer"
-
+  .notice.disclaimer data-behavior="disclaimer"
+    i.icon.icon-information
+      span.visually-hidden = 'Information'
     - t('.disclaimer_html').lines.each do |line|
-      p.bold-small = line
-  .welsh-link role="note" aria-label="Information" data-behavior="welsh_link"
-    = t('welsh_link.full_html', link_html: link_to(t('welsh_link.link_text'), root_path))
+      strong.bold-small = line
   = form_for form, as: :calculation, url: start_calculation_url, method: :patch do |f|
     = f.submit t('.start'), class: 'button button-start'
     = f.hidden_field :_hidden, value: ''

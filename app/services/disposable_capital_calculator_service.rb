@@ -81,13 +81,13 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
 
   def mark_as_help_available
     self.available_help = :full
-    messages << { key: :likely, source: :disposable_capital }
+    messages << { key: :likely, source: :disposable_capital, classification: :positive }
   end
 
   def mark_as_help_not_available
     self.available_help = :none
     self.final_decision = true
-    messages << { key: :unlikely, source: :disposable_capital }
+    messages << { key: :final_negative, source: :disposable_capital, classification: :negative }
   end
 
   attr_accessor :age_service

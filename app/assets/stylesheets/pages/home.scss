@@ -12,13 +12,7 @@
       @include copy-19;
     }
   }
-  .welsh-link {
-    margin: 1em 0;
-    p {
-      @include copy-19;
-    }
-    @extend .panel;
-    @extend .panel-border-wide;
+  .notice.disclaimer {
+    margin: 50px 0px;
   }
-
 }

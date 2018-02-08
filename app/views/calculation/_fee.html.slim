@@ -5,18 +5,18 @@
       fieldset
         legend
           h2.heading-medium = t('calculation.field_labels.fee')
-        details data-behavior="question_help"
-          summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
-
-          .panel-indent data-behavior="question_help_text"
-            .text
-              h2.heading-small = t('calculation.guidance.fee.detail_text')
         span.form-hint = t('calculation.hints.fee')
         - if form.errors.include?(:fee)
           span.error-message = form.errors[:fee].join(', ')
         label.block-label
           .form-control-money.gbp
             = f.text_field :fee, class: 'form-control money gbp'
+        details data-behavior="question_help"
+          summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
+
+          .panel-indent data-behavior="question_help_text"
+            .text
+              h2.heading-small = t('calculation.guidance.fee.detail_text')
     .form-group
       = f.submit 'Next step', class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?

@@ -54,7 +54,8 @@ module Calculator
       end
 
       def has_feedback_message_with_header?(key)
-        messaging.translate("hwf_decision.#{key}.heading")
+        header = messaging.translate("hwf_decision.#{key}.heading")
+        feedback.message_with_header(header)
       end
 
       def has_feedback_message_with_detail?(key, fee: nil, disposable_capital: nil)
@@ -66,6 +67,10 @@ module Calculator
         true
       rescue Capybara::ElementNotFound
         false
+      end
+
+      def has_no_feedback_messages?
+        feedback.has_no_messages?
       end
       private
 

@@ -3,18 +3,18 @@
 #
 # All calculators can be called using 'call' on the class itself, which will return an instance
 # with the results.
-# The caller can then call @see help_available? and @see help_not_available? to determine if
-# a decision has been made by this calculator.  If both are false, then it cannot make a decision
-# and the caller will generally move on to the next calculator in the chain.
+# The caller can then call @see available_help to determine if
+# a decision has been made by this calculator.
 #
 # The reasons for the decisions are given in the @see messages array, which contain a list
 # of hashes looking like this
 #
 # @example A messages hash
 #
-#   { key: :i18n_key, source: :underscored_name_of_calculator }
+#   { key: :i18n_key, source: :underscored_name_of_calculator, classification: :positive }
 #
 # The caller can then use I18n translation to convert these into text to present to the user.
+# The classification is used to group types of messages for presentation (i.e. styling)
 #
 # So, if we had a sub class like this
 #
@@ -22,8 +22,8 @@
 #   class MyCalculatorService < BaseCalculatorService
 #     def call
 #       do_something
-#       self.help_available = true
-#       messages << { key: :likely, source: :my_calculator }
+#       self.available_help = :full
+#       messages << { key: :likely, source: :my_calculator, classification: :positive }
 #       self
 #     end
 #   end
@@ -36,8 +36,8 @@
 #     my_input_2: 24
 #   }
 #   result = MyCalculatorService.call(inputs)
-#   result.help_available?  # => true
-#   result.messages # => [{ key: :likely, source: :my_calculator}]
+#   result.available_help  # => :full
+#   result.messages # => [{ key: :likely, source: :my_calculator, classification: :positive}]
 #
 # @abstract
 class BaseCalculatorService

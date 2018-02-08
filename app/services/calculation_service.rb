@@ -17,7 +17,6 @@
 #   service.help_available? # => false
 #   service.messages # => [{ key: :likely, source: :disposable_capital }]
 #   service.fields_required # => []
-#   service.required_fields_affecting_likelihood  # => []
 #
 # @example Example usage for a partial calculation with more fields to fill in
 #   inputs = {
@@ -30,18 +29,14 @@
 #   service.messages # => [{ key: :likely, source: :disposable_capital }]
 #   service.fields_required # => [:date_of_birth, :disposable_capital, :benefits_received,
 #                                 :number_of_children, :total_income]
-#   service.required_fields_affecting_likelihood  # => [:date_of_birth, :disposable_capital,
-#                                                       :benefits_received, :total_income]
 #
 # The second example shows that there is not a definitive answer yet,
 # and further fields are required as specified in the correct order in 'fields_required'
-# also 'required_fields_affecting_likelihood' lists any fields remaining that will affect the Yes/No
-# result. This allows the front end to inform the user upon a partial success that it depends
+# This allows the front end to inform the user upon a partial success that it depends
 # on them providing the listed fields.
 #
 class CalculationService
   MY_FIELDS = [:marital_status].freeze
-  FIELDS_AFFECTING_LIKELIHOOD = [:date_of_birth, :disposable_capital, :benefits_received, :total_income].freeze
   DEFAULT_CALCULATORS = [
     'DisposableCapital',
     'BenefitsReceived',
@@ -77,11 +72,6 @@ class CalculationService
   #
   # @return [CalculationService] This instance - with the results available using other instance methods
   def call
-    # @TODO Decide what to do here and remove this comment
-    # There are 2 catch blocks here which at present has little value
-    # but, I am planning ahead a little in that invalid inputs might
-    # want to add something to this instance in terms of messages etc..
-    # but unsure right now.
     catch(:abort) do
       calculators.each do |calculator|
         my_result = catch(:invalid_inputs) do
@@ -103,7 +93,6 @@ class CalculationService
       final_decision_by: final_decision_by,
       remission: remission,
       fields_required: fields_required,
-      required_fields_affecting_likelihood: required_fields_affecting_likelihood,
       messages: messages
     }
   end
@@ -121,16 +110,6 @@ class CalculationService
       end.flatten
       my_fields_required + required
     end
-  end
-
-  # Indicates the fields that are required to be filled in that can change the Yes/No result.
-  # This will exclude (for example) the number_of_children fields which might just change the
-  # amount of help rather than the decision to provide help or not.
-  #
-  # @return [Array<Symbol>] An array of fields represented by symbols that need to be filled in
-  # @see #fields_required for the list of symbols.
-  def required_fields_affecting_likelihood
-    FIELDS_AFFECTING_LIKELIHOOD - inputs.keys
   end
 
   # Indicates if a calculator has made a final decision, preventing any further
@@ -155,14 +134,34 @@ class CalculationService
 
   def perform_calculation_using(calculator)
     result = calculator.call(inputs)
+    post_process_failure result, calculator
+    post_process_undecided result, calculator
+    post_process_success result, calculator
+    result
+  end
+
+  def post_process_failure(result, calculator)
     if result.available_help == :none
       add_failure(result, identifier: calculator.identifier)
       throw(:abort)
     end
+  end
+
+  def post_process_undecided(result, _calculator)
+    if result.available_help == :undecided
+      add_undecided(result)
+    end
+  end
+
+  def post_process_success(result, calculator)
     if [:full, :partial].include? result.available_help
       add_success(result, identifier: calculator.identifier)
     end
-    result
+  end
+
+  def add_undecided(result)
+    self.available_help = :undecided
+    messages.concat result.messages
   end
 
   def add_failure(result, identifier:)

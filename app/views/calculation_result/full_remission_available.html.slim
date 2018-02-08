@@ -1,6 +1,6 @@
 .content-body.full_remission_available
   .feedback data-behavior="calculator_feedback"
     div.positive
-      h2 data-behavior="calculator_feedback_header" = t("calculation.feedback.full_remission.decided_by.#{current_calculation.final_decision_by}.#{current_calculation.inputs[:marital_status]}.header")
-      p data-behavior="calculator_feedback_message" = final_calculator_feedback_for(current_calculation)
+      h2 data-behavior="calculator_feedback_header" = calculator_feedback_header_for(current_calculation)
+      p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
   = render partial: 'calculation/previous_questions', locals: { current_calculation: current_calculation, disabled: true, exclude: ignored_fields_for(current_calculation) }

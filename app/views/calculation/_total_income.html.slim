@@ -5,6 +5,12 @@
       fieldset
         legend
           h2.heading-medium = t('calculation.field_labels.total_income')
+        span.form-hint = t('calculation.hints.total_income')
+        - if form.errors.include?(:total_income)
+          span.error-message = form.errors[:total_income].join(', ')
+        label.block-label
+          .form-control-money.gbp
+            = f.text_field :total_income, class: 'form-control'
         details data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.total_income.summary')
 
@@ -14,12 +20,6 @@
               ul.list.list-bullet
                 - t('calculation.guidance.total_income.detail.text').lines.each do |line|
                   li = line
-        span.form-hint = t('calculation.hints.total_income')
-        - if form.errors.include?(:total_income)
-          span.error-message = form.errors[:total_income].join(', ')
-        label.block-label
-          .form-control-money.gbp
-            = f.text_field :total_income, class: 'form-control'
     .form-group
       = f.submit 'Next step', class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?

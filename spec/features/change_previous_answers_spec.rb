@@ -1,6 +1,5 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-745
-# @TODO This feature is not 100% as per AC at the moment as I am questioning the resetting of previous questions - just the last step in every scenario
 RSpec.describe 'Change previous answers test', type: :feature, js: true do
   # Feature: Change Previous Answer
   #
@@ -251,7 +250,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validate all' do
       expect(not_eligible_page).to be_displayed
-      expect(not_eligible_page.previous_answers.court_fee.answer(text: "£1,000")).to be_present
+      expect(not_eligible_page.previous_answers.court_fee).to have_answered(1000)
       expect(not_eligible_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).
@@ -280,7 +279,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validate all' do
       expect(not_eligible_page).to be_displayed
-      expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+      expect(not_eligible_page.previous_answers.date_of_birth).to have_answered(dob)
       expect(not_eligible_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).
@@ -310,7 +309,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures do
       expect(not_eligible_page).to be_displayed
-      expect(not_eligible_page.previous_answers.date_of_birth.answer(text: dob)).to be_present
+      expect(not_eligible_page.previous_answers.date_of_birth).to have_answered(dob)
       expect(not_eligible_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).
@@ -331,7 +330,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     given_i_am(:sue)
     dob = (Time.zone.today - 60.years).strftime('%d/%m/%Y')
     answer_up_to(:total_income)
-    total_income_page.previous_answers.partner_date_of_birth.navigate_to
+    total_income_page.previous_answers.date_of_birth.navigate_to
 
     # Act
     date_of_birth_page.partner_date_of_birth.set(dob)
@@ -340,7 +339,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validate all' do
       expect(not_eligible_page).to be_displayed
-      expect(not_eligible_page.previous_answers.partner_date_of_birth.answer(text: dob)).to be_present
+      expect(not_eligible_page.previous_answers.partner_date_of_birth).to have_answered(dob)
       expect(not_eligible_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).
@@ -367,7 +366,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validate all' do
       expect(not_eligible_page).to be_displayed
-      expect(not_eligible_page.previous_answers.disposable_capital.answer(text: '3,001')).to be_present
+      expect(not_eligible_page.previous_answers.disposable_capital).to have_answered(3001)
       expect(not_eligible_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).
@@ -396,7 +395,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validate all' do
       expect(full_remission_page).to be_displayed
-      expect(full_remission_page).to have_previous_question(:income_benefits, answer: :jobseekers_allowance)
+      expect(full_remission_page.previous_answers.income_benefits).to have_answered([:jobseekers_allowance])
       expect(full_remission_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).
@@ -422,7 +421,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validate all' do
       expect(not_eligible_page).to be_displayed
-      expect(not_eligible_page.previous_answers.number_of_children.answer(text: '1')).to be_present
+      expect(not_eligible_page.previous_answers.number_of_children).to have_answered(1)
       expect(not_eligible_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).

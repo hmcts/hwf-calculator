@@ -63,50 +63,57 @@ en:
         or: total monthly income
       disclaimer_html: |
        This calculator is for guidance purposes only and is not the Help with Fees application
-
     feedback:
-      subject:
-        single: "you"
-        sharing_income: "you and your partner"
-      should_get_help: "You may get help with fees"
-      full_remission:
+      messages:
         decided_by:
           disposable_capital:
-            single:
+            final_positive:
               header: "You should be eligible for a full remission"
-              detail: "You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
-            sharing_income:
+              detail:
+                single: "You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+                sharing_income: "You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+            final_negative:
+              header: "You are unlikely to get help with your fees"
+              detail:
+                single: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                sharing_income: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+            likely:
+              header: "You may get help with fees"
+              detail:
+                single: "With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+                sharing_income: "With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+          benefits_received:
+            final_positive:
+              header: "You may be eligible for a full remission"
+              detail:
+                single: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+                sharing_income: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+            undecided_none:
+              header: "You are unlikely to get help with your fees"
+              detail:
+                single: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+                sharing_income: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+            undecided_dont_know:
+              header: "You are unlikely to get help with your fees"
+              detail:
+                single: "If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+                sharing_income: "If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+          household_income:
+            final_positive:
               header: "You should be eligible for a full remission"
-              detail: "You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
-          none:
-            single:
-              header: "You should be eligible for a full remission"
-              detail: "As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
-            sharing_income:
-              header: "You should be eligible for a full remission"
-              detail: "As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
-      message:
-        negative: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-        positive: "With a fee of %{fee} and savings of %{disposable_capital}, %{subject} should be able to get help with your fees,"
-      partial_remission:
-        header: "You should be eligible for a Partial Remission"
-        single:
-          detail: "As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
-        sharing_income:
-          detail: "As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
-      no_remission:
-        header: "You're unlikely to get help with your fee"
-        single:
-          detail: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-        sharing_income:
-          detail: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-      explanation_suffix: "as long as you"
-      explanation_suffix_joining_word: "or"
-      explanation_suffix_fields:
-        benefits_received: "receive certain benefits"
-        total_income: "are on a low income"
-      should_not_get_help: "You are unlikely to get help with your fees"
-      should_get_partial_help: "You should be able to get partial help with your fees"
+              detail:
+                single: "As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+                sharing_income: "As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+            final_negative:
+              header: "You are unlikely to get help with your fees"
+              detail:
+                single: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                sharing_income: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+            final_partial:
+              header: "You should be eligible for a Partial Remission"
+              detail:
+                single: "As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
+                sharing_income: "As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
     field_labels:
       disposable_capital: "How much do you have in savings and investment combined?"
       marital_status: "Are you single, married or living with someone and sharing income?"
@@ -116,11 +123,12 @@ en:
       total_income: "How much total income do you receive each month?"
       partner_date_of_birth: "What is your partners date of birth?"
     previous_questions:
-
       disposable_capital:
         label: "Combined savings and investment"
       marital_status:
         label: "What is your status"
+        single: "Single"
+        sharing_income: "Married or living with someone"
       date_of_birth:
         label: "Date of birth"
       partner_date_of_birth:
@@ -253,13 +261,7 @@ en:
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
       fee: "Enter valid value with no decimal places"
       disposable_capital: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
-  welsh_link:
+  language_switcher:
     full_html: "This guide is also available %{link_html} (Cymraeg)"
     link_text: "in Welsh"
-
-
-
-
-
-
-
+    switch: 'cy'

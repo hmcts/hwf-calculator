@@ -151,7 +151,7 @@ RSpec.describe CalculationService do
       end
 
       before do
-        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0, final_decision?: false)
+        fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0, final_decision?: false, messages: [])
         class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation).as_stubbed_const
         class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation).as_stubbed_const
         class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
@@ -196,6 +196,7 @@ RSpec.describe CalculationService do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :full
       allow(calculator_1).to receive(:messages).and_return []
+      allow(calculator_1).to receive(:final_decision?).and_return true
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :full
@@ -204,14 +205,35 @@ RSpec.describe CalculationService do
     it 'has partial help available if calculator 1 says it is available' do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :partial
+      allow(calculator_1).to receive(:final_decision?).and_return true
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :partial
     end
 
-    it 'returns true if help_not_available? returns true from fake calculator' do
+    it 'has undecided help available if calculator 1 says its available' do
+      # Arrange
+      allow(calculator_1).to receive(:available_help).and_return :undecided
+      allow(calculator_1).to receive(:final_decision?).and_return false
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :undecided
+
+    end
+
+    it 'has undecided help available if calculator 2 says it is available overriding calculator 1' do
+      # Arrange
+      allow(calculator_1).to receive(:available_help).and_return :full
+      allow(calculator_2).to receive(:available_help).and_return :undecided
+
+      # Act and Assert
+      expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :undecided
+    end
+
+    it 'returns true if available_help returns :none from fake calculator' do
       # Arrange
       allow(calculator_1).to receive(:available_help).and_return :none
+      allow(calculator_1).to receive(:final_decision?).and_return true
 
       # Act and Assert
       expect(service.call(inputs, calculators: calculators)).to have_attributes available_help: :none
@@ -287,22 +309,6 @@ RSpec.describe CalculationService do
       expect(calculator_3_class).to have_received(:fields_required).with(inputs)
     end
 
-  end
-
-  describe '#required_fields_affecting_likelihood' do
-    let(:inputs) do
-      {
-        disposable_capital: 1000
-      }
-    end
-
-    include_context 'with fake calculators'
-
-    it 'returns any fields not provided that will affect the likelihood and not those that just affect the amount' do
-
-      # Act and Assert
-      expect(service.call(inputs, calculators: calculators)).to have_attributes required_fields_affecting_likelihood: [:date_of_birth, :benefits_received, :total_income]
-    end
   end
 
   describe 'final_decision_by' do
@@ -421,7 +427,6 @@ RSpec.describe CalculationService do
                                       final_decision_by: :none,
                                       remission: 0.0,
                                       fields_required: instance_of(Array),
-                                      required_fields_affecting_likelihood: instance_of(Array),
                                       messages: []
     end
   end

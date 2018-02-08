@@ -72,6 +72,7 @@ module Calculator
 
       def given_i_am(user_name)
         self.user = personas.fetch(user_name)
+        user.marital_status = user.marital_status.to_sym
         user.date_of_birth = (user.age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')
         if user.partner_age.present?
           user.partner_date_of_birth = (user.partner_age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')

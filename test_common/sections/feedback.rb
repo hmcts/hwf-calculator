@@ -4,6 +4,10 @@ module Calculator
       extend ActiveSupport::Concern
       include BaseSection
 
+      included do
+        elements :messages, '[data-behavior=calculator_feedback_header],[data-behavior=calculator_feedback_message]'
+      end
+
       def message_with_detail(msg)
         within @root_element do
           find '[data-behavior=calculator_feedback_message]', text: msg

@@ -13,11 +13,22 @@ module Calculator
       end
 
       def set(value)
-        v = case value
-            when String then value
-            when Symbol then messaging.t("#{i18n_scope}.options.#{value}")
-            end
-        super(v)
+        super(translated_value value)
+      end
+
+      def has_value?(value)
+        super(translated_value value)
+      end
+
+      private
+
+      def translated_value(value)
+        case value
+        when String then
+          value
+        when Symbol then
+          messaging.t("#{i18n_scope}.options.#{value}")
+        end
       end
     end
   end
