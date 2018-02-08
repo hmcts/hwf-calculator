@@ -146,6 +146,7 @@ cy:
       total_income:
         label: "*Welsh Total income"
       change: "*Welsh Change"
+      label: "*Welsh Previous answers"
     benefits:
       dont_know:
         label: "*Welsh Don't know"

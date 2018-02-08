@@ -283,6 +283,7 @@ en:
         start: Start now
   hwf_components:
     previous_questions:
+      label: 'Previous answers'
       marital_status:
         label: "What is your status"
         change: 'Change'

@@ -283,6 +283,7 @@ cy:
         start: '*Welsh Start now'
   hwf_components:
     previous_questions:
+      label: '*Welsh Previous answers'
       marital_status:
         label: "*Welsh What is your status"
         change: '*Welsh Change'

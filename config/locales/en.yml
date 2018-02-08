@@ -146,6 +146,7 @@ en:
       total_income:
         label: "Total income"
       change: "Change"
+      label: "Previous answers"
     benefits:
       dont_know:
         label: "Don't know"
