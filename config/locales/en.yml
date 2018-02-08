@@ -88,16 +88,6 @@ en:
               detail:
                 single: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
                 sharing_income: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
-            undecided_none:
-              header: "You are unlikely to get help with your fees"
-              detail:
-                single: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
-                sharing_income: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
-            undecided_dont_know:
-              header: "You are unlikely to get help with your fees"
-              detail:
-                single: "If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
-                sharing_income: "If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
           household_income:
             final_positive:
               header: "You should be eligible for a full remission"
@@ -125,6 +115,9 @@ en:
       number_of_children:
         single: "How many children live with you or are you responsible for supporting financially?"
         sharing_income: "How many children live with you and your partner or are you and your partner responsible for supporting financially?"
+      date_of_birth_day: "Day"
+      date_of_birth_month: "Month"
+      date_of_birth_year: "Year"
     previous_questions:
       disposable_capital:
         label: "Combined savings and investment"
@@ -180,6 +173,7 @@ en:
         guidance: ''
     common:
       page_header: "Find out if you could get help with fees"
+      next_button: "Next step"
     guidance:
       marital_status:
         summary: "Help with Status"
@@ -264,6 +258,10 @@ en:
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
       fee: "Enter valid value with no decimal places"
       disposable_capital: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+    marital_status:
+      options:
+        single: "Single"
+        sharing_income: "Married or living with someone"
   language_switcher:
     full_html: "This guide is also available %{link_html} (Cymraeg)"
     link_text: "in Welsh"

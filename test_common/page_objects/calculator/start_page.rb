@@ -11,16 +11,13 @@ module Calculator
       element :requirements, '[data-behavior=requirements]'
       element :disclaimer, '[data-behavior=disclaimer]'
       element :available_in_welsh, '[data-behavior=welsh_link]'
-      element :welsh_link, '[data-behavior=welsh_link] a'
+      element :switch_language_link, '[data-behavior=welsh_link] a'
+      element :welsh_link, :link_or_button, t('hwf_pages.home.welsh_link.link_text', locale: :en)
+      element :english_link, :link_or_button, t('hwf_pages.home.welsh_link.link_text', locale: :cy)
       element :start_button, :link_or_button, t('hwf_pages.home.buttons.start')
 
       # Begin a calculator session
-      def start_session(in_language: :en)
-        case in_language
-        when :cy then welsh_link.click
-        when :en then nil
-        else raise "We only support languages en and cy - #{in_language} is not supported"
-        end
+      def start_session
         start_button.click
       end
 
@@ -53,8 +50,22 @@ module Calculator
       # @return [Boolean] Should be true
       def validate_welsh_link
         available_in_welsh.assert_text messaging.t('hwf_pages.home.welsh_link.full_text')
-        welsh_link.assert_text messaging.t('hwf_pages.home.welsh_link.link_text')
+        switch_language_link.assert_text messaging.t('hwf_pages.home.welsh_link.link_text')
         true
+      end
+
+      # Switches the application to welsh
+      # @raise [Capybara::ElementNotFound] If the welsh link was not found
+      def switch_to_welsh
+        welsh_link.click
+        wait_for_english_link
+      end
+
+      # Switches the application to english
+      # @raise [Capybara::ElementNotFound] If the english link was not found
+      def switch_to_english
+        english_link.click
+        wait_for_welsh_link
       end
     end
   end
