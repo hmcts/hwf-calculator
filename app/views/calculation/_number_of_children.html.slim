@@ -4,7 +4,7 @@
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend
-          h2.heading-medium = 'How many children live with you or are you responsible for supporting financially?'
+          h2.heading-medium = t("calculation.field_labels.number_of_children.#{current_calculation.inputs[:marital_status]}")
         - if form.errors.include?(:number_of_children)
           span.error-message = form.errors[:number_of_children].join(', ')
         label.block-label

@@ -122,6 +122,9 @@ en:
       benefits_received: "Select all income benefits you are currently receiving"
       total_income: "How much total income do you receive each month?"
       partner_date_of_birth: "What is your partners date of birth?"
+      number_of_children:
+        single: "How many children live with you or are you responsible for supporting financially?"
+        sharing_income: "How many children live with you and your partner or are you and your partner responsible for supporting financially?"
     previous_questions:
       disposable_capital:
         label: "Combined savings and investment"
