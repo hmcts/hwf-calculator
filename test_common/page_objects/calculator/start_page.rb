@@ -25,7 +25,7 @@ module Calculator
       # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
       # @return [Boolean] Should be true
       def validate_introduction
-        introduction.assert_text messaging.t('hwf_pages.home.introduction_text')
+        introduction.assert_text messaging.t('hwf_pages.home.introduction_text'), exact: false
         true
       end
 
@@ -33,7 +33,7 @@ module Calculator
       # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
       # @return [Boolean] Should be true
       def validate_requirements
-        requirements.assert_text messaging.t('hwf_pages.home.requirements_text')
+        requirements.assert_text messaging.t('hwf_pages.home.requirements_text'), exact: false
         true
       end
 
@@ -41,7 +41,7 @@ module Calculator
       # @raise [Capybara::ExpectationNotMet] if the text wasn't found in the correct place
       # @return [Boolean] Should be true
       def validate_disclaimer
-        disclaimer.assert_text messaging.t('hwf_pages.home.disclaimer_text')
+        disclaimer.assert_text messaging.t('hwf_pages.home.disclaimer_text'), exact: false
         true
       end
 

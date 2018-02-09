@@ -4,6 +4,7 @@ Capybara.configure do |config|
   config.javascript_driver = driver
   config.default_max_wait_time = 10
   config.match = :prefer_exact
+  config.exact = true
   config.ignore_hidden_elements = false
   config.visible_text_only = true
 end
