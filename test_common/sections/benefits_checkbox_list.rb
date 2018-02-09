@@ -48,7 +48,8 @@ module Calculator
     #   which would require these options to be defined in the translation file(s)
     #
     # @example Fetching a single option
-    #   my_page.benefits.option_labelled_jobseekers_allowance
+    #   option = my_page.benefits.option_labelled_jobseekers_allowance
+    #   option.label <# "Jobseekers Allowance"
     #
     #   These methods are generated automatically to match the options set
     #   in <i18n_root>.options
