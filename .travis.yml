@@ -20,8 +20,8 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-- bundle exec parallel_rspec -n 4 --runtime-log tmp/parallel_runtime_log spec
-- export TEST_LOCALE=cy; bundle exec parallel_rspec -n 4 --runtime-log tmp/parallel_runtime_log spec
+- bundle exec parallel_rspec -n 4 spec
+- export TEST_LOCALE=cy; bundle exec parallel_rspec -n 4 spec
 - bundle exec cucumber features/*.feature
 - export TEST_LOCALE=cy; bundle exec cucumber features/*.feature
 after_success:
