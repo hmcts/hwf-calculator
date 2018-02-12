@@ -1,7 +1,7 @@
 module Calculator
   module Test
     class DateOfBirthPage < BasePage
-      set_url '/calculation/date_of_birth'
+      set_url t('hwf_urls.date_of_birth')
       element :heading, :exact_heading_text, t('hwf_pages.date_of_birth.heading')
       element :next_button, :button, t('hwf_pages.date_of_birth.buttons.next')
 

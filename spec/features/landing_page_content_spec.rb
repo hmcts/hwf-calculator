@@ -1,6 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-701
-RSpec.describe 'Partner status content', type: :feature, js: true do
+RSpec.describe 'Landing page content', type: :feature, js: true do
 
   # Feature: HwF Eligibility Calculator Landing page Content
   #
@@ -69,7 +69,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   #
   scenario 'View Heading, Body, Disclaimer and Welsh translation link on the Calculator Landing Page' do
     # Act
-    start_page.load_page
+    load_start_page
 
     # Assert
     aggregate_failures 'Validating headers, content, disclaimer and welsh link' do

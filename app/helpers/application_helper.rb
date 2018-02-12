@@ -36,6 +36,14 @@ module ApplicationHelper
     end
   end
 
+  def language_switcher_url
+    link_to(t('language_switcher.link_text'), locale: locale_param_for(t('language_switcher.switch')))
+  end
+
+  def locale_param_for(t)
+    t == 'en' ? nil : t
+  end
+
   private
 
   def gds_checkbox_with_guidance(builder)

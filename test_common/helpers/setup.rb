@@ -56,8 +56,18 @@ module Calculator
       end
 
       def start_calculator_session
-        start_page.load_page
-        start_page.start_session in_language: ::Calculator::Test::Messaging.instance.current_locale
+        load_start_page
+        start_page.start_session
+      end
+
+      def load_start_page(in_language: ::Calculator::Test::Messaging.instance.current_locale)
+        my_page = start_page
+        my_page.load_page
+        case in_language
+        when :cy then my_page.switch_to_welsh
+        when :en then nil
+        else raise "We only support languages en and cy - #{in_language} is not supported"
+        end
       end
 
       def answer_marital_status_question

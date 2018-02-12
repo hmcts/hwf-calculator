@@ -4,7 +4,7 @@ module Calculator
       CHILDREN_SINGLE_LABEL = t('hwf_pages.number_of_children.questions.number_of_children.label.single')
       CHILDREN_MARRIED_LABEL = t('hwf_pages.number_of_children.questions.number_of_children.label.sharing_income')
 
-      set_url '/calculation/number_of_children'
+      set_url t('hwf_urls.number_of_children')
       element :heading, :exact_heading_text, t('hwf_pages.number_of_children.heading')
       element :next_button, :button, t('hwf_pages.number_of_children.buttons.next')
 

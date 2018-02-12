@@ -1,4 +1,17 @@
 en:
+  hwf_urls:
+    fee: '/calculation/fee'
+    date_of_birth: '/calculation/date_of_birth'
+    disposable_capital: '/calculation/disposable_capital'
+    full_remission: '/calculation_result/full_remission'
+    income_benefits: '/calculation/benefits_received'
+    marital_status: '/calculation/marital_status'
+    not_eligible: '/calculation_result/not_eligible'
+    number_of_children: '/calculation/number_of_children'
+    partial_remission: '/calculation_result/partial_remission'
+    start_page: '/'
+    total_income: '/calculation/total_income'
+
   hwf_decision:
     disposable_capital:
       single:
@@ -270,6 +283,7 @@ en:
         start: Start now
   hwf_components:
     previous_questions:
+      label: 'Previous answers'
       marital_status:
         label: "What is your status"
         change: 'Change'

@@ -24,7 +24,7 @@ module Calculator
 
       def option_labelled(text)
         translated = case text
-                     when Symbol then t("#{i18n_scope}.options.#{text}")
+                     when Symbol then t("#{i18n_scope}.options.#{text}.label")
                      else text
                      end
         options(text: translated).first

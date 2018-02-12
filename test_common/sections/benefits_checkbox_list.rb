@@ -47,6 +47,15 @@ module Calculator
     #
     #   which would require these options to be defined in the translation file(s)
     #
+    # @example Fetching a single option
+    #   option = my_page.benefits.option_labelled_jobseekers_allowance
+    #   option.label <# "Jobseekers Allowance"
+    #
+    #   These methods are generated automatically to match the options set
+    #   in <i18n_root>.options
+    #
+    #   and they return a @see ::Calculator::Test::GdsMultipleChoiceOptionSection
+    #
     # @!method error_nothing_selected
     #   Returns the 'nothing selected' error message and raises if its not present.
     #   As with all site prism elements, you can use things like has_error_nothing_selected?
@@ -61,13 +70,18 @@ module Calculator
 
       included do
         element :error_nothing_selected, :exact_error_text, t("#{i18n_scope}.errors.nothing_selected")
+        t("#{i18n_scope}.options").each_pair do |key, value|
+          section :"option_labelled_#{key}", :gds_multiple_choice_option, value[:label] do
+            include GdsMultipleChoiceOptionSection
+          end
+        end
       end
 
       # Finds the "Don't Know" option's guidance text node or raises if not found
       # @return [Capybara::Node::element] The dont know guidance capybara node
       # @raise [Capybara::ElementNotFound] if the correct guidance was not present within the node section
       def dont_know_guidance
-        option = option_labelled(messaging.t("#{i18n_scope}.options.dont_know.label"))
+        option = option_labelled_dont_know
         option.guidance_with_text(messaging.t("#{i18n_scope}.options.dont_know.guidance"))
       end
 
@@ -75,8 +89,12 @@ module Calculator
       # @return [Capybara::Node::element] The none of the above guidance capybara node
       # @raise [Capybara::ElementNotFound] if the correct guidance was not present within the node section
       def none_of_the_above_guidance
-        option = option_labelled(messaging.t("#{i18n_scope}.options.none.label"))
+        option = option_labelled_none
         option.guidance_with_text(messaging.t("#{i18n_scope}.options.none.guidance"))
+      end
+
+      def option_labelled(option)
+        send(:"option_labelled_#{option}")
       end
 
       # Selects single or multiple items by label.  The labels are specified by I18n key so the

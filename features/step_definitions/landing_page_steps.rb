@@ -1,5 +1,5 @@
 Given("I am on the landing page") do
-  start_page.load_page
+  load_start_page
 end
 
 Then("I should see information about the help with fees calculator") do

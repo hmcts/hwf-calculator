@@ -1,7 +1,7 @@
 module Calculator
   module Test
     class DisposableCapitalPage < BasePage
-      set_url '/calculation/disposable_capital'
+      set_url t('hwf_urls.disposable_capital')
       element :heading, :exact_heading_text, t('hwf_pages.disposable_capital.heading')
       element :next_button, :button, t('hwf_pages.disposable_capital.buttons.next')
 

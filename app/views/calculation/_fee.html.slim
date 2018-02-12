@@ -18,5 +18,5 @@
             .text
               h2.heading-small = t('calculation.guidance.fee.detail_text')
     .form-group
-      = f.submit 'Next step', class: 'button'
+      = f.submit t('calculation.common.next_button'), class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?

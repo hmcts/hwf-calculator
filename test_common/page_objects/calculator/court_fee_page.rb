@@ -13,7 +13,7 @@ module Calculator
     #   my_page.fee.set(1500)
     #   my_page.next
     class CourtFeePage < BasePage
-      set_url '/calculation/fee'
+      set_url t('hwf_urls.fee')
       element :heading, :exact_heading_text, t('hwf_pages.fee.heading')
       section :fee, :calculator_question, t('hwf_pages.fee.questions.fee.label') do
         @i18n_scope = 'hwf_pages.fee.questions.fee'

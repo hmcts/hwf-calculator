@@ -2,7 +2,7 @@ module Calculator
   module Test
     class PartialRemissionPage < BasePage
       include ActiveSupport::NumberHelper
-      set_url '/calculation_result/partial_remission'
+      set_url t('hwf_urls.partial_remission')
 
       # Verifies that the final partial remission message is present
       # @param [OpenStruct] user The user containing the fee and the monthly_gross_income

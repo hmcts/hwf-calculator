@@ -25,7 +25,9 @@ before_script:
   - ./cc-test-reporter before-build
 script:
 - bundle exec rspec
+- export TEST_LOCALE=cy; bundle exec rspec
 - bundle exec cucumber features/*.feature
+- export TEST_LOCALE=cy; bundle exec cucumber features/*.feature
 after_success:
 - bundle exec codeclimate-test-reporter
 after_script:

@@ -55,7 +55,7 @@ module Calculator
       # @raise [Capybara::ExpectationNotMet] if the assertion hasn't succeeded during wait time
       def validate_guidance
         strings = Array(messaging.t("#{i18n_scope}.guidance.text"))
-        guidance_section.assert_text(strings.join("\n"))
+        guidance_section.assert_text(strings.join("\n"), exact: false)
       end
 
       # Toggles the guidance on/off

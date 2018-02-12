@@ -8,14 +8,14 @@ module Calculator
       included do
         element :checkbox, 'input[type=checkbox]'
         element :label, 'label'
-        element :guidance, '[data-behavior=multiple_choice_guidance]'
+        element(:guidance, :xpath, XPath.generate { |x| x.css('[data-behavior=multiple_choice_guidance]') })
         delegate :disabled?, to: :checkbox
         delegate :checked?, to: :checkbox
         delegate :text, to: :label
       end
 
       def guidance_with_text(text)
-        guidance(text: text)
+        guidance(text: text, exact: false)
       end
 
       def unselected?
