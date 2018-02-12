@@ -92,7 +92,7 @@ cy:
               *Welsh age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
               *Welsh children who don’t live with you, but you (or your partner) pay regular maintenance for them
       buttons:
-        next: '*Welsh Next step'
+        next: '*Welsh Next'
     date_of_birth:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
@@ -127,7 +127,7 @@ cy:
             year:
               label: '*Welsh Year'
       buttons:
-        next: '*Welsh Next step'
+        next: '*Welsh Next'
     total_income:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
@@ -150,7 +150,7 @@ cy:
               *Welsh student maintenance loans, grants or bursaries (except for tuition fee loans)
               *Welsh If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       buttons:
-        next: '*Welsh Next step'
+        next: '*Welsh Next'
     marital_status:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
@@ -178,7 +178,7 @@ cy:
               *Welsh part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
 
       buttons:
-        next: '*Welsh Next step'
+        next: '*Welsh Next'
     fee:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
@@ -191,7 +191,7 @@ cy:
             label: '*Welsh If you have already paid your court or tribunal fee'
             text: "*Welsh You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
       buttons:
-        next: '*Welsh Next step'
+        next: '*Welsh Next'
     disposable_capital:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
@@ -224,7 +224,7 @@ cy:
               *Welsh medical negligence or personal injury awards
               *Welsh any compensation under a statutory scheme in respect of Mesothelioma
       buttons:
-        next: '*Welsh Next step'
+        next: '*Welsh Next'
     income_benefits:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
@@ -258,7 +258,7 @@ cy:
             nothing_selected: "*Welsh Select whether you're receiving one of the benefits listed"
 
       buttons:
-        next: '*Welsh Next step'
+        next: '*Welsh Next'
     home:
       heading: '*Welsh Find out if you could get help with fees'
       introduction_text: |
