@@ -20,6 +20,11 @@ Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome, url: ENV.fetch('SELENIUM_URL', 'http://localhost:4444/wd/hub'))
 end
 
+Capybara.register_driver :chromedriver do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+
 Capybara.register_driver :safari do |app|
   Capybara::Selenium::Driver.new(app, browser: :safari)
 end
