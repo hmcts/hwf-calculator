@@ -21,7 +21,10 @@ Capybara.register_driver :chrome do |app|
 end
 
 Capybara.register_driver :chromedriver do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome, args: ['--no-sandbox', '--headless'])
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--no-sandbox')
+  options.add_argument('--headless')
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
 

@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry', '~> 0.11.3'
   gem 'ruby-debug-ide'
   gem 'debase'
+  gem 'parallel_tests', '~> 2.17'
 end
 
 group :development do
