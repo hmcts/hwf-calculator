@@ -9,6 +9,7 @@ env:
     - CC_TEST_REPORTER_ID=f9a2ac22f48a8d9ba311923fc309a5920a6eaf82f103af029d9f1f3a694bd24c
     - ENABLE_COVERAGE=true
     - DRIVER=chromedriver
+    - DEBUG=true
 before_install:
   - "export PHANTOMJS_VERSION=2.1.1"
   - "export PATH=$PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
