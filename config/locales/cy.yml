@@ -174,7 +174,7 @@ cy:
         guidance: ''
     common:
       page_header: "*Welsh Find out if you could get help with fees"
-      next_button: "*Welsh Next step"
+      next_button: "*Welsh Next"
     guidance:
       marital_status:
         summary: "*Welsh Help with Status"

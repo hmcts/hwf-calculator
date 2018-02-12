@@ -174,7 +174,7 @@ en:
         guidance: ''
     common:
       page_header: "Find out if you could get help with fees"
-      next_button: "Next step"
+      next_button: "Next"
     guidance:
       marital_status:
         summary: "Help with Status"
