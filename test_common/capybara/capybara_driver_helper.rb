@@ -27,7 +27,6 @@ Capybara.register_driver :chromedriver do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
-
 Capybara.register_driver :safari do |app|
   Capybara::Selenium::Driver.new(app, browser: :safari)
 end
