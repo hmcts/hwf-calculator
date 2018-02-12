@@ -22,9 +22,6 @@ addons:
     repo_token: ca58e966ca9664d66925f6837f4b2092de2b5eab7580591e955d3bb8be3b40fa
   chrome: stable
 before_script:
-  - wget http://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
-  - export CHROME_BIN=chromium-browser
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
