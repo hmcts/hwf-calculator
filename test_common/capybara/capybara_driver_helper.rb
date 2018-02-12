@@ -1,6 +1,6 @@
 require 'capybara/poltergeist'
 Capybara.configure do |config|
-  driver = ENV.fetch('DRIVER', 'poltergeist').to_sym
+  driver = ENV.fetch('DRIVER', 'chromedriver').to_sym
   config.javascript_driver = driver
   config.default_max_wait_time = 10
   config.match = :prefer_exact
@@ -21,7 +21,7 @@ Capybara.register_driver :chrome do |app|
 end
 
 Capybara.register_driver :chromedriver do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  Capybara::Selenium::Driver.new(app, browser: :chrome, args: ['--no-sandbox', '--headless'])
 end
 
 
