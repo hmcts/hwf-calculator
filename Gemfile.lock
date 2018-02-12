@@ -67,6 +67,8 @@ GEM
       archive-zip (~> 0.7.0)
       nokogiri (~> 1.6)
     cliver (0.3.2)
+    codeclimate-test-reporter (0.6.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
@@ -314,6 +316,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   capybara-screenshot (~> 1.0)
   chromedriver-helper (~> 1.1)
+  codeclimate-test-reporter (~> 0.4)
   cucumber-rails (~> 1.5)
   debase
   factory_bot_rails (~> 4.8)
