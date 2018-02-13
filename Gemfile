@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry', '~> 0.11.3'
   gem 'ruby-debug-ide'
   gem 'debase'
+  gem 'parallel_tests', '~> 2.17'
 end
 
 group :development do
@@ -61,7 +62,9 @@ group :test do
   gem 'factory_bot_rails', '~> 4.8'
   gem 'rspec-rails', '~> 3.7'
   gem 'site_prism', '~> 2.9'
-  gem 'poltergeist', '~> 1.15'
+  gem 'chromedriver-helper', '~> 1.1'
+  gem 'geckodriver-helper', '~> 0.0'
+  gem 'codeclimate-test-reporter', '~> 0.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
