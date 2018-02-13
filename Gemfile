@@ -64,6 +64,7 @@ group :test do
   gem 'site_prism', '~> 2.9'
   gem 'poltergeist', '~> 1.15'
   gem 'chromedriver-helper', '~> 1.1'
+  gem 'geckodriver-helper', '~> 0.0'
   gem 'codeclimate-test-reporter', '~> 0.4'
 end
 

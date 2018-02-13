@@ -6,3 +6,6 @@ end
 Capybara::Screenshot.register_driver(:chromedriver) do |driver, path|
   driver.browser.save_screenshot(path)
 end
+Capybara::Screenshot.register_driver(:firefoxdriver) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
