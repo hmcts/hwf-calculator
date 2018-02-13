@@ -196,7 +196,9 @@ en:
       heading: 'Find out if you could get help with fees'
       questions:
         disposable_capital:
-          label: 'How much do you have in savings and investment combined?'
+          label:
+            single: 'How much do you have in savings and investment combined?'
+            sharing_income: 'How much do you and your partner have in savings and investment combined?'
           errors:
             non_numeric: "Enter a valid value"
             blank: "Enter how much you have in savings and investments"
