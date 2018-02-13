@@ -52,11 +52,11 @@ class CalculationController < ApplicationController
     submit_service
   end
 
-  def next_url(submit_service)
+  def next_url(submit_service, form_service: CalculationFormService)
     if submit_service.final_decision_made? || submit_service.fields_required.empty?
       send("calculation_result_#{submit_service.available_help}_url".to_sym)
     else
-      edit_calculation_url(form: submit_service.fields_required.first)
+      edit_calculation_url(form: form_service.for_field(submit_service.fields_required.first).type)
     end
   end
 

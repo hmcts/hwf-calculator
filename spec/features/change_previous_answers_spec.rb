@@ -237,6 +237,33 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     end
   end
 
+  scenario 'Citizen changes their marital status from single to married to force asking of date of birth question for partner' do
+    # Arrange - John is single so we can use him to get us to benefits page
+    # then we will go back to marital status page
+    given_i_am(:john)
+    answer_up_to(:benefits)
+    income_benefits_page.previous_answers.marital_status.navigate_to
+
+    # Act
+    marital_status_page.marital_status.set(:sharing_income)
+    marital_status_page.next
+
+    # Assert
+    aggregate_failures 'Validate all' do
+      expect(date_of_birth_page).to be_displayed
+      expect(date_of_birth_page.previous_answers.marital_status).to have_answered(:sharing_income)
+      expect(date_of_birth_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_no_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
+
+  end
+
   scenario 'Citizen changes their fee to push them over the disposable capital limit' do
     # Arrange - Thomas has a fee of 2000 with a disposable capital of 5850 which will pass disposable capital
     given_i_am(:thomas)

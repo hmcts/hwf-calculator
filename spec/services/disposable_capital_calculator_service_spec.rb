@@ -116,23 +116,49 @@ RSpec.describe DisposableCapitalCalculatorService do
   end
 
   describe '#fields_required' do
-    it 'returns all 4 fields with no inputs provided' do
+    it 'returns all 5 fields with no inputs provided' do
       # Act
       result = described_class.fields_required({})
 
       # Assert
-      expect(result).to eql [:fee, :date_of_birth, :partner_date_of_birth, :disposable_capital]
+      expect(result).to contain_exactly :marital_status, :fee, :date_of_birth, :partner_date_of_birth, :disposable_capital
     end
-    it 'returns 3 fields with 1 input provided' do
+
+    it 'returns 4 fields with 1 input provided' do
       # Act
       result = described_class.fields_required(fee: 10.0)
 
       # Assert
-      expect(result).to eql [:date_of_birth, :partner_date_of_birth, :disposable_capital]
+      expect(result).to contain_exactly :marital_status, :date_of_birth, :partner_date_of_birth, :disposable_capital
     end
+
+    it 'returns the date of birth and no partner_date_of_birth if marital status is single' do
+      # Act
+      result = described_class.fields_required(marital_status: 'single')
+
+      # Assert
+      expect(result).to contain_exactly :fee, :date_of_birth, :disposable_capital
+    end
+
+    it 'returns the date of birth and partner_date_of_birth if marital status is sharing_income and partner dob not provided yet' do
+      # Act
+      result = described_class.fields_required(marital_status: 'sharing_income')
+
+      # Assert
+      expect(result).to contain_exactly :fee, :date_of_birth, :partner_date_of_birth, :disposable_capital
+    end
+
+    it 'returns the date of birth and partner_date_of_birth if marital status is sharing_income and partner dob is provided as nil' do
+      # Act
+      result = described_class.fields_required(marital_status: 'sharing_income', partner_date_of_birth: nil)
+
+      # Assert
+      expect(result).to contain_exactly :fee, :date_of_birth, :partner_date_of_birth, :disposable_capital
+    end
+
     it 'returns no fields if all inputs have been provided' do
       # Act
-      result = described_class.fields_required(fee: 10.0, date_of_birth: 20.years.ago, partner_date_of_birth: nil, disposable_capital: 10000.0)
+      result = described_class.fields_required(marital_status: 'single', fee: 10.0, date_of_birth: 20.years.ago, partner_date_of_birth: nil, disposable_capital: 10000.0)
 
       # Assert
       expect(result).to eql []
