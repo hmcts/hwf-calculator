@@ -4,7 +4,7 @@
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend
-          h2.heading-medium = I18n.t('calculation.field_labels.benefits_received')
+          h2.heading-medium = I18n.t("calculation.field_labels.benefits_received.#{current_calculation.inputs[:marital_status]}")
         - if form.errors.include?(:benefits_received)
           span.error-message = form.errors[:benefits_received].join(', ')
         label

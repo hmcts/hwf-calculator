@@ -109,7 +109,9 @@ en:
       marital_status: "Are you single, married or living with someone and sharing income?"
       date_of_birth: "What is your date of birth?"
       fee: "How much is the court or tribunal fee?"
-      benefits_received: "Select all income benefits you are currently receiving"
+      benefits_received:
+        single: "Select all income benefits you are currently receiving"
+        sharing_income: "Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
       total_income: "How much total income do you receive each month?"
       partner_date_of_birth: "What is your partners date of birth?"
       number_of_children:

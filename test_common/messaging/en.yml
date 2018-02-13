@@ -229,7 +229,9 @@ en:
       heading: 'Find out if you could get help with fees'
       questions:
         benefits:
-          label: 'Select all income benefits you are currently receiving'
+          label:
+            single: 'Select all income benefits you are currently receiving'
+            sharing_income: 'Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?'
           options:
             dont_know:
               label: "Don't know"

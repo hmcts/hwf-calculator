@@ -25,7 +25,7 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
   #               Then Heading should read "Find out if you could get help with fees"
   #
   #               And Income Benefit question reads "Select all income benefits you are currently receiving"
-  scenario 'View Income Benefit Heading and Question' do
+  scenario 'View Income Benefit Heading and Question for single person' do
     # Arrange
     given_i_am(:john)
 
@@ -35,7 +35,21 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     # Assert
     aggregate_failures 'validating content of header and question' do
       expect(income_benefits_page.heading).to be_present
-      expect(income_benefits_page.benefits).to be_present
+      expect(income_benefits_page.benefits_single).to be_present
+    end
+  end
+
+  scenario 'View Income Benefit Heading and Question for married person' do
+    # Arrange
+    given_i_am(:alli)
+
+    # Act
+    answer_up_to(:benefits)
+
+    # Assert
+    aggregate_failures 'validating content of header and question' do
+      expect(income_benefits_page.heading).to be_present
+      expect(income_benefits_page.benefits_married).to be_present
     end
   end
 
