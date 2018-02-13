@@ -62,7 +62,6 @@ group :test do
   gem 'factory_bot_rails', '~> 4.8'
   gem 'rspec-rails', '~> 3.7'
   gem 'site_prism', '~> 2.9'
-  gem 'poltergeist', '~> 1.15'
   gem 'chromedriver-helper', '~> 1.1'
   gem 'geckodriver-helper', '~> 0.0'
   gem 'codeclimate-test-reporter', '~> 0.4'

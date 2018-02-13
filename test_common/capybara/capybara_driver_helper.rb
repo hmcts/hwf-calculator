@@ -1,4 +1,3 @@
-require 'capybara/poltergeist'
 Capybara.configure do |config|
   driver = ENV.fetch('DRIVER', 'chromedriver').to_sym
   config.javascript_driver = driver
