@@ -33,6 +33,8 @@ module Calculator
       def has_benefit_options?
         benefit_options
         true
+      rescue Capybara::ElementNotFound
+        false
       end
 
       # Clicks the next button
