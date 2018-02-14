@@ -22,9 +22,10 @@ module ApplicationHelper
   def gds_error_messages(model:, method:)
     errors = model.errors
     return '' unless errors.include?(method)
-    errors.full_messages_for(method).each do |error|
+    errors[method].each do |error|
       concat content_tag('span', error, class: 'error-message')
     end
+    nil
   end
 
   def calculation_inputs_by_form(calculation)
