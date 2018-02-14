@@ -324,6 +324,9 @@ cy:
       total_income:
         label: "*Welsh Total income"
         change: '*Welsh Change'
+    next_steps:
+      label: "*Welsh Next steps"
+      start_again: "*Welsh Return to Help with fees home page"
 
 
 

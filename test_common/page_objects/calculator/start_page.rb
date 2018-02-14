@@ -67,6 +67,10 @@ module Calculator
         english_link.click
         wait_for_welsh_link
       end
+
+      def displayed?
+        current_path == '/' || current_path == '/cy'
+      end
     end
   end
 end

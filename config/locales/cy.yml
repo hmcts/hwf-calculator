@@ -179,6 +179,8 @@ cy:
     common:
       page_header: "*Welsh Find out if you could get help with fees"
       next_button: "*Welsh Next"
+      start_again: "*Welsh Return to Help with fees home page"
+      next_steps: "*Welsh Next steps"
     guidance:
       marital_status:
         summary: "*Welsh Help with Status"

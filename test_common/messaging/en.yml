@@ -324,6 +324,6 @@ en:
       total_income:
         label: "Total income"
         change: 'Change'
-
-
-
+    next_steps:
+      label: "Next steps"
+      start_again: "Return to Help with fees home page"
