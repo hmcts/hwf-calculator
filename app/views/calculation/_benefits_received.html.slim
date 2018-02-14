@@ -5,10 +5,8 @@
       fieldset
         legend
           h2.heading-medium = I18n.t('calculation.field_labels.benefits_received')
-        - if form.errors.include?(:benefits_received)
-          span.error-message = form.errors[:benefits_received].join(', ')
+        = gds_error_messages(model: f.object, method: :benefits_received)
         label
-          = gds_error_messages(model: f.object, method: :benefits_received)
           = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
         details data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.income_benefits.summary')

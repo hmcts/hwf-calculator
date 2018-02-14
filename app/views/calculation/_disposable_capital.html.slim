@@ -6,8 +6,7 @@
         legend
           h2.heading-medium = t('calculation.field_labels.disposable_capital')
         span.form-hint = t('calculation.hints.disposable_capital')
-        - if form.errors.include?(:disposable_capital)
-          span.error-message = form.errors[:disposable_capital].join(', ')
+        = gds_error_messages(model: f.object, method: :disposable_capital)
         label.block-label
           .form-control-money.gbp
             = f.text_field :disposable_capital, class: 'form-control'
