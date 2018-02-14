@@ -1,9 +1,10 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-725
 RSpec.describe 'Validate court fee test', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::DateOfBirthPage.new }
+  let(:next_page) { Calculator::Test::DateOfBirthPage.new }
+
   #
-  # Feature: Court and tribunal fee field
+  # Feature: Court and tribunal fee field tool tip/Hint text
   # Validate the Court and tribunal fee field at the form level
   #
   # @TODO Implement the scenario below as part of RST-744 then remove this comment
@@ -26,7 +27,7 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Enter numeric value in Court and tribunal fee field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     court_fee_page.fee.set("25")
@@ -47,14 +48,14 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Enter non-numeric value in Court and tribunal fee field' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     court_fee_page.fee.set("£")
     court_fee_page.next
 
     # Assert
-    expect(court_fee_page.error_with_text(messaging.t('hwf_pages.fee.errors.non_numeric'))).to be_present
+    expect(court_fee_page.fee).to have_error_non_numeric
   end
   #
   # Scenario: Court and tribunal fee field empty
@@ -67,12 +68,12 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
   scenario 'Court and tribunal fee field empty' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_court_fee
+    answer_up_to(:court_fee)
 
     # Act
     court_fee_page.next
 
     # Assert
-    expect(court_fee_page.error_with_text(messaging.t('hwf_pages.fee.errors.non_numeric'))).to be_present
+    expect(court_fee_page.fee).to have_error_non_numeric
   end
 end

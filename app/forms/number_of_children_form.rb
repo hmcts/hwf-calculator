@@ -2,12 +2,14 @@
 class NumberOfChildrenForm < BaseForm
   # @!attribute [rw] fee
   #   @return [Integer] The number of children
-  attribute :number_of_children, :integer
+  attribute :number_of_children, :strict_integer
+
+  validates :number_of_children, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   # The type of the form
   #
   # @return [Symbol] :number_of_children
-  def type
+  def self.type
     :number_of_children
   end
 

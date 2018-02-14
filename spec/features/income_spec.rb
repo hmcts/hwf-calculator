@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Income Test', type: :feature, js: true do
   include Calculator::Test::Pages
   include ActiveSupport::NumberHelper
+  #
+
   # Feature:  Income Test
   #
   # - It is based on household gross monthly income
@@ -56,12 +58,13 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   Positive (likely to get help with fees - Part Remission)
   #
   #   - You should be eligible for a Partial Remission
-  #   - For single citizen: As you have stated you have a combined monthly income  £XXX, you would need to contribute £XXX of your stated £XXX fee or would receive a partial refund of £XXX if you have paid the full fee within the last 3 months
+  #   - For single citizen: As you have stated you have an income of £XXX, you would need to contribute £XXX of your stated £XXX fee or would receive a partial refund of £XXX if you have paid the full fee within the last 3 months
   #   - For Couple: As you and your partner have stated you have a combined monthly income  £XXX, you would need to contribute £XXX of your stated £XXX fee or would receive a partial refund of £XXX if you have paid the full fee within the last 3 months
   #
   #   Negative (unlikely to get help with fees - Not Eligible)
-  #   - You're unlikely to get help with your fee
-  #   - With a fee of £XXX and combined monthly income of £XXX, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship (see guide)
+  #
+  #   - You are unlikely to get help with your fees
+  #   - With a fee of £XXX and combined monthly income of £XXX, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
   #
   # Scenarios
   #
@@ -73,7 +76,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (john) with minimum income threshold (full Remission)' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -91,7 +94,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen (alli) with minimum income threshold (full remission)' do
     # Arrange
     given_i_am(:alli)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -108,7 +111,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen (oliver) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:oliver)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -126,7 +129,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (james) with minimum income threshold (full Remission)' do
     # Arrange
     given_i_am(:james)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -143,7 +146,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen (thomas) with minimum income threshold (full Remission)' do
     # Arrange
     given_i_am(:thomas)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -161,7 +164,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen (riley) with minimum income threshold (full remission)' do
     # Arrange
     given_i_am(:riley)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -179,7 +182,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (jacob) with minimum income threshold (full remission)' do
     # Arrange
     given_i_am(:jacob)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -197,7 +200,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen (landon) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:landon)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -215,7 +218,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (john2) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:john2)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -233,7 +236,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen (jo) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:jo)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -251,7 +254,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (simon) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:simon)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -269,7 +272,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (kevin) with maximum income threshold (partial remission)' do
     # Arrange
     given_i_am(:kevin)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -287,7 +290,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (joseph) over maximum income threshold (no remission)' do
     # Arrange
     given_i_am(:joseph)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -305,7 +308,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen (tonia) with maximum income threshold and many children (partial remission)' do
     # Arrange
     given_i_am(:tonia)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -322,7 +325,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen (maryann) with minimum income threshold and many children (full remission)' do
     # Arrange
     given_i_am(:maryann)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -340,7 +343,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen with minimum income threshold and no children' do
     # Arrange
     given_i_am(:bethany)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -357,7 +360,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen with minimum income threshold and no children' do
     # Arrange
     given_i_am(:britney)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -375,7 +378,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen with maximum income threshold and no children' do
     # Arrange
     given_i_am(:angela)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -393,7 +396,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen with maximum income threshold and no children' do
     # Arrange
     given_i_am(:eden)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -410,7 +413,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen with maximum income threshold and no children 2' do
     # Arrange
     given_i_am(:holly)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -427,7 +430,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for single citizen with over maximum income threshold and no children' do
     # Arrange
     given_i_am(:theresa)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question
@@ -444,7 +447,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   scenario 'Income test for married citizen with over maximum income threshold and no children' do
     # Arrange
     given_i_am(:tiana)
-    answer_questions_up_to_total_income
+    answer_up_to(:total_income)
 
     # Act
     answer_total_income_question

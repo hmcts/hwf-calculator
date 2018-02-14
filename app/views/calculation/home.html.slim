@@ -1,7 +1,21 @@
-.content-body
-  p
-    - t('.guidance_html').lines.each do |line|
-      p = line
-  = form_for form, as: :calculation, url: calculation_url, method: :patch do |f|
+.content-body.home
+  .introduction data-behavior="introduction"
+    h2.heading-medium = t('.introduction_header')
+    p = t('.introduction_html').lines.first
+    ul.list.list-bullet
+      - t('.introduction_html').lines[1..-1].each do |line|
+        li = line
+  .requirements data-behavior="requirements"
+    h2.heading-medium = t('.requirements_header')
+    p = t('.requirements_html').lines.first
+    ul.list.list-bullet
+      - t('.requirements_html').lines[1..-1].each do |line|
+        li = line
+  .notice.disclaimer data-behavior="disclaimer"
+    i.icon.icon-information
+      span.visually-hidden = 'Information'
+    - t('.disclaimer_html').lines.each do |line|
+      strong.bold-small = line
+  = form_for form, as: :calculation, url: start_calculation_url, method: :patch do |f|
     = f.submit t('.start'), class: 'button button-start'
     = f.hidden_field :_hidden, value: ''

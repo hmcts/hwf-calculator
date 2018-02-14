@@ -1,26 +1,57 @@
 en:
+  hwf_urls:
+    fee: '/calculation/fee'
+    date_of_birth: '/calculation/date_of_birth'
+    disposable_capital: '/calculation/disposable_capital'
+    full_remission: '/calculation_result/full_remission'
+    income_benefits: '/calculation/benefits_received'
+    marital_status: '/calculation/marital_status'
+    not_eligible: '/calculation_result/not_eligible'
+    number_of_children: '/calculation/number_of_children'
+    partial_remission: '/calculation_result/partial_remission'
+    start_page: '/'
+    total_income: '/calculation/total_income'
+
   hwf_decision:
     disposable_capital:
       single:
         positive:
-          heading: You are able to get help with fees
-          detail: With a fee of %{fee} and savings of %{disposable_capital}, you should be able to get help with your fees, as long as you receive certain benefits or are on a low income
+          heading: You may get help with fees
+          detail: With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages
         negative:
           heading: You are unlikely to get help with your fees
           detail: With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
-      married:
+      sharing_income:
         positive:
-          heading: You are able to get help with fees
-          detail: With a fee of %{fee} and savings of %{disposable_capital}, you and your partner should be able to get help with your fees, as long as you receive certain benefits or are on a low income
+          heading: You may get help with fees
+          detail: With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages
         negative:
           heading: You are unlikely to get help with your fees
           detail: With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
+    income_benefits:
+      single:
+        positive:
+          heading: You may be eligible for a full remission
+          detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months.
+        negative:
+          heading: You are unlikely to get help with your fees
+          detail: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+      sharing_income:
+        positive:
+          heading: You may be eligible for a full remission
+          detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months.
+        negative:
+          heading: You are unlikely to get help with your fees
+          detail: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+        dont_know:
+          heading: You are unlikely to get help with your fees
+          detail: "If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
     final:
       single:
         positive:
           heading: You should be eligible for a full remission
           detail: As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
-      married:
+      sharing_income:
         positive:
           heading: You should be eligible for a full remission
           detail: As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
@@ -28,83 +59,257 @@ en:
       single:
         positive:
           heading: You should be eligible for a Partial Remission
-          detail: As you have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
-      married:
+          detail: As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
+      sharing_income:
         positive:
           heading: You should be eligible for a Partial Remission
           detail: As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
     no_remission:
       single:
-        heading: You're unlikely to get help with your fee
+        heading: You are unlikely to get help with your fees
         negative:
-          detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship (see guide)
-      married:
-        heading: You're unlikely to get help with your fee
+          detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
+      sharing_income:
+        heading: You are unlikely to get help with your fees
         negative:
-          detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship (see guide)
+          detail: With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship
   hwf_pages:
+    number_of_children:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        number_of_children:
+          label:
+            single: 'How many children live with you or are you responsible for supporting financially?'
+            sharing_income: 'How many children live with you and your partner or are you and your partner responsible for supporting financially?'
+          errors:
+            non_numeric: You must enter the number of financially dependent children
+            blank: You must enter the number of financially dependent children
+          guidance:
+            label: 'Children who might affect your claim'
+            text: |
+              Enter the number of children who you describe as:
+              under 16 and living at home with you
+              age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
+              children who don’t live with you, but you (or your partner) pay regular maintenance for them
+      buttons:
+        next: 'Next'
     date_of_birth:
-      errors:
-        non_numeric: Please enter a valid date of birth
-        under_age:
-          single: You must be over 16 years old to apply for help with fees
-          married: You and your partner must be over 16 years old to apply for help with fees
-    total_income:
-      errors:
-        non_numeric: Please enter numeric value with no decimal places
-    marital_status:
-      labels:
-        marital_status:
-          single: Single
-          sharing_income: Married or living with someone
-      guidance:
-        marital_status:
-          text: |
-            Single means you rely on your own income, single also means:
-            you are going through divorce, or your marriage is dissolved or annulled (unless you have married again or live with a new partner)
-            you are changing your legal gender
-            you are experiencing domestic violence
-            you are experiencing forced marriage
-            Married or living with someone and sharing an income means:
-            married
-            civil partners
-            living together as if you are married or in a civil partnership
-            living at the same address with a joint income
-            part of a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care
-
-
-    fee:
-      errors:
-        non_numeric: Please enter numeric value with no decimal places
-    disposable_capital:
-      errors:
-        non_numeric: "Please enter a valid value. The two nearest valid values are: XX and XX."
-        blank: "Enter how much you have in savings and investments"
-    income_benefits:
-      errors:
-        nothing_selected: 'Please select from the list'
-      labels:
-        benefits:
-          question_label: 'Select all income benefits you are currently receiving'
-          dont_know: "Don't know"
-          none: 'None of the above'
-          jobseekers_allowance: "Income-based Jobseeker’s Allowance (JSA)"
-          employment_support_allowance: "Income-related Employment and Support Allowance (ESA)"
-          income_support: "Income Support"
-          universal_credit: "Universal Credit (and you’re earning less than £6,000 a year)"
-          pension_credit: "Pension Credit (guarantee credit)"
-          scottish_legal_aid: "Scottish Legal Aid (Civil Claims)"
-      previous_questions:
-        disposable_capital:
-          label: "How much do you have in savings and investment combined?"
-        marital_status:
-          label: "Are you single, married or living with someone and sharing an income?"
+      heading: 'Find out if you could get help with fees'
+      questions:
         date_of_birth:
-          label: "What is your date of birth?"
+          label: 'What is your date of birth?'
+          errors:
+            non_numeric: Enter the date in this format DD/MM/YYYY
+            under_age: You must be over 15 to apply for help with fees
+          hint:
+            single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+          components:
+            day:
+              label: 'Day'
+            month:
+              label: 'Month'
+            year:
+              label: 'Year'
+        partner_date_of_birth:
+          label: 'What is your partners date of birth?'
+          errors:
+            non_numeric: Enter the date in this format DD/MM/YYYY
+            under_age: Your partner must be over 15 to apply for help with fees
+          hint:
+            single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+          components:
+            day:
+              label: 'Day'
+            month:
+              label: 'Month'
+            year:
+              label: 'Year'
+      buttons:
+        next: 'Next'
+    total_income:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        total_income:
+          label: 'How much total income do you receive each month?'
+          errors:
+            non_numeric: Please enter a valid value
+          hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
+          guidance:
+            label: 'What to include as income'
+            text: |
+              Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:
+              wages
+              some benefits
+              pensions (state, work or private without guarantee credit)
+              rent from anyone living with you and other properties that you own
+              payments from relatives
+              maintenance payments, eg from an ex-spouse
+              income from selling goods publicly or privately, including over the internet
+              student maintenance loans, grants or bursaries (except for tuition fee loans)
+              If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
+      buttons:
+        next: 'Next'
+    marital_status:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        marital_status:
+          label: 'Are you single, married or living with someone and sharing income?'
+          options:
+            single: Single
+            sharing_income: Married or living with someone
+          errors:
+            blank: "Select whether you're single, married or living with someone and sharing an income"
+          guidance:
+            label: 'Help with Status'
+            text: |
+              Single means you rely on your own income or your case involves your partner, for example:
+              divorce, dissolution or annulment (unless you have married again or live with a new partner)
+              gender recognition
+              domestic violence
+              forced marriage
+              You should also choose single if you and your partner are both part of a multiple fee group
+              Married or living with someone and sharing an income means:
+              married
+              civil partners
+              living together as if you are married or in a civil partnership
+              living at the same address with a joint income
+              part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+
+      buttons:
+        next: 'Next'
+    fee:
+      heading: 'Find out if you could get help with fees'
+      questions:
         fee:
-          label: "How much is the court or tribunal fee you have to pay (or have paid within the last 3 months)?"
-        benefits_received:
-          label: "Income benefits you are currently receiving"
+          label: 'How much is the court or tribunal fee?'
+          errors:
+            non_numeric: Please enter numeric value with no decimal places
+          hint: Enter valid value with no decimal places
+          guidance:
+            label: 'If you have already paid your court or tribunal fee'
+            text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
+      buttons:
+        next: 'Next'
+    disposable_capital:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        disposable_capital:
+          label:
+            single: 'How much do you have in savings and investment combined?'
+            sharing_income: 'How much do you and your partner have in savings and investment combined?'
+          errors:
+            non_numeric: "Enter a valid value"
+            blank: "Enter how much you have in savings and investments"
+          hint: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+          guidance:
+            label: 'Help with savings and investments'
+            text: |
+              You should include any of the following:
+              money in ISAs and any other savings account
+              joint savings accounts that you share with your partner
+              fixed rate or investment bonds
+              any lump sum (eg a redundancy payout)
+              stocks and shares
+              trust funds (or any other kind of fund)
+              capital value of additional property
+              money or property outside the UK
+              You should exclude:
+              wages or benefits
+              joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+              personal pensions
+              capital value of self-employed businesses
+              student loans
+              unfair dismissal awards
+              money from the criminal injury compensation scheme
+              medical negligence or personal injury awards
+              any compensation under a statutory scheme in respect of Mesothelioma
+      buttons:
+        next: 'Next'
+    income_benefits:
+      heading: 'Find out if you could get help with fees'
+      questions:
+        benefits:
+          label:
+            single: 'Select all income benefits you are currently receiving'
+            sharing_income: 'Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?'
+          options:
+            dont_know:
+              label: "Don't know"
+              guidance: If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)
+            none:
+              label: 'None of the above'
+              guidance: If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)
+            jobseekers_allowance:
+              label: "Income-based Jobseeker’s Allowance (JSA)"
+            employment_support_allowance:
+              label: "Income-related Employment and Support Allowance (ESA)"
+            income_support:
+              label: "Income Support"
+            universal_credit:
+              label: "Universal Credit (and you’re earning less than £6,000 a year)"
+            pension_credit:
+              label: "Pension Credit (guarantee credit)"
+            scottish_legal_aid:
+              label: "Scottish Legal Aid (Civil Claims)"
+          guidance:
+            label: 'How benefit affects your claim'
+            text: |
+              You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits.
+              When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence.
+          errors:
+            nothing_selected: "Select whether you're receiving one of the benefits listed"
+
+      buttons:
+        next: 'Next'
+    home:
+      heading: 'Find out if you could get help with fees'
+      introduction_text: |
+        This calculator will tell you if you’re likely to get help with fees and how much you could get.
+        You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:
+        You don't have much in savings, and
+        You're receiving certain benefits, or
+        You're on a low income
+        If you have a partner, your partner's situation will also apply
+      requirements_text: |
+        What you’ll need
+        You'll need information about your (and your partner's, if applicable):
+        total savings amount, and
+        either: list of benefits (or proof of certain benefits at the time you paid your fee)
+        or: total monthly income
+      disclaimer_text: |
+        This calculator is for guidance purposes only and is not the Help with Fees application
+      welsh_link:
+        full_text: This guide is also available in Welsh (Cymraeg)
+        link_text: in Welsh
+      buttons:
+        start: Start now
+  hwf_components:
+    previous_questions:
+      label: 'Previous answers'
+      marital_status:
+        label: "What is your status"
+        change: 'Change'
+        options:
+          sharing_income: 'Married or living with someone'
+          single: 'Single'
+      court_fee:
+        label: "Court or tribunal fee to pay"
+        change: 'Change'
+      date_of_birth:
+        label: "Date of birth"
+        change: 'Change'
+      partner_date_of_birth:
+        label: "Partner date of birth"
+        change: 'Change'
+      disposable_capital:
+        label: "Combined savings and investment"
+        change: 'Change'
+      income_benefits:
+        label: "Income benefits you are currently receiving"
+        change: 'Change'
+        options:
           dont_know: "Don't know"
           none: 'none'
           jobseekers_allowance: 'JSA'
@@ -113,3 +318,12 @@ en:
           universal_credit: 'UC'
           pension_credit: 'PC'
           scottish_legal_aid: 'SLA'
+      number_of_children:
+        label: "Supported children"
+        change: 'Change'
+      total_income:
+        label: "Total income"
+        change: 'Change'
+
+
+

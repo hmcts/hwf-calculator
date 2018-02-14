@@ -23,13 +23,8 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
     self
   end
 
-  # @TODO Review the method below - see details in RST-733, but allow for now
-  def self.fields_required(inputs, previous_calculations:)
-    if previous_calculations.dig(:benefits_received, :available_help) == :full
-      []
-    else
-      MY_FIELDS - inputs.keys
-    end
+  def self.fields_required(inputs)
+    MY_FIELDS - inputs.keys
   end
 
   private
@@ -75,18 +70,21 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
 
   def mark_as_help_available
     self.available_help = :full
-    messages << { key: :likely, source: :household_income }
+    self.final_decision = true
+    messages << { key: :final_positive, source: :household_income, classification: :positive }
   end
 
   def mark_as_partial_help_available
     self.available_help = :partial
     self.remission = calculate_remission
-    messages << { key: :likely, source: :household_income }
+    self.final_decision = true
+    messages << { key: :final_partial, source: :household_income, classification: :positive }
   end
 
   def mark_as_help_not_available
     self.available_help = :none
-    messages << { key: :unlikely, source: :household_income }
+    self.final_decision = true
+    messages << { key: :final_negative, source: :household_income, classification: :negative }
   end
 
   def calculate_remission

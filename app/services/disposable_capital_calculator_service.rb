@@ -16,7 +16,7 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
     { age: 1..60, fee: 7001..Float::INFINITY, disposable_capital: 16000 }.freeze,
     { age: 61..200, fee: 1..Float::INFINITY, disposable_capital: 16000 }.freeze
   ].freeze
-  MY_FIELDS = [:fee, :date_of_birth, :partner_date_of_birth, :disposable_capital].freeze
+  MY_FIELDS = [:marital_status, :fee, :date_of_birth, :partner_date_of_birth, :disposable_capital].freeze
 
   def initialize(age_service: AgeService, **args)
     self.age_service = age_service
@@ -36,7 +36,13 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
   end
 
   def self.fields_required(inputs, *)
-    MY_FIELDS - inputs.keys
+    f = MY_FIELDS - inputs.keys
+    if inputs.key?(:marital_status) && inputs[:marital_status] == 'single'
+      f.delete(:partner_date_of_birth)
+    elsif inputs[:partner_date_of_birth].nil? && !f.include?(:partner_date_of_birth)
+      f << :partner_date_of_birth
+    end
+    f
   end
 
   private
@@ -57,12 +63,12 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
     (inputs[:partner_date_of_birth].nil? || inputs[:partner_date_of_birth].is_a?(Date))
   end
 
-  def earliest_date_of_birth
-    [inputs[:date_of_birth], inputs[:partner_date_of_birth]].compact.min
+  def latest_date_of_birth
+    [inputs[:date_of_birth], inputs[:partner_date_of_birth]].compact.max
   end
 
   def process_inputs
-    fee_band = find_fee_band_for(age: age_service.call(date_of_birth: earliest_date_of_birth), fee: inputs[:fee])
+    fee_band = find_fee_band_for(age: age_service.call(date_of_birth: latest_date_of_birth), fee: inputs[:fee])
     if inputs[:disposable_capital] < fee_band[:disposable_capital]
       mark_as_help_available
     else
@@ -81,12 +87,13 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
 
   def mark_as_help_available
     self.available_help = :full
-    messages << { key: :likely, source: :disposable_capital }
+    messages << { key: :likely, source: :disposable_capital, classification: :positive }
   end
 
   def mark_as_help_not_available
     self.available_help = :none
-    messages << { key: :unlikely, source: :disposable_capital }
+    self.final_decision = true
+    messages << { key: :final_negative, source: :disposable_capital, classification: :negative }
   end
 
   attr_accessor :age_service

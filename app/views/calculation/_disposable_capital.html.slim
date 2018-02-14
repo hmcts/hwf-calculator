@@ -1,26 +1,28 @@
-div.calculator.marital_status
-  h1 How much help with fees will I receive?
-  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
+.content-body.disposable_capital
+  = render partial: 'feedback', locals: { current_calculation: current_calculation }
+  = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = t('calculation.field_labels.disposable_capital')
-
-        details
-          summary = 'Click to reveal more information'
-
-          .panel-indent
-            .text
-              h2.heading-small = 'heading small'
-              ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
-              ul.list.list-bullet
-                li = 'item_1'
-        - if form.errors.include?(:disposable_capital)
-          span.error-message = form.errors[:disposable_capital].join(', ')
+        legend
+          h2.heading-medium = t("calculation.field_labels.disposable_capital.#{current_calculation.inputs[:marital_status]}")
+        span.form-hint = t('calculation.hints.disposable_capital')
+        = gds_error_messages(model: f.object, method: :disposable_capital)
         label.block-label
-          = f.text_field :disposable_capital, class: 'form-control'
+          .form-control-money.gbp
+            = f.text_field :disposable_capital, class: 'form-control'
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= t('calculation.guidance.disposable_capital.summary')
 
-    .form-groupq
-      = f.submit 'Next step', class: 'button'
+          .panel-indent data-behavior="question_help_text"
+            .text
+              h2.heading-small = t('calculation.guidance.disposable_capital.detail.include.summary')
+              ul.list.list-bullet
+                - t('calculation.guidance.disposable_capital.detail.include.text').lines.each do |line|
+                  li = line
+              h2.heading-small = t('calculation.guidance.disposable_capital.detail.exclude.summary')
+              ul.list.list-bullet
+                - t('calculation.guidance.disposable_capital.detail.exclude.text').lines.each do |line|
+                  li = line
+    .form-group
+      = f.submit t('calculation.common.next_button'), class: 'button'
+  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?

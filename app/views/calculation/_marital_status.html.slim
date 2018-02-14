@@ -1,13 +1,20 @@
-div.calculator.marital_status
-  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
-      - if true
-        span.error-message#married = 'errors'
+.content-body.marital_status
+  = render partial: 'feedback', locals: { current_calculation: current_calculation }
+  = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
+    = f.hidden_field :ensure_not_blank, allow_method_names_outside_object: true, value: '1'
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = t('calculation.field_labels.marital_status')
-
+        legend
+          h2.heading-medium = t('calculation.field_labels.marital_status')
+        = gds_error_messages(model: f.object, method: :marital_status)
+        .multiple-choice
+          = f.radio_button :marital_status, 'single'
+          = f.label :marital_status_single, t('calculation.marital_status.options.single'), allow_method_names_outside_object: true
+        .multiple-choice
+          = f.radio_button :marital_status, 'sharing_income'
+          = f.label :marital_status_sharing_income, t('calculation.marital_status.options.sharing_income'), allow_method_names_outside_object: true
         details data-behavior="question_help"
-          summary data-behavior="toggle"= t('calculation.guidance.marital_status.summary')
+          summary data-behavior="toggle" = t('calculation.guidance.marital_status.summary')
 
           .panel-indent data-behavior="question_help_text"
             .text
@@ -19,12 +26,6 @@ div.calculator.marital_status
               ul.list.list-bullet
                 - t('calculation.guidance.marital_status.detail.sharing_income.text').lines.each do |line|
                   li = line
-        label.block-label
-          = f.radio_button :marital_status, 'single'
-          = 'Single'
-
-        label.block-label
-          = f.radio_button :marital_status, 'sharing_income'
-          = 'Married or living with someone'
     .form-group
-      = f.submit 'Next step', class: 'button'
+      = f.submit t('calculation.common.next_button'), class: 'button'
+  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?

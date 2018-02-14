@@ -20,7 +20,7 @@ class BenefitsReceivedForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] - :benefits_received
-  def type
+  def self.type
     :benefits_received
   end
 
@@ -30,16 +30,19 @@ class BenefitsReceivedForm < BaseForm
   end
 
   def benefits_received=(v)
-    return super unless v.is_a?(Array)
+    super v.is_a?(Array) ? convert_benefits_array(v) : v
+  end
+
+  private
+
+  def convert_benefits_array(v)
     benefits_converted = v.reject(&:empty?)
     stringify_benefits = benefits.to_s
     benefits_converted.map! do |benefit|
       stringify_benefits.include?(benefit) ? benefit.to_sym : benefit
     end
-    super benefits_converted
+    benefits_converted
   end
-
-  private
 
   def validate_benefits_received_type
     return if benefits_received.is_a?(Array)

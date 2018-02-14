@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe BenefitsReceivedCalculatorService do
   subject(:service) { described_class }
+
   describe '#call' do
     it 'throws :invalid_inputs if nil given' do
       expect { service.call(benefits_received: nil) }.to throw_symbol(:invalid_inputs)
@@ -32,19 +33,24 @@ RSpec.describe BenefitsReceivedCalculatorService do
       result = service.call(benefits_received: [:any_benefit])
       expect(result).to have_attributes available_help: :full
     end
+
+    it 'states that the decision is final if any benefits are provided' do
+      result = service.call(benefits_received: [:any_benefit])
+      expect(result).to have_attributes final_decision?: true
+    end
   end
 
   describe '#fields_required' do
     it 'returns its only field with no inputs provided' do
       # Act
-      result = described_class.fields_required({}, previous_calculations: {})
+      result = described_class.fields_required({})
 
       # Assert
       expect(result).to eql [:benefits_received]
     end
     it 'returns no fields if all inputs have been provided' do
       # Act
-      result = described_class.fields_required({ benefits_received: ['benefit 1'] }, previous_calculations: {})
+      result = described_class.fields_required(benefits_received: ['benefit 1'])
 
       # Assert
       expect(result).to eql []

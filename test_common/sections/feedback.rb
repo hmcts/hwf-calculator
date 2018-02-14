@@ -1,20 +1,25 @@
 module Calculator
   module Test
-    class FeedbackSection < BaseSection
+    module FeedbackSection
+      extend ActiveSupport::Concern
+      include BaseSection
+
+      included do
+        elements :messages, '[data-behavior=calculator_feedback_header],[data-behavior=calculator_feedback_message]'
+        element :positive_message, '.positive'
+        element :negative_message, '.negative'
+      end
+
       def message_with_detail(msg)
-        find '[data-behavior=calculator_feedback_message]', text: msg
+        within @root_element do
+          find '[data-behavior=calculator_feedback_message]', text: msg
+        end
       end
 
       def message_with_header(header)
-        find '[data-behavior=calculator_feedback_header]', text: header
-      end
-
-      def positive_message
-        find '.positive'
-      end
-
-      def negative_message
-        find '.negative'
+        within @root_element do
+          find '[data-behavior=calculator_feedback_header]', text: header
+        end
       end
     end
   end

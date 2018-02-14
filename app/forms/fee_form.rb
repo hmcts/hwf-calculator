@@ -12,7 +12,7 @@ class FeeForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :fee
-  def type
+  def self.type
     :fee
   end
 

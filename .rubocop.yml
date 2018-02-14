@@ -34,8 +34,12 @@ Metrics/LineLength:
   Exclude:
     - 'features/**/*'
     - 'spec/**/*'
+    - 'test_common/**/*'
     - 'Gemfile'
-
+Metrics/ModuleLength:
+  Max: 120
+  Exclude:
+    - 'test_common/helpers/**/*'
 Metrics/AbcSize:
   Exclude:
     - 'spec/**/*'
@@ -52,7 +56,8 @@ Style/AsciiComments:
   Enabled: true
   Exclude:
     - 'spec/**/*'
-
+Style/TrailingBlankLines:
+  Enabled: true
 # Don't worry about long methods in specs.
 Metrics/MethodLength:
   Exclude:
@@ -96,6 +101,9 @@ Style/CollectionMethods:
 Style/DotPosition:
   EnforcedStyle: trailing
 
+Style/FinalNewline:
+  Enabled: true
+
 # No, we don't prefer each_with_object
 Style/EachWithObject:
   Enabled: false
@@ -138,6 +146,12 @@ Style/SignalException:
 Style/TrivialAccessors:
   AllowPredicates: true
 
+Style/MixinUsage:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'features/**/*'
+
 # Prefer sensible naming to comments everywhere.
 Documentation:
   Description: Document classes and non-namespace modules.
@@ -176,6 +190,7 @@ RSpec/ExpectActual:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'test_common/**/*'
     - 'config/**/*'
     - 'lib/tasks/**/*'
 
@@ -204,5 +219,12 @@ Style/NumericPredicate:
 Rails/OutputSafety:
   Exclude:
     - 'app/helpers/yaml_helper.rb'
+Capybara/FeatureMethods:
+  Exclude:
+    - 'spec/features/**/*'
+
+Naming/PredicateName:
+  Exclude:
+    - 'test_common/**/*'
 
 require: rubocop-rspec

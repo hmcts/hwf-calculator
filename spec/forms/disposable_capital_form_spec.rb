@@ -3,7 +3,7 @@ RSpec.describe DisposableCapitalForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
-    context 'disposable_capital' do
+    describe 'disposable_capital' do
       it 'allows numeric values' do
         # Arrange
         form.disposable_capital = '10000'
@@ -94,9 +94,16 @@ RSpec.describe DisposableCapitalForm, type: :model do
     end
   end
 
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(disposable_capital: '10000', some_other_field: 12)
+      expect(subject.disposable_capital).to be 10000
+    end
+  end
+
   describe 'type' do
     it 'returns :disposable_capital' do
-      expect(form.type).to be :disposable_capital
+      expect(described_class.type).to be :disposable_capital
     end
   end
 
@@ -104,6 +111,16 @@ RSpec.describe DisposableCapitalForm, type: :model do
     it 'exports the fee' do
       form.disposable_capital = '10000'
       expect(form.export).to eql(disposable_capital: 10000.0)
+    end
+  end
+
+  describe 'attribute?' do
+    it 'returns true for :disposable_capital' do
+      expect(described_class.attribute?(:disposable_capital)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

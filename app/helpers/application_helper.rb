@@ -10,14 +10,7 @@ module ApplicationHelper
   # @return [String] The HTML to render
   def gds_multiple_choices_with_guidance(form:, method:, choices:)
     form.collection_check_boxes method, choices, :first, :second do |b|
-      guidance = b.object.last
-      guidance_id = "prefix_#{b.object.first}"
-      data_attrs = { target: guidance.present? ? guidance_id : nil }
-      result = content_tag('div', class: 'multiple-choice', data: data_attrs) { b.check_box + b.label }
-      if guidance.present?
-        result << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id)
-      end
-      result
+      gds_checkbox_with_guidance(b)
     end
   end
 
@@ -29,31 +22,40 @@ module ApplicationHelper
   def gds_error_messages(model:, method:)
     errors = model.errors
     return '' unless errors.include?(method)
-    errors.full_messages_for(method).each do |error|
+    errors[method].each do |error|
       concat content_tag('span', error, class: 'error-message')
     end
+    nil
+  end
+
+  def calculation_inputs_by_form(calculation)
+    calculation.inputs.inject({}) do |acc, (key, value)|
+      form_type = CalculationFormService.for_field(key).type
+      acc[form_type] ||= {}
+      acc[form_type][key] = value
+      acc
+    end
+  end
+
+  def language_switcher_url
+    link_to(t('language_switcher.link_text'), locale: locale_param_for(t('language_switcher.switch')))
+  end
+
+  def locale_param_for(t)
+    t == 'en' ? nil : t
   end
 
   private
 
-  def calculator_feedback_explanation(calculation)
-    remaining_fields = calculation.required_fields_affecting_likelihood
-    return [] if remaining_fields.empty?
-    a = [I18n.t('calculation.feedback.explanation_suffix')]
-    remaining = remaining_fields.map do |field|
-      I18n.t("calculation.feedback.explanation_suffix_fields.#{field}")
+  def gds_checkbox_with_guidance(builder)
+    guidance = builder.object.last
+    guidance_id = "prefix_#{builder.object.first}"
+    data_attrs = { target: guidance.present? ? guidance_id : nil }
+    content = builder.check_box + builder.label
+    if guidance.present?
+      content << content_tag('div', guidance, class: 'panel panel-border-narrow js-hidden', id: guidance_id,
+                                              data: { behavior: 'multiple_choice_guidance' })
     end
-    add_explanation_suffix(a, remaining)
-  end
-
-  def add_explanation_suffix(phrases, remaining)
-    if remaining.length == 1
-      phrases << remaining.first
-    else
-      phrases << remaining[0..-2].join(', ')
-      phrases << I18n.t('calculation.feedback.explanation_suffix_joining_word')
-      phrases << remaining.last
-    end
-    phrases
+    content_tag('div', class: 'multiple-choice', data: data_attrs) { content }
   end
 end
