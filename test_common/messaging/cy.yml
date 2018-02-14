@@ -196,7 +196,9 @@ cy:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
         disposable_capital:
-          label: '*Welsh How much do you have in savings and investment combined?'
+          label:
+            single: '*Welsh How much do you have in savings and investment combined?'
+            sharing_income: '*Welsh How much do you and your partner have in savings and investment combined?'
           errors:
             non_numeric: "*Welsh Enter a valid value"
             blank: "*Welsh Enter how much you have in savings and investments"
