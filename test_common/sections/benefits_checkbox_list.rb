@@ -85,12 +85,26 @@ module Calculator
         option.guidance_with_text(messaging.t("#{i18n_scope}.options.dont_know.guidance"))
       end
 
+      def has_dont_know_guidance?
+        dont_know_guidance
+        true
+      rescue Capybara::ElementNotFound
+        false
+      end
+
       # Finds the "None of the above" option's guidance text node or raises if not found
       # @return [Capybara::Node::element] The none of the above guidance capybara node
       # @raise [Capybara::ElementNotFound] if the correct guidance was not present within the node section
       def none_of_the_above_guidance
         option = option_labelled_none
         option.guidance_with_text(messaging.t("#{i18n_scope}.options.none.guidance"))
+      end
+
+      def has_none_of_the_above_guidance?
+        none_of_the_above_guidance
+        true
+      rescue Capybara::ElementNotFound
+        false
       end
 
       def option_labelled(option)
