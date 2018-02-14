@@ -231,7 +231,9 @@ cy:
       heading: '*Welsh Find out if you could get help with fees'
       questions:
         benefits:
-          label: '*Welsh Select all income benefits you are currently receiving'
+          label:
+            single: '*Welsh Select all income benefits you are currently receiving'
+            sharing_income: '*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?'
           options:
             dont_know:
               label: "*Welsh Don't know"
