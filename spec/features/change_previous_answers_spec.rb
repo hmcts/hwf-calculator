@@ -261,7 +261,32 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
         and(have_no_number_of_children).
         and(have_no_total_income)
     end
+  end
 
+  scenario 'Citizen changes their marital status from married to single expecting the partner dob to be removed from previous answers' do
+    # Arrange - John is single so we can use him to get us to benefits page
+    # then we will go back to marital status page
+    given_i_am(:alli)
+    answer_up_to(:benefits)
+    income_benefits_page.previous_answers.marital_status.navigate_to
+
+    # Act
+    marital_status_page.marital_status.set(:single)
+    marital_status_page.next
+
+    # Assert
+    aggregate_failures 'Validate all' do
+      expect(income_benefits_page).to be_displayed
+      expect(income_benefits_page.previous_answers.marital_status).to have_answered(:single)
+      expect(income_benefits_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
   end
 
   scenario 'Citizen changes their fee to push them over the disposable capital limit' do

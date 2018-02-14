@@ -1,4 +1,4 @@
-- has_partner_dob = inputs[:partner_date_of_birth].present?
+- has_partner_dob = current_calculation.inputs[:marital_status] == 'sharing_income'
 tr class=('not-group-footer' if has_partner_dob) data-behavior="calculator_previous_question"
   th scope="row" data-behavior="question"
     = t("calculation.previous_questions.date_of_birth.label")

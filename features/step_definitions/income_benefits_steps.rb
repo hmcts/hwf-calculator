@@ -3,11 +3,11 @@ Given(/^I am on the income benefits page$/) do
 end
 
 Then(/^I should see that I should be able to get help with fees message$/) do
-  expect(any_calculator_page.positive_message).to be_present
+  expect(any_calculator_page).to have_positive_message
 end
 
 Then(/^I should see income benefits list$/) do
-  expect(income_benefits_page.benefit_options).to be_present
+  expect(income_benefits_page).to have_benefit_options
 end
 
 When(/^I select none of the above$/) do
@@ -19,7 +19,7 @@ When(/^I answer the income benefits question$/) do
 end
 
 Then(/^I should see the none of the above guidance information$/) do
-  expect(income_benefits_page.none_of_the_above_guidance).to be_present
+  expect(income_benefits_page).to have_none_of_the_above_guidance
 end
 
 When(/^I select dont know$/) do
@@ -27,7 +27,7 @@ When(/^I select dont know$/) do
 end
 
 Then(/^I should see the dont know guidance information$/) do
-  expect(income_benefits_page.dont_know_guidance).to be_present
+  expect(income_benefits_page).to have_dont_know_guidance
 end
 
 When(/^I submit the page with income related benefit checked$/) do
