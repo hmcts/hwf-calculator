@@ -17,6 +17,11 @@ module Calculator
         end
       end
 
+      def has_benefit_options?
+        benefit_options
+        true
+      end
+
       # Clicks the next button
       def next
         next_button.click
@@ -47,7 +52,9 @@ module Calculator
         :validate_guidance,
         :wait_for_guidance_text,
         :dont_know_guidance,
+        :has_dont_know_guidance?,
         :none_of_the_above_guidance,
+        :has_none_of_the_above_guidance?,
         to: :benefits
     end
   end
