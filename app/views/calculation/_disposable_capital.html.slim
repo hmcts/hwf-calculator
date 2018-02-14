@@ -4,7 +4,7 @@
     .form-group class=('form-group-error' if form.errors.any?)
       fieldset
         legend
-          h2.heading-medium = t('calculation.field_labels.disposable_capital')
+          h2.heading-medium = t("calculation.field_labels.disposable_capital.#{current_calculation.inputs[:marital_status]}")
         span.form-hint = t('calculation.hints.disposable_capital')
         - if form.errors.include?(:disposable_capital)
           span.error-message = form.errors[:disposable_capital].join(', ')
