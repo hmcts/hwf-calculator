@@ -13,7 +13,7 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
   #              And Hint text reads "If you have more than £16,000 in savings and investments, then you are unlikely to get help with your fee"
   #
   #
-  scenario 'View Savings and investments Heading and Question' do
+  scenario 'View Savings and investments Heading and Question for single user' do
     # Arrange
     given_i_am(:john)
 
@@ -23,8 +23,23 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     # Assert
     aggregate_failures 'validating content of header, question and hint text' do
       expect(disposable_capital_page.heading).to be_present
-      expect(disposable_capital_page.disposable_capital).to be_present
-      expect(disposable_capital_page.disposable_capital).to have_hint
+      expect(disposable_capital_page.disposable_capital_single).to be_present
+      expect(disposable_capital_page.disposable_capital_single).to have_hint
+    end
+  end
+
+  scenario 'View Savings and investments Heading and Question for married user' do
+    # Arrange
+    given_i_am(:alli)
+
+    # Act
+    answer_up_to(:disposable_capital)
+
+    # Assert
+    aggregate_failures 'validating content of header, question and hint text' do
+      expect(disposable_capital_page.heading).to be_present
+      expect(disposable_capital_page.disposable_capital_married).to be_present
+      expect(disposable_capital_page.disposable_capital_married).to have_hint
     end
   end
 
