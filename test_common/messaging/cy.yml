@@ -1,0 +1,332 @@
+cy:
+  hwf_urls:
+    fee: '/cy/calculation/fee'
+    date_of_birth: '/cy/calculation/date_of_birth'
+    disposable_capital: '/cy/calculation/disposable_capital'
+    full_remission: '/cy/calculation_result/full_remission'
+    income_benefits: '/cy/calculation/benefits_received'
+    marital_status: '/cy/calculation/marital_status'
+    not_eligible: '/cy/calculation_result/not_eligible'
+    number_of_children: '/cy/calculation/number_of_children'
+    partial_remission: '/cy/calculation_result/partial_remission'
+    start_page: '/'
+    total_income: '/cy/calculation/total_income'
+
+  hwf_decision:
+    disposable_capital:
+      single:
+        positive:
+          heading: "*Welsh You may get help with fees"
+          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+        negative:
+          heading: "*Welsh You are unlikely to get help with your fees"
+          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+      sharing_income:
+        positive:
+          heading: "*Welsh You may get help with fees"
+          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+        negative:
+          heading: "*Welsh You are unlikely to get help with your fees"
+          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+    income_benefits:
+      single:
+        positive:
+          heading: "*Welsh You may be eligible for a full remission"
+          detail: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+        negative:
+          heading: "*Welsh You are unlikely to get help with your fees"
+          detail: "*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+      sharing_income:
+        positive:
+          heading: "*Welsh You may be eligible for a full remission"
+          detail: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+        negative:
+          heading: "*Welsh You are unlikely to get help with your fees"
+          detail: "*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+        dont_know:
+          heading: "*Welsh You are unlikely to get help with your fees"
+          detail: "*Welsh If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+    final:
+      single:
+        positive:
+          heading: "*Welsh You should be eligible for a full remission"
+          detail: "*Welsh As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+      sharing_income:
+        positive:
+          heading: "*Welsh You should be eligible for a full remission"
+          detail: "*Welsh As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+    partial:
+      single:
+        positive:
+          heading: "*Welsh You should be eligible for a Partial Remission"
+          detail: "*Welsh As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
+      sharing_income:
+        positive:
+          heading: "*Welsh You should be eligible for a Partial Remission"
+          detail: "*Welsh As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
+    no_remission:
+      single:
+        heading: "*Welsh You are unlikely to get help with your fees"
+        negative:
+          detail: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+      sharing_income:
+        heading: "*Welsh You are unlikely to get help with your fees"
+        negative:
+          detail: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+  hwf_pages:
+    number_of_children:
+      heading: '*Welsh Find out if you could get help with fees'
+      questions:
+        number_of_children:
+          label:
+            single: '*Welsh How many children live with you or are you responsible for supporting financially?'
+            sharing_income: '*Welsh How many children live with you and your partner or are you and your partner responsible for supporting financially?'
+          errors:
+            non_numeric: "*Welsh You must enter the number of financially dependent children"
+            blank: "*Welsh You must enter the number of financially dependent children"
+          guidance:
+            label: '*Welsh Children who might affect your claim'
+            text: |
+              *Welsh Enter the number of children who you describe as:
+              *Welsh under 16 and living at home with you
+              *Welsh age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
+              *Welsh children who don’t live with you, but you (or your partner) pay regular maintenance for them
+      buttons:
+        next: '*Welsh Next'
+    date_of_birth:
+      heading: '*Welsh Find out if you could get help with fees'
+      questions:
+        date_of_birth:
+          label: '*Welsh What is your date of birth?'
+          errors:
+            non_numeric: "*Welsh Enter the date in this format DD/MM/YYYY"
+            under_age: "*Welsh You must be over 15 to apply for help with fees"
+          hint:
+            single: "*Welsh If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            sharing_income: "*Welsh If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+          components:
+            day:
+              label: '*Welsh Day'
+            month:
+              label: '*Welsh Month'
+            year:
+              label: '*Welsh Year'
+        partner_date_of_birth:
+          label: '*Welsh What is your partners date of birth?'
+          errors:
+            non_numeric: "*Welsh Enter the date in this format DD/MM/YYYY"
+            under_age: "*Welsh Your partner must be over 15 to apply for help with fees"
+          hint:
+            single: "*Welsh If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            sharing_income: "*Welsh If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+          components:
+            day:
+              label: '*Welsh Day'
+            month:
+              label: '*Welsh Month'
+            year:
+              label: '*Welsh Year'
+      buttons:
+        next: '*Welsh Next'
+    total_income:
+      heading: '*Welsh Find out if you could get help with fees'
+      questions:
+        total_income:
+          label: '*Welsh How much total income do you receive each month?'
+          errors:
+            non_numeric: "*Welsh Please enter a valid value"
+          hint: "*Welsh Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+          guidance:
+            label: '*Welsh What to include as income'
+            text: |
+              *Welsh Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:
+              *Welsh wages
+              *Welsh some benefits
+              *Welsh pensions (state, work or private without guarantee credit)
+              *Welsh rent from anyone living with you and other properties that you own
+              *Welsh payments from relatives
+              *Welsh maintenance payments, eg from an ex-spouse
+              *Welsh income from selling goods publicly or privately, including over the internet
+              *Welsh student maintenance loans, grants or bursaries (except for tuition fee loans)
+              *Welsh If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
+      buttons:
+        next: '*Welsh Next'
+    marital_status:
+      heading: '*Welsh Find out if you could get help with fees'
+      questions:
+        marital_status:
+          label: '*Welsh Are you single, married or living with someone and sharing income?'
+          options:
+            single: "*Welsh Single"
+            sharing_income: "*Welsh Married or living with someone"
+          errors:
+            blank: "*Welsh Select whether you're single, married or living with someone and sharing an income"
+          guidance:
+            label: '*Welsh Help with Status'
+            text: |
+              *Welsh Single means you rely on your own income or your case involves your partner, for example:
+              *Welsh divorce, dissolution or annulment (unless you have married again or live with a new partner)
+              *Welsh gender recognition
+              *Welsh domestic violence
+              *Welsh forced marriage
+              *Welsh You should also choose single if you and your partner are both part of a multiple fee group
+              *Welsh Married or living with someone and sharing an income means:
+              *Welsh married
+              *Welsh civil partners
+              *Welsh living together as if you are married or in a civil partnership
+              *Welsh living at the same address with a joint income
+              *Welsh part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+
+      buttons:
+        next: '*Welsh Next'
+    fee:
+      heading: '*Welsh Find out if you could get help with fees'
+      questions:
+        fee:
+          label: '*Welsh How much is the court or tribunal fee?'
+          errors:
+            non_numeric: "*Welsh Please enter numeric value with no decimal places"
+          hint: "*Welsh Enter valid value with no decimal places"
+          guidance:
+            label: '*Welsh If you have already paid your court or tribunal fee'
+            text: "*Welsh You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
+      buttons:
+        next: '*Welsh Next'
+    disposable_capital:
+      heading: '*Welsh Find out if you could get help with fees'
+      questions:
+        disposable_capital:
+          label:
+            single: '*Welsh How much do you have in savings and investment combined?'
+            sharing_income: '*Welsh How much do you and your partner have in savings and investment combined?'
+          errors:
+            non_numeric: "*Welsh Enter a valid value"
+            blank: "*Welsh Enter how much you have in savings and investments"
+          hint: "*Welsh If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+          guidance:
+            label: '*Welsh Help with savings and investments'
+            text: |
+              *Welsh You should include any of the following:
+              *Welsh money in ISAs and any other savings account
+              *Welsh joint savings accounts that you share with your partner
+              *Welsh fixed rate or investment bonds
+              *Welsh any lump sum (eg a redundancy payout)
+              *Welsh stocks and shares
+              *Welsh trust funds (or any other kind of fund)
+              *Welsh capital value of additional property
+              *Welsh money or property outside the UK
+              *Welsh You should exclude:
+              *Welsh wages or benefits
+              *Welsh joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
+              *Welsh personal pensions
+              *Welsh capital value of self-employed businesses
+              *Welsh student loans
+              *Welsh unfair dismissal awards
+              *Welsh money from the criminal injury compensation scheme
+              *Welsh medical negligence or personal injury awards
+              *Welsh any compensation under a statutory scheme in respect of Mesothelioma
+      buttons:
+        next: '*Welsh Next'
+    income_benefits:
+      heading: '*Welsh Find out if you could get help with fees'
+      questions:
+        benefits:
+          label:
+            single: '*Welsh Select all income benefits you are currently receiving'
+            sharing_income: '*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?'
+          options:
+            dont_know:
+              label: "*Welsh Don't know"
+              guidance: "*Welsh If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+            none:
+              label: '*Welsh None of the above'
+              guidance: "*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+            jobseekers_allowance:
+              label: "*Welsh Income-based Jobseeker’s Allowance (JSA)"
+            employment_support_allowance:
+              label: "*Welsh Income-related Employment and Support Allowance (ESA)"
+            income_support:
+              label: "*Welsh Income Support"
+            universal_credit:
+              label: "*Welsh Universal Credit (and you’re earning less than £6,000 a year)"
+            pension_credit:
+              label: "*Welsh Pension Credit (guarantee credit)"
+            scottish_legal_aid:
+              label: "*Welsh Scottish Legal Aid (Civil Claims)"
+          guidance:
+            label: '*Welsh How benefit affects your claim'
+            text: |
+              *Welsh You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits.
+              *Welsh When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence.
+          errors:
+            nothing_selected: "*Welsh Select whether you're receiving one of the benefits listed"
+
+      buttons:
+        next: '*Welsh Next'
+    home:
+      heading: '*Welsh Find out if you could get help with fees'
+      introduction_text: |
+        *Welsh This calculator will tell you if you’re likely to get help with fees and how much you could get.
+        *Welsh You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:
+        *Welsh You don't have much in savings, and
+        *Welsh You're receiving certain benefits, or
+        *Welsh You're on a low income
+        *Welsh If you have a partner, your partner's situation will also apply
+      requirements_text: |
+        *Welsh What you’ll need
+        *Welsh You'll need information about your (and your partner's, if applicable):
+        *Welsh total savings amount, and
+        *Welsh either: list of benefits (or proof of certain benefits at the time you paid your fee)
+        *Welsh or: total monthly income
+      disclaimer_text: |
+        *Welsh This calculator is for guidance purposes only and is not the Help with Fees application
+      welsh_link:
+        full_text: "*Welsh This guide is also available *Welsh in English (English)"
+        link_text: "*Welsh in English"
+      buttons:
+        start: '*Welsh Start now'
+  hwf_components:
+    previous_questions:
+      label: '*Welsh Previous answers'
+      marital_status:
+        label: "*Welsh What is your status"
+        change: '*Welsh Change'
+        options:
+          sharing_income: '*Welsh Married or living with someone'
+          single: '*Welsh Single'
+      court_fee:
+        label: "*Welsh Court or tribunal fee to pay"
+        change: '*Welsh Change'
+      date_of_birth:
+        label: "*Welsh Date of birth"
+        change: '*Welsh Change'
+      partner_date_of_birth:
+        label: "*Welsh Partner date of birth"
+        change: '*Welsh Change'
+      disposable_capital:
+        label: "*Welsh Combined savings and investment"
+        change: '*Welsh Change'
+      income_benefits:
+        label: "*Welsh Income benefits you are currently receiving"
+        change: '*Welsh Change'
+        options:
+          dont_know: "*Welsh Don't know"
+          none: '*Welsh none'
+          jobseekers_allowance: '*Welsh JSA'
+          employment_support_allowance: '*Welsh ESA'
+          income_support: '*Welsh IS'
+          universal_credit: '*Welsh UC'
+          pension_credit: '*Welsh PC'
+          scottish_legal_aid: '*Welsh SLA'
+      number_of_children:
+        label: "*Welsh Supported children"
+        change: '*Welsh Change'
+      total_income:
+        label: "*Welsh Total income"
+        change: '*Welsh Change'
+    next_steps:
+      label: "*Welsh Next steps"
+      start_again: "*Welsh Return to Help with fees home page"
+
+
+

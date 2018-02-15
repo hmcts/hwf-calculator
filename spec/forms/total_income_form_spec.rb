@@ -3,7 +3,7 @@ RSpec.describe TotalIncomeForm, type: :model do
   subject(:form) { described_class.new }
 
   describe 'validations' do
-    context 'disposable_capital' do
+    describe 'disposable_capital' do
       it 'allows numeric values' do
         # Arrange
         form.total_income = '10000'
@@ -94,9 +94,16 @@ RSpec.describe TotalIncomeForm, type: :model do
     end
   end
 
+  describe 'new_ignoring_extras' do
+    it 'creates a new instance without erroring if extra attributes given' do
+      subject = described_class.new_ignoring_extras(total_income: '1000', some_other_field: 12)
+      expect(subject.total_income).to be 1000
+    end
+  end
+
   describe 'type' do
     it 'returns :total_income' do
-      expect(form.type).to be :total_income
+      expect(described_class.type).to be :total_income
     end
   end
 
@@ -104,6 +111,16 @@ RSpec.describe TotalIncomeForm, type: :model do
     it 'exports the total income' do
       form.total_income = '10000'
       expect(form.export).to eql(total_income: 10000.0)
+    end
+  end
+
+  describe 'attribute?' do
+    it 'returns true for :total_income' do
+      expect(described_class.attribute?(:total_income)).to be true
+    end
+
+    it 'returns false for :a_wrong_field' do
+      expect(described_class.attribute?(:a_wrong_field)).to be false
     end
   end
 end

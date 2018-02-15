@@ -6,10 +6,14 @@ living in 'test_common'.
 Running features in either rspec or cucumber can be done in any registered browser
 using the DRIVER environment variable.  This can be set to :-
 
-o rack_test (useful for debugging as you dont get timeouts - but no JS support)
-o chrome (real browser using selenium)
-o firefox (real browser using selenium)
-o phantomjs (fake headless browser using the same browsing engine as chrome - but it is assumed this project will die eventually)
+* rack_test (useful for debugging as you dont get timeouts - but no JS support)
+* chrome (real browser using selenium)
+* firefox (real browser using selenium)
+* phantomjs (fake headless browser using the same browsing engine as chrome - but it is assumed this project will die eventually)
+
+The suite can also be run in either english or welsh.  To change this, set the TEST_LOCALE environment
+variable to either 'en' or 'cy'.  Note that if this environment variable is not provided it 
+defaults to english (en).
 
 ## Persona Based Scenarios
 

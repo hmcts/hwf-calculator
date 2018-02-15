@@ -1,45 +1,24 @@
 .content-body.benefits_received
-  .feedback data-behavior="calculator_feedback"
-    - if current_calculation.available_help == :none
-      div.negative
-        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_not_get_help')
-        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
-    - if current_calculation.available_help == :full
-      div.positive
-        h2 data-behavior="calculator_feedback_header" = t('calculation.feedback.should_get_help')
-        p data-behavior="calculator_feedback_message" = calculator_feedback_for(current_calculation)
-
-  = form_for form, as: :calculation, url: calculation_url(form: form.type), method: :patch do |f|
-    .form-group class=('error' if form.errors.any?)
+  = render partial: 'feedback', locals: { current_calculation: current_calculation }
+  = form_for form, as: :calculation, url: update_calculation_url(form: form.type), method: :patch do |f|
+    .form-group class=('form-group-error' if form.errors.any?)
       fieldset
-        legend = I18n.t('calculation.field_labels.benefits_received')
-
-        details
-          summary = 'Click to reveal more information'
-
-          .panel-indent
-            .text
-              h2.heading-small = 'heading small'
-              ul.list.list-bullet
-                li = 'item_1'
-
-              h2.heading-small = 'heading 2 small'
-              ul.list.list-bullet
-                li = 'item_1'
-        - if form.errors.include?(:benefits_received)
-          span.error-message = form.errors[:benefits_received].join(', ')
+        legend
+          h2.heading-medium = I18n.t("calculation.field_labels.benefits_received.#{current_calculation.inputs[:marital_status]}")
+        = gds_error_messages(model: f.object, method: :benefits_received)
         label
-          = gds_error_messages(model: f.object, method: :benefits_received)
           = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
-    .form-groupq
-      = f.submit 'Next step', class: 'button'
-  .previous_questions data-behavior="calculator_previous_questions"
-    - current_calculation.inputs.each_pair do |k,v |
-      div data-behavior="calculator_previous_question"
-        span data-behavior="question"
-          = t("calculation.previous_questions.#{k}.label")
-        span data-behavior="answer"
-          = calculator_auto_format_for(v, field: k)
+        details data-behavior="question_help"
+          summary data-behavior="toggle"= t('calculation.guidance.income_benefits.summary')
+          .panel-indent data-behavior="question_help_text"
+            .text
+              h2.heading-small = t('calculation.guidance.income_benefits.detail.summary')
+              ul.list.list-bullet
+                - t('calculation.guidance.income_benefits.detail.text').lines.each do |line|
+                  li = line
+    .form-group
+      = f.submit t('calculation.common.next_button'), class: 'button'
+  = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?
 - content_for(:body_end) do
   javascript:
     $(document).ready(function () {

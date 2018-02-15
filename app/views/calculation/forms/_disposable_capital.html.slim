@@ -1,0 +1,8 @@
+tr data-behavior="calculator_previous_question"
+  th scope="row" data-behavior="question"
+    = t("calculation.previous_questions.disposable_capital.label")
+  td data-behavior="answer"
+    = number_to_currency(inputs[:disposable_capital], precision: 0, unit: '£')
+  td data-behavior="action"
+    a href=(edit_calculation_url(form: form_type) unless disabled)
+      = t('calculation.previous_questions.change')

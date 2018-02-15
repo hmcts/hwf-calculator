@@ -38,12 +38,13 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'rubocop', '~> 0.49'
-  gem 'rubocop-rspec', '~> 1.10'
+  gem 'rubocop', '~> 0.52'
+  gem 'rubocop-rspec', '~> 1.22'
   gem 'simplecov', '~> 0.15'
   gem 'pry', '~> 0.11.3'
   gem 'ruby-debug-ide'
   gem 'debase'
+  gem 'parallel_tests', '~> 2.17'
 end
 
 group :development do
@@ -61,8 +62,9 @@ group :test do
   gem 'factory_bot_rails', '~> 4.8'
   gem 'rspec-rails', '~> 3.7'
   gem 'site_prism', '~> 2.9'
-  gem 'poltergeist', '~> 1.15'
-  gem 'webmock', '~> 3.1'
+  gem 'chromedriver-helper', '~> 1.1'
+  gem 'geckodriver-helper', '~> 0.0'
+  gem 'codeclimate-test-reporter', '~> 0.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,87 +1,28 @@
 module CalculationFeedbackHelper
   # Provides the feedback text for a given calculation.
-  # At present, this does use I18n to generate the text, using approximately 10 different keys to form the
-  # complete feedback message.
-  # It is currently unknown if this will be suitable for different languages (i.e. welsh)
-  # @TODO Review the above comment
   # @param [Calculator::Calculation] calculation The calculation to display feedback for
   # @return [String] The feedback text
   def calculator_feedback_for(calculation)
-    if calculation.available_help == :none
-      should_not_get_help_text(calculation)
-    elsif calculation.available_help == :full
-      should_get_help_text(calculation) + ' ' + calculator_feedback_explanation(calculation).join(' ')
-    end
-  end
-
-  # Provides the final feedback text for a given calculation.
-  # @param [Calculator::Calculation] calculation The calculation to display feedback for
-  # @return [String] The feedback text
-  def final_calculator_feedback_for(calculation)
+    message = calculation.messages.last
+    return '' if message.nil?
     marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.full_remission.#{marital_status}.detail",
-      total_income: calculation_total_income(calculation),
-      fee: calculation_fee(calculation)
-  end
-
-  # Provides the final partial feedback text for a given calculation.
-  # @param [Calculator::Calculation] calculation The calculation to display feedback for
-  # @return [String] The feedback text
-  def partial_calculator_feedback_for(calculation)
-    marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.partial_remission.#{marital_status}.detail",
+    t "calculation.feedback.messages.decided_by.#{message['source']}.#{message['key']}.detail.#{marital_status}",
+      raise: true,
       total_income: calculation_total_income(calculation),
       fee: calculation_fee(calculation),
+      disposable_capital: calculation_disposable_capital(calculation),
       remission: calculation_remission(calculation),
       contribution: calculation_contribution(calculation)
   end
 
-  # Provides the final no remission feedback text for a given calculation.
-  # @param [Calculator::Calculation] calculation The calculation to display feedback for
-  # @return [String] The feedback text
-  def no_remission_calculator_feedback_for(calculation)
-    marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.no_remission.#{marital_status}.detail",
-      total_income: calculation_total_income(calculation),
-      fee: calculation_fee(calculation)
-  end
-
-  # Presents the should not get help text in the current language
-  # @param [Calculation] calculation The calculation
-  #
-  # @return [String] The text to present
-  def should_not_get_help_text(calculation)
-    I18n.t('calculation.feedback.message.negative',
-      fee: calculation_fee(calculation),
-      disposable_capital: calculation_disposable_capital(calculation))
-  end
-
-  # Presents the should get help text in the current language
-  # @param [Calculation] calculation The calculation
-  #
-  # @return [String] The text to present
-  def should_get_help_text(calculation)
-    I18n.t('calculation.feedback.message.positive',
-      fee: calculation_fee(calculation),
-      disposable_capital: calculation_disposable_capital(calculation),
-      subject: I18n.t("calculation.feedback.subject.#{calculation.inputs[:marital_status]}"))
-  end
-
-  # Formats a calculator value.
-  #
-  # @param [Object] value The value to be formatted
-  # @param [String] field The field that this value is from
-  def calculator_auto_format_for(value, field:)
-    case field
-    when :date_of_birth then
-      value.strftime('%d/%m/%Y')
-    when :fee, :disposable_capital then
-      number_to_currency(value, precision: 0, unit: '£')
-    when :benefits_received then
-      value.map { |v| t("calculation.previous_questions.benefits_received.#{v}") }.join(',')
-    else
-      value
-    end
+  # Provides the feedback header text for a given calculation.
+  # @param [Calculator::Calculation] calculation The calculation to display feedback header for
+  # @return [String] The feedback header text
+  def calculator_feedback_header_for(calculation)
+    message = calculation.messages.last
+    return '' if message.nil?
+    t "calculation.feedback.messages.decided_by.#{message['source']}.#{message['key']}.header",
+      raise: true
   end
 
   # Presents the calculation fee in the correct format
@@ -99,6 +40,7 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_remission(calculation)
+    return '' if calculation.remission.nil?
     number_to_currency(calculation.remission, precision: 0, unit: '£')
   end
 
@@ -108,6 +50,7 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_contribution(calculation)
+    return '' if calculation.inputs[:fee].nil? || calculation.remission.nil?
     number_to_currency(calculation.inputs[:fee] - calculation.remission, precision: 0, unit: '£')
   end
 
@@ -117,6 +60,7 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_total_income(calculation)
+    return '' if calculation.inputs[:total_income].nil?
     number_to_currency(calculation.inputs[:total_income], precision: 0, unit: '£')
   end
 
@@ -126,6 +70,16 @@ module CalculationFeedbackHelper
   #
   # @return [String] The text to display
   def calculation_disposable_capital(calculation)
+    return '' if calculation.inputs[:disposable_capital].nil?
     number_to_currency(calculation.inputs[:disposable_capital], precision: 0, unit: '£')
+  end
+
+  # Finds the first form that handles the field given
+  #
+  # @param [String] field The field to find the form for
+  # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,
+  #   DisposableCapitalForm,BenefitsReceivedForm,NumberOfChildrenForm] The form
+  def calculator_form_for(field)
+    CalculationFormService.for_field(field)
   end
 end

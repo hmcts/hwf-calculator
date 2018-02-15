@@ -34,8 +34,12 @@ Metrics/LineLength:
   Exclude:
     - 'features/**/*'
     - 'spec/**/*'
+    - 'test_common/**/*'
     - 'Gemfile'
-
+Metrics/ModuleLength:
+  Max: 120
+  Exclude:
+    - 'test_common/helpers/**/*'
 Metrics/AbcSize:
   Exclude:
     - 'spec/**/*'
@@ -52,7 +56,8 @@ Style/AsciiComments:
   Enabled: true
   Exclude:
     - 'spec/**/*'
-
+Layout/TrailingBlankLines:
+  Enabled: true
 # Don't worry about long methods in specs.
 Metrics/MethodLength:
   Exclude:
@@ -71,12 +76,12 @@ Rails/FilePath:
     - spec/routing/**/*
 
 # private/protected/public
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   EnforcedStyle: indent
 
 # Just indent parameters by two spaces. It's less volatile if methods change,
 # and there's less busy work lining things up.
-Style/AlignParameters:
+Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
 Style/ClassAndModuleChildren:
@@ -93,7 +98,7 @@ Style/CollectionMethods:
     find_all: 'select'
 
 # Chain methods with trailing dots.
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 # No, we don't prefer each_with_object
@@ -101,13 +106,13 @@ Style/EachWithObject:
   Enabled: false
 
 # Prefer blank line after class/module start.
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
 # We have a mixture at the moment, so don't enforce anything.
@@ -137,6 +142,12 @@ Style/SignalException:
 # Let us use foo? methods
 Style/TrivialAccessors:
   AllowPredicates: true
+
+Style/MixinUsage:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'features/**/*'
 
 # Prefer sensible naming to comments everywhere.
 Documentation:
@@ -176,6 +187,7 @@ RSpec/ExpectActual:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'test_common/**/*'
     - 'config/**/*'
     - 'lib/tasks/**/*'
 
@@ -204,5 +216,12 @@ Style/NumericPredicate:
 Rails/OutputSafety:
   Exclude:
     - 'app/helpers/yaml_helper.rb'
+Capybara/FeatureMethods:
+  Exclude:
+    - 'spec/features/**/*'
+
+Naming/PredicateName:
+  Exclude:
+    - 'test_common/**/*'
 
 require: rubocop-rspec

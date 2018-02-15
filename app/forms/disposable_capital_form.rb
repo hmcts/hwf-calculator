@@ -11,7 +11,7 @@ class DisposableCapitalForm < BaseForm
   # The form type
   #
   # @return [Symbol] :disposable_capital
-  def type
+  def self.type
     :disposable_capital
   end
 

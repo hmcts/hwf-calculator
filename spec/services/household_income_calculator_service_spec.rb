@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe HouseholdIncomeCalculatorService do
   subject(:service) { described_class }
+
   # First, some common parameters for all tests
   let(:minimum_threshold_hash) { { single: 1085.0, sharing_income: 1245.0 } }
   let(:maximum_threshold_hash) { { single: 5085.0, sharing_income: 5245.0 } }
@@ -61,7 +62,7 @@ RSpec.describe HouseholdIncomeCalculatorService do
     let(:minimum_threshold) { minimum_threshold_hash[marital_status] + (child_allowance * children) }
     let(:maximum_threshold) { maximum_threshold_hash[marital_status] + (child_allowance * children) }
 
-    context 'full remission' do
+    context 'with full remission' do
       shared_examples 'full remission' do
         it 'returns full remission if monthly income is less than threshold' do
           # Arrange
@@ -86,44 +87,50 @@ RSpec.describe HouseholdIncomeCalculatorService do
         end
       end
 
-      context 'single, no children' do
+      context 'when single, no children' do
         let(:children) { 0 }
         let(:marital_status) { :single }
+
         include_examples 'full remission'
       end
 
-      context 'single, 1 child' do
+      context 'when single, 1 child' do
         let(:children) { 1 }
         let(:marital_status) { :single }
+
         include_examples 'full remission'
       end
 
-      context 'single, 2 children' do
+      context 'when single, 2 children' do
         let(:children) { 1 }
         let(:marital_status) { :single }
+
         include_examples 'full remission'
       end
 
-      context 'married, no children' do
+      context 'when married, no children' do
         let(:children) { 0 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'full remission'
       end
 
-      context 'married, 1 child' do
+      context 'when married, 1 child' do
         let(:children) { 1 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'full remission'
       end
 
-      context 'married, 2 children' do
+      context 'when married, 2 children' do
         let(:children) { 2 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'full remission'
       end
     end
 
-    context 'partial remission' do
+    context 'with partial remission' do
       shared_examples 'partial remission' do
         it 'returns part remission if monthly income is just over the threshold' do
           # Arrange
@@ -204,44 +211,50 @@ RSpec.describe HouseholdIncomeCalculatorService do
         end
       end
 
-      context 'single, no children' do
+      context 'when single, no children' do
         let(:children) { 0 }
         let(:marital_status) { :single }
+
         include_examples 'partial remission'
       end
 
-      context 'single, 1 child' do
+      context 'when single, 1 child' do
         let(:children) { 1 }
         let(:marital_status) { :single }
+
         include_examples 'partial remission'
       end
 
-      context 'single, 2 children' do
+      context 'when single, 2 children' do
         let(:children) { 2 }
         let(:marital_status) { :single }
+
         include_examples 'partial remission'
       end
 
-      context 'married, no children' do
+      context 'when married, no children' do
         let(:children) { 0 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'partial remission'
       end
 
-      context 'married, 1 child' do
+      context 'when married, 1 child' do
         let(:children) { 1 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'partial remission'
       end
 
-      context 'married, 2 children' do
+      context 'when married, 2 children' do
         let(:children) { 2 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'partial remission'
       end
     end
 
-    context 'no remission' do
+    context 'with no remission' do
       shared_examples 'no remission' do
         it 'returns no remission if monthly income is over the minimum threshold and above the maximum' do
           # Arrange
@@ -255,39 +268,45 @@ RSpec.describe HouseholdIncomeCalculatorService do
         end
       end
 
-      context 'single, no children' do
+      context 'when single, no children' do
         let(:children) { 0 }
         let(:marital_status) { :single }
+
         include_examples 'no remission'
       end
 
-      context 'single, 1 child' do
+      context 'when single, 1 child' do
         let(:children) { 1 }
         let(:marital_status) { :single }
+
         include_examples 'no remission'
       end
 
-      context 'single, 2 children' do
+      context 'when single, 2 children' do
         let(:children) { 2 }
         let(:marital_status) { :single }
+
         include_examples 'no remission'
       end
 
-      context 'married, no children' do
+      context 'when married, no children' do
         let(:children) { 0 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'no remission'
       end
 
-      context 'married, 1 child' do
+      context 'when married, 1 child' do
         let(:children) { 1 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'no remission'
       end
 
-      context 'married, 2 children' do
+      context 'when married, 2 children' do
         let(:children) { 2 }
         let(:marital_status) { :sharing_income }
+
         include_examples 'no remission'
       end
     end

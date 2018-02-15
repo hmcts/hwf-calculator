@@ -1,7 +1,8 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-726
 RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
-  let(:next_page) { Calculator::Test::En::DisposableCapitalPage.new }
+  let(:next_page) { Calculator::Test::DisposableCapitalPage.new }
+
   # Feature: Date of Birth
   # HwF eligibility Calculator should capture date of birth of citizen and partner to check citizen eligibility for help with fees
   #
@@ -13,6 +14,7 @@ RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
   # Personas
   # JOHN is a single, 56 year old man
   # ALLI is a married, 60 year old man with partner who is 50 year old
+  # SUE is a married, 75 year old woman with partner who is 73 year old
   #
   # Scenario: Single citizen enter date of birth
   #               Given I am JOHN
@@ -23,7 +25,7 @@ RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
   scenario 'Single citizen enter date of birth' do
     # Arrange
     given_i_am(:john)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question
@@ -42,7 +44,7 @@ RSpec.describe 'Enter date of birth spec', type: :feature, js: true do
   scenario 'Married citizen enter date of birth' do
     # Arrange
     given_i_am(:alli)
-    answer_questions_up_to_date_of_birth
+    answer_up_to(:date_of_birth)
 
     # Act
     answer_date_of_birth_question

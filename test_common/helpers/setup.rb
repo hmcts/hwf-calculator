@@ -1,39 +1,26 @@
 module Calculator
   module Test
     module Setup
+      QUESTIONS = [
+        :all,
+        :marital_status, :court_fee, :date_of_birth, :disposable_capital,
+        :benefits, :number_of_children, :total_income
+      ].freeze
+
       attr_accessor :user
-      def answer_questions_up_to_benefits
-        answer_questions_up_to_disposable_capital
-        answer_disposable_capital_question
-      end
 
-      def answer_questions_up_to_disposable_capital
-        answer_questions_up_to_date_of_birth
-        answer_date_of_birth_question
-      end
-
-      def answer_questions_up_to_date_of_birth
-        answer_questions_up_to_court_fee
-        answer_court_fee_question
-      end
-
-      def answer_up_to_marital_status_question
+      def answer_up_to(question)
+        unless QUESTIONS.include?(question)
+          raise "Unknown question :#{question} - Must be one of #{QUESTIONS.join(', ')}"
+        end
         start_calculator_session
+        QUESTIONS[1..QUESTIONS.index(question) - 1].each do |q|
+          answer_question(q)
+        end
       end
 
-      def answer_questions_up_to_court_fee
-        answer_up_to_marital_status_question
-        answer_marital_status_question
-      end
-
-      def answer_questions_up_to_total_income
-        answer_questions_up_to_number_of_children
-        answer_number_of_children_question
-      end
-
-      def answer_questions_up_to_number_of_children
-        answer_questions_up_to_benefits
-        answer_benefits_question
+      def answer_question(question)
+        send "answer_#{question}_question".to_sym
       end
 
       def answer_disposable_capital_question
@@ -44,7 +31,7 @@ module Calculator
       def answer_date_of_birth_question
         date_of_birth_page.date_of_birth.set(user.date_of_birth)
         if user.partner_date_of_birth.present?
-          date_of_birth_page.partner_date_of_birth.set(user.date_of_birth)
+          date_of_birth_page.partner_date_of_birth.set(user.partner_date_of_birth)
         end
         date_of_birth_page.next
       end
@@ -64,9 +51,23 @@ module Calculator
         total_income_page.next
       end
 
+      def answer_all_questions
+        answer_up_to(:all)
+      end
+
       def start_calculator_session
-        start_page.load_page
+        load_start_page
         start_page.start_session
+      end
+
+      def load_start_page(in_language: ::Calculator::Test::Messaging.instance.current_locale)
+        my_page = start_page
+        my_page.load_page
+        case in_language
+        when :cy then my_page.switch_to_welsh
+        when :en then nil
+        else raise "We only support languages en and cy - #{in_language} is not supported"
+        end
       end
 
       def answer_marital_status_question
@@ -81,14 +82,13 @@ module Calculator
 
       def given_i_am(user_name)
         self.user = personas.fetch(user_name)
+        user.marital_status = user.marital_status.to_sym
         user.date_of_birth = (user.age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')
         if user.partner_age.present?
           user.partner_date_of_birth = (user.partner_age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')
         end
         return if user.income_benefits.nil?
-        user.income_benefits.map! do |b|
-          messaging.t("hwf_pages.income_benefits.labels.benefits.#{b}")
-        end
+        user.income_benefits.map!(&:to_sym)
       end
     end
   end

@@ -31,7 +31,7 @@ Feature: Disposable capital
     Then I should see that we are likely to get help with fees
 
 # Baba is a single, 40 year old man with £15,000 worth of capital. He has a court fee of £6,500
-  Scenario: Baba passes disposable capital test
+  Scenario: Baba fails disposable capital test
     Given I am Baba
     And I am on the savings and investment page
     When I submit my savings and investments
@@ -58,3 +58,20 @@ Feature: Disposable capital
     When I submit our savings and investments
     Then I should see that we are unlikely to get help with fees
     
+  Scenario: Previous answer
+    Given I am David
+    And I am on the savings and investment page
+    When I submit my savings and investments
+    Then on the next page my savings and investments have been added to previous answers
+
+  Scenario: Help with savings and investment
+    Given I am David
+    And I am on the savings and investment page
+    When I click on help with savings and investment 
+    Then I should see the copy for help with savings and investment
+
+  Scenario: Displays savings and investment error message
+    Given I am David
+    And I am on the savings and investment page
+    When I click next without submitting my savings and investment
+    Then I should see the savings and investment error message

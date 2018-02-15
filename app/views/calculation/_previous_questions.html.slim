@@ -1,0 +1,11 @@
+- unless((current_calculation.inputs.keys - exclude).empty?)
+  table.previous_questions data-behavior="calculator_previous_questions"
+    thead
+      tr
+        th colspan='3'
+          = t('calculation.previous_questions.label')
+    tbody
+      - calculation_inputs_by_form(current_calculation).each_pair do |form_type, inputs|
+        - next if exclude.include?(form_type)
+        = render partial: "calculation/forms/#{form_type}", locals: { disabled: disabled, form_type: form_type, inputs: inputs, current_calculation: current_calculation }
+

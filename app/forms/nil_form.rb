@@ -6,7 +6,7 @@ class NilForm < BaseForm
   # The type of the form
   #
   # @return [Symbol] :nil
-  def type
+  def self.type
     :nil
   end
 

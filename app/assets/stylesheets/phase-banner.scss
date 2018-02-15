@@ -1,4 +1,7 @@
-@import 'design-patterns/alpha-beta';
 .phase-banner  {
   @include phase-banner();
+  .welsh-link {
+    width: 100%;
+    text-align: right;
+  }
 }
