@@ -53,7 +53,7 @@ When(/^I successfully submit my income benefits$/) do
   income_benefits_page.next
 end
 
-Then(/^on the next page my income benefit has been added to previous answers$/) do
+Then(/^on the next page my income benefits has been added to previous answers$/) do
   expect(full_remission_page.previous_answers.marital_status).to have_answered(user.marital_status)
   expect(full_remission_page.previous_answers.court_fee).to have_answered(user.fee)
   expect(full_remission_page.previous_answers.date_of_birth).to have_answered(user.date_of_birth)
