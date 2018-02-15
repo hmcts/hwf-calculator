@@ -30,13 +30,13 @@ RSpec.describe 'Next steps test', type: :feature, js: true do
     expect(start_page).to be_displayed
   end
 
-  # Scenario: User who pass income test and eligible for full remision
+  # Scenario: User who pass income test and eligible for full remission
   #          Given I am JAMES
   #          And I am on the total income response page
   #          When I click on the "Return to Help with fees home page" link
   #          Then I should see the Help with fees home page
   #
-  scenario 'User who pass income test and eligible for full remision' do
+  scenario 'User who pass income test and eligible for full remission' do
     # Arrange
     given_i_am :james
     answer_up_to :total_income
@@ -48,13 +48,13 @@ RSpec.describe 'Next steps test', type: :feature, js: true do
     # Assert
     expect(start_page).to be_displayed
   end
-  # Scenario: User who pass income test and eligible for partial remision
+  # Scenario: User who pass income test and eligible for partial remission
   #          Given I am LANDON
   #          And I am on the total income response page
   #          When I click on the "Return to Help with fees home page" link
   #          Then I should see the Help with fees home page
   #
-  scenario 'User who pass income test and eligible for partial remision' do
+  scenario 'User who pass income test and eligible for partial remission' do
     # Arrange
     given_i_am :landon
     answer_up_to :total_income
@@ -66,13 +66,13 @@ RSpec.describe 'Next steps test', type: :feature, js: true do
     # Assert
     expect(start_page).to be_displayed
   end
-  # Scenario: User who fail income test and not eligible for fee remision
+  # Scenario: User who fail income test and not eligible for fee remission
   #          Given I am JOSEPH
   #          And I am on the total income response page
   #          When I click on the "Return to Help with fees home page" link
   #          Then I should see the Help with fees home page
   #
-  scenario 'User who fail income test and not eligible for fee remision' do
+  scenario 'User who fail income test and not eligible for fee remission' do
     # Arrange
     given_i_am :joseph
     answer_up_to :total_income
