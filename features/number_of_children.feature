@@ -18,3 +18,9 @@ Scenario: Children who might affect your claim
 Scenario: Displays number of children error message
   When I click next without submitting my number of children
   Then I should see the number of children error message
+
+Scenario: Change previous answer
+  When I click on change for marital status
+  Then I should be taken back to the marital status page
+  And I should see my other previous answers have been saved
+  
