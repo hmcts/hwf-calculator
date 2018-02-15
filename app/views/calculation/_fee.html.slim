@@ -6,8 +6,7 @@
         legend
           h2.heading-medium = t('calculation.field_labels.fee')
         span.form-hint = t('calculation.hints.fee')
-        - if form.errors.include?(:fee)
-          span.error-message = form.errors[:fee].join(', ')
+        = gds_error_messages(model: f.object, method: :fee)
         label.block-label
           .form-control-money.gbp
             = f.text_field :fee, class: 'form-control money gbp'

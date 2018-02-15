@@ -18,7 +18,7 @@ Then(/^on the next page our date of births have been added to previous answers$/
 end
 
 When(/^I successfully submit our date of births$/) do
-  expect(date_of_birth_page.partner_date_of_birth).to be_present
+  expect(date_of_birth_page).to have_partner_date_of_birth
   answer_date_of_birth_question
 end
 

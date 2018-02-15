@@ -2,11 +2,24 @@ module Calculator
   module Test
     # A page object providing an interface to the 'Income Benefits Page'
     class IncomeBenefitsPage < BasePage
+      QUESTION_LABEL_SINGLE = t('hwf_pages.income_benefits.questions.benefits.label.single')
+      QUESTION_LABEL_MARRIED = t('hwf_pages.income_benefits.questions.benefits.label.sharing_income')
+
       set_url t('hwf_urls.income_benefits')
       element :heading, :exact_heading_text, t('hwf_pages.income_benefits.heading')
       element :next_button, :button, t('hwf_pages.income_benefits.buttons.next')
 
-      section :benefits, :calculator_question, t('hwf_pages.income_benefits.questions.benefits.label') do
+      section :benefits, :calculator_question, [QUESTION_LABEL_SINGLE, QUESTION_LABEL_MARRIED] do
+        @i18n_scope = 'hwf_pages.income_benefits.questions.benefits'
+        include ::Calculator::Test::BenefitsCheckboxListSection
+      end
+
+      section :benefits_single, :calculator_question, QUESTION_LABEL_SINGLE do
+        @i18n_scope = 'hwf_pages.income_benefits.questions.benefits'
+        include ::Calculator::Test::BenefitsCheckboxListSection
+      end
+
+      section :benefits_married, :calculator_question, QUESTION_LABEL_MARRIED do
         @i18n_scope = 'hwf_pages.income_benefits.questions.benefits'
         include ::Calculator::Test::BenefitsCheckboxListSection
       end
@@ -15,6 +28,13 @@ module Calculator
         [:jobseekers_allowance, :employment_support_allowance, :income_support, :universal_credit, :pension_credit, :scottish_legal_aid].each do |benefit|
           benefits.option_labelled benefit
         end
+      end
+
+      def has_benefit_options?
+        benefit_options
+        true
+      rescue Capybara::ElementNotFound
+        false
       end
 
       # Clicks the next button
@@ -47,7 +67,9 @@ module Calculator
         :validate_guidance,
         :wait_for_guidance_text,
         :dont_know_guidance,
+        :has_dont_know_guidance?,
         :none_of_the_above_guidance,
+        :has_none_of_the_above_guidance?,
         to: :benefits
     end
   end

@@ -105,11 +105,15 @@ cy:
                 single: "*Welsh As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
                 sharing_income: "*Welsh As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
     field_labels:
-      disposable_capital: "*Welsh How much do you have in savings and investment combined?"
+      disposable_capital:
+        single: "*Welsh How much do you have in savings and investment combined?"
+        sharing_income: "*Welsh How much do you and your partner have in savings and investment combined?"
       marital_status: "*Welsh Are you single, married or living with someone and sharing income?"
       date_of_birth: "*Welsh What is your date of birth?"
       fee: "*Welsh How much is the court or tribunal fee?"
-      benefits_received: "*Welsh Select all income benefits you are currently receiving"
+      benefits_received:
+        single: "*Welsh Select all income benefits you are currently receiving"
+        sharing_income: "*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
       total_income: "*Welsh How much total income do you receive each month?"
       partner_date_of_birth: "*Welsh What is your partners date of birth?"
       number_of_children:
@@ -175,6 +179,8 @@ cy:
     common:
       page_header: "*Welsh Find out if you could get help with fees"
       next_button: "*Welsh Next"
+      start_again: "*Welsh Return to Help with fees home page"
+      next_steps: "*Welsh Next steps"
     guidance:
       marital_status:
         summary: "*Welsh Help with Status"

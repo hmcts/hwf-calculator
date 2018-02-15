@@ -6,6 +6,8 @@ module Calculator
 
       included do
         elements :messages, '[data-behavior=calculator_feedback_header],[data-behavior=calculator_feedback_message]'
+        element :positive_message, '.positive'
+        element :negative_message, '.negative'
       end
 
       def message_with_detail(msg)
@@ -17,18 +19,6 @@ module Calculator
       def message_with_header(header)
         within @root_element do
           find '[data-behavior=calculator_feedback_header]', text: header
-        end
-      end
-
-      def positive_message
-        within @root_element do
-          find '.positive'
-        end
-      end
-
-      def negative_message
-        within @root_element do
-          find '.negative'
         end
       end
     end

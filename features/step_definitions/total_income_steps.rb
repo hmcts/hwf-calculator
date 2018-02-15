@@ -55,5 +55,5 @@ Then(/^I should see that I am now unlikely to get help with fees$/) do
 end
 
 Then(/^I should see my answer for court and tribunal fee has been changed to £1000$/) do
-  expect(not_eligible_page.previous_answers.court_fee.answer(text: '£1,000')).to be_present
+  expect(not_eligible_page.previous_answers.court_fee).to have_answered(1000)
 end

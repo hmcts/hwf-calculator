@@ -36,6 +36,10 @@ module Calculator
         feedback.positive_message
       end
 
+      def has_positive_message?
+        feedback.has_positive_message?
+      end
+
       def negative_message
         feedback.negative_message
       end

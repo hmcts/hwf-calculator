@@ -196,7 +196,9 @@ en:
       heading: 'Find out if you could get help with fees'
       questions:
         disposable_capital:
-          label: 'How much do you have in savings and investment combined?'
+          label:
+            single: 'How much do you have in savings and investment combined?'
+            sharing_income: 'How much do you and your partner have in savings and investment combined?'
           errors:
             non_numeric: "Enter a valid value"
             blank: "Enter how much you have in savings and investments"
@@ -229,7 +231,9 @@ en:
       heading: 'Find out if you could get help with fees'
       questions:
         benefits:
-          label: 'Select all income benefits you are currently receiving'
+          label:
+            single: 'Select all income benefits you are currently receiving'
+            sharing_income: 'Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?'
           options:
             dont_know:
               label: "Don't know"
@@ -320,6 +324,6 @@ en:
       total_income:
         label: "Total income"
         change: 'Change'
-
-
-
+    next_steps:
+      label: "Next steps"
+      start_again: "Return to Help with fees home page"

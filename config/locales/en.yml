@@ -105,11 +105,15 @@ en:
                 single: "As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
                 sharing_income: "As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
     field_labels:
-      disposable_capital: "How much do you have in savings and investment combined?"
+      disposable_capital:
+        single: "How much do you have in savings and investment combined?"
+        sharing_income: "How much do you and your partner have in savings and investment combined?"
       marital_status: "Are you single, married or living with someone and sharing income?"
       date_of_birth: "What is your date of birth?"
       fee: "How much is the court or tribunal fee?"
-      benefits_received: "Select all income benefits you are currently receiving"
+      benefits_received:
+        single: "Select all income benefits you are currently receiving"
+        sharing_income: "Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
       total_income: "How much total income do you receive each month?"
       partner_date_of_birth: "What is your partners date of birth?"
       number_of_children:
@@ -175,6 +179,8 @@ en:
     common:
       page_header: "Find out if you could get help with fees"
       next_button: "Next"
+      start_again: "Return to Help with fees home page"
+      next_steps: "Next steps"
     guidance:
       marital_status:
         summary: "Help with Status"
