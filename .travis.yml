@@ -9,6 +9,7 @@ env:
     - CC_TEST_REPORTER_ID=f9a2ac22f48a8d9ba311923fc309a5920a6eaf82f103af029d9f1f3a694bd24c
     - ENABLE_COVERAGE=true
     - CAPYBARA_SERVER_PORT=random
+    - DRIVER=firefoxdriver
 before_install:
   - "curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter && chmod +x ./cc-test-reporter"
 addons:
