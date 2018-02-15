@@ -179,6 +179,8 @@ en:
     common:
       page_header: "Find out if you could get help with fees"
       next_button: "Next"
+      start_again: "Return to Help with fees home page"
+      next_steps: "Next steps"
     guidance:
       marital_status:
         summary: "Help with Status"

@@ -4,6 +4,14 @@ module Calculator
       include ActiveSupport::NumberHelper
       set_url t('hwf_urls.partial_remission')
 
+      section :next_steps, :next_steps_labelled, t('hwf_components.next_steps.label') do
+        include ::Calculator::Test::NextStepsSection
+      end
+
+      def start_again
+        next_steps.start_again_link.click
+      end
+
       # Verifies that the final partial remission message is present
       # @param [OpenStruct] user The user containing the fee and the monthly_gross_income
       # @param [Fixnum] remission The expected remission as passed from the test suite
