@@ -21,10 +21,10 @@ And(/^I submit (?:my|our) savings and investments$/) do
 end
 
 And(/^on the next page (?:my|our) savings and investments have been added to previous answers$/) do
-  expect(full_remission_page.previous_answers).to have_marital_status
-  expect(full_remission_page.previous_answers).to have_court_fee
-  expect(full_remission_page.previous_answers).to have_date_of_birth
-  expect(full_remission_page.previous_answers).to have_disposable_capital
+  expect(not_eligible_page.previous_answers.marital_status).to have_answered(user.marital_status)
+  expect(not_eligible_page.previous_answers.court_fee).to have_answered(user.fee)
+  expect(not_eligible_page.previous_answers.date_of_birth).to have_answered(user.date_of_birth)
+  expect(not_eligible_page.previous_answers.disposable_capital).to have_answered(user.disposable_capital)
 end
 
 When(/^I click on help with savings and investment$/) do

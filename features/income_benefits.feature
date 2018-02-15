@@ -4,7 +4,7 @@
 Feature: Income benefits page
 
 Background: Income benefits page
-  Given I am John
+  Given I am William
   And I am on the income benefits page
 
 Scenario: Displays message
@@ -30,7 +30,7 @@ Scenario: Select income related benefit option
   Then I should see that I should be eligible for a full remission
 
 Scenario: Previous answers
-  When I submit the page with income support
+  When I successfully submit my income benefits
   Then on the next page my income benefit has been added to previous answers
 
 Scenario: How benefits affect your claim

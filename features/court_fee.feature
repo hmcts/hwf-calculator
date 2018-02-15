@@ -4,7 +4,7 @@
 Feature: Court and tribunal fee page
 
 Background: Court and tribunal fee page
-  Given I am John
+  Given I am David
   And I am on the court and tribunal fee page
 
 Scenario: Successfully submits court and tribunal fee
