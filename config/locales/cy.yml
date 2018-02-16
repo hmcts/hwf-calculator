@@ -5,7 +5,7 @@ cy:
         marital_status_form:
           attributes:
             marital_status:
-              inclusion: "*Welsh Select whether you're single, married or living with someone and sharing an income"
+              inclusion: "Dewiswch p’un a ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm"
         benefits_received_form:
           attributes:
             benefits_received:
@@ -108,7 +108,7 @@ cy:
       disposable_capital:
         single: "*Welsh How much do you have in savings and investment combined?"
         sharing_income: "*Welsh How much do you and your partner have in savings and investment combined?"
-      marital_status: "*Welsh Are you single, married or living with someone and sharing income?"
+      marital_status: "A ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm?"
       date_of_birth: "*Welsh What is your date of birth?"
       fee: "*Welsh How much is the court or tribunal fee?"
       benefits_received:
@@ -178,29 +178,29 @@ cy:
         guidance: ''
     common:
       page_header: "Canfod a allech chi gael help i dalu ffioedd"
-      next_button: "*Welsh Next"
+      next_button: "Nesaf"
       start_again: "*Welsh Return to Help with fees home page"
       next_steps: "*Welsh Next steps"
     guidance:
       marital_status:
-        summary: "*Welsh Help with Status"
+        summary: "Help gyda Statws"
         detail:
           single:
-            summary: "*Welsh Single means you rely on your own income or your case involves your partner, for example:"
+            summary: "Mae sengl yn golygu eich bod yn dibynnu ar eich incwm eich hun neu mae eich achos yn ymwneud â’ch partner, er enghraifft:"
             text: |
-              *Welsh divorce, dissolution or annulment (unless you have married again or live with a new partner)
-              *Welsh gender recognition
-              *Welsh domestic violence
-              *Welsh forced marriage
-              *Welsh You should also choose single if you and your partner are both part of a multiple fee group
+              ysgariad, diddymiad neu ddirymiad (oni bai eich bod wedi priodi eto neu’n byw â phartner newydd)
+              cydnabod rhywedd
+              trais domestig
+              priodas dan orfod
+              Dylech hefyd ddewis sengl os ydych chi a’ch partner yn bartïon mewn grŵp ffi luosog.
           sharing_income:
-            summary: "*Welsh Married or living with someone and sharing an income means:"
+            summary: "Mae wedi priodi neu’n byw â rhywun ac yn rhannu incwm yn golygu eich bod:"
             text: |
-              *Welsh married
-              *Welsh civil partners
-              *Welsh living together as if you are married or in a civil partnership
-              *Welsh living at the same address with a joint income
-              *Welsh part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+              wedi priodi
+              yn bartneriaid sifil
+              yn byw â’ch gilydd fel petaech wedi priodi neu mewn partneriaeth sifil
+              yn byw yn yr un cyfeiriad ac yn rhannu incwm
+              yn rhan o gwpl sy’n cael eu gorfodi i fyw ar wahân, e.e. pan fydd un neu’r ddau yn gwasanaethu yn y lluoedd arfog, yn y carchar neu’n byw mewn cartref gofal preswyl
       disposable_capital:
         summary: "*Welsh Help with savings and investments"
         detail:
@@ -267,8 +267,8 @@ cy:
       disposable_capital: "*Welsh If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
     marital_status:
       options:
-        single: "*Welsh Single"
-        sharing_income: "*Welsh Married or living with someone"
+        single: "Sengl"
+        sharing_income: "Wedi priodi neu’n byw â rhywun"
   language_switcher:
     full_html: "Mae’r canllaw hwn hefyd ar gael %{link_html} (English)"
     link_text: "yn Saesneg"

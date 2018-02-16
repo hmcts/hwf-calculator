@@ -92,7 +92,7 @@ cy:
               *Welsh age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
               *Welsh children who don’t live with you, but you (or your partner) pay regular maintenance for them
       buttons:
-        next: '*Welsh Next'
+        next: 'Nesaf'
     date_of_birth:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
@@ -127,7 +127,7 @@ cy:
             year:
               label: '*Welsh Year'
       buttons:
-        next: '*Welsh Next'
+        next: 'Nesaf'
     total_income:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
@@ -150,35 +150,35 @@ cy:
               *Welsh student maintenance loans, grants or bursaries (except for tuition fee loans)
               *Welsh If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       buttons:
-        next: '*Welsh Next'
+        next: 'Nesaf'
     marital_status:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         marital_status:
-          label: '*Welsh Are you single, married or living with someone and sharing income?'
+          label: 'A ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm?'
           options:
-            single: "*Welsh Single"
-            sharing_income: "*Welsh Married or living with someone"
+            single: "Sengl"
+            sharing_income: "Wedi priodi neu’n byw â rhywun"
           errors:
-            blank: "*Welsh Select whether you're single, married or living with someone and sharing an income"
+            blank: "Dewiswch p’un a ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm"
           guidance:
-            label: '*Welsh Help with Status'
+            label: 'Help gyda Statws'
             text: |
-              *Welsh Single means you rely on your own income or your case involves your partner, for example:
-              *Welsh divorce, dissolution or annulment (unless you have married again or live with a new partner)
-              *Welsh gender recognition
-              *Welsh domestic violence
-              *Welsh forced marriage
-              *Welsh You should also choose single if you and your partner are both part of a multiple fee group
-              *Welsh Married or living with someone and sharing an income means:
-              *Welsh married
-              *Welsh civil partners
-              *Welsh living together as if you are married or in a civil partnership
-              *Welsh living at the same address with a joint income
-              *Welsh part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+              Mae sengl yn golygu eich bod yn dibynnu ar eich incwm eich hun neu mae eich achos yn ymwneud â’ch partner, er enghraifft:
+              ysgariad, diddymiad neu ddirymiad (oni bai eich bod wedi priodi eto neu’n byw â phartner newydd)
+              cydnabod rhywedd
+              trais domestig
+              priodas dan orfod
+              Dylech hefyd ddewis sengl os ydych chi a’ch partner yn bartïon mewn grŵp ffi luosog.
+              Mae wedi priodi neu’n byw â rhywun ac yn rhannu incwm yn golygu eich bod:
+              wedi priodi
+              yn bartneriaid sifil
+              yn byw â’ch gilydd fel petaech wedi priodi neu mewn partneriaeth sifil
+              yn byw yn yr un cyfeiriad ac yn rhannu incwm
+              yn rhan o gwpl sy’n cael eu gorfodi i fyw ar wahân, e.e. pan fydd un neu’r ddau yn gwasanaethu yn y lluoedd arfog, yn y carchar neu’n byw mewn cartref gofal preswyl
 
       buttons:
-        next: '*Welsh Next'
+        next: 'Nesaf'
     fee:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
@@ -191,7 +191,7 @@ cy:
             label: '*Welsh If you have already paid your court or tribunal fee'
             text: "*Welsh You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
       buttons:
-        next: '*Welsh Next'
+        next: 'Nesaf'
     disposable_capital:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
@@ -226,7 +226,7 @@ cy:
               *Welsh medical negligence or personal injury awards
               *Welsh any compensation under a statutory scheme in respect of Mesothelioma
       buttons:
-        next: '*Welsh Next'
+        next: 'Nesaf'
     income_benefits:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
@@ -262,7 +262,7 @@ cy:
             nothing_selected: "*Welsh Select whether you're receiving one of the benefits listed"
 
       buttons:
-        next: '*Welsh Next'
+        next: 'Nesaf'
     home:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       introduction_text: |
