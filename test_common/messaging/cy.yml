@@ -183,13 +183,13 @@ cy:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         fee:
-          label: '*Welsh How much is the court or tribunal fee?'
+          label: 'Faint yw ffi’r llys neu’r tribiwnlys?'
           errors:
-            non_numeric: "*Welsh Please enter numeric value with no decimal places"
-          hint: "*Welsh Enter valid value with no decimal places"
+            non_numeric: "Rhowch swm dilys neb unrhyw leoedd degol"
+          hint: "Rhowch swm dilys neb unrhyw leoedd degol"
           guidance:
-            label: '*Welsh If you have already paid your court or tribunal fee'
-            text: "*Welsh You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
+            label: 'Os ydych chi wedi talu eich ffi llys neu dribiwnlys yn barod'
+            text: "Gallwch wneud cais i gael peth, neu’ch holl arian yn ôl, os ydych wedi talu ffi yn y 3 mis diwethaf. Fodd bynnag, rhaid eich bod yn gymwys pan fu ichi dalu’r ffi, ac felly dylech ateb y cwestiynau am eich amgylchiadau fel yr oeddynt ar yr adeg pan fu ichi dalu’r ffi."
       buttons:
         next: 'Nesaf'
     disposable_capital:

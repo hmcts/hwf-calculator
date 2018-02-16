@@ -20,8 +20,8 @@ cy:
         fee_form:
           attributes:
             fee:
-              not_a_number: "*Welsh Please enter numeric value with no decimal places"
-              not_an_integer: "*Welsh Please enter numeric value with no decimal places"
+              not_a_number: "Rhowch swm dilys neb unrhyw leoedd degol"
+              not_an_integer: "Rhowch swm dilys neb unrhyw leoedd degol"
         total_income_form:
           attributes:
             total_income:
@@ -110,7 +110,7 @@ cy:
         sharing_income: "*Welsh How much do you and your partner have in savings and investment combined?"
       marital_status: "A ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm?"
       date_of_birth: "*Welsh What is your date of birth?"
-      fee: "*Welsh How much is the court or tribunal fee?"
+      fee: "Faint yw ffi’r llys neu’r tribiwnlys?"
       benefits_received:
         single: "*Welsh Select all income benefits you are currently receiving"
         sharing_income: "*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
@@ -256,14 +256,14 @@ cy:
           summary: "*Welsh You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits."
           text: "*Welsh When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence."
       fee:
-        summary: "*Welsh If you have already paid your court or tribunal fee"
-        detail_text: "*Welsh You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
+        summary: "Os ydych chi wedi talu eich ffi llys neu dribiwnlys yn barod"
+        detail_text: "Gallwch wneud cais i gael peth, neu’ch holl arian yn ôl, os ydych wedi talu ffi yn y 3 mis diwethaf. Fodd bynnag, rhaid eich bod yn gymwys pan fu ichi dalu’r ffi, ac felly dylech ateb y cwestiynau am eich amgylchiadau fel yr oeddynt ar yr adeg pan fu ichi dalu’r ffi."
     hints:
       date_of_birth:
         single: "*Welsh If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
         sharing_income: "*Welsh If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "*Welsh Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
-      fee: "*Welsh Enter valid value with no decimal places"
+      fee: "Rhowch swm dilys neb unrhyw leoedd degol"
       disposable_capital: "*Welsh If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
     marital_status:
       options:
