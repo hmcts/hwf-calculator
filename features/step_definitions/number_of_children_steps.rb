@@ -31,3 +31,20 @@ end
 Then(/^I should see the number of children error message$/) do
   expect(number_of_children_page.number_of_children).to have_error_blank
 end
+
+When(/^I click on change for marital status$/) do
+  number_of_children_page.go_back_to_question(:marital_status)
+end
+
+Then(/^I should be taken back to the marital status page$/) do
+  expect(marital_status_page).to be_displayed
+end
+
+Then(/^I should see my other previous answers have been saved$/) do
+  expect(marital_status_page.previous_answers).to have_no_marital_status
+  expect(marital_status_page.previous_answers).to have_court_fee
+  expect(marital_status_page.previous_answers).to have_date_of_birth
+  expect(marital_status_page.previous_answers).to have_partner_date_of_birth
+  expect(marital_status_page.previous_answers).to have_disposable_capital
+  expect(marital_status_page.previous_answers).to have_income_benefits
+end
