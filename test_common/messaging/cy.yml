@@ -75,7 +75,7 @@ cy:
           detail: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
   hwf_pages:
     number_of_children:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         number_of_children:
           label:
@@ -94,7 +94,7 @@ cy:
       buttons:
         next: '*Welsh Next'
     date_of_birth:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         date_of_birth:
           label: '*Welsh What is your date of birth?'
@@ -129,7 +129,7 @@ cy:
       buttons:
         next: '*Welsh Next'
     total_income:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         total_income:
           label: '*Welsh How much total income do you receive each month?'
@@ -152,7 +152,7 @@ cy:
       buttons:
         next: '*Welsh Next'
     marital_status:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         marital_status:
           label: '*Welsh Are you single, married or living with someone and sharing income?'
@@ -180,7 +180,7 @@ cy:
       buttons:
         next: '*Welsh Next'
     fee:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         fee:
           label: '*Welsh How much is the court or tribunal fee?'
@@ -193,7 +193,7 @@ cy:
       buttons:
         next: '*Welsh Next'
     disposable_capital:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         disposable_capital:
           label:
@@ -228,7 +228,7 @@ cy:
       buttons:
         next: '*Welsh Next'
     income_benefits:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         benefits:
           label:
@@ -264,25 +264,25 @@ cy:
       buttons:
         next: '*Welsh Next'
     home:
-      heading: '*Welsh Find out if you could get help with fees'
+      heading: 'Canfod a allech chi gael help i dalu ffioedd'
       introduction_text: |
-        *Welsh This calculator will tell you if you’re likely to get help with fees and how much you could get.
-        *Welsh You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:
-        *Welsh You don't have much in savings, and
-        *Welsh You're receiving certain benefits, or
-        *Welsh You're on a low income
-        *Welsh If you have a partner, your partner's situation will also apply
+        Bydd y cyfrifydd hwn yn dweud wrthych os ydych yn debygol o gael help i dalu ffioedd a faint allech gael.
+        Efallai y gallwch gael gostyngiad ar ffi llys neu dribiwnlys, neu fod y ffi yn cael ei hepgor yn llwyr os:
+        Nad oes gennych lawer o gynilion, a
+        Rydych yn cael rhai budd-daliadau penodol, neu
+        Eich bod ar incwm isel
+        Os oes gennych bartner, bydd sefyllfa eich partner hefyd yn berthnasol
       requirements_text: |
-        *Welsh What you’ll need
-        *Welsh You'll need information about your (and your partner's, if applicable):
-        *Welsh total savings amount, and
-        *Welsh either: list of benefits (or proof of certain benefits at the time you paid your fee)
-        *Welsh or: total monthly income
+        Beth fydd arnoch ei angen
+        Bydd arnoch angen gwybodaeth am eich (a’ch partner, os yw’n berthnasol):
+         cyfanswm cynilion, a
+         naill ai: rhestr o’r budd-daliadau (neu brawf o rai budd-daliadau penodol adeg talu eich ffi)
+         neu: gyfanswm eich incwm misol
       disclaimer_text: |
-        *Welsh This calculator is for guidance purposes only and is not the Help with Fees application
+        Canllaw yn unig yw’r cyfrifydd hwn ac nid hwn yw eich cais am Help i Dalu Ffioedd
       welsh_link:
-        full_text: "*Welsh This guide is also available *Welsh in English (English)"
-        link_text: "*Welsh in English"
+        full_text: "Mae’r canllaw hwn hefyd ar gael yn Saesneg (English)"
+        link_text: "yn Saesneg"
       buttons:
         start: '*Welsh Start now'
   hwf_components:
