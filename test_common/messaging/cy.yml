@@ -97,35 +97,35 @@ cy:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         date_of_birth:
-          label: '*Welsh What is your date of birth?'
+          label: 'Beth yw eich dyddiad geni?'
           errors:
-            non_numeric: "*Welsh Enter the date in this format DD/MM/YYYY"
-            under_age: "*Welsh You must be over 15 to apply for help with fees"
+            non_numeric: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
+            under_age: "Rhaid ichi fod dros 15 oed i wneud cais am help i dalu ffioedd"
           hint:
-            single: "*Welsh If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-            sharing_income: "*Welsh If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
+            sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
           components:
             day:
-              label: '*Welsh Day'
+              label: 'Diwrnod'
             month:
-              label: '*Welsh Month'
+              label: 'Mis'
             year:
-              label: '*Welsh Year'
+              label: 'Blwyddyn'
         partner_date_of_birth:
-          label: '*Welsh What is your partners date of birth?'
+          label: 'Beth yw dyddiad geni eich partner?'
           errors:
-            non_numeric: "*Welsh Enter the date in this format DD/MM/YYYY"
-            under_age: "*Welsh Your partner must be over 15 to apply for help with fees"
+            non_numeric: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
+            under_age: "Rhaid i’ch partner fod dros 15 oed i wneud cais am help i dalu ffioedd"
           hint:
-            single: "*Welsh If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-            sharing_income: "*Welsh If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+            single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
+            sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
           components:
             day:
-              label: '*Welsh Day'
+              label: 'Diwrnod'
             month:
-              label: '*Welsh Month'
+              label: 'Mis'
             year:
-              label: '*Welsh Year'
+              label: 'Blwyddyn'
       buttons:
         next: 'Nesaf'
     total_income:

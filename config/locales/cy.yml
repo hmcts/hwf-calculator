@@ -32,13 +32,13 @@ cy:
         date_of_birth_form:
           attributes:
             date_of_birth:
-              blank: "*Welsh Enter the date in this format DD/MM/YYYY"
-              age_less_than: "*Welsh You must be over %{count} to apply for help with fees"
-              invalid_date: "*Welsh Enter the date in this format DD/MM/YYYY"
+              blank: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
+              age_less_than: "Rhaid ichi fod dros %{count} oed i wneud cais am help i dalu ffioedd"
+              invalid_date: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
             partner_date_of_birth:
-              blank: "*Welsh Enter the date in this format DD/MM/YYYY"
-              age_less_than: "*Welsh Your partner must be over %{count} to apply for help with fees"
-              invalid_date: "*Welsh Enter the date in this format DD/MM/YYYY"
+              blank: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
+              age_less_than: "Rhaid i’ch partner fod dros %{count} oed i wneud cais am help i dalu ffioedd"
+              invalid_date: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
         number_of_children_form:
           attributes:
             number_of_children:
@@ -109,19 +109,19 @@ cy:
         single: "*Welsh How much do you have in savings and investment combined?"
         sharing_income: "*Welsh How much do you and your partner have in savings and investment combined?"
       marital_status: "A ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm?"
-      date_of_birth: "*Welsh What is your date of birth?"
+      date_of_birth: "Beth yw eich dyddiad geni?"
       fee: "Faint yw ffi’r llys neu’r tribiwnlys?"
       benefits_received:
         single: "*Welsh Select all income benefits you are currently receiving"
         sharing_income: "*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
       total_income: "*Welsh How much total income do you receive each month?"
-      partner_date_of_birth: "*Welsh What is your partners date of birth?"
+      partner_date_of_birth: "Beth yw dyddiad geni eich partner?"
       number_of_children:
         single: "*Welsh How many children live with you or are you responsible for supporting financially?"
         sharing_income: "*Welsh How many children live with you and your partner or are you and your partner responsible for supporting financially?"
-      date_of_birth_day: "*Welsh Day"
-      date_of_birth_month: "*Welsh Month"
-      date_of_birth_year: "*Welsh Year"
+      date_of_birth_day: "Diwrnod"
+      date_of_birth_month: "Mis"
+      date_of_birth_year: "Blwyddyn"
     previous_questions:
       disposable_capital:
         label: "*Welsh Combined savings and investment"
@@ -260,8 +260,8 @@ cy:
         detail_text: "Gallwch wneud cais i gael peth, neu’ch holl arian yn ôl, os ydych wedi talu ffi yn y 3 mis diwethaf. Fodd bynnag, rhaid eich bod yn gymwys pan fu ichi dalu’r ffi, ac felly dylech ateb y cwestiynau am eich amgylchiadau fel yr oeddynt ar yr adeg pan fu ichi dalu’r ffi."
     hints:
       date_of_birth:
-        single: "*Welsh If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-        sharing_income: "*Welsh If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
+        single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
+        sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
       total_income: "*Welsh Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
       fee: "Rhowch swm dilys neb unrhyw leoedd degol"
       disposable_capital: "*Welsh If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
