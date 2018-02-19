@@ -197,34 +197,36 @@ cy:
       questions:
         disposable_capital:
           label:
-            single: '*Welsh How much do you have in savings and investment combined?'
-            sharing_income: '*Welsh How much do you and your partner have in savings and investment combined?'
+            single: 'Faint sydd gennych chi wedi’i gynilo a’i fuddsoddi ar y cyd?'
+            sharing_income: 'Faint sydd gennych chi a’ch partner wedi’i gynilo a’i fuddsoddi ar y cyd?'
           errors:
             non_numeric: "*Welsh Enter a valid value"
             blank: "*Welsh Enter how much you have in savings and investments"
-          hint: "*Welsh If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+          hint: 
+            single: "Os oes gennych chi fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
+            sharing_income: "Os oes gennych chi neu’ch partner fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
           guidance:
-            label: '*Welsh Help with savings and investments'
+            label: 'Help gyda chynilion a buddsoddiadau'
             text: |
-              *Welsh You should include any of the following:
-              *Welsh money in ISAs and any other savings account
-              *Welsh joint savings accounts that you share with your partner
-              *Welsh fixed rate or investment bonds
-              *Welsh any lump sum (eg a redundancy payout)
-              *Welsh stocks and shares
-              *Welsh trust funds (or any other kind of fund)
-              *Welsh capital value of additional property
-              *Welsh money or property outside the UK
-              *Welsh You should exclude:
-              *Welsh wages or benefits
-              *Welsh joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
-              *Welsh personal pensions
-              *Welsh capital value of self-employed businesses
-              *Welsh student loans
-              *Welsh unfair dismissal awards
-              *Welsh money from the criminal injury compensation scheme
-              *Welsh medical negligence or personal injury awards
-              *Welsh any compensation under a statutory scheme in respect of Mesothelioma
+              Dylech gynnwys unrhyw un o’r canlynol:
+              arian mewn ISA ac unrhyw gyfrif cynilo arall
+              cyfrifon cynilo ar y cyd yr ydych chi’n eu rhannu gyda’ch partner
+              bondiau cyfradd sefydlog neu fondiau buddsoddi
+              unrhyw gyfandaliad (e.e. taliad dileu swydd)
+              stociau a chyfranddaliadau
+              cronfeydd ymddiriedolaeth (neu unrhyw fath arall o gronfa)
+              gwerth cyfalaf eiddo arall
+              arian neu eiddo tu allan i’r DU 
+              Dylech eithrio:
+              cyflogau neu fudd-daliadau
+              cyfrifon cynilo ar y cyd yr ydych chi’n eu rhannu gyda’ch partner os yw eich achos yn ymwneud ag ysgariad neu gydnabod rhywedd
+              pensiynau personol
+              gwerth cyfalaf busnesau hunangyflogedig
+              benthyciadau i fyfyrwyr
+              dyfarniadau am ddiswyddo annheg
+              arian o’r cynllun digolledu am anafiadau troseddol
+              dyfarniadau am esgeulustod meddygol neu anafiadau personol
+              unrhyw iawndal dan gynllun statudol yng nghyswllt Mesothelioma
       buttons:
         next: 'Nesaf'
     income_benefits:

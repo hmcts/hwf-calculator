@@ -106,8 +106,8 @@ cy:
                 sharing_income: "*Welsh As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
     field_labels:
       disposable_capital:
-        single: "*Welsh How much do you have in savings and investment combined?"
-        sharing_income: "*Welsh How much do you and your partner have in savings and investment combined?"
+        single: "Faint sydd gennych chi wedi’i gynilo a’i fuddsoddi ar y cyd?"
+        sharing_income: "Faint sydd gennych chi a’ch partner wedi’i gynilo a’i fuddsoddi ar y cyd?"
       marital_status: "A ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm?"
       date_of_birth: "Beth yw eich dyddiad geni?"
       fee: "Faint yw ffi’r llys neu’r tribiwnlys?"
@@ -202,32 +202,32 @@ cy:
               yn byw yn yr un cyfeiriad ac yn rhannu incwm
               yn rhan o gwpl sy’n cael eu gorfodi i fyw ar wahân, e.e. pan fydd un neu’r ddau yn gwasanaethu yn y lluoedd arfog, yn y carchar neu’n byw mewn cartref gofal preswyl
       disposable_capital:
-        summary: "*Welsh Help with savings and investments"
+        summary: "Help gyda chynilion a buddsoddiadau"
         detail:
           include:
-            summary: "*Welsh You should include any of the following:"
+            summary: "Dylech gynnwys unrhyw un o’r canlynol:"
             text: |
-              *Welsh money in ISAs and any other savings account
-              *Welsh joint savings accounts that you share with your partner
-              *Welsh fixed rate or investment bonds
-              *Welsh any lump sum (eg a redundancy payout)
-              *Welsh stocks and shares
-              *Welsh trust funds (or any other kind of fund)
-              *Welsh capital value of additional property
-              *Welsh money or property outside the UK
+              arian mewn ISA ac unrhyw gyfrif cynilo arall
+              cyfrifon cynilo ar y cyd yr ydych chi’n eu rhannu gyda’ch partner
+              bondiau cyfradd sefydlog neu fondiau buddsoddi
+              unrhyw gyfandaliad (e.e. taliad dileu swydd)
+              stociau a chyfranddaliadau
+              cronfeydd ymddiriedolaeth (neu unrhyw fath arall o gronfa)
+              gwerth cyfalaf eiddo arall
+              arian neu eiddo tu allan i’r DU 
 
           exclude:
-            summary: "*Welsh You should exclude:"
+            summary: "Dylech eithrio:"
             text: |
-              *Welsh wages or benefits
-              *Welsh joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
-              *Welsh personal pensions
-              *Welsh capital value of self-employed businesses
-              *Welsh student loans
-              *Welsh unfair dismissal awards
-              *Welsh money from the criminal injury compensation scheme
-              *Welsh medical negligence or personal injury awards
-              *Welsh any compensation under a statutory scheme in respect of Mesothelioma
+              cyflogau neu fudd-daliadau
+              cyfrifon cynilo ar y cyd yr ydych chi’n eu rhannu gyda’ch partner os yw eich achos yn ymwneud ag ysgariad neu gydnabod rhywedd
+              pensiynau personol
+              gwerth cyfalaf busnesau hunangyflogedig
+              benthyciadau i fyfyrwyr
+              dyfarniadau am ddiswyddo annheg
+              arian o’r cynllun digolledu am anafiadau troseddol
+              dyfarniadau am esgeulustod meddygol neu anafiadau personol
+              unrhyw iawndal dan gynllun statudol yng nghyswllt Mesothelioma
       number_of_children:
         summary: "*Welsh Children who might affect your claim"
         detail:
@@ -264,7 +264,9 @@ cy:
         sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
       total_income: "*Welsh Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
       fee: "Rhowch swm dilys neb unrhyw leoedd degol"
-      disposable_capital: "*Welsh If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+      disposable_capital: 
+        single: "Os oes gennych chi fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
+        sharing_income: "Os oes gennych chi neu’ch partner fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
     marital_status:
       options:
         single: "Sengl"

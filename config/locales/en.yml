@@ -264,7 +264,9 @@ en:
         sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
       fee: "Enter valid value with no decimal places"
-      disposable_capital: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+      disposable_capital: 
+        single: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+        sharing_income: "If you or your partner have more than £16,000 in savings and investments, then you are unlikely to get help with your fee"
     marital_status:
       options:
         single: "Single"

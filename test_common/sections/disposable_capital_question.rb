@@ -8,7 +8,6 @@ module Calculator
       extend ActiveSupport::Concern
       include QuestionNumericSection
       include GuidanceSection
-      include HintSection
 
       included do
         element :error_non_numeric, :exact_error_text, t("#{i18n_scope}.errors.non_numeric")
