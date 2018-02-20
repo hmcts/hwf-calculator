@@ -25,9 +25,9 @@ cy:
         total_income_form:
           attributes:
             total_income:
-              not_a_number: "*Welsh Please enter a valid value"
-              not_an_integer: "*Welsh Please enter a valid value"
-              blank: "*Welsh Please enter a valid value"
+              not_a_number: "Rhowch swm dilys"
+              not_an_integer: "Rhowch swm dilys"
+              blank: "Rhowch swm dilys"
               greater_than_or_equal_to: "*Welsh must be at least %{count}"
         date_of_birth_form:
           attributes:
@@ -90,20 +90,20 @@ cy:
                 sharing_income: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
           household_income:
             final_positive:
-              header: "*Welsh You should be eligible for a full remission"
+              header: "Dylech fod yn gymwys i’r ffi gael ei dileu’n llawn"
               detail:
-                single: "*Welsh As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
-                sharing_income: "*Welsh As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+                single: "Ar gyfer dinesydd sengl: Gan eich bod wedi nodi fod gennych incwm o %{total_income}, ni fydd rhaid ichi dalu dim o’ch ffi o %{fee} a bydd y ffi lawn yn cael ei dileu neu byddwch yn cael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
+                sharing_income: "Ar gyfer cwpl: Gan eich bod chi a’ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, ni fydd rhaid ichi dalu dim o’ch ffi o %{fee} a bydd y ffi lawn yn cael ei dileu neu byddwch yn cael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
             final_negative:
-              header: "*Welsh You are unlikely to get help with your fees"
+              header: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
               detail:
-                single: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-                sharing_income: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                single: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
+                sharing_income: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
             final_partial:
-              header: "*Welsh You should be eligible for a Partial Remission"
+              header: "Dylech fod yn gymwys i ran o’r ffi gael ei dileu  "
               detail:
-                single: "*Welsh As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
-                sharing_income: "*Welsh As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
+                single: "Ar gyfer dinesydd sengl: Gan eich bod wedi nodi fod gennych incwm o %{total_income}, bydd angen ichi gyfrannu %{contribution} o’ch ffi o %{fee} neu byddwch yn cael ad-daliad rhannol o %{remission} os ydych wedi talu’r ffi lawn o fewn y 3 mis diwethaf"
+                sharing_income: "Ar gyfer cwpl: Gan eich bod chi a’ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, bydd angen ichi gyfrannu %{contribution} o’ch ffi o %{fee} neu byddwch yn cael ad-daliad rhannol o %{remission} os ydych wedi talu’r ffi lawn o fewn y 3 mis diwethaf"
     field_labels:
       disposable_capital:
         single: "Faint sydd gennych chi wedi’i gynilo a’i fuddsoddi ar y cyd?"
@@ -114,7 +114,7 @@ cy:
       benefits_received:
         single: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
         sharing_income: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi a’ch partner yn eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
-      total_income: "*Welsh How much total income do you receive each month?"
+      total_income: "Faint o incwm ydych chi’n ei gael bob mis?"
       partner_date_of_birth: "Beth yw dyddiad geni eich partner?"
       number_of_children:
         single: "*Welsh How many children live with you or are you responsible for supporting financially?"
@@ -237,19 +237,19 @@ cy:
             *Welsh age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
             *Welsh children who don’t live with you, but you (or your partner) pay regular maintenance for them
       total_income:
-        summary: "*Welsh What to include as income"
+        summary: "Beth i’w gynnwys fel incwm"
         detail:
-          summary: "*Welsh Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:"
+          summary: "Gwnewch nodyn o faint o arian ydych chi’n ei gael bob mis cyn i unrhyw daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd. Beth i’w gynnwys fel incwm:"
           text: |
-            *Welsh wages
-            *Welsh some benefits
-            *Welsh pensions (state, work or private without guarantee credit)
-            *Welsh rent from anyone living with you and other properties that you own
-            *Welsh payments from relatives
-            *Welsh maintenance payments, eg from an ex-spouse
-            *Welsh income from selling goods publicly or privately, including over the internet
-            *Welsh student maintenance loans, grants or bursaries (except for tuition fee loans)
-            *Welsh If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
+            cyflogau
+            rhai budd-daliadau
+            pensiynau (gwladol, gwaith neu breifat heb gredyd gwarant)
+            rhent gan unrhyw un sy’n byw gyda chi ac unrhyw eiddo arall yr ydych wedi’i brynu  
+            taliadau gan berthnasau
+            taliadau cynhaliaeth, e.e. gan gyn-briod
+            incwm o werthu nwyddau yn gyhoeddus neu’n breifat, gan gynnwys ar-lein
+            benthyciadau cynhaliaeth, grantiau neu fwrsarïau i fyfyrwyr (heblaw benthyciadau ffioedd dysgu)
+            Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler beth i’w gynnwys a’i hepgor fel incwm
       income_benefits:
         summary: "Sut mae budd-dal yn effeithio ar eich hawliad"
         detail:
@@ -262,7 +262,7 @@ cy:
       date_of_birth:
         single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
         sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
-      total_income: "*Welsh Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
+      total_income: "Nodwch faint o incwm gros ydych chi’n ei gael bob mis (cyn i daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd)"
       fee: "Rhowch swm dilys neb unrhyw leoedd degol"
       disposable_capital: 
         single: "Os oes gennych chi fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
