@@ -73,21 +73,21 @@ cy:
                 single: "*Welsh You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
                 sharing_income: "*Welsh You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
             final_negative:
-              header: "*Welsh You are unlikely to get help with your fees"
+              header: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
               detail:
-                single: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-                sharing_income: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                single: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
+                sharing_income: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
             likely:
-              header: "*Welsh You may get help with fees"
+              header: "Mae’n bosibl y gallwch gael help gyda ffioedd"
               detail:
-                single: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
-                sharing_income: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+                single: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
+                sharing_income: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
           benefits_received:
             final_positive:
-              header: "*Welsh You may be eligible for a full remission"
+              header: "Gallwch fod yn gymwys i’r ffi gael ei dileu’n llawn"
               detail:
-                single: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
-                sharing_income: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+                single: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
+                sharing_income: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
           household_income:
             final_positive:
               header: "*Welsh You should be eligible for a full remission"
@@ -112,8 +112,8 @@ cy:
       date_of_birth: "Beth yw eich dyddiad geni?"
       fee: "Faint yw ffi’r llys neu’r tribiwnlys?"
       benefits_received:
-        single: "*Welsh Select all income benefits you are currently receiving"
-        sharing_income: "*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
+        single: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
+        sharing_income: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi a’ch partner yn eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
       total_income: "*Welsh How much total income do you receive each month?"
       partner_date_of_birth: "Beth yw dyddiad geni eich partner?"
       number_of_children:
@@ -153,28 +153,28 @@ cy:
       label: "*Welsh Previous answers"
     benefits:
       dont_know:
-        label: "*Welsh Don't know"
-        guidance: "*Welsh If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+        label: "Ddim yn gwybod"
+        guidance: "Os nad ydych yn gwybod os ydych yn cael budd-dal incwm, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi"
       none:
-        label: '*Welsh None of the above'
-        guidance: '*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)'
+        label: 'Dim un o’r uchod'
+        guidance: 'Os nad ydych yn cael un o’r budd-daliadau penodedig, neu os nad ydych yn siŵr, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi'
       jobseekers_allowance:
-        label: "*Welsh Income-based Jobseeker’s Allowance (JSA)"
+        label: "Lwfans Ceisio Gwaith yn seiliedig ar incwm (JSA)"
         guidance: ''
       employment_support_allowance:
-        label: "*Welsh Income-related Employment and Support Allowance (ESA)"
+        label: "Lwfans Cyflogaeth a Chymorth yn seiliedig ar incwm (ESA)"
         guidance: ''
       income_support:
-        label: "*Welsh Income Support"
+        label: "Cymhorthdal Incwm"
         guidance: ''
       universal_credit:
-        label: "*Welsh Universal Credit (and you’re earning less than £6,000 a year)"
+        label: "Credyd Cynhwysol (a’ch bod yn ennill llai na £6,000 y flwyddyn)"
         guidance: ''
       pension_credit:
-        label: "*Welsh Pension Credit (guarantee credit)"
+        label: "Credyd Pensiwn (Credyd Gwarant)"
         guidance: ''
       scottish_legal_aid:
-        label: "*Welsh Scottish Legal Aid (Civil Claims)"
+        label: "Cymorth Cyfreithiol Sifil Yr Alban"
         guidance: ''
     common:
       page_header: "Canfod a allech chi gael help i dalu ffioedd"
@@ -251,10 +251,10 @@ cy:
             *Welsh student maintenance loans, grants or bursaries (except for tuition fee loans)
             *Welsh If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       income_benefits:
-        summary: "*Welsh How benefit affects your claim"
+        summary: "Sut mae budd-dal yn effeithio ar eich hawliad"
         detail:
-          summary: "*Welsh You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits."
-          text: "*Welsh When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence."
+          summary: "Rydych yn debygol o gael help gyda ffioedd os nad oes gennych gynilion (neu os oes gennych ychydig o gynilion) ac rydych (neu roeddech pan wnaethoch dalu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn."
+          text: "Pan fyddwch yn gwneud cais, byddwn yn cysylltu â’r Adran Gwaith a Phensiynau i gadarnhau eich bod (neu yr oeddech adeg talu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn. Mae’n bosibl y byddwn hefyd yn cysylltu â chi os byddwn angen rhagor o dystiolaeth"
       fee:
         summary: "Os ydych chi wedi talu eich ffi llys neu dribiwnlys yn barod"
         detail_text: "Gallwch wneud cais i gael peth, neu’ch holl arian yn ôl, os ydych wedi talu ffi yn y 3 mis diwethaf. Fodd bynnag, rhaid eich bod yn gymwys pan fu ichi dalu’r ffi, ac felly dylech ateb y cwestiynau am eich amgylchiadau fel yr oeddynt ar yr adeg pan fu ichi dalu’r ffi."

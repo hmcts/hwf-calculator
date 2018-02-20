@@ -16,35 +16,35 @@ cy:
     disposable_capital:
       single:
         positive:
-          heading: "*Welsh You may get help with fees"
-          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+          heading: "Mae’n bosibl y gallwch gael help gyda ffioedd"
+          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
         negative:
-          heading: "*Welsh You are unlikely to get help with your fees"
-          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+          heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
+          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
       sharing_income:
         positive:
-          heading: "*Welsh You may get help with fees"
-          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+          heading: "Mae’n bosibl y gallwch gael help gyda ffioedd"
+          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
         negative:
-          heading: "*Welsh You are unlikely to get help with your fees"
-          detail: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+          heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
+          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
     income_benefits:
       single:
         positive:
-          heading: "*Welsh You may be eligible for a full remission"
-          detail: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+          heading: "Gallwch fod yn gymwys i’r ffi gael ei dileu’n llawn"
+          detail: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
         negative:
-          heading: "*Welsh You are unlikely to get help with your fees"
-          detail: "*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+          heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
+          detail: "Os nad ydych yn cael un o’r budd-daliadau penodedig, neu os nad ydych yn siŵr, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi"
       sharing_income:
         positive:
-          heading: "*Welsh You may be eligible for a full remission"
-          detail: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+          heading: "Gallwch fod yn gymwys i’r ffi gael ei dileu’n llawn"
+          detail: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
         negative:
-          heading: "*Welsh You are unlikely to get help with your fees"
-          detail: "*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+          heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
+          detail: "Os nad ydych yn cael un o’r budd-daliadau penodedig, neu os nad ydych yn siŵr, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi"
         dont_know:
-          heading: "*Welsh You are unlikely to get help with your fees"
+          heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
           detail: "*Welsh If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
     final:
       single:
@@ -66,11 +66,11 @@ cy:
           detail: "*Welsh As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
     no_remission:
       single:
-        heading: "*Welsh You are unlikely to get help with your fees"
+        heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
         negative:
           detail: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
       sharing_income:
-        heading: "*Welsh You are unlikely to get help with your fees"
+        heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
         negative:
           detail: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
   hwf_pages:
@@ -234,32 +234,32 @@ cy:
       questions:
         benefits:
           label:
-            single: '*Welsh Select all income benefits you are currently receiving'
-            sharing_income: '*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?'
+            single: 'Dewiswch yr holl fudd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)'
+            sharing_income: 'Dewiswch yr holl fudd-daliadau incwm yr ydych chi a’ch partner yn eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)'
           options:
             dont_know:
-              label: "*Welsh Don't know"
-              guidance: "*Welsh If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+              label: "Ddim yn gwybod"
+              guidance: "Os nad ydych yn gwybod os ydych yn cael budd-dal incwm, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi"
             none:
-              label: '*Welsh None of the above'
-              guidance: "*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+              label: 'Dim un o’r uchod'
+              guidance: "Os nad ydych yn cael un o’r budd-daliadau penodedig, neu os nad ydych yn siŵr, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi"
             jobseekers_allowance:
-              label: "*Welsh Income-based Jobseeker’s Allowance (JSA)"
+              label: "Lwfans Ceisio Gwaith yn seiliedig ar incwm (JSA)"
             employment_support_allowance:
-              label: "*Welsh Income-related Employment and Support Allowance (ESA)"
+              label: "Lwfans Cyflogaeth a Chymorth yn seiliedig ar incwm (ESA)"
             income_support:
-              label: "*Welsh Income Support"
+              label: "Cymhorthdal Incwm"
             universal_credit:
-              label: "*Welsh Universal Credit (and you’re earning less than £6,000 a year)"
+              label: "Credyd Cynhwysol (a’ch bod yn ennill llai na £6,000 y flwyddyn)"
             pension_credit:
-              label: "*Welsh Pension Credit (guarantee credit)"
+              label: "Credyd Pensiwn (Credyd Gwarant)"
             scottish_legal_aid:
-              label: "*Welsh Scottish Legal Aid (Civil Claims)"
+              label: "Cymorth Cyfreithiol Sifil Yr Alban"
           guidance:
-            label: '*Welsh How benefit affects your claim'
+            label: 'Sut mae budd-dal yn effeithio ar eich hawliad'
             text: |
-              *Welsh You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits.
-              *Welsh When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence.
+              Rydych yn debygol o gael help gyda ffioedd os nad oes gennych gynilion (neu os oes gennych ychydig o gynilion) ac rydych (neu roeddech pan wnaethoch dalu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn.
+              Pan fyddwch yn gwneud cais, byddwn yn cysylltu â’r Adran Gwaith a Phensiynau i gadarnhau eich bod (neu yr oeddech adeg talu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn. Mae’n bosibl y byddwn hefyd yn cysylltu â chi os byddwn angen rhagor o dystiolaeth            
           errors:
             nothing_selected: "*Welsh Select whether you're receiving one of the benefits listed"
 
