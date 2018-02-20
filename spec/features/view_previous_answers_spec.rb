@@ -1,5 +1,6 @@
 require 'rails_helper'
 # This feature represents adds to the acceptance criteria defined in RST-745
+# The welsh version is in RST-824
 RSpec.describe 'Change previous answers test', type: :feature, js: true do
   scenario 'Citizen on marital status page should not see any previous questions' do
     # Arrange

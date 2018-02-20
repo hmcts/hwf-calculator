@@ -124,21 +124,21 @@ cy:
       date_of_birth_year: "Blwyddyn"
     previous_questions:
       disposable_capital:
-        label: "*Welsh Combined savings and investment"
+        label: "Cyfanswm eich cynilion a’ch buddsoddiadau ar y cyd"
       marital_status:
-        label: "*Welsh What is your status"
+        label: "Beth yw eich statws"
         single: "*Welsh Single"
         sharing_income: "*Welsh Married or living with someone"
       date_of_birth:
-        label: "*Welsh Date of birth"
+        label: "Dyddiad geni"
       partner_date_of_birth:
-        label: "*Welsh Partner date of birth"
+        label: "Dyddiad geni eich partner"
       fee:
-        label: "*Welsh Court or tribunal fee to pay"
+        label: "Ffi’r llys neu’r tribiwnlys i’w thalu"
       benefits_received:
-        label: "*Welsh Income benefits you are currently receiving"
-        dont_know: "*Welsh Don't know"
-        none: '*Welsh none'
+        label: "Budd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd"
+        dont_know: "Ddim yn gwybod"
+        none: 'Dim'
         jobseekers_allowance: '*Welsh JSA'
         employment_support_allowance: '*Welsh ESA'
         income_support: '*Welsh IS'
@@ -146,11 +146,11 @@ cy:
         pension_credit: '*Welsh PC'
         scottish_legal_aid: '*Welsh SLA'
       number_of_children:
-        label: "*Welsh Supported children"
+        label: "Plant yr ydych chi’n eu cefnogi"
       total_income:
-        label: "*Welsh Total income"
-      change: "*Welsh Change"
-      label: "*Welsh Previous answers"
+        label: "Cyfanswm incwm"
+      change: "Newid"
+      label: "Atebion blaenorol"
     benefits:
       dont_know:
         label: "Ddim yn gwybod"

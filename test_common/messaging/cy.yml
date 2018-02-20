@@ -289,31 +289,31 @@ cy:
         start: '*Welsh Start now'
   hwf_components:
     previous_questions:
-      label: '*Welsh Previous answers'
+      label: 'Atebion blaenorol'
       marital_status:
-        label: "*Welsh What is your status"
-        change: '*Welsh Change'
+        label: "Beth yw eich statws"
+        change: 'Newid'
         options:
           sharing_income: '*Welsh Married or living with someone'
           single: '*Welsh Single'
       court_fee:
-        label: "*Welsh Court or tribunal fee to pay"
-        change: '*Welsh Change'
+        label: "Ffi’r llys neu’r tribiwnlys i’w thalu"
+        change: 'Newid'
       date_of_birth:
-        label: "*Welsh Date of birth"
-        change: '*Welsh Change'
+        label: "Dyddiad geni"
+        change: 'Newid'
       partner_date_of_birth:
-        label: "*Welsh Partner date of birth"
-        change: '*Welsh Change'
+        label: "Dyddiad geni eich partner"
+        change: 'Newid'
       disposable_capital:
-        label: "*Welsh Combined savings and investment"
-        change: '*Welsh Change'
+        label: "Cyfanswm eich cynilion a’ch buddsoddiadau ar y cyd"
+        change: 'Newid'
       income_benefits:
-        label: "*Welsh Income benefits you are currently receiving"
-        change: '*Welsh Change'
+        label: "Budd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd"
+        change: 'Newid'
         options:
-          dont_know: "*Welsh Don't know"
-          none: '*Welsh none'
+          dont_know: "Ddim yn gwybod"
+          none: 'Dim'
           jobseekers_allowance: '*Welsh JSA'
           employment_support_allowance: '*Welsh ESA'
           income_support: '*Welsh IS'
@@ -321,11 +321,11 @@ cy:
           pension_credit: '*Welsh PC'
           scottish_legal_aid: '*Welsh SLA'
       number_of_children:
-        label: "*Welsh Supported children"
-        change: '*Welsh Change'
+        label: "Plant yr ydych chi’n eu cefnogi"
+        change: 'Newid'
       total_income:
-        label: "*Welsh Total income"
-        change: '*Welsh Change'
+        label: "Cyfanswm incwm"
+        change: 'Newid'
     next_steps:
       label: "*Welsh Next steps"
       start_again: "*Welsh Return to Help with fees home page"
