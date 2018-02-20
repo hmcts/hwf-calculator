@@ -34,7 +34,7 @@
             ]
         },
         {
-            "name": "RSpec - all",
+            "name": "RSpec - all (English)",
             "type": "Ruby",
             "request": "launch",
             "cwd": "${workspaceRoot}",
@@ -46,7 +46,22 @@
             ]
         },
         {
-            "name": "RSpec - active spec file only",
+            "name": "RSpec - all (Welsh)",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "~/.rvm/gems/ruby-2.3.3/bin/rspec",
+            "args": [
+                "-I",
+                "${workspaceRoot}",
+                "spec/features/view_savings_and_investments_content_spec.rb"                
+            ],
+            "env": {
+                "TEST_LOCALE": "cy"
+            }
+        },
+        {
+            "name": "RSpec - active spec file only (english)",
             "type": "Ruby",
             "request": "launch",
             "cwd": "${workspaceRoot}",
@@ -56,6 +71,21 @@
                 "${workspaceRoot}",
                 "${file}"
             ]
+        },
+        {
+            "name": "RSpec - active spec file only (welsh)",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "~/.rvm/gems/ruby-2.3.3/bin/rspec",
+            "args": [
+                "-I",
+                "${workspaceRoot}",
+                "${file}"
+            ],
+            "env": {
+                "TEST_LOCALE": "cy"
+            }
         },
         {
             "name": "Cucumber",
