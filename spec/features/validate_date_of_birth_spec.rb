@@ -1,5 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-728
+# The welsh version is RST-818
 RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
   let(:next_page) { Calculator::Test::DisposableCapitalPage.new }
 

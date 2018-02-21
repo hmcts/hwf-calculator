@@ -11,16 +11,19 @@ module Calculator
       section :disposable_capital, :calculator_question, [QUESTION_SINGLE_LABEL, QUESTION_MARRIED_LABEL], exact: true do
         @i18n_scope = 'hwf_pages.disposable_capital.questions.disposable_capital'
         include ::Calculator::Test::DisposableCapitalQuestionSection
+        element :hint, :hint_with_text, ["#{i18n_scope}.hint.single", "#{i18n_scope}.hint.sharing_income"]
       end
 
       section :disposable_capital_single, :calculator_question, QUESTION_SINGLE_LABEL, exact: true do
         @i18n_scope = 'hwf_pages.disposable_capital.questions.disposable_capital'
         include ::Calculator::Test::DisposableCapitalQuestionSection
+        element :hint, :hint_with_text, :"#{i18n_scope}.hint.single"
       end
 
       section :disposable_capital_married, :calculator_question, QUESTION_MARRIED_LABEL, exact: true do
         @i18n_scope = 'hwf_pages.disposable_capital.questions.disposable_capital'
         include ::Calculator::Test::DisposableCapitalQuestionSection
+        element :hint, :hint_with_text, :"#{i18n_scope}.hint.sharing_income"
       end
 
       def next

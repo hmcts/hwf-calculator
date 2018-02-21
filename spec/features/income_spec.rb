@@ -296,7 +296,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page).to be_valid_for_final_negative_message(user)
   end
 
   # Scenario: Income test for married citizen with maximum income threshold and many children
@@ -436,7 +436,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page).to be_valid_for_final_negative_message(user)
   end
 
   # Scenario: Income test for married citizen with over maximum income threshold and no children
@@ -453,6 +453,6 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(not_eligible_page).to be_displayed
+    expect(not_eligible_page).to be_valid_for_final_negative_message(user)
   end
 end

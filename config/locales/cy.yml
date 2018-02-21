@@ -5,7 +5,7 @@ cy:
         marital_status_form:
           attributes:
             marital_status:
-              inclusion: "*Welsh Select whether you're single, married or living with someone and sharing an income"
+              inclusion: "Dewiswch p’un a ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm"
         benefits_received_form:
           attributes:
             benefits_received:
@@ -20,49 +20,49 @@ cy:
         fee_form:
           attributes:
             fee:
-              not_a_number: "*Welsh Please enter numeric value with no decimal places"
-              not_an_integer: "*Welsh Please enter numeric value with no decimal places"
+              not_a_number: "Rhowch swm dilys neb unrhyw leoedd degol"
+              not_an_integer: "Rhowch swm dilys neb unrhyw leoedd degol"
         total_income_form:
           attributes:
             total_income:
-              not_a_number: "*Welsh Please enter a valid value"
-              not_an_integer: "*Welsh Please enter a valid value"
-              blank: "*Welsh Please enter a valid value"
+              not_a_number: "Rhowch swm dilys"
+              not_an_integer: "Rhowch swm dilys"
+              blank: "Rhowch swm dilys"
               greater_than_or_equal_to: "*Welsh must be at least %{count}"
         date_of_birth_form:
           attributes:
             date_of_birth:
-              blank: "*Welsh Enter the date in this format DD/MM/YYYY"
-              age_less_than: "*Welsh You must be over %{count} to apply for help with fees"
-              invalid_date: "*Welsh Enter the date in this format DD/MM/YYYY"
+              blank: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
+              age_less_than: "Rhaid ichi fod dros %{count} oed i wneud cais am help i dalu ffioedd"
+              invalid_date: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
             partner_date_of_birth:
-              blank: "*Welsh Enter the date in this format DD/MM/YYYY"
-              age_less_than: "*Welsh Your partner must be over %{count} to apply for help with fees"
-              invalid_date: "*Welsh Enter the date in this format DD/MM/YYYY"
+              blank: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
+              age_less_than: "Rhaid i’ch partner fod dros %{count} oed i wneud cais am help i dalu ffioedd"
+              invalid_date: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
         number_of_children_form:
           attributes:
             number_of_children:
-              not_a_number: "*Welsh You must enter the number of financially dependent children"
-              not_an_integer: "*Welsh You must enter the number of financially dependent children"
-              blank: "*Welsh You must enter the number of financially dependent children"
+              not_a_number: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
+              not_an_integer: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
+              blank: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
   calculation:
     home:
       start: "*Welsh Start now"
-      introduction_header: "*Welsh This calculator will tell you if you’re likely to get help with fees and how much you could get."
+      introduction_header: "Bydd y cyfrifydd hwn yn dweud wrthych os ydych yn debygol o gael help i dalu ffioedd a faint allech gael."
       introduction_html: |
-        *Welsh You may be able to get money off the cost of a court or tribunal fee, or have the fee waived in full, if:
-        *Welsh You don't have much in savings, and
-        *Welsh You're receiving certain benefits, or
-        *Welsh You're on a low income
-        *Welsh If you have a partner, your partner's situation will also apply
-      requirements_header: "*Welsh What you’ll need"
+        Efallai y gallwch gael gostyngiad ar ffi llys neu dribiwnlys, neu fod y ffi yn cael ei hepgor yn llwyr os:
+        Nad oes gennych lawer o gynilion, a
+        Rydych yn cael rhai budd-daliadau penodol, neu
+        Eich bod ar incwm isel
+        Os oes gennych bartner, bydd sefyllfa eich partner hefyd yn berthnasol
+      requirements_header: "Beth fydd arnoch ei angen"
       requirements_html: |
-        *Welsh You'll need information about your (and your partner's, if applicable):
-        *Welsh total savings amount, and
-        *Welsh either: list of benefits (or proof of certain benefits at the time you paid your fee)
-        *Welsh or: total monthly income
+        Bydd arnoch angen gwybodaeth am eich (a’ch partner, os yw’n berthnasol):
+         cyfanswm cynilion, a
+         naill ai: rhestr o’r budd-daliadau (neu brawf o rai budd-daliadau penodol adeg talu eich ffi)
+         neu: gyfanswm eich incwm misol
       disclaimer_html: |
-       *Welsh This calculator is for guidance purposes only and is not the Help with Fees application
+       Canllaw yn unig yw’r cyfrifydd hwn ac nid hwn yw eich cais am Help i Dalu Ffioedd
     feedback:
       messages:
         decided_by:
@@ -73,72 +73,72 @@ cy:
                 single: "*Welsh You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
                 sharing_income: "*Welsh You won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
             final_negative:
-              header: "*Welsh You are unlikely to get help with your fees"
+              header: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
               detail:
-                single: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-                sharing_income: "*Welsh With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                single: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
+                sharing_income: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
             likely:
-              header: "*Welsh You may get help with fees"
+              header: "Mae’n bosibl y gallwch gael help gyda ffioedd"
               detail:
-                single: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
-                sharing_income: "*Welsh With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
+                single: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
+                sharing_income: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
           benefits_received:
             final_positive:
-              header: "*Welsh You may be eligible for a full remission"
+              header: "Gallwch fod yn gymwys i’r ffi gael ei dileu’n llawn"
               detail:
-                single: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
-                sharing_income: "*Welsh As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+                single: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
+                sharing_income: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
           household_income:
             final_positive:
-              header: "*Welsh You should be eligible for a full remission"
+              header: "Dylech fod yn gymwys i’r ffi gael ei dileu’n llawn"
               detail:
-                single: "*Welsh As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
-                sharing_income: "*Welsh As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+                single: "Ar gyfer dinesydd sengl: Gan eich bod wedi nodi fod gennych incwm o %{total_income}, ni fydd rhaid ichi dalu dim o’ch ffi o %{fee} a bydd y ffi lawn yn cael ei dileu neu byddwch yn cael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
+                sharing_income: "Ar gyfer cwpl: Gan eich bod chi a’ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, ni fydd rhaid ichi dalu dim o’ch ffi o %{fee} a bydd y ffi lawn yn cael ei dileu neu byddwch yn cael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
             final_negative:
-              header: "*Welsh You are unlikely to get help with your fees"
+              header: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
               detail:
-                single: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-                sharing_income: "*Welsh With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                single: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
+                sharing_income: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
             final_partial:
-              header: "*Welsh You should be eligible for a Partial Remission"
+              header: "Dylech fod yn gymwys i ran o’r ffi gael ei dileu  "
               detail:
-                single: "*Welsh As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
-                sharing_income: "*Welsh As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
+                single: "Ar gyfer dinesydd sengl: Gan eich bod wedi nodi fod gennych incwm o %{total_income}, bydd angen ichi gyfrannu %{contribution} o’ch ffi o %{fee} neu byddwch yn cael ad-daliad rhannol o %{remission} os ydych wedi talu’r ffi lawn o fewn y 3 mis diwethaf"
+                sharing_income: "Ar gyfer cwpl: Gan eich bod chi a’ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, bydd angen ichi gyfrannu %{contribution} o’ch ffi o %{fee} neu byddwch yn cael ad-daliad rhannol o %{remission} os ydych wedi talu’r ffi lawn o fewn y 3 mis diwethaf"
     field_labels:
       disposable_capital:
-        single: "*Welsh How much do you have in savings and investment combined?"
-        sharing_income: "*Welsh How much do you and your partner have in savings and investment combined?"
-      marital_status: "*Welsh Are you single, married or living with someone and sharing income?"
-      date_of_birth: "*Welsh What is your date of birth?"
-      fee: "*Welsh How much is the court or tribunal fee?"
+        single: "Faint sydd gennych chi wedi’i gynilo a’i fuddsoddi ar y cyd?"
+        sharing_income: "Faint sydd gennych chi a’ch partner wedi’i gynilo a’i fuddsoddi ar y cyd?"
+      marital_status: "A ydych chi’n sengl, wedi priodi neu’n byw â rhywun ac yn rhannu incwm?"
+      date_of_birth: "Beth yw eich dyddiad geni?"
+      fee: "Faint yw ffi’r llys neu’r tribiwnlys?"
       benefits_received:
-        single: "*Welsh Select all income benefits you are currently receiving"
-        sharing_income: "*Welsh Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
-      total_income: "*Welsh How much total income do you receive each month?"
-      partner_date_of_birth: "*Welsh What is your partners date of birth?"
+        single: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
+        sharing_income: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi a’ch partner yn eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
+      total_income: "Faint o incwm ydych chi’n ei gael bob mis?"
+      partner_date_of_birth: "Beth yw dyddiad geni eich partner?"
       number_of_children:
-        single: "*Welsh How many children live with you or are you responsible for supporting financially?"
-        sharing_income: "*Welsh How many children live with you and your partner or are you and your partner responsible for supporting financially?"
-      date_of_birth_day: "*Welsh Day"
-      date_of_birth_month: "*Welsh Month"
-      date_of_birth_year: "*Welsh Year"
+        single: "Faint o blant sy’n byw gyda chi neu yr ydych chi’n gyfrifol am eu cefnogi’n ariannol?"
+        sharing_income: "Faint o blant sy’n byw gyda chi a’ch partner neu yr ydych chi a’ch partner yn gyfrifol am eu cefnogi’n ariannol?"
+      date_of_birth_day: "Diwrnod"
+      date_of_birth_month: "Mis"
+      date_of_birth_year: "Blwyddyn"
     previous_questions:
       disposable_capital:
-        label: "*Welsh Combined savings and investment"
+        label: "Cyfanswm eich cynilion a’ch buddsoddiadau ar y cyd"
       marital_status:
-        label: "*Welsh What is your status"
+        label: "Beth yw eich statws"
         single: "*Welsh Single"
         sharing_income: "*Welsh Married or living with someone"
       date_of_birth:
-        label: "*Welsh Date of birth"
+        label: "Dyddiad geni"
       partner_date_of_birth:
-        label: "*Welsh Partner date of birth"
+        label: "Dyddiad geni eich partner"
       fee:
-        label: "*Welsh Court or tribunal fee to pay"
+        label: "Ffi’r llys neu’r tribiwnlys i’w thalu"
       benefits_received:
-        label: "*Welsh Income benefits you are currently receiving"
-        dont_know: "*Welsh Don't know"
-        none: '*Welsh none'
+        label: "Budd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd"
+        dont_know: "Ddim yn gwybod"
+        none: 'Dim'
         jobseekers_allowance: '*Welsh JSA'
         employment_support_allowance: '*Welsh ESA'
         income_support: '*Welsh IS'
@@ -146,130 +146,132 @@ cy:
         pension_credit: '*Welsh PC'
         scottish_legal_aid: '*Welsh SLA'
       number_of_children:
-        label: "*Welsh Supported children"
+        label: "Plant yr ydych chi’n eu cefnogi"
       total_income:
-        label: "*Welsh Total income"
-      change: "*Welsh Change"
-      label: "*Welsh Previous answers"
+        label: "Cyfanswm incwm"
+      change: "Newid"
+      label: "Atebion blaenorol"
     benefits:
       dont_know:
-        label: "*Welsh Don't know"
-        guidance: "*Welsh If you don't know if you are receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
+        label: "Ddim yn gwybod"
+        guidance: "Os nad ydych yn gwybod os ydych yn cael budd-dal incwm, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi"
       none:
-        label: '*Welsh None of the above'
-        guidance: '*Welsh If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)'
+        label: 'Dim un o’r uchod'
+        guidance: 'Os nad ydych yn cael un o’r budd-daliadau penodedig, neu os nad ydych yn siŵr, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a’ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu’r ffi'
       jobseekers_allowance:
-        label: "*Welsh Income-based Jobseeker’s Allowance (JSA)"
+        label: "Lwfans Ceisio Gwaith yn seiliedig ar incwm (JSA)"
         guidance: ''
       employment_support_allowance:
-        label: "*Welsh Income-related Employment and Support Allowance (ESA)"
+        label: "Lwfans Cyflogaeth a Chymorth yn seiliedig ar incwm (ESA)"
         guidance: ''
       income_support:
-        label: "*Welsh Income Support"
+        label: "Cymhorthdal Incwm"
         guidance: ''
       universal_credit:
-        label: "*Welsh Universal Credit (and you’re earning less than £6,000 a year)"
+        label: "Credyd Cynhwysol (a’ch bod yn ennill llai na £6,000 y flwyddyn)"
         guidance: ''
       pension_credit:
-        label: "*Welsh Pension Credit (guarantee credit)"
+        label: "Credyd Pensiwn (Credyd Gwarant)"
         guidance: ''
       scottish_legal_aid:
-        label: "*Welsh Scottish Legal Aid (Civil Claims)"
+        label: "Cymorth Cyfreithiol Sifil Yr Alban"
         guidance: ''
     common:
-      page_header: "*Welsh Find out if you could get help with fees"
-      next_button: "*Welsh Next"
+      page_header: "Canfod a allech chi gael help i dalu ffioedd"
+      next_button: "Nesaf"
       start_again: "*Welsh Return to Help with fees home page"
       next_steps: "*Welsh Next steps"
     guidance:
       marital_status:
-        summary: "*Welsh Help with Status"
+        summary: "Help gyda Statws"
         detail:
           single:
-            summary: "*Welsh Single means you rely on your own income or your case involves your partner, for example:"
+            summary: "Mae sengl yn golygu eich bod yn dibynnu ar eich incwm eich hun neu mae eich achos yn ymwneud â’ch partner, er enghraifft:"
             text: |
-              *Welsh divorce, dissolution or annulment (unless you have married again or live with a new partner)
-              *Welsh gender recognition
-              *Welsh domestic violence
-              *Welsh forced marriage
-              *Welsh You should also choose single if you and your partner are both part of a multiple fee group
+              ysgariad, diddymiad neu ddirymiad (oni bai eich bod wedi priodi eto neu’n byw â phartner newydd)
+              cydnabod rhywedd
+              trais domestig
+              priodas dan orfod
+              Dylech hefyd ddewis sengl os ydych chi a’ch partner yn bartïon mewn grŵp ffi luosog.
           sharing_income:
-            summary: "*Welsh Married or living with someone and sharing an income means:"
+            summary: "Mae wedi priodi neu’n byw â rhywun ac yn rhannu incwm yn golygu eich bod:"
             text: |
-              *Welsh married
-              *Welsh civil partners
-              *Welsh living together as if you are married or in a civil partnership
-              *Welsh living at the same address with a joint income
-              *Welsh part of a couple forced to live apart, eg where one or both is serving in the armed forces, in prison or living in residential care
+              wedi priodi
+              yn bartneriaid sifil
+              yn byw â’ch gilydd fel petaech wedi priodi neu mewn partneriaeth sifil
+              yn byw yn yr un cyfeiriad ac yn rhannu incwm
+              yn rhan o gwpl sy’n cael eu gorfodi i fyw ar wahân, e.e. pan fydd un neu’r ddau yn gwasanaethu yn y lluoedd arfog, yn y carchar neu’n byw mewn cartref gofal preswyl
       disposable_capital:
-        summary: "*Welsh Help with savings and investments"
+        summary: "Help gyda chynilion a buddsoddiadau"
         detail:
           include:
-            summary: "*Welsh You should include any of the following:"
+            summary: "Dylech gynnwys unrhyw un o’r canlynol:"
             text: |
-              *Welsh money in ISAs and any other savings account
-              *Welsh joint savings accounts that you share with your partner
-              *Welsh fixed rate or investment bonds
-              *Welsh any lump sum (eg a redundancy payout)
-              *Welsh stocks and shares
-              *Welsh trust funds (or any other kind of fund)
-              *Welsh capital value of additional property
-              *Welsh money or property outside the UK
+              arian mewn ISA ac unrhyw gyfrif cynilo arall
+              cyfrifon cynilo ar y cyd yr ydych chi’n eu rhannu gyda’ch partner
+              bondiau cyfradd sefydlog neu fondiau buddsoddi
+              unrhyw gyfandaliad (e.e. taliad dileu swydd)
+              stociau a chyfranddaliadau
+              cronfeydd ymddiriedolaeth (neu unrhyw fath arall o gronfa)
+              gwerth cyfalaf eiddo arall
+              arian neu eiddo tu allan i’r DU 
 
           exclude:
-            summary: "*Welsh You should exclude:"
+            summary: "Dylech eithrio:"
             text: |
-              *Welsh wages or benefits
-              *Welsh joint savings accounts that you share with your partner if your case concerns divorce or gender recognition
-              *Welsh personal pensions
-              *Welsh capital value of self-employed businesses
-              *Welsh student loans
-              *Welsh unfair dismissal awards
-              *Welsh money from the criminal injury compensation scheme
-              *Welsh medical negligence or personal injury awards
-              *Welsh any compensation under a statutory scheme in respect of Mesothelioma
+              cyflogau neu fudd-daliadau
+              cyfrifon cynilo ar y cyd yr ydych chi’n eu rhannu gyda’ch partner os yw eich achos yn ymwneud ag ysgariad neu gydnabod rhywedd
+              pensiynau personol
+              gwerth cyfalaf busnesau hunangyflogedig
+              benthyciadau i fyfyrwyr
+              dyfarniadau am ddiswyddo annheg
+              arian o’r cynllun digolledu am anafiadau troseddol
+              dyfarniadau am esgeulustod meddygol neu anafiadau personol
+              unrhyw iawndal dan gynllun statudol yng nghyswllt Mesothelioma
       number_of_children:
-        summary: "*Welsh Children who might affect your claim"
+        summary: "Plant allai effeithio ar eich hawliad"
         detail:
-          summary: "*Welsh Enter the number of children who you describe as:"
+          summary: "Nodwch y nifer o blant yr ydych chi’n eu disgrifio fel:"
           text: |
-            *Welsh under 16 and living at home with you
-            *Welsh age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
-            *Welsh children who don’t live with you, but you (or your partner) pay regular maintenance for them
+            dan 16 oed ac yn byw gartref gyda chi
+            16-19 oed, sengl, byw gartref gyda chi ac mewn addysg llawn amser (heb gynnwys astudio ar gyfer gradd neu gymhwyster addysg uwch arall)
+            plant nad ydynt yn byw gyda chi, ond rydych chi (neu’ch partner) yn talu i’w cynnal yn rheolaidd
       total_income:
-        summary: "*Welsh What to include as income"
+        summary: "Beth i’w gynnwys fel incwm"
         detail:
-          summary: "*Welsh Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:"
+          summary: "Gwnewch nodyn o faint o arian ydych chi’n ei gael bob mis cyn i unrhyw daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd. Beth i’w gynnwys fel incwm:"
           text: |
-            *Welsh wages
-            *Welsh some benefits
-            *Welsh pensions (state, work or private without guarantee credit)
-            *Welsh rent from anyone living with you and other properties that you own
-            *Welsh payments from relatives
-            *Welsh maintenance payments, eg from an ex-spouse
-            *Welsh income from selling goods publicly or privately, including over the internet
-            *Welsh student maintenance loans, grants or bursaries (except for tuition fee loans)
-            *Welsh If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
+            cyflogau
+            rhai budd-daliadau
+            pensiynau (gwladol, gwaith neu breifat heb gredyd gwarant)
+            rhent gan unrhyw un sy’n byw gyda chi ac unrhyw eiddo arall yr ydych wedi’i brynu  
+            taliadau gan berthnasau
+            taliadau cynhaliaeth, e.e. gan gyn-briod
+            incwm o werthu nwyddau yn gyhoeddus neu’n breifat, gan gynnwys ar-lein
+            benthyciadau cynhaliaeth, grantiau neu fwrsarïau i fyfyrwyr (heblaw benthyciadau ffioedd dysgu)
+            Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler beth i’w gynnwys a’i hepgor fel incwm
       income_benefits:
-        summary: "*Welsh How benefit affects your claim"
+        summary: "Sut mae budd-dal yn effeithio ar eich hawliad"
         detail:
-          summary: "*Welsh You are likely to get help with fees if you have no savings (or only a small amount of savings) and you are (or were at the time you paid the fee) receiving any of these benefits."
-          text: "*Welsh When you apply, we’ll contact the Department for Work and Pensions to confirm that you are (or were at the time you paid the fee) getting any of these benefits. We may also contact you if we need to see additional evidence."
+          summary: "Rydych yn debygol o gael help gyda ffioedd os nad oes gennych gynilion (neu os oes gennych ychydig o gynilion) ac rydych (neu roeddech pan wnaethoch dalu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn."
+          text: "Pan fyddwch yn gwneud cais, byddwn yn cysylltu â’r Adran Gwaith a Phensiynau i gadarnhau eich bod (neu yr oeddech adeg talu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn. Mae’n bosibl y byddwn hefyd yn cysylltu â chi os byddwn angen rhagor o dystiolaeth"
       fee:
-        summary: "*Welsh If you have already paid your court or tribunal fee"
-        detail_text: "*Welsh You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
+        summary: "Os ydych chi wedi talu eich ffi llys neu dribiwnlys yn barod"
+        detail_text: "Gallwch wneud cais i gael peth, neu’ch holl arian yn ôl, os ydych wedi talu ffi yn y 3 mis diwethaf. Fodd bynnag, rhaid eich bod yn gymwys pan fu ichi dalu’r ffi, ac felly dylech ateb y cwestiynau am eich amgylchiadau fel yr oeddynt ar yr adeg pan fu ichi dalu’r ffi."
     hints:
       date_of_birth:
-        single: "*Welsh If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-        sharing_income: "*Welsh If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-      total_income: "*Welsh Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
-      fee: "*Welsh Enter valid value with no decimal places"
-      disposable_capital: "*Welsh If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+        single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
+        sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
+      total_income: "Nodwch faint o incwm gros ydych chi’n ei gael bob mis (cyn i daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd)"
+      fee: "Rhowch swm dilys neb unrhyw leoedd degol"
+      disposable_capital: 
+        single: "Os oes gennych chi fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
+        sharing_income: "Os oes gennych chi neu’ch partner fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
     marital_status:
       options:
-        single: "*Welsh Single"
-        sharing_income: "*Welsh Married or living with someone"
+        single: "Sengl"
+        sharing_income: "Wedi priodi neu’n byw â rhywun"
   language_switcher:
-    full_html: "*Welsh This guide is also available %{link_html} (English)"
-    link_text: "*Welsh in English"
+    full_html: "Mae’r canllaw hwn hefyd ar gael %{link_html} (English)"
+    link_text: "yn Saesneg"
     switch: 'en'

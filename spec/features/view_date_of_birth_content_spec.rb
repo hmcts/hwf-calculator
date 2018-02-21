@@ -1,5 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-727
+# The welsh version is RST-818
 RSpec.describe 'View date of birth content', type: :feature, js: true do
   # Feature: Date of birth Page Content
   #
