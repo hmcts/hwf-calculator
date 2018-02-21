@@ -42,9 +42,9 @@ cy:
         number_of_children_form:
           attributes:
             number_of_children:
-              not_a_number: "*Welsh You must enter the number of financially dependent children"
-              not_an_integer: "*Welsh You must enter the number of financially dependent children"
-              blank: "*Welsh You must enter the number of financially dependent children"
+              not_a_number: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
+              not_an_integer: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
+              blank: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
   calculation:
     home:
       start: "*Welsh Start now"
@@ -117,8 +117,8 @@ cy:
       total_income: "Faint o incwm ydych chi’n ei gael bob mis?"
       partner_date_of_birth: "Beth yw dyddiad geni eich partner?"
       number_of_children:
-        single: "*Welsh How many children live with you or are you responsible for supporting financially?"
-        sharing_income: "*Welsh How many children live with you and your partner or are you and your partner responsible for supporting financially?"
+        single: "Faint o blant sy’n byw gyda chi neu yr ydych chi’n gyfrifol am eu cefnogi’n ariannol?"
+        sharing_income: "Faint o blant sy’n byw gyda chi a’ch partner neu yr ydych chi a’ch partner yn gyfrifol am eu cefnogi’n ariannol?"
       date_of_birth_day: "Diwrnod"
       date_of_birth_month: "Mis"
       date_of_birth_year: "Blwyddyn"
@@ -229,13 +229,13 @@ cy:
               dyfarniadau am esgeulustod meddygol neu anafiadau personol
               unrhyw iawndal dan gynllun statudol yng nghyswllt Mesothelioma
       number_of_children:
-        summary: "*Welsh Children who might affect your claim"
+        summary: "Plant allai effeithio ar eich hawliad"
         detail:
-          summary: "*Welsh Enter the number of children who you describe as:"
+          summary: "Nodwch y nifer o blant yr ydych chi’n eu disgrifio fel:"
           text: |
-            *Welsh under 16 and living at home with you
-            *Welsh age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
-            *Welsh children who don’t live with you, but you (or your partner) pay regular maintenance for them
+            dan 16 oed ac yn byw gartref gyda chi
+            16-19 oed, sengl, byw gartref gyda chi ac mewn addysg llawn amser (heb gynnwys astudio ar gyfer gradd neu gymhwyster addysg uwch arall)
+            plant nad ydynt yn byw gyda chi, ond rydych chi (neu’ch partner) yn talu i’w cynnal yn rheolaidd
       total_income:
         summary: "Beth i’w gynnwys fel incwm"
         detail:

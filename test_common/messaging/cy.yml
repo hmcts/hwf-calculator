@@ -79,18 +79,18 @@ cy:
       questions:
         number_of_children:
           label:
-            single: '*Welsh How many children live with you or are you responsible for supporting financially?'
-            sharing_income: '*Welsh How many children live with you and your partner or are you and your partner responsible for supporting financially?'
+            single: 'Faint o blant sy’n byw gyda chi neu yr ydych chi’n gyfrifol am eu cefnogi’n ariannol?'
+            sharing_income: 'Faint o blant sy’n byw gyda chi a’ch partner neu yr ydych chi a’ch partner yn gyfrifol am eu cefnogi’n ariannol?'
           errors:
-            non_numeric: "*Welsh You must enter the number of financially dependent children"
-            blank: "*Welsh You must enter the number of financially dependent children"
+            non_numeric: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
+            blank: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
           guidance:
-            label: '*Welsh Children who might affect your claim'
+            label: 'Plant allai effeithio ar eich hawliad'
             text: |
-              *Welsh Enter the number of children who you describe as:
-              *Welsh under 16 and living at home with you
-              *Welsh age 16-19, single, living at home with you and in full-time education (not including studying for a degree or other higher education qualification)
-              *Welsh children who don’t live with you, but you (or your partner) pay regular maintenance for them
+              Nodwch y nifer o blant yr ydych chi’n eu disgrifio fel:
+              dan 16 oed ac yn byw gartref gyda chi
+              16-19 oed, sengl, byw gartref gyda chi ac mewn addysg llawn amser (heb gynnwys astudio ar gyfer gradd neu gymhwyster addysg uwch arall)
+              plant nad ydynt yn byw gyda chi, ond rydych chi (neu’ch partner) yn talu i’w cynnal yn rheolaidd
       buttons:
         next: 'Nesaf'
     date_of_birth:

@@ -1,5 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-749
+# Welsh versio is RST-825
 RSpec.describe 'View number of children question content', type: :feature, js: true do
   # Feature: Number of Children Page Content
   #
