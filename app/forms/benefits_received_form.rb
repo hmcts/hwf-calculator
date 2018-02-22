@@ -37,7 +37,7 @@ class BenefitsReceivedForm < BaseForm
 
   def convert_benefits_array(v)
     benefits_converted = v.reject(&:empty?)
-    stringify_benefits = benefits.to_s
+    stringify_benefits = benefits.map(&:to_s)
     benefits_converted.map! do |benefit|
       stringify_benefits.include?(benefit) ? benefit.to_sym : benefit
     end

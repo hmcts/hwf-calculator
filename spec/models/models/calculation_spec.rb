@@ -7,7 +7,9 @@ RSpec.describe Calculation do
                                          available_help: :undecided,
                                          fields_required: [],
                                          messages: [],
-                                         fields: {}
+                                         fields: {},
+                                         remission: 0.0,
+                                         final_decision_by: :none
     end
   end
 
@@ -58,5 +60,18 @@ RSpec.describe Calculation do
       subject = described_class.new final_decision_by: 'none'
       expect(subject.final_decision_by).to eql('none')
     end
+  end
+
+  describe '#final_decision_made?' do
+    it 'returns true if the final decision is not none' do
+      subject = described_class.new final_decision_by: :anythingelse
+      expect(subject.final_decision_made?).to be true
+    end
+
+    it 'returns false if the final decision is none' do
+      subject = described_class.new final_decision_by: :none
+      expect(subject.final_decision_made?).to be false
+    end
+
   end
 end
