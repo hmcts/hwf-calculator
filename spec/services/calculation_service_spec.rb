@@ -2,9 +2,6 @@ require 'rails_helper'
 RSpec.describe CalculationService do
   subject(:service) { described_class }
 
-  # @todo The calculation is a new addition - this is to allow old code tow work - 
-  let(:calculation) { Calculation.new }
-
   # The fake calculators that are used by most examples.
   # As standard, we setup 3 calculators but this is just an arbitrary number.
   # The service can handle any number of calculators
@@ -31,17 +28,18 @@ RSpec.describe CalculationService do
     # Whilst an instance can be created and the call method used on that, it is
     # preferred that we don't do this.
     before do
-      allow(calculator_1_class).to receive(:call).with(inputs).and_return(calculator_1)
-      allow(calculator_2_class).to receive(:call).with(inputs).and_return(calculator_2)
-      allow(calculator_3_class).to receive(:call).with(inputs).and_return(calculator_3)
+      allow(calculator_1_class).to receive(:call).with(instance_of(Hash)).and_return(calculator_1)
+      allow(calculator_2_class).to receive(:call).with(instance_of(Hash)).and_return(calculator_2)
+      allow(calculator_3_class).to receive(:call).with(instance_of(Hash)).and_return(calculator_3)
     end
   end
 
   describe '#call' do
     context 'with fake calculators' do
+      let(:calculation) { Calculation.new inputs: { disposable_capital: 500.0, marital_status: 'single' } }
       let(:inputs) do
         {
-          disposable_capital: 1000
+          disposable_capital: 1000.0
         }
       end
 
@@ -51,7 +49,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation, calculators: calculators)
 
         # Assert
-        expect(calculator_1_class).to have_received(:call).with(inputs)
+        expect(calculator_1_class).to have_received(:call).with(instance_of(Hash))
       end
 
       it 'calls calculator 2' do
@@ -59,7 +57,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation, calculators: calculators)
 
         # Assert
-        expect(calculator_2_class).to have_received(:call).with(inputs)
+        expect(calculator_2_class).to have_received(:call).with(instance_of(Hash))
       end
 
       it 'calls calculator 3' do
@@ -67,7 +65,18 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation, calculators: calculators)
 
         # Assert
-        expect(calculator_3_class).to have_received(:call).with(inputs)
+        expect(calculator_3_class).to have_received(:call).with(instance_of(Hash))
+      end
+
+      it 'calls the calculators with the merged inputs' do
+        # Act
+        service.call(inputs, calculation, calculators: calculators)
+
+        # Assert
+        aggregate_failures 'validating all 3 calculator inputs' do
+          expect(calculator_3_class).to have_received(:call).with(disposable_capital: 1000.0, marital_status: 'single')
+        end
+
       end
 
       it 'returns an instance of CalculationService' do
@@ -107,15 +116,15 @@ RSpec.describe CalculationService do
         let(:calculators_called) { [] }
 
         before do
-          allow(calculator_1_class).to receive(:call).with(inputs) do
+          allow(calculator_1_class).to receive(:call).with(instance_of(Hash)) do
             calculators_called << 1
             calculator_1
           end
-          allow(calculator_2_class).to receive(:call).with(inputs) do
+          allow(calculator_2_class).to receive(:call).with(instance_of(Hash)) do
             calculators_called << 2
             calculator_2
           end
-          allow(calculator_3_class).to receive(:call).with(inputs) do
+          allow(calculator_3_class).to receive(:call).with(instance_of(Hash)) do
             calculators_called << 3
             calculator_3
           end
@@ -130,7 +139,7 @@ RSpec.describe CalculationService do
 
         it 'does not call the second calculator if the first had invalid inputs' do
           # Arrange
-          allow(calculator_1_class).to receive(:call).with(inputs) do
+          allow(calculator_1_class).to receive(:call).with(instance_of(Hash)) do
             calculators_called << 1
             allow(calculator_1).to receive(:valid?).and_return false
             throw :invalid_inputs, calculator_1
@@ -146,6 +155,7 @@ RSpec.describe CalculationService do
     end
 
     context 'with pre configured calculators' do
+      let(:calculation) { Calculation.new }
       let(:inputs) do
         {
           disposable_capital: 1000,
@@ -186,7 +196,8 @@ RSpec.describe CalculationService do
     end
   end
 
-  context '#result' do
+  describe '#result' do
+    let(:calculation) { Calculation.new }
 
     describe '#available_help' do
       let(:inputs) do

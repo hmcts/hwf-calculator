@@ -1,12 +1,10 @@
 class Calculation
   include ActiveModel::Model
-  attr_accessor :available_help, :remission, :fields_required
+  attr_accessor :inputs, :available_help, :remission, :fields_required
   attr_accessor :required_fields_affecting_likelihood, :messages, :fields
   attr_accessor :final_decision_by
-  attr_reader :inputs
 
   def initialize(attrs = {})
-    local_attrs = convert_attrs(attrs.dup)
     self.fields_required = []
     self.required_fields_affecting_likelihood = []
     self.messages = []
@@ -15,7 +13,7 @@ class Calculation
     self.final_decision_by = :none
     self.remission = 0.0
     self.inputs = {}
-    super local_attrs
+    super
   end
 
   # Indicates if a calculator has made a final decision, preventing any further
@@ -28,17 +26,7 @@ class Calculation
     final_decision_by != :none
   end
 
-  def assign_attributes(attrs)
-    super(convert_attrs(attrs.dup))
-  end
-
-  def inputs=(v)
-    @inputs = CalculationForm.new(v).export
-  end
-
-  private
-
-  def convert_attrs(local_attrs)
-    local_attrs
+  def merge_inputs(v)
+    inputs.merge!(v)
   end
 end

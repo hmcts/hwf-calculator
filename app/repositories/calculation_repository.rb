@@ -24,11 +24,11 @@ class CalculationRepository
   private
 
   def encode(obj)
-    YAML.dump(obj) 
+    YAML.dump(obj)
   end
 
   def decode(data)
-    YAML.load(data) 
+    YAML.safe_load(data, [Calculation, Symbol, Date])
   end
 
   attr_accessor :store

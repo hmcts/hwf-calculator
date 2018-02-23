@@ -49,7 +49,7 @@ class CalculationService
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
   def initialize(inputs, calculation, calculators: default_calculators)
-    calculation.inputs = calculation.inputs.merge(inputs)
+    calculation.merge_inputs(inputs)
     self.calculation = calculation
     self.calculators = calculators
   end

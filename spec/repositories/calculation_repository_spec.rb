@@ -1,36 +1,37 @@
 require 'rails_helper'
 RSpec.describe CalculationRepository do
   context 'with simple hash store' do
-    let(:store) { {} }
     subject(:repo) { described_class.new(store: store) }
 
-    context '#find' do
+    let(:store) { {} }
+
+    describe '#find' do
       it 'returns an empty instance of Calculation when store is empty' do
-        result = subject.find
+        result = repo.find
 
         expect(result).to be_a Calculation
       end
 
     end
 
-    context '#save' do
+    describe '#save' do
       it 'saves a calculation' do
-        original = Calculation.new(inputs: {marital_status: 'single'}, available_help: :undecided)
-        subject.save(original)
+        original = Calculation.new(inputs: { marital_status: 'single' }, available_help: :undecided)
+        repo.save(original)
 
-        fetched = subject.find
-        expect(fetched).to have_attributes inputs: {marital_status: 'single'}, available_help: :undecided
+        fetched = repo.find
+        expect(fetched).to have_attributes inputs: { marital_status: 'single' }, available_help: :undecided
       end
     end
 
-    context '#delete_all' do
+    describe '#delete_all' do
       it 'resets to a blank calculation' do
-        original = Calculation.new(inputs: {marital_status: 'single'}, available_help: :undecided)
-        subject.save(original)
+        original = Calculation.new(inputs: { marital_status: 'single' }, available_help: :undecided)
+        repo.save(original)
 
-        subject.delete_all
+        repo.delete_all
 
-        fetched = subject.find
+        fetched = repo.find
         expect(fetched).to have_attributes inputs: {}
       end
     end

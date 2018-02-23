@@ -14,9 +14,17 @@ RSpec.describe Calculation do
   end
 
   describe '#inputs' do
-    it 'converts the provided value' do
-      subject = described_class.new inputs: { marital_status: :value }
+    it 'stores the provided values as they are' do
+      subject = described_class.new inputs: { marital_status: 'value' }
       expect(subject.inputs).to eql(marital_status: 'value')
+    end
+  end
+
+  describe '#merge_inputs' do
+    it 'merges the new values on top of the old' do
+      subject = described_class.new inputs: { marital_status: 'single' }
+      subject.merge_inputs marital_status: 'sharing_income'
+      expect(subject.inputs).to eql(marital_status: 'sharing_income')
     end
   end
 

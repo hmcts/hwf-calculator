@@ -23,7 +23,6 @@ class CalculationController < ApplicationController
     self.form = form_class.new_ignoring_extras(current_calculation.inputs)
   end
 
-
   # The form to use to capture the input data
   #
   # @return [NilForm,MaritalStatusForm,FeeForm,DateOfBirthForm,
