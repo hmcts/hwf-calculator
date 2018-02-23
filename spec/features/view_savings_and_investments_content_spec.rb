@@ -1,5 +1,5 @@
 require 'rails_helper'
-# This feature represents the acceptance criteria defined in 
+# This feature represents the acceptance criteria defined in
 # The welsh version is RST-819
 RSpec.describe 'Savings and investments content', type: :feature, js: true do
   # Feature: Savings & investments Page Content

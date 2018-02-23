@@ -1,5 +1,5 @@
 require 'rails_helper'
-# This feature represents the acceptance criteria defined in 
+# This feature represents the acceptance criteria defined in
 # Welsh version in RST-821
 RSpec.describe 'View total income content', type: :feature, js: true do
   # Feature: Total Income Page Content

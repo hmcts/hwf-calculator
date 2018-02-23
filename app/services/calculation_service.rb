@@ -42,19 +42,15 @@ class CalculationService
     'BenefitsReceived',
     'HouseholdIncome'
   ].freeze
-  attr_reader :messages, :inputs, :available_help, :remission, :final_decision_by
 
   # Create an instance of CalculationService
   # @param [Hash] inputs
   # @param [Array<BaseCalculatorService>] calculators A list of calculators to use.
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
-  def initialize(inputs, calculators: default_calculators)
-    self.inputs = inputs.freeze
-    self.available_help = :undecided
-    self.final_decision_by = :none
-    self.remission = 0.0
-    self.messages = []
+  def initialize(inputs, calculation, calculators: default_calculators)
+    calculation.merge_inputs(inputs)
+    self.calculation = calculation
     self.calculators = calculators
   end
 
@@ -80,22 +76,15 @@ class CalculationService
         throw :abort, self if my_result.final_decision? || !my_result.valid?
       end
     end
+    post_process
     self
   end
 
-  # Provides a hash representation of the calculation result.
-  #
-  # @return [Hash] A hash (symbolized keys) representing the result
-  def to_h
-    {
-      inputs: inputs,
-      available_help: available_help,
-      final_decision_by: final_decision_by,
-      remission: remission,
-      fields_required: fields_required,
-      messages: messages
-    }
+  def result
+    calculation
   end
+
+  private
 
   # Indicates what fields are required to be filled in by the user - in the order the
   # questions should be asked.
@@ -106,34 +95,26 @@ class CalculationService
   def fields_required
     @fields_required ||= begin
       required = calculators.map do |c|
-        c.fields_required(inputs)
+        c.fields_required(calculation.inputs)
       end.flatten
       my_fields_required + required
     end
   end
 
-  # Indicates if a calculator has made a final decision, preventing any further
-  # calculations from being done.
-  # This can be done by any calculator, but currently it is used by the
-  # disposable capital calculator as it has the right to say - no more questions
-  # this person has too much in savings.
-  # @return [Boolean] Indicates if a final decision has been
-  def final_decision_made?
-    final_decision_by != :none
+  def post_process
+    calculation.assign_attributes(fields_required: fields_required)
   end
-
-  private
 
   def default_calculators
     DEFAULT_CALCULATORS.map { |c| "#{c}CalculatorService".constantize }
   end
 
   def my_fields_required
-    MY_FIELDS - inputs.keys
+    MY_FIELDS - calculation.inputs.keys
   end
 
   def perform_calculation_using(calculator)
-    result = calculator.call(inputs)
+    result = calculator.call(calculation.inputs)
     post_process_failure result, calculator
     post_process_undecided result, calculator
     post_process_success result, calculator
@@ -160,25 +141,24 @@ class CalculationService
   end
 
   def add_undecided(result)
-    self.available_help = :undecided
-    messages.concat result.messages
+    calculation.available_help = :undecided
+    calculation.messages.concat result.messages
   end
 
   def add_failure(result, identifier:)
-    self.available_help = :none
-    self.final_decision_by = identifier if result.final_decision?
-    messages.concat result.messages
+    calculation.available_help = :none
+    calculation.final_decision_by = identifier if result.final_decision?
+    calculation.messages.concat result.messages
   end
 
   def add_success(result, identifier:)
-    self.available_help = result.available_help
-    self.final_decision_by = identifier if result.final_decision?
+    calculation.available_help = result.available_help
+    calculation.final_decision_by = identifier if result.final_decision?
     # The remission is always from the last value given,
     # so its ok to overwrite this
-    self.remission = result.remission
-    messages.concat result.messages
+    calculation.remission = result.remission
+    calculation.messages.concat result.messages
   end
 
-  attr_accessor :calculators
-  attr_writer :messages, :inputs, :available_help, :remission, :final_decision_by
+  attr_accessor :calculators, :calculation
 end
