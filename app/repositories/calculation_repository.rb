@@ -19,7 +19,6 @@ class CalculationRepository
     decode(data)
   end
 
-
   # @param [Calculation] calculation The calculation to save
   # @return [Boolean] true if successful
   def save(calculation)
