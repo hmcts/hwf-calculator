@@ -12,8 +12,9 @@ class CalculationController < ApplicationController
   def update
     self.form = form_class.new(calculation_params.to_h)
     if form.valid?
-      calculation = calculate
-      redirect_to next_url(calculation)
+      calculate
+      save_current_calculation
+      redirect_to next_url
     else
       render :edit
     end
@@ -35,17 +36,11 @@ class CalculationController < ApplicationController
 
   attr_writer :form
 
-  def expire_current_calculation
-    @current_calculation = nil
-  end
-
   def calculate
-    calculation = CalculationService.call(form.export, current_calculation).result
-    repo.save(calculation)
-    calculation
+    CalculationService.call(form.export, current_calculation).result
   end
 
-  def next_url(calculation, form_service: CalculationFormService)
+  def next_url(calculation: current_calculation, form_service: CalculationFormService)
     if calculation.final_decision_made? || calculation.fields_required.empty?
       send("calculation_result_#{calculation.available_help}_url".to_sym)
     else

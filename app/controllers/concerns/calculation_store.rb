@@ -5,14 +5,19 @@ module CalculationStore
     helper_method :current_calculation
   end
 
-  # The current calculation from the session converted into a @see Calculation instance
-  #
-  # @return [Calculation] The current calculation
+  private
+
+  def save_current_calculation
+    repo.save(current_calculation)
+  end
+
   def current_calculation
     @current_calculation ||= repo.find
   end
 
-  private
+  def expire_current_calculation
+    @current_calculation = nil
+  end
 
   def repo
     @repo ||= CalculationRepository.new(store: session)
