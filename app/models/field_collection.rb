@@ -20,7 +20,6 @@ class FieldCollection
       notify_key_change(key, value)
       fields[key] = Field.new(key, value)
     end
-    value
   end
 
   def to_hash

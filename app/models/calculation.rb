@@ -1,8 +1,9 @@
 class Calculation
   include ActiveModel::Model
-  attr_accessor :inputs, :available_help, :remission
+  attr_accessor :available_help, :remission
   attr_accessor :messages
   attr_accessor :final_decision_by
+  attr_reader :inputs
 
   def initialize(attrs = {})
     self.messages = []

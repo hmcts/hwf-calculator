@@ -1,5 +1,8 @@
 class CalculatorFieldCollection < FieldCollection
-  FIELDS = [:marital_status, :fee, :date_of_birth, :partner_date_of_birth, :disposable_capital, :benefits_received, :number_of_children, :total_income].freeze
+  FIELDS = [
+    :marital_status, :fee, :date_of_birth, :partner_date_of_birth,
+    :disposable_capital, :benefits_received, :number_of_children, :total_income
+  ].freeze
 
   def fields_required
     FIELDS - validated_keys - keys_to_be_removed
