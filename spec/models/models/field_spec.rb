@@ -12,4 +12,19 @@ RSpec.describe Field, type: :model do
       expect(field.value).to eql 'value'
     end
   end
+
+  describe '#invalidate' do
+    it 'marks the field as invalidated' do
+      field.invalidate
+      expect(field.invalidated).to be true
+    end
+  end
+
+  describe '#invalidate' do
+    it 'marks the field as invalidated' do
+      field.invalidate
+      field.confirm
+      expect(field.invalidated).to be false
+    end
+  end
 end

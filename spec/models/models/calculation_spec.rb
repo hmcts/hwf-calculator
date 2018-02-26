@@ -3,9 +3,8 @@ RSpec.describe Calculation do
   describe '#initialize' do
     it 'provides default values' do
       subject = described_class.new
-      expect(subject).to have_attributes inputs: instance_of(FieldCollection),
+      expect(subject).to have_attributes inputs: instance_of(CalculatorFieldCollection),
                                          available_help: :undecided,
-                                         fields_required: [],
                                          messages: [],
                                          fields: {},
                                          remission: 0.0,
@@ -16,7 +15,7 @@ RSpec.describe Calculation do
   describe '#inputs' do
     it 'stores the provided values as a field collection' do
       subject = described_class.new inputs: { marital_status: 'value' }
-      expect(subject.inputs).to be_a(FieldCollection).and(have_attributes to_hash: { marital_status: 'value' })
+      expect(subject.inputs).to be_a(CalculatorFieldCollection).and(have_attributes to_hash: { marital_status: 'value' })
     end
   end
 
@@ -46,13 +45,6 @@ RSpec.describe Calculation do
     it 'stores a provided value of any type' do
       subject = described_class.new messages: [:any]
       expect(subject.messages).to eql [:any]
-    end
-  end
-
-  describe '#fields_required' do
-    it 'stores a provided value of any type' do
-      subject = described_class.new fields_required: [:any]
-      expect(subject.fields_required).to eql [:any]
     end
   end
 

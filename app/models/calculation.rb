@@ -1,11 +1,10 @@
 class Calculation
   include ActiveModel::Model
-  attr_accessor :inputs, :available_help, :remission, :fields_required
+  attr_accessor :inputs, :available_help, :remission
   attr_accessor :required_fields_affecting_likelihood, :messages, :fields
-  attr_accessor :final_decision_by, :fields_invalidated
+  attr_accessor :final_decision_by
 
   def initialize(attrs = {})
-    self.fields_required = []
     self.required_fields_affecting_likelihood = []
     self.messages = []
     self.fields = {}
@@ -27,7 +26,7 @@ class Calculation
   end
 
   def inputs=(v)
-    @inputs = FieldCollection.new(v)
+    @inputs = CalculatorFieldCollection.new(v)
   end
 
   def merge_inputs(v)

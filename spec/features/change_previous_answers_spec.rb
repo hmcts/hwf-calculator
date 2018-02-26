@@ -272,6 +272,8 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     # Act
     marital_status_page.marital_status.set(:single)
     marital_status_page.next
+    # As disposable capital will have been marked as invalidated
+    disposable_capital_page.next
 
     # Assert
     aggregate_failures 'Validate all' do
@@ -311,7 +313,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
         and(have_court_fee).
         and(have_date_of_birth).
         and(have_partner_date_of_birth).
-        and(have_disposable_capital).
+        and(have_no_disposable_capital).
         and(have_income_benefits).
         and(have_number_of_children).
         and(have_no_total_income)
@@ -343,7 +345,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
         and(have_partner_date_of_birth).
         and(have_disposable_capital).
         and(have_income_benefits).
-        and(have_number_of_children).
+        and(have_no_number_of_children).
         and(have_no_total_income)
     end
   end
@@ -399,7 +401,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
         and(have_court_fee).
         and(have_date_of_birth).
         and(have_no_partner_date_of_birth).
-        and(have_disposable_capital).
+        and(have_no_disposable_capital).
         and(have_income_benefits).
         and(have_number_of_children).
         and(have_no_total_income)
@@ -428,7 +430,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
         and(have_no_partner_date_of_birth).
         and(have_disposable_capital).
         and(have_income_benefits).
-        and(have_number_of_children).
+        and(have_no_number_of_children).
         and(have_no_total_income)
     end
   end

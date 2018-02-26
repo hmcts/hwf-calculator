@@ -40,7 +40,7 @@ class CalculationRepository
   end
 
   def decode(data)
-    YAML.safe_load(data, [Calculation, Symbol, Date, FieldCollection, Field])
+    YAML.safe_load(data, [Calculation, Symbol, Date, CalculatorFieldCollection, Field])
   end
 
   attr_accessor :store

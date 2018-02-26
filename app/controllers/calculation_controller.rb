@@ -41,10 +41,11 @@ class CalculationController < ApplicationController
   end
 
   def next_url(calculation: current_calculation, form_service: CalculationFormService)
-    if calculation.final_decision_made? || calculation.fields_required.empty?
+    fields_required = calculation.inputs.fields_required
+    if calculation.final_decision_made? || fields_required.empty?
       send("calculation_result_#{calculation.available_help}_url".to_sym)
     else
-      edit_calculation_url(form: form_service.for_field(calculation.fields_required.first).type)
+      edit_calculation_url(form: form_service.for_field(fields_required.first).type)
     end
   end
 
