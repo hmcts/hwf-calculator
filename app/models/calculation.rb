@@ -1,13 +1,11 @@
 class Calculation
   include ActiveModel::Model
   attr_accessor :inputs, :available_help, :remission
-  attr_accessor :required_fields_affecting_likelihood, :messages, :fields
+  attr_accessor :messages
   attr_accessor :final_decision_by
 
   def initialize(attrs = {})
-    self.required_fields_affecting_likelihood = []
     self.messages = []
-    self.fields = {}
     self.available_help = :undecided
     self.final_decision_by = :none
     self.remission = 0.0

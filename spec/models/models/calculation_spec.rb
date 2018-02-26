@@ -6,7 +6,6 @@ RSpec.describe Calculation do
       expect(subject).to have_attributes inputs: instance_of(CalculatorFieldCollection),
                                          available_help: :undecided,
                                          messages: [],
-                                         fields: {},
                                          remission: 0.0,
                                          final_decision_by: :none
     end
@@ -45,13 +44,6 @@ RSpec.describe Calculation do
     it 'stores a provided value of any type' do
       subject = described_class.new messages: [:any]
       expect(subject.messages).to eql [:any]
-    end
-  end
-
-  describe '#fields' do
-    it 'stores a provided value of any type' do
-      subject = described_class.new fields: { name: :any }
-      expect(subject.fields).to eql(name: :any)
     end
   end
 
