@@ -16,7 +16,7 @@ class FieldCollection
 
   def []=(key, value)
     confirm_field(key)
-    unless key_changed?(key, value)
+    unless key_equals?(key, value)
       notify_key_change(key, value)
       fields[key] = Field.new(key, value)
     end
@@ -59,10 +59,10 @@ class FieldCollection
 
   def notify_key_change(key, value)
     m = :"#{key}_will_change"
-    send(m, value) unless !respond_to?(m) || key_changed?(key, value)
+    send(m, value) unless !respond_to?(m) || key_equals?(key, value)
   end
 
-  def key_changed?(key, value)
+  def key_equals?(key, value)
     key?(key) && self[key] == value
   end
 
