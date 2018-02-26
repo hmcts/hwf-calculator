@@ -1,4 +1,5 @@
 {
     
-    "debug.allowBreakpointsEverywhere": true    
+    "debug.allowBreakpointsEverywhere": true,
+    "editor.tabSize": 2    
 }

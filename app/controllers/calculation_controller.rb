@@ -21,7 +21,7 @@ class CalculationController < ApplicationController
   end
 
   def edit
-    self.form = form_class.new_ignoring_extras(current_calculation.inputs)
+    self.form = form_class.new_ignoring_extras(current_calculation.inputs.to_hash)
   end
 
   # The form to use to capture the input data

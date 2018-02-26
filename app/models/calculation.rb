@@ -2,7 +2,7 @@ class Calculation
   include ActiveModel::Model
   attr_accessor :inputs, :available_help, :remission, :fields_required
   attr_accessor :required_fields_affecting_likelihood, :messages, :fields
-  attr_accessor :final_decision_by
+  attr_accessor :final_decision_by, :fields_invalidated
 
   def initialize(attrs = {})
     self.fields_required = []
@@ -24,6 +24,10 @@ class Calculation
   # @return [Boolean] Indicates if a final decision has been
   def final_decision_made?
     final_decision_by != :none
+  end
+
+  def inputs=(v)
+    @inputs = FieldCollection.new(v)
   end
 
   def merge_inputs(v)

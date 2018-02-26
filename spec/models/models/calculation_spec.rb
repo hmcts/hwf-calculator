@@ -3,7 +3,7 @@ RSpec.describe Calculation do
   describe '#initialize' do
     it 'provides default values' do
       subject = described_class.new
-      expect(subject).to have_attributes inputs: {},
+      expect(subject).to have_attributes inputs: instance_of(FieldCollection),
                                          available_help: :undecided,
                                          fields_required: [],
                                          messages: [],
@@ -14,9 +14,9 @@ RSpec.describe Calculation do
   end
 
   describe '#inputs' do
-    it 'stores the provided values as they are' do
+    it 'stores the provided values as a field collection' do
       subject = described_class.new inputs: { marital_status: 'value' }
-      expect(subject.inputs).to eql(marital_status: 'value')
+      expect(subject.inputs).to be_a(FieldCollection).and(have_attributes to_hash: { marital_status: 'value' })
     end
   end
 
@@ -24,7 +24,7 @@ RSpec.describe Calculation do
     it 'merges the new values on top of the old' do
       subject = described_class.new inputs: { marital_status: 'single' }
       subject.merge_inputs marital_status: 'sharing_income'
-      expect(subject.inputs).to eql(marital_status: 'sharing_income')
+      expect(subject.inputs[:marital_status]).to eql('sharing_income')
     end
   end
 

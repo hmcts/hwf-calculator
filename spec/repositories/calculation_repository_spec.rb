@@ -20,7 +20,7 @@ RSpec.describe CalculationRepository do
         repo.save(original)
 
         fetched = repo.find
-        expect(fetched).to have_attributes inputs: { marital_status: 'single' }, available_help: :undecided
+        expect(fetched).to have_attributes inputs: having_attributes(to_hash: { marital_status: 'single' }), available_help: :undecided
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe CalculationRepository do
         repo.delete_all
 
         fetched = repo.find
-        expect(fetched).to have_attributes inputs: {}
+        expect(fetched).to have_attributes inputs: having_attributes(to_hash: {})
       end
     end
   end

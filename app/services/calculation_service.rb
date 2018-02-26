@@ -49,6 +49,7 @@ class CalculationService
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
   def initialize(inputs, calculation, calculators: default_calculators)
+    self.inputs = inputs
     calculation.merge_inputs(inputs)
     self.calculation = calculation
     self.calculators = calculators
@@ -160,5 +161,5 @@ class CalculationService
     calculation.messages.concat result.messages
   end
 
-  attr_accessor :calculators, :calculation
+  attr_accessor :calculators, :calculation, :inputs
 end
