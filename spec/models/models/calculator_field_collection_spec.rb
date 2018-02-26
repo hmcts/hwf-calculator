@@ -18,8 +18,6 @@ RSpec.describe CalculatorFieldCollection do
       expect(subject.fields_required).to eql [:disposable_capital, :benefits_received, :number_of_children, :total_income]
     end
 
-
-
     it 'includes partner_date_of_birth if marital status is sharing_income' do
       subject = described_class.new marital_status: 'sharing_income', fee: 100.0, date_of_birth: 30.years.ago
       expect(subject.fields_required).to include :partner_date_of_birth

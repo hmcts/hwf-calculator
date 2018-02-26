@@ -304,7 +304,6 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     date_of_birth_page.partner_date_of_birth.set(partner_dob)
     date_of_birth_page.next
 
-
     # Assert
     aggregate_failures 'Validate all' do
       expect(disposable_capital_page).to be_displayed
@@ -365,7 +364,6 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     date_of_birth_page.next
     disposable_capital_page.next
     number_of_children_page.next
-
 
     # Assert
     aggregate_failures 'Validate all' do

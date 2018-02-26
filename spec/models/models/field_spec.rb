@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe Field, type: :model do
   subject(:field) { described_class.new('key', 'value') }
+
   describe '#initialize' do
     it 'takes 2 parameters' do
       expect(field).to be_a(described_class)

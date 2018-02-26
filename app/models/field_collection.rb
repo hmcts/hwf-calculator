@@ -16,8 +16,8 @@ class FieldCollection
 
   def []=(key, value)
     confirm_field(key)
-    unless key?(key) && fields[key].value == value
-      send(:"#{key}_will_change", value) unless !respond_to?(:"#{key}_will_change") || (key?(key) && self[key] == value)
+    unless key_changed?(key, value)
+      notify_key_change(key, value)
       fields[key] = Field.new(key, value)
     end
     value
@@ -55,12 +55,19 @@ class FieldCollection
 
   delegate :key?, :keys, :empty?, to: :fields
 
-
   private
+
+  def notify_key_change(key, value)
+    m = :"#{key}_will_change"
+    send(m, value) unless !respond_to?(m) || key_changed?(key, value)
+  end
+
+  def key_changed?(key, value)
+    key?(key) && self[key] == value
+  end
 
   def value_for(key, value)
     Field.new(key, value)
-
   end
 
   attr_accessor :fields

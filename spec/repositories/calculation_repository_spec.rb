@@ -12,6 +12,15 @@ RSpec.describe CalculationRepository do
         expect(result).to be_a Calculation
       end
 
+      it 'returns a new empty instance if the version saved is an incompatible version' do
+        original = Calculation.new(inputs: { marital_status: 'single' }, available_help: :undecided)
+        repo.save(original)
+
+        repo2 = described_class.new(store: store, version: described_class.version + 1)
+        result = repo2.find
+
+        expect(result.inputs).to have_attributes to_hash: {}
+      end
     end
 
     describe '#save' do

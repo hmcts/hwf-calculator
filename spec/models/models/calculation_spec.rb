@@ -14,7 +14,7 @@ RSpec.describe Calculation do
   describe '#inputs' do
     it 'stores the provided values as a field collection' do
       subject = described_class.new inputs: { marital_status: 'value' }
-      expect(subject.inputs).to be_a(CalculatorFieldCollection).and(have_attributes to_hash: { marital_status: 'value' })
+      expect(subject.inputs).to be_a(CalculatorFieldCollection).and(have_attributes(to_hash: { marital_status: 'value' }))
     end
   end
 

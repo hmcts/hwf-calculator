@@ -9,6 +9,7 @@ RSpec.describe FieldCollection, type: :model do
 
   describe '#initialize' do
     subject(:collection) { described_class.new(field_values) }
+
     it 'accepts a hash as initial field values' do
       expect(collection[:marital_status]).to be_present
     end
@@ -16,39 +17,42 @@ RSpec.describe FieldCollection, type: :model do
 
   describe '#[]' do
     subject(:collection) { described_class.new(field_values) }
+
     it 'provides access to the underlying value' do
-      expect(collection[:total_income]).to eql 1020.0
+      expect(collection[:total_income]).to be 1020.0
     end
   end
 
   describe '#[]=' do
     subject(:collection) { described_class.new(field_values) }
+
     it 'overwrites existing values' do
       collection[:total_income] = 2020.0
-      expect(collection[:total_income]).to eql 2020.0
+      expect(collection[:total_income]).to be 2020.0
     end
 
     it 'adds new values' do
       collection[:fee] = 2020.0
-      expect(collection[:fee]).to eql 2020.0
+      expect(collection[:fee]).to be 2020.0
     end
 
     it 'returns the value provided' do
-      expect(collection[:fee] = 2020.0).to eql 2020.0
+      expect(collection[:fee] = 2020.0).to be 2020.0
     end
 
   end
 
   describe 'merge!' do
     subject(:collection) { described_class.new(field_values) }
+
     it 'overwrites existing values' do
-      collection.merge!(total_income: 2020.0)
-      expect(collection[:total_income]).to eql 2020.0
+      collection[:total_income] = 2020.0
+      expect(collection[:total_income]).to be 2020.0
     end
 
     it 'adds new values' do
-      collection.merge!(fee: 2020.0)
-      expect(collection[:fee]).to eql 2020.0
+      collection[:fee] = 2020.0
+      expect(collection[:fee]).to be 2020.0
     end
 
     it 'returns the instance' do
@@ -58,6 +62,7 @@ RSpec.describe FieldCollection, type: :model do
 
   describe 'key?' do
     subject(:collection) { described_class.new(field_values) }
+
     it 'is true for key marital_status' do
       expect(collection.key?(:marital_status)).to be true
     end
@@ -69,6 +74,7 @@ RSpec.describe FieldCollection, type: :model do
 
   describe '#keys' do
     subject(:collection) { described_class.new(field_values) }
+
     it 'returns the keys from the underlying storage' do
       expect(collection.keys).to eql field_values.keys
     end
@@ -88,6 +94,7 @@ RSpec.describe FieldCollection, type: :model do
 
   describe '#to_hash' do
     subject(:collection) { described_class.new(field_values) }
+
     it 'provides a hash which equals the field values' do
       expect(collection.to_hash).to eql(field_values)
     end
