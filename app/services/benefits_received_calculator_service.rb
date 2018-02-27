@@ -18,10 +18,6 @@ class BenefitsReceivedCalculatorService < BaseCalculatorService
     inputs[:benefits_received].is_a?(Array)
   end
 
-  def self.fields_required(inputs, *)
-    MY_FIELDS - inputs.keys
-  end
-
   private
 
   def process_inputs
