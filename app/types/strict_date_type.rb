@@ -43,6 +43,7 @@ class StrictDateType < ActiveModel::Type::Value
   def date_from_hash(value)
     # This might look odd - its a way to convert string to integer, raising an error if it cannot be converted
     # as to_i returns 0 if it fails to convert to Integer('09') fails because it things its octal
+    raise ArgumentError.new('Must be a 4 digit year') unless value[:year].strip =~/\d\d\d\d/
     Date.new Float(value[:year]).to_i, Float(value[:month]).to_i, Float(value[:day]).to_i
   end
 

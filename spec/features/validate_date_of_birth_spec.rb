@@ -131,6 +131,18 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
 
   end
 
+  scenario 'Citizen enters 2 digit year' do
+    # Arrange
+    given_i_am(:calvin)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.date_of_birth.set('1/7/70')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth).to have_error_non_numeric
+  end
   # Scenario: Under 61 citizen and partner enter date of birth
   #               Given I am ALLI
   #               And I am on the date of birth page
