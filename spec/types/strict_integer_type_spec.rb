@@ -2,6 +2,9 @@ require 'rails_helper'
 RSpec.describe StrictIntegerType do
   describe '#cast' do
     subject(:type) { described_class.new }
+    it 'casts a float to an integer' do
+      expect(type.cast(10.0)).to be 10
+    end
 
     it 'casts positive integer strings to an integer' do
       expect(type.cast('10')).to be 10
