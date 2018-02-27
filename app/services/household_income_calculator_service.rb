@@ -23,10 +23,6 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
     self
   end
 
-  def self.fields_required(inputs)
-    MY_FIELDS - inputs.keys
-  end
-
   private
 
   def all_inputs_present?

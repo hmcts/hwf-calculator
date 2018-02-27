@@ -1,32 +1,27 @@
 # The main controller for performing calculations in a question by question
 # manner.
 class CalculationController < ApplicationController
-  helper_method :form, :current_calculation
+  include CalculationStore
+  helper_method :form
 
   def home
-    session.delete(:calculation)
+    repo.delete_all
   end
 
   # (PATCH | PUT) /calculation
   def update
     self.form = form_class.new(calculation_params.to_h)
     if form.valid?
-      submit_service = calculate
-      redirect_to next_url(submit_service)
+      calculate
+      save_current_calculation
+      redirect_to next_url
     else
       render :edit
     end
   end
 
   def edit
-    self.form = form_class.new_ignoring_extras(current_calculation.inputs)
-  end
-
-  # The current calculation from the session converted into a @see Calculation instance
-  #
-  # @return [Calculation] The current calculation
-  def current_calculation
-    @current_calculation ||= Calculation.new(session.fetch(:calculation) { {} }.symbolize_keys)
+    self.form = form_class.new_ignoring_extras(current_calculation.inputs.to_hash)
   end
 
   # The form to use to capture the input data
@@ -41,22 +36,16 @@ class CalculationController < ApplicationController
 
   attr_writer :form
 
-  def expire_current_calculation
-    @current_calculation = nil
-  end
-
   def calculate
-    submit_service = CalculationService.call(current_calculation.inputs.merge(form.export))
-    expire_current_calculation
-    session[:calculation] = submit_service.to_h
-    submit_service
+    CalculationService.call(form.export, current_calculation).result
   end
 
-  def next_url(submit_service, form_service: CalculationFormService)
-    if submit_service.final_decision_made? || submit_service.fields_required.empty?
-      send("calculation_result_#{submit_service.available_help}_url".to_sym)
+  def next_url(calculation: current_calculation, form_service: CalculationFormService)
+    fields_required = calculation.inputs.fields_required
+    if calculation.final_decision_made? || fields_required.empty?
+      send("calculation_result_#{calculation.available_help}_url".to_sym)
     else
-      edit_calculation_url(form: form_service.for_field(submit_service.fields_required.first).type)
+      edit_calculation_url(form: form_service.for_field(fields_required.first).type)
     end
   end
 

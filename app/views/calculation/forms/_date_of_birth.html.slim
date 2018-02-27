@@ -5,8 +5,9 @@ tr class=('not-group-footer' if has_partner_dob) data-behavior="calculator_previ
   th data-behavior="answer"
     = inputs[:date_of_birth].strftime('%d/%m/%Y')
   th data-behavior="action"
-    a href=(edit_calculation_url(form: form_type) unless disabled)
-      = t('calculation.previous_questions.change')
+    - unless disabled
+      a href=(edit_calculation_url(form: form_type) unless disabled)
+        = t('calculation.previous_questions.change')
 - if has_partner_dob
   tr data-behavior="calculator_previous_question"
     th scope="row" data-behavior="question"

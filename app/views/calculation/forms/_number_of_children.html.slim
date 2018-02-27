@@ -4,5 +4,6 @@ tr data-behavior="calculator_previous_question"
   td data-behavior="answer"
     = inputs[:number_of_children]
   td data-behavior="action"
-    a href=(edit_calculation_url(form: form_type) unless disabled)
-      = t('calculation.previous_questions.change')
+    - unless disabled
+      a href=(edit_calculation_url(form: form_type) unless disabled)
+        = t('calculation.previous_questions.change')

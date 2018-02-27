@@ -8,12 +8,12 @@
         = gds_error_messages(model: f.object, method: :benefits_received)
         label
           = gds_multiple_choices_with_guidance(form: f, method: :benefits_received, choices: form.benefits.map {|benefit| [benefit, t("calculation.benefits.#{benefit}.label"), t("calculation.benefits.#{benefit}.guidance", raise: false)]})
-        details data-behavior="question_help"
+        details.question_help data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.income_benefits.summary')
-          .panel-indent data-behavior="question_help_text"
+          .panel.panel-border-wide data-behavior="question_help_text"
             .text
-              h2.heading-small = t('calculation.guidance.income_benefits.detail.summary')
-              ul.list.list-bullet
+              h2 = t('calculation.guidance.income_benefits.detail.summary')
+              ul.list
                 - t('calculation.guidance.income_benefits.detail.text').lines.each do |line|
                   li = line
     .form-group

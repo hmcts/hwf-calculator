@@ -5,15 +5,15 @@
       fieldset
         legend
           h2.heading-medium = t("calculation.field_labels.disposable_capital.#{current_calculation.inputs[:marital_status]}")
-        span.form-hint = t('calculation.hints.disposable_capital')
+        span.form-hint = t("calculation.hints.disposable_capital.#{current_calculation.inputs[:marital_status]}")
         = gds_error_messages(model: f.object, method: :disposable_capital)
         label.block-label
           .form-control-money.gbp
             = f.text_field :disposable_capital, class: 'form-control'
-        details data-behavior="question_help"
+        details.question_help data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.disposable_capital.summary')
 
-          .panel-indent data-behavior="question_help_text"
+          .panel.panel-border-wide data-behavior="question_help_text"
             .text
               h2.heading-small = t('calculation.guidance.disposable_capital.detail.include.summary')
               ul.list.list-bullet

@@ -8,10 +8,10 @@
         = gds_error_messages(model: f.object, method: :number_of_children)
         label.block-label
           = f.text_field :number_of_children, class: 'form-control'
-        details data-behavior="question_help"
+        details.question_help data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.number_of_children.summary')
 
-          .panel-indent data-behavior="question_help_text"
+          .panel.panel-border-wide data-behavior="question_help_text"
             .text
               h2.heading-small = t('calculation.guidance.number_of_children.detail.summary')
               ul.list.list-bullet

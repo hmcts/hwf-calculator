@@ -1,5 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-678
+# The welsh version is RST-820
 RSpec.describe 'Partner status content', type: :feature, js: true do
   # Feature: Income Benefit Page Content
   #

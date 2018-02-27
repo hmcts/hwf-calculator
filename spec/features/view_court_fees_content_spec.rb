@@ -1,5 +1,6 @@
 require 'rails_helper'
 # This feature represents the acceptance criteria defined in RST-724
+# The welsh version is RST-817
 RSpec.describe 'Court fees content', type: :feature, js: true do
   # Feature: Court or Tribunal fee Page Content
   #
