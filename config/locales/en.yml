@@ -175,7 +175,7 @@ en:
         label: "Pension Credit (guarantee credit)"
         guidance: ''
       scottish_legal_aid:
-        label: "Scottish Legal Aid (Civil Claims)"
+        label: "Scottish Civil Legal Aid (not Advice and Assistance, or Advice by way of Representation)"
         guidance: ''
     common:
       page_header: "Find out if you could get help with fees"
