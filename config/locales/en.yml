@@ -168,7 +168,7 @@ en:
         label: "Income Support"
         guidance: ''
       universal_credit:
-        label: "Universal Credit (and you’re earning less than £6,000 a year)"
+        label: "Universal Credit (and you earn less than £6,000 a year)"
         guidance: ''
       pension_credit:
         label: "Pension Credit (guarantee credit)"

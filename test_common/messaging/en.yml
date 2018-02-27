@@ -250,7 +250,7 @@ en:
             income_support:
               label: "Income Support"
             universal_credit:
-              label: "Universal Credit (and you’re earning less than £6,000 a year)"
+              label: "Universal Credit (and you earn less than £6,000 a year)"
             pension_credit:
               label: "Pension Credit (guarantee credit)"
             scottish_legal_aid:
