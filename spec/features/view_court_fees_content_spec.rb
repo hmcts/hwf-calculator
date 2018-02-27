@@ -15,8 +15,6 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
   #               Then Heading should read "Find out if you could get help with fees"
   #
   #               And Court or Tribunal fee question reads "How much is the court or tribunal fee?"
-  #
-  #               And Hint text reads "Enter valid value with no decimal places"
   scenario 'View Court or Tribunal fee Heading, Question and Hint text' do
     # Arrange
     given_i_am(:john)
@@ -28,7 +26,6 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
     aggregate_failures 'validating content of header and question' do
       expect(court_fee_page.heading).to be_present
       expect(court_fee_page.fee).to be_present
-      expect(court_fee_page.fee).to have_hint
     end
   end
   #

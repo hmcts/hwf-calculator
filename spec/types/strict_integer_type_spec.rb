@@ -19,8 +19,8 @@ RSpec.describe StrictIntegerType do
       expect(type.cast('   10   ')).to be 10
     end
 
-    it 'does not case numbers with commas' do
-      expect(type.cast('10,000')).to eql '10,000'
+    it 'casts numbers with commas' do
+      expect(type.cast('10,000')).to eql 10000
     end
 
     it 'does not case numbers with pound signs' do

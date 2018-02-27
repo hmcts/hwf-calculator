@@ -263,8 +263,7 @@ cy:
         single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
         sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
       total_income: "Nodwch faint o incwm gros ydych chi’n ei gael bob mis (cyn i daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd)"
-      fee: "Rhowch swm dilys neb unrhyw leoedd degol"
-      disposable_capital: 
+      disposable_capital:
         single: "Os oes gennych chi fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
         sharing_income: "Os oes gennych chi neu’ch partner fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
     marital_status:

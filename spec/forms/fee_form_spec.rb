@@ -15,6 +15,17 @@ RSpec.describe FeeForm, type: :model do
         expect(form.errors).not_to include :fee
       end
 
+      it 'ignores commas' do
+        # Arrange
+        form.fee = '10,000'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).not_to include :fee
+      end
+
       it 'disallows floating point numbers' do
         # Arrange
         form.fee = '1000.00'

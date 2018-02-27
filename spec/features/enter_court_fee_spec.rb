@@ -34,4 +34,18 @@ RSpec.describe 'Enter court fee test', type: :feature, js: true do
     # Assert
     expect(next_page).to be_displayed
   end
+
+  scenario 'Single citizen enter court and tribunal fee amount with a comma' do
+    # Setup
+    given_i_am(:john)
+    answer_up_to(:court_fee)
+
+    # Act
+    court_fee_page.fee.set('2,345')
+    court_fee_page.next
+
+    # Assert
+    expect(next_page).to be_displayed
+    expect(next_page.previous_answers.court_fee).to have_answered('2345')
+  end
 end

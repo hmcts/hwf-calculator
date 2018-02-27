@@ -186,7 +186,6 @@ cy:
           label: 'Faint yw ffi’r llys neu’r tribiwnlys?'
           errors:
             non_numeric: "Rhowch swm dilys neb unrhyw leoedd degol"
-          hint: "Rhowch swm dilys neb unrhyw leoedd degol"
           guidance:
             label: 'Os ydych chi wedi talu eich ffi llys neu dribiwnlys yn barod'
             text: "Gallwch wneud cais i gael peth, neu’ch holl arian yn ôl, os ydych wedi talu ffi yn y 3 mis diwethaf. Fodd bynnag, rhaid eich bod yn gymwys pan fu ichi dalu’r ffi, ac felly dylech ateb y cwestiynau am eich amgylchiadau fel yr oeddynt ar yr adeg pan fu ichi dalu’r ffi."

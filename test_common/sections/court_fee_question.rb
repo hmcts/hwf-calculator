@@ -26,7 +26,6 @@ module Calculator
     # @example The translation file should have this under the 'i18n scope' defined
     #   errors:
     #     non_numeric: 'Expected non numeric error message'
-    #   hint: 'Expected Hint text for the question'
     #   guidance:
     #     label: 'The expected guidance label that is clicked to show the text'
     #     text: 'The expected guidance text - can be multi line etc.. white space is ignored as are tags'
@@ -41,7 +40,6 @@ module Calculator
       extend ActiveSupport::Concern
       include QuestionNumericSection
       include GuidanceSection
-      include HintSection
 
       included do
         element :error_non_numeric, :exact_error_text, t("#{i18n_scope}.errors.non_numeric")
