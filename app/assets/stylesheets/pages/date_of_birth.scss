@@ -4,9 +4,9 @@
       padding-bottom: 1em;
     }
     .form-group:nth-last-child(1) {
-      input {
-        width: 200%;
-
+      width: 100px;
+      label {
+        text-align: center;
       }
     }
   }
