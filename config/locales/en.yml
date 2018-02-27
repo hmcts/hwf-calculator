@@ -86,8 +86,8 @@ en:
             final_positive:
               header: "You may be eligible for Help with Fees"
               detail:
-                single: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
-                sharing_income: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+                single: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to help with fees or a full refund if you have paid the fee within the last 3 months."
+                sharing_income: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to help with fees or a full refund if you have paid the fee within the last 3 months."
           household_income:
             final_positive:
               header: "You should be eligible for a full remission"
