@@ -109,7 +109,7 @@ en:
       disposable_capital:
         single: "How much do you have in savings and investment combined?"
         sharing_income: "How much do you and your partner have in savings and investment combined?"
-      marital_status: "Are you single, married or living with someone and sharing income?"
+      marital_status: "Are you single, married or living with someone and sharing an income?"
       date_of_birth: "What is your date of birth?"
       fee: "How much is the court or tribunal fee?"
       benefits_received:
@@ -193,7 +193,7 @@ en:
               gender recognition
               domestic violence
               forced marriage
-              You should also choose single if you and your partner are both part of a multiple fee group
+            footer: You should also choose single if you and your partner are both part of a multiple fee group
           sharing_income:
             summary: "Married or living with someone and sharing an income means:"
             text: |

@@ -155,7 +155,7 @@ en:
       heading: 'Find out if you could get help with fees'
       questions:
         marital_status:
-          label: 'Are you single, married or living with someone and sharing income?'
+          label: 'Are you single, married or living with someone and sharing an income?'
           options:
             single: Single
             sharing_income: Married or living with someone
