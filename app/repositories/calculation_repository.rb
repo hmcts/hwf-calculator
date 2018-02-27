@@ -26,15 +26,14 @@ class CalculationRepository
   #
   # @return [Calculation] The calculation instance from the repo
   def find
-    data = store.fetch(KEY) do
-      encode(Calculation.new)
+    retry_once do
+      data = store.fetch(KEY) do
+        encode(Calculation.new)
+      end
+      calc, version = decode(data)
+      validate_version(version)
+      calc
     end
-    calc, version = decode(data)
-    validate_version(version)
-    calc
-  rescue InvalidVersion, Psych::Exception
-    delete_all
-    retry
   end
 
   # @param [Calculation] calculation The calculation to save
@@ -52,6 +51,15 @@ class CalculationRepository
   end
 
   private
+
+  def retry_once
+    begin
+      return yield
+    rescue InvalidVersion, Psych::Exception
+      delete_all
+    end
+    yield
+  end
 
   def validate_version(found_version)
     raise InvalidVersion if found_version != version
