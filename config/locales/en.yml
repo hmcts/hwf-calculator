@@ -54,13 +54,14 @@ en:
         You don't have much in savings, and
         You're receiving certain benefits, or
         You're on a low income
-        If you have a partner, your partner's situation will also apply
+      introduction_footer: If you have a partner, your partner's situation will also apply
       requirements_header: What you’ll need
       requirements_html: |
         You'll need information about your (and your partner's, if applicable):
-        total savings amount, and
-        either: list of benefits (or proof of certain benefits at the time you paid your fee)
-        or: total monthly income
+        total savings amount and
+        either list of benefits (or proof of certain benefits at the time you paid your fee) or
+        total monthly income
+        You'll need a fee amount
       disclaimer_html: |
        This calculator is for guidance purposes only and is not the Help with Fees application
     feedback:

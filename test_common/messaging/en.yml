@@ -277,9 +277,10 @@ en:
       requirements_text: |
         What you’ll need
         You'll need information about your (and your partner's, if applicable):
-        total savings amount, and
-        either: list of benefits (or proof of certain benefits at the time you paid your fee)
-        or: total monthly income
+        total savings amount and
+        either list of benefits (or proof of certain benefits at the time you paid your fee) or
+        total monthly income
+        You'll need a fee amount
       disclaimer_text: |
         This calculator is for guidance purposes only and is not the Help with Fees application
       welsh_link:
