@@ -366,6 +366,19 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     expect(date_of_birth_page.partner_date_of_birth).to have_error_non_numeric
   end
 
+  scenario 'Citizen is married and puts 2 digit year in their partners year field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+
+    # Act
+    date_of_birth_page.partner_date_of_birth.set('1/7/70')
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.partner_date_of_birth).to have_error_non_numeric
+  end
+
   scenario 'Citizen is married and puts non numerics in their partners year field' do
     # Arrange
     given_i_am(:alli)
