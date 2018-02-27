@@ -35,16 +35,6 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
       disposable_capital_valid?
   end
 
-  def self.fields_required(inputs, *)
-    f = MY_FIELDS - inputs.keys
-    if inputs.key?(:marital_status) && inputs[:marital_status] == 'single'
-      f.delete(:partner_date_of_birth)
-    elsif inputs[:partner_date_of_birth].nil? && !f.include?(:partner_date_of_birth)
-      f << :partner_date_of_birth
-    end
-    f
-  end
-
   private
 
   def disposable_capital_valid?

@@ -28,9 +28,9 @@ RSpec.describe CalculationService do
     # Whilst an instance can be created and the call method used on that, it is
     # preferred that we don't do this.
     before do
-      allow(calculator_1_class).to receive(:call).with(instance_of(Hash)).and_return(calculator_1)
-      allow(calculator_2_class).to receive(:call).with(instance_of(Hash)).and_return(calculator_2)
-      allow(calculator_3_class).to receive(:call).with(instance_of(Hash)).and_return(calculator_3)
+      allow(calculator_1_class).to receive(:call).with(instance_of(CalculatorFieldCollection)).and_return(calculator_1)
+      allow(calculator_2_class).to receive(:call).with(instance_of(CalculatorFieldCollection)).and_return(calculator_2)
+      allow(calculator_3_class).to receive(:call).with(instance_of(CalculatorFieldCollection)).and_return(calculator_3)
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation, calculators: calculators)
 
         # Assert
-        expect(calculator_1_class).to have_received(:call).with(instance_of(Hash))
+        expect(calculator_1_class).to have_received(:call).with(instance_of(CalculatorFieldCollection))
       end
 
       it 'calls calculator 2' do
@@ -57,7 +57,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation, calculators: calculators)
 
         # Assert
-        expect(calculator_2_class).to have_received(:call).with(instance_of(Hash))
+        expect(calculator_2_class).to have_received(:call).with(instance_of(CalculatorFieldCollection))
       end
 
       it 'calls calculator 3' do
@@ -65,7 +65,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation, calculators: calculators)
 
         # Assert
-        expect(calculator_3_class).to have_received(:call).with(instance_of(Hash))
+        expect(calculator_3_class).to have_received(:call).with(instance_of(CalculatorFieldCollection))
       end
 
       it 'calls the calculators with the merged inputs' do
@@ -74,9 +74,10 @@ RSpec.describe CalculationService do
 
         # Assert
         aggregate_failures 'validating all 3 calculator inputs' do
-          expect(calculator_3_class).to have_received(:call).with(disposable_capital: 1000.0, marital_status: 'single')
+          expect(calculator_1_class).to have_received(:call).with(an_object_having_attributes(to_hash: { disposable_capital: 1000.0, marital_status: 'single' }))
+          expect(calculator_2_class).to have_received(:call).with(an_object_having_attributes(to_hash: { disposable_capital: 1000.0, marital_status: 'single' }))
+          expect(calculator_3_class).to have_received(:call).with(an_object_having_attributes(to_hash: { disposable_capital: 1000.0, marital_status: 'single' }))
         end
-
       end
 
       it 'returns an instance of CalculationService' do
@@ -116,15 +117,15 @@ RSpec.describe CalculationService do
         let(:calculators_called) { [] }
 
         before do
-          allow(calculator_1_class).to receive(:call).with(instance_of(Hash)) do
+          allow(calculator_1_class).to receive(:call).with(instance_of(CalculatorFieldCollection)) do
             calculators_called << 1
             calculator_1
           end
-          allow(calculator_2_class).to receive(:call).with(instance_of(Hash)) do
+          allow(calculator_2_class).to receive(:call).with(instance_of(CalculatorFieldCollection)) do
             calculators_called << 2
             calculator_2
           end
-          allow(calculator_3_class).to receive(:call).with(instance_of(Hash)) do
+          allow(calculator_3_class).to receive(:call).with(instance_of(CalculatorFieldCollection)) do
             calculators_called << 3
             calculator_3
           end
@@ -139,7 +140,7 @@ RSpec.describe CalculationService do
 
         it 'does not call the second calculator if the first had invalid inputs' do
           # Arrange
-          allow(calculator_1_class).to receive(:call).with(instance_of(Hash)) do
+          allow(calculator_1_class).to receive(:call).with(instance_of(CalculatorFieldCollection)) do
             calculators_called << 1
             allow(calculator_1).to receive(:valid?).and_return false
             throw :invalid_inputs, calculator_1
@@ -165,9 +166,9 @@ RSpec.describe CalculationService do
 
       before do
         fake_calculation = instance_double(BaseCalculatorService, 'Fake calculation', available_help: :undecided, valid?: true, remission: 0.0, final_decision?: false, messages: [])
-        class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation, fields_required: []).as_stubbed_const
-        class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation, fields_required: []).as_stubbed_const
-        class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation, fields_required: []).as_stubbed_const
+        class_double(BenefitsReceivedCalculatorService, identifier: :benefits_received, call: fake_calculation).as_stubbed_const
+        class_double(HouseholdIncomeCalculatorService, identifier: :household_income, call: fake_calculation).as_stubbed_const
+        class_double(DisposableCapitalCalculatorService, identifier: :disposable_capital, call: fake_calculation).as_stubbed_const
       end
 
       it 'calls the disposable income calculator' do
@@ -175,7 +176,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation)
 
         # Assert
-        expect(DisposableCapitalCalculatorService).to have_received(:call).with(inputs)
+        expect(DisposableCapitalCalculatorService).to have_received(:call).with(an_object_having_attributes(to_hash: inputs))
       end
 
       it 'calls the benefits received calculator' do
@@ -183,7 +184,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation)
 
         # Assert
-        expect(BenefitsReceivedCalculatorService).to have_received(:call).with(inputs)
+        expect(BenefitsReceivedCalculatorService).to have_received(:call).with(an_object_having_attributes(to_hash: inputs))
       end
 
       it 'calls the household income calculator' do
@@ -191,7 +192,7 @@ RSpec.describe CalculationService do
         service.call(inputs, calculation)
 
         # Assert
-        expect(HouseholdIncomeCalculatorService).to have_received(:call).with(inputs)
+        expect(HouseholdIncomeCalculatorService).to have_received(:call).with(an_object_having_attributes(to_hash: inputs))
       end
     end
   end
@@ -282,47 +283,6 @@ RSpec.describe CalculationService do
 
         # Act and Assert
         expect(service.call(inputs, calculation, calculators: calculators).result).to have_attributes remission: 100.0
-      end
-    end
-
-    describe '#fields_required' do
-      let(:inputs) do
-        {
-          disposable_capital: 1000
-        }
-      end
-
-      include_context 'with fake calculators'
-      before do
-        # Arrange - Each calculator class can tell us which fields are required based on inputs
-        # Here we just give some dummy data - it is not relevant as long as they all get added together in the correct order
-        allow(calculator_1_class).to receive(:fields_required).with(inputs).and_return([:fee])
-        allow(calculator_2_class).to receive(:fields_required).with(inputs).and_return([:date_of_birth, :benefits_received])
-        allow(calculator_3_class).to receive(:fields_required).with(inputs).and_return([:number_of_children, :total_income])
-      end
-
-      it 'returns any fields not provided in the input in the correct order prefixed with marital_status' do
-
-        # Act and Assert
-        expect(service.call(inputs, calculation, calculators: calculators).result).to have_attributes fields_required: [:marital_status, :fee, :date_of_birth, :benefits_received, :number_of_children, :total_income]
-      end
-
-      it 'calls fields_required on calculator 1 class' do
-        # Act and Assert
-        service.call(inputs, calculation, calculators: calculators).result.fields_required
-        expect(calculator_1_class).to have_received(:fields_required).with(inputs)
-      end
-
-      it 'calls fields_required on calculator 2 class' do
-        # Act and Assert
-        service.call(inputs, calculation, calculators: calculators).result.fields_required
-        expect(calculator_2_class).to have_received(:fields_required).with(inputs)
-      end
-
-      it 'calls fields_required on calculator 3 class' do
-        # Act and Assert
-        service.call(inputs, calculation, calculators: calculators).result.fields_required
-        expect(calculator_3_class).to have_received(:fields_required).with(inputs)
       end
     end
 

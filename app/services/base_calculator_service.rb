@@ -61,10 +61,6 @@ class BaseCalculatorService
     name.demodulize.gsub(/CalculatorService$/, '').underscore.to_sym
   end
 
-  def self.fields_required(_inputs, *)
-    raise 'Not Implemented'
-  end
-
   # @private
   # Not expected to be used directly - use the class .call method instead
   def initialize(inputs)

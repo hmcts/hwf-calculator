@@ -16,7 +16,6 @@
 #   service.help_not_available? # => true
 #   service.help_available? # => false
 #   service.messages # => [{ key: :likely, source: :disposable_capital }]
-#   service.fields_required # => []
 #
 # @example Example usage for a partial calculation with more fields to fill in
 #   inputs = {
@@ -27,11 +26,8 @@
 #   service.help_not_available? # => false
 #   service.help_available? # => false
 #   service.messages # => [{ key: :likely, source: :disposable_capital }]
-#   service.fields_required # => [:date_of_birth, :disposable_capital, :benefits_received,
-#                                 :number_of_children, :total_income]
 #
 # The second example shows that there is not a definitive answer yet,
-# and further fields are required as specified in the correct order in 'fields_required'
 # This allows the front end to inform the user upon a partial success that it depends
 # on them providing the listed fields.
 #
@@ -49,6 +45,7 @@ class CalculationService
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
   def initialize(inputs, calculation, calculators: default_calculators)
+    self.inputs = inputs
     calculation.merge_inputs(inputs)
     self.calculation = calculation
     self.calculators = calculators
@@ -76,7 +73,6 @@ class CalculationService
         throw :abort, self if my_result.final_decision? || !my_result.valid?
       end
     end
-    post_process
     self
   end
 
@@ -86,31 +82,8 @@ class CalculationService
 
   private
 
-  # Indicates what fields are required to be filled in by the user - in the order the
-  # questions should be asked.
-  #
-  # @return [Array<Symbol>] A list of fields represented by symbols that need to be filled in
-  # possible values are :marital_status, :fee, :date_of_birth, :disposable_capital,
-  # :benefits_received, :number_of_children, :total_income
-  def fields_required
-    @fields_required ||= begin
-      required = calculators.map do |c|
-        c.fields_required(calculation.inputs)
-      end.flatten
-      my_fields_required + required
-    end
-  end
-
-  def post_process
-    calculation.assign_attributes(fields_required: fields_required)
-  end
-
   def default_calculators
     DEFAULT_CALCULATORS.map { |c| "#{c}CalculatorService".constantize }
-  end
-
-  def my_fields_required
-    MY_FIELDS - calculation.inputs.keys
   end
 
   def perform_calculation_using(calculator)
@@ -160,5 +133,5 @@ class CalculationService
     calculation.messages.concat result.messages
   end
 
-  attr_accessor :calculators, :calculation
+  attr_accessor :calculators, :calculation, :inputs
 end

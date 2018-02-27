@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def calculation_inputs_by_form(calculation)
-    calculation.inputs.inject({}) do |acc, (key, value)|
+    calculation.inputs.to_hash.inject({}) do |acc, (key, value)|
       form_type = CalculationFormService.for_field(key).type
       acc[form_type] ||= {}
       acc[form_type][key] = value

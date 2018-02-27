@@ -12,6 +12,29 @@ RSpec.describe CalculationRepository do
         expect(result).to be_a Calculation
       end
 
+      it 'returns a new empty instance if the version saved is an incompatible version' do
+        original = Calculation.new(inputs: { marital_status: 'single' }, available_help: :undecided)
+        repo.save(original)
+
+        repo2 = described_class.new(store: store, version: described_class.version + 1)
+        result = repo2.find
+
+        expect(result.inputs).to have_attributes to_hash: {}
+      end
+
+      it 'returns a new empty instance if the Psych call raises an exception' do
+        # Arrange - Store a value and modify it as we have access to the store
+        original = Calculation.new(inputs: { marital_status: 'single' }, available_help: :undecided)
+        repo.save(original)
+        data = store.values.last
+        data.gsub!(/Calculation/, 'Somerubbish')
+
+        # Act - Try and find it
+        result = repo.find
+
+        # Assert - make sure its a new one
+        expect(result.inputs).to have_attributes to_hash: {}
+      end
     end
 
     describe '#save' do
@@ -20,7 +43,7 @@ RSpec.describe CalculationRepository do
         repo.save(original)
 
         fetched = repo.find
-        expect(fetched).to have_attributes inputs: { marital_status: 'single' }, available_help: :undecided
+        expect(fetched).to have_attributes inputs: having_attributes(to_hash: { marital_status: 'single' }), available_help: :undecided
       end
     end
 
@@ -32,7 +55,7 @@ RSpec.describe CalculationRepository do
         repo.delete_all
 
         fetched = repo.find
-        expect(fetched).to have_attributes inputs: {}
+        expect(fetched).to have_attributes inputs: having_attributes(to_hash: {})
       end
     end
   end
