@@ -13,10 +13,10 @@
         .multiple-choice
           = f.radio_button :marital_status, 'sharing_income'
           = f.label :marital_status_sharing_income, t('calculation.marital_status.options.sharing_income'), allow_method_names_outside_object: true
-        details data-behavior="question_help"
+        details.question_help data-behavior="question_help"
           summary data-behavior="toggle" = t('calculation.guidance.marital_status.summary')
 
-          .panel-indent data-behavior="question_help_text"
+          .panel.panel-border-wide data-behavior="question_help_text"
             .text
               h2.heading-small = t('calculation.guidance.marital_status.detail.single.summary')
               ul.list.list-bullet
