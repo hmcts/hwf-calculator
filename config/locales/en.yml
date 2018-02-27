@@ -116,7 +116,7 @@ en:
         single: "Select all income benefits you are currently receiving"
         sharing_income: "Select all income benefits you and your partner are (or were at the time you paid the fee) receiving?"
       total_income: "How much total income do you receive each month?"
-      partner_date_of_birth: "What is your partners date of birth?"
+      partner_date_of_birth: "What is your partner's date of birth?"
       number_of_children:
         single: "How many children live with you or are you responsible for supporting financially?"
         sharing_income: "How many children live with you and your partner or are you and your partner responsible for supporting financially?"
@@ -260,9 +260,6 @@ en:
         summary: "If you have already paid your court or tribunal fee"
         detail_text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
     hints:
-      date_of_birth:
-        single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-        sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
       disposable_capital:
         single: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"

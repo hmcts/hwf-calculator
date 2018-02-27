@@ -101,9 +101,6 @@ cy:
           errors:
             non_numeric: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
             under_age: "Rhaid ichi fod dros 15 oed i wneud cais am help i dalu ffioedd"
-          hint:
-            single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
-            sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
           components:
             day:
               label: 'Diwrnod'
