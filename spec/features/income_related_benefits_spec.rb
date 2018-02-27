@@ -69,7 +69,11 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     income_benefits_page.choose(:dont_know)
 
     # Assert
-    expect(income_benefits_page).to have_selected(:dont_know)
+    aggregate_failures 'validating selection and guidance text' do
+      expect(income_benefits_page).to have_selected(:dont_know)
+      expect(income_benefits_page.benefits.option_labelled(:dont_know)).to have_guidance(visible: true)
+      expect(income_benefits_page.benefits.option_labelled(:none)).to have_no_guidance(visible: true)
+    end
   end
 
   # Scenario: Unselect Don't know option (New)
@@ -102,7 +106,11 @@ RSpec.describe 'Income Benefit Page Content', type: :feature, js: true do
     income_benefits_page.choose(:none)
 
     # Assert
-    expect(income_benefits_page).to have_selected(:none)
+    aggregate_failures 'validating selection and guidance text' do
+      expect(income_benefits_page).to have_selected(:none)
+      expect(income_benefits_page.benefits.option_labelled(:dont_know)).to have_no_guidance(visible: true)
+      expect(income_benefits_page.benefits.option_labelled(:none)).to have_guidance(visible: true)
+    end
   end
 
   # Scenario: Unselect Income benefit options (New)

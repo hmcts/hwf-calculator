@@ -10,10 +10,10 @@
         label.block-label
           .form-control-money.gbp
             = f.text_field :fee, class: 'form-control money gbp'
-        details data-behavior="question_help"
+        details.question_help data-behavior="question_help"
           summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
 
-          .panel-indent data-behavior="question_help_text"
+          .panel.panel-border-wide data-behavior="question_help_text"
             .text
               h2.heading-small = t('calculation.guidance.fee.detail_text')
     .form-group

@@ -31,15 +31,15 @@ en:
     income_benefits:
       single:
         positive:
-          heading: You may be eligible for a full remission
-          detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months.
+          heading: You may be eligible for Help with Fees
+          detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to help with fees or a full refund if you have paid the fee within the last 3 months.
         negative:
           heading: You are unlikely to get help with your fees
           detail: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
       sharing_income:
         positive:
-          heading: You may be eligible for a full remission
-          detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months.
+          heading: You may be eligible for Help with Fees
+          detail: As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to help with fees or a full refund if you have paid the fee within the last 3 months.
         negative:
           heading: You are unlikely to get help with your fees
           detail: "If you are not receiving an income benefit, we will need to ask you further questions regarding any children you are responsible for and your income. This will tell us the maximum contribution you may need to make towards paying the fee, and therefore how much of the fee you may obtain a remission on (if any)"
@@ -250,7 +250,7 @@ en:
             income_support:
               label: "Income Support"
             universal_credit:
-              label: "Universal Credit (and you’re earning less than £6,000 a year)"
+              label: "Universal Credit (and you earn less than £6,000 a year)"
             pension_credit:
               label: "Pension Credit (guarantee credit)"
             scottish_legal_aid:

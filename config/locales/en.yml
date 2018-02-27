@@ -84,10 +84,10 @@ en:
                 sharing_income: "With a fee of %{fee} and savings of %{disposable_capital} you are likely to get help with your fees, as long as you receive certain benefits or are on a low income. We will now look at these on the next pages"
           benefits_received:
             final_positive:
-              header: "You may be eligible for a full remission"
+              header: "You may be eligible for Help with Fees"
               detail:
-                single: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
-                sharing_income: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to a full remission or a full refund if you have paid the fee within the last 3 months."
+                single: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to help with fees or a full refund if you have paid the fee within the last 3 months."
+                sharing_income: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to help with fees or a full refund if you have paid the fee within the last 3 months."
           household_income:
             final_positive:
               header: "You should be eligible for a full remission"
@@ -168,7 +168,7 @@ en:
         label: "Income Support"
         guidance: ''
       universal_credit:
-        label: "Universal Credit (and you’re earning less than £6,000 a year)"
+        label: "Universal Credit (and you earn less than £6,000 a year)"
         guidance: ''
       pension_credit:
         label: "Pension Credit (guarantee credit)"

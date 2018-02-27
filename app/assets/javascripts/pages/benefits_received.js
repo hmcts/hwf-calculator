@@ -29,6 +29,20 @@
             }
         }
 
+        function ignoringClicks(fn) {
+            ignoreClickEvents();
+            fn.apply(self);
+            resumeClickEvents();
+        }
+
+        function ignoreClickEvents() {
+            self.ignoreClickEvents = true;
+        }
+
+        function resumeClickEvents() {
+            self.ignoreClickEvents = false;
+        }
+
         function checkedBenefits() {
             return checkedValues().filter(function(t) { return t != 'none' && t != 'dont_know' });
         }
@@ -47,11 +61,15 @@
         }
 
         function deSelectNoneCheckbox() {
-            noneCheckboxEl().prop('checked', false);
+            ignoringClicks(function() {
+                noneCheckboxEl().trigger('click').trigger('click').prop('checked', false);
+            });
         }
 
         function deSelectDontKnowCheckbox() {
-            dontKnowCheckboxEl().prop('checked', false);
+            ignoringClicks(function () {
+                dontKnowCheckboxEl().trigger('click').trigger('click').prop('checked', false);
+            });
         }
 
         function benefitsCheckboxesEl() {
@@ -67,6 +85,7 @@
         }
 
         function onBenefitsChange(event) {
+            if(self.ignoreClickEvents) return;
             if($(event.target).prop('checked')) {
                 deSelectDontKnowCheckbox();
                 deSelectNoneCheckbox();
@@ -74,6 +93,7 @@
         }
 
         function onNoneChange(event) {
+            if(self.ignoreClickEvents) return;
             if($(event.target).prop('checked')) {
                 deSelectBenefitsCheckboxes();
                 deSelectDontKnowCheckbox();
@@ -81,6 +101,7 @@
         }
 
         function onDontKnowChange(event) {
+            if(self.ignoreClickEvents) return;
             if($(event.target).prop('checked')) {
                 deSelectBenefitsCheckboxes();
                 deSelectNoneCheckbox();
