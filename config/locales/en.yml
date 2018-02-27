@@ -107,8 +107,8 @@ en:
                 sharing_income: "As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
     field_labels:
       disposable_capital:
-        single: "How much do you have in savings and investment combined?"
-        sharing_income: "How much do you and your partner have in savings and investment combined?"
+        single: "How much do you have in savings and investments combined?"
+        sharing_income: "How much do you and your partner have in savings and investments combined?"
       marital_status: "Are you single, married or living with someone and sharing an income?"
       date_of_birth: "What is your date of birth?"
       fee: "How much is the court or tribunal fee?"
@@ -125,7 +125,7 @@ en:
       date_of_birth_year: "Year"
     previous_questions:
       disposable_capital:
-        label: "Combined savings and investment"
+        label: "Combined savings and investments"
       marital_status:
         label: "What is your status"
         single: "Single"
@@ -208,7 +208,7 @@ en:
           include:
             summary: "You should include any of the following:"
             text: |
-              money in ISAs and any other savings account
+              money in ISAs and any other savings accounts
               joint savings accounts that you share with your partner
               fixed rate or investment bonds
               any lump sum (eg a redundancy payout)

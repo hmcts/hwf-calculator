@@ -193,8 +193,8 @@ en:
       questions:
         disposable_capital:
           label:
-            single: 'How much do you have in savings and investment combined?'
-            sharing_income: 'How much do you and your partner have in savings and investment combined?'
+            single: 'How much do you have in savings and investments combined?'
+            sharing_income: 'How much do you and your partner have in savings and investments combined?'
           errors:
             non_numeric: "Enter a valid value"
             blank: "Enter how much you have in savings and investments"
@@ -205,7 +205,7 @@ en:
             label: 'Help with savings and investments'
             text: |
               You should include any of the following:
-              money in ISAs and any other savings account
+              money in ISAs and any other savings accounts
               joint savings accounts that you share with your partner
               fixed rate or investment bonds
               any lump sum (eg a redundancy payout)
@@ -303,7 +303,7 @@ en:
         label: "Partner date of birth"
         change: 'Change'
       disposable_capital:
-        label: "Combined savings and investment"
+        label: "Combined savings and investments"
         change: 'Change'
       income_benefits:
         label: "Income benefits you are currently receiving"
