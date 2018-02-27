@@ -49,20 +49,20 @@ en:
     final:
       single:
         positive:
-          heading: You should be eligible for a full remission
-          detail: As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
+          heading: You should be eligible for Help with Fees
+          detail: As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive help with fees or refund if you have paid the fee within the last 3 months
       sharing_income:
         positive:
-          heading: You should be eligible for a full remission
-          detail: As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
+          heading: You should be eligible for Help with Fees
+          detail: As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive help with fees or refund if you have paid the fee within the last 3 months
     partial:
       single:
         positive:
-          heading: You should be eligible for a Partial Remission
+          heading: You should be eligible for Help with Fees
           detail: As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
       sharing_income:
         positive:
-          heading: You should be eligible for a Partial Remission
+          heading: You should be eligible for Help with Fees
           detail: As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
     no_remission:
       single:
@@ -145,7 +145,6 @@ en:
               maintenance payments, eg from an ex-spouse
               income from selling goods publicly or privately, including over the internet
               student maintenance loans, grants or bursaries (except for tuition fee loans)
-              If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       buttons:
         next: 'Next'
     marital_status:

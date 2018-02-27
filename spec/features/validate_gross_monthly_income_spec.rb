@@ -31,6 +31,20 @@ RSpec.describe 'Validate gross monthly income test', type: :feature, js: true do
     expect(full_remission_page).to be_displayed
   end
 
+  scenario 'Specify numeric value with comma in Total Income field' do
+    # Arrange
+    given_i_am(:john)
+    answer_up_to(:total_income)
+
+    # Act
+    total_income_page.total_income.set('1,000')
+    total_income_page.next
+
+    # Assert
+    expect(full_remission_page).to be_displayed
+    expect(full_remission_page.previous_answers.total_income).to have_answered(1000)
+  end
+
   # Scenario: Specify invalid value in Total Income field (Revised)
   #
   #             Given I am JAMES

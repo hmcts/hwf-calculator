@@ -91,17 +91,17 @@ en:
                 sharing_income: "As you have indicated you receive an income benefit, with a fee of %{fee}, you should be entitled to help with fees or a full refund if you have paid the fee within the last 3 months."
           household_income:
             final_positive:
-              header: "You should be eligible for a full remission"
+              header: "You should be eligible for Help with Fees"
               detail:
-                single: "As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
-                sharing_income: "As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months"
+                single: "As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive help with fees or refund if you have paid the fee within the last 3 months"
+                sharing_income: "As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive help with fees or refund if you have paid the fee within the last 3 months"
             final_negative:
               header: "You are unlikely to get help with your fees"
               detail:
                 single: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
                 sharing_income: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
             final_partial:
-              header: "You should be eligible for a Partial Remission"
+              header: "You should be eligible for Help with Fees"
               detail:
                 single: "As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
                 sharing_income: "As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months"
@@ -250,7 +250,6 @@ en:
             maintenance payments, eg from an ex-spouse
             income from selling goods publicly or privately, including over the internet
             student maintenance loans, grants or bursaries (except for tuition fee loans)
-            If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       income_benefits:
         summary: "How benefit affects your claim"
         detail:
