@@ -25,6 +25,20 @@ RSpec.describe 'Validate savings and investment test', type: :feature, js: true 
     # Assert
     expect(next_page).to be_displayed
   end
+
+  scenario 'Enter value with comma in Savings & Investments field' do
+    # Arrange
+    given_i_am(:john)
+    answer_up_to(:disposable_capital)
+
+    # Act
+    disposable_capital_page.disposable_capital.set('1,000')
+    disposable_capital_page.next
+
+    # Assert
+    expect(next_page).to be_displayed
+    expect(next_page.previous_answers.disposable_capital).to have_answered(1000)
+  end
   # Scenario: Enter invalid value in Savings & Investments field (Revised)
   #            Given  I am on the savings and investments question
   #             And I enter invalid value in the savings & investments field

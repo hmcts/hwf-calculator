@@ -3,5 +3,11 @@
     .form-group {
       padding-bottom: 1em;
     }
+    .form-group:nth-last-child(1) {
+      width: 100px;
+      label {
+        text-align: center;
+      }
+    }
   }
 }

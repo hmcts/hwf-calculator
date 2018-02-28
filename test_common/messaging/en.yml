@@ -49,20 +49,20 @@ en:
     final:
       single:
         positive:
-          heading: You should be eligible for a full remission
-          detail: As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
+          heading: You should be eligible for Help with Fees
+          detail: As you have stated you have an income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive help with fees or refund if you have paid the fee within the last 3 months
       sharing_income:
         positive:
-          heading: You should be eligible for a full remission
-          detail: As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive a full remission or refund if you have paid the fee within the last 3 months
+          heading: You should be eligible for Help with Fees
+          detail: As you and your partner have stated you have a combined monthly income of %{total_income}, you won't have to pay any of your stated %{fee} fee and will receive help with fees or refund if you have paid the fee within the last 3 months
     partial:
       single:
         positive:
-          heading: You should be eligible for a Partial Remission
+          heading: You should be eligible for Help with Fees
           detail: As you have stated you have an income of %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
       sharing_income:
         positive:
-          heading: You should be eligible for a Partial Remission
+          heading: You should be eligible for Help with Fees
           detail: As you and your partner have stated you have a combined monthly income %{total_income}, you would need to contribute %{contribution} of your stated %{fee} fee or would receive a partial refund of %{remission} if you have paid the full fee within the last 3 months
     no_remission:
       single:
@@ -101,9 +101,6 @@ en:
           errors:
             non_numeric: Enter the date in this format DD/MM/YYYY
             under_age: You must be over 15 to apply for help with fees
-          hint:
-            single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
-            sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
           components:
             day:
               label: 'Day'
@@ -112,7 +109,7 @@ en:
             year:
               label: 'Year'
         partner_date_of_birth:
-          label: 'What is your partners date of birth?'
+          label: "What is your partner's date of birth?"
           errors:
             non_numeric: Enter the date in this format DD/MM/YYYY
             under_age: Your partner must be over 15 to apply for help with fees
@@ -148,14 +145,13 @@ en:
               maintenance payments, eg from an ex-spouse
               income from selling goods publicly or privately, including over the internet
               student maintenance loans, grants or bursaries (except for tuition fee loans)
-              If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
       buttons:
         next: 'Next'
     marital_status:
       heading: 'Find out if you could get help with fees'
       questions:
         marital_status:
-          label: 'Are you single, married or living with someone and sharing income?'
+          label: 'Are you single, married or living with someone and sharing an income?'
           options:
             single: Single
             sharing_income: Married or living with someone
@@ -186,7 +182,6 @@ en:
           label: 'How much is the court or tribunal fee?'
           errors:
             non_numeric: Please enter numeric value with no decimal places
-          hint: Enter valid value with no decimal places
           guidance:
             label: 'If you have already paid your court or tribunal fee'
             text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."
@@ -197,8 +192,8 @@ en:
       questions:
         disposable_capital:
           label:
-            single: 'How much do you have in savings and investment combined?'
-            sharing_income: 'How much do you and your partner have in savings and investment combined?'
+            single: 'How much do you have in savings and investments combined?'
+            sharing_income: 'How much do you and your partner have in savings and investments combined?'
           errors:
             non_numeric: "Enter a valid value"
             blank: "Enter how much you have in savings and investments"
@@ -209,7 +204,7 @@ en:
             label: 'Help with savings and investments'
             text: |
               You should include any of the following:
-              money in ISAs and any other savings account
+              money in ISAs and any other savings accounts
               joint savings accounts that you share with your partner
               fixed rate or investment bonds
               any lump sum (eg a redundancy payout)
@@ -254,7 +249,7 @@ en:
             pension_credit:
               label: "Pension Credit (guarantee credit)"
             scottish_legal_aid:
-              label: "Scottish Legal Aid (Civil Claims)"
+              label: "Scottish Civil Legal Aid (not Advice and Assistance, or Advice by way of Representation)"
           guidance:
             label: 'How benefit affects your claim'
             text: |
@@ -277,9 +272,10 @@ en:
       requirements_text: |
         What you’ll need
         You'll need information about your (and your partner's, if applicable):
-        total savings amount, and
-        either: list of benefits (or proof of certain benefits at the time you paid your fee)
-        or: total monthly income
+        total savings amount and
+        either list of benefits (or proof of certain benefits at the time you paid your fee) or
+        total monthly income
+        You'll need a fee amount
       disclaimer_text: |
         This calculator is for guidance purposes only and is not the Help with Fees application
       welsh_link:
@@ -306,7 +302,7 @@ en:
         label: "Partner date of birth"
         change: 'Change'
       disposable_capital:
-        label: "Combined savings and investment"
+        label: "Combined savings and investments"
         change: 'Change'
       income_benefits:
         label: "Income benefits you are currently receiving"

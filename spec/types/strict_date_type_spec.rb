@@ -27,6 +27,14 @@ RSpec.describe StrictDateType do
       expect(type.cast(year: 'invalid', month: '11', day: '13')).to be_a(TestInvalidDate)
     end
 
+    it 'casts a date hash with 2 digit year to an InvalidDate' do
+      expect(type.cast(year: '70', month: '11', day: '13')).to be_a(TestInvalidDate)
+    end
+
+    it 'casts a date hash with 3 digit year to an InvalidDate' do
+      expect(type.cast(year: '170', month: '11', day: '13')).to be_a(TestInvalidDate)
+    end
+
     it 'casts a date hash with invalid month to an InvalidDate' do
       expect(type.cast(year: '2010', month: 'july', day: '13')).to be_a(TestInvalidDate)
     end

@@ -5,8 +5,6 @@
       fieldset.inline
         legend
           h2.heading-medium = t('calculation.field_labels.date_of_birth')
-
-        span.form-hint = t("calculation.hints.date_of_birth.#{current_calculation.inputs[:marital_status]}")
         = gds_error_messages(model: f.object, method: :date_of_birth)
         .form-date
           .form-group

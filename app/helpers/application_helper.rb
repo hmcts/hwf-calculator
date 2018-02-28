@@ -49,7 +49,7 @@ module ApplicationHelper
 
   def gds_checkbox_with_guidance(builder)
     guidance = builder.object.last
-    guidance_id = "prefix_#{builder.object.first}"
+    guidance_id = "guidance_prefix_#{builder.object.first}"
     data_attrs = { target: guidance.present? ? guidance_id : nil }
     content = builder.check_box + builder.label
     if guidance.present?

@@ -5,6 +5,7 @@
     ul.list.list-bullet
       - t('.introduction_html').lines[1..-1].each do |line|
         li = line
+    p = t('.introduction_footer')
   .requirements data-behavior="requirements"
     h2.heading-medium = t('.requirements_header')
     p = t('.requirements_html').lines.first

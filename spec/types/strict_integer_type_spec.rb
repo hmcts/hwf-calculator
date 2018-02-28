@@ -3,6 +3,10 @@ RSpec.describe StrictIntegerType do
   describe '#cast' do
     subject(:type) { described_class.new }
 
+    it 'casts a float to an integer' do
+      expect(type.cast(10.0)).to be 10
+    end
+
     it 'casts positive integer strings to an integer' do
       expect(type.cast('10')).to be 10
     end
@@ -19,8 +23,8 @@ RSpec.describe StrictIntegerType do
       expect(type.cast('   10   ')).to be 10
     end
 
-    it 'does not case numbers with commas' do
-      expect(type.cast('10,000')).to eql '10,000'
+    it 'casts numbers with commas' do
+      expect(type.cast('10,000')).to be 10000
     end
 
     it 'does not case numbers with pound signs' do
