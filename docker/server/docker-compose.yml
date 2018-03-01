@@ -11,6 +11,6 @@ services:
       SECRET_KEY_BASE: dheydhgsjryf763723hfnhqwgsgcdtye5241ghdasdfkjghj2138f8cje
       RAILS_SERVE_STATIC_FILES: 'true'
     ports:
-      - 3000:3000
+      - "${PORT}:3000"
 volumes:
   rubygems_cache:
