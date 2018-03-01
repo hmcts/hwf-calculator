@@ -43,3 +43,5 @@ Things you may want to cover:
 ## Automated Tests
 
 [[Click Here]](automated_tests.md)
+
+## Runing With Docker
