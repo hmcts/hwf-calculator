@@ -18,7 +18,7 @@ If you want to contribute (see contributing guidelines below) then you are going
 
 ### Running Via Docker
 
-If you want to get up and running with a production like server on your local machine, see the section below 'Runing a production like server locally'
+If you want to get up and running with a production like server on your local machine, see the section below 'Running a production like server locally'
 
 There are many more ways of using docker, even for development and these will be documented below as they are available.
 
@@ -40,11 +40,16 @@ then in future, just ```bundle exec rails s``` every time you want to run the se
 ## Running A Production Like Server Locally
 
 If you are a tester or just anyone that just wants to run the app without
-developing on it, a script has been written just for you (Mac OSX and linux only Im afraid).  Simply type
+developing on it, a script has been written just for you.  Simply type
 
 ```./bin/dev/production_server```
 
-and you will have a server running on port 3000 which you can access in your web browser by going to http://localhost:3000
+in either a terminal window (linux and OSX) or a 'Docker Quickstart Terminal' (docker toolbox for windows)
+
+and you will have a server running on port 3000 which you can access in your web browser by going to http://localhost:3000.  
+**_WINDOWS USERS:_**
+In windows you will probably have to setup port forwarding from the 'virtual machine' that docker uses back to your host machine using the port number specified or 3000 if none specified.
+Once this is done, you should be able to access from localhost:3000 - if not, you may well have a firewall issue.
 
 If you want to run it on another port, simply set the PORT environment variable first, changing the command to :-
 
