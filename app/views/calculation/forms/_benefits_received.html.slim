@@ -2,7 +2,8 @@ tr data-behavior="calculator_previous_question"
   th scope='row' data-behavior="question"
     = t("calculation.previous_questions.benefits_received.label")
   td data-behavior="answer"
-    = inputs[:benefits_received].map { |v| t("calculation.previous_questions.benefits_received.#{v}") }.join(',')
+    - inputs[:benefits_received].map do |v|
+      .answer-row = t("calculation.previous_questions.benefits_received.#{v}")
   td data-behavior="action"
     - unless disabled
       a href=edit_calculation_url(form: form_type)

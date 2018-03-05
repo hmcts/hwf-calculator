@@ -311,12 +311,12 @@ en:
         options:
           dont_know: "Don't know"
           none: 'none'
-          jobseekers_allowance: 'JSA'
-          employment_support_allowance: 'ESA'
-          income_support: 'IS'
-          universal_credit: 'UC'
-          pension_credit: 'PC'
-          scottish_legal_aid: 'SLA'
+          jobseekers_allowance: 'Income-based Jobseeker’s Allowance (JSA)'
+          employment_support_allowance: 'Income-related Employment and Support Allowance (ESA)'
+          income_support: 'Income Support'
+          universal_credit: 'Universal Credit'
+          pension_credit: 'Pension Credit'
+          scottish_legal_aid: 'Scottish Civil Legal Aid'
       number_of_children:
         label: "Supported children"
         change: 'Change'
