@@ -291,7 +291,7 @@ cy:
         change: 'Newid'
         options:
           sharing_income: '*Welsh Married or living with someone'
-          single: '*Welsh Single'
+          single: 'Sengl'
       court_fee:
         label: "Ffi’r llys neu’r tribiwnlys i’w thalu"
         change: 'Newid'
@@ -310,12 +310,12 @@ cy:
         options:
           dont_know: "Ddim yn gwybod"
           none: 'Dim'
-          jobseekers_allowance: '*Welsh JSA'
-          employment_support_allowance: '*Welsh ESA'
-          income_support: '*Welsh IS'
-          universal_credit: '*Welsh UC'
-          pension_credit: '*Welsh PC'
-          scottish_legal_aid: '*Welsh SLA'
+          jobseekers_allowance: 'Lwfans Ceisio Gwaith yn seiliedig ar incwm (JSA)'
+          employment_support_allowance: 'Lwfans Cyflogaeth a Chymorth yn seiliedig ar incwm (ESA)'
+          income_support: 'Cymhorthdal Incwm'
+          universal_credit: 'Credyd Cynhwysol'
+          pension_credit: 'Credyd Pensiwn'
+          scottish_legal_aid: 'Cymorth Cyfreithiol Sifil Yr Alban'
       number_of_children:
         label: "Plant yr ydych chi’n eu cefnogi"
         change: 'Newid'

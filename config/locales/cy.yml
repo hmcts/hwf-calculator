@@ -127,7 +127,7 @@ cy:
         label: "Cyfanswm eich cynilion a’ch buddsoddiadau ar y cyd"
       marital_status:
         label: "Beth yw eich statws"
-        single: "*Welsh Single"
+        single: "Sengl"
         sharing_income: "*Welsh Married or living with someone"
       date_of_birth:
         label: "Dyddiad geni"
@@ -139,12 +139,12 @@ cy:
         label: "Budd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd"
         dont_know: "Ddim yn gwybod"
         none: 'Dim'
-        jobseekers_allowance: '*Welsh JSA'
-        employment_support_allowance: '*Welsh ESA'
-        income_support: '*Welsh IS'
-        universal_credit: '*Welsh UC'
-        pension_credit: '*Welsh PC'
-        scottish_legal_aid: '*Welsh SLA'
+        jobseekers_allowance: 'Lwfans Ceisio Gwaith yn seiliedig ar incwm (JSA)'
+        employment_support_allowance: 'Lwfans Cyflogaeth a Chymorth yn seiliedig ar incwm (ESA)'
+        income_support: 'Cymhorthdal Incwm'
+        universal_credit: 'Credyd Cynhwysol'
+        pension_credit: 'Credyd Pensiwn'
+        scottish_legal_aid: 'Cymorth Cyfreithiol Sifil Yr Alban'
       number_of_children:
         label: "Plant yr ydych chi’n eu cefnogi"
       total_income:

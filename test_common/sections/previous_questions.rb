@@ -64,8 +64,8 @@ module Calculator
           include ::Calculator::Test::PreviousQuestionSection
 
           def has_answered?(benefits)
-            expected_str = benefits.map { |benefit| t("hwf_components.previous_questions.income_benefits.options.#{benefit}") }.join(',')
-            has_answer?(text: expected_str)
+            expected_str = benefits.map { |benefit| t("hwf_components.previous_questions.income_benefits.options.#{benefit}") }.join("\n")
+            answer.has_text?(expected_str, exact: false)
           end
         end
 
