@@ -62,7 +62,7 @@ group :test do
   gem 'site_prism', '~> 2.10'
   gem 'chromedriver-helper', '~> 1.1'
   gem 'geckodriver-helper', '~> 0.0'
-  gem 'codeclimate-test-reporter', '~> 0.4'
+  gem 'codeclimate-test-reporter', '~> 1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
