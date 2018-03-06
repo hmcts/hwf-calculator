@@ -42,3 +42,13 @@ end
 Then(/^I should see the savings and investment error message$/) do
   expect(disposable_capital_page.disposable_capital).to have_error_blank
 end
+
+When(/^I am on the not eligible page$/) do
+  answer_up_to(:disposable_capital)
+  answer_disposable_capital_question
+end
+
+Then(/^I can return to help with fees home page$/) do
+  not_eligible_page.start_again
+  expect(start_page).to be_displayed
+end
