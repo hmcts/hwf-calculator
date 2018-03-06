@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,11 +23,10 @@ gem 'turbolinks', '~> 5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'active_model_attributes', '~> 1.2'
+gem 'active_model_attributes', '~> 1.3'
 
 gem 'slim-rails', '~> 3.1'
-gem 'unicorn', '~> 5.3'
-gem 'rest-client', '~> 2.0'
+gem 'unicorn', '~> 5.4'
 gem 'govuk_template', '~> 0.23'
 gem 'govuk_elements_rails', '~> 3.1'
 gem 'jquery-rails', '~> 4.3'
@@ -37,14 +36,14 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-  gem 'rubocop', '~> 0.52'
-  gem 'rubocop-rspec', '~> 1.22'
+  gem 'selenium-webdriver', '~> 3.10'
+  gem 'rubocop', '~> 0.53'
+  gem 'rubocop-rspec', '~> 1.23'
   gem 'simplecov', '~> 0.15'
   gem 'pry', '~> 0.11.3'
-  gem 'ruby-debug-ide'
-  gem 'debase'
-  gem 'parallel_tests', '~> 2.17'
+  gem 'ruby-debug-ide', '~> 0.6'
+  gem 'debase', '~> 0.2'
+  gem 'parallel_tests', '~> 2.21'
 end
 
 group :development do
@@ -52,16 +51,15 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '~> 2.0'
+  gem 'spring-watcher-listen', '~> 2.0'
 end
 
 group :test do
   gem 'capybara-screenshot', '~> 1.0'
   gem 'cucumber-rails', '~> 1.5', :require => false
-  gem 'factory_bot_rails', '~> 4.8'
   gem 'rspec-rails', '~> 3.7'
-  gem 'site_prism', '~> 2.9'
+  gem 'site_prism', '~> 2.10'
   gem 'chromedriver-helper', '~> 1.1'
   gem 'geckodriver-helper', '~> 0.0'
   gem 'codeclimate-test-reporter', '~> 0.4'

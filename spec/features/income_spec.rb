@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Income Test', type: :feature, js: true do
   include Calculator::Test::Pages
   include ActiveSupport::NumberHelper
-  #
 
   # Feature:  Income Test
   #
