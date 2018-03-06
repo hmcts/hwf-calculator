@@ -75,3 +75,8 @@ Feature: Disposable capital
     And I am on the savings and investment page
     When I click next without submitting my savings and investment
     Then I should see the savings and investment error message
+
+  Scenario: Back to start
+    Given I am Tony and partner
+    When I am on the not eligible page
+    Then I can return to help with fees home page
