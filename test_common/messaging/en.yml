@@ -101,6 +101,7 @@ en:
           errors:
             non_numeric: Enter the date in this format DD/MM/YYYY
             under_age: You must be over 15 to apply for help with fees
+            too_old: You cannot be over 120 years old
           components:
             day:
               label: 'Day'
@@ -113,6 +114,7 @@ en:
           errors:
             non_numeric: Enter the date in this format DD/MM/YYYY
             under_age: Your partner must be over 15 to apply for help with fees
+            too_old: You cannot be over 120 years old
           hint:
             single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
             sharing_income: "If you or your partner are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
@@ -183,6 +185,7 @@ en:
           label: 'How much is the court or tribunal fee?'
           errors:
             non_numeric: Please enter numeric value with no decimal places
+            less_than_one: Must be greater than 0
           guidance:
             label: 'If you have already paid your court or tribunal fee'
             text: "You can apply to get some, or all of your money back, if you’ve paid a fee in the last 3 months. However, you must have been eligible when you paid the fee and so you should answer questions about your circumstances at the time you paid the fee."

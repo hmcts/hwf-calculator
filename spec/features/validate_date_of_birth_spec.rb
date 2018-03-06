@@ -143,6 +143,20 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     # Assert
     expect(date_of_birth_page.date_of_birth).to have_error_non_numeric
   end
+
+  scenario 'Citizen enters 121 years old' do
+    # Arrange
+    given_i_am(:calvin)
+    answer_up_to(:date_of_birth)
+    dob = 121.years.ago.strftime('%d/%m/%Y')
+
+    # Act
+    date_of_birth_page.date_of_birth.set(dob)
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.date_of_birth).to have_error_too_old
+  end
   # Scenario: Under 61 citizen and partner enter date of birth
   #               Given I am ALLI
   #               And I am on the date of birth page
@@ -377,6 +391,22 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
 
     # Assert
     expect(date_of_birth_page.partner_date_of_birth).to have_error_non_numeric
+  end
+
+  scenario 'Citizen is married but enters 121 years old DOB into their partners date of birth' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:date_of_birth)
+    dob = 30.years.ago.strftime('%d/%m/%Y')
+    partner_dob = 121.years.ago.strftime('%d/%m/%Y')
+
+    # Act
+    date_of_birth_page.date_of_birth.set(dob)
+    date_of_birth_page.partner_date_of_birth.set(partner_dob)
+    date_of_birth_page.next
+
+    # Assert
+    expect(date_of_birth_page.partner_date_of_birth).to have_error_too_old
   end
 
   scenario 'Citizen is married and puts non numerics in their partners year field' do

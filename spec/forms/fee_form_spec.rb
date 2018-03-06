@@ -26,6 +26,17 @@ RSpec.describe FeeForm, type: :model do
         expect(form.errors).not_to include :fee
       end
 
+      it 'disallows zero' do
+        # Arrange
+        form.fee = '0'
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors).to include :fee
+      end
+
       it 'disallows floating point numbers' do
         # Arrange
         form.fee = '1000.00'

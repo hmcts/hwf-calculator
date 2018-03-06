@@ -22,6 +22,7 @@ en:
             fee:
               not_a_number: Please enter numeric value with no decimal places
               not_an_integer: Please enter numeric value with no decimal places
+              greater_than: "Must be greater than %{count}"
         total_income_form:
           attributes:
             total_income:
@@ -34,10 +35,12 @@ en:
             date_of_birth:
               blank: Enter the date in this format DD/MM/YYYY
               age_less_than: You must be over %{count} to apply for help with fees
+              age_greater_than: You cannot be over %{count} years old
               invalid_date: Enter the date in this format DD/MM/YYYY
             partner_date_of_birth:
               blank: Enter the date in this format DD/MM/YYYY
               age_less_than: Your partner must be over %{count} to apply for help with fees
+              age_greater_than: You cannot be over %{count} years old
               invalid_date: Enter the date in this format DD/MM/YYYY
         number_of_children_form:
           attributes:

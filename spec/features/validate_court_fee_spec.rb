@@ -76,4 +76,17 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     # Assert
     expect(court_fee_page.fee).to have_error_non_numeric
   end
+
+  scenario 'Court and tribunal fee zero' do
+    # Arrange
+    given_i_am(:john)
+    answer_up_to(:court_fee)
+
+    # Act
+    court_fee_page.fee.set('0')
+    court_fee_page.next
+
+    # Assert
+    expect(court_fee_page.fee).to have_error_less_than_one
+  end
 end
