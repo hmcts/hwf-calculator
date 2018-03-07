@@ -43,6 +43,7 @@ module Calculator
 
       included do
         element :error_non_numeric, :exact_error_text, t("#{i18n_scope}.errors.non_numeric")
+        element :error_less_than_one, :exact_error_text, t("#{i18n_scope}.errors.less_than_one")
       end
     end
   end
