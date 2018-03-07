@@ -11,7 +11,7 @@ cy:
     partial_remission: '/cy/calculation_result/partial_remission'
     start_page: '/'
     total_income: '/cy/calculation/total_income'
-    total_income_include_exclude: '/cy/help/total_income/what_to_include_exclude'
+    total_income_include_exclude: '/cy/help/total_income/what_to_include_exclude{?query*}'
 
   hwf_decision:
     disposable_capital:

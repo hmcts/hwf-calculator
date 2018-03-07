@@ -1,6 +1,9 @@
 class HelpController < ApplicationController
   layout "application_help"
-  def total_income_include_exclude
-    render locals: { return_to_path: params[:return_to_path] }
+
+  helper_method :return_to_path
+
+  def return_to_path
+    URI.parse(params.require(:return_to_path)).path
   end
 end
