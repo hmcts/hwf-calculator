@@ -253,7 +253,9 @@ en:
             maintenance payments, eg from an ex-spouse
             income from selling goods publicly or privately, including over the internet
             student maintenance loans, grants or bursaries (except for tuition fee loans)
-          footer: If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
+          footer: If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See %{include_exclude_link}
+          include_exclude:
+            text: what to include and exclude as income
       income_benefits:
         summary: "How benefit affects your claim"
         detail:
@@ -271,6 +273,61 @@ en:
       options:
         single: "Single"
         sharing_income: "Married or living with someone"
+  help:
+    total_income_include_exclude:
+      return_to_caller: Back to calculation
+      what_to_include_header: "What to include as income"
+      include_your_partners_income:
+        heading: "Include your partner’s income"
+        text: |
+          If you have a partner, remember to include any money they receive too
+      other_income:
+        heading: "Other monthly income"
+        text: |
+          If you get money from somewhere
+      outside_uk:
+        heading: "If you live outside the UK"
+        text: |
+          Convert your monthly income into pounds sterling (GBP) using the current
+          exchange rate.
+          Our staff will allow for small changes in the exchange rate
+          from when you complete your application to the date it is assessed
+      what_to_exclude:
+        header: What to exclude from income
+        text: |
+              Armed Forces Independence Payment (AFIP)
+              Attendance Allowance
+              Back to Work Bonus
+              Bereavement Allowance
+              Budgeting Advances paid under Universal Credit
+              Budgeting Loan
+              Carer’s Allowance
+              Carer Element of Universal Credit
+              Childcare Element of Working Tax Credit
+              Childcare Element of Universal Credit
+              Cold Weather Payment
+              Constant Attendance Allowance
+              Direct payments made under Community Care, Services for Carer and Children’s Services
+              Disability Living Allowance (DLA)
+              Disabled and Severely Disabled elements of Child Tax Credit
+              Disabled and Severely Disabled Child elements of Working Tax Credit
+              Disabled and Severely Disabled Child elements of Universal Credit
+              Exceptionally Severe Disablement Allowance
+              Financial support under an agreement for the foster care of a child
+              Funeral Payment
+              Housing Benefit
+              Housing Credit Element of Pension Credit
+              Housing Element of Universal Credit
+              Industrial Injuries Disablement Benefit
+              Independent Living Fund payments
+              Limited Capability for Work Element of Universal Credit
+              Personal Independence Payment (PIP)
+              Any pension paid under the Naval, Military and Air forces etc (Disablement and Death) service Pension Order 2006
+              Severe Disablement Allowance
+              Short Term Benefit Advances (STBAs)
+              Universal Credit Advances
+              Widowed Parent’s Allowance
+      page_header: "Help - Total Income"
   language_switcher:
     full_html: "This guide is also available %{link_html} (Cymraeg)"
     link_text: "in Welsh"

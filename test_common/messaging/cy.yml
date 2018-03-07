@@ -11,6 +11,7 @@ cy:
     partial_remission: '/cy/calculation_result/partial_remission'
     start_page: '/'
     total_income: '/cy/calculation/total_income'
+    total_income_include_exclude: '/cy/help/total_income/what_to_include_exclude'
 
   hwf_decision:
     disposable_capital:
@@ -148,6 +149,8 @@ cy:
               incwm o werthu nwyddau yn gyhoeddus neu’n breifat, gan gynnwys ar-lein
               benthyciadau cynhaliaeth, grantiau neu fwrsarïau i fyfyrwyr (heblaw benthyciadau ffioedd dysgu)
               Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler beth i’w gynnwys a’i hepgor fel incwm
+            what_to_include_exclude:
+              label: beth i’w gynnwys a’i hepgor fel incwm
       buttons:
         next: 'Nesaf'
     marital_status:
@@ -286,6 +289,58 @@ cy:
         link_text: "yn Saesneg"
       buttons:
         start: '*Welsh Start now'
+    help:
+      total_income:
+        include_exclude:
+          back: '*Welsh Back to calculation'
+          include_list:
+            label: '*Welsh What to include as income'
+            text: |
+                  *Welsh Include your partner’s income
+                  *Welsh If you have a partner, remember to include any money they receive too
+                  *Welsh Other monthly income
+                  *Welsh If you get money from somewhere
+                  *Welsh If you live outside the UK
+                  *Welsh Convert your monthly income into pounds sterling (GBP) using the current
+                  *Welsh exchange rate.
+                  *Welsh Our staff will allow for small changes in the exchange rate
+                  *Welsh from when you complete your application to the date it is assessed
+          exclude_list:
+            label: '*Welsh What to exclude from income'
+            text: |
+                  *Welsh Armed Forces Independence Payment (AFIP)
+                  *Welsh Attendance Allowance
+                  *Welsh Back to Work Bonus
+                  *Welsh Bereavement Allowance
+                  *Welsh Budgeting Advances paid under Universal Credit
+                  *Welsh Budgeting Loan
+                  *Welsh Carer’s Allowance
+                  *Welsh Carer Element of Universal Credit
+                  *Welsh Childcare Element of Working Tax Credit
+                  *Welsh Childcare Element of Universal Credit
+                  *Welsh Cold Weather Payment
+                  *Welsh Constant Attendance Allowance
+                  *Welsh Direct payments made under Community Care, Services for Carer and Children’s Services
+                  *Welsh Disability Living Allowance (DLA)
+                  *Welsh Disabled and Severely Disabled elements of Child Tax Credit
+                  *Welsh Disabled and Severely Disabled Child elements of Working Tax Credit
+                  *Welsh Disabled and Severely Disabled Child elements of Universal Credit
+                  *Welsh Exceptionally Severe Disablement Allowance
+                  *Welsh Financial support under an agreement for the foster care of a child
+                  *Welsh Funeral Payment
+                  *Welsh Housing Benefit
+                  *Welsh Housing Credit Element of Pension Credit
+                  *Welsh Housing Element of Universal Credit
+                  *Welsh Industrial Injuries Disablement Benefit
+                  *Welsh Independent Living Fund payments
+                  *Welsh Limited Capability for Work Element of Universal Credit
+                  *Welsh Personal Independence Payment (PIP)
+                  *Welsh Any pension paid under the Naval, Military and Air forces etc (Disablement and Death) service Pension Order 2006
+                  *Welsh Severe Disablement Allowance
+                  *Welsh Short Term Benefit Advances (STBAs)
+                  *Welsh Universal Credit Advances
+                  *Welsh Widowed Parent’s Allowance
+
   hwf_components:
     previous_questions:
       label: 'Atebion blaenorol'

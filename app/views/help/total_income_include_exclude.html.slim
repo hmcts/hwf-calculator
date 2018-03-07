@@ -1,0 +1,26 @@
+.content-header
+  h1.heading-large data-behavior="heading" = t('.page_header')
+.content-body.help-total-income-include-exclude
+  .return-to-caller
+    = link_to(t('.return_to_caller'), return_to_path, class: 'link-back')
+  div data-behavior='help_section'
+    h2.heading-medium = t('.what_to_include_header')
+    h3.heading-small = t('.include_your_partners_income.heading')
+    ul.list.list-bullet
+      - t('.include_your_partners_income.text').lines.each do |line|
+        li = line
+    h3.heading-small = t('.other_income.heading')
+    ul.list.list-bullet
+      - t('.other_income.text').lines.each do |line|
+        li = line
+    h3.heading-small = t('.outside_uk.heading')
+    ul.list.list-bullet
+      - t('.outside_uk.text').lines.each do |line|
+        li = line
+    h2.heading-small = t('.what_to_exclude.header')
+    ul.list.list-bullet
+      - t('.what_to_exclude.text').lines.each do |line|
+        li = line
+  .return-to-caller
+    = link_to(t('.return_to_caller'), return_to_path, class: 'link-back')
+
