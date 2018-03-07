@@ -14,7 +14,7 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
     { age: 1..60, fee: 5001..6000, disposable_capital: 12000 }.freeze,
     { age: 1..60, fee: 6001..7000, disposable_capital: 14000 }.freeze,
     { age: 1..60, fee: 7001..Float::INFINITY, disposable_capital: 16000 }.freeze,
-    { age: 61..200, fee: 1..Float::INFINITY, disposable_capital: 16000 }.freeze
+    { age: 61..Float::INFINITY, fee: 1..Float::INFINITY, disposable_capital: 16000 }.freeze
   ].freeze
   MY_FIELDS = [:marital_status, :fee, :date_of_birth, :partner_date_of_birth, :disposable_capital].freeze
 

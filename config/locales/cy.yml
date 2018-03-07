@@ -22,6 +22,7 @@ cy:
             fee:
               not_a_number: "Rhowch swm dilys neb unrhyw leoedd degol"
               not_an_integer: "Rhowch swm dilys neb unrhyw leoedd degol"
+              greater_than: "Rhaid bod yn fwy na %{count}"
         total_income_form:
           attributes:
             total_income:
@@ -34,10 +35,12 @@ cy:
             date_of_birth:
               blank: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
               age_less_than: "Rhaid ichi fod dros %{count} oed i wneud cais am help i dalu ffioedd"
+              age_greater_than: "Ni allwch fod dros %{count} mlwydd oed"
               invalid_date: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
             partner_date_of_birth:
               blank: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
               age_less_than: "Rhaid i’ch partner fod dros %{count} oed i wneud cais am help i dalu ffioedd"
+              age_greater_than: "Ni allwch fod dros %{count} mlwydd oed"
               invalid_date: "Rhowch y dyddiad yn y fformat hwn DD/MM/BBBB"
         number_of_children_form:
           attributes:

@@ -59,6 +59,18 @@ RSpec.describe DateOfBirthForm, type: :model do
         expect(form.errors.details[:date_of_birth]).to be_empty
       end
 
+      it 'disallows someone who is 121 years old' do
+        # Arrange
+        dob = 121.years.ago - 1.day
+        form = described_class.new('date_of_birth' => { 'year' => dob.year.to_s, 'month' => dob.month.to_s, 'day' => dob.day.to_s })
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:date_of_birth]).to contain_exactly a_hash_including(error: :age_greater_than, count: 120)
+      end
+
       it 'disallows a non numeric month field' do
         # Arrange
         form = described_class.new('date_of_birth' => { 'year' => '1970', 'month' => 'July', 'day' => '01' })
@@ -147,6 +159,18 @@ RSpec.describe DateOfBirthForm, type: :model do
 
         # Assert
         expect(form.errors.details[:partner_date_of_birth]).to be_empty
+      end
+
+      it 'disallows someone who is 121 years old' do
+        # Arrange
+        dob = 121.years.ago - 1.day
+        form = described_class.new('partner_date_of_birth' => { 'year' => dob.year.to_s, 'month' => dob.month.to_s, 'day' => dob.day.to_s })
+
+        # Act
+        form.valid?
+
+        # Assert
+        expect(form.errors.details[:partner_date_of_birth]).to contain_exactly a_hash_including(error: :age_greater_than, count: 120)
       end
 
       it 'disallows a non numeric month field' do
