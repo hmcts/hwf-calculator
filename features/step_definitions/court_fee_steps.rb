@@ -12,8 +12,8 @@ When(/^I successfully submit my court and tribunal fee$/) do
 end
 
 Then(/^on the next page my court and tribunal fee has been added to previous answers$/) do
-  expect(date_of_birth_page.previous_answers).to have_marital_status
-  expect(date_of_birth_page.previous_answers).to have_court_fee
+  expect(date_of_birth_page.previous_answers.marital_status).to have_answered(user.marital_status)
+  expect(date_of_birth_page.previous_answers.court_fee).to have_answered(user.fee)
 end
 
 When(/^I click on if you have already paid your court or tribunal fee$/) do

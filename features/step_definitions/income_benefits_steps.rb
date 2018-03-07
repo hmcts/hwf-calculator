@@ -39,12 +39,6 @@ Then(/^I should see that I should be eligible for a full remission$/) do
   expect(full_remission_page).to be_displayed
 end
 
-When(/^I submit the page with income support and universal credit$/) do
-  income_benefits_page.choose :income_support
-  income_benefits_page.choose :universal_credit
-  income_benefits_page.next
-end
-
 When(/^I click next without submitting my income benefits$/) do
   income_benefits_page.next
 end
@@ -53,17 +47,18 @@ Then(/^I should see the income benefits error message$/) do
   expect(income_benefits_page.benefits).to have_error_nothing_selected
 end
 
-When(/^I submit the page with income support$/) do
+When(/^I successfully submit my income benefits$/) do
+  income_benefits_page.choose :jobseekers_allowance
   income_benefits_page.choose :income_support
   income_benefits_page.next
 end
 
-Then(/^on the next page my income benefit has been added to previous answers$/) do
-  expect(full_remission_page.previous_answers).to have_marital_status
-  expect(full_remission_page.previous_answers).to have_court_fee
-  expect(full_remission_page.previous_answers).to have_date_of_birth
-  expect(full_remission_page.previous_answers).to have_disposable_capital
-  expect(full_remission_page.previous_answers).to have_income_benefits
+Then(/^on the next page my income benefits has been added to previous answers$/) do
+  expect(full_remission_page.previous_answers.marital_status).to have_answered(user.marital_status)
+  expect(full_remission_page.previous_answers.court_fee).to have_answered(user.fee)
+  expect(full_remission_page.previous_answers.date_of_birth).to have_answered(user.date_of_birth)
+  expect(full_remission_page.previous_answers.disposable_capital).to have_answered(user.disposable_capital)
+  expect(full_remission_page.previous_answers.income_benefits).to have_answered(user.income_benefits)
 end
 
 When(/^I click on how benefits affect your claim$/) do

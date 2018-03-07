@@ -12,7 +12,7 @@ When(/^I successfully submit my marital status as single$/) do
 end
 
 Then(/^on the next page my marital status has been added to previous answers$/) do
-  expect(court_fee_page.previous_answers).to have_marital_status
+  expect(court_fee_page.previous_answers.marital_status).to have_answered(user.marital_status)
 end
 
 When(/^I successfully submit my marital status as married$/) do

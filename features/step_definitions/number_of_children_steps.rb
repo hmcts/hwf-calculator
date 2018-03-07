@@ -8,12 +8,13 @@ When(/^I successfully submit my number of children$/) do
 end
 
 Then(/^on the next page our number of children has been added to previous answers$/) do
-  expect(total_income_page.previous_answers).to have_marital_status
-  expect(total_income_page.previous_answers).to have_court_fee
-  expect(total_income_page.previous_answers).to have_date_of_birth
-  expect(total_income_page.previous_answers).to have_partner_date_of_birth
-  expect(total_income_page.previous_answers).to have_income_benefits
-  expect(total_income_page.previous_answers).to have_number_of_children
+  expect(total_income_page.previous_answers.marital_status).to have_answered(user.marital_status)
+  expect(total_income_page.previous_answers.court_fee).to have_answered(user.fee)
+  expect(total_income_page.previous_answers.date_of_birth).to have_answered(user.date_of_birth)
+  expect(total_income_page.previous_answers.partner_date_of_birth).to have_answered(user.partner_date_of_birth)
+  expect(total_income_page.previous_answers.disposable_capital).to have_answered(user.disposable_capital)
+  expect(total_income_page.previous_answers.income_benefits).to have_answered(user.income_benefits)
+  expect(total_income_page.previous_answers.number_of_children).to have_answered(user.number_of_children)
 end
 
 When(/^I click on children who might affect your claim$/) do
