@@ -5,7 +5,6 @@
       fieldset
         legend
           h2.heading-medium = t('calculation.field_labels.fee')
-        span.form-hint = t('calculation.hints.fee')
         = gds_error_messages(model: f.object, method: :fee)
         label.block-label
           .form-control-money.gbp
@@ -15,7 +14,7 @@
 
           .panel.panel-border-wide data-behavior="question_help_text"
             .text
-              h2.heading-small = t('calculation.guidance.fee.detail_text')
+              h2 = t('calculation.guidance.fee.detail_text')
     .form-group
       = f.submit t('calculation.common.next_button'), class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?

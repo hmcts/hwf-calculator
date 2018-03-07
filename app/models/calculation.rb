@@ -24,11 +24,11 @@ class Calculation
     final_decision_by != :none
   end
 
-  def inputs=(v)
-    @inputs = CalculatorFieldCollection.new(v)
+  def inputs=(values)
+    @inputs = CalculatorFieldCollection.new(values)
   end
 
-  def merge_inputs(v)
-    inputs.merge!(v)
+  def merge_inputs(values)
+    inputs.merge!(values)
   end
 end

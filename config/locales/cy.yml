@@ -54,7 +54,7 @@ cy:
         Nad oes gennych lawer o gynilion, a
         Rydych yn cael rhai budd-daliadau penodol, neu
         Eich bod ar incwm isel
-        Os oes gennych bartner, bydd sefyllfa eich partner hefyd yn berthnasol
+      introduction_footer: Os oes gennych bartner, bydd sefyllfa eich partner hefyd yn berthnasol
       requirements_header: "Beth fydd arnoch ei angen"
       requirements_html: |
         Bydd arnoch angen gwybodaeth am eich (a’ch partner, os yw’n berthnasol):
@@ -127,7 +127,7 @@ cy:
         label: "Cyfanswm eich cynilion a’ch buddsoddiadau ar y cyd"
       marital_status:
         label: "Beth yw eich statws"
-        single: "*Welsh Single"
+        single: "Sengl"
         sharing_income: "*Welsh Married or living with someone"
       date_of_birth:
         label: "Dyddiad geni"
@@ -139,12 +139,12 @@ cy:
         label: "Budd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd"
         dont_know: "Ddim yn gwybod"
         none: 'Dim'
-        jobseekers_allowance: '*Welsh JSA'
-        employment_support_allowance: '*Welsh ESA'
-        income_support: '*Welsh IS'
-        universal_credit: '*Welsh UC'
-        pension_credit: '*Welsh PC'
-        scottish_legal_aid: '*Welsh SLA'
+        jobseekers_allowance: 'Lwfans Ceisio Gwaith yn seiliedig ar incwm (JSA)'
+        employment_support_allowance: 'Lwfans Cyflogaeth a Chymorth yn seiliedig ar incwm (ESA)'
+        income_support: 'Cymhorthdal Incwm'
+        universal_credit: 'Credyd Cynhwysol'
+        pension_credit: 'Credyd Pensiwn'
+        scottish_legal_aid: 'Cymorth Cyfreithiol Sifil Yr Alban'
       number_of_children:
         label: "Plant yr ydych chi’n eu cefnogi"
       total_income:
@@ -192,7 +192,7 @@ cy:
               cydnabod rhywedd
               trais domestig
               priodas dan orfod
-              Dylech hefyd ddewis sengl os ydych chi a’ch partner yn bartïon mewn grŵp ffi luosog.
+            footer: Dylech hefyd ddewis sengl os ydych chi a’ch partner yn bartïon mewn grŵp ffi luosog.
           sharing_income:
             summary: "Mae wedi priodi neu’n byw â rhywun ac yn rhannu incwm yn golygu eich bod:"
             text: |
@@ -249,7 +249,7 @@ cy:
             taliadau cynhaliaeth, e.e. gan gyn-briod
             incwm o werthu nwyddau yn gyhoeddus neu’n breifat, gan gynnwys ar-lein
             benthyciadau cynhaliaeth, grantiau neu fwrsarïau i fyfyrwyr (heblaw benthyciadau ffioedd dysgu)
-            Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler beth i’w gynnwys a’i hepgor fel incwm
+          footer: Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler beth i’w gynnwys a’i hepgor fel incwm
       income_benefits:
         summary: "Sut mae budd-dal yn effeithio ar eich hawliad"
         detail:
@@ -259,12 +259,8 @@ cy:
         summary: "Os ydych chi wedi talu eich ffi llys neu dribiwnlys yn barod"
         detail_text: "Gallwch wneud cais i gael peth, neu’ch holl arian yn ôl, os ydych wedi talu ffi yn y 3 mis diwethaf. Fodd bynnag, rhaid eich bod yn gymwys pan fu ichi dalu’r ffi, ac felly dylech ateb y cwestiynau am eich amgylchiadau fel yr oeddynt ar yr adeg pan fu ichi dalu’r ffi."
     hints:
-      date_of_birth:
-        single: "Os ydych chi dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
-        sharing_income: "Os ydych chi neu’ch partner dros 61 oed (ac nid oes gennych lawer o gynilion), efallai y gallwch gael help gyda’ch ffi"
       total_income: "Nodwch faint o incwm gros ydych chi’n ei gael bob mis (cyn i daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd)"
-      fee: "Rhowch swm dilys neb unrhyw leoedd degol"
-      disposable_capital: 
+      disposable_capital:
         single: "Os oes gennych chi fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
         sharing_income: "Os oes gennych chi neu’ch partner fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
     marital_status:

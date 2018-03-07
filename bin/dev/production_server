@@ -1,0 +1,4 @@
+#!/bin/bash
+cd "$(dirname "${BASH_SOURCE[0]}")/../../docker/server"
+MY_PORT=${PORT:-3000}
+PORT=${MY_PORT} docker-compose up --force-recreate --build

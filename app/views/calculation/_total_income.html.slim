@@ -19,6 +19,7 @@
               ul.list.list-bullet
                 - t('calculation.guidance.total_income.detail.text').lines.each do |line|
                   li = line
+              p = t('calculation.guidance.total_income.detail.footer')
     .form-group
       = f.submit t('calculation.common.next_button'), class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?
