@@ -62,7 +62,6 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     expect(total_income_page).to have_no_guidance_text
   end
 
-
   # Scenario: See what to include and exclude as income
   #              Given I am on the Guidance Information section of the Total Income page
   #              When I click on the "what to include and exclude as income" link
