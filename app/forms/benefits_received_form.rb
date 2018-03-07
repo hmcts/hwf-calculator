@@ -29,14 +29,14 @@ class BenefitsReceivedForm < BaseForm
     VALID_BENEFITS
   end
 
-  def benefits_received=(v)
-    super v.is_a?(Array) ? convert_benefits_array(v) : v
+  def benefits_received=(new_benefits)
+    super new_benefits.is_a?(Array) ? convert_benefits_array(new_benefits) : new_benefits
   end
 
   private
 
-  def convert_benefits_array(v)
-    benefits_converted = v.reject(&:empty?)
+  def convert_benefits_array(new_benefits)
+    benefits_converted = new_benefits.reject(&:empty?)
     stringify_benefits = benefits.map(&:to_s)
     benefits_converted.map! do |benefit|
       stringify_benefits.include?(benefit) ? benefit.to_sym : benefit
