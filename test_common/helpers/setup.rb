@@ -81,6 +81,7 @@ module Calculator
       end
 
       def given_i_am(user_name)
+        return self.user = OpenStruct.new if user_name.to_sym == :anonymous
         self.user = personas.fetch(user_name)
         user.marital_status = user.marital_status.to_sym
         user.date_of_birth = (user.age.to_i.years.ago - 10.days).strftime('%-d/%-m/%Y')

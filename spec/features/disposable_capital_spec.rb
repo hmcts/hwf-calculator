@@ -225,4 +225,73 @@ RSpec.describe 'Disposable capital test', type: :feature, js: true do
         disposable_capital: user.disposable_capital
     end
   end
+
+  scenario 'one partner over 61, fee 4001, savings 11000' do
+    # Arrange - Setup an anonymous user and fill in the values ourselves
+    given_i_am :anonymous
+    marital_status = :sharing_income
+    user.marital_status = marital_status
+    user.fee = 4001
+    user.date_of_birth = 47.years.ago.strftime('%d/%m/%Y')
+    user.partner_date_of_birth = 98.years.ago.strftime('%d/%m/%Y')
+    user.disposable_capital = 11000
+    answer_up_to(:disposable_capital)
+
+    # Act - Fill in the disposable capital question
+    answer_disposable_capital_question
+
+    # Assert
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.positive",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
+  end
+
+  scenario 'one partner over 61, fee 98000, savings 15900' do
+    # Arrange - Setup an anonymous user and fill in the values ourselves
+    given_i_am :anonymous
+    marital_status = :sharing_income
+    user.marital_status = marital_status
+    user.fee = 98000
+    user.date_of_birth = 47.years.ago.strftime('%d/%m/%Y')
+    user.partner_date_of_birth = 98.years.ago.strftime('%d/%m/%Y')
+    user.disposable_capital = 15900
+    answer_up_to(:disposable_capital)
+
+    # Act - Fill in the disposable capital question
+    answer_disposable_capital_question
+
+    # Assert
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.positive",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
+  end
+
+  scenario 'one partner over 61, fee 1667, savings 6500' do
+    # Arrange - Setup an anonymous user and fill in the values ourselves
+    given_i_am :anonymous
+    marital_status = :sharing_income
+    user.marital_status = marital_status
+    user.fee = 1667
+    user.date_of_birth = 47.years.ago.strftime('%d/%m/%Y')
+    user.partner_date_of_birth = 98.years.ago.strftime('%d/%m/%Y')
+    user.disposable_capital = 6500
+    answer_up_to(:disposable_capital)
+
+    # Act - Fill in the disposable capital question
+    answer_disposable_capital_question
+
+    # Assert
+    aggregate_failures 'validating feedback' do
+      expect(any_calculator_page).to have_feedback_message_with_header(:"disposable_capital.#{marital_status}.positive")
+      expect(any_calculator_page).to have_feedback_message_with_detail :"disposable_capital.#{marital_status}.positive",
+        fee: user.fee,
+        disposable_capital: user.disposable_capital
+    end
+  end
 end
