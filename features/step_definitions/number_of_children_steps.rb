@@ -42,10 +42,11 @@ Then(/^I should be taken back to the marital status page$/) do
 end
 
 Then(/^I should see my other previous answers have been saved$/) do
-  expect(marital_status_page.previous_answers).to have_no_marital_status
-  expect(marital_status_page.previous_answers).to have_court_fee
-  expect(marital_status_page.previous_answers).to have_date_of_birth
-  expect(marital_status_page.previous_answers).to have_partner_date_of_birth
-  expect(marital_status_page.previous_answers).to have_disposable_capital
-  expect(marital_status_page.previous_answers).to have_income_benefits
+  expect(marital_status_page).to be_displayed
+  expect(marital_status_page.previous_answers).to have_no_marital_status(wait: 10)
+  expect(marital_status_page.previous_answers.court_fee).to have_answered(user.fee)
+  expect(marital_status_page.previous_answers.date_of_birth).to have_answered(user.date_of_birth)
+  expect(marital_status_page.previous_answers.partner_date_of_birth).to have_answered(user.partner_date_of_birth)
+  expect(marital_status_page.previous_answers.disposable_capital).to have_answered(user.disposable_capital)
+  expect(marital_status_page.previous_answers.income_benefits).to have_answered(user.income_benefits)
 end
