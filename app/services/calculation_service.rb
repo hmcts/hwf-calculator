@@ -45,6 +45,7 @@ class CalculationService
   #  This is optional, normally for testing.
   # @return [CalculationService] This instance
   def initialize(inputs, calculation, calculators: default_calculators)
+    calculation.reset_messages
     self.inputs = inputs
     calculation.merge_inputs(inputs)
     self.calculation = calculation

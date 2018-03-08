@@ -3,6 +3,7 @@
 class CalculationController < ApplicationController
   include CalculationStore
   helper_method :form
+  before_action :start_again, if: :calculation_frozen?, except: :home
 
   def home
     repo.delete_all
@@ -62,5 +63,13 @@ class CalculationController < ApplicationController
       date_of_birth: [:day, :month, :year],
       partner_date_of_birth: [:day, :month, :year],
       benefits_received: []
+  end
+
+  def calculation_frozen?
+    current_calculation.frozen?
+  end
+
+  def start_again
+    redirect_to root_path
   end
 end

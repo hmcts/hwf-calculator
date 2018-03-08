@@ -628,4 +628,19 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
         and(have_total_income)
     end
   end
+
+  scenario 'Citizen who normally gets full remittance tries to use the browser back button' do
+    # Arrange - We will use john for this who would normally pass every test and get full remittance
+    given_i_am(:john)
+    answer_up_to(:total_income)
+    answer_total_income_question
+
+    # Act
+    full_remission_page.back_via_browser_button
+
+    # Assert
+    expect(start_page).to be_displayed
+  end
+  scenario 'Citizen who normally gets part remission tries to use the browser back button'
+  scenario 'Citizen who normally gets no remission tries to use the browser back button'
 end

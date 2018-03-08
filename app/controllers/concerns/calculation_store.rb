@@ -19,6 +19,10 @@ module CalculationStore
     @current_calculation = nil
   end
 
+  def start_current_calculation
+    current_calculation.reset_messages
+  end
+
   def repo
     @repo ||= CalculationRepository.new(store: session)
   end

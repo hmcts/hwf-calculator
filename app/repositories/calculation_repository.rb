@@ -1,6 +1,7 @@
 # A repository to persist the calculation to a hash like store
 # the store can be a rails session.
 class CalculationRepository
+  require 'zlib'
   class InvalidVersion < RuntimeError
 
   end
@@ -32,7 +33,7 @@ class CalculationRepository
       end
       calc, version = decode(data)
       validate_version(version)
-      calc
+      calc.tap(&:freeze_if_frozen)
     end
   end
 
@@ -55,7 +56,7 @@ class CalculationRepository
   def retry_once
     begin
       return yield
-    rescue InvalidVersion, Psych::Exception
+    rescue InvalidVersion, Psych::Exception, Zlib::DataError
       delete_all
     end
     yield
@@ -66,11 +67,19 @@ class CalculationRepository
   end
 
   def encode(obj)
-    YAML.dump([obj, version])
+    compress YAML.dump([obj, version])
   end
 
   def decode(data)
-    YAML.safe_load(data, [Calculation, Symbol, Date, CalculatorFieldCollection, Field])
+    YAML.safe_load(decompress(data), [Calculation, Symbol, Date, CalculatorFieldCollection, Field])
+  end
+
+  def compress(data)
+    Zlib::Deflate.deflate(data).to_yaml
+  end
+
+  def decompress(data)
+    Zlib::Inflate.inflate(YAML.safe_load(data))
   end
 
   attr_accessor :store, :version

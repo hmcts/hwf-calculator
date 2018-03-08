@@ -2,7 +2,7 @@ class Calculation
   include ActiveModel::Model
   attr_accessor :available_help, :remission
   attr_accessor :messages
-  attr_accessor :final_decision_by
+  attr_accessor :final_decision_by, :frozen
   attr_reader :inputs
 
   def initialize(attrs = {})
@@ -11,7 +11,9 @@ class Calculation
     self.final_decision_by = :none
     self.remission = 0.0
     self.inputs = {}
+    self.frozen = false
     super
+    freeze_if_frozen
   end
 
   # Indicates if a calculator has made a final decision, preventing any further
@@ -30,5 +32,20 @@ class Calculation
 
   def merge_inputs(values)
     inputs.merge!(values)
+  end
+
+  # Removes all previous messages ready for a new calculation starting
+  def reset_messages
+    messages.clear
+  end
+
+  def freeze_if_frozen
+    freeze if frozen
+  end
+
+  def freeze
+    self.frozen = true
+    messages.freeze
+    super
   end
 end

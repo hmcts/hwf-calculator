@@ -47,6 +47,14 @@ RSpec.describe Calculation do
     end
   end
 
+  describe '#reset_messages' do
+    it 'clears out any old messages' do
+      subject = described_class.new messages: [:any]
+      subject.reset_messages
+      expect(subject.messages).to be_empty
+    end
+  end
+
   describe '#final_decision_by' do
     it 'stores a provided value of any type' do
       subject = described_class.new final_decision_by: 'none'
@@ -64,6 +72,32 @@ RSpec.describe Calculation do
       subject = described_class.new final_decision_by: :none
       expect(subject.final_decision_made?).to be false
     end
+  end
 
+  describe '#freeze' do
+    it 'freezes the messages array' do
+      subject = described_class.new messages: [:any]
+      subject.freeze
+
+      expect(subject.messages).to be_frozen
+    end
+  end
+
+  describe '#freeze_if_frozen' do
+    it 'freezes the object if the frozen attribute is true' do
+      subject = described_class.new
+      subject.frozen = true
+      subject.freeze_if_frozen
+
+      expect(subject).to be_frozen
+    end
+
+    it 'does not freezes the object if the frozen attribute is not true' do
+      subject = described_class.new
+      subject.frozen = false
+      subject.freeze_if_frozen
+
+      expect(subject).not_to be_frozen
+    end
   end
 end
