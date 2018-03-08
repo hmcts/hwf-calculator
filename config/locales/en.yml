@@ -265,7 +265,7 @@ en:
     hints:
       total_income: "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
       disposable_capital:
-        single: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+        single: "If you have more than £16,000 in savings and investments, then you are unlikely to get help with your fee"
         sharing_income: "If you or your partner have more than £16,000 in savings and investments, then you are unlikely to get help with your fee"
     marital_status:
       options:
