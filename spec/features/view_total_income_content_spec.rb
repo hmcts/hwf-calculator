@@ -61,14 +61,49 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     # Assert
     expect(total_income_page).to have_no_guidance_text
   end
+
+  # Scenario: See what to include and exclude as income
+  #              Given I am on the Guidance Information section of the Total Income page
+  #              When I click on the "what to include and exclude as income" link
+  #              Then I should see a pop-up window with information on what to include and exclude as income
+  #              And what to include section should precede what to exclude section of the pop-up window
+  scenario 'See what to include and exclude as income page' do
+    # Arrange
+    given_i_am(:john)
+    answer_up_to(:total_income)
+    total_income_page.toggle_guidance
+    total_income_page.wait_for_guidance_text
+
+    # Act
+    total_income_page.total_income.guidance_section.what_to_include_exclude.click
+
+    # Assert
+    aggregate_failures 'Validate page presence and rough content' do
+      expect(total_income_include_exclude_page).to be_displayed
+      expect(total_income_include_exclude_page).to have_include_list.and(have_exclude_list)
+    end
+  end
+
+  scenario 'See what to include and exclude as income then come back' do
+    # Arrange
+    given_i_am(:john)
+    answer_up_to(:total_income)
+    total_income_page.toggle_guidance
+    total_income_page.wait_for_guidance_text
+    total_income_page.total_income.guidance_section.what_to_include_exclude.click
+
+    # Act
+    total_income_include_exclude_page.back
+
+    # Assert
+    expect(total_income_page).to be_displayed
+  end
   #
   # Guidance Information Content:
-  #
-  # Write down how much money you get every month before any tax or National Insurance payments have been taken off.
-  #
-  # What to include as income:
-  #
-  # wages
+  #   ++
+  #   Write down how much money you get every month before any tax or National Insurance payments have been taken off.
+  #   What to include as income:
+  #     wages
   # some benefits
   # pensions (state, work or private without guarantee credit)
   # rent from anyone living with you and other properties that you own
@@ -76,9 +111,7 @@ RSpec.describe 'View total income content', type: :feature, js: true do
   # maintenance payments, eg from an ex-spouse
   # income from selling goods publicly or privately, including over the internet
   # student maintenance loans, grants or bursaries (except for tuition fee loans)
-  # If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude as income
-  #
-  #
+  # If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See what to include and exclude from income  #
   #
   # NOTE FOR DEV:
   #

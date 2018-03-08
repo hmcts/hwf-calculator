@@ -1,0 +1,23 @@
+- content_for :head
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'application'
+- content_for :body_end
+  javascript:
+    var showHideContent = new GOVUK.ShowHideContent();
+    showHideContent.init();
+  yield
+- content_for :content
+  .direction-ltr#content
+    main role="main"
+      .grid-row
+        .column-full
+          .phase-banner
+            .grid-row
+              .column-one-half
+                p
+                  strong.phase-tag Beta
+              .column-one-half.right
+                p.welsh-link role="note" aria-label="Information" data-behavior="welsh_link"
+                  = t('language_switcher.full_html', link_html: language_switcher_url)
+          = yield
+= render template: "layouts/govuk_template"
