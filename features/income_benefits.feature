@@ -7,7 +7,7 @@ Background: Income benefits page
   Given I am William
   And I am on the income benefits page
 
-Scenario: Displays message
+Scenario: Displays eligibility message
   Then I should see that I should be able to get help with fees message
 
 Scenario: Displays income benefits list
@@ -21,7 +21,7 @@ Scenario: Displays dont know guidance information
   When I select dont know
   Then I should see the dont know guidance information
 
-Scenario: Displays savings and investment error message
+Scenario: Displays income benefits error message
   When I click next without submitting my income benefits
   Then I should see the income benefits error message
 

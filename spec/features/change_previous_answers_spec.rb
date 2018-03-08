@@ -515,12 +515,12 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     end
   end
 
-  scenario 'Citizen who is married changes own DOB to push them over the disposable capital limit' do
+  scenario 'Citizen who is married changes both DOBs to push them under the disposable capital limit' do
     # Arrange - sue has been setup for this test - both her and her partner are over 61
     # which means that the 11,000 disposable income is lower than the 16000 threshold for
     # over 61's so the disposable capital test will pass -
-    # but when she remembers that she is really 60, then this means they are classed as 'under 61' so the
-    # limit is 10,000 which she will be over and should fail
+    # but when she remembers that she and her partner are really 60, then this means they are classed as 'under 61' so the
+    # limit is 10,000 which they will be over and should fail
     given_i_am(:sue)
     dob = (Time.zone.today - 60.years).strftime('%d/%m/%Y')
     answer_up_to(:total_income)
@@ -528,41 +528,13 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
 
     # Act
     date_of_birth_page.date_of_birth.set(dob)
+    date_of_birth_page.partner_date_of_birth.set(dob)
     date_of_birth_page.next
 
     # Assert
     aggregate_failures do
       expect(not_eligible_page).to be_displayed
       expect(not_eligible_page.previous_answers.date_of_birth).to have_answered(dob)
-      expect(not_eligible_page.previous_answers).to have_marital_status.
-        and(have_court_fee).
-        and(have_date_of_birth).
-        and(have_partner_date_of_birth).
-        and(have_disposable_capital).
-        and(have_no_income_benefits).
-        and(have_no_number_of_children).
-        and(have_no_total_income)
-    end
-  end
-
-  scenario 'Citizen who is married changes partners DOB to push them over the disposable capital limit' do
-    # Arrange - sue has been setup for this test - both her and her partner are over 61
-    # which means that the 11,000 disposable income is lower than the 16000 threshold for
-    # over 61's so the disposable capital test will pass -
-    # but when she remembers that her partner is really 60, then this means they are classed as 'under 61' so the
-    # limit is 10,000 which she will be over and should fail
-    given_i_am(:sue)
-    dob = (Time.zone.today - 60.years).strftime('%d/%m/%Y')
-    answer_up_to(:total_income)
-    total_income_page.previous_answers.date_of_birth.navigate_to
-
-    # Act
-    date_of_birth_page.partner_date_of_birth.set(dob)
-    date_of_birth_page.next
-
-    # Assert
-    aggregate_failures 'Validate all' do
-      expect(not_eligible_page).to be_displayed
       expect(not_eligible_page.previous_answers.partner_date_of_birth).to have_answered(dob)
       expect(not_eligible_page.previous_answers).to have_marital_status.
         and(have_court_fee).

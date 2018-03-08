@@ -34,7 +34,7 @@ RSpec.describe DisposableCapitalCalculatorService do
         end
       end
     end
-    [[1, nil], [60, nil], [60, 61], [61, 60], [59, 61], [61, 59]].each do |(age, partner_age)|
+    [[1, nil], [30, nil], [30, 30], [60, nil], [60, 60]].each do |(age, partner_age)|
       context "age: #{age}, partner_age: #{partner_age}" do
         include_examples 'disposable_capital_limited_to', age: age, partner_age: partner_age, fee: 1, limit: 3000
         include_examples 'disposable_capital_limited_to', age: age, partner_age: partner_age, fee: 500, limit: 3000
@@ -76,7 +76,7 @@ RSpec.describe DisposableCapitalCalculatorService do
         include_examples 'disposable_capital_limited_to', age: age, partner_age: partner_age, fee: 1000000000000, limit: 16000
       end
     end
-    [[61, nil], [62, nil], [99, nil], [61, 61], [62, 62], [61, 75]].each do |(age, partner_age)|
+    [[61, nil], [62, nil], [99, nil], [60, 61], [61, 60], [59, 61], [61, 61], [61, 59], [62, 62], [61, 75]].each do |(age, partner_age)|
       context "age #{age}, partner_age: #{partner_age}" do
         include_examples 'disposable_capital_limited_to', age: age, partner_age: partner_age, fee: 1, limit: 16000
         include_examples 'disposable_capital_limited_to', age: age, partner_age: partner_age, fee: 10, limit: 16000
@@ -105,13 +105,13 @@ RSpec.describe DisposableCapitalCalculatorService do
       expect(age_service).to have_received(:call).with(date_of_birth: Date.parse('29 February 1996'))
     end
 
-    it 'uses the AgeService with the youngest of the 2 date of births' do
+    it 'uses the AgeService with the oldest of the 2 date of births' do
       age_service = class_spy('AgeService').as_stubbed_const
       allow(age_service).to receive(:call).and_return(30) # Irrelevant response
       service.call date_of_birth: Date.parse('29 February 1996'),
                    partner_date_of_birth: Date.parse('28 February 1996'),
                    fee: 100, disposable_capital: 10000
-      expect(age_service).to have_received(:call).with(date_of_birth: Date.parse('29 February 1996'))
+      expect(age_service).to have_received(:call).with(date_of_birth: Date.parse('28 February 1996'))
     end
   end
 
