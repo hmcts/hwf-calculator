@@ -115,5 +115,5 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
   # How much do you have in savings and investments combined?
   #
   # Hint text:
-  # If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee
+  # If you have more than £16,000 in savings and investments, then you are unlikely to get help with your fee
 end
