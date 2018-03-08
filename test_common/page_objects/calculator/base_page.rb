@@ -48,6 +48,10 @@ module Calculator
         previous_answers.send(q.to_sym).navigate_to
       end
 
+      def back_via_browser_button
+        page.evaluate_script('window.history.back()')
+      end
+
       # Finds a previous question with a given answer in the 'Previous answers' section of any pa
       # @param [Symbol] question The question to find
       # @param [Symbol,String,Array] answer Can be a string (the expected answer), a symbol (will get translated)
