@@ -51,6 +51,11 @@ module Calculator
         Calculator::Test::PartialRemissionPage.new
       end
 
+      # @return [Calculator::Test::TotalIncomeIncludeExcludePage] The total income include / exclude popup page
+      def total_income_include_exclude_page
+        Calculator::Test::TotalIncomeIncludeExcludePage.new
+      end
+
       # @return [Calculator::Test::BasePage] The base page object which applies to any page
       def any_calculator_page
         ::Calculator::Test::BasePage.new

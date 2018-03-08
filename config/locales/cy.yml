@@ -252,7 +252,9 @@ cy:
             taliadau cynhaliaeth, e.e. gan gyn-briod
             incwm o werthu nwyddau yn gyhoeddus neu’n breifat, gan gynnwys ar-lein
             benthyciadau cynhaliaeth, grantiau neu fwrsarïau i fyfyrwyr (heblaw benthyciadau ffioedd dysgu)
-          footer: Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler beth i’w gynnwys a’i hepgor fel incwm
+          footer: Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler %{include_exclude_link}
+          include_exclude:
+            text: beth i’w gynnwys a’i hepgor fel incwm
       income_benefits:
         summary: "Sut mae budd-dal yn effeithio ar eich hawliad"
         detail:
@@ -274,3 +276,57 @@ cy:
     full_html: "Mae’r canllaw hwn hefyd ar gael %{link_html} (English)"
     link_text: "yn Saesneg"
     switch: 'en'
+  help:
+    total_income_include_exclude:
+      return_to_caller: '*Welsh Back to calculation'
+      what_to_include_header: "*Welsh What to include as income"
+      include_your_partners_income:
+        heading: "*Welsh Include your partner’s income"
+        text: |
+          *Welsh If you have a partner, remember to include any money they receive too
+      other_income:
+        heading: "*Welsh Other monthly income"
+        text: |
+          *Welsh If you get money from somewhere
+      outside_uk:
+        heading: "*Welsh If you live outside the UK"
+        text: |
+          *Welsh Convert your monthly income into pounds sterling (GBP) using the current
+          *Welsh exchange rate.
+          *Welsh Our staff will allow for small changes in the exchange rate
+          *Welsh from when you complete your application to the date it is assessed
+      what_to_exclude:
+        header: "*Welsh What to exclude from income"
+        text: |
+              *Welsh Armed Forces Independence Payment (AFIP)
+              *Welsh Attendance Allowance
+              *Welsh Back to Work Bonus
+              *Welsh Bereavement Allowance
+              *Welsh Budgeting Advances paid under Universal Credit
+              *Welsh Budgeting Loan
+              *Welsh Carer’s Allowance
+              *Welsh Carer Element of Universal Credit
+              *Welsh Childcare Element of Working Tax Credit
+              *Welsh Childcare Element of Universal Credit
+              *Welsh Cold Weather Payment
+              *Welsh Constant Attendance Allowance
+              *Welsh Direct payments made under Community Care, Services for Carer and Children’s Services
+              *Welsh Disability Living Allowance (DLA)
+              *Welsh Disabled and Severely Disabled elements of Child Tax Credit
+              *Welsh Disabled and Severely Disabled Child elements of Working Tax Credit
+              *Welsh Disabled and Severely Disabled Child elements of Universal Credit
+              *Welsh Exceptionally Severe Disablement Allowance
+              *Welsh Financial support under an agreement for the foster care of a child
+              *Welsh Funeral Payment
+              *Welsh Housing Benefit
+              *Welsh Housing Credit Element of Pension Credit
+              *Welsh Housing Element of Universal Credit
+              *Welsh Industrial Injuries Disablement Benefit
+              *Welsh Independent Living Fund payments
+              *Welsh Limited Capability for Work Element of Universal Credit
+              *Welsh Personal Independence Payment (PIP)
+              *Welsh Any pension paid under the Naval, Military and Air forces etc (Disablement and Death) service Pension Order 2006
+              *Welsh Severe Disablement Allowance
+              *Welsh Short Term Benefit Advances (STBAs)
+              *Welsh Universal Credit Advances
+              *Welsh Widowed Parent’s Allowance
