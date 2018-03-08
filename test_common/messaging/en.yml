@@ -205,7 +205,7 @@ en:
             non_numeric: "Enter a valid value"
             blank: "Enter how much you have in savings and investments"
           hint: 
-            single: "If you have more that £16,000 in savings and investments, then you are unlikely to get help with your fee"
+            single: "If you have more than £16,000 in savings and investments, then you are unlikely to get help with your fee"
             sharing_income: "If you or your partner have more than £16,000 in savings and investments, then you are unlikely to get help with your fee"
           guidance:
             label: 'Help with savings and investments'
