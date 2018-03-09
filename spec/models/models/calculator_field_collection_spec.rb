@@ -7,13 +7,13 @@ RSpec.describe CalculatorFieldCollection do
     end
 
     it 'includes any invalidated fields in the correct order for a single status' do
-      subject = described_class.new fee: 1000.0, marital_status: 'single', date_of_birth: 60.years.ago, partner_date_of_birth: nil, disposable_capital: 10.0
+      subject = described_class.new fee: 1000.0, marital_status: 'single', date_of_birth: 60.years.ago, partner_date_of_birth: nil, disposable_capital: 10.0, benefits_received: ['none']
       subject[:marital_status] = 'sharing_income'
       expect(subject.fields_required).to eql [:partner_date_of_birth, :disposable_capital, :benefits_received, :number_of_children, :total_income]
     end
 
     it 'includes any invalidated fields in the correct order for a sharing_income status' do
-      subject = described_class.new fee: 1000.0, marital_status: 'sharing_income', date_of_birth: 60.years.ago, disposable_capital: 10.0, partner_date_of_birth: 60.years.ago
+      subject = described_class.new fee: 1000.0, marital_status: 'sharing_income', date_of_birth: 60.years.ago, disposable_capital: 10.0, partner_date_of_birth: 60.years.ago, benefits_received: ['none']
       subject[:marital_status] = 'single'
       expect(subject.fields_required).to eql [:disposable_capital, :benefits_received, :number_of_children, :total_income]
     end
@@ -30,8 +30,8 @@ RSpec.describe CalculatorFieldCollection do
   end
 
   describe '#[]=' do
-    it 're requires disposable capital and number of children when marital status is changed from single to sharing_income' do
-      subject = described_class.new fee: 1000.0, marital_status: 'single', date_of_birth: 60.years.ago, disposable_capital: 10.0, number_of_children: 2
+    it 're requires disposable capital, benefits received and number of children when marital status is changed from single to sharing_income' do
+      subject = described_class.new fee: 1000.0, marital_status: 'single', date_of_birth: 60.years.ago, disposable_capital: 10.0, number_of_children: 2, benefits_received: ['none']
       subject[:marital_status] = 'sharing_income'
       expect(subject.fields_required).to eql [:partner_date_of_birth, :disposable_capital, :benefits_received, :number_of_children, :total_income]
     end
