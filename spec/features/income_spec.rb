@@ -116,7 +116,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 18240)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 1755)
   end
 
   # Scenario: Income test for single citizen with minimum income threshold (0 Remission)
@@ -205,7 +205,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 2900)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 1995)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold
@@ -223,7 +223,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 4000)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 1995)
   end
 
   # Scenario: Income test for married citizen with maximum income threshold
@@ -241,7 +241,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 5000)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 1995)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold
@@ -259,7 +259,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 4990)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 2000)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold
@@ -277,7 +277,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 8000)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 2000)
   end
 
   # Scenario: Income test for single citizen over maximum income threshold
@@ -313,7 +313,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 940)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 1385)
   end
 
   # Scenario: Income test for single citizen with minimum income threshold and many children
@@ -373,6 +373,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   AND I am on the total income page
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
+  #   (CORRECTION: The original said partial remission, but RST-921 changed to no remission)
   #
   scenario 'Income test for married citizen with maximum income threshold and no children' do
     # Arrange
@@ -383,7 +384,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 0)
+    expect(not_eligible_page).to be_valid_for_final_negative_message(user)
   end
 
   # Scenario: Income test for single citizen with maximum income threshold and no children
@@ -391,6 +392,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
   #   AND I am on the total income page
   #   When I click on the Next step button
   #   Then I should see that I am eligible for partial remission
+  #   (CORRECTION: The original said partial remission, but RST-921 changed to no remission)
   #
   scenario 'Income test for single citizen with maximum income threshold and no children' do
     # Arrange
@@ -401,7 +403,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 0)
+    expect(not_eligible_page).to be_valid_for_final_negative_message(user)
   end
   # Scenario: Income test for married citizen with maximum income threshold and no children
   #   Given I am HOLLY (Married, 55, Capital 11999, Fee 6000, children 0, benefits none, income 5245 )
@@ -418,7 +420,7 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     answer_total_income_question
 
     # Assert
-    expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 4000)
+    expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: 2000)
   end
   # Scenario: Income test for single citizen with over maximum income threshold and no children
   #   Given I am THERESA
