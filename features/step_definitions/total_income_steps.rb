@@ -20,8 +20,8 @@ Then(/^I should see that I should be eligible for full remission$/) do
   expect(full_remission_page).to be_valid_for_final_positive_message(user)
 end
 
-Then(/^I should see that I should be eligible for part remission$/) do
-  expect(partial_remission_page).to be_valid_for_final_partial_message(user, remission: 0)
+Then(/^I should see that I should be eligible for part remission where I need to pay (\d*)$/) do |citizen_pays|
+  expect(partial_remission_page).to be_valid_for_final_partial_message(user, citizen_pays: citizen_pays.to_i)
 end
 
 Then(/^I should see that I am not eligible for remission$/) do

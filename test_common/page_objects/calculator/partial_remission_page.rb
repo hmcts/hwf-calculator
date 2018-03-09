@@ -19,16 +19,22 @@ module Calculator
       # @return [Boolean] true if all OK
       # @raise [Capybara::ElementNotFound] If the correct message was not found
       def valid_for_final_partial_message?(user, citizen_pays:)
+        !!(feedback_message_with_header(expected_header_for user) && feedback_message_with_detail(expected_detail_for user, citizen_pays))
+      end
+
+      private
+
+      def expected_header_for(user)
+        messaging.translate "hwf_decision.partial.#{user.marital_status}.positive.heading"
+      end
+
+      def expected_detail_for(user, citizen_pays)
         marital_status = user.marital_status.downcase
-        expected_header = messaging.translate "hwf_decision.partial.#{marital_status}.positive.heading"
-        expected_detail = messaging.translate "hwf_decision.partial.#{marital_status}.positive.detail",
+        messaging.translate "hwf_decision.partial.#{marital_status}.positive.detail",
           fee: number_to_currency(user.fee, precision: 0, unit: '£'),
           total_income: number_to_currency(user.monthly_gross_income, precision: 0, unit: '£'),
           remission: number_to_currency(user.fee - citizen_pays, precision: 0, unit: '£'),
           contribution: number_to_currency(citizen_pays, precision: 0, unit: '£')
-
-        !!(feedback_message_with_header(expected_header) &&
-            feedback_message_with_detail(expected_detail))
       end
     end
   end
