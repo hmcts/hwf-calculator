@@ -16,7 +16,7 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
     if lte_minimum?
       mark_as_help_available
     elsif above_minimum? && lte_maximum?
-      mark_as_partial_help_available
+      mark_according_to_remission
     else
       mark_as_help_not_available
     end
@@ -70,9 +70,9 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
     messages << { key: :final_positive, source: :household_income, classification: :positive }
   end
 
-  def mark_as_partial_help_available
+  def mark_as_partial_help_available(remission:)
     self.available_help = :partial
-    self.remission = calculate_remission
+    self.remission = remission
     self.final_decision = true
     messages << { key: :final_partial, source: :household_income, classification: :positive }
   end
@@ -86,7 +86,15 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
   def calculate_remission
     over = (inputs[:total_income] - minimum_threshold).to_i
     citizen_pays = (over / 10) * 5
-    remission = [0, inputs[:fee].to_i - citizen_pays].max
-    (remission / 10) * 10.0
+    (inputs[:fee].to_i - citizen_pays).to_f
+  end
+
+  def mark_according_to_remission
+    remission = calculate_remission
+    if remission <= 0
+      mark_as_help_not_available
+    else
+      mark_as_partial_help_available remission: remission
+    end
   end
 end
