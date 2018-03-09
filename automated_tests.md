@@ -39,3 +39,35 @@ messaging.translate('key', locale: :en)
 
 ```
 
+
+## How To Run The Test
+
+There are two ways to run the tests. The first is to run them on your local environment and the second via Docker.
+
+### Running Tests Locally
+
+First you need to prepare your local environment by following the Installation instructions. After your environment is ready, open your terminal and execute the following commands:
+
+To run the Rspec suite
+```
+bundle exec parallel_rspec spec
+```
+
+To run the Cucumber suite
+```
+bundle exec parallel_cucumber features
+```
+
+### Running Tests Via Docker
+
+Running the tests via docker only requires to install the Docker and Docker Compose tool. Please follow the official instructions to install them in your system. After you have both tools, open your terminal and execute the following commands:
+
+To run the Rspec suite
+```
+docker-compose -p hwf-calculator up --build rspec-tests
+```
+
+To run the Cucumber suite
+```
+docker-compose -p hwf-calculator up --build cucumber-tests
+```

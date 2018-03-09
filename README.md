@@ -22,6 +22,14 @@ If you want to get up and running with a production like server on your local ma
 
 There are many more ways of using docker, even for development and these will be documented below as they are available.
 
+#### Running In Dev Env
+
+There is a docker-compose commands to start a Development environment. Once you have clone the code on your local and you have Docker and Docker compose tool installed, run the following command from the root folder of the app
+
+```
+docker-compose -p hwf-calculator up --build web
+```
+
 ### Running Using Ruby
 
 This project uses RVM (ruby version manager).  If you do not have it, please install it from https://rvm.io
@@ -65,7 +73,7 @@ There are no external dependencies outside of the normal bundler requirement, so
 
 The application has been developed using BDD using both rspec and cucumber.  Generally, the cucumber suite is for the QA team to manage and the rspec suite for developers.
 
-Both can be run in parallel easily as there is no database to worry about etc..  so if youve got a multi core machine this will get the tests to run much quicker.  Use parallel_rspec or parallel_cucumber as required.
+Both can be run in parallel easily as there is no database to worry about etc..  so if you've got a multi core machine this will get the tests to run much quicker.  Use parallel_rspec or parallel_cucumber as required.
 
 The page object pattern is heavily used to prevent our tests being full of capybara type stuff, meaning the tests read much more like plain english and the technical details are nicely wrapped up in page objects.  These page objects are in test_common/page_objects and any shared 'sections' in test_common/sections'
 
