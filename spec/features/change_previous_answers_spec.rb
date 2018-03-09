@@ -319,7 +319,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     end
   end
 
-  scenario 'Citizen changes their marital status from single to married from the total income page and ends up at supported children page after disp capital confirmation' do
+  scenario 'Citizen changes their marital status from single to married from the total income page and ends up at benefits page after disp capital confirmation' do
     # Arrange - John is single so we can use him to get us to total income page
     # then we will go back to marital status page
     given_i_am(:john)
@@ -336,20 +336,20 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
 
     # Assert
     aggregate_failures 'Validate all' do
-      expect(number_of_children_page).to be_displayed
-      expect(number_of_children_page.previous_answers.marital_status).to have_answered(:sharing_income)
-      expect(number_of_children_page.previous_answers).to have_marital_status.
+      expect(income_benefits_page).to be_displayed
+      expect(income_benefits_page.previous_answers.marital_status).to have_answered(:sharing_income)
+      expect(income_benefits_page.previous_answers).to have_marital_status.
         and(have_court_fee).
         and(have_date_of_birth).
         and(have_partner_date_of_birth).
         and(have_disposable_capital).
-        and(have_income_benefits).
-        and(have_no_number_of_children).
+        and(have_no_income_benefits).
+        and(have_number_of_children).
         and(have_no_total_income)
     end
   end
 
-  scenario 'Citizen changes their marital status from single to married from the total income page and ends up back at total income page after confirming disp capital and number of children' do
+  scenario 'Citizen changes their marital status from single to married from the total income page and ends up at number of children page after disp capital and benefits confirmation' do
     # Arrange - John is single so we can use him to get us to total income page
     # then we will go back to marital status page
     given_i_am(:john)
@@ -363,6 +363,38 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     date_of_birth_page.partner_date_of_birth.set(partner_dob)
     date_of_birth_page.next
     disposable_capital_page.next
+    income_benefits_page.next
+
+    # Assert
+    aggregate_failures 'Validate all' do
+      expect(number_of_children_page).to be_displayed
+      expect(number_of_children_page.previous_answers.marital_status).to have_answered(:sharing_income)
+      expect(number_of_children_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_income_benefits).
+        and(have_no_number_of_children).
+        and(have_no_total_income)
+    end
+  end
+
+  scenario 'Citizen changes their marital status from single to married from the total income page and ends up back at total income page after confirming disp capital, benefits and number of children' do
+    # Arrange - John is single so we can use him to get us to total income page
+    # then we will go back to marital status page
+    given_i_am(:john)
+    partner_dob = (Time.zone.today - 60.years).strftime('%d/%m/%Y')
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.marital_status.navigate_to
+
+    # Act
+    marital_status_page.marital_status.set(:sharing_income)
+    marital_status_page.next
+    date_of_birth_page.partner_date_of_birth.set(partner_dob)
+    date_of_birth_page.next
+    disposable_capital_page.next
+    income_benefits_page.next
     number_of_children_page.next
 
     # Assert
@@ -406,7 +438,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     end
   end
 
-  scenario 'Citizen changes their marital status from married to single from the total income page and ends up at number of children page after confirming disp capital' do
+  scenario 'Citizen changes their marital status from married to single from the total income page and ends up at benefits page after confirming disp capital' do
     # Arrange - Alli is married so we can use him to get us to total income page
     # then we will go back to marital status page
     given_i_am(:alli)
@@ -417,6 +449,34 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     marital_status_page.marital_status.set(:single)
     marital_status_page.next
     disposable_capital_page.next
+
+    # Assert
+    aggregate_failures 'Validate all' do
+      expect(income_benefits_page).to be_displayed
+      expect(income_benefits_page.previous_answers.marital_status).to have_answered(:single)
+      expect(income_benefits_page.previous_answers).to have_marital_status.
+        and(have_court_fee).
+        and(have_date_of_birth).
+        and(have_no_partner_date_of_birth).
+        and(have_disposable_capital).
+        and(have_no_income_benefits).
+        and(have_number_of_children).
+        and(have_no_total_income)
+    end
+  end
+
+  scenario 'Citizen changes their marital status from married to single from the total income page and ends up at number of children page after confirming disp capital and benefits' do
+    # Arrange - Alli is married so we can use him to get us to total income page
+    # then we will go back to marital status page
+    given_i_am(:alli)
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.marital_status.navigate_to
+
+    # Act
+    marital_status_page.marital_status.set(:single)
+    marital_status_page.next
+    disposable_capital_page.next
+    income_benefits_page.next
 
     # Assert
     aggregate_failures 'Validate all' do
@@ -433,7 +493,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     end
   end
 
-  scenario 'Citizen changes their marital status from married to single from the total income page and ends up at number of children page after confirming disp capital and number of children' do
+  scenario 'Citizen changes their marital status from married to single from the total income page and ends up at total income page after confirming disp capital, benefits and number of children' do
     # Arrange - Alli is married so we can use him to get us to total income page
     # then we will go back to marital status page
     given_i_am(:alli)
@@ -444,6 +504,7 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     marital_status_page.marital_status.set(:single)
     marital_status_page.next
     disposable_capital_page.next
+    income_benefits_page.next
     number_of_children_page.next
 
     # Assert
