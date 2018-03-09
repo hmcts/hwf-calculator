@@ -16,10 +16,10 @@ Scenario: Eligible for full remission
   Then I should see that I should be eligible for full remission
 
 Scenario: Eligible for part remission
-  Given I am Eden
+  Given I am Holly
   And I am on the total income page
   When I successfully submit my total income
-  Then I should see that I should be eligible for part remission
+  Then I should see that I should be eligible for part remission where I need to pay 2000
 
 Scenario: Not eligible for remission
   Given I am Joseph
