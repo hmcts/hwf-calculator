@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require govuk/show-hide-content
+//= require govuk/details.polyfill
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
