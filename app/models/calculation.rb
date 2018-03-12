@@ -2,7 +2,7 @@ class Calculation
   include ActiveModel::Model
   attr_accessor :available_help, :remission
   attr_accessor :messages
-  attr_accessor :final_decision_by, :frozen
+  attr_accessor :final_decision_by, :frozen, :initialized
   attr_reader :inputs
 
   def initialize(attrs = {})
@@ -12,6 +12,7 @@ class Calculation
     self.remission = 0.0
     self.inputs = {}
     self.frozen = false
+    self.initialized = false
     super
     freeze_if_frozen
   end
@@ -41,6 +42,10 @@ class Calculation
 
   def freeze_if_frozen
     freeze if frozen
+  end
+
+  def state_valid?
+    initialized && !frozen
   end
 
   def freeze

@@ -3,7 +3,8 @@
 class CalculationController < ApplicationController
   include CalculationStore
   helper_method :form
-  before_action :start_again, if: :calculation_frozen?, except: :home
+  before_action :ensure_calculation_initialized, only: :update
+  before_action :start_again, unless: :calculation_state_valid?, except: :home
 
   def home
     repo.delete_all
@@ -65,11 +66,8 @@ class CalculationController < ApplicationController
       benefits_received: []
   end
 
-  def calculation_frozen?
-    current_calculation.frozen?
-  end
-
   def start_again
     redirect_to root_path
+    false
   end
 end

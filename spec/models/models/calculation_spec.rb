@@ -7,7 +7,8 @@ RSpec.describe Calculation do
                                          available_help: :undecided,
                                          messages: [],
                                          remission: 0.0,
-                                         final_decision_by: :none
+                                         final_decision_by: :none,
+                                         initialized: false
     end
   end
 
@@ -47,6 +48,15 @@ RSpec.describe Calculation do
     end
   end
 
+  describe '#initialized' do
+    it 'stores a provided value of any type' do
+      subject = described_class.new
+      subject.initialized = true
+
+      expect(subject.initialized).to be true
+    end
+  end
+
   describe '#reset_messages' do
     it 'clears out any old messages' do
       subject = described_class.new messages: [:any]
@@ -80,6 +90,30 @@ RSpec.describe Calculation do
       subject.freeze
 
       expect(subject.messages).to be_frozen
+    end
+  end
+
+  describe '#state_valid?' do
+    it 'is false if frozen' do
+      subject = described_class.new messages: [:any]
+      subject.initialized = true
+      subject.freeze
+
+      expect(subject.state_valid?).to be false
+    end
+
+    it 'is false if not initialized' do
+      subject = described_class.new messages: [:any]
+      subject.initialized = false
+
+      expect(subject.state_valid?).to be false
+    end
+
+    it 'is true if not frozen and initialized' do
+      subject = described_class.new messages: [:any]
+      subject.initialized = true
+
+      expect(subject.state_valid?).to be true
     end
   end
 

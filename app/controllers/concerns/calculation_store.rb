@@ -26,4 +26,12 @@ module CalculationStore
   def repo
     @repo ||= CalculationRepository.new(store: session)
   end
+
+  def calculation_state_valid?
+    current_calculation.state_valid?
+  end
+
+  def ensure_calculation_initialized
+    current_calculation.initialized = true
+  end
 end
