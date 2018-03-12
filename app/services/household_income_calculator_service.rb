@@ -93,6 +93,8 @@ class HouseholdIncomeCalculatorService < BaseCalculatorService
     remission = calculate_remission
     if remission <= 0
       mark_as_help_not_available
+    elsif remission >= inputs[:fee]
+      mark_as_help_available
     else
       mark_as_partial_help_available remission: remission
     end

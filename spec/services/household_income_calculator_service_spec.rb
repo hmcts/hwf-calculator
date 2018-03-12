@@ -85,6 +85,17 @@ RSpec.describe HouseholdIncomeCalculatorService do
           # Assert
           expect(result).to have_attributes available_help: :full
         end
+
+        it 'returns full remission if monthly income is just over the threshold by £9' do
+          # Arrange
+          income = minimum_threshold + 9.0
+
+          # Act
+          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
+
+          # Assert
+          expect(result).to have_attributes available_help: :full
+        end
       end
 
       context 'when single, no children' do
@@ -132,28 +143,6 @@ RSpec.describe HouseholdIncomeCalculatorService do
 
     context 'with partial remission' do
       shared_examples 'partial remission' do
-        it 'returns part remission if monthly income is just over the threshold' do
-          # Arrange
-          income = minimum_threshold + 1.0
-
-          # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
-
-          # Assert
-          expect(result).to have_attributes available_help: :partial
-        end
-
-        it 'returns part remission of the fee value if monthly income is just over the threshold' do
-          # Arrange
-          income = minimum_threshold + 1.0
-
-          # Act
-          result = service.call(marital_status: marital_status.to_s, total_income: income, number_of_children: children, fee: fee)
-
-          # Assert
-          expect(result).to have_attributes remission: fee
-        end
-
         it 'returns part remission of the full fee minus 5 pounds if monthly income is over the minimum by 10 pounds' do
           # Arrange
           income = minimum_threshold + 10.0
