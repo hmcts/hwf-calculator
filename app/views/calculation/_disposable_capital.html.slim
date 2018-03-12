@@ -9,6 +9,7 @@
         = gds_error_messages(model: f.object, method: :disposable_capital)
         label.block-label
           .form-control-money.gbp
+            input.form-control.currency type='text' value='£' disabled=true
             = f.text_field :disposable_capital, class: 'form-control'
         details.question_help data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.disposable_capital.summary')
