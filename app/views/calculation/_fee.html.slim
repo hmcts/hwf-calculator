@@ -8,6 +8,7 @@
         = gds_error_messages(model: f.object, method: :fee)
         label.block-label
           .form-control-money.gbp
+            input.form-control.currency type='text' value='£' disabled=true
             = f.text_field :fee, class: 'form-control money gbp'
         details.question_help data-behavior="question_help"
           summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
