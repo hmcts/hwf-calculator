@@ -405,6 +405,25 @@ RSpec.describe 'Income Test', type: :feature, js: true do
     # Assert
     expect(not_eligible_page).to be_valid_for_final_negative_message(user)
   end
+
+  scenario 'Zero contribution full remission' do
+    given_i_am(:anonymous)
+    marital_status = :single
+    user.marital_status = marital_status
+    user.fee = 1200
+    user.date_of_birth = '01/01/1968'
+    user.disposable_capital = 3500
+    user.income_benefits = [:none]
+    user.number_of_children = 0
+    user.monthly_gross_income = 1089
+
+    answer_up_to(:total_income)
+    answer_total_income_question
+
+    expect(full_remission_page).to be_displayed
+
+  end
+
   # Scenario: Income test for married citizen with maximum income threshold and no children
   #   Given I am HOLLY (Married, 55, Capital 11999, Fee 6000, children 0, benefits none, income 5245 )
   #   AND I am on the total income page
