@@ -294,53 +294,50 @@ cy:
         include_exclude:
           back: '*Welsh Back to calculation'
           include_list:
-            label: '*Welsh What to include as income'
+            label: 'Beth i’w gynnwys fel incwm'
             text: |
-                  *Welsh Include your partner’s income
-                  *Welsh If you have a partner, remember to include any money they receive too
-                  *Welsh Other monthly income
-                  *Welsh If you get money from somewhere
-                  *Welsh If you live outside the UK
-                  *Welsh Convert your monthly income into pounds sterling (GBP) using the current
-                  *Welsh exchange rate.
-                  *Welsh Our staff will allow for small changes in the exchange rate
-                  *Welsh from when you complete your application to the date it is assessed
+              Dylech gynnwys incwm eich partner
+              Os oes gennych bartner, cofiwch gynnwys unrhyw incwm y maen nhw’n ei gael hefyd
+              Incwm misol arall
+              Os ydych yn cael arian o rywle arall
+              Os ydych yn byw tu allan i’r DU
+              Troswch eich incwm misol i bunnoedd sterling (GBP) gan ddefnyddio’r gyfradd gyfnewid gyfredol.
+              Bydd ein staff yn caniatáu newidiadau bychan i’r gyfradd gyfnewid o pan fyddwch yn cwblhau eich cais i’r dyddiad y bydd yn cael ei asesu
           exclude_list:
-            label: '*Welsh What to exclude from income'
+            label: 'Beth i’w hepgor fel incwm'
             text: |
-                  *Welsh Armed Forces Independence Payment (AFIP)
-                  *Welsh Attendance Allowance
-                  *Welsh Back to Work Bonus
-                  *Welsh Bereavement Allowance
-                  *Welsh Budgeting Advances paid under Universal Credit
-                  *Welsh Budgeting Loan
-                  *Welsh Carer’s Allowance
-                  *Welsh Carer Element of Universal Credit
-                  *Welsh Childcare Element of Working Tax Credit
-                  *Welsh Childcare Element of Universal Credit
-                  *Welsh Cold Weather Payment
-                  *Welsh Constant Attendance Allowance
-                  *Welsh Direct payments made under Community Care, Services for Carer and Children’s Services
-                  *Welsh Disability Living Allowance (DLA)
-                  *Welsh Disabled and Severely Disabled elements of Child Tax Credit
-                  *Welsh Disabled and Severely Disabled Child elements of Working Tax Credit
-                  *Welsh Disabled and Severely Disabled Child elements of Universal Credit
-                  *Welsh Exceptionally Severe Disablement Allowance
-                  *Welsh Financial support under an agreement for the foster care of a child
-                  *Welsh Funeral Payment
-                  *Welsh Housing Benefit
-                  *Welsh Housing Credit Element of Pension Credit
-                  *Welsh Housing Element of Universal Credit
-                  *Welsh Industrial Injuries Disablement Benefit
-                  *Welsh Independent Living Fund payments
-                  *Welsh Limited Capability for Work Element of Universal Credit
-                  *Welsh Personal Independence Payment (PIP)
-                  *Welsh Any pension paid under the Naval, Military and Air forces etc (Disablement and Death) service Pension Order 2006
-                  *Welsh Severe Disablement Allowance
-                  *Welsh Short Term Benefit Advances (STBAs)
-                  *Welsh Universal Credit Advances
-                  *Welsh Widowed Parent’s Allowance
-
+              Taliad Annibyniaeth y Lluoedd Arfog (AFIP)
+              Lwfans Gweini
+              Bonws Dychwelyd i'r Gwaith
+              Lwfans Profedigaeth
+              Blaendaliadau Cyllidebu a delir dan Gredyd Cynhwysol
+              Benthyciad Cyllidebu
+              Lwfans Gofalwr
+              Elfen Gofalwr y Credyd Cynhwysol
+              Elfen Gofal Plant y Credyd Treth Gwaith
+              Elfen Gofal Plant y Credyd Cynhwysol
+              Taliad Tywydd Oer
+              Lwfans Gweini Cyson
+              Taliadau Uniongyrchol a wnaed dan Gofal Cymunedol, Gwasanaethau ar gyfer Gofalwyr a Gwasanaethau Plant
+              Lwfans Byw i'r Anabl (DLA)
+              Elfennau Plant ag Anabledd ac Anabledd Difrifol y Credyd Treth Plant
+              Elfennau Plant ag Anabledd ac Anabledd Difrifol y Credyd Treth Gwaith
+              Elfennau Plant ag Anabledd ac Anabledd Difrifol y Credyd Cynhwysol
+              Lwfans Anabledd Difrifol Eithriadol
+              Cefnogaeth ariannol dan gytundeb ar gyfer gofal maeth plentyn
+              Taliadau Angladd
+              Budd-dal Tai
+              Elfen Credyd Tai y Credyd Pensiwn
+              Elfen Tai y Credyd Cynhwysol
+              Budd-dal Anabledd Anafiadau Diwydiannol
+              Taliadau gan y Gronfa Byw’n Annibynnol
+              Elfen Gallu Cyfyngedig i Weithio y Credyd Cynhwysol
+              Taliad Annibyniaeth Personol (PIP)
+              Unrhyw bensiwn a delir dan Orchymyn Pensiwn Gwasanaeth y Llynges, y Fyddin a'r Llu Awyr ac ati (Anabledd a Marwolaeth) 2006
+              Lwfans Anabledd Difrifol
+              Blaendaliadau Budd-dal Tymor Byr (STBAs)
+              Blaendaliadau Credyd Cynhwysol
+              Lwfans Rhiant Gweddw
   hwf_components:
     previous_questions:
       label: 'Atebion blaenorol'
@@ -348,7 +345,7 @@ cy:
         label: "Beth yw eich statws"
         change: 'Newid'
         options:
-          sharing_income: '*Welsh Married or living with someone'
+          sharing_income: 'Wedi priodi neu’n byw â rhywun'
           single: 'Sengl'
       court_fee:
         label: "Ffi’r llys neu’r tribiwnlys i’w thalu"
