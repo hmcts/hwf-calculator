@@ -50,7 +50,7 @@ cy:
               blank: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
   calculation:
     home:
-      start: "*Welsh Start now"
+      start: "Dechrau Nawr"
       introduction_header: "Bydd y cyfrifydd hwn yn dweud wrthych os ydych yn debygol o gael help i dalu ffioedd a faint allech gael."
       introduction_html: |
         Efallai y gallwch gael gostyngiad ar ffi llys neu dribiwnlys, neu fod y ffi yn cael ei hepgor yn llwyr os:

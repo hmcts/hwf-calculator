@@ -288,7 +288,7 @@ cy:
         full_text: "Mae’r canllaw hwn hefyd ar gael yn Saesneg (English)"
         link_text: "yn Saesneg"
       buttons:
-        start: '*Welsh Start now'
+        start: 'Dechrau Nawr'
     help:
       total_income:
         include_exclude:
