@@ -131,7 +131,7 @@ cy:
       marital_status:
         label: "Beth yw eich statws"
         single: "Sengl"
-        sharing_income: "*Welsh Married or living with someone"
+        sharing_income: "Wedi priodi neu’n byw â rhywun"
       date_of_birth:
         label: "Dyddiad geni"
       partner_date_of_birth:

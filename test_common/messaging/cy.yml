@@ -345,7 +345,7 @@ cy:
         label: "Beth yw eich statws"
         change: 'Newid'
         options:
-          sharing_income: '*Welsh Married or living with someone'
+          sharing_income: 'Wedi priodi neu’n byw â rhywun'
           single: 'Sengl'
       court_fee:
         label: "Ffi’r llys neu’r tribiwnlys i’w thalu"
