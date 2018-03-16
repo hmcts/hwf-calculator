@@ -1,10 +1,6 @@
 module DisableCache
   extend ActiveSupport::Concern
 
-  included do |*args|
-    bl1 = 1
-  end
-
   private
 
   def disable_cache
