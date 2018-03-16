@@ -54,6 +54,17 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
     end
   end
 
+  scenario 'Verify no caching on income benefits question using NON JS BROWSER', js: false do
+    # Arrange
+    given_i_am(:john)
+
+    # Act
+    answer_up_to(:benefits)
+
+    # Assert
+    expect(income_benefits_page).to have_no_cache
+  end
+
   #
   #
   # Scenario: View Guidance Information

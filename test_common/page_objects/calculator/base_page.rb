@@ -80,7 +80,38 @@ module Calculator
       def has_no_feedback_messages?
         feedback.has_no_messages?
       end
+
+      def has_no_cache?
+        has_no_cache_pragma_header? && has_no_cache_expires_header? && has_no_cache_cache_control_header?
+      rescue Capybara::NotSupportedByDriverError
+        raise "Your test must use the rack adapter for the has_no_cache? method to work.  Please isolate your header test and set js: false on it"
+      end
+
+      def has_cache?
+        !has_no_cache_pragma_header? && !has_no_cache_expires_header? && !has_no_cache_cache_control_header?
+      rescue Capybara::NotSupportedByDriverError
+        raise "Your test must use the rack adapter for the has_no_cache? method to work.  Please isolate your header test and set js: false on it"
+      end
+
       private
+
+      def has_no_cache_pragma_header?
+        pragma = page.response_headers['Pragma']
+        pragma.is_a?(String) && \
+          pragma.include?('no-cache')
+      end
+
+      def has_no_cache_cache_control_header?
+        return false unless page.response_headers['Cache-Control'].is_a?(String)
+        cache_control = page.response_headers['Cache-Control'].split(',').map(&:strip)
+        (['no-cache', 'no-store', 'max-age=0', 'must-revalidate'] - cache_control).empty?
+      end
+
+      def has_no_cache_expires_header?
+        return false unless page.response_headers['Expires'].is_a?(String)
+        expires_date = Date.parse(page.response_headers['Expires']) rescue nil
+        expires_date.present? && expires_date < 1.day.ago
+      end
 
       def translated_answer(question:, answer:)
         case answer

@@ -44,6 +44,17 @@ RSpec.describe 'Savings and investments content', type: :feature, js: true do
     end
   end
 
+  scenario 'Verify no caching on savings and investments question using NON JS BROWSER', js: false do
+    # Arrange
+    given_i_am(:john)
+
+    # Act
+    answer_up_to(:disposable_capital)
+
+    # Assert
+    expect(disposable_capital_page).to have_no_cache
+  end
+
   #
   # Scenario: View Guidance Information
   #              Given I am on the Savings and investments page
