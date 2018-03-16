@@ -24,6 +24,17 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     end
   end
 
+  scenario 'Verify no caching on total income question using NON JS BROWSER', js: false do
+    # Arrange
+    given_i_am(:john)
+
+    # Act
+    answer_up_to(:total_income)
+
+    # Assert
+    expect(total_income_page).to have_no_cache
+  end
+
   #
   # Scenario: View Guidance Information
   #              Given I am on the Total Income page

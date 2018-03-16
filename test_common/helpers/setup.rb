@@ -91,6 +91,10 @@ module Calculator
         return if user.income_benefits.nil?
         user.income_benefits.map!(&:to_sym)
       end
+
+      def all_questions
+        QUESTIONS - [:all]
+      end
     end
   end
 end

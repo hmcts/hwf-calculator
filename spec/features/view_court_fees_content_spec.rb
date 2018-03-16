@@ -28,6 +28,18 @@ RSpec.describe 'Court fees content', type: :feature, js: true do
       expect(court_fee_page.fee).to be_present
     end
   end
+
+  scenario 'Verify no caching on court fee question using NON JS BROWSER', js: false do
+    # Arrange
+    given_i_am(:john)
+
+    # Act
+    answer_up_to(:court_fee)
+
+    # Assert
+    expect(court_fee_page).to have_no_cache
+  end
+
   #
   #
   #

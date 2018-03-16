@@ -81,6 +81,16 @@ RSpec.describe 'Landing page content', type: :feature, js: true do
     end
 
   end
+
+  scenario 'Verify caching is not disabled using NON JS BROWSER', js: false do
+    # Act
+    load_start_page
+
+    # Assert
+    expect(start_page).to have_cache
+  end
+
+
   #
   # Heading (Revised)
   #
