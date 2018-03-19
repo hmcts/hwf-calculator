@@ -9,7 +9,7 @@
         label.block-label
           .form-control-money.gbp
             input.form-control.currency type='text' value='£' disabled=true
-            = f.text_field :fee, class: 'form-control money gbp', 'aria-label': t('calculation.field_labels.fee')
+            = f.text_field :fee, class: 'form-control money gbp', 'aria-label': t('calculation.field_labels.fee'), autocomplete: 'off'
         details.question_help data-behavior="question_help"
           summary data-behavior="toggle" = t('calculation.guidance.fee.summary')
 
