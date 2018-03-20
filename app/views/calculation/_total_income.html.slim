@@ -7,10 +7,9 @@
           h2.heading-medium = t('calculation.field_labels.total_income')
         span.form-hint = t('calculation.hints.total_income')
         = gds_error_messages(model: f.object, method: :total_income)
-        label.block-label
-          .form-control-money.gbp
-            input.form-control.currency type='text' value='£' disabled=true
-            = f.text_field :total_income, class: 'form-control money gbp'
+        .form-control-money.gbp
+          input.form-control.currency type='text' value='£' disabled=true aria-label='Pound'
+          = f.text_field :total_income, class: 'form-control money gbp', autocomplete: :off, 'aria-label': t('calculation.field_labels.total_income')
         details.question_help data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.total_income.summary')
 
