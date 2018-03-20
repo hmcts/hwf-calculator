@@ -90,7 +90,6 @@ RSpec.describe 'Landing page content', type: :feature, js: true do
     expect(start_page).to have_cache
   end
 
-
   #
   # Heading (Revised)
   #
