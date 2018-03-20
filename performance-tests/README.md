@@ -6,17 +6,17 @@ Dependencies
 ### Running Gatling tests locally
 
 1. Start docker daemon 
-2. Run below to build your local docker container from where dockerfile exists.  If 'hwfgatling' image exists in your local you can skip this step
+2. Run below to build your local docker container from where dockerfile exists.  If 'hwfcalculatorgatling' image exists in your local you can skip this step
 
     ```
-    > docker build -t hwfgatling:local  .
+    > docker build -t hwfcalculatorgatling:local  .
 
     ```
 
 
 3. Run command below locally to run gatling scripts against docker images
    ```
-   > docker run --rm -it -v `pwd`/src/test/resources:/opt/gatling/conf -v `pwd`/src/test/scala/simulations:/opt/gatling/user-files/simulations -v `pwd`/results:/opt/gatling/results -v `pwd`/data:/opt/gatling/data hwfgatling:local -s simulations.HelpWithFeesPerformance
+   > docker run --rm -it -v `pwd`/src/test/resources:/opt/gatling/conf -v `pwd`/src/test/scala/simulations:/opt/gatling/user-files/simulations -v `pwd`/results:/opt/gatling/results -v `pwd`/data:/opt/gatling/data hwfcalculatorgatling:local -s simulations.HwFCalculatorPerformance
    ```
 
 Note: if you are on os x you will need to include the following in the above command `--add-host localhost:<IP>`
@@ -36,6 +36,6 @@ Note: if you are on os x you will need to include the following in the above com
 
       or for single simulation execution
 
-      > mvn gatling:execute -Dgatling.simulationClass=HelpWithFeesPerformance
+      > mvn gatling:execute -Dgatling.simulationClass=HwFCalculatorPerformance
 
     ```
