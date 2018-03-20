@@ -243,19 +243,20 @@ en:
       total_income:
         summary: "What to include as income"
         detail:
-          summary: "Write down how much money you get every month before any tax or National Insurance payments have been taken off. What to include as income:"
+          summary: "Write down how much money you get every month before any tax or National Insurance payments have been taken off."
           text: |
             wages
             some benefits
             pensions (state, work or private without guarantee credit)
             rent from anyone living with you and other properties that you own
             payments from relatives
-            maintenance payments, eg from an ex-spouse
+            maintenance payments, e.g. from an ex-spouse
             income from selling goods publicly or privately, including over the internet
             student maintenance loans, grants or bursaries (except for tuition fee loans)
           footer: If you or your partner's income varies from month to month, work out an average monthly income based on the last 3 months. See %{include_exclude_link}
           include_exclude:
             text: what to include and exclude as income
+          what_to_include: "What to include as income:"
       income_benefits:
         summary: "How benefit affects your claim"
         detail:
@@ -288,10 +289,8 @@ en:
       outside_uk:
         heading: "If you live outside the UK"
         text: |
-          Convert your monthly income into pounds sterling (GBP) using the current
-          exchange rate.
-          Our staff will allow for small changes in the exchange rate
-          from when you complete your application to the date it is assessed
+          Convert your monthly income into pounds sterling (GBP) using the current exchange rate.
+          Our staff will allow for small changes in the exchange rate from when you complete your application to the date it is assessed
       what_to_exclude:
         header: What to exclude from income
         text: |

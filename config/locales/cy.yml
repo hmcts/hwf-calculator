@@ -242,7 +242,7 @@ cy:
       total_income:
         summary: "Beth i’w gynnwys fel incwm"
         detail:
-          summary: "Gwnewch nodyn o faint o arian ydych chi’n ei gael bob mis cyn i unrhyw daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd. Beth i’w gynnwys fel incwm:"
+          summary: "Gwnewch nodyn o faint o arian ydych chi’n ei gael bob mis cyn i unrhyw daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd."
           text: |
             cyflogau
             rhai budd-daliadau
@@ -255,6 +255,7 @@ cy:
           footer: Os yw eich incwm chi neu incwm eich partner yn amrywio o fis i fis, cyfrifwch eich incwm misol cyfartalog yn seiliedig ar y 3 mis diwethaf. Gweler %{include_exclude_link}
           include_exclude:
             text: beth i’w gynnwys a’i hepgor fel incwm
+          what_to_include: "Beth i’w gynnwys fel incwm:"
       income_benefits:
         summary: "Sut mae budd-dal yn effeithio ar eich hawliad"
         detail:

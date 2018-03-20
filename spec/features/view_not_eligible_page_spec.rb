@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'View not eligible page' do
+RSpec.describe 'View not eligible page', type: :feature, js: true do
   scenario 'Verify no caching on not eligible page using NON JS BROWSER', js: false do
     # Arrange
     given_i_am(:joseph)

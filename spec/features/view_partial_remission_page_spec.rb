@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'View partial remission page' do
+RSpec.describe 'View partial remission page', type: :feature, js: true do
   scenario 'Verify no caching on partial remission page using NON JS BROWSER', js: false do
     # Arrange
     given_i_am(:oliver)

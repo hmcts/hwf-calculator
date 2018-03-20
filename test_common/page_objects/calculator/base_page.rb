@@ -93,6 +93,10 @@ module Calculator
         raise "Your test must use the rack adapter for the has_no_cache? method to work.  Please isolate your header test and set js: false on it"
       end
 
+      def delete_all_cookies
+        page.driver.browser.manage.delete_all_cookies
+      end
+
       private
 
       def has_no_cache_pragma_header?

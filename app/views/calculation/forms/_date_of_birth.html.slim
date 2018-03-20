@@ -1,16 +1,16 @@
 - has_partner_dob = current_calculation.inputs[:marital_status] == 'sharing_income'
 tr class=('not-group-footer' if has_partner_dob) data-behavior="calculator_previous_question"
-  th scope="row" data-behavior="question"
+  td data-behavior="question"
     = t("calculation.previous_questions.date_of_birth.label")
-  th data-behavior="answer"
+  td data-behavior="answer"
     = inputs[:date_of_birth].strftime('%d/%m/%Y')
-  th data-behavior="action"
+  td data-behavior="action"
     - unless disabled
       a href=(edit_calculation_url(form: form_type) unless disabled)
         = t('calculation.previous_questions.change')
 - if has_partner_dob
   tr data-behavior="calculator_previous_question"
-    th scope="row" data-behavior="question"
+    td data-behavior="question"
       = t("calculation.previous_questions.partner_date_of_birth.label")
     td data-behavior="answer"
       = inputs[:partner_date_of_birth].strftime('%d/%m/%Y')
