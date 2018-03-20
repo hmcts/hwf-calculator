@@ -6,7 +6,7 @@ class CalculationController < ApplicationController
   helper_method :form
   before_action :ensure_calculation_initialized, only: :update
   before_action :start_again, unless: :calculation_state_valid?, except: :home
-  after_action :disable_cache, except: :home
+  after_action :disable_cache
 
   def home
     repo.delete_all
