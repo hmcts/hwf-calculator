@@ -1,24 +1,20 @@
-details[open] {
-  :not(summary) {
-    display: block !important;
+details.details-polyfill[open] {
+  & > :not(summary) {
+    display: inherit !important;
   }
-  &.details-polyfill {
-    summary {
-      &:before {
-        content: "\25BC"; display: inline-block; font-size: .8em; width: 1.5em;
-      }
+  summary {
+    &:before {
+      content: "\25BC"; display: inline-block; font-size: .8em; width: 1.5em;
     }
   }
 }
-details:not([open]) {
-  :not(summary) {
+details.details-polyfill:not([open]) {
+  & > :not(summary) {
     display: none !important;
   }
-  &.details-polyfill {
-    summary {
-      &:before {
-        content: "\25BA"; display: inline-block; font-size: .8em; width: 1.5em;
-      }
+  summary {
+    &:before {
+      content: "\25BA"; display: inline-block; font-size: .8em; width: 1.5em;
     }
   }
 }
