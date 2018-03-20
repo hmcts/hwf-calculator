@@ -26,6 +26,17 @@ RSpec.describe 'View date of birth content', type: :feature, js: true do
     end
   end
 
+  scenario 'Verify no caching on date of birth question using NON JS BROWSER', js: false do
+    # Arrange
+    given_i_am(:john)
+
+    # Act
+    answer_up_to(:date_of_birth)
+
+    # Assert
+    expect(date_of_birth_page).to have_no_cache
+  end
+
   scenario 'View date of birth Heading, Question and Hint text for married couple' do
     # Arrange
     given_i_am(:alli)

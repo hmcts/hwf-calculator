@@ -59,6 +59,18 @@ RSpec.describe 'Partner status content', type: :feature, js: true do
       expect(marital_status_page.marital_status).to be_present
     end
   end
+
+  scenario 'Verify no caching on partner status question using NON JS BROWSER', js: false do
+    # Arrange
+    given_i_am(:john)
+
+    # Act
+    answer_up_to(:marital_status)
+
+    # Assert
+    expect(marital_status_page).to have_no_cache
+  end
+
   #
   #
   #

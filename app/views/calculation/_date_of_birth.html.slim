@@ -8,17 +8,14 @@
         = gds_error_messages(model: f.object, method: :date_of_birth)
         .form-date
           .form-group
-            label.block-label
-              = f.label :'date_of_birth[day]', t('calculation.field_labels.date_of_birth_day')
-              = f.text_field :'date_of_birth[day]', value: f.object.date_of_birth.try(:day), class: 'form-control'
+            = f.label :'date_of_birth[day]', t('calculation.field_labels.date_of_birth_day')
+            = f.text_field :'date_of_birth[day]', value: f.object.date_of_birth.try(:day), class: 'form-control', autocomplete: :off
           .form-group
-            label.block-label
-              = f.label :'date_of_birth[month]', t('calculation.field_labels.date_of_birth_month')
-              = f.text_field :'date_of_birth[month]', value: f.object.date_of_birth.try(:month), class: 'form-control'
+            = f.label :'date_of_birth[month]', t('calculation.field_labels.date_of_birth_month')
+            = f.text_field :'date_of_birth[month]', value: f.object.date_of_birth.try(:month), class: 'form-control', autocomplete: :off
           .form-group
-            label.block-label
-              = f.label :'date_of_birth[year]', t('calculation.field_labels.date_of_birth_year')
-              = f.text_field :'date_of_birth[year]', value: f.object.date_of_birth.try(:year), class: 'form-control'
+            = f.label :'date_of_birth[year]', t('calculation.field_labels.date_of_birth_year')
+            = f.text_field :'date_of_birth[year]', value: f.object.date_of_birth.try(:year), class: 'form-control', autocomplete: :off
     - if current_calculation.inputs[:marital_status] == 'sharing_income'
       .form-group class=('form-group-error' if form.errors.any?)
         fieldset.inline
@@ -29,17 +26,14 @@
             span.error-message = form.errors[:partner_date_of_birth].join(', ')
           .form-date
             .form-group
-              label.block-label
-                = f.label :'partner_date_of_birth[day]', t('calculation.field_labels.date_of_birth_day')
-                = f.text_field :'partner_date_of_birth[day]', value: f.object.partner_date_of_birth.try(:day), class: 'form-control'
+              = f.label :'partner_date_of_birth[day]', t('calculation.field_labels.date_of_birth_day')
+              = f.text_field :'partner_date_of_birth[day]', value: f.object.partner_date_of_birth.try(:day), class: 'form-control', autocomplete: :off
             .form-group
-              label.block-label
-                = f.label :'partner_date_of_birth[month]', t('calculation.field_labels.date_of_birth_month')
-                = f.text_field :'partner_date_of_birth[month]', value: f.object.partner_date_of_birth.try(:month), class: 'form-control'
+              = f.label :'partner_date_of_birth[month]', t('calculation.field_labels.date_of_birth_month')
+              = f.text_field :'partner_date_of_birth[month]', value: f.object.partner_date_of_birth.try(:month), class: 'form-control', autocomplete: :off
             .form-group
-              label.block-label
-                = f.label :'partner_date_of_birth[year]', t('calculation.field_labels.date_of_birth_year')
-                = f.text_field :'partner_date_of_birth[year]', value: f.object.partner_date_of_birth.try(:year), class: 'form-control'
+              = f.label :'partner_date_of_birth[year]', t('calculation.field_labels.date_of_birth_year')
+              = f.text_field :'partner_date_of_birth[year]', value: f.object.partner_date_of_birth.try(:year), class: 'form-control', autocomplete: :off
     .form-group
       = f.submit t('calculation.common.next_button'), class: 'button'
   = render partial: 'previous_questions', locals: { current_calculation: current_calculation, disabled: false, exclude: [form.type] } unless current_calculation.inputs.empty?

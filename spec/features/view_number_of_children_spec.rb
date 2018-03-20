@@ -43,6 +43,18 @@ RSpec.describe 'View number of children question content', type: :feature, js: t
       expect(number_of_children_page).to have_number_of_children_married
     end
   end
+
+  scenario 'Verify no caching on number of children question using NON JS BROWSER', js: false do
+    # Arrange
+    given_i_am(:john)
+
+    # Act
+    answer_up_to(:number_of_children)
+
+    # Assert
+    expect(number_of_children_page).to have_no_cache
+  end
+
   #
   # Scenario: View Guidance Information
   #              Given I am on the Number of Children page
