@@ -7,10 +7,9 @@
           h2.heading-medium = t("calculation.field_labels.disposable_capital.#{current_calculation.inputs[:marital_status]}")
         span.form-hint = t("calculation.hints.disposable_capital.#{current_calculation.inputs[:marital_status]}")
         = gds_error_messages(model: f.object, method: :disposable_capital)
-        label.block-label
-          .form-control-money.gbp
-            input.form-control.currency type='text' value='£' disabled=true
-            = f.text_field :disposable_capital, class: 'form-control money gbp'
+        .form-control-money.gbp
+          input.form-control.currency type='text' value='£' disabled=true aria-label='£'
+          = f.text_field :disposable_capital, class: 'form-control money gbp', 'aria-label': t("calculation.field_labels.disposable_capital.#{current_calculation.inputs[:marital_status]}"), autocomplete: :off
         details.question_help data-behavior="question_help"
           summary data-behavior="toggle"= t('calculation.guidance.disposable_capital.summary')
 
