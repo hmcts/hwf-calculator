@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  security-tests:
+    build:
+      context: ../..
+      dockerfile: Dockerfile.test
+    environment:
+      ZAP_HOST: http://zap:8095
+      CAPYBARA_SERVER_HOST: security-tests
+    command: ./run_security_tests.sh
+    links:
+      - zap
+    ports:
+      - 3000:3000
+
+  zap:
+    image: owasp/zap2docker-stable
+    command: ./zap.sh -daemon -host 0.0.0.0 -port 8095 -config api.disablekey=true -config 'api.addrs.addr.name=.*' -config 'api.addrs.addr.regex=true'
