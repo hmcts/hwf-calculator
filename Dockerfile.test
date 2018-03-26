@@ -1,0 +1,20 @@
+FROM ruby:2.3.3
+
+# Setup Google Chrome repository
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+
+RUN apt-get -yqq update && \
+    apt-get -yqq install nodejs google-chrome-stable && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
+RUN useradd -m -d /usr/src/app/ calculator
+WORKDIR /usr/src/app/
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+EXPOSE 3000
+
+COPY . .
