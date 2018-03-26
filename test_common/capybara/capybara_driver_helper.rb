@@ -36,7 +36,16 @@ Capybara.register_driver :safari do |app|
   Capybara::Selenium::Driver.new(app, browser: :safari)
 end
 
+Capybara.register_driver :zap do |app|
+  zap_url = ENV.fetch('ZAP_HOST', 'http://0.0.0.0:8095')
+
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--no-sandbox')
+  options.add_argument('--headless')
+  options.add_argument("--proxy-server=#{zap_url}")
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
 Capybara.always_include_port = true
-Capybara.app_host = ENV.fetch('CAPYBARA_APP_HOST', "http://#{ENV.fetch('HOSTNAME', 'localhost')}")
-Capybara.server_host = ENV.fetch('CAPYBARA_SERVER_HOST', ENV.fetch('HOSTNAME', 'localhost'))
-Capybara.server_port = ENV.fetch('CAPYBARA_SERVER_PORT') if ENV['CAPYBARA_SERVER_PORT']
+Capybara.server_host = ENV.fetch('CAPYBARA_SERVER_HOST', ENV.fetch('HOSTNAME', '0.0.0.0'))
+Capybara.server_port = ENV.fetch('CAPYBARA_SERVER_PORT', '3000')
