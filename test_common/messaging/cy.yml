@@ -17,14 +17,14 @@ cy:
     disposable_capital:
       single:
         positive:
-          heading: "Mae’n bosibl y gallwch gael help gyda ffioedd"
+          heading: "Mae’n bosibl y gallwch gael help i dalu ffioedd"
           detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
         negative:
           heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
           detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
       sharing_income:
         positive:
-          heading: "Mae’n bosibl y gallwch gael help gyda ffioedd"
+          heading: "Mae’n bosibl y gallwch gael help i dalu ffioedd"
           detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
         negative:
           heading: "Rydych yn annhebygol o gael help gyda’ch ffioedd"
@@ -260,7 +260,7 @@ cy:
           guidance:
             label: 'Sut mae budd-dal yn effeithio ar eich hawliad'
             text: |
-              Rydych yn debygol o gael help gyda ffioedd os nad oes gennych gynilion (neu os oes gennych ychydig o gynilion) ac rydych (neu roeddech pan wnaethoch dalu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn.
+              Rydych yn debygol o gael help i dalu ffioedd os nad oes gennych gynilion (neu os oes gennych ychydig o gynilion) ac rydych (neu roeddech pan wnaethoch dalu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn.
               Pan fyddwch yn gwneud cais, byddwn yn cysylltu â’r Adran Gwaith a Phensiynau i gadarnhau eich bod (neu yr oeddech adeg talu’r ffi) yn cael unrhyw un o’r budd-daliadau hyn. Mae’n bosibl y byddwn hefyd yn cysylltu â chi os byddwn angen rhagor o dystiolaeth            
           errors:
             nothing_selected: "*Welsh Select whether you're receiving one of the benefits listed"
