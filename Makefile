@@ -20,5 +20,5 @@ zap-passive-scanning-report:
 	# Generate the HTML report
 	docker exec $(call container-id-for,calculator,zap) zap-cli -p 8095 report -f html -o /tmp/zap-passive-scanning-results.html
 	# Get the report
-	docker cp $(call container-id-for,calculator,zap):/tmp/zap-passive-scanning-results.html .
-	@echo "Open zap-passive-scanning-results.html in your browser"
+	docker cp $(call container-id-for,calculator,zap):/tmp/zap-passive-scanning-results.html /tmp
+	@echo "Open /tmp/zap-passive-scanning-results.html in your browser"
