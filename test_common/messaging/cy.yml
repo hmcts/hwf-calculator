@@ -85,6 +85,8 @@ cy:
           errors:
             non_numeric: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
             blank: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
+            too_high: "*Welsh must be less than 100"
+            too_low: "*Welsh must be greater than or equal to 0"
           guidance:
             label: 'Plant allai effeithio ar eich hawliad'
             text: |

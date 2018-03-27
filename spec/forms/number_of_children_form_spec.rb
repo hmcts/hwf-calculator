@@ -79,6 +79,17 @@ RSpec.describe NumberOfChildrenForm, type: :model do
       # Assert
       expect(form.errors).to include :number_of_children
     end
+
+    it 'disallows 100' do
+      # Arrange
+      form.number_of_children = '100'
+
+      # Act
+      form.valid?
+
+      # Assert
+      expect(form.errors.details).to include number_of_children: array_including(hash_including(error: :less_than, count: 100))
+    end
   end
 
   describe 'new_ignoring_extras' do

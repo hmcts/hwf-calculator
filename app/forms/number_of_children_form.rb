@@ -4,7 +4,7 @@ class NumberOfChildrenForm < BaseForm
   #   @return [Integer] The number of children
   attribute :number_of_children, :strict_integer
 
-  validates :number_of_children, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :number_of_children, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 100 }
 
   # The type of the form
   #

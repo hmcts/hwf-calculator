@@ -50,6 +50,32 @@ RSpec.describe 'Validate court fee test', type: :feature, js: true do
     # Assert
     expect(number_of_children_page.number_of_children).to have_error_non_numeric
   end
+
+  scenario 'Enter invalid value (too high) in the Number of children field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:number_of_children)
+
+    # Act
+    number_of_children_page.number_of_children.set('100')
+    number_of_children_page.next
+
+    # Assert
+    expect(number_of_children_page.number_of_children).to have_error_too_high
+  end
+
+  scenario 'Enter invalid value (negative) in the Number of children field' do
+    # Arrange
+    given_i_am(:alli)
+    answer_up_to(:number_of_children)
+
+    # Act
+    number_of_children_page.number_of_children.set('-1')
+    number_of_children_page.next
+
+    # Assert
+    expect(number_of_children_page.number_of_children).to have_error_too_low
+  end
   #
   # Scenario: Number of children field empty - Blank Field (no entry)
   #         Given I am OLIVER
