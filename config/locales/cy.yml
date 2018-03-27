@@ -48,6 +48,8 @@ cy:
               not_a_number: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
               not_an_integer: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
               blank: "Rhaid ichi nodi’r nifer o blant sy’n ddibynnol arnoch chi’n ariannol"
+              less_than: "*Welsh must be less than %{count}"
+              greater_than_or_equal_to: "*Welsh must be greater than or equal to %{count}"
   calculation:
     home:
       start: "Dechrau Nawr"

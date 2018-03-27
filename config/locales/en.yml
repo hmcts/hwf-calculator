@@ -48,6 +48,7 @@ en:
               not_a_number: You must enter the number of financially dependent children
               not_an_integer: You must enter the number of financially dependent children
               blank: You must enter the number of financially dependent children
+              less_than:
   calculation:
     home:
       start: "Start now"

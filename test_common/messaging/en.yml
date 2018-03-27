@@ -85,6 +85,8 @@ en:
           errors:
             non_numeric: You must enter the number of financially dependent children
             blank: You must enter the number of financially dependent children
+            too_high: must be less than 100
+            too_low: must be greater than or equal to 0
           guidance:
             label: 'Children who might affect your claim'
             text: |
