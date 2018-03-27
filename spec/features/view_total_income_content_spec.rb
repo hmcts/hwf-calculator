@@ -9,7 +9,7 @@ RSpec.describe 'View total income content', type: :feature, js: true do
   #               Then Heading should read "Find out if you could get help with fees"
   #               And question reads "How much total income do you receive each month?"
   #               And hint text reads "Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)"
-  scenario 'View Total Income Heading and Question' do
+  scenario 'View Total Income Heading and Question (single)' do
     # Arrange
     given_i_am(:john)
 
@@ -19,8 +19,23 @@ RSpec.describe 'View total income content', type: :feature, js: true do
     # Assert
     aggregate_failures 'validating content of header and question' do
       expect(total_income_page.heading).to be_present
-      expect(total_income_page.total_income).to be_present
-      expect(total_income_page.total_income).to have_hint
+      expect(total_income_page.total_income_single).to be_present
+      expect(total_income_page.total_income_single).to have_hint
+    end
+  end
+
+  scenario 'View Total Income Heading and Question (married)' do
+    # Arrange
+    given_i_am(:alli)
+
+    # Act
+    answer_up_to(:total_income)
+
+    # Assert
+    aggregate_failures 'validating content of header and question' do
+      expect(total_income_page.heading).to be_present
+      expect(total_income_page.total_income_married).to be_present
+      expect(total_income_page.total_income_married).to have_hint
     end
   end
 
