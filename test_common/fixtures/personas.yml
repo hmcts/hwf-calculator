@@ -257,7 +257,7 @@ tiana:
   monthly_gross_income: 5246
 alan:
   marital_status: single
-  age: 14
+  age: 15
   disposable_capital: 0
   fee: 4000
   number_of_children: 0
@@ -285,7 +285,7 @@ claude:
   monthly_gross_income: 0
 veronica:
   marital_status: sharing_income
-  age: 15
+  age: 16
   partner_age: 25
   disposable_capital: 0
   fee: 4000
@@ -305,7 +305,7 @@ sue:
   monthly_gross_income: 0
 ola:
   marital_status: sharing_income
-  age: 14
+  age: 15
   partner_age: 40
   disposable_capital: 0
   fee: 4000

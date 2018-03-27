@@ -52,14 +52,14 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     expect(date_of_birth_page.date_of_birth).to have_error_non_numeric
   end
   #
-  # Scenario: Single citizen who is under 15 years old enter their date of birth (Revised)
+  # Scenario: Single citizen who is under 16 years old enter their date of birth (Revised)
   #               Given I am ALAN
   #               And I am on the date of birth page
   #               And I fill in my date of birth
   #               When I click on the Next step button
   #               Then I should see an error message
   #
-  #  Error Message: You must be over 15 to apply for help with fees (Revised)
+  #  Error Message: You must be over 16 to apply for help with fees (Revised)
   scenario 'Single citizen who is under 16 years old enter their date of birth' do
     # Arrange
     given_i_am(:alan)
@@ -215,14 +215,14 @@ RSpec.describe 'Validate date of birth Test', type: :feature, js: true do
     # Assert
     expect(next_page).to be_displayed
   end
-  # *Scenario:* Citizen is over 15 and partner is 25
+  # *Scenario:* Citizen is over 16 and partner is 25
   #                Given I am VERONICA
   #                And I am on the date of birth page
   #                And I fill in my date of birth
   #                And I fill in my partner date of birth
   #                When I click on the Next step button
   #                Then I should see  the next page
-  scenario 'Citizen is over 15 and partner is 25' do
+  scenario 'Citizen is over 16 and partner is 25' do
     # Arrange
     given_i_am(:veronica)
     answer_up_to(:date_of_birth)

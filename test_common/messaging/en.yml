@@ -101,7 +101,7 @@ en:
           label: 'What is your date of birth?'
           errors:
             non_numeric: Enter the date in this format DD/MM/YYYY
-            under_age: You must be over 15 to apply for help with fees
+            under_age: You must be over 16 to apply for help with fees
             too_old: You cannot be over 120 years old
           components:
             day:
@@ -114,7 +114,7 @@ en:
           label: "What is your partner's date of birth?"
           errors:
             non_numeric: Enter the date in this format DD/MM/YYYY
-            under_age: Your partner must be over 15 to apply for help with fees
+            under_age: Your partner must be over 16 to apply for help with fees
             too_old: You cannot be over 120 years old
           hint:
             single: "If you are over 61 years of age (and don't have much in savings), you may be able to get help with your fee"
