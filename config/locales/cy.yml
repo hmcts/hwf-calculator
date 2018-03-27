@@ -117,7 +117,9 @@ cy:
       benefits_received:
         single: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi’n eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
         sharing_income: "Dewiswch yr holl fudd-daliadau incwm yr ydych chi a’ch partner yn eu cael ar hyn o bryd (neu yr oeddech yn eu cael adeg talu’r ffi)"
-      total_income: "Faint o incwm ydych chi’n ei gael bob mis?"
+      total_income:
+        single: "Faint o incwm ydych chi’n ei gael bob mis?"
+        sharing_income: "*Welsh How much total income do you and your partner receive each month?"
       partner_date_of_birth: "Beth yw dyddiad geni eich partner?"
       number_of_children:
         single: "Faint o blant sy’n byw gyda chi neu yr ydych chi’n gyfrifol am eu cefnogi’n ariannol?"
