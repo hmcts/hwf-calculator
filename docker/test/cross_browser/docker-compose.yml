@@ -1,0 +1,46 @@
+version: '3'
+services:
+  server:
+    image: hwf_calculator_dev_server
+    build:
+      context: ../../..
+    volumes:
+      - server_gem_cache:/usr/local/bundle
+    environment:
+      RAILS_ENV: production
+      UNICORN_PORT: 3000
+      SECRET_KEY_BASE: dheydhgsjryf763723hfnhqwgsgcdtye5241ghdasdfkjghj2138f8cje
+      RAILS_SERVE_STATIC_FILES: 'true'
+    expose:
+      - 3000
+  test:
+    build:
+      context: ./
+    volumes:
+      - ../../../:/app
+      - test_gem_cache:/usr/local/bundle
+    environment:
+      DRIVER: saucelabs
+      SAUCE_USERNAME:
+      SAUCE_ACCESS_KEY:
+      CAPYBARA_APP_HOST: "http://server:3000"
+      SELENIUM_URL: 'http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@tunnel:4445/wd/hub'
+    links:
+      - tunnel
+      - server
+  tunnel:
+    image: henrrich/docker-sauce-connect:latest
+    expose:
+      - 4445
+    ports:
+      - 4445
+    environment:
+      SAUCE_USERNAME:
+      SAUCE_ACCESS_KEY:
+    entrypoint: "/usr/local/sauce-connect/bin/sc"
+    command: -i calculator_tunnel --verbose
+    links:
+      - server
+volumes:
+  server_gem_cache:
+  test_gem_cache:

@@ -34,3 +34,6 @@ Capybara::Screenshot.register_driver(:firefoxdriver) do |driver, path|
     driver.browser.save_screenshot(path)
   end
 end
+Capybara::Screenshot.register_driver(:saucelabs) do |driver, path|
+  driver.browser.save_screenshot(path)
+end

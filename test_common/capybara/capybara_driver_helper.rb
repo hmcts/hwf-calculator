@@ -36,6 +36,14 @@ Capybara.register_driver :safari do |app|
   Capybara::Selenium::Driver.new(app, browser: :safari)
 end
 
+Capybara.register_driver :saucelabs do |app|
+  sauce_endpoint = "http://#{ENV.fetch('SAUCE_USERNAME')}:#{ENV.fetch('SAUCE_ACCESS_KEY')}@ondemand.saucelabs.com:80/wd/hub"
+  caps = { :platform => "Mac OS X 10.9", :browserName => "Chrome", :version => "31", name: "Saucelabs Browser Test" }
+  Capybara::Selenium::Driver.new(app,
+    :browser => :remote, :url => ENV.fetch('SELENIUM_URL', sauce_endpoint),
+    :desired_capabilities => caps)
+end
+
 Capybara.always_include_port = true
 Capybara.app_host = ENV.fetch('CAPYBARA_APP_HOST', "http://#{ENV.fetch('HOSTNAME', 'localhost')}")
 Capybara.server_host = ENV.fetch('CAPYBARA_SERVER_HOST', ENV.fetch('HOSTNAME', 'localhost'))
