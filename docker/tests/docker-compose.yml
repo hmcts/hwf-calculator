@@ -3,11 +3,11 @@ services:
   security-tests:
     build:
       context: ../..
-      dockerfile: Dockerfile.test
+      dockerfile: docker/tests/Dockerfile.test
     environment:
       ZAP_HOST: http://zap:8095
       CAPYBARA_SERVER_HOST: security-tests
-    command: ./run_security_tests.sh
+    command: ./docker/tests/run_security_tests.sh
     links:
       - zap
     ports:

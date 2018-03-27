@@ -13,7 +13,8 @@ RUN useradd -m -d /usr/src/app/ calculator
 WORKDIR /usr/src/app/
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
+RUN gem install bundler && \
+    bundle install
 
 EXPOSE 3000
 
