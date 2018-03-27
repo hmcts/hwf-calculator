@@ -14,7 +14,7 @@ class DateOfBirthForm < BaseForm
     presence: true,
     strict_date: true,
     age: {
-      greater_than_or_equal_to: 15,
+      greater_than_or_equal_to: 16,
       less_than_or_equal_to: 120,
       allow_nil: true,
       allow_blank: true,
@@ -24,7 +24,7 @@ class DateOfBirthForm < BaseForm
     presence: true,
     strict_date: true,
     age: {
-      greater_than_or_equal_to: 15,
+      greater_than_or_equal_to: 16,
       less_than_or_equal_to: 120,
       allow_nil: true,
       allow_blank: true,
