@@ -134,7 +134,9 @@ cy:
       heading: 'Canfod a allech chi gael help i dalu ffioedd'
       questions:
         total_income:
-          label: 'Faint o incwm ydych chi’n ei gael bob mis?'
+          label:
+            single: 'Faint o incwm ydych chi’n ei gael bob mis?'
+            sharing_income: '*Welsh How much total income do you and your partner receive each month?'
           errors:
             non_numeric: "Rhowch swm dilys"
           hint: "Nodwch faint o incwm gros ydych chi’n ei gael bob mis (cyn i daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd)"

@@ -134,7 +134,9 @@ en:
       heading: 'Find out if you could get help with fees'
       questions:
         total_income:
-          label: 'How much total income do you receive each month?'
+          label:
+            single: 'How much total income do you receive each month?'
+            sharing_income: 'How much total income do you and your partner receive each month?'
           errors:
             non_numeric: Please enter a valid value
           hint: Enter how much gross income you get each month (before tax or National Insurance payments have been taken off)
