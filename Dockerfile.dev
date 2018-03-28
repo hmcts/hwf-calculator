@@ -1,0 +1,16 @@
+FROM ruby:2.3.3
+
+RUN apt-get update && \
+    apt-get install -y nodejs wget bzip2 libfontconfig build-essential chromedriver && \
+    apt-get clean && \
+    gem update bundler
+
+RUN useradd -m -d /usr/src/app/ calculator
+WORKDIR /usr/src/app/
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+EXPOSE 3000
+
+COPY . .
