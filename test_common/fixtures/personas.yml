@@ -323,6 +323,16 @@ william:
     - jobseekers_allowance
     - income_support
   monthly_gross_income: 0
+george:
+  marital_status: sharing_income
+  age: 60
+  partner_age: 80
+  disposable_capital: 15999
+  fee: 1000
+  number_of_children: 0
+  income_benefits:
+    - none
+  monthly_gross_income: 0
 
 
 

@@ -465,6 +465,23 @@ RSpec.describe 'Change previous answers test', type: :feature, js: true do
     end
   end
 
+  scenario 'Citizen who is under 61 but partner is over 61 changes their marital status from married to single from the total income page and ends up failing the disposable capital test' do
+    # Arrange - George is married and 60 but his partner is 80 so we can use him to get us to total income page
+    # then we will go back to marital status page
+    given_i_am(:george)
+    answer_up_to(:total_income)
+    total_income_page.previous_answers.marital_status.navigate_to
+
+    # Act
+    marital_status_page.marital_status.set(:single)
+    marital_status_page.next
+    disposable_capital_page.next
+
+    # Assert
+
+    expect(not_eligible_page).to be_displayed
+  end
+
   scenario 'Citizen changes their marital status from married to single from the total income page and ends up at number of children page after confirming disp capital and benefits' do
     # Arrange - Alli is married so we can use him to get us to total income page
     # then we will go back to marital status page

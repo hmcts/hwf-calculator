@@ -88,7 +88,7 @@ class CalculationService
   end
 
   def perform_calculation_using(calculator)
-    result = calculator.call(calculation.inputs)
+    result = calculator.call(calculation.inputs.valid_only)
     post_process_failure result, calculator
     post_process_undecided result, calculator
     post_process_success result, calculator

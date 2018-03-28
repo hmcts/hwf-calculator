@@ -54,7 +54,9 @@ class DisposableCapitalCalculatorService < BaseCalculatorService
   end
 
   def earliest_date_of_birth
-    [inputs[:date_of_birth], inputs[:partner_date_of_birth]].compact.min
+    candidates = [inputs[:date_of_birth]]
+    candidates << inputs[:partner_date_of_birth] unless inputs[:marital_status] == 'single'
+    candidates.compact.min
   end
 
   def process_inputs
