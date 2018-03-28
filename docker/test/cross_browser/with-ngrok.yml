@@ -1,0 +1,12 @@
+version: '3'
+services:
+  test:
+    environment:
+      CAPYBARA_USE_NGROK: 'true'
+      SELENIUM_URL:
+    links:
+      - tunnel
+      - server
+  tunnel:
+    entrypoint: "tail"
+    command: -f /dev/null

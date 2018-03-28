@@ -1,4 +1,5 @@
 require 'capybara-screenshot/rspec'
+require_relative 'test_common'
 module Calculator
   module Test
     module FullScreenshot
@@ -36,4 +37,10 @@ Capybara::Screenshot.register_driver(:firefoxdriver) do |driver, path|
 end
 Capybara::Screenshot.register_driver(:saucelabs) do |driver, path|
   driver.browser.save_screenshot(path)
+end
+
+Calculator::Test::Saucelabs.browsers.keys.each do |browser|
+  Capybara::Screenshot.register_driver(browser) do |driver, path|
+    driver.browser.save_screenshot(path)
+  end
 end

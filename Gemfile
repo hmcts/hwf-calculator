@@ -44,6 +44,7 @@ group :development, :test do
   gem 'ruby-debug-ide', '~> 0.6'
   gem 'debase', '~> 0.2'
   gem 'parallel_tests', '~> 2.21'
+  gem 'ngrok-tunnel', '~> 2.1'
 end
 
 group :development do

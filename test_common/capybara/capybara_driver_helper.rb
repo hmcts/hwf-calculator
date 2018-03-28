@@ -1,3 +1,4 @@
+require_relative '../saucelabs/saucelabs_browsers'
 Capybara.configure do |config|
   driver = ENV.fetch('DRIVER', 'chromedriver').to_sym
   config.javascript_driver = driver
@@ -36,9 +37,17 @@ Capybara.register_driver :safari do |app|
   Capybara::Selenium::Driver.new(app, browser: :safari)
 end
 
+Calculator::Test::Saucelabs.browsers.each_pair do |name, caps|
+  sauce_endpoint = "http://#{ENV.fetch('SAUCE_USERNAME')}:#{ENV.fetch('SAUCE_ACCESS_KEY')}@ondemand.saucelabs.com:80/wd/hub"
+  selenium_url = ENV.fetch('SELENIUM_URL', sauce_endpoint)
+  Capybara.register_driver :"sauce_#{name}" do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :remote, :url => selenium_url, :desired_capabilities => caps)
+  end
+end
+
 Capybara.register_driver :saucelabs do |app|
   sauce_endpoint = "http://#{ENV.fetch('SAUCE_USERNAME')}:#{ENV.fetch('SAUCE_ACCESS_KEY')}@ondemand.saucelabs.com:80/wd/hub"
-  caps = { :platform => "Mac OS X 10.9", :browserName => "Chrome", :version => "31", name: "Saucelabs Browser Test" }
+  caps = { :platform => "Mac OS X 10.9", :browserName => "Chrome", :version => "31", name: "Saucelabs Browser Test For HWF Calculator" }
   Capybara::Selenium::Driver.new(app,
     :browser => :remote, :url => ENV.fetch('SELENIUM_URL', sauce_endpoint),
     :desired_capabilities => caps)

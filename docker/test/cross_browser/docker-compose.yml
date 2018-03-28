@@ -38,7 +38,7 @@ services:
       SAUCE_USERNAME:
       SAUCE_ACCESS_KEY:
     entrypoint: "/usr/local/sauce-connect/bin/sc"
-    command: -i calculator_tunnel --verbose
+    command: -i calculator_tunnel -vv
     links:
       - server
 volumes:
