@@ -39,3 +39,18 @@ messaging.translate('key', locale: :en)
 
 ```
 
+## How To Run The Test
+
+### Requirements To Run Tests In Docker Containers
+The Docker and Docker Compose tool are required to run the tests inside docker containers. Please follow the official instructions to install them in your system.
+
+Windows users will also need to install the [GNU Make](http://gnuwin32.sourceforge.net/packages/make.htm) tool.
+
+### How to run the Security Tests
+
+Open your terminal, change directory to the app's root folder and run:
+```
+make security-tests
+```
+
+That will spin up the zap proxy and the app docker containers, run the tests and export the zap report on your local machine.
