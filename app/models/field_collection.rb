@@ -52,6 +52,18 @@ class FieldCollection
     fields[field].confirm if key?(field)
   end
 
+  def valid_only
+    clone.tap do |new_obj|
+      new_obj.fields.reject! { |_, field| field.invalidated }
+    end
+  end
+
+  def clone
+    super.tap do |o|
+      o.fields = o.fields.clone
+    end
+  end
+
   delegate :key?, :keys, :empty?, to: :fields
 
   private
@@ -68,6 +80,8 @@ class FieldCollection
   def value_for(key, value)
     Field.new(key, value)
   end
+
+  protected
 
   attr_accessor :fields
 end

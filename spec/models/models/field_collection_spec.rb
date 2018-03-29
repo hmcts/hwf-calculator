@@ -103,4 +103,19 @@ RSpec.describe FieldCollection, type: :model do
       expect(collection.to_hash).not_to be field_values
     end
   end
+
+  describe '#valid_only' do
+    subject(:collection) { described_class.new(field_values) }
+
+    it 'provides a new instance with only valid inputs' do
+      collection.invalidate_field(:total_income)
+      new_collection = collection.valid_only
+
+      aggregate_failures 'check for new instance and valid inputs' do
+        expect(new_collection).not_to be collection
+        expect(new_collection.key?(:total_income)).to be false
+        expect(collection.key?(:total_income)).to be true
+      end
+    end
+  end
 end

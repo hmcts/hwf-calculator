@@ -80,6 +80,19 @@ RSpec.describe CalculationService do
         end
       end
 
+      it 'calls the calculators with only the non invalidated inputs' do
+        # Act
+        calculation.inputs.invalidate_field(:marital_status)
+        service.call(inputs, calculation, calculators: calculators)
+
+        # Assert
+        aggregate_failures 'validating all 3 calculator inputs' do
+          expect(calculator_1_class).to have_received(:call).with(an_object_having_attributes(to_hash: { disposable_capital: 1000.0 }))
+          expect(calculator_2_class).to have_received(:call).with(an_object_having_attributes(to_hash: { disposable_capital: 1000.0 }))
+          expect(calculator_3_class).to have_received(:call).with(an_object_having_attributes(to_hash: { disposable_capital: 1000.0 }))
+        end
+      end
+
       it 'returns an instance of CalculationService' do
         # Act and Assert
         expect(service.call(inputs, calculation, calculators: calculators)).to be_a described_class
