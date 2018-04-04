@@ -6,13 +6,14 @@ module CalculationFeedbackHelper
     message = calculation.messages.last
     return '' if message.nil?
     marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.messages.decided_by.#{message[:source]}.#{message[:key]}.detail.#{marital_status}",
+    t("calculation.feedback.messages.decided_by.#{message[:source]}.#{message[:key]}.detail.#{marital_status}",
       raise: true,
       total_income: calculation_total_income(calculation),
       fee: calculation_fee(calculation),
       disposable_capital: calculation_disposable_capital(calculation),
       remission: calculation_remission(calculation),
-      contribution: calculation_contribution(calculation)
+      contribution: calculation_contribution(calculation),
+      exceptional_hardship_link: link_to(t('calculation.feedback.common.exceptional_hardship'), help_exceptional_hardship_path(return_to_path: request.fullpath))).html_safe
   end
 
   # Provides the feedback header text for a given calculation.

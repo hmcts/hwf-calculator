@@ -69,6 +69,8 @@ en:
       disclaimer_html: |
        This calculator is for guidance purposes only and is not your Help with Fees application
     feedback:
+      common:
+        exceptional_hardship: 'exceptional hardship'
       messages:
         decided_by:
           disposable_capital:
@@ -80,8 +82,8 @@ en:
             final_negative:
               header: "You are unlikely to get help with your fees"
               detail:
-                single: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-                sharing_income: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                single: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience %{exceptional_hardship_link}"
+                sharing_income: "With a fee of %{fee} and savings of %{disposable_capital}, it is unlikely that you'll be able to get financial help, unless you are likely to experience %{exceptional_hardship_link}"
             likely:
               header: "You may get help with fees"
               detail:
@@ -102,8 +104,8 @@ en:
             final_negative:
               header: "You are unlikely to get help with your fees"
               detail:
-                single: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
-                sharing_income: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience exceptional hardship"
+                single: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience %{exceptional_hardship_link}"
+                sharing_income: "With a fee of %{fee} and combined monthly income of %{total_income}, it is unlikely that you'll be able to get financial help, unless you are likely to experience %{exceptional_hardship_link}"
             final_partial:
               header: "You should be eligible for Help with Fees"
               detail:
@@ -330,6 +332,19 @@ en:
               Universal Credit Advances
               Widowed Parent’s Allowance
       page_header: "Help with total Income Calculation"
+    exceptional_hardship:
+      return_to_caller: Back to calculation
+      page_header: "Help with Exceptional Hardship"
+      what_to_include_header: "Help - Exceptional Hardship Guide"
+      main_section:
+        text: |
+          Where you believe that you are not realistically able to afford to pay your court or tribunal fee, or are facing other exceptional circumstances, you can ask the court or tribunal’s delivery manager to consider reducing or waiving your fee. This is an important safety net which may apply where, for example, you are not eligible under the standard Help with Fees scheme, Help with Fees has been granted only in part, or if your fee is payable in proceedings where the Help with Fees scheme doesn’t apply and you don’t qualify for a remission under other rules (e.g. appeals to the First-tier Immigration and Asylum Tribunal).
+          The delivery manager will generally only grant your request if you are able to demonstrate that you are not realistically able to afford the fee in practice or that there are other circumstances which justify remission of the fee. The circumstances of applicants will be considered on a case by case basis.
+          In considering whether to reduce or waive your fee, the delivery manager will require evidence about your exceptional circumstances, including why you are not able to afford your fee, or why there are other circumstances which justify remission of the fee. You must provide this evidence alongside your application. The type of evidence that you should provide includes (where relevant): notices threatening legal action due to non-payment of bills or housing costs, details of your income, savings, expenses, or any other relevant information to support your request for an exceptional remission.
+          All evidence must be in English or accompanied by a translation into English and where evidence of your finances is presented in a currency other than sterling it must be accompanied by a conversion. Translations and conversions should be from a recognised source (this can include online translation/conversion services).
+          You won’t automatically have your fee reduced or waived because of your status, for example if you’re unemployed, a seasonal or part-time worker, student or prisoner. You will still be asked to provide evidence to support your application.
+          In considering an application for an exceptional fee remission we would expect you to demonstrate that you have taken all reasonable steps to exhaust alternative sources of funding. For example, where you have a sponsor supporting you in an immigration related matter we would expect to see evidence demonstrating that those parties are unable to assist you in paying your fee. In addition, if you have any form of legal expenses insurance we would expect to see evidence as to why that cover would not be able to fund your fee.
+          If the delivery manager does not grant your exceptional fee remission application then you can appeal this decision to the operational manager. The operational manager will then consider any evidence that you have submitted previously and any further information you submit with your appeal. Once the operational manager has made their final decision we will not be able to consider the matter any further
   language_switcher:
     full_html: "This guide is also available %{link_html} (Cymraeg)"
     link_text: "in Welsh"

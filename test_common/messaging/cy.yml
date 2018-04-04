@@ -74,6 +74,8 @@ cy:
         heading: "Rydych yn annhebygol o gael help i dalu ffioedd"
         negative:
           detail: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
+    common:
+      exceptional_hardship: 'caledi eithriadol'
   hwf_pages:
     number_of_children:
       heading: "Mae'n bosibl y gallwch gael help i dalu ffioedd"

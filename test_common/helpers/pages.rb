@@ -36,6 +36,11 @@ module Calculator
         Calculator::Test::TotalIncomePage.new
       end
 
+      # @return [Calculator::Test::ExceptionalHardshipPage] The exceptional hardship page object
+      def exceptional_hardship_page
+        Calculator::Test::ExceptionalHardshipPage.new
+      end
+
       # @return [Calculator::Test::NotEligiblePage] The not eligible page object
       def not_eligible_page
         Calculator::Test::NotEligiblePage.new
