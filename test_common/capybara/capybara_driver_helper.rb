@@ -47,5 +47,6 @@ Capybara.register_driver :zap do |app|
 end
 
 Capybara.always_include_port = true
-Capybara.server_host = ENV.fetch('CAPYBARA_SERVER_HOST', ENV.fetch('HOSTNAME', '0.0.0.0'))
-Capybara.server_port = ENV.fetch('CAPYBARA_SERVER_PORT', '3000')
+Capybara.app_host = ENV.fetch('CAPYBARA_APP_HOST', "http://#{ENV.fetch('HOSTNAME', 'localhost')}")
+Capybara.server_host = ENV.fetch('CAPYBARA_SERVER_HOST', ENV.fetch('HOSTNAME', 'localhost'))
+Capybara.server_port = ENV.fetch('CAPYBARA_SERVER_PORT') if ENV['CAPYBARA_SERVER_PORT']
