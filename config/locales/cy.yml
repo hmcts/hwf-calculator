@@ -63,10 +63,10 @@ cy:
       requirements_header: "Beth fydd arnoch ei angen"
       requirements_html: |
         Bydd arnoch angen gwybodaeth am eich (a’ch partner, os yw’n berthnasol):
-         cyfanswm cynilion, a
-         naill ai rhestr o'r budd-daliadau (neu brawf o rai budd-daliadau penodol adeg talu eich ffi) neu
-         gyfanswm eich incwm misol
-         Bydd arnoch angen swm ffi
+        cyfanswm cynilion
+        naill ai rhestr o'r budd-daliadau (neu brawf o rai budd-daliadau penodol adeg talu eich ffi) neu
+        gyfanswm eich incwm misol
+        Bydd arnoch angen swm ffi
       disclaimer_html: |
        Canllaw yn unig yw’r cyfrifydd hwn ac nid hwn yw eich cais am Help i Dalu Ffioedd
     feedback:
@@ -87,7 +87,7 @@ cy:
               header: "Mae’n bosibl y gallwch gael help i dalu ffioedd"
               detail:
                 single: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help i dalu ffioedd, cyhyd â'ch bod yn cael rhai budd-daliadau penodol neu'ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf."
-                sharing_income: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help gyda’ch ffioedd, cyhyd â’ch bod yn cael rhai budd-daliadau penodol neu’ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf"
+                sharing_income: "Gyda ffi o %{fee} â chynilion o %{disposable_capital} rydych yn debygol o gael help i dalu ffioedd, cyhyd â'ch bod yn cael rhai budd-daliadau penodol neu'ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf."
           benefits_received:
             final_positive:
               header: "Gallwch fod yn gymwys i’r ffi gael ei dileu’n llawn"
@@ -96,20 +96,20 @@ cy:
                 sharing_income: "Gan eich bod wedi nodi eich bod yn cael budd-dal incwm, gyda ffi o %{fee}, dylech fod yn gymwys i’r ffi gael ei dileu’n llawn neu dylech gael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
           household_income:
             final_positive:
-              header: "Dylech fod yn gymwys i gael help i dalu ffioedd."
+              header: "Dylech fod yn gymwys i gael help i dalu ffioedd"
               detail:
                 single: "Ar gyfer dinesydd sengl: Gan eich bod wedi nodi fod gennych incwm o %{total_income}, ni fydd rhaid ichi Gan eich bod wedi nodi fod gennych incwm o %{total_income}, ni fydd rhaid ichi dalu dim o'ch ffi o %{fee} a bydd y ffi lawn yn cael ei dileu neu byddwch yn cael ad-daliad llawn os ydych wedi talu'r ffi o fewn y 3 mis diwethaf. dim o’ch ffi o %{fee} a bydd y ffi lawn yn cael ei dileu neu byddwch yn cael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
-                sharing_income: "Ar gyfer cwpl: Gan eich bod chi a’ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, ni fydd rhaid ichi dalu dim o’ch ffi o %{fee} a bydd y ffi lawn yn cael ei dileu neu byddwch yn cael ad-daliad llawn os ydych wedi talu’r ffi o fewn y 3 mis diwethaf"
+                sharing_income: "Gan eich bod chi a'ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, ni fydd rhaid ichi dalu dim o'ch ffi o %{fee} a byddwch yn cael help i dalu ffioedd neu cael ad-daliad os ydych wedi talu'r ffi o fewn y 3 mis diwethaf"
             final_negative:
               header: "Rydych yn annhebygol o gael help i dalu ffioedd"
               detail:
                 single: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
                 sharing_income: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
             final_partial:
-              header: "Dylech fod yn gymwys i ran o’r ffi gael ei dileu  "
+              header: "Dylech fod yn gymwys i gael help i dalu ffioedd"
               detail:
                 single: "Ar gyfer dinesydd sengl: Gan eich bod wedi nodi fod gennych incwm o %{total_income}, bydd angen ichi gyfrannu %{contribution} o’ch ffi o %{fee} neu byddwch yn cael ad-daliad rhannol o %{remission} os ydych wedi talu’r ffi lawn o fewn y 3 mis diwethaf"
-                sharing_income: "Ar gyfer cwpl: Gan eich bod chi a’ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, bydd angen ichi gyfrannu %{contribution} o’ch ffi o %{fee} neu byddwch yn cael ad-daliad rhannol o %{remission} os ydych wedi talu’r ffi lawn o fewn y 3 mis diwethaf"
+                sharing_income: "Gan eich bod chi a'ch partner wedi nodi fod gennych incwm misol cyfunol o %{total_income}, bydd angen ichi gyfrannu %{contribution} o'ch ffi o %{fee} neu byddwch yn cael ad-daliad rhannol o %{remission} os rydych wedi talu'r ffi lawn o fewn y 3 mis diwethaf"
     field_labels:
       disposable_capital:
         single: "Faint sydd gennych chi wedi’i gynilo a’i fuddsoddi ar y cyd?"
@@ -162,10 +162,10 @@ cy:
     benefits:
       dont_know:
         label: "Ddim yn gwybod"
-        guidance: "Os nad ydych yn cael budd-dal incwm, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a'ch incwm."
+        guidance: "Os nad ydych yn cael budd-dal incwm, bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a'ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu'r ffi, ac felly faint o'r ffi y gellir ei dileu (os o gwbl)"
       none:
         label: 'Dim un o’r uchod'
-        guidance: "Os nad ydych yn cael budd-dal incwm bydd angen i ni ofyn rhagor o gwestiynau ichi ynghylch unrhyw blant yr ydych yn gyfrifol amdanynt a'ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu'r ffi, ac felly faint o'r ffi y gellir ei dileu (os o gwbl)"
+        guidance: "Os nad ydych yn cael budd-dal incwm, bydd angen i ni ofyn rhagor o gwestiynau ichi yngylch unrhyw blant yr ydych yn gyfrifol amdanynt a'ch incwm. Bydd hyn yn dweud wrthym beth fydd y cyfraniad uchaf y bydd rhaid ichi efallai ei wneud tuag at dalu'r ffi, ac felly faint o'r ffi y gellir ei dileu (os o gwbl)"
       jobseekers_allowance:
         label: "Lwfans Ceisio Gwaith yn seiliedig ar incwm (JSA)"
         guidance: ''
@@ -182,10 +182,10 @@ cy:
         label: "Credyd Pensiwn (Credyd Gwarant)"
         guidance: ''
       scottish_legal_aid:
-        label: "Cymorth Cyfreithiol Sifil Yr Alban"
+        label: "Cymorth Cyfreithiol Sifil Yr Alban (nid Cyngor a Chymorth neu Gyngor drwy Gynrychiolaeth)"
         guidance: ''
     common:
-      page_header: "Canfod a allech chi gael help i dalu ffioedd"
+      page_header: "Mae'n bosibl y gallwch gael help i dalu ffioedd"
       next_button: "Nesaf"
       start_again: "Dychwelyd i dudalen gartref help i dalu ffioedd"
       next_steps: "Camau nesaf"
@@ -273,7 +273,7 @@ cy:
       total_income: "Nodwch faint o incwm gros ydych chi’n ei gael bob mis (cyn i daliadau treth neu Yswiriant Gwladol gael eu tynnu i ffwrdd)"
       disposable_capital:
         single: "Os oes gennych chi fwy na £16,000 wedi'i gynilo a'i fuddsoddi, yna rydych chi'n annhebygol o gael help i dalu ffioedd"
-        sharing_income: "Os oes gennych chi neu’ch partner fwy na £16,000 wedi’i gynilo a’i fuddsoddi, yna rydych chi’n annhebygol o gael help gyda’ch ffi"
+        sharing_income: "Os oes gennych chi neu'ch partner fwy na £16,000 wedi'i gynilo a'i fuddsoddi, yna rydych chi'n annhebygol o gael help i dalu ffioedd."
     marital_status:
       options:
         single: "Sengl"
