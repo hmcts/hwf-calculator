@@ -24,7 +24,7 @@ RSpec.describe 'View not eligible page', type: :feature, js: true do
     # Assert
     aggregate_failures 'Validate all' do
       expect(exceptional_hardship_page).to be_displayed
-      expect(exceptional_hardship_page).to have_page_header
+      expect(exceptional_hardship_page).to have_page_header(wait: 30)
       expect(exceptional_hardship_page).to be_all_there
     end
   end
