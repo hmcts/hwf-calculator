@@ -26,6 +26,7 @@ gem 'turbolinks', '~> 5'
 gem 'active_model_attributes', '~> 1.3'
 
 gem 'slim-rails', '~> 3.1'
+gem 'jbuilder', '~> 2.7'
 gem 'unicorn', '~> 5.4'
 gem 'govuk_template', '~> 0.23'
 gem 'govuk_elements_rails', '~> 3.1'

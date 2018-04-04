@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get '/calculation_result/full_remission' => 'calculation_result#full_remission_available', as: :calculation_result_full
     get '/calculation_result/partial_remission' => 'calculation_result#partial_remission_available', as: :calculation_result_partial
     get '/calculation_result/not_eligible' => 'calculation_result#no_remission_available', as: :calculation_result_none
-    get '/help/total_income/what_to_include_exclude' => "help#total_income_include_exclude"
+    get '/help/total_income/what_to_include_exclude' => 'help#total_income_include_exclude'
+    get '/ping' => 'status#ping'
+    get '/healthcheck' => 'status#healthcheck'
   end
 end
