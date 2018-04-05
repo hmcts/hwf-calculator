@@ -1,0 +1,12 @@
+.content-header
+  h1.heading-large data-behavior="heading" = t('.page_header')
+.content-body.help-exceptional-hardship
+  .return-to-caller
+    = link_to(t('.return_to_caller'), return_to_path, class: 'link-back', data: { behavior: 'back_link' })
+  div data-behavior='help_section'
+    h2.heading-medium = t('.what_to_include_header')
+    ul.list.list-bullet
+      - t('.main_section.text').lines.each do |line|
+        li = line
+  .return-to-caller
+    = link_to(t('.return_to_caller'), return_to_path, class: 'link-back', data: { behavior: 'back_link' })

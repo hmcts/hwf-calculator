@@ -12,6 +12,7 @@ cy:
     start_page: '/'
     total_income: '/cy/calculation/total_income'
     total_income_include_exclude: '/cy/help/total_income/what_to_include_exclude{?query*}'
+    exceptional_hardship: '/cy/help/exceptional_hardship{?query*}'
 
   hwf_decision:
     disposable_capital:
@@ -21,14 +22,14 @@ cy:
           detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital} rydych yn debygol o gael help i dalu ffioedd, cyhyd â'ch bod yn cael rhai budd-daliadau penodol neu'ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf."
         negative:
           heading: "Rydych yn annhebygol o gael help i dalu ffioedd"
-          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
+          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
       sharing_income:
         positive:
           heading: "Mae’n bosibl y gallwch gael help i dalu ffioedd"
           detail: "Gyda ffi o %{fee} â chynilion o %{disposable_capital} rydych yn debygol o gael help i dalu ffioedd, cyhyd â'ch bod yn cael rhai budd-daliadau penodol neu'ch bod ar incwm isel. Byddwn nawr yn edrych ar y rhain ar y tudalennau nesaf."
         negative:
           heading: "Rydych yn annhebygol o gael help i dalu ffioedd"
-          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi eithriadol"
+          detail: "Gyda ffi o %{fee} a chynilion o %{disposable_capital}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
     income_benefits:
       single:
         positive:
@@ -74,6 +75,8 @@ cy:
         heading: "Rydych yn annhebygol o gael help i dalu ffioedd"
         negative:
           detail: "Gyda ffi o %{fee} ac incwm misol cyfunol o %{total_income}, mae’n annhebygol y byddwch yn gallu cael help ariannol, oni bai eich bod yn debygol o ddioddef caledi ariannol"
+    common:
+      exceptional_hardship: 'caledi ariannol'
   hwf_pages:
     number_of_children:
       heading: "Mae'n bosibl y gallwch gael help i dalu ffioedd"
@@ -343,6 +346,19 @@ cy:
               Blaendaliadau Budd-dal Tymor Byr (STBAs)
               Blaendaliadau Credyd Cynhwysol
               Lwfans Rhiant Gweddw
+      exceptional_hardship:
+        back: "yn ôl i'r cyfrifiad"
+        page_header: "*Welsh Help with Exceptional Hardship"
+        main_section:
+          label: "*Welsh Help - Exceptional Hardship Guide"
+          text: |
+            *Welsh Where you believe that you are not realistically able to afford to pay your court or tribunal fee, or are facing other exceptional circumstances, you can ask the court or tribunal’s delivery manager to consider reducing or waiving your fee. This is an important safety net which may apply where, for example, you are not eligible under the standard Help with Fees scheme, Help with Fees has been granted only in part, or if your fee is payable in proceedings where the Help with Fees scheme doesn’t apply and you don’t qualify for a remission under other rules (e.g. appeals to the First-tier Immigration and Asylum Tribunal).
+            *Welsh The delivery manager will generally only grant your request if you are able to demonstrate that you are not realistically able to afford the fee in practice or that there are other circumstances which justify remission of the fee. The circumstances of applicants will be considered on a case by case basis.
+            *Welsh In considering whether to reduce or waive your fee, the delivery manager will require evidence about your exceptional circumstances, including why you are not able to afford your fee, or why there are other circumstances which justify remission of the fee. You must provide this evidence alongside your application. The type of evidence that you should provide includes (where relevant): notices threatening legal action due to non-payment of bills or housing costs, details of your income, savings, expenses, or any other relevant information to support your request for an exceptional remission.
+            *Welsh All evidence must be in English or accompanied by a translation into English and where evidence of your finances is presented in a currency other than sterling it must be accompanied by a conversion. Translations and conversions should be from a recognised source (this can include online translation/conversion services).
+            *Welsh You won’t automatically have your fee reduced or waived because of your status, for example if you’re unemployed, a seasonal or part-time worker, student or prisoner. You will still be asked to provide evidence to support your application.
+            *Welsh In considering an application for an exceptional fee remission we would expect you to demonstrate that you have taken all reasonable steps to exhaust alternative sources of funding. For example, where you have a sponsor supporting you in an immigration related matter we would expect to see evidence demonstrating that those parties are unable to assist you in paying your fee. In addition, if you have any form of legal expenses insurance we would expect to see evidence as to why that cover would not be able to fund your fee.
+            *Welsh If the delivery manager does not grant your exceptional fee remission application then you can appeal this decision to the operational manager. The operational manager will then consider any evidence that you have submitted previously and any further information you submit with your appeal. Once the operational manager has made their final decision we will not be able to consider the matter any further
   hwf_components:
     previous_questions:
       label: 'Atebion blaenorol'

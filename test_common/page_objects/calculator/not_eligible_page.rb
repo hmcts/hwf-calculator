@@ -6,9 +6,14 @@ module Calculator
       section :next_steps, :next_steps_labelled, t('hwf_components.next_steps.label') do
         include ::Calculator::Test::NextStepsSection
       end
+      element :exceptional_hardship_link, :link, t('hwf_decision.common.exceptional_hardship')
 
       def start_again
         next_steps.start_again_link.click
+      end
+
+      def open_exceptional_hardship
+        exceptional_hardship_link.click
       end
 
       # Verifies that the final negative remission message is present

@@ -2,18 +2,14 @@ module CalculationFeedbackHelper
   # Provides the feedback text for a given calculation.
   # @param [Calculator::Calculation] calculation The calculation to display feedback for
   # @return [String] The feedback text
+  # rubocop:disable Rails/OutputSafety
   def calculator_feedback_for(calculation)
     message = calculation.messages.last
     return '' if message.nil?
     marital_status = calculation.inputs[:marital_status]
-    t "calculation.feedback.messages.decided_by.#{message[:source]}.#{message[:key]}.detail.#{marital_status}",
-      raise: true,
-      total_income: calculation_total_income(calculation),
-      fee: calculation_fee(calculation),
-      disposable_capital: calculation_disposable_capital(calculation),
-      remission: calculation_remission(calculation),
-      contribution: calculation_contribution(calculation)
+    raw translated_feedback_message(calculation, marital_status, message)
   end
+  # rubocop:enable Rails/OutputSafety
 
   # Provides the feedback header text for a given calculation.
   # @param [Calculator::Calculation] calculation The calculation to display feedback header for
@@ -81,5 +77,23 @@ module CalculationFeedbackHelper
   #   DisposableCapitalForm,BenefitsReceivedForm,NumberOfChildrenForm] The form
   def calculator_form_for(field)
     CalculationFormService.for_field(field)
+  end
+
+  private
+
+  def translated_feedback_message(calculation, marital_status, message)
+    t "calculation.feedback.messages.decided_by.#{message[:source]}.#{message[:key]}.detail.#{marital_status}",
+      raise: true,
+      total_income: calculation_total_income(calculation),
+      fee: calculation_fee(calculation),
+      disposable_capital: calculation_disposable_capital(calculation),
+      remission: calculation_remission(calculation),
+      contribution: calculation_contribution(calculation),
+      exceptional_hardship_link: exceptional_hardship_link
+  end
+
+  def exceptional_hardship_link
+    link_to t('calculation.feedback.common.exceptional_hardship'),
+      help_exceptional_hardship_path(return_to_path: request.fullpath)
   end
 end
