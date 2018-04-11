@@ -54,3 +54,10 @@ make security-tests
 ```
 
 That will spin up the zap proxy and the app docker containers, run the tests and export the zap report on your local machine.
+
+### How to run the Spec Tests
+
+Open your terminal, change directory to the app's root folder and run:
+```
+make spec-tests
+```
