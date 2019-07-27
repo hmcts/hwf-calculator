@@ -1,5 +1,6 @@
+.DS_Store
 .idea
+.vscode
+coverage
 log/*.log
 tmp/**
-coverage
-.DS_Store
