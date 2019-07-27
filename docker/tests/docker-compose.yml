@@ -7,6 +7,8 @@ services:
     environment:
       ZAP_HOST: http://zap:8095
       CAPYBARA_SERVER_HOST: security-tests
+      CAPYBARA_SERVER_PORT: '3000'
+      CAPYBARA_APP_HOST: http://security-tests:3000
     command: ./docker/tests/run_security_tests.sh
     links:
       - zap
