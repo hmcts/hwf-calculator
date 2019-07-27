@@ -22,3 +22,8 @@ zap-passive-scan-report:
 	# Get the report
 	docker cp $(call container-id-for,calculator,zap):/tmp/zap-passive-scan-results.html /tmp
 	@echo "Open /tmp/zap-passive-scan-results.html in your browser"
+
+
+### Spec tests ###
+spec-tests:
+	docker-compose -f docker/tests/docker-compose.yml -p calculator up --build spec-tests

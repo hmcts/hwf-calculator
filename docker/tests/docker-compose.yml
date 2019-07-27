@@ -16,3 +16,9 @@ services:
   zap:
     image: owasp/zap2docker-stable
     command: ./zap.sh -daemon -host 0.0.0.0 -port 8095 -config api.disablekey=true -config 'api.addrs.addr.name=.*' -config 'api.addrs.addr.regex=true'
+
+  spec-tests:
+    build:
+      context: ../..
+      dockerfile: docker/tests/Dockerfile.test
+    command: bundle exec parallel_rspec spec
